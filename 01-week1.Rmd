@@ -8,7 +8,7 @@ They had never learned how to program, and they felt intimidated and overwhelmed
 
 Oh, little did they know, that there was such a course: MATH245, Computational Mathematics **and they were enrolled in it?**
 
-## Mathematics and Computing
+## Doing Maths Behind a Computer
 
 ![](images/chapter1/skyrim-finally-awake.jpg){width="547"}
 
@@ -26,3 +26,5 @@ Why should you learn programming in mathematics? Well, there are many reasons, b
 4.  Oh, nice Bayesian nested model you got here. It would be a shame if there was not a closed form... What? Your data set has three-thousand features? Well, *modern statistics is done behind a computer.*
 
 In short, programming can make mathematics more fun, more useful, and more relevant to the modern world. As a mathematician in the 21st century, you need to be able to work with a computer and use it as a tool for discovery and innovation.
+
+And well, don\'t worry if you have no prior knowledge of programming. We will start from the basics, like really the basics basics, as you can see from the next section header. We will then guide you through the fundamentals and concepts of programming, and then will follow through the basics of Computational Mathematics and Algorithms. We will also give you plenty of examples and exercises to practice and test your skills. By the end of this course, you will be able to write and run your own code in both R and Python, which are two of the most popular programming languages for scientific computing, and learn very useful algorithms that you will apply to various mathematical problems.
