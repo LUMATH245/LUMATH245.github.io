@@ -1,3 +1,13 @@
-# **1** Test {.unnumbered}
+# Introduction to Programming {#intro_prog}
 
-Test
+The boss was passing by, so they minimized the browser with the useless Instagram tab to stare at an Excel window. They had spent hours working on this spreadsheet, crunching pointless numbers and averages. They felt exhausted and bored. They looked at the grid of the spreadsheet, and felt like they were behind the bars of a prison. They wondered if this was what computing was supposed to be like.
+
+They had always loved mathematics once, and wanted to learn how to use it in creative and exciting ways. They wanted to explore new and emerging fields, such as data science, machine learning, AI, cryptography, share their code and results online. Well too late now.
+
+They had never learned how to program, and they felt intimidated and overwhelmed by the complexity and diversity of programming languages and tools. They wished there was a course that could teach them the basics and fundamentals of programming, and show them how to use two of the most popular and powerful languages for scientific computing: R and Python. Oh, little did they know, that there was such a course: MATH245, Computational Mathematics **and they were enrolled in it?**.
+
+## Computational Mathematics
+
+![](images/chapter1/skyrim-finally-awake.jpg)
+
+Welcome to MATH245, Computational Mathematics! In this course, you will learn how to use two of the most popular and powerful programming languages for scientific computing: R and Python. You will also learn a bunch of cool algorithms and how to apply them to various mathematical problems.

@@ -20,6 +20,8 @@ output:
 
 These are the R programming notes for MATH245 Computational Mathematics. They were written by.... They were based off...
 
+Here we should have the table of content of the module?
+
 ```{r include=FALSE}
 knitr::opts_chunk$set(fig.path = "images/", out.width = "50%")
 ```
