@@ -1,0 +1,25 @@
+---
+title: "Lancaster University MATH245 Computational Mathematics"
+author: "Lecturers: Dr Eduard Campillo-Funollet and Dr Gaetano Romano"
+date: "2023/2024"
+site: bookdown::bookdown_site
+documentclass: book
+output:
+  #bookdown::tufte_html2:
+    #toc: yes
+    #self_contained: false
+  #bookdown::tufte_book2:
+    #toc: yes
+    #includes:
+      #in_header: preamble.tex
+  bookdown::gitbook:
+    toc_depth: 2
+---
+
+# Preface {-}
+
+These are the R programming notes for MATH245 Computational Mathematics. They were written by.... They were based off...
+
+```{r include=FALSE}
+knitr::opts_chunk$set(fig.path = "images/", out.width = "50%")
+```
