@@ -29,7 +29,7 @@ And well, don't worry if you have no prior knowledge of programming. We will sta
 
 ## What is a Computer?
 
-Few years ago Apple came up with yet another iPad. And with that, another of their ads. In that one a kid would do a bunch of things around with an iPad pro, kinda like working on Word or drawing silly things. Then, at the end, a peeping neighbor, perhaps too curious, would ask them: *"Wattcha doing on your computer?"*. To which the kid, holding the iPad, replies: *"What's a computer?"*. Here, look for yourself:
+Few years ago Apple came up with yet another iPad. And with that, another one of their ads. In one specifically, a kid would do a bunch of things with an iPad pro, like working on Word, reading comics or drawing silly things. Then, at the end, a peeping neighbor, perhaps too curious, would ask them: *"Wattcha doing on your computer?"*. To which the kid, holding the iPad, replies: *"What's a computer?"*. Here, look for yourself:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/3S5BLs51yDQ?si=7SZjrvf_ojbtjYx7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
 
