@@ -1,3 +1,5 @@
 intro_prog
 what-is-a-computer
+computer-programs-and-programming-languages
+r-and-python
 chapter2

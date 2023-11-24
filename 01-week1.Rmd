@@ -55,3 +55,39 @@ To illustrate how these components interact, let\'s consider what happens when y
 ![](images/chapter1/architecture.png){width="522"}
 
 Say that your program and your data are saved on your hard drive (a type of storage). The program, along with any necessary data, is then loaded from the hard drive into the memory. This allows the CPU to access it. The CPU then carries out the program\'s instructions, performing calculations and operations on the data stored in the memory. The results of these operations remain in the memory and can be displayed on the screen, saved back to the hard drive, or sent to another device. This process highlights the integral role each component plays in the functioning of a computer.
+
+### Computer Programs and Programming Languages
+
+We have mentioned a program earlier, but what is a program? A program is a sequence of instructions that tells the computer what to do. A program can be written in different ways, depending on the level of abstraction and the intended audience. For example, a program can be written in natural language, such as English, or in a formal language, such as mathematics. However, the computer cannot understand these languages directly. It can only understand a very low-level language, called machine code, which consists of binary digits (0s and 1s) that represent the basic operations of the CPU. We call this set of binary instructions **a computer program**.
+
+![](images/chapter1/chad_pc.png){width="546"}
+
+Therefore, to make the computer execute a program, we need to translate it from a higher-level language to a lower-level language. This is where programming languages come in. A programming language is a formal language that defines the syntax and semantics of a program. A programming language allows us to write programs in a more human-readable and expressive way, and then convert them to machine code that the computer can understand and execute.
+
+There are many programming languages, and they have different features and purposes. Some programming languages are designed for specific domains or tasks, such as web development, data analysis, or game design. Some programming languages are more general-purpose and can be used for a variety of applications. Some programming languages are more popular and widely used than others, depending on the trends and demands of the industry and the community.
+
+In this course, we will focus on two of the most popular and versatile programming languages for scientific computing: R and Python. Both of these languages are high-level, interpreted, and general-purpose languages:
+
+-   **High-level** means that the programming language is closer to natural language and more abstracted from the details of the machine code. This makes the language easier to read, write, and understand, but also requires more translation and processing by the interpreter or the compiler. But don't worry about this... Fortunately most of the heavy lifting is done by the compiler, which is the interpreter that converts the code from human readable to machine readable.
+
+-   **Interpreted** means that the programming language does not need to be compiled before execution, but rather is translated and executed line by line by a program called an interpreter. This allows the language to be more dynamic and flexible, but also slower and less efficient than compiled languages. One of the advantages of interpreted languages is that you can execute commands **directly in the console**, in addition to writing and saving these in a script. This is useful for testing and debugging your code, or for performing quick calculations and operations.
+
+-   **General-purpose** means that the programming language can be used for a variety of applications and domains, and is not limited to a specific purpose or task. This makes the language more versatile and adaptable, but also less specialized and optimized than domain-specific languages. General-purpose languages can be used for web development, video game engineering, automation, and... Scientific computing, among other things.
+
+#### R and Python
+
+Well, finally it's time to introduce our two friends. And as with any good introduction, we give a bit of history.
+
+**R** is a language and environment for statistical computing and graphics. It was created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand, in 1993. It is based on the S language, which was developed at Bell Laboratories by John Chambers and others in the 1970s. R is free and open source, and has a large and active community of users and developers. R is especially popular among statisticians, data scientists, and researchers in various fields.
+
+**Python** is a high-level, interpreted, general-purpose programming language. It was created by Max Verstappen in the Netherlands 5 years ago. Nah, just kidding... It was made though in the Netherlands in 1991 by Guido van Rossum, at Centrum Wiskunde & Informatica (CWI). It is named after the comedy group Monty Python, and has a philosophy of simplicity, readability, and elegance. Python is also free and open source, and has a huge and diverse community of users and developers. Python is widely used for a variety of tasks and it's getting more and more popular in statistics and for scientific computing.
+
+Both R and Python have many advantages and features that make them suitable for mathematical applications, such as:
+
+-   They are easy to learn and use, with clear and consistent syntax and semantics. They allow you to write concise and elegant code that can handle complex problems, without getting too lost in complicated syntax (have a look at some C or Fortran code for instance).
+
+-   They are extensible and modular, supporting multiple paradigms and styles of programming, such as functional, object-oriented, and procedural. For this course, we will be focusing on **functional programming.** This will come later, as it's the a way of programming that is really close with mathematics.
+
+-   They have rich and comprehensive libraries and packages that provide a wide range of functions and tools for various domains and tasks, such as linear algebra, optimization, machine learning, visualization, and web scraping.
+
+-   They have interactive and user-friendly environments and interfaces that facilitate development and debugging, such as the console, the editor, and the notebook. We will be using, for this module **R studio.**
