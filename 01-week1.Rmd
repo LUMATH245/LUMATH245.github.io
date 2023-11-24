@@ -62,9 +62,9 @@ We have mentioned a program earlier, but what is a program? A program is a seque
 
 ![](images/chapter1/chad_pc.png){width="630"}
 
-Therefore, to make the computer execute a program, we need to translate it from a higher-level language to a lower-level language. This is where programming languages come in. A programming language is a formal language that defines the syntax and semantics of a program. A programming language allows us to write programs in a more human-readable and expressive way, and then convert them to machine code that the computer can understand and execute.
+Therefore, to make the computer execute a program, we need to translate it from a higher-level language to a lower-level language. This is where programming languages come in. A programming language is a formal language that defines the syntax and semantics of a program. A programming language allows us to write programs in a more human-readable and expressive way, and then, as an interpreter, translate them to machine code that the computer can understand and execute.
 
-There are many programming languages, and they have different features and purposes. Some programming languages are designed for specific domains or tasks, such as web development, data analysis, or game design. Some programming languages are more general-purpose and can be used for a variety of applications. Some programming languages are more popular and widely used than others, depending on the trends and demands of the industry and the community.
+There are many programming languages, and they have different features and purposes. Some programming languages are designed for specific domains or tasks, such as web development, data analysis, or game design, whilst others are more general-purpose and can be used for a variety of applications.
 
 In this course, we will focus on two of the most popular and versatile programming languages for scientific computing: R and Python. Both of these languages are high-level, interpreted, and general-purpose languages:
 
