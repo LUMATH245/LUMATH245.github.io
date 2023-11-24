@@ -60,7 +60,7 @@ Say that your program and your data are saved on your hard drive (a type of stor
 
 We have mentioned a program earlier, but what is a program? A program is a sequence of instructions that tells the computer what to do. A program can be written in different ways, depending on the level of abstraction and the intended audience. For example, a program can be written in natural language, such as English, or in a formal language, such as mathematics. However, the computer cannot understand these languages directly. It can only understand a very low-level language, called machine code, which consists of binary digits (0s and 1s) that represent the basic operations of the CPU. We call this set of binary instructions **a computer program**.
 
-![](images/chapter1/chad_pc.png){width="546"}
+![](images/chapter1/chad_pc.png){width="630"}
 
 Therefore, to make the computer execute a program, we need to translate it from a higher-level language to a lower-level language. This is where programming languages come in. A programming language is a formal language that defines the syntax and semantics of a program. A programming language allows us to write programs in a more human-readable and expressive way, and then convert them to machine code that the computer can understand and execute.
 
@@ -74,7 +74,7 @@ In this course, we will focus on two of the most popular and versatile programmi
 
 -   **General-purpose** means that the programming language can be used for a variety of applications and domains, and is not limited to a specific purpose or task. This makes the language more versatile and adaptable, but also less specialized and optimized than domain-specific languages. General-purpose languages can be used for web development, video game engineering, automation, and... Scientific computing, among other things.
 
-#### R and Python
+### R and Python
 
 Well, finally it's time to introduce our two friends. And as with any good introduction, we give a bit of history.
 
