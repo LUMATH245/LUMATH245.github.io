@@ -2,4 +2,10 @@ intro_prog
 what-is-a-computer
 computer-programs-and-programming-languages
 r-and-python
+computing-accessing-memory-and-storing
+a-glorified-calculator
+exercise
+putting-an-order-to-operations
+what-if-calculators-could-remember
+doing-maths-with-variables
 chapter2

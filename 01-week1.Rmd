@@ -42,19 +42,19 @@ Also, computers will have different architectures, such as x86, ARM, or RISC-V, 
 
 More formally, a computer is a device that can perform calculations and manipulate data, all by following a set of instructions known as a program. It has the ability to process a variety of data types, including numbers, text, images, sound, and video, and can produce a range of outputs. This could be anything from displaying information on a screen, playing audio, or transmitting information over the internet (which, in its simplest form, is just two computers exchanging text).
 
-Let\'s delve a bit deeper into the main components of a computer:
+Let's delve a bit deeper into the main components of a computer:
 
-1.  **Central Processing Unit (CPU)**: Often referred to as the \'brain\' of the computer, the CPU is responsible for executing the program\'s instructions.
+1.  **Central Processing Unit (CPU)**: Often referred to as the 'brain' of the computer, the CPU is responsible for executing the program's instructions.
 
-2.  **Memory**: This is the computer\'s short-term memory, sometimes known as **RAM (Random Access Memory)**. It stores the data that the CPU needs to access quickly and frequently. RAM is volatile, which means that its contents are lost when the computer is turned off or restarted.
+2.  **Memory**: This is the computer's short-term memory, sometimes known as **RAM (Random Access Memory)**. It stores the data that the CPU needs to access quickly and frequently. RAM is volatile, which means that its contents are lost when the computer is turned off or restarted.
 
-3.  **Storage**: This is the computer\'s long-term memory. It holds data that isn\'t required immediately or frequently by the CPU. This could include the program itself or files created by the user. Hard drives are non-volatile, meaning their contents persist even when the computer is turned off.
+3.  **Storage**: This is the computer's long-term memory. It holds data that isn't required immediately or frequently by the CPU. This could include the program itself or files created by the user. Hard drives are non-volatile, meaning their contents persist even when the computer is turned off.
 
-To illustrate how these components interact, let\'s consider what happens when you run a program e.g. a series of instruction that make sense to your CPU:
+To illustrate how these components interact, let's consider what happens when you run a program e.g. a series of instruction that make sense to your CPU:
 
 ![](images/chapter1/architecture.png){width="522"}
 
-Say that your program and your data are saved on your hard drive (a type of storage). The program, along with any necessary data, is then loaded from the hard drive into the memory. This allows the CPU to access it. The CPU then carries out the program\'s instructions, performing calculations and operations on the data stored in the memory. The results of these operations remain in the memory and can be displayed on the screen, saved back to the hard drive, or sent to another device. This process highlights the integral role each component plays in the functioning of a computer.
+Say that your program and your data are saved on your hard drive (a type of storage). The program, along with any necessary data, is then loaded from the hard drive into the memory. This allows the CPU to access it. The CPU then carries out the program's instructions, performing calculations and operations on the data stored in the memory. The results of these operations remain in the memory and can be displayed on the screen, saved back to the hard drive, or sent to another device. This process highlights the integral role each component plays in the functioning of a computer.
 
 ### Computer Programs and Programming Languages
 
@@ -91,3 +91,325 @@ Both R and Python have many advantages and features that make them suitable for 
 -   They have rich and comprehensive libraries and packages that provide a wide range of functions and tools for various domains and tasks, such as linear algebra, optimization, machine learning, visualization, and web scraping.
 
 -   They have interactive and user-friendly environments and interfaces that facilitate development and debugging, such as the console, the editor, and the notebook. We will be using, for this module **R studio.**
+
+## Computing, Accessing Memory and Storing
+
+We covered the three components of the computer: the CPU, the memory and the storage. Well, a programming language is a powerful tool that allows to build a set of instructions that use all these three components. By the end of this chapter, we won't be able to write a full program yet, but hopefully we will show how these three interact.
+
+Before we proceed, a quick rundown on how to read the lines of code in these notes. Every once in a while you will see a chunk of code, and sometimes a result of what the chunk of code does. For example:
+
+```{r}
+# Hi, I am a chunk of R code that prints to output "Beep bop beep"
+print("Beep bop beep")
+```
+
+As the comment (that bit in gray that starts with the `#)`, suggests, what you saw is a chunk of R code that *prints to output* the text "Beep bop beep". On top you will find the code, and on the bottom the result, *i.e.* the output. The comment does not get executed, so it's just an explanation of what you are seeing. The actual code statement, `print("Beep bop beep")`, is the one that does all the job, and, as the comments sugests, prints the text "Beep bop beep".
+
+*Wait, but I thought we would have learned Python in this module?* Well, patience, my dear friend (btw, we are not friends). The python equivalent of that statement would be:
+
+```{python}
+# Hi, I am a chunk of Python code that prints to output "Beep bop beep"
+print("Beep bop beep")
+```
+
+Wait, they're basically the same? Well, yes, that's the point, and the reason why we teach them both simultaneously. Despite the culture war that there's currently in Statistics and Data Science, we believe that there's no such thing as a best programming language: **the expert worker should use all tools available at this hand**. R and Python, for scientific computing, are almost equivalent at this day, and given recent developments, **they can work together**. For your project you will have to pick either one, or the other, but if you are confident enough, feel to learn both, you're more then welcome.
+
+As a matter of fact, for all the these notes, we will always try to have them both side to side.\
+**On the left you will always an R code chunk, and on the right you will find the Python equivalent:**
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+print("R chunk on the left.")
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+print("Python chunk on the right.")
+```
+
+</div>
+:::
+
+If for formatting reasons we won't be able to show the code side to side, you can always tell which is which by the bold text immediately above the chunk, e.g. **R** or **python**.
+
+Anyway, how did we made such a fancy set of lecture notes? Through **Rmarkdown** using **Rstudio**. Don't worry, we will learn about these two tools later. Another cool thing you can do with a computer.
+
+### A glorified calculator
+
+That's it, the CPU. End of the Section. The CPU is a glorified calculator, nothing more to it. Imagine all these looser that get excited at those numbers, like i7, i5, A4, Pentium 5, Neural Pre-processor, Snapdragon, Qbits, SmartBpprop, Bombastic, Mr fantastic, etc. Get a life, touch grass. Anyway. Open up the console. Either the R or Python one. And copy and paste the following code snippets into it. Then, press enter, you will see the result.
+
+This is how we do additions:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+3 + 5
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+3 + 5
+```
+
+</div>
+:::
+
+The result is automatically printed back to the user. Now, this is how we do subtractions:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+3 - 5
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+3 - 5
+```
+
+</div>
+:::
+
+And this is how we do additions and subtractions, and multiplications, and algebra in general:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+3 + 5 * 2
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+3 + 5 * 2
+```
+
+</div>
+:::
+
+The order of the operations comes from algebra, so in that snippet, we will first have `5 * 2`, that gives us `10`, and then we will do `3 + 10`. Of course we can do much more then simple additions of subtractions and multiplications. Here I have a list of basic operations we can do with both the languages. Note that the syntax will not always be the same:
+
+| Operation    | R Example     | Python Example     |
+|--------------|---------------|--------------------|
+| Add          | `2 + 3`       | `2 + 3`            |
+| Subtract     | `2 - 3`       | `2 - 3`            |
+| Multiply     | `2 * 3`       | `2 * 3`            |
+| Divide       | `2 / 3`       | `2 / 3`            |
+| Modulus      | `2 %% 3`      | `2 %% 3`           |
+| Square root  | `sqrt(2)`     | `math.sqrt(2)`     |
+| Power        | `2^3`         | `2 ** 3`           |
+| Cosine       | `cos(2 * pi)` | `math.cos(2 * pi)` |
+| Sine         | `sin(pi / 2)` |                    |
+| Tangent      | `tan(pi / 4)` |                    |
+| Natural log  | `log(2)`      |                    |
+| Expontential | `exp(2)`      |                    |
+
+#### Exercise
+
+Using numbers of your own, try the other basic mathematical operations listed below. Split a £10 bill across 3 people, check if 91 is a prime number using the modulus with the first 5 primes or get the Euler number. Play around, be wild.
+
+#### Putting an order to operations
+
+Once you're happy, try stringing some of these calculations all into one command, for example:
+
+```{r}
+3 + 7 * 5 / 3 - 2
+(3 + 7) * 5 / (3 - 2)
+```
+
+The multiplication and division calculations are performed first (`*` and `/`), followed by addition and subtraction (`+` and `-`), going from left to right.[\^01-week0-3]
+
+You may remember this from School as BODMAS: Brackets, Orders (powers, square roots), Division, Multiplication, Addition, Subtraction
+
+This can be overridden by using putting the calculations we want to perform first in brackets. For instance, there's this formula that has been really bothering me. It popped up this morning at 4am, and kept me awake. What is the square root of three fourth, over a third minus 2 divided by pi square? A hunted seagull of chalk flying around the vast sea of obsidian that is the blackboard of my mind, over and over and over again: $$
+\frac{\sqrt{3/4}}{\frac{1}{3} - \frac{2}{\pi^2}}.
+$$ Here you go, be free, little bird:
+
+```{r}
+sqrt(3 / 4) / (1 / 3 - 2 / pi^2)
+```
+
+### What if calculators could remember?
+
+Yeah, what if? Well, that's what the memory is for, keeping things in mind. You can think of the memory as a bookshelf, filled with boxes. Or if you're one fan of that Henry Popper, the Magician Kid of Hogtwarz, (I do not wish to pay for the rights to Warner Bros) it's like that room filled with shelves and bottles of thoughts and spells. Yes, that's a better image. So the CPU is the Ministerium of Evil Magicians can access each shelf whenever it feels or needs. Now, in a computer, of course, instead of bottles, you have areas of the memory, and instead of spells, you have numbers, or vectors, or strings (text, e.g. a series of characters).
+
+Now the Ministerium, to access the spells and the thoughts in the bottles, has a bunch of Evil Magicians, that walk in the archive, and that can claim these bottles by putting labels onto them. Those magicians are, in the computer, our programs. Putting a label on an area of memory is called *creating a variable.*
+
+Now, here's the thing: when a magician grabs a bottle, they can either look at which thought or spell is in it, or put a new thought into it. An existing thought in a bottle cannot be modified. If they wish to keep the same bottle with the same label, but change the content, they open it, get rid of the old content, and simply put a new one.
+
+Now, to give an example, Prof. Sinsinius Snap, to kill that guy that kinda of looks like Gandalf, needs to store two spells. In one he needs to store the formula of the spell that causes the victim to feel a lot of pain (this was in a children book, by the way), and in the other, the formula that makes the heart's victim stop. To do so, it cretes two labels, *spell_to_torture* and *spell_to_kill,* so it won't loose the bottles in the archive,and in each it puts the evil spell:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+spell_to_torture <- "porcosus"
+spell_to_kill <- "avada kebaba"
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+spell_to_torture = "porcosus"
+spell_to_kill = "avada kebaba"
+```
+
+</div>
+:::
+
+What did we do? We assigned two strings, `"porcosus"` and `"avada kebaba"`, indicative of our spells, in two variables, called `spell_to_torture` and `spell_to_kill` (the labels). You can read the code above as *assign "porcosus" to spell_to_torture, and assign "avada kebaba" to spell_to_kill*. This can be done with the `<-` sign in R and with the `=` sign in Python. What we did reserved an area of memory where now our two strings are stored and are accessible to our program.
+
+Now, our dear Prof. Sinsinius Snap, to access the spells again, all he needs to do, is to recall the labels he used, e.g. the variable names, and the archive will remind him of the content of the bottles:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+spell_to_torture
+spell_to_kill
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+spell_to_torture
+spell_to_kill
+```
+
+</div>
+:::
+
+Ouch! He realizes he putted the wrong spell in the `spell_to_torture` bottle. Well, no problem, as mentioned above, he can re-bottle the correct one. To do so, he simply reassigns the correct spell `"cruccio"` to the bottle labelled `spell_to_torture`:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+spell_to_torture <- "cruccio"
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+spell_to_torture = "cruccio"
+```
+
+</div>
+:::
+
+Note that now, the old spell `"porcosus"` is lost. In fact, when he looks at the `spell_to_torture` bottle, he sees:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+spell_to_torture
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+spell_to_torture
+```
+
+</div>
+:::
+
+"Well done Sinsinius!" he says, patting himself on the shoulder.
+
+#### Doing maths with variables
+
+Now of course, this is a university, not a school of magic and divination, so we ultimately need to do some maths.
+
+The thing is, we can store the results of our calculations in an variable using the assignment operator, as mentioned above. For instance:
+
+```{r}
+x  <- 20 - 16
+y <- 4 + 5
+x - y
+```
+
+If you look in the environment panel of RStudio, you should now see two objects listed. These objects are now part of our working environment, and they refer to the variables that are accessible to the current R or Python session. We can access their contents by typing entering their names into the console:
+
+```{r}
+x
+y
+```
+
+When creating objects, remember R is case-sensitive so `x` is different from `X`:
+
+```{r error=TRUE}
+X
+```
+
+And if you decide to assign a new value to an object, R or python will not hesitate in overwriting it without warning:
+
+```{r}
+x <- -100
+x
+```
+
+Now the cool thing, whilist in maths something like $x = x + 1$ does not make much sense, in programming language it just works like magic. We can increase the value an object contains by referencing itself:
+
+```{r}
+x <- x + 1
+x
+```
+
+In fact, all mathematical operations can be applied like this.
