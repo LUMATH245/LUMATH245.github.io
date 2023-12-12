@@ -313,11 +313,11 @@ math.sqrt(3 / 4) / (1 / 3 - 2 / math.pi**2)
 
 Yeah, what if? Well, that's what the memory is for, keeping things in mind. You can think of the memory as a bookshelf, filled with boxes. Or if you're one fan of that Henry Popper, the Magician Kid of Hogtwarz, (I do not wish to pay for the rights to Warner Bros) it's like that room filled with shelves and bottles of thoughts and spells. Yes, that's a better image. So the CPU is the Ministerium of Evil Magicians can access each shelf whenever it feels or needs. Now, in a computer, of course, instead of bottles, you have areas of the memory, and instead of spells, you have numbers, or vectors, or strings (text, e.g. a series of characters).
 
-Now the Ministerium, to access the spells and the thoughts in the bottles, has a bunch of Evil Magicians, that walk in the archive, and that can claim these bottles by putting labels onto them. Those magicians are, in the computer, our programs. Putting a label on an area of memory is called *creating a variable.*
+Now, the Ministerium, to access the spells and the thoughts in the bottles, has a bunch of Evil Magicians, that walk in the archive, and that can claim these bottles by putting labels onto them. Those magicians are, in the computer, our programs. Putting a label on an area of memory is called *creating a variable.*
 
-Now, here's the thing: when a magician grabs a bottle, they can either look at which thought or spell is in it, or put a new thought into it. An existing thought in a bottle cannot be modified. If they wish to keep the same bottle with the same label, but change the content, they open it, get rid of the old content, and simply put a new one.
+Tere's the thing: when a magician grabs a bottle, they can either look at which thought or spell is in it, or put a new thought into it. An existing thought in a bottle cannot be modified. If they wish to keep the same bottle with the same label, but change the content, they open it, get rid of the old content, and simply put a new one.
 
-Now, to give an example, Prof. Sinsinius Snap, to kill that guy that kinda of looks like Gandalf, needs to store two spells. In one he needs to store the formula of the spell that causes the victim to feel a lot of pain (this was in a children book, by the way), and in the other, the formula that makes the heart's victim stop. To do so, it cretes two labels, *spell_to_torture* and *spell_to_kill,* so it won't loose the bottles in the archive,and in each it puts the evil spell:
+To give an example, Prof. Sinsinius Snap, to kill that guy that kinda of looks like Gandalf, needs to store two spells. In one he needs to store the formula of the spell that causes the victim to feel a lot of pain (this was in a children book, by the way), and in the other, the formula that makes the heart's victim stop. To do so, it cretes two labels, *spell_to_torture* and *spell_to_kill,* so it won't loose the bottles in the archive,and in each it puts the evil spell:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -345,7 +345,7 @@ spell_to_kill = "avada kebaba"
 
 What did we do? We assigned two strings, `"porcosus"` and `"avada kebaba"`, indicative of our spells, in two variables, called `spell_to_torture` and `spell_to_kill` (the labels). You can read the code above as *assign "porcosus" to spell_to_torture, and assign "avada kebaba" to spell_to_kill*. This can be done with the `<-` sign in R and with the `=` sign in Python. What we did reserved an area of memory where now our two strings are stored and are accessible to our program.
 
-Now, our dear Prof. Sinsinius Snap, to access the spells again, all he needs to do, is to recall the labels he used, e.g. the variable names, and the archive will remind him of the content of the bottles:
+Our dear Prof. Sinsinius Snap, to access the spells again, all he needs to do, is to recall the labels he used, e.g. the variable names, and the archive will remind him of the content of the bottles:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
