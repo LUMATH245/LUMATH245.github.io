@@ -647,7 +647,7 @@ When we write our data to a CSV file, each item of data goes into its own field,
 
 I encourage you to open the "data.csv" file we created in a text editor or spreadsheet program. You'll see that the data is stored in a structured, easy-to-read format. Each number is in its own field, and each set of numbers is in its own record.
 
-Remember, storing data on your hard drive is a great way to preserve your data for later use. It's also a great way to share your data with others, or to move your data between different programs. So don't be afraid to use file input and output in your own programs. It's a powerful tool that can help you do more with your data. Happy coding! 😊
+Remember, storing data on your hard drive is a great way to preserve your data for later use. It's also a great way to share your data with others, or to move your data between different programs. So don't be afraid to use file input and output in your own programs. It's a powerful tool that can help you do more with your data.
 
 #### Reading back your data
 Now, let's say we want to access this data at a later time. We can do this by reading the file back into our program. Here's how you can do it in R and Python:
