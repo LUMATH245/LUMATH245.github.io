@@ -8,4 +8,6 @@ exercise
 putting-an-order-to-operations
 what-if-calculators-could-remember
 doing-maths-with-variables
+storing-data-on-the-hard-drive
+reading-back-your-data
 chapter2

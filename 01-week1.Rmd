@@ -221,20 +221,29 @@ And this is how we do additions and subtractions, and multiplications, and algeb
 
 The order of the operations comes from algebra, so in that snippet, we will first have `5 * 2`, that gives us `10`, and then we will do `3 + 10`. Of course we can do much more then simple additions of subtractions and multiplications. Here I have a list of basic operations we can do with both the languages. Note that the syntax will not always be the same:
 
-| Operation    | R Example     | Python Example     |
-|--------------|---------------|--------------------|
-| Add          | `2 + 3`       | `2 + 3`            |
-| Subtract     | `2 - 3`       | `2 - 3`            |
-| Multiply     | `2 * 3`       | `2 * 3`            |
-| Divide       | `2 / 3`       | `2 / 3`            |
-| Modulus      | `2 %% 3`      | `2 %% 3`           |
-| Square root  | `sqrt(2)`     | `math.sqrt(2)`     |
-| Power        | `2^3`         | `2 ** 3`           |
-| Cosine       | `cos(2 * pi)` | `math.cos(2 * pi)` |
-| Sine         | `sin(pi / 2)` |                    |
-| Tangent      | `tan(pi / 4)` |                    |
-| Natural log  | `log(2)`      |                    |
-| Expontential | `exp(2)`      |                    |
+| Operation    | R Example     | Python Example           |
+|--------------|---------------|--------------------------|
+| Add          | `2 + 3`       | `2 + 3`                  |
+| Subtract     | `2 - 3`       | `2 - 3`                  |
+| Multiply     | `2 * 3`       | `2 * 3`                  |
+| Divide       | `2 / 3`       | `2 / 3`                  |
+| Modulus      | `2 %% 3`      | `2 % 3`                  |
+| Square root  | `sqrt(2)`     | `math.sqrt(2)`           |
+| Power        | `2^3`         | `2 ** 3`                 |
+| Cosine       | `cos(2 * pi)` | `math.cos(2 * math.pi)`  |
+| Sine         | `sin(pi / 2)` | `math.sin(math.pi / 2)`  |
+| Tangent      | `tan(pi / 4)` | `math.tan(math.pi / 4)`  |
+| Natural log  | `log(2)`      | `math.log(2)`            |
+| Expontential | `exp(2)`      | `math.exp(2)`            |
+
+Please note that in Python, you need to import the `math` module to use mathematical functions like `sqrt`, `cos`, `sin`, `tan`, `log`, and `exp`. Also, `pi` is accessed as `math.pi` in Python.
+At the start of your **python** script, just add the following:
+
+**Python**
+```{python}
+import math
+```
+Don't worry too much about this for now.
 
 #### Exercise
 
@@ -244,22 +253,61 @@ Using numbers of your own, try the other basic mathematical operations listed be
 
 Once you're happy, try stringing some of these calculations all into one command, for example:
 
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
 ```{r}
 3 + 7 * 5 / 3 - 2
 (3 + 7) * 5 / (3 - 2)
 ```
 
-The multiplication and division calculations are performed first (`*` and `/`), followed by addition and subtraction (`+` and `-`), going from left to right.[\^01-week0-3]
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+3 + 7 * 5 / 3 - 2
+(3 + 7) * 5 / (3 - 2)
+```
+
+</div>
+:::
+
+The multiplication and division calculations are performed first (`*` and `/`), followed by addition and subtraction (`+` and `-`), going from left to right.
 
 You may remember this from School as BODMAS: Brackets, Orders (powers, square roots), Division, Multiplication, Addition, Subtraction
 
-This can be overridden by using putting the calculations we want to perform first in brackets. For instance, there's this formula that has been really bothering me. It popped up this morning at 4am, and kept me awake. What is the square root of three fourth, over a third minus 2 divided by pi square? A hunted seagull of chalk flying around the vast sea of obsidian that is the blackboard of my mind, over and over and over again: $$
+This can be overridden by using putting the calculations we want to perform first in brackets. For instance, there's this formula that has been really bothering me. It popped up this morning at 4am, and kept me awake. What is the square root of three fourth, over a third minus 2 divided by pi square? A hunted seagull of chalk flying around the vast sea of obsidian that is the blackboard of my mind, over and over and over again: 
+$$
 \frac{\sqrt{3/4}}{\frac{1}{3} - \frac{2}{\pi^2}}.
-$$ Here you go, be free, little bird:
+$$ 
+Here you go, be free, little bird:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
 
 ```{r}
 sqrt(3 / 4) / (1 / 3 - 2 / pi^2)
 ```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+math.sqrt(3 / 4) / (1 / 3 - 2 / math.pi**2)
+```
+
+</div>
+:::
 
 ### What if calculators could remember?
 
@@ -376,8 +424,14 @@ spell_to_torture
 #### Doing maths with variables
 
 Now of course, this is a university, not a school of magic and divination, so we ultimately need to do some maths.
+In programming, we often need to store the results of our calculations for later use. This is where variables come in handy. We mentioned you can think of a variable as a bottle where you can store a value. You can give this bottle a label (a name), and use this label to refer to the bottled value later on.
 
-The thing is, we can store the results of our calculations in an variable using the assignment operator, as mentioned above. For instance:
+For example, let's say we want to perform some calculations:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
 
 ```{r}
 x  <- 20 - 16
@@ -385,31 +439,249 @@ y <- 4 + 5
 x - y
 ```
 
-If you look in the environment panel of RStudio, you should now see two objects listed. These objects are now part of our working environment, and they refer to the variables that are accessible to the current R or Python session. We can access their contents by typing entering their names into the console:
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+x  = 20 - 16
+y = 4 + 5
+x - y
+```
+
+</div>
+:::
+
+Here, `x` and `y` are variables. We've assigned them the results of some calculations. Now, whenever we refer to `x` or `y`, we're actually referring to the results of these calculations.
+
+We can check the values stored in `x` and `y` by simply typing their names:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
 
 ```{r}
 x
 y
 ```
 
-When creating objects, remember R is case-sensitive so `x` is different from `X`:
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+x
+y
+```
+
+</div>
+:::
+
+Remember, R and Python are case-sensitive, so `x` is different from `X`. If you try to access `X`, you'll get an error because we haven't assigned anything to `X`:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
 
 ```{r error=TRUE}
 X
 ```
 
-And if you decide to assign a new value to an object, R or python will not hesitate in overwriting it without warning:
+</div>
+
+<div>
+
+**Python**
+
+```{python error=TRUE}
+X
+```
+
+</div>
+:::
+
+Also, if you assign a new value to a variable, the old value will be overwritten without any warning:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
 
 ```{r}
 x <- -100
 x
 ```
 
-Now the cool thing, whilist in maths something like $x = x + 1$ does not make much sense, in programming language it just works like magic. We can increase the value an object contains by referencing itself:
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+x = -100
+x
+```
+
+</div>
+:::
+
+Now, here's something cool. In maths, an equation like $x = x + 1$ doesn't make much sense. But in programming, it's perfectly valid. It means "take the current value of `x`, add 1 to it, and store the result back in `x`". This is a common way to increment a variable:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
 
 ```{r}
 x <- x + 1
 x
 ```
 
-In fact, all mathematical operations can be applied like this.
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+x = x + 1
+x
+```
+
+</div>
+:::
+
+In fact, you can use all mathematical operations in this way. You should use variables as much as you can to keep the code as clean and readable as possible. Let's revisit the example above:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+numerator <- sqrt(3 / 4)
+denominator <- (1 / 3 - 2 / pi^2)
+result <- numerator / denominator
+result
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+numerator = math.sqrt(3 / 4)
+denominator = (1 / 3 - 2 / math.pi**2)
+result = numerator / denominator
+result
+```
+
+</div>
+:::
+
+In this refactored code, we first calculate the numerator and the denominator separately and store them in variables. Then, we perform the division operation and store the result in another variable. This makes the code easier to read and understand. It also allows us to reuse the `numerator` and `denominator` calculations if needed elsewhere in the code. This is a good practice in programming. It not only makes the code cleaner but also more efficient.
+
+### Storing Data on the Hard Drive
+
+When you're working with a programming language like R or Python, any variables you create are stored in your computer's memory (the RAM). This is a type of storage that's fast and easy for your computer to access, which is why it's used for tasks that are currently running. However, memory is volatile, which means that once the power is turned off or your program finishes running, any data stored in memory is lost.
+
+Sometimes, you might want your program to produce something tangible that doesn't get lost when the power is turned off or your program stops running. This could be a report, a graph, or even just a set of numbers. To do this, you can write this data to a file on your hard drive. Unlike memory, data stored on your hard drive remains there until it's deleted, so you can access it again later.
+
+Let's look at how you can write data to a file in R and Python.
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Create some data
+data <- c(1, 2, 3, 4, 5)
+
+# Write the data to a file
+write.csv(data, file = "data.csv")
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# Import the pandas library
+import pandas as pd
+
+# Create some data
+data = [1, 2, 3, 4, 5]
+
+# Convert the data to a DataFrame
+df = pd.DataFrame(data)
+
+# Write the data to a file
+df.to_csv("data.csv", index=False)
+```
+
+</div>
+:::
+
+In both of these examples, we're creating a set of data (the numbers 1 through 5), and then writing this data to a file called "data.csv". The `write.csv` function in R and the `to_csv` function in Python are used to write the data to a file.
+
+In R, when you see `c(1, 2, 3)`, we're making a vector. As in maths, this is a collection of numbers that you’ve bundled together in a specific order: first 1, then 2, then 3.
+In Python, when you see `[1, 2, 3]`, it’s very similar. This in python is called a list.
+
+We’ll learn more about these collections (vectors in R and lists in Python) **next week**. For now, just remember that they are a way to keep your items organized and in a specific order. It’s like having a container where you can keep your things neatly instead of having them scattered all over the place. This makes it easier to find what you need later on. Moreover, in the Python example, you might have noticed the `pd.DataFrame` statement. This is a way to create a DataFrame, which is a kind of table, using the pandas library. Again, don't worry! We'll cover these topics in more detail later on. For now, just know that we're using a DataFrame to store our data in a structured way that can be easily written to a file.
+
+Now, let's talk about CSV files. CSV stands for "Comma-Separated Values". It's a simple file format used to store tabular data, such as a spreadsheet or database. Each line of the file is a data record, and each record consists of one or more fields, separated by commas. This is why it's called a "comma-separated values" file.
+
+When we write our data to a CSV file, each item of data goes into its own field, and each set of data (like a row from a table) goes into its own record. This makes CSV files a great way to store tabular data, because it's easy to input the data into a spreadsheet or database program later on.
+
+I encourage you to open the "data.csv" file we created in a text editor or spreadsheet program. You'll see that the data is stored in a structured, easy-to-read format. Each number is in its own field, and each set of numbers is in its own record.
+
+Remember, storing data on your hard drive is a great way to preserve your data for later use. It's also a great way to share your data with others, or to move your data between different programs. So don't be afraid to use file input and output in your own programs. It's a powerful tool that can help you do more with your data. Happy coding! 😊
+
+#### Reading back your data
+Now, let's say we want to access this data at a later time. We can do this by reading the file back into our program. Here's how you can do it in R and Python:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Read the data from the file
+data_from_file <- read.csv("data.csv")
+
+# Print the data
+print(data_from_file)
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# Read the data from the file
+data_from_file = pd.read_csv("data.csv")
+
+# Print the data
+print(data_from_file)
+```
+
+</div>
+:::
+
+In both of these examples, we're using the `read.csv` function in R and the `read_csv` function in Python to read the data from the file back into our program. When we print this data, we can see that it's the same as the data we originally wrote to the file.
+
+This is a basic introduction to storing data on your hard drive using R and Python. There's a lot more you can do with file input and output, but this should give you a good starting point. Remember, the key is to use variables to store your data in memory while your program is running, and then write this data to a file on your hard drive if you want to keep it for later.
