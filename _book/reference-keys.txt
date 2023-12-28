@@ -10,4 +10,9 @@ what-if-calculators-could-remember
 doing-maths-with-variables
 storing-data-on-the-hard-drive
 reading-back-your-data
-chapter2
+log_vec
+comparisons
+logical-arithmetic
+precendence-of-operators
+exercise-1
+flow
