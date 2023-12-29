@@ -167,27 +167,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="log_vec" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">2</span> Logic and Vectors<a href="log_vec.html#log_vec" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>In this chapter, we will introduce you to the basics of logic in a
-computer. Logic is the branch of mathematics that deals with the
-principles and methods of reasoning and inference. Logic is essential
-for programming, as it allows us to create and manipulate expressions
-and statements that can be evaluated as true or false. Logic also
-enables us to control the flow and structure of our programs, and to
-perform various operations and calculations on data.</p>
+computer. Computer Logic is related in its own way to the branch of
+mathematical logic, in particular with the branch of Boolean algebra.
+And if truth is something elusive in the philosophical discourse, in
+Boolean algebra it is well defined, as the <span class="math inline">\(\land, \ \lor, \lnot\)</span> logic
+operators are. If you’re used to these, for the rest of this chapter, we
+will use a different notation for these three symbols: <code>AND</code>, <code>OR</code> and
+<code>NOT</code>.</p>
+<p>In programming, logic is essential, as it allows us to create and
+manipulate expressions and statements that can be evaluated as true or
+false. In this way logic enables us to control the flow and structure of
+our programs, and to perform various operations and calculations on
+data.</p>
 <div id="comparisons" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Comparisons<a href="log_vec.html#comparisons" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>One of the most fundamental aspects of logic is comparison. Comparison
-is the process of examining two or more objects or values and
-determining their relationship or difference. Comparison can be used for
-various purposes, such as checking the validity of an input, sorting a
-list of items, or finding the optimal solution to a problem. In this
-section, we will show you how to compare objects and values in both R
-and Python, and how to use the results of comparison in your programs.</p>
+<p>Before we start with the logic, we should cover what <em>comparison</em> is. I
+mean, we can again phylosofize about it, but pulling out the Oxford
+English Dictionary, “[Comparison is ] the action, or an act, of
+comparing, likening, or representing as similar: see compare.” If we
+pull out the definition of <em>compare,</em> we simply get “To liken”. The
+concept of comparison is inherit in human existence, as it’s the concept
+of what <code>TRUE</code> is, (Kierkegaard lost his mind to find out that there’s
+not a way that two things are the same, that truth is subjective, and
+that please do not compare people, that is not nice).</p>
+<p><img src="images/chapter2/kier.jpeg" width="495" /></p>
+<p>Anyway, in programming, comparison is the process of examining two or
+more objects or values and determining their relationship or difference.
+Comparison can be used for various purposes, such as checking the
+validity of an input, showing that two variables contain the same item,
+or most importantly to control the flow of a program (later with this).
+For now, let’s focus on how to compare objects and values in both R and
+Python, and how to use the results of comparison in your programs.</p>
 <p>First, let’s see how to check for equality in R and Python. Equality
 means that two objects or values are exactly the same in every aspect.
 To check for equality, we use the operator <code>==</code>, which returns <code>TRUE</code> if
-the objects or values are equal, and <code>FALSE</code> if they are not. For
-example, we can compare two strings, two integers, or two doubles, as
-shown below:</p>
+the objects or values are equal, and <code>FALSE</code> if they are not. As you
+will see, the syntax and the output are very similar in both languages,
+except that R uses uppercase letters for <code>TRUE</code> and <code>FALSE</code>, while
+Python uses lowercase letters for <code>True</code> and <code>False</code>.</p>
+<p>For example, we can compare two strings, two integers, or two doubles,
+as shown below:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
@@ -226,19 +245,22 @@ shown below:</p>
 <pre><code>## False</code></pre>
 </div>
 </div>
-<p>As you can see, the syntax and the output are very similar in both
-languages, except that R uses uppercase letters for <code>TRUE</code> and <code>FALSE</code>,
-while Python uses lowercase letters for <code>True</code> and <code>False</code>. Note that
-the comparison is case-sensitive, meaning that uppercase and lowercase
-letters are considered different. Also note that the comparison is
-precise, meaning that even a small difference in the decimal places can
-make two doubles unequal.</p>
-<p>Next, let’s see how to check for inequality in R and Python. Inequality
-means that two objects or values are not exactly the same in every
-aspect. To check for inequality, we use the operator <code>!=</code>, which returns
-<code>TRUE</code> if the objects or values are not equal, and <code>FALSE</code> if they are.
-For example, we can compare two strings, two integers, or two doubles,
-as shown below:</p>
+<p>From these examples, we can notice how the computer is, indeed, very
+strict with the definition of <em>equality.</em> Two things might seem similar,
+or likely to be the same, but they are not.</p>
+<p>Note that the comparison is case-sensitive, meaning that uppercase and
+lowercase letters are considered different. Also note that the
+comparison is precise, meaning that even a small difference in the
+decimal places can make two doubles unequal. Try adding more decimals to
+the above examples, and see how far you can get until you get two same
+numbers! The amount of decimal places in doubles <em>is at the basis of
+precision</em> and how comparisons of doubles are made will affect your
+programs. For this reason <strong>be careful when you compare two floats</strong> and
+try to avoid equality.</p>
+<p>Similar to equality, we can check for inequality. Inequality means that
+two objects or values are not exactly the same in every aspect. To check
+for inequality, we use the operator <code>!=</code>, which returns <code>TRUE</code> if the
+objects or values are not equal, and <code>FALSE</code> if they are. As earlier:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
@@ -277,19 +299,11 @@ as shown below:</p>
 <pre><code>## True</code></pre>
 </div>
 </div>
-<p>As you can see, the syntax and the output are very similar in both
-languages, except that R uses uppercase letters for <code>TRUE</code> and <code>FALSE</code>,
-while Python uses lowercase letters for <code>True</code> and <code>False</code>. Note that
-the comparison is case-sensitive, meaning that uppercase and lowercase
-letters are considered different. Also note that the comparison is
-precise, meaning that even a small difference in the decimal places can
-make two doubles unequal.</p>
-<p>We can also compare the content of variables in both R and Python. A
-variable is a name that refers to a value or an object that is stored in
-the memory. To assign a value or an object to a variable, we use the
-operator <code>&lt;-</code> in R, and the operator <code>=</code> in Python. For example, we can
-assign the string <code>"Hello"</code> to the variable <code>x</code> in both languages, as
-shown below:</p>
+<p>As mentioned above, we can also compare the content of variables. As we
+learned last week, a variable is a name that refers to a value or an
+object that is stored in the memory, so by comparing variables we
+compare the value they refer to. For example, we can assign the string
+<code>"Hello"</code> to the variable <code>x</code> in both languages, as shown below:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
@@ -302,10 +316,9 @@ shown below:</p>
 <span id="cb133-2"><a href="log_vec.html#cb133-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">&quot;Hello&quot;</span></span></code></pre></div>
 </div>
 </div>
-<p>To compare the content of variables, we use the same operators as
-before, <code>==</code> for equality and <code>!=</code> for inequality. For example, we can
-compare the variable <code>x</code> with another string, another variable, or
-itself, as shown below:</p>
+<p>And we can then use the same operators as before, <code>==</code> for equality and
+<code>!=</code> for inequality. For example, we can compare the variable <code>x</code> with
+another string, another variable, or itself, as shown below:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
@@ -344,11 +357,15 @@ itself, as shown below:</p>
 <pre><code>## True</code></pre>
 </div>
 </div>
-<p>As you can see, the syntax and the output are very similar in both
-languages, except that R uses uppercase letters for <code>TRUE</code> and <code>FALSE</code>,
-while Python uses lowercase letters for <code>True</code> and <code>False</code>. Note that
-the comparison is case-sensitive, meaning that uppercase and lowercase
-letters are considered different.</p>
+<p>In addition to equality and inequality, we can also compare the magnitude or the order of two values or objects. This is especially useful in computational maths, as we often need to check if a value is within a certain range, or if a value satisfies a certain condition. To compare the magnitude or the order of two values or objects, we use the following operators:</p>
+<ul>
+<li>Greater than (<code>&gt;</code>): This operator returns <code>TRUE</code> if the left operand is larger than the right operand, and <code>FALSE</code> otherwise. For example, <code>3 &gt; 2</code> returns <code>TRUE</code>, but <code>2 &gt; 3</code> returns <code>FALSE</code>.</li>
+<li>Less than (<code>&lt;</code>): This operator returns <code>TRUE</code> if the left operand is smaller than the right operand, and <code>FALSE</code> otherwise.</li>
+<li>Greater than or equal to (<code>&gt;=</code>): This operator returns <code>TRUE</code> if the left operand is larger than or equal to the right operand, and <code>FALSE</code> otherwise. For example, <code>3 &gt;= 2</code> and <code>3 &gt;= 3</code> both return <code>TRUE</code>, but <code>2 &gt;= 3</code> returns <code>FALSE</code>.</li>
+<li>Less than or equal to (<code>&lt;=</code>): As above, this operator returns <code>TRUE</code> if the left operand is smaller than or equal to the right operand, and <code>FALSE</code> otherwise.</li>
+</ul>
+<p>Note that the comparison is going to be consistent with the equality and inequality operators, meaning that if <code>x == y</code>, then <code>x &gt;= y</code> and <code>x &lt;= y</code> are both <code>TRUE</code>, and if <code>x != y</code>, then either <code>x &gt; y</code> or <code>x &lt; y</code> is <code>TRUE</code>.</p>
+<p>As an exercise, try to compare two integers, two doubles, or two variables, as done above, but with the inequality operators, and see the result.</p>
 <p>In the next section, we will introduce you to another important aspect
 of logic: logical arithmetic. Logical arithmetic is the process of
 combining and manipulating logical values, such as <code>TRUE</code> and <code>FALSE</code>,
@@ -461,26 +478,36 @@ matter, as <code>AND</code> and <code>OR</code> are commutative operators.</p>
 </tbody>
 </table>
 <p>As you can see, the table has four rows, corresponding to the four
-possible combinations of the operands a and b. Again, the table is easy to build, as it shows a AND b is only TRUE when both A and B are TRUE, a OR
-b is only FALSE when both A and B are FALSE.</p>
+possible combinations of the operands a and b. Again, the table is easy
+to build, as it shows a AND b is only TRUE when both A and B are TRUE, a
+OR b is only FALSE when both A and B are FALSE.</p>
 <div id="precendence-of-operators" class="section level3 hasAnchor" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Precendence of operators<a href="log_vec.html#precendence-of-operators" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>In logical operations, as in general algebra, the precedence of operators determines the order in which operations are performed:</p>
+<p>In logical operations, as in general algebra, the precedence of
+operators determines the order in which operations are performed:</p>
 <ol style="list-style-type: decimal">
-<li><strong>Logical NOT</strong>: This operator has the highest precedence and is performed first¹⁴.</li>
-<li><strong>Logical AND</strong>: This operator has the next highest precedence after Logical NOT¹⁵.</li>
-<li><strong>Logical OR</strong>: This operator has lower precedence than Logical AND¹⁵.</li>
+<li><strong>Logical NOT</strong>: This operator has the highest precedence and is
+performed first¹⁴.</li>
+<li><strong>Logical AND</strong>: This operator has the next highest precedence after
+Logical NOT¹⁵.</li>
+<li><strong>Logical OR</strong>: This operator has lower precedence than Logical
+AND¹⁵.</li>
 </ol>
-<p>So, in an expression without parentheses, the NOT operation is performed first, followed by the AND operation, and finally the OR operation.</p>
-<p>For example, in the expression <code>NOT p AND q AND r</code>, the operations would be performed in the following order:</p>
+<p>So, in an expression without parentheses, the NOT operation is performed
+first, followed by the AND operation, and finally the OR operation.</p>
+<p>For example, in the expression <code>NOT p AND q AND r</code>, the operations would
+be performed in the following order:</p>
 <ol style="list-style-type: decimal">
 <li><code>NOT p</code> is performed first due to the highest precedence of <code>NOT</code>.</li>
-<li>Then, <code>(NOTp) AND q</code> is performed due to the next highest precedence of <code>AND</code>.</li>
-<li>Finally, <code>((NOT p) AND q) OR r</code> is performed due to the lowest precedence of <code>OR</code>.</li>
+<li>Then, <code>(NOTp) AND q</code> is performed due to the next highest precedence
+of <code>AND</code>.</li>
+<li>Finally, <code>((NOT p) AND q) OR r</code> is performed due to the lowest
+precedence of <code>OR</code>.</li>
 </ol>
-<p>Parentheses can be used to change this order. For example, in the expression <code>p ∧ (q ∨ r)</code>, the operation <code>q ∨ r</code> is performed first due to the parentheses, even though <code>∨</code> has lower precedence than <code>∧</code>.</p>
-<p>For example, consider
-the following expression:</p>
+<p>Parentheses can be used to change this order. For example, in the
+expression <code>p ∧ (q ∨ r)</code>, the operation <code>q ∨ r</code> is performed first due
+to the parentheses, even though <code>∨</code> has lower precedence than <code>∧</code>.</p>
+<p>For example, consider the following expression:</p>
 <p><code>TRUE | TRUE &amp; FALSE</code></p>
 <p>Without parentheses, in this expression the <code>AND</code> operator has higher
 precedence than the <code>OR</code> operator, so it is evaluated first. The result
@@ -488,12 +515,16 @@ is then combined with the <code>OR</code> operator. The expression is equivalent
 to:</p>
 <p><code>TRUE | (TRUE &amp; FALSE)</code></p>
 <p>However, if we use parentheses to group the operands differently, we can
-change the order of evaluation and the result of the expression. If we use parentheses to group the first and the last operands, we get:</p>
+change the order of evaluation and the result of the expression. If we
+use parentheses to group the first and the last operands, we get:</p>
 <p><code>(TRUE | TRUE) &amp; FALSE</code></p>
-<p>The value of this expression is in fact <code>FALSE</code>. Now, the <code>OR</code> operator is evaluated first, giving <code>TRUE</code> and the result is then combined with the <code>AND</code> operator, giving <code>FALSE</code>.</p>
+<p>The value of this expression is in fact <code>FALSE</code>. Now, the <code>OR</code> operator
+is evaluated first, giving <code>TRUE</code> and the result is then combined with
+the <code>AND</code> operator, giving <code>FALSE</code>.</p>
 <div id="exercise-1" class="section level4 hasAnchor" number="2.2.1.1">
 <h4><span class="header-section-number">2.2.1.1</span> Exercise<a href="log_vec.html#exercise-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>To test your understanding of logical arithmetic, try to find what is the value of:</p>
+<p>To test your understanding of logical arithmetic, try to find what is
+the value of:</p>
 <ul>
 <li><code>TRUE | TRUE &amp; FALSE</code>?</li>
 <li><code>FALSE | FALSE &amp; TRUE</code>?</li>
@@ -521,8 +552,18 @@ the order of evaluation.</p>
 </div>
 <div id="flow" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Flow<a href="log_vec.html#flow" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Another important aspect of logic is flow. Flow is the order and direction in which the instructions of a program are executed. Flow can be controlled by using conditional statements, such as if - else if - else. Conditional statements allow us to execute different blocks of code depending on the result of a logical expression or condition. For example, we can use conditional statements to perform different actions based on the value of a variable, the input of the user, or the outcome of a calculation.</p>
-<p>The simplest form of a conditional statement is the if statement. The if statement checks a single condition, and executes a block of code if the condition is true. For example, we can use an if statement to print a message if a variable is positive, as shown below:</p>
+<p>Another important aspect of logic is flow. Flow is the order and
+direction in which the instructions of a program are executed. Flow can
+be controlled by using conditional statements, such as if - else if -
+else. Conditional statements allow us to execute different blocks of
+code depending on the result of a logical expression or condition. For
+example, we can use conditional statements to perform different actions
+based on the value of a variable, the input of the user, or the outcome
+of a calculation.</p>
+<p>The simplest form of a conditional statement is the if statement. The if
+statement checks a single condition, and executes a block of code if the
+condition is true. For example, we can use an if statement to print a
+message if a variable is positive, as shown below:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
@@ -548,8 +589,19 @@ the order of evaluation.</p>
 <div class="sourceCode" id="cb191"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb191-1"><a href="log_vec.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x is positive</span></span></code></pre></div>
 </div>
 </div>
-<p>As you can see, the syntax and the output are very similar in both languages, except that Python uses a colon and indentation to indicate the start and the end of the block of code. Note that the if statement only executes the block of code if the condition is true, and does nothing otherwise.</p>
-<p>Sometimes, we may want to check more than one condition, and execute different blocks of code for each condition. For this, we can use the if - else if - else statement. The if - else if - else statement checks multiple conditions in order, and executes the first block of code that corresponds to a true condition. If none of the conditions are true, the else block of code is executed. For example, we can use an if - else if - else statement to print a message based on the sign of a variable, as shown below:</p>
+<p>As you can see, the syntax and the output are very similar in both
+languages, except that Python uses a colon and indentation to indicate
+the start and the end of the block of code. Note that the if statement
+only executes the block of code if the condition is true, and does
+nothing otherwise.</p>
+<p>Sometimes, we may want to check more than one condition, and execute
+different blocks of code for each condition. For this, we can use the
+if - else if - else statement. The if - else if - else statement checks
+multiple conditions in order, and executes the first block of code that
+corresponds to a true condition. If none of the conditions are true, the
+else block of code is executed. For example, we can use an if - else
+if - else statement to print a message based on the sign of a variable,
+as shown below:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
@@ -583,8 +635,18 @@ the order of evaluation.</p>
 <div class="sourceCode" id="cb197"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb197-1"><a href="log_vec.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x is positive</span></span></code></pre></div>
 </div>
 </div>
-<p>As you can see, the syntax and the output are very similar in both languages, except that R uses <code>else if</code> and Python uses <code>elif</code> for the second condition. Note that the order of the conditions is important, as only the first condition that is true is executed. If none of the conditions are true, the else block is executed.</p>
-<p>Sometimes, we may want to check two or more independent conditions, and execute different blocks of code for each condition. For this, we can use two or more if statements one after another. This is different from using an if - else if - else statement, as each if statement is evaluated separately, and more than one block of code can be executed. For example, we can use two if statements to print a message based on the divisibility of a variable by 2 and 3, as shown below:</p>
+<p>As you can see, the syntax and the output are very similar in both
+languages, except that R uses <code>else if</code> and Python uses <code>elif</code> for the
+second condition. Note that the order of the conditions is important, as
+only the first condition that is true is executed. If none of the
+conditions are true, the else block is executed.</p>
+<p>Sometimes, we may want to check two or more independent conditions, and
+execute different blocks of code for each condition. For this, we can
+use two or more if statements one after another. This is different from
+using an if - else if - else statement, as each if statement is
+evaluated separately, and more than one block of code can be executed.
+For example, we can use two if statements to print a message based on
+the divisibility of a variable by 2 and 3, as shown below:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
@@ -619,8 +681,19 @@ the order of evaluation.</p>
 <span id="cb207-2"><a href="log_vec.html#cb207-2" aria-hidden="true" tabindex="-1"></a><span class="co"># n is divisible by 3</span></span></code></pre></div>
 </div>
 </div>
-<p>As you can see, the syntax and the output are very similar in both languages, except that R uses <code>%%</code> for the modulo operator, while Python uses <code>%</code>. Note that both if statements are executed, as both conditions are true. If we used an if - else if - else statement instead, only the first condition would be executed, and the second condition would be ignored.</p>
-<p>Sometimes, we may want to check a condition within another condition, and execute different blocks of code for each combination. For this, we can use a nested if statement. A nested if statement is an if statement inside another if statement. A nested if statement can have multiple levels of nesting, and can also include else if and else blocks. For example, we can use a nested if statement to print a message based on the value and the sign of a variable, as shown below:</p>
+<p>As you can see, the syntax and the output are very similar in both
+languages, except that R uses <code>%%</code> for the modulo operator, while Python
+uses <code>%</code>. Note that both if statements are executed, as both conditions
+are true. If we used an if - else if - else statement instead, only the
+first condition would be executed, and the second condition would be
+ignored.</p>
+<p>Sometimes, we may want to check a condition within another condition,
+and execute different blocks of code for each combination. For this, we
+can use a nested if statement. A nested if statement is an if statement
+inside another if statement. A nested if statement can have multiple
+levels of nesting, and can also include else if and else blocks. For
+example, we can use a nested if statement to print a message based on
+the value and the sign of a variable, as shown below:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
@@ -664,7 +737,13 @@ the order of evaluation.</p>
 <div class="sourceCode" id="cb213"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb213-1"><a href="log_vec.html#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x is negative and greater than or equal to -10</span></span></code></pre></div>
 </div>
 </div>
-<p>As you can see, the syntax and the output are very similar in both languages, except that Python uses a colon and indentation to indicate the start and the end of each block of code. Note that the nested if statement checks the outer condition first, and then checks the inner condition if the outer condition is true. Note also that the nested if statement can have multiple levels of nesting, and can also include else if and else blocks.</p>
+<p>As you can see, the syntax and the output are very similar in both
+languages, except that Python uses a colon and indentation to indicate
+the start and the end of each block of code. Note that the nested if
+statement checks the outer condition first, and then checks the inner
+condition if the outer condition is true. Note also that the nested if
+statement can have multiple levels of nesting, and can also include else
+if and else blocks.</p>
 <style type="text/css">
 .book .book-body .page-wrapper .page-inner {
   max-width: 1200px !important;
