@@ -640,3 +640,9 @@ else:
 :::
 
 As you can see, the syntax and the output are very similar in both languages, except that Python uses a colon and indentation to indicate the start and the end of each block of code. Note that the nested if statement checks the outer condition first, and then checks the inner condition if the outer condition is true. Note also that the nested if statement can have multiple levels of nesting, and can also include else if and else blocks.
+
+<style type="text/css">
+.book .book-body .page-wrapper .page-inner {
+  max-width: 1200px !important;
+}
+</style>
