@@ -357,15 +357,33 @@ another string, another variable, or itself, as shown below:</p>
 <pre><code>## True</code></pre>
 </div>
 </div>
-<p>In addition to equality and inequality, we can also compare the magnitude or the order of two values or objects. This is especially useful in computational maths, as we often need to check if a value is within a certain range, or if a value satisfies a certain condition. To compare the magnitude or the order of two values or objects, we use the following operators:</p>
+<p>In addition to equality and inequality, we can also compare the
+magnitude or the order of two values or objects. This is especially
+useful in computational maths, as we often need to check if a value is
+within a certain range, or if a value satisfies a certain condition. To
+compare the magnitude or the order of two values or objects, we use the
+following operators:</p>
 <ul>
-<li>Greater than (<code>&gt;</code>): This operator returns <code>TRUE</code> if the left operand is larger than the right operand, and <code>FALSE</code> otherwise. For example, <code>3 &gt; 2</code> returns <code>TRUE</code>, but <code>2 &gt; 3</code> returns <code>FALSE</code>.</li>
-<li>Less than (<code>&lt;</code>): This operator returns <code>TRUE</code> if the left operand is smaller than the right operand, and <code>FALSE</code> otherwise.</li>
-<li>Greater than or equal to (<code>&gt;=</code>): This operator returns <code>TRUE</code> if the left operand is larger than or equal to the right operand, and <code>FALSE</code> otherwise. For example, <code>3 &gt;= 2</code> and <code>3 &gt;= 3</code> both return <code>TRUE</code>, but <code>2 &gt;= 3</code> returns <code>FALSE</code>.</li>
-<li>Less than or equal to (<code>&lt;=</code>): As above, this operator returns <code>TRUE</code> if the left operand is smaller than or equal to the right operand, and <code>FALSE</code> otherwise.</li>
+<li>Greater than (<code>&gt;</code>): This operator returns <code>TRUE</code> if the left operand
+is larger than the right operand, and <code>FALSE</code> otherwise. For
+example, <code>3 &gt; 2</code> returns <code>TRUE</code>, but <code>2 &gt; 3</code> returns <code>FALSE</code>.</li>
+<li>Less than (<code>&lt;</code>): This operator returns <code>TRUE</code> if the left operand is
+smaller than the right operand, and <code>FALSE</code> otherwise.</li>
+<li>Greater than or equal to (<code>&gt;=</code>): This operator returns <code>TRUE</code> if the
+left operand is larger than or equal to the right operand, and
+<code>FALSE</code> otherwise. For example, <code>3 &gt;= 2</code> and <code>3 &gt;= 3</code> both return
+<code>TRUE</code>, but <code>2 &gt;= 3</code> returns <code>FALSE</code>.</li>
+<li>Less than or equal to (<code>&lt;=</code>): As above, this operator returns <code>TRUE</code>
+if the left operand is smaller than or equal to the right operand,
+and <code>FALSE</code> otherwise.</li>
 </ul>
-<p>Note that the comparison is going to be consistent with the equality and inequality operators, meaning that if <code>x == y</code>, then <code>x &gt;= y</code> and <code>x &lt;= y</code> are both <code>TRUE</code>, and if <code>x != y</code>, then either <code>x &gt; y</code> or <code>x &lt; y</code> is <code>TRUE</code>.</p>
-<p>As an exercise, try to compare two integers, two doubles, or two variables, as done above, but with the inequality operators, and see the result.</p>
+<p>Note that the comparison is going to be consistent with the equality and
+inequality operators, meaning that if <code>x == y</code>, then <code>x &gt;= y</code> and
+<code>x &lt;= y</code> are both <code>TRUE</code>, and if <code>x != y</code>, then either <code>x &gt; y</code> or
+<code>x &lt; y</code> is <code>TRUE</code>.</p>
+<p>As an exercise, try to compare two integers, two doubles, or two
+variables, as done above, but with the inequality operators, and see the
+result.</p>
 <p>In the next section, we will introduce you to another important aspect
 of logic: logical arithmetic. Logical arithmetic is the process of
 combining and manipulating logical values, such as <code>TRUE</code> and <code>FALSE</code>,
@@ -378,19 +396,21 @@ programs.</p>
 </div>
 <div id="logical-arithmetic" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Logical Arithmetic<a href="log_vec.html#logical-arithmetic" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This might seem easy if you already have a background in logic, but even
+if you haven’t, the following paragraphs should cover all the necessary
+concepts that you will need for programming.</p>
 <p>Logical arithmetic is the process of combining and manipulating logical
-values, such as <code>TRUE</code> and <code>FALSE</code>, using logical operators, such as
-<code>AND</code> and <code>OR</code>. Logical arithmetic can be used for various purposes,
-such as creating complex conditions, testing multiple hypotheses, or
-performing set operations. In this section, we will show you how to use
-logical arithmetic in both R and Python, and how to use the results of
-logical arithmetic in your programs.</p>
-<p>The two most common logical operators are <code>AND</code> and <code>OR</code>. The <code>AND</code>
-operator returns <code>TRUE</code> if both operands are <code>TRUE</code>, and <code>FALSE</code>
-otherwise. The <code>OR</code> operator returns <code>TRUE</code> if either or both operands
-are <code>TRUE</code>, and <code>FALSE</code> otherwise. For example, we can use the <code>AND</code> and
-<code>OR</code> operators to combine two logical values, such as <code>TRUE</code> and
-<code>FALSE</code>, as shown below:</p>
+values, <code>TRUE</code> and <code>FALSE</code>, which are <em>logic operands</em>, using the
+<em>logical operators</em> <code>AND</code> and <code>OR</code> or <code>NOT</code>.</p>
+<p>Let’s start from <code>AND</code> and <code>OR</code>:</p>
+<ul>
+<li><p>The <code>AND</code> operator returns <code>TRUE</code> if both operands are <code>TRUE</code>, and
+<code>FALSE</code> otherwise.</p></li>
+<li><p>The <code>OR</code> operator returns <code>TRUE</code> if either or both operands are
+<code>TRUE</code>, and <code>FALSE</code> otherwise.</p></li>
+</ul>
+<p>We can use the <code>AND</code> and <code>OR</code> operators to combine two logical values,
+such as <code>TRUE</code> and <code>FALSE</code>, as shown below:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
@@ -437,17 +457,16 @@ are <code>TRUE</code>, and <code>FALSE</code> otherwise. For example, we can use
 </div>
 <p>As you can see, the syntax and the output are very similar in both
 languages, except that R uses <code>&amp;</code> and <code>|</code> for <code>AND</code> and <code>OR</code>, while
-Python uses <code>and</code> and <code>or</code>. Note that the order of the operands does not
-matter, as <code>AND</code> and <code>OR</code> are commutative operators.</p>
-<p>We can also use a table to show the possible outcomes of the <code>AND</code> and
-<code>OR</code> operators, as shown below:</p>
+Python uses <code>and</code> and <code>or</code>. More formally, we can use a table to show
+all the possible outcomes of the <code>AND</code> and <code>OR</code> operators. Let’s say
+that <span class="math inline">\(a, \ b\)</span> are our operands, then:</p>
 <table>
 <thead>
 <tr class="header">
-<th>a</th>
-<th>b</th>
-<th>a AND b</th>
-<th>a OR b</th>
+<th><span class="math inline">\(a\)</span></th>
+<th><span class="math inline">\(b\)</span></th>
+<th><span class="math inline">\(a\)</span> AND <span class="math inline">\(b\)</span></th>
+<th><span class="math inline">\(a\)</span> OR <span class="math inline">\(b\)</span></th>
 </tr>
 </thead>
 <tbody>
@@ -479,8 +498,8 @@ matter, as <code>AND</code> and <code>OR</code> are commutative operators.</p>
 </table>
 <p>As you can see, the table has four rows, corresponding to the four
 possible combinations of the operands a and b. Again, the table is easy
-to build, as it shows a AND b is only TRUE when both A and B are TRUE, a
-OR b is only FALSE when both A and B are FALSE.</p>
+to build, as it shows a AND b is only TRUE when both a and b are TRUE, a
+OR b is only FALSE when both a and b are FALSE.</p>
 <div id="precendence-of-operators" class="section level3 hasAnchor" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Precendence of operators<a href="log_vec.html#precendence-of-operators" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In logical operations, as in general algebra, the precedence of
@@ -532,34 +551,71 @@ the value of:</p>
 <li><code>(TRUE | TRUE) &amp; FALSE</code>?</li>
 <li><code>(TRUE | FALSE) &amp; (FALSE | TRUE)</code>?</li>
 </ul>
-<p>You should use the console in R or Python to check your answers.</p>
+<p>You should use the console in R or Python to check your answers. You can
+review the table and the examples above, and try to understand the logic
+behind each expression.</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="log_vec.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the answers</span></span>
+<span id="cb186-2"><a href="log_vec.html#cb186-2" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">|</span> <span class="cn">TRUE</span> <span class="sc">&amp;</span> <span class="cn">FALSE</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="log_vec.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="sc">|</span> <span class="cn">FALSE</span> <span class="sc">&amp;</span> <span class="cn">TRUE</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="log_vec.html#cb190-1" aria-hidden="true" tabindex="-1"></a>(<span class="cn">TRUE</span> <span class="sc">&amp;</span> <span class="cn">FALSE</span>) <span class="sc">|</span> (<span class="cn">FALSE</span> <span class="sc">&amp;</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="log_vec.html#cb192-1" aria-hidden="true" tabindex="-1"></a>(<span class="cn">TRUE</span> <span class="sc">|</span> <span class="cn">TRUE</span>) <span class="sc">&amp;</span> <span class="cn">FALSE</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="log_vec.html#cb194-1" aria-hidden="true" tabindex="-1"></a>(<span class="cn">TRUE</span> <span class="sc">|</span> <span class="cn">FALSE</span>) <span class="sc">&amp;</span> (<span class="cn">FALSE</span> <span class="sc">|</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
 </div>
 <div>
 <p><strong>python</strong></p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb196-1"><a href="log_vec.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the answers</span></span>
+<span id="cb196-2"><a href="log_vec.html#cb196-2" aria-hidden="true" tabindex="-1"></a><span class="va">True</span> <span class="kw">and</span> <span class="va">False</span> <span class="kw">or</span> <span class="va">True</span></span></code></pre></div>
+<pre><code>## True</code></pre>
+<div class="sourceCode" id="cb198"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb198-1"><a href="log_vec.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="va">False</span> <span class="kw">or</span> <span class="va">False</span> <span class="kw">and</span> <span class="va">True</span></span></code></pre></div>
+<pre><code>## False</code></pre>
+<div class="sourceCode" id="cb200"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb200-1"><a href="log_vec.html#cb200-1" aria-hidden="true" tabindex="-1"></a>(<span class="va">True</span> <span class="kw">and</span> <span class="va">False</span>) <span class="kw">or</span> (<span class="va">False</span> <span class="kw">and</span> <span class="va">True</span>)</span></code></pre></div>
+<pre><code>## False</code></pre>
+<div class="sourceCode" id="cb202"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb202-1"><a href="log_vec.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="va">True</span> <span class="kw">and</span> (<span class="va">False</span> <span class="kw">or</span> <span class="va">True</span>)</span></code></pre></div>
+<pre><code>## True</code></pre>
+<div class="sourceCode" id="cb204"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb204-1"><a href="log_vec.html#cb204-1" aria-hidden="true" tabindex="-1"></a>(<span class="va">True</span> <span class="kw">or</span> <span class="va">False</span>) <span class="kw">and</span> (<span class="va">False</span> <span class="kw">or</span> <span class="va">True</span>)</span></code></pre></div>
+<pre><code>## True</code></pre>
 </div>
 </div>
-<p>Did you get the correct answers? If not, don’t worry. You can review the
-table and the examples above, and try to understand the logic behind
-each expression. Remember that the <code>AND</code> operator has higher precedence
-than the <code>OR</code> operator, which means that it is evaluated before the <code>OR</code>
-operator. You can also use parentheses to group the operands and change
-the order of evaluation.</p>
 </div>
 </div>
 </div>
 <div id="flow" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Flow<a href="log_vec.html#flow" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Another important aspect of logic is flow. Flow is the order and
-direction in which the instructions of a program are executed. Flow can
-be controlled by using conditional statements, such as if - else if -
-else. Conditional statements allow us to execute different blocks of
-code depending on the result of a logical expression or condition. For
-example, we can use conditional statements to perform different actions
-based on the value of a variable, the input of the user, or the outcome
-of a calculation.</p>
+direction in which the instructions of a program are executed <strong>and is
+at the base of an algorithm</strong>.</p>
+<p>Normally, a computer program, has a start, it will do something, and
+then terminate (return an output). This is called the <em>flow</em> of a
+program. Now, of course, to control the flow, you need a mechanism that
+checks on the state of your program, and performs an action based on the
+state in which you are. Surprisingly enough, we run programs in every
+day tasks too. When driving down from Glasgow to London, we need to
+check where we are, and turn the steering wheel accordingly in such a
+way that our car points towards South. When doing the laundry in a
+laundrette, we first check the amounts of money we have, and then, if we
+have enough, load up the washing machine, if we don’t, well, we need to
+get some more. Or say, for example, that you need to code something,
+maybe for an assignment :) What you might end up doing, is the
+following:</p>
+<p><img src="images/chapter2/code_something.png" /></p>
+<p><strong>I have to remark that this was a joke:</strong> remember that if you cheat at
+this stage with programming you are just cheating yourself.</p>
+<p>More formally, in computer programs, flow can be controlled by using
+<em>conditional statements</em>, such as if - else if - else. Conditional
+statements allow us to execute different blocks of code depending on the
+result of a logical expression or condition. For example, we can use
+conditional statements to perform different actions based on the value
+of a variable, the input of the user, or the outcome of a calculation.</p>
+<div id="the-if-then-else-statement" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> The if-then-else statement<a href="log_vec.html#the-if-then-else-statement" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The simplest form of a conditional statement is the if statement. The if
 statement checks a single condition, and executes a block of code if the
 condition is true. For example, we can use an if statement to print a
@@ -567,33 +623,55 @@ message if a variable is positive, as shown below:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="log_vec.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
-<span id="cb186-2"><a href="log_vec.html#cb186-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb186-3"><a href="log_vec.html#cb186-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb186-4"><a href="log_vec.html#cb186-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using an if statement</span></span>
-<span id="cb186-5"><a href="log_vec.html#cb186-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb186-6"><a href="log_vec.html#cb186-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x is positive&quot;</span>)</span>
-<span id="cb186-7"><a href="log_vec.html#cb186-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="log_vec.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
+<span id="cb206-2"><a href="log_vec.html#cb206-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb206-3"><a href="log_vec.html#cb206-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb206-4"><a href="log_vec.html#cb206-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using an if statement</span></span>
+<span id="cb206-5"><a href="log_vec.html#cb206-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb206-6"><a href="log_vec.html#cb206-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x is positive&quot;</span>)</span>
+<span id="cb206-7"><a href="log_vec.html#cb206-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;x is positive&quot;</code></pre>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="log_vec.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x is positive</span></span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="log_vec.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x is positive</span></span></code></pre></div>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb189-1"><a href="log_vec.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
-<span id="cb189-2"><a href="log_vec.html#cb189-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb189-3"><a href="log_vec.html#cb189-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb189-4"><a href="log_vec.html#cb189-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using an if statement</span></span>
-<span id="cb189-5"><a href="log_vec.html#cb189-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb189-6"><a href="log_vec.html#cb189-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;x is positive&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb209-1"><a href="log_vec.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
+<span id="cb209-2"><a href="log_vec.html#cb209-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb209-3"><a href="log_vec.html#cb209-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb209-4"><a href="log_vec.html#cb209-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using an if statement</span></span>
+<span id="cb209-5"><a href="log_vec.html#cb209-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb209-6"><a href="log_vec.html#cb209-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;x is positive&quot;</span>)</span></code></pre></div>
 <pre><code>## x is positive</code></pre>
-<div class="sourceCode" id="cb191"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb191-1"><a href="log_vec.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x is positive</span></span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb211-1"><a href="log_vec.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x is positive</span></span></code></pre></div>
 </div>
 </div>
-<p>As you can see, the syntax and the output are very similar in both
-languages, except that Python uses a colon and indentation to indicate
-the start and the end of the block of code. Note that the if statement
-only executes the block of code if the condition is true, and does
-nothing otherwise.</p>
+<p>Concerning syntax, e.g. the way we write the code:</p>
+<ul>
+<li><p>To enclose the condition that is checked by the if statement, e.g.
+where your logic expression goes (e.g. the block of code that
+evaluates either to <code>TRUE</code> or <code>FALSE):</code></p>
+<ul>
+<li><p>R uses an <code>if</code> followed by parentheses <code>()</code>, where the condition
+goes</p></li>
+<li><p>Python has no parentheses, but has a <code>:</code> symbol to indicate that
+the condition has ended and the block of code to execute has
+started</p></li>
+</ul></li>
+<li><p>To denote the block of code to execute if the condition is true:</p>
+<ul>
+<li><p>R uses curly braces <code>{}</code> to enclose the block of code that is
+executed if the condition is true. All code that is relative to
+the if condition needs to be within these brackets</p></li>
+<li><p>Python, uses indentation to delimit the block of execution. All
+code that needs to execute needs to be indented at the same
+level. Indentation in Python is achieved either with a tab
+(recommended), or with 4 spaces.</p></li>
+</ul></li>
+</ul>
+<p>Note that the if statement only executes the block of code if the
+condition is true, and does nothing otherwise. This means, that if the
+condition is <code>FALSE</code>, the program will simply skip the code within the
+block, as if it never existed.</p>
 <p>Sometimes, we may want to check more than one condition, and execute
 different blocks of code for each condition. For this, we can use the
 if - else if - else statement. The if - else if - else statement checks
@@ -605,41 +683,41 @@ as shown below:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="log_vec.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
-<span id="cb192-2"><a href="log_vec.html#cb192-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb192-3"><a href="log_vec.html#cb192-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb192-4"><a href="log_vec.html#cb192-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using an if - else if - else statement</span></span>
-<span id="cb192-5"><a href="log_vec.html#cb192-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
-<span id="cb192-6"><a href="log_vec.html#cb192-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x is negative&quot;</span>)</span>
-<span id="cb192-7"><a href="log_vec.html#cb192-7" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb192-8"><a href="log_vec.html#cb192-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x is zero&quot;</span>)</span>
-<span id="cb192-9"><a href="log_vec.html#cb192-9" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb192-10"><a href="log_vec.html#cb192-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x is positive&quot;</span>)</span>
-<span id="cb192-11"><a href="log_vec.html#cb192-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="log_vec.html#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
+<span id="cb212-2"><a href="log_vec.html#cb212-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb212-3"><a href="log_vec.html#cb212-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb212-4"><a href="log_vec.html#cb212-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using an if - else if - else statement</span></span>
+<span id="cb212-5"><a href="log_vec.html#cb212-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb212-6"><a href="log_vec.html#cb212-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x is negative&quot;</span>)</span>
+<span id="cb212-7"><a href="log_vec.html#cb212-7" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb212-8"><a href="log_vec.html#cb212-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x is zero&quot;</span>)</span>
+<span id="cb212-9"><a href="log_vec.html#cb212-9" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb212-10"><a href="log_vec.html#cb212-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x is positive&quot;</span>)</span>
+<span id="cb212-11"><a href="log_vec.html#cb212-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;x is positive&quot;</code></pre>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="log_vec.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x is positive</span></span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="log_vec.html#cb214-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x is positive</span></span></code></pre></div>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb195-1"><a href="log_vec.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
-<span id="cb195-2"><a href="log_vec.html#cb195-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb195-3"><a href="log_vec.html#cb195-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb195-4"><a href="log_vec.html#cb195-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using an if - else if - else statement</span></span>
-<span id="cb195-5"><a href="log_vec.html#cb195-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span>:</span>
-<span id="cb195-6"><a href="log_vec.html#cb195-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;x is negative&quot;</span>)</span>
-<span id="cb195-7"><a href="log_vec.html#cb195-7" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> x <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb195-8"><a href="log_vec.html#cb195-8" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;x is zero&quot;</span>)</span>
-<span id="cb195-9"><a href="log_vec.html#cb195-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb195-10"><a href="log_vec.html#cb195-10" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;x is positive&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb215-1"><a href="log_vec.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
+<span id="cb215-2"><a href="log_vec.html#cb215-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb215-3"><a href="log_vec.html#cb215-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb215-4"><a href="log_vec.html#cb215-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using an if - else if - else statement</span></span>
+<span id="cb215-5"><a href="log_vec.html#cb215-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb215-6"><a href="log_vec.html#cb215-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;x is negative&quot;</span>)</span>
+<span id="cb215-7"><a href="log_vec.html#cb215-7" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> x <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb215-8"><a href="log_vec.html#cb215-8" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;x is zero&quot;</span>)</span>
+<span id="cb215-9"><a href="log_vec.html#cb215-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb215-10"><a href="log_vec.html#cb215-10" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;x is positive&quot;</span>)</span></code></pre></div>
 <pre><code>## x is positive</code></pre>
-<div class="sourceCode" id="cb197"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb197-1"><a href="log_vec.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x is positive</span></span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb217-1"><a href="log_vec.html#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x is positive</span></span></code></pre></div>
 </div>
 </div>
-<p>As you can see, the syntax and the output are very similar in both
-languages, except that R uses <code>else if</code> and Python uses <code>elif</code> for the
-second condition. Note that the order of the conditions is important, as
-only the first condition that is true is executed. If none of the
-conditions are true, the else block is executed.</p>
+<p>As you can see, the syntax is very similar again in both languages,
+except that R uses <code>else if</code> and Python uses <code>elif</code> for the second
+condition. Note that the order of the conditions is important, as only
+the first condition that is true is executed. If none of the conditions
+are true, the else block is executed.</p>
 <p>Sometimes, we may want to check two or more independent conditions, and
 execute different blocks of code for each condition. For this, we can
 use two or more if statements one after another. This is different from
@@ -650,35 +728,35 @@ the divisibility of a variable by 2 and 3, as shown below:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="log_vec.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
-<span id="cb198-2"><a href="log_vec.html#cb198-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">12</span></span>
-<span id="cb198-3"><a href="log_vec.html#cb198-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb198-4"><a href="log_vec.html#cb198-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using two if statements</span></span>
-<span id="cb198-5"><a href="log_vec.html#cb198-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (n <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb198-6"><a href="log_vec.html#cb198-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;n is divisible by 2&quot;</span>)</span>
-<span id="cb198-7"><a href="log_vec.html#cb198-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="log_vec.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
+<span id="cb218-2"><a href="log_vec.html#cb218-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">12</span></span>
+<span id="cb218-3"><a href="log_vec.html#cb218-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb218-4"><a href="log_vec.html#cb218-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using two if statements</span></span>
+<span id="cb218-5"><a href="log_vec.html#cb218-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (n <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb218-6"><a href="log_vec.html#cb218-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;n is divisible by 2&quot;</span>)</span>
+<span id="cb218-7"><a href="log_vec.html#cb218-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;n is divisible by 2&quot;</code></pre>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="log_vec.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (n <span class="sc">%%</span> <span class="dv">3</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb200-2"><a href="log_vec.html#cb200-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;n is divisible by 3&quot;</span>)</span>
-<span id="cb200-3"><a href="log_vec.html#cb200-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="log_vec.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (n <span class="sc">%%</span> <span class="dv">3</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb220-2"><a href="log_vec.html#cb220-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;n is divisible by 3&quot;</span>)</span>
+<span id="cb220-3"><a href="log_vec.html#cb220-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;n is divisible by 3&quot;</code></pre>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="log_vec.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="co"># n is divisible by 2</span></span>
-<span id="cb202-2"><a href="log_vec.html#cb202-2" aria-hidden="true" tabindex="-1"></a><span class="co"># n is divisible by 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="log_vec.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="co"># n is divisible by 2</span></span>
+<span id="cb222-2"><a href="log_vec.html#cb222-2" aria-hidden="true" tabindex="-1"></a><span class="co"># n is divisible by 3</span></span></code></pre></div>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb203-1"><a href="log_vec.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
-<span id="cb203-2"><a href="log_vec.html#cb203-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">12</span></span>
-<span id="cb203-3"><a href="log_vec.html#cb203-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb203-4"><a href="log_vec.html#cb203-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using two if statements</span></span>
-<span id="cb203-5"><a href="log_vec.html#cb203-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb203-6"><a href="log_vec.html#cb203-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;n is divisible by 2&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb223-1"><a href="log_vec.html#cb223-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
+<span id="cb223-2"><a href="log_vec.html#cb223-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb223-3"><a href="log_vec.html#cb223-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb223-4"><a href="log_vec.html#cb223-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using two if statements</span></span>
+<span id="cb223-5"><a href="log_vec.html#cb223-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb223-6"><a href="log_vec.html#cb223-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;n is divisible by 2&quot;</span>)</span></code></pre></div>
 <pre><code>## n is divisible by 2</code></pre>
-<div class="sourceCode" id="cb205"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb205-1"><a href="log_vec.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> n <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb205-2"><a href="log_vec.html#cb205-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;n is divisible by 3&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb225-1"><a href="log_vec.html#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> n <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb225-2"><a href="log_vec.html#cb225-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;n is divisible by 3&quot;</span>)</span></code></pre></div>
 <pre><code>## n is divisible by 3</code></pre>
-<div class="sourceCode" id="cb207"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb207-1"><a href="log_vec.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="co"># n is divisible by 2</span></span>
-<span id="cb207-2"><a href="log_vec.html#cb207-2" aria-hidden="true" tabindex="-1"></a><span class="co"># n is divisible by 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb227-1"><a href="log_vec.html#cb227-1" aria-hidden="true" tabindex="-1"></a><span class="co"># n is divisible by 2</span></span>
+<span id="cb227-2"><a href="log_vec.html#cb227-2" aria-hidden="true" tabindex="-1"></a><span class="co"># n is divisible by 3</span></span></code></pre></div>
 </div>
 </div>
 <p>As you can see, the syntax and the output are very similar in both
@@ -687,6 +765,9 @@ uses <code>%</code>. Note that both if statements are executed, as both conditio
 are true. If we used an if - else if - else statement instead, only the
 first condition would be executed, and the second condition would be
 ignored.</p>
+</div>
+<div id="nesting-if-statements" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Nesting if-statements<a href="log_vec.html#nesting-if-statements" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sometimes, we may want to check a condition within another condition,
 and execute different blocks of code for each combination. For this, we
 can use a nested if statement. A nested if statement is an if statement
@@ -697,59 +778,125 @@ the value and the sign of a variable, as shown below:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="log_vec.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
-<span id="cb208-2"><a href="log_vec.html#cb208-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">10</span></span>
-<span id="cb208-3"><a href="log_vec.html#cb208-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb208-4"><a href="log_vec.html#cb208-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a nested if statement</span></span>
-<span id="cb208-5"><a href="log_vec.html#cb208-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb208-6"><a href="log_vec.html#cb208-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">10</span>) {</span>
-<span id="cb208-7"><a href="log_vec.html#cb208-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&quot;x is positive and greater than 10&quot;</span>)</span>
-<span id="cb208-8"><a href="log_vec.html#cb208-8" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb208-9"><a href="log_vec.html#cb208-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&quot;x is positive and less than or equal to 10&quot;</span>)</span>
-<span id="cb208-10"><a href="log_vec.html#cb208-10" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb208-11"><a href="log_vec.html#cb208-11" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb208-12"><a href="log_vec.html#cb208-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">10</span>) {</span>
-<span id="cb208-13"><a href="log_vec.html#cb208-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&quot;x is negative and less than -10&quot;</span>)</span>
-<span id="cb208-14"><a href="log_vec.html#cb208-14" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb208-15"><a href="log_vec.html#cb208-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&quot;x is negative and greater than or equal to -10&quot;</span>)</span>
-<span id="cb208-16"><a href="log_vec.html#cb208-16" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb208-17"><a href="log_vec.html#cb208-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="log_vec.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
+<span id="cb228-2"><a href="log_vec.html#cb228-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">10</span></span>
+<span id="cb228-3"><a href="log_vec.html#cb228-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb228-4"><a href="log_vec.html#cb228-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a nested if statement</span></span>
+<span id="cb228-5"><a href="log_vec.html#cb228-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb228-6"><a href="log_vec.html#cb228-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">10</span>) {</span>
+<span id="cb228-7"><a href="log_vec.html#cb228-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&quot;x is positive and greater than 10&quot;</span>)</span>
+<span id="cb228-8"><a href="log_vec.html#cb228-8" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb228-9"><a href="log_vec.html#cb228-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&quot;x is positive and less than or equal to 10&quot;</span>)</span>
+<span id="cb228-10"><a href="log_vec.html#cb228-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb228-11"><a href="log_vec.html#cb228-11" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb228-12"><a href="log_vec.html#cb228-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">10</span>) {</span>
+<span id="cb228-13"><a href="log_vec.html#cb228-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&quot;x is negative and less than -10&quot;</span>)</span>
+<span id="cb228-14"><a href="log_vec.html#cb228-14" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb228-15"><a href="log_vec.html#cb228-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&quot;x is negative and greater than or equal to -10&quot;</span>)</span>
+<span id="cb228-16"><a href="log_vec.html#cb228-16" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb228-17"><a href="log_vec.html#cb228-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;x is negative and greater than or equal to -10&quot;</code></pre>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="log_vec.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x is negative and greater than or equal to -10</span></span></code></pre></div>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb211-1"><a href="log_vec.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
-<span id="cb211-2"><a href="log_vec.html#cb211-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="op">-</span><span class="dv">10</span></span>
-<span id="cb211-3"><a href="log_vec.html#cb211-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb211-4"><a href="log_vec.html#cb211-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a nested if statement</span></span>
-<span id="cb211-5"><a href="log_vec.html#cb211-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb211-6"><a href="log_vec.html#cb211-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">10</span>:</span>
-<span id="cb211-7"><a href="log_vec.html#cb211-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;x is positive and greater than 10&quot;</span>)</span>
-<span id="cb211-8"><a href="log_vec.html#cb211-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>:</span>
-<span id="cb211-9"><a href="log_vec.html#cb211-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;x is positive and less than or equal to 10&quot;</span>)</span>
-<span id="cb211-10"><a href="log_vec.html#cb211-10" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb211-11"><a href="log_vec.html#cb211-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> x <span class="op">&lt;</span> <span class="op">-</span><span class="dv">10</span>:</span>
-<span id="cb211-12"><a href="log_vec.html#cb211-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;x is negative and less than -10&quot;</span>)</span>
-<span id="cb211-13"><a href="log_vec.html#cb211-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>:</span>
-<span id="cb211-14"><a href="log_vec.html#cb211-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;x is negative and greater than or equal to -10&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb230-1"><a href="log_vec.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
+<span id="cb230-2"><a href="log_vec.html#cb230-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="op">-</span><span class="dv">10</span></span>
+<span id="cb230-3"><a href="log_vec.html#cb230-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb230-4"><a href="log_vec.html#cb230-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a nested if statement</span></span>
+<span id="cb230-5"><a href="log_vec.html#cb230-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb230-6"><a href="log_vec.html#cb230-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">10</span>:</span>
+<span id="cb230-7"><a href="log_vec.html#cb230-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;x is positive and greater than 10&quot;</span>)</span>
+<span id="cb230-8"><a href="log_vec.html#cb230-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>:</span>
+<span id="cb230-9"><a href="log_vec.html#cb230-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;x is positive and less than or equal to 10&quot;</span>)</span>
+<span id="cb230-10"><a href="log_vec.html#cb230-10" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb230-11"><a href="log_vec.html#cb230-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> x <span class="op">&lt;</span> <span class="op">-</span><span class="dv">10</span>:</span>
+<span id="cb230-12"><a href="log_vec.html#cb230-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;x is negative and less than -10&quot;</span>)</span>
+<span id="cb230-13"><a href="log_vec.html#cb230-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>:</span>
+<span id="cb230-14"><a href="log_vec.html#cb230-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;x is negative and greater than or equal to -10&quot;</span>)</span></code></pre></div>
 <pre><code>## x is negative and greater than or equal to -10</code></pre>
-<div class="sourceCode" id="cb213"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb213-1"><a href="log_vec.html#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x is negative and greater than or equal to -10</span></span></code></pre></div>
 </div>
 </div>
-<p>As you can see, the syntax and the output are very similar in both
-languages, except that Python uses a colon and indentation to indicate
-the start and the end of each block of code. Note that the nested if
-statement checks the outer condition first, and then checks the inner
-condition if the outer condition is true. Note also that the nested if
-statement can have multiple levels of nesting, and can also include else
-if and else blocks.</p>
+<p>Concerning syntax, you can now see the double indentation in the python
+code. The nested if statement checks the outer condition first (x being
+positive), and then checks the inner condition if the outer condition is
+true (x being greater then 10). Note also that the nested if statement
+can have multiple levels of nesting, and can also include else if and
+else blocks.</p>
+<p>In the next section, we will introduce you to a fun and popular game
+that involves logic and flow: FizzBuzz.</p>
+</div>
+<div id="fizzbuzz" class="section level3 hasAnchor" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> FizzBuzz<a href="log_vec.html#fizzbuzz" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>FizzBuzz is a game that tests your ability to use logic and flow in
+programming. The rules of the game are simple: given a number, print
+“Fizz” if the number is divisible by 3, print “Buzz” if the number is
+divisible by 5, print “FizzBuzz” if the number is divisible by both 3
+and 5, and print the number itself otherwise. For example, given the
+number 15, print “FizzBuzz”, given the number 9, print “Fizz”, given the
+number 10, print “Buzz”, and given the number 7, print 7.</p>
+<p>To play FizzBuzz in R or Python, we can use a variable to store the
+number, and then use an if - else if - else statement to check the
+conditions and print the output, as shown below:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="log_vec.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
+<span id="cb232-2"><a href="log_vec.html#cb232-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb232-3"><a href="log_vec.html#cb232-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb232-4"><a href="log_vec.html#cb232-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Playing FizzBuzz</span></span>
+<span id="cb232-5"><a href="log_vec.html#cb232-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (n <span class="sc">%%</span> <span class="dv">3</span> <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> n <span class="sc">%%</span> <span class="dv">5</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb232-6"><a href="log_vec.html#cb232-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;FizzBuzz&quot;</span>)</span>
+<span id="cb232-7"><a href="log_vec.html#cb232-7" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (n <span class="sc">%%</span> <span class="dv">3</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb232-8"><a href="log_vec.html#cb232-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Fizz&quot;</span>)</span>
+<span id="cb232-9"><a href="log_vec.html#cb232-9" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (n <span class="sc">%%</span> <span class="dv">5</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb232-10"><a href="log_vec.html#cb232-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Buzz&quot;</span>)</span>
+<span id="cb232-11"><a href="log_vec.html#cb232-11" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb232-12"><a href="log_vec.html#cb232-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(n)</span>
+<span id="cb232-13"><a href="log_vec.html#cb232-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;FizzBuzz&quot;</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb234-1"><a href="log_vec.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
+<span id="cb234-2"><a href="log_vec.html#cb234-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">15</span></span>
+<span id="cb234-3"><a href="log_vec.html#cb234-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb234-4"><a href="log_vec.html#cb234-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Playing FizzBuzz</span></span>
+<span id="cb234-5"><a href="log_vec.html#cb234-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> n <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span> <span class="kw">and</span> n <span class="op">%</span> <span class="dv">5</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb234-6"><a href="log_vec.html#cb234-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;FizzBuzz&quot;</span>)</span>
+<span id="cb234-7"><a href="log_vec.html#cb234-7" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> n <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb234-8"><a href="log_vec.html#cb234-8" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;Fizz&quot;</span>)</span>
+<span id="cb234-9"><a href="log_vec.html#cb234-9" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> n <span class="op">%</span> <span class="dv">5</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb234-10"><a href="log_vec.html#cb234-10" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;Buzz&quot;</span>)</span>
+<span id="cb234-11"><a href="log_vec.html#cb234-11" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb234-12"><a href="log_vec.html#cb234-12" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(n)</span></code></pre></div>
+<pre><code>## FizzBuzz</code></pre>
+</div>
+</div>
+<p>The Fizzbuzz condition uses the modulo <code>%%</code> (<code>%</code> in Python) operator. This, recall,
+returns the remainder of the division. The logical and operator
+returns true if both operands are true. Note also that the order of the
+conditions is important, as we need to check the divisibility by both 3
+and 5 first, and then we check the divisibility by 3 or 5 separately.</p>
+<p>To see how FizzBuzz works, try to replace the value of the
+variable <code>n</code> with different numbers, and see what the output is. For
+example, try <code>n &lt;- 45</code> in R, or <code>n = 45</code> in Python, and see what
+happens!</p>
+<div id="exercise-skibbidifizzbuzz" class="section level4 hasAnchor" number="2.3.3.1">
+<h4><span class="header-section-number">2.3.3.1</span> Exercise: Skibbidifizzbuzz<a href="log_vec.html#exercise-skibbidifizzbuzz" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>As an exercise, try to write a variation of FizzBuzz, called
+Skibbidifizzbuzz, where the rules are the same as above, but now you
+have to add “Skibbidi” if the number is divisible by 2. For example,
+given the number 12, print “SkibbidiFizz”, given the number 20, print
+“SkibbidiBuzz”, given the number 30, print “SkibbidiFizzBuzz”, and given
+the number 8, print “Skibbidi”.</p>
 <style type="text/css">
 .book .book-body .page-wrapper .page-inner {
   max-width: 1200px !important;
 }
 </style>
 
+</div>
+</div>
 </div>
 </div>
             </section>

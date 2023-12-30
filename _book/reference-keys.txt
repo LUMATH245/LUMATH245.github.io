@@ -16,3 +16,7 @@ logical-arithmetic
 precendence-of-operators
 exercise-1
 flow
+the-if-then-else-statement
+nesting-if-statements
+fizzbuzz
+exercise-skibbidifizzbuzz

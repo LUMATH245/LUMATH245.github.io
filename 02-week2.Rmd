@@ -269,16 +269,34 @@ x == x
 </div>
 :::
 
-In addition to equality and inequality, we can also compare the magnitude or the order of two values or objects. This is especially useful in computational maths, as we often need to check if a value is within a certain range, or if a value satisfies a certain condition. To compare the magnitude or the order of two values or objects, we use the following operators:
+In addition to equality and inequality, we can also compare the
+magnitude or the order of two values or objects. This is especially
+useful in computational maths, as we often need to check if a value is
+within a certain range, or if a value satisfies a certain condition. To
+compare the magnitude or the order of two values or objects, we use the
+following operators:
 
-- Greater than (`>`): This operator returns `TRUE` if the left operand is larger than the right operand, and `FALSE` otherwise. For example, `3 > 2` returns `TRUE`, but `2 > 3` returns `FALSE`.
-- Less than (`<`): This operator returns `TRUE` if the left operand is smaller than the right operand, and `FALSE` otherwise.
-- Greater than or equal to (`>=`): This operator returns `TRUE` if the left operand is larger than or equal to the right operand, and `FALSE` otherwise. For example, `3 >= 2` and `3 >= 3` both return `TRUE`, but `2 >= 3` returns `FALSE`.
-- Less than or equal to (`<=`): As above, this operator returns `TRUE` if the left operand is smaller than or equal to the right operand, and `FALSE` otherwise.
+-   Greater than (`>`): This operator returns `TRUE` if the left operand
+    is larger than the right operand, and `FALSE` otherwise. For
+    example, `3 > 2` returns `TRUE`, but `2 > 3` returns `FALSE`.
+-   Less than (`<`): This operator returns `TRUE` if the left operand is
+    smaller than the right operand, and `FALSE` otherwise.
+-   Greater than or equal to (`>=`): This operator returns `TRUE` if the
+    left operand is larger than or equal to the right operand, and
+    `FALSE` otherwise. For example, `3 >= 2` and `3 >= 3` both return
+    `TRUE`, but `2 >= 3` returns `FALSE`.
+-   Less than or equal to (`<=`): As above, this operator returns `TRUE`
+    if the left operand is smaller than or equal to the right operand,
+    and `FALSE` otherwise.
 
-Note that the comparison is going to be consistent with the equality and inequality operators, meaning that if `x == y`, then `x >= y` and `x <= y` are both `TRUE`, and if `x != y`, then either `x > y` or `x < y` is `TRUE`.
+Note that the comparison is going to be consistent with the equality and
+inequality operators, meaning that if `x == y`, then `x >= y` and
+`x <= y` are both `TRUE`, and if `x != y`, then either `x > y` or
+`x < y` is `TRUE`.
 
-As an exercise, try to compare two integers, two doubles, or two variables, as done above, but with the inequality operators, and see the result.
+As an exercise, try to compare two integers, two doubles, or two
+variables, as done above, but with the inequality operators, and see the
+result.
 
 In the next section, we will introduce you to another important aspect
 of logic: logical arithmetic. Logical arithmetic is the process of
@@ -292,20 +310,24 @@ programs.
 
 ## Logical Arithmetic
 
-Logical arithmetic is the process of combining and manipulating logical
-values, such as `TRUE` and `FALSE`, using logical operators, such as
-`AND` and `OR`. Logical arithmetic can be used for various purposes,
-such as creating complex conditions, testing multiple hypotheses, or
-performing set operations. In this section, we will show you how to use
-logical arithmetic in both R and Python, and how to use the results of
-logical arithmetic in your programs.
+This might seem easy if you already have a background in logic, but even
+if you haven't, the following paragraphs should cover all the necessary
+concepts that you will need for programming.
 
-The two most common logical operators are `AND` and `OR`. The `AND`
-operator returns `TRUE` if both operands are `TRUE`, and `FALSE`
-otherwise. The `OR` operator returns `TRUE` if either or both operands
-are `TRUE`, and `FALSE` otherwise. For example, we can use the `AND` and
-`OR` operators to combine two logical values, such as `TRUE` and
-`FALSE`, as shown below:
+Logical arithmetic is the process of combining and manipulating logical
+values, `TRUE` and `FALSE`, which are *logic operands*, using the
+*logical operators* `AND` and `OR` or `NOT`.
+
+Let's start from `AND` and `OR`:
+
+-   The `AND` operator returns `TRUE` if both operands are `TRUE`, and
+    `FALSE` otherwise.
+
+-   The `OR` operator returns `TRUE` if either or both operands are
+    `TRUE`, and `FALSE` otherwise.
+
+We can use the `AND` and `OR` operators to combine two logical values,
+such as `TRUE` and `FALSE`, as shown below:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -367,23 +389,21 @@ False or False
 
 As you can see, the syntax and the output are very similar in both
 languages, except that R uses `&` and `|` for `AND` and `OR`, while
-Python uses `and` and `or`. Note that the order of the operands does not
-matter, as `AND` and `OR` are commutative operators.
+Python uses `and` and `or`. More formally, we can use a table to show
+all the possible outcomes of the `AND` and `OR` operators. Let's say
+that $a, \ b$ are our operands, then:
 
-We can also use a table to show the possible outcomes of the `AND` and
-`OR` operators, as shown below:
-
-| a     | b     | a AND b | a OR b |
-|-------|-------|---------|--------|
-| TRUE  | TRUE  | TRUE    | TRUE   |
-| TRUE  | FALSE | FALSE   | TRUE   |
-| FALSE | TRUE  | FALSE   | TRUE   |
-| FALSE | FALSE | FALSE   | FALSE  |
+| $a$   | $b$   | $a$ AND $b$ | $a$ OR $b$ |
+|-------|-------|-------------|------------|
+| TRUE  | TRUE  | TRUE        | TRUE       |
+| TRUE  | FALSE | FALSE       | TRUE       |
+| FALSE | TRUE  | FALSE       | TRUE       |
+| FALSE | FALSE | FALSE       | FALSE      |
 
 As you can see, the table has four rows, corresponding to the four
 possible combinations of the operands a and b. Again, the table is easy
-to build, as it shows a AND b is only TRUE when both A and B are TRUE, a
-OR b is only FALSE when both A and B are FALSE.
+to build, as it shows a AND b is only TRUE when both a and b are TRUE, a
+OR b is only FALSE when both a and b are FALSE.
 
 ### Precendence of operators
 
@@ -445,14 +465,16 @@ the value of:
 -   `(TRUE | TRUE) & FALSE`?
 -   `(TRUE | FALSE) & (FALSE | TRUE)`?
 
-You should use the console in R or Python to check your answers.
+You should use the console in R or Python to check your answers. You can
+review the table and the examples above, and try to understand the logic
+behind each expression.
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
 
 **R**
 
-```{r include=F}
+```{r}
 # Checking the answers
 TRUE | TRUE & FALSE
 FALSE | FALSE & TRUE
@@ -467,7 +489,7 @@ FALSE | FALSE & TRUE
 
 **python**
 
-```{python include=F}
+```{python}
 # Checking the answers
 True and False or True
 False or False and True
@@ -479,23 +501,39 @@ True and (False or True)
 </div>
 :::
 
-Did you get the correct answers? If not, don't worry. You can review the
-table and the examples above, and try to understand the logic behind
-each expression. Remember that the `AND` operator has higher precedence
-than the `OR` operator, which means that it is evaluated before the `OR`
-operator. You can also use parentheses to group the operands and change
-the order of evaluation.
-
 ## Flow
 
 Another important aspect of logic is flow. Flow is the order and
-direction in which the instructions of a program are executed. Flow can
-be controlled by using conditional statements, such as if - else if -
-else. Conditional statements allow us to execute different blocks of
-code depending on the result of a logical expression or condition. For
-example, we can use conditional statements to perform different actions
-based on the value of a variable, the input of the user, or the outcome
-of a calculation.
+direction in which the instructions of a program are executed **and is
+at the base of an algorithm**.
+
+Normally, a computer program, has a start, it will do something, and
+then terminate (return an output). This is called the *flow* of a
+program. Now, of course, to control the flow, you need a mechanism that
+checks on the state of your program, and performs an action based on the
+state in which you are. Surprisingly enough, we run programs in every
+day tasks too. When driving down from Glasgow to London, we need to
+check where we are, and turn the steering wheel accordingly in such a
+way that our car points towards South. When doing the laundry in a
+laundrette, we first check the amounts of money we have, and then, if we
+have enough, load up the washing machine, if we don't, well, we need to
+get some more. Or say, for example, that you need to code something,
+maybe for an assignment :) What you might end up doing, is the
+following:
+
+![](images/chapter2/code_something.png)
+
+**I have to remark that this was a joke:** remember that if you cheat at
+this stage with programming you are just cheating yourself.
+
+More formally, in computer programs, flow can be controlled by using
+*conditional statements*, such as if - else if - else. Conditional
+statements allow us to execute different blocks of code depending on the
+result of a logical expression or condition. For example, we can use
+conditional statements to perform different actions based on the value
+of a variable, the input of the user, or the outcome of a calculation.
+
+### The if-then-else statement
 
 The simplest form of a conditional statement is the if statement. The if
 statement checks a single condition, and executes a block of code if the
@@ -537,11 +575,34 @@ if x > 0:
 </div>
 :::
 
-As you can see, the syntax and the output are very similar in both
-languages, except that Python uses a colon and indentation to indicate
-the start and the end of the block of code. Note that the if statement
-only executes the block of code if the condition is true, and does
-nothing otherwise.
+Concerning syntax, e.g. the way we write the code:
+
+-   To enclose the condition that is checked by the if statement, e.g.
+    where your logic expression goes (e.g. the block of code that
+    evaluates either to `TRUE` or `FALSE):`
+
+    -   R uses an `if` followed by parentheses `()`, where the condition
+        goes
+
+    -   Python has no parentheses, but has a `:` symbol to indicate that
+        the condition has ended and the block of code to execute has
+        started
+
+-   To denote the block of code to execute if the condition is true:
+
+    -   R uses curly braces `{}` to enclose the block of code that is
+        executed if the condition is true. All code that is relative to
+        the if condition needs to be within these brackets
+
+    -   Python, uses indentation to delimit the block of execution. All
+        code that needs to execute needs to be indented at the same
+        level. Indentation in Python is achieved either with a tab
+        (recommended), or with 4 spaces.
+
+Note that the if statement only executes the block of code if the
+condition is true, and does nothing otherwise. This means, that if the
+condition is `FALSE`, the program will simply skip the code within the
+block, as if it never existed.
 
 Sometimes, we may want to check more than one condition, and execute
 different blocks of code for each condition. For this, we can use the
@@ -595,11 +656,11 @@ else:
 </div>
 :::
 
-As you can see, the syntax and the output are very similar in both
-languages, except that R uses `else if` and Python uses `elif` for the
-second condition. Note that the order of the conditions is important, as
-only the first condition that is true is executed. If none of the
-conditions are true, the else block is executed.
+As you can see, the syntax is very similar again in both languages,
+except that R uses `else if` and Python uses `elif` for the second
+condition. Note that the order of the conditions is important, as only
+the first condition that is true is executed. If none of the conditions
+are true, the else block is executed.
 
 Sometimes, we may want to check two or more independent conditions, and
 execute different blocks of code for each condition. For this, we can
@@ -658,6 +719,8 @@ are true. If we used an if - else if - else statement instead, only the
 first condition would be executed, and the second condition would be
 ignored.
 
+### Nesting if-statements
+
 Sometimes, we may want to check a condition within another condition,
 and execute different blocks of code for each combination. For this, we
 can use a nested if statement. A nested if statement is an if statement
@@ -689,7 +752,6 @@ if (x > 0) {
     print("x is negative and greater than or equal to -10")
   }
 }
-# x is negative and greater than or equal to -10
 ```
 
 </div>
@@ -713,19 +775,102 @@ else:
     print("x is negative and less than -10")
   else:
     print("x is negative and greater than or equal to -10")
-# x is negative and greater than or equal to -10
 ```
 
 </div>
 :::
 
-As you can see, the syntax and the output are very similar in both
-languages, except that Python uses a colon and indentation to indicate
-the start and the end of each block of code. Note that the nested if
-statement checks the outer condition first, and then checks the inner
-condition if the outer condition is true. Note also that the nested if
-statement can have multiple levels of nesting, and can also include else
-if and else blocks.
+Concerning syntax, you can now see the double indentation in the python
+code. The nested if statement checks the outer condition first (x being
+positive), and then checks the inner condition if the outer condition is
+true (x being greater then 10). Note also that the nested if statement
+can have multiple levels of nesting, and can also include else if and
+else blocks.
+
+In the next section, we will introduce you to a fun and popular game
+that involves logic and flow: FizzBuzz.
+
+### FizzBuzz
+
+FizzBuzz is a game that tests your ability to use logic and flow in
+programming. The rules of the game are simple: given a number, print
+"Fizz" if the number is divisible by 3, print "Buzz" if the number is
+divisible by 5, print "FizzBuzz" if the number is divisible by both 3
+and 5, and print the number itself otherwise. For example, given the
+number 15, print "FizzBuzz", given the number 9, print "Fizz", given the
+number 10, print "Buzz", and given the number 7, print 7.
+
+To play FizzBuzz in R or Python, we can use a variable to store the
+number, and then use an if - else if - else statement to check the
+conditions and print the output, as shown below:
+
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Assigning a value to a variable
+n <- 15
+
+# Playing FizzBuzz
+if (n %% 3 == 0 & n %% 5 == 0) {
+  print("FizzBuzz")
+} else if (n %% 3 == 0) {
+  print("Fizz")
+} else if (n %% 5 == 0) {
+  print("Buzz")
+} else {
+  print(n)
+}
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Assigning a value to a variable
+n = 15
+
+# Playing FizzBuzz
+if n % 3 == 0 and n % 5 == 0:
+  print("FizzBuzz")
+elif n % 3 == 0:
+  print("Fizz")
+elif n % 5 == 0:
+  print("Buzz")
+else:
+  print(n)
+```
+
+</div>
+:::
+
+
+The Fizzbuzz condition uses the modulo `%%` (`%` in Python) operator. This, recall,
+returns the remainder of the division. The logical and operator
+returns true if both operands are true. Note also that the order of the
+conditions is important, as we need to check the divisibility by both 3
+and 5 first, and then we check the divisibility by 3 or 5 separately.
+
+To see how FizzBuzz works, try to replace the value of the
+variable `n` with different numbers, and see what the output is. For
+example, try `n <- 45` in R, or `n = 45` in Python, and see what
+happens!
+
+#### Exercise: Skibbidifizzbuzz
+
+As an exercise, try to write a variation of FizzBuzz, called
+Skibbidifizzbuzz, where the rules are the same as above, but now you
+have to add "Skibbidi" if the number is divisible by 2. For example,
+given the number 12, print "SkibbidiFizz", given the number 20, print
+"SkibbidiBuzz", given the number 30, print "SkibbidiFizzBuzz", and given
+the number 8, print "Skibbidi".
+
 
 ```{=html}
 <style type="text/css">
