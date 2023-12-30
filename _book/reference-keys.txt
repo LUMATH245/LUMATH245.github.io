@@ -20,3 +20,5 @@ the-if-then-else-statement
 nesting-if-statements
 fizzbuzz
 exercise-skibbidifizzbuzz
+vectors
+creating-and-modifying-vectors

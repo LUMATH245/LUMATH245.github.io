@@ -872,6 +872,91 @@ given the number 12, print "SkibbidiFizz", given the number 20, print
 the number 8, print "Skibbidi".
 
 
+## Vectors
+
+We now introduce the first (and the most fundamental!) data structures in programming: vectors. Vectors, as in maths, are ordered collections of values that can be manipulated as a single unit. All elements in a vector need to be homogeneous, e.g. of the same type, for example we cannot have a vector with a string and an integer together. Later on, when we will introduce matrices, we will find out that these are nothing but a collection of vectors (vectors of vectors).
+And we, in maths, know how powerful linear algebra is: through vectors, we can store, process, and analyze large amounts of numerical data efficiently and elegantly.
+
+### Creating and modifying vectors
+Alright, let's continue with our introduction to vectors. In this section, we will see how to create and use vectors in R and Python, and how to perform elementwise operations on vectors.
+
+To create a vector in R, we use the `c` function, which stands for concatenate. The `c` function takes one or more values as arguments, and returns a vector that contains those values. For example, we can create a vector that contains the numbers 1, 2, and 3, as shown below:
+
+```{r}
+# Creating a vector in R
+x <- c(1, 2, 3)
+x
+# 1 2 3
+```
+
+To create a vector in Python, we use the `array` function from the `numpy` module, which stands for numerical Python. The `numpy` module is a library that provides various tools and functions for working with numerical data and scientific computing. The `array` function takes a list or a tuple as an argument, and returns an array that contains the elements of the list or the tuple. For example, we can create an array that contains the numbers 1, 2, and 3, as shown below:
+
+```{python}
+# Importing the numpy module
+import numpy as np
+
+# Creating an array in Python
+x = np.array([1, 2, 3])
+x
+# array([1, 2, 3])
+```
+
+As you can see, the syntax and the output are very similar in both languages, except that R uses `c` and Python uses `np.array`. Note that we need to import the `numpy` module before using the `array` function, and we use the alias `np` to refer to the module. Note also that the output shows the type of the object, which is a vector in R and an array in Python.
+
+One of the main advantages of using vectors or arrays is that we can perform elementwise operations on them. Elementwise operations are operations that are applied to each element of the vector or the array individually, and return a new vector or array that contains the results. For example, we can add, subtract, multiply, or divide a vector or an array by a scalar, which is a single value, as shown below:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Adding a scalar to a vector
+x + 1
+# 2 3 4
+
+# Subtracting a scalar from a vector
+x - 1
+# 0 1 2
+
+# Multiplying a vector by a scalar
+x * 2
+# 2 4 6
+
+# Dividing a vector by a scalar
+x / 2
+# 0.5 1.0 1.5
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Adding a scalar to an array
+x + 1
+# array([2, 3, 4])
+
+# Subtracting a scalar from an array
+x - 1
+# array([0, 1, 2])
+
+# Multiplying an array by a scalar
+x * 2
+# array([2, 4, 6])
+
+# Dividing an array by a scalar
+x / 2
+# array([0.5, 1. , 1.5])
+```
+
+</div>
+:::
+
+As you can see, the syntax and the output are very similar in both languages, except that Python shows the decimal point for the division operation. Note that the elementwise operations are performed by using the same arithmetic operators as before, such as `+`, `-`, `*`, and `/`. Note also that the elementwise operations preserve the shape and the length of the vector or the array, meaning that the resulting vector or array has the same number of elements as the original vector or array.
+
 ```{=html}
 <style type="text/css">
 .book .book-body .page-wrapper .page-inner {
