@@ -29,4 +29,7 @@ functions-and-algebra-with-vectors
 doing-the-dot-product-of-two-vectors
 accessing-vectors
 checking-the-size-and-dimension-of-a-vector
-indexing-the-elements-of-a-vector
+accessing-the-elements-of-a-vector
+accessing-multiple-elements-at-once
+overwriting-elements-of-vectors
+exercise-vector-fizzbuzz

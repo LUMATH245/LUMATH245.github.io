@@ -886,7 +886,6 @@ To create a vector in R, we use the `c` function, which stands for concatenate. 
 # Creating a vector in R
 x <- c(1, 2, 3)
 x
-# 1 2 3
 ```
 
 To create a vector in Python, we use the `array` function from the `numpy` module, which stands for numerical Python. While technically the Python array is not the same of an R vector (as you can have arrays of arrays, which is a similar structure to a matrix), we will use the Python array interchangeably for now, as they behave very similar and they fulfill similar roles.
@@ -1010,7 +1009,6 @@ y
 # Creating an empty vector of type numeric and length 5
 x <- vector(mode = "numeric", length = 5)
 x
-# 0 0 0 0 0
 ```
 
 </div>
@@ -1026,7 +1024,6 @@ import numpy as np
 # Creating an empty array of type numeric and length 5
 x = np.empty(5, dtype = "float")
 x
-# array([0., 0., 0., 0., 0.])
 ```
 
 </div>
@@ -1048,19 +1045,15 @@ For example, we can add, subtract, multiply, or divide a vector or an array by a
 ```{r}
 # Adding a scalar to a vector
 x + 1
-# 2 3 4
 
 # Subtracting a scalar from a vector
 x - 1
-# 0 1 2
 
 # Multiplying a vector by a scalar
 x * 2
-# 2 4 6
 
 # Dividing a vector by a scalar
 x / 2
-# 0.5 1.0 1.5
 ```
 
 </div>
@@ -1072,19 +1065,15 @@ x / 2
 ```{python}
 # Adding a scalar to an array
 x + 1
-# array([2, 3, 4])
 
 # Subtracting a scalar from an array
 x - 1
-# array([0, 1, 2])
 
 # Multiplying an array by a scalar
 x * 2
-# array([2, 4, 6])
 
 # Dividing an array by a scalar
 x / 2
-# array([0.5, 1. , 1.5])
 ```
 
 </div>
@@ -1246,9 +1235,9 @@ x.ndim
 
 As you can see, the `size` attribute and the `len` function both return the number of elements in the array, which is 4, and the `shape` attribute and the `ndim` attribute both return the dimension of the array, which is 1. The `shape` attribute returns a *tuple*, that contains the length of each axis of the array, and the `ndim` attribute returns an integer that represents the number of axes of the array. Note that a one-dimensional array in Python has a shape of `(n,)`, where `n` is the size of the array, and a comma is needed to indicate that it is a tuple. A *tuple* is another one dimentional structure in Python, but for now you can treat it as just a couple of numbers.
 
-#### Indexing the elements of a vector
+### Accessing the elements of a vector
 
-We can access the elements of the vector or the array by using indexing. Indexing is a way of referring to a specific element or a subset of elements of a vector or an array by using their position or location.
+We can access the elements of the vector or the array by using indexing. Indexing is a way of referring to a specific element or a subset of elements of a vector or an array by using their position or location. Every element of a vector, in fact, has an index, that is a number that indicates its order in the vector.
 
 Indexing the elements of a vector or an array in R and Python has **a fundamental difference** that you need to be extremely careful about. R uses what is called *one-based* indexing, while Python uses *zero-based* indexing. This means that R starts counting the elements of a vector or an array from 1, e.g. the first element starts at one, while Python starts counting the elements of a vector or an array from 0. This difference can cause confusion and errors if you are not aware of it, so you need to pay attention to the indexing system of each language:
 
@@ -1323,6 +1312,259 @@ x[-2]
 x[-len(x)]
 ```
 
+#### Accessing multiple elements at once
+
+In addition to accessing a single element of a vector or an array, we can also access multiple elements at once by using indexing. This can be useful for selecting, modifying, or extracting specific values or subsets of values from a vector or an array. There are different ways to access multiple elements at once, depending on the criteria or the pattern that we want to use.
+
+- To access any sequence of elements of a vector or an array, we can use sequences of integers as indices. This means we can use the colon operator `:` to create sequences of integers in R and Python, as we saw in the previous section, and use these to access and splice the first three elements, the last three elements, or even the *even-indexed* elements of a vector or an array (pun not intended).
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Creating a vector of the first 6 integers
+x <- 1:6
+
+# Accessing the first three elements of the vector
+x[1:3]
+
+# Accessing the last three elements of the vector
+# index is 4, 5, 6
+x[(length(x) - 2):length(x)]
+
+# Accessing the even-indexed elements of the vector
+x[seq(from = 2, to = length(x), by = 2)]
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Creating an array of the first 6 integers
+x = np.arange(1, 7)
+
+# Accessing the first three elements of the array
+x[0:3]
+
+# Accessing the last three elements of the array
+# index is 3, 4, 5
+x[(len(x) - 3):len(x)]
+
+# Accessing the even-indexed elements of the array
+x[np.arange(1, len(x), 2)]
+```
+
+</div>
+:::
+
+Recall that R uses one-based indexing and Python uses zero-based indexing. The sequences of integers for accesing the indeces are created by using the colon operator `:` or the `seq` function in R, and the `np.arange` function in Python. The sequences of integers can have different start, end, or step values, depending on the desired subset of elements. Try to experiment a bit with the start and end values of the subsets introduced above! 
+
+- Similarly, we can use vectors or arrays of integers as indices to access multiple elements *at every location*. To do so, we will first create some vectors, and then use those vectors to access the elements of other vectors respectively. For example, we can access three elements at random of a vector or an array, as shown below:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Accessing element 2, 5 and 6 of the vector
+x[c(2, 5, 6)]
+
+# note how in this way we can shuffle order!
+x[c(2, 6, 5)]
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Accessing element 2, 5 and 6 of the vector
+x[[1, 4, 5]]
+
+# note how in this way we can shuffle order!
+x[[1, 5, 4]]
+```
+
+</div>
+:::
+
+
+To access multiple elements at random of a vector or an array, we can also use vectors or arrays of booleans as indices. Vectors or arrays of booleans are collections of logical values, as introduced above, e.g. either `TRUE` or `FALSE`. In this case, it is important that the vectors or arrays of booleans have the same length as the vector or the array, and that only the elements that correspond to `TRUE` (in R) or `True` (in Python) values are selected.
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# boolean index vector:
+#                    2                   5     6
+index <- c(FALSE, TRUE, FALSE, FALSE, TRUE, TRUE)
+
+# Accessing element 2, 5 and 6 of the vector
+x[index]
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# boolean index vector:
+#                   1                   4     5
+index = [False, True, False, False, True, True]
+
+# Accessing element 2, 5 and 6 of the vector
+x[index]
+```
+
+</div>
+:::
+
+Why is this useful? Well, with this trick, we can use logical operators obtained by logical arithmetic to create vectors or arrays of booleans in R and Python. For example, we can access the elements that are greater than 3 of a vector or an array, as shown below:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Creating a vector of numbers
+x <- c(1, 2, 3, 4, 5, 6)
+
+# Accessing the elements that are greater than 3 of the vector
+x[x > 3]
+
+# Accessing even elements 
+x[x %% 2 == 0]
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Importing the numpy module
+import numpy as np
+
+# Creating an array of numbers
+x = np.array([1, 2, 3, 4, 5, 6])
+
+# Accessing the elements that are greater than 3 of the array
+x[x > 3]
+
+# Accessing even elements 
+x[x % 2 == 0]
+```
+
+</div>
+:::
+
+#### Overwriting elements of vectors
+
+Finally, as we can overwrite variables, we can overwrite single (or multiple!) elements of a vector without modifying the entire vector. This is essentially achieved by selecting the elements of interest, and then assigning new elements to those. The replacement, of course needs to be of the same length of the elements we wish to replace. If the new values are not compatible with the type and the length of the vector, both languages will produce an error or a warning.
+
+- In R, we can use the square brackets `[ ]` to access the elements of the vector by using their index, and the left arrow `<-` to assign new values to them. For example, to overwrite the first element, the last element, and the third element:
+
+```{r}
+# Creating a vector of numbers
+x <- c(1, 2, 3, 4)
+
+# Overwriting the first element of the vector
+x[1] <- 10
+x
+
+# Overwriting the last element of the vector
+x[length(x)] <- 20
+x
+
+# Overwriting any element of the vector
+x[3] <- 30
+x
+```
+
+- In Python, we can use the square brackets `[ ]` to access the elements of the array by using their index, and the equal sign `=` to assign new values to them. For example, to overwrite the first element, the last element, and third element:
+
+```{python}
+# Creating an array of numbers
+x = np.array([1, 2, 3, 4])
+
+# Overwriting the first element of the array
+x[0] = 10
+x
+
+# Overwriting the last element of the array
+x[len(x) - 1] = 20
+x
+
+# Overwriting any element of the array
+x[2] = 30
+x
+```
+
+As you can see, the square brackets `[ ]` are used to access the elements of the array by using their index, and the equal sign `=` is used to assign new values to them
+
+Note that the final vector has the three elements we accessed all changed. 
+As mentioned, we can select and replace multiple elements simultaneously in a single command, look for instance at the code below. 
+
+#### Exercise: vector fizzbuzz
+You are ready to see your first complex program. Can you tell what it does?
+Break down, comment and describe the following code, and adapt it do perform Skibbidifizzbuzz.
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+x <- 1:100
+
+fizz_index <- x %% 3 == 0
+buzz_index <- x %% 5 == 0
+
+x[fizz_index] <- "fizz"
+x[buzz_index] <- "buzz"
+x[fizz_index & buzz_index] <- "fizzbuzz"
+x
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+x = np.arange(1, 101, dtype=object)
+
+fizz_index = x % 3 == 0
+buzz_index = x % 5 == 0
+
+
+x[fizz_index] = "fizz"
+x[buzz_index] = "buzz"
+x[np.logical_and(fizz_index, buzz_index)] = "fizzbuzz"
+x
+
+# small hint: python does not convert the type of vector automatically, the dtype 
+# argument is needed to ensure the vector can contain both integers and strings.
+# remove the dtype argument from the first line and see what happens
+```
+
+</div>
+:::
 
 
 ```{=html}
