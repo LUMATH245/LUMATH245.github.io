@@ -21,4 +21,9 @@ nesting-if-statements
 fizzbuzz
 exercise-skibbidifizzbuzz
 vectors
-creating-and-modifying-vectors
+creating-vectors
+libraries
+creating-sequences
+modifying-vectors
+functions-and-algebra-with-vectors
+doing-the-dot-product-of-two-vectors
