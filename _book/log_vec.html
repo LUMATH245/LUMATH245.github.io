@@ -147,6 +147,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="log_vec.html"><a href="log_vec.html#logical-arithmetic"><i class="fa fa-check"></i><b>2.2</b> Logical Arithmetic</a></li>
 <li class="chapter" data-level="2.3" data-path="log_vec.html"><a href="log_vec.html#flow"><i class="fa fa-check"></i><b>2.3</b> Flow</a></li>
 <li class="chapter" data-level="2.4" data-path="log_vec.html"><a href="log_vec.html#vectors"><i class="fa fa-check"></i><b>2.4</b> Vectors</a></li>
+<li class="chapter" data-level="2.5" data-path="log_vec.html"><a href="log_vec.html#accessing-vectors"><i class="fa fa-check"></i><b>2.5</b> Accessing vectors</a></li>
 </ul></li>
 </ul>
 
@@ -948,15 +949,13 @@ As you will see, here the syntax is going to be a bit different in each language
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb246-1"><a href="log_vec.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the numpy module</span></span>
-<span id="cb246-2"><a href="log_vec.html#cb246-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb246-3"><a href="log_vec.html#cb246-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb246-4"><a href="log_vec.html#cb246-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a sequence of integers from -5 to 10</span></span>
-<span id="cb246-5"><a href="log_vec.html#cb246-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">5</span>, <span class="dv">11</span>)</span>
-<span id="cb246-6"><a href="log_vec.html#cb246-6" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb246-1"><a href="log_vec.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a sequence of integers from -5 to 10</span></span>
+<span id="cb246-2"><a href="log_vec.html#cb246-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">5</span>, <span class="dv">11</span>)</span>
+<span id="cb246-3"><a href="log_vec.html#cb246-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>## array([-5, -4, -3, -2, -1,  0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10])</code></pre>
 </div>
 </div>
+<p>Differently from R, <code>arange</code> requires the second argument to be one step more than the desired end point of the sequence, so if we want to go up to 10, we need to have the second argument to be 11.</p>
 <p><strong>To create any sequence</strong>, we can use the <code>seq</code> function in R, and the <code>arange</code> or <code>linspace</code> functions in Python. For example, we can create a sequence of numbers from 0 to 1, with a step size of 0.1, or with a length of 11, as shown below:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
@@ -973,13 +972,10 @@ As you will see, here the syntax is going to be a bit different in each language
 </div>
 <div>
 <p><strong>python</strong></p>
-<p>The <code>np.arange</code> function in Python, with an additional argument, will indicate the step size. In this case, arange, requires the second argument to be one step more than the desired end point of the sequence. The <code>np.linspace</code> function, instead, will create a vector of a desired length (11 elements) of equally spaced elements. It requires the third argument to be the desired length of the sequence.</p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb252-1"><a href="log_vec.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the numpy module</span></span>
-<span id="cb252-2"><a href="log_vec.html#cb252-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb252-3"><a href="log_vec.html#cb252-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb252-4"><a href="log_vec.html#cb252-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a sequence of numbers from 0 to 1, with a step size of 0.1</span></span>
-<span id="cb252-5"><a href="log_vec.html#cb252-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="fl">1.1</span>, <span class="fl">0.1</span>)</span>
-<span id="cb252-6"><a href="log_vec.html#cb252-6" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<p>The <code>np.arange</code> function in Python, with an additional argument, will indicate the step size. Again, in this case, arange requires the second argument to be one step more than the desired end point of the sequence. The <code>np.linspace</code> function, instead, will create a vector of a desired length (11 elements) of equally spaced elements. It requires the third argument to be the desired length of the sequence.</p>
+<div class="sourceCode" id="cb252"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb252-1"><a href="log_vec.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a sequence of numbers from 0 to 1, with a step size of 0.1</span></span>
+<span id="cb252-2"><a href="log_vec.html#cb252-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="fl">1.1</span>, <span class="fl">0.1</span>)</span>
+<span id="cb252-3"><a href="log_vec.html#cb252-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>## array([0. , 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1. ])</code></pre>
 <div class="sourceCode" id="cb254"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb254-1"><a href="log_vec.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a sequence of numbers from 0 to 1, with a length of 11</span></span>
 <span id="cb254-2"><a href="log_vec.html#cb254-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">11</span>)</span>
@@ -1095,8 +1091,8 @@ As you will see, here the syntax is going to be a bit different in each language
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="log_vec.html#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating two vectors of the same length</span></span>
-<span id="cb288-2"><a href="log_vec.html#cb288-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb288-3"><a href="log_vec.html#cb288-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>)</span>
+<span id="cb288-2"><a href="log_vec.html#cb288-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
+<span id="cb288-3"><a href="log_vec.html#cb288-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">8</span></span>
 <span id="cb288-4"><a href="log_vec.html#cb288-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb288-5"><a href="log_vec.html#cb288-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Doing elementwise product of two vectors</span></span>
 <span id="cb288-6"><a href="log_vec.html#cb288-6" aria-hidden="true" tabindex="-1"></a>x <span class="sc">*</span> y</span></code></pre></div>
@@ -1108,18 +1104,15 @@ As you will see, here the syntax is going to be a bit different in each language
 <div>
 <p><strong>python</strong></p>
 <div class="sourceCode" id="cb292"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb292-1"><a href="log_vec.html#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating two arrays of the same length</span></span>
-<span id="cb292-2"><a href="log_vec.html#cb292-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span>
-<span id="cb292-3"><a href="log_vec.html#cb292-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>])</span>
+<span id="cb292-2"><a href="log_vec.html#cb292-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">5</span>)</span>
+<span id="cb292-3"><a href="log_vec.html#cb292-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.arange(<span class="dv">5</span>, <span class="dv">9</span>)</span>
 <span id="cb292-4"><a href="log_vec.html#cb292-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb292-5"><a href="log_vec.html#cb292-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Doing elementwise product of two arrays</span></span>
 <span id="cb292-6"><a href="log_vec.html#cb292-6" aria-hidden="true" tabindex="-1"></a>x <span class="op">*</span> y</span></code></pre></div>
 <pre><code>## array([ 5, 12, 21, 32])</code></pre>
-<div class="sourceCode" id="cb294"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb294-1"><a href="log_vec.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="co"># array([ 5, 12, 21, 32])</span></span>
-<span id="cb294-2"><a href="log_vec.html#cb294-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb294-3"><a href="log_vec.html#cb294-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Doing elementwise sum of two arrays</span></span>
-<span id="cb294-4"><a href="log_vec.html#cb294-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">+</span> y</span></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb294-1"><a href="log_vec.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Doing elementwise sum of two arrays</span></span>
+<span id="cb294-2"><a href="log_vec.html#cb294-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">+</span> y</span></code></pre></div>
 <pre><code>## array([ 6,  8, 10, 12])</code></pre>
-<div class="sourceCode" id="cb296"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb296-1"><a href="log_vec.html#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="co"># array([ 6,  8, 10, 12])</span></span></code></pre></div>
 </div>
 </div>
 <p>As you can see, the syntax and the output are very similar in both languages, except that Python uses <code>np.array</code> to access the function from the <code>numpy</code> module. Note that the elementwise product and sum are performed by using the same arithmetic operators as before, such as <code>*</code> and <code>+</code>. Note also that the elementwise product and sum preserve the shape and the length of the vectors or the arrays, meaning that the resulting vector or array has the same number of elements as the input vectors or arrays.</p>
@@ -1131,26 +1124,118 @@ As you will see, here the syntax is going to be a bit different in each language
 <ul>
 <li>In R, we use the <code>%*%</code> operator, which performs matrix multiplication. If the input vectors are one-dimensional, the matrix multiplication is equivalent to the dot product. For example, we can calculate the dot product of two vectors, as shown below:</li>
 </ul>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="log_vec.html#cb297-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating two vectors of the same length</span></span>
-<span id="cb297-2"><a href="log_vec.html#cb297-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb297-3"><a href="log_vec.html#cb297-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>)</span>
-<span id="cb297-4"><a href="log_vec.html#cb297-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb297-5"><a href="log_vec.html#cb297-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Doing the dot product of two vectors</span></span>
-<span id="cb297-6"><a href="log_vec.html#cb297-6" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%*%</span> y</span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="log_vec.html#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Doing the dot product of two vectors</span></span>
+<span id="cb296-2"><a href="log_vec.html#cb296-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%*%</span> y</span></code></pre></div>
 <pre><code>##      [,1]
 ## [1,]   70</code></pre>
 <ul>
 <li>In Python, we use the <code>dot</code> function from the <code>numpy</code> module, which performs the dot product of two arrays. For example, we can calculate the dot product of two arrays, as shown below:</li>
 </ul>
-<div class="sourceCode" id="cb299"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb299-1"><a href="log_vec.html#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating two arrays of the same length</span></span>
-<span id="cb299-2"><a href="log_vec.html#cb299-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span>
-<span id="cb299-3"><a href="log_vec.html#cb299-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>])</span>
-<span id="cb299-4"><a href="log_vec.html#cb299-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb299-5"><a href="log_vec.html#cb299-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Doing the dot product of two arrays</span></span>
-<span id="cb299-6"><a href="log_vec.html#cb299-6" aria-hidden="true" tabindex="-1"></a>np.dot(x, y)</span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb298-1"><a href="log_vec.html#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Doing the dot product of two arrays</span></span>
+<span id="cb298-2"><a href="log_vec.html#cb298-2" aria-hidden="true" tabindex="-1"></a>np.dot(x, y)</span></code></pre></div>
 <pre><code>## 70</code></pre>
 <p>As you can see, the syntax and the output are different in both languages, as R uses a special operator and Python uses a function from <code>numpy</code>. Note also that the dot product requires the input vectors or arrays to have the same length, otherwise it will produce an error.</p>
 <p>We will cover how to do algebra with Python and R in the future chapters.</p>
+</div>
+</div>
+</div>
+<div id="accessing-vectors" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Accessing vectors<a href="log_vec.html#accessing-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We will see now how to access the elements of a vector. Accessing the elements of a vector or an array is important as it allows us to select, extract and even modify specific values or subsets of values from a vector.</p>
+<div id="checking-the-size-and-dimension-of-a-vector" class="section level3 hasAnchor" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> Checking the size and dimension of a vector<a href="log_vec.html#checking-the-size-and-dimension-of-a-vector" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Before we access the elements of a vector or an array, it is useful to know the size and the dimension of the vector or the array. <strong>The size</strong> of a vector or an array is the number of elements that it contains. <strong>The dimension</strong>, on the other hand, is the number of axes or directions that it has. For example, a one-dimensional vector or array has only one axis or direction, and a two-dimensional vector or a matrix will have two axes or directions, such as rows and columns.</p>
+<p>To check the size and the dimension of a vector or an array in R and Python, we can use the following functions:</p>
+<ul>
+<li>In R, we can use the <code>length</code> function to get the size of a vector, and the <code>dim</code> function to get the dimension of a vector.</li>
+</ul>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="log_vec.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a vector of numbers</span></span>
+<span id="cb300-2"><a href="log_vec.html#cb300-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
+<span id="cb300-3"><a href="log_vec.html#cb300-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb300-4"><a href="log_vec.html#cb300-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the size of the vector</span></span>
+<span id="cb300-5"><a href="log_vec.html#cb300-5" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="log_vec.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the dimension of the vector</span></span>
+<span id="cb302-2"><a href="log_vec.html#cb302-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x)</span></code></pre></div>
+<pre><code>## NULL</code></pre>
+<p>As you can see, the <code>length</code> function returns the number of elements in the vector, which is 4, and the <code>dim</code> function returns <code>NULL</code>, which means that the vector has no dimension. This is because a vector in R is always one-dimensional, and the <code>dim</code> function is more useful for higher-dimensional objects, such as <strong>matrices</strong> or <strong>data frames</strong>. We will learn about these structures later on, so do not worry about it for now.</p>
+<ul>
+<li>In Python, we can use the <code>size</code> attribute or the <code>len</code> function to get the size of an array, and the <code>shape</code> attribute or the <code>ndim</code> attribute to get the dimension of an array.</li>
+</ul>
+<div class="sourceCode" id="cb304"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb304-1"><a href="log_vec.html#cb304-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating an array of numbers</span></span>
+<span id="cb304-2"><a href="log_vec.html#cb304-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">4</span>)</span>
+<span id="cb304-3"><a href="log_vec.html#cb304-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb304-4"><a href="log_vec.html#cb304-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the size of the array</span></span>
+<span id="cb304-5"><a href="log_vec.html#cb304-5" aria-hidden="true" tabindex="-1"></a>x.size</span></code></pre></div>
+<pre><code>## 3</code></pre>
+<div class="sourceCode" id="cb306"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb306-1"><a href="log_vec.html#cb306-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4</span></span>
+<span id="cb306-2"><a href="log_vec.html#cb306-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(x)</span></code></pre></div>
+<pre><code>## 3</code></pre>
+<div class="sourceCode" id="cb308"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb308-1"><a href="log_vec.html#cb308-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4</span></span>
+<span id="cb308-2"><a href="log_vec.html#cb308-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb308-3"><a href="log_vec.html#cb308-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the dimension of the array</span></span>
+<span id="cb308-4"><a href="log_vec.html#cb308-4" aria-hidden="true" tabindex="-1"></a>x.shape</span></code></pre></div>
+<pre><code>## (3,)</code></pre>
+<div class="sourceCode" id="cb310"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb310-1"><a href="log_vec.html#cb310-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (4,)</span></span>
+<span id="cb310-2"><a href="log_vec.html#cb310-2" aria-hidden="true" tabindex="-1"></a>x.ndim</span></code></pre></div>
+<pre><code>## 1</code></pre>
+<div class="sourceCode" id="cb312"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb312-1"><a href="log_vec.html#cb312-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1</span></span></code></pre></div>
+<p>As you can see, the <code>size</code> attribute and the <code>len</code> function both return the number of elements in the array, which is 4, and the <code>shape</code> attribute and the <code>ndim</code> attribute both return the dimension of the array, which is 1. The <code>shape</code> attribute returns a <em>tuple</em>, that contains the length of each axis of the array, and the <code>ndim</code> attribute returns an integer that represents the number of axes of the array. Note that a one-dimensional array in Python has a shape of <code>(n,)</code>, where <code>n</code> is the size of the array, and a comma is needed to indicate that it is a tuple. A <em>tuple</em> is another one dimentional structure in Python, but for now you can treat it as just a couple of numbers.</p>
+<div id="indexing-the-elements-of-a-vector" class="section level4 hasAnchor" number="2.5.1.1">
+<h4><span class="header-section-number">2.5.1.1</span> Indexing the elements of a vector<a href="log_vec.html#indexing-the-elements-of-a-vector" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>We can access the elements of the vector or the array by using indexing. Indexing is a way of referring to a specific element or a subset of elements of a vector or an array by using their position or location.</p>
+<p>Indexing the elements of a vector or an array in R and Python has <strong>a fundamental difference</strong> that you need to be extremely careful about. R uses what is called <em>one-based</em> indexing, while Python uses <em>zero-based</em> indexing. This means that R starts counting the elements of a vector or an array from 1, e.g. the first element starts at one, while Python starts counting the elements of a vector or an array from 0. This difference can cause confusion and errors if you are not aware of it, so you need to pay attention to the indexing system of each language:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="log_vec.html#cb313-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The index will be</span></span>
+<span id="cb313-2"><a href="log_vec.html#cb313-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">#  1  2  3  4</span></span>
+<span id="cb313-3"><a href="log_vec.html#cb313-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span></code></pre></div>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb314"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb314-1"><a href="log_vec.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The index will be:</span></span>
+<span id="cb314-2"><a href="log_vec.html#cb314-2" aria-hidden="true" tabindex="-1"></a>           <span class="co">#  0  1  2  3</span></span>
+<span id="cb314-3"><a href="log_vec.html#cb314-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span></code></pre></div>
+</div>
+</div>
+<p>Let’s see how to practically access the single elements by using indexing.</p>
+<ul>
+<li>In R, the elements of a vector are indexed from 1 to the size of the vector, and we can use the square brackets <code>[ ]</code> to access them by using their index.</li>
+</ul>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="log_vec.html#cb315-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the first element of the vector</span></span>
+<span id="cb315-2"><a href="log_vec.html#cb315-2" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="log_vec.html#cb317-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the last element of the vector</span></span>
+<span id="cb317-2"><a href="log_vec.html#cb317-2" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">length</span>(x)]</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="log_vec.html#cb319-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing any element of the vector</span></span>
+<span id="cb319-2"><a href="log_vec.html#cb319-2" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p>As you can see, the first element of the vector has an index of 1, the last element of the vector has an index of the size of the vector, which is 4. The square brackets <code>[ ]</code> are used to access the elements of the vector: therefore the index must be an integer between 1 and the size of the vector, otherwise it will produce an error or a missing value.</p>
+<ul>
+<li>In Python, the elements of an array are indexed from 0 to the size of the array minus 1, and we can use the square brackets <code>[ ]</code> to access them by using their index.</li>
+</ul>
+<div class="sourceCode" id="cb321"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb321-1"><a href="log_vec.html#cb321-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the first element of the array</span></span>
+<span id="cb321-2"><a href="log_vec.html#cb321-2" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">0</span>]</span></code></pre></div>
+<pre><code>## 1</code></pre>
+<div class="sourceCode" id="cb323"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb323-1"><a href="log_vec.html#cb323-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the last element of the array</span></span>
+<span id="cb323-2"><a href="log_vec.html#cb323-2" aria-hidden="true" tabindex="-1"></a>x[<span class="bu">len</span>(x) <span class="op">-</span> <span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## 4</code></pre>
+<div class="sourceCode" id="cb325"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb325-1"><a href="log_vec.html#cb325-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing any element of the array</span></span>
+<span id="cb325-2"><a href="log_vec.html#cb325-2" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## 3</code></pre>
+<p>As you can see, the first element of the array has an index of 0, the last element of the array has an index of the size of the array minus 1, which in our case is 3. Note that the square brackets <code>[ ]</code> are used to access the elements of the array by using their index, and that the index must be an integer between 0 and the size of the array minus 1, otherwise it will produce an error or an out of bounds exception.
+Differently from R, in Python, however we can access the arrays from the back, using negative integers. Try:</p>
+<div class="sourceCode" id="cb327"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb327-1"><a href="log_vec.html#cb327-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the last element of the array</span></span>
+<span id="cb327-2"><a href="log_vec.html#cb327-2" aria-hidden="true" tabindex="-1"></a>x[<span class="op">-</span><span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## 4</code></pre>
+<div class="sourceCode" id="cb329"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb329-1"><a href="log_vec.html#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the second last element of the array</span></span>
+<span id="cb329-2"><a href="log_vec.html#cb329-2" aria-hidden="true" tabindex="-1"></a>x[<span class="op">-</span><span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## 3</code></pre>
+<div class="sourceCode" id="cb331"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb331-1"><a href="log_vec.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the first element of the array</span></span>
+<span id="cb331-2"><a href="log_vec.html#cb331-2" aria-hidden="true" tabindex="-1"></a>x[<span class="op">-</span><span class="bu">len</span>(x)]</span></code></pre></div>
+<pre><code>## 1</code></pre>
 <style type="text/css">
 .book .book-body .page-wrapper .page-inner {
   max-width: 1200px !important;
