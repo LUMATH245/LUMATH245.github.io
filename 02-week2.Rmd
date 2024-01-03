@@ -928,9 +928,9 @@ R has libraries too, those are imported via the command `library`, but we will s
 #### Creating sequences
 
 One of the common ways to create vectors or arrays is to use sequences. Sequences are ordered collections of values that follow a certain pattern or rule. Sequences can be useful for generating data, plotting, or creating loops, as we will see later on.
-As you will see, here the syntax is going to be a bit different in each language, as R uses functions such `:` or `seq` and Python uses `np.arange` or `np.linspace` to create and initialize vectors. We will 
+As you will see, here the syntax is going to be a bit different in each language, as R uses functions such `:` or `seq` and Python uses `np.arange` or `np.linspace` to create and initialize vectors. We will see how to create sequences of integers, any sequence of equally spaced numbers, and finally, how to initialize an empty vectors with all same values. 
 
-- To create a sequence of integers in R, we can use the colon operator `:`, in Python, we can use the `arange` function from `numpy`. Both take two integers as arguments, and returns a vector or an array that contains all the integers from the first argument to the second argument, with a step size of 1. For example, we can create a sequence of integers from -5 to 10, as shown below:
+**To create a sequence of integers in R**, we can use the colon operator `:`, in Python, we can use the `arange` function from `numpy`. Both take two integers as arguments, and returns a vector or an array that contains all the integers from the first argument to the second argument, with a step size of 1. For example, we can create a sequence of integers from -5 to 10, as shown below:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -961,12 +961,13 @@ x
 </div>
 :::
 
-- To create any sequence, we can use the `seq` function in R, and the `arange` or `linspace` functions in Python. For example, we can create a sequence of numbers from 0 to 1, with a step size of 0.1, or with a length of 11, as shown below:
+**To create any sequence**, we can use the `seq` function in R, and the `arange` or `linspace` functions in Python. For example, we can create a sequence of numbers from 0 to 1, with a step size of 0.1, or with a length of 11, as shown below:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
 
 **R**
+
 The `seq` function in R can take named arguments, such as `from`, `to`, `by`, or `length.out`, to specify the parameters of the sequence. 
 ```{r}
 # Creating a sequence of numbers from 0 to 1, with a step size of 0.1
@@ -983,6 +984,7 @@ y
 <div>
 
 **python**
+
 The `np.arange` function in Python, with an additional argument, will indicate the step size. In this case, arange, requires the second argument to be one step more than the desired end point of the sequence. The `np.linspace` function, instead, will create a vector of a desired length (11 elements) of equally spaced elements. It requires the third argument to be the desired length of the sequence.
 ```{python}
 # Importing the numpy module
@@ -1000,7 +1002,7 @@ y
 </div>
 :::
 
-- To create an empty vector or array in R and Python, we can use the `vector` or `array` function, respectively, and specify the type and the length of the vector or array. An empty vector or array is a vector or array that contains no values, but has a predefined type and length. An empty vector or array can be useful for initializing a vector or array that will be filled with values later, as we will see in the next chapters. For example, we can create an empty vector or array of type numeric and length 5, as shown below:
+**Empty vectors.** Lastly, there might be some cases where we have to create an empty vector or array in R and Python. An empty vector or array can be useful for initializing a vector or array that will be filled with values later, as we will see in the next chapters. For this, we can use the `vector` or `array` function, respectively, and specify the type and the length of the vector or array. An empty vector or array is a vector or array that contains no values, but has a predefined type and length. For example, we can create an empty vector or array of type numeric and length 5, as shown below:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
