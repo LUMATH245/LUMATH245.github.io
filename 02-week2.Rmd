@@ -47,8 +47,7 @@ First, let's see how to check for equality in R and Python. Equality
 means that two objects or values are exactly the same in every aspect.
 To check for equality, we use the operator `==`, which returns `TRUE` if
 the objects or values are equal, and `FALSE` if they are not. As you
-will see, the syntax and the output are very similar in both languages,
-except that R uses uppercase letters for `TRUE` and `FALSE`, while
+will see, R uses uppercase letters for `TRUE` and `FALSE`, while
 Python uses lowercase letters for `True` and `False`.
 
 For example, we can compare two strings, two integers, or two doubles,
@@ -289,7 +288,7 @@ following operators:
     if the left operand is smaller than or equal to the right operand,
     and `FALSE` otherwise.
 
-Note that the comparison is going to be consistent with the equality and
+The comparison is going to be consistent with the equality and
 inequality operators, meaning that if `x == y`, then `x >= y` and
 `x <= y` are both `TRUE`, and if `x != y`, then either `x > y` or
 `x < y` is `TRUE`.
@@ -387,8 +386,7 @@ False or False
 </div>
 :::
 
-As you can see, the syntax and the output are very similar in both
-languages, except that R uses `&` and `|` for `AND` and `OR`, while
+The syntax and the output are very similar in both languages, except that R uses `&` and `|` for `AND` and `OR`, while
 Python uses `and` and `or`. More formally, we can use a table to show
 all the possible outcomes of the `AND` and `OR` operators. Let's say
 that $a, \ b$ are our operands, then:
@@ -400,7 +398,7 @@ that $a, \ b$ are our operands, then:
 | FALSE | TRUE  | FALSE       | TRUE       |
 | FALSE | FALSE | FALSE       | FALSE      |
 
-As you can see, the table has four rows, corresponding to the four
+The table has four rows, corresponding to the four
 possible combinations of the operands a and b. Again, the table is easy
 to build, as it shows a AND b is only TRUE when both a and b are TRUE, a
 OR b is only FALSE when both a and b are FALSE.
@@ -599,7 +597,7 @@ Concerning syntax, e.g. the way we write the code:
         level. Indentation in Python is achieved either with a tab
         (recommended), or with 4 spaces.
 
-Note that the if statement only executes the block of code if the
+The if statement only executes the block of code if the
 condition is true, and does nothing otherwise. This means, that if the
 condition is `FALSE`, the program will simply skip the code within the
 block, as if it never existed.
@@ -656,9 +654,8 @@ else:
 </div>
 :::
 
-As you can see, the syntax is very similar again in both languages,
-except that R uses `else if` and Python uses `elif` for the second
-condition. Note that the order of the conditions is important, as only
+Concerning syntax, R uses `else if` and Python uses `elif` for the second
+condition. The order of the conditions is important, as only
 the first condition that is true is executed. If none of the conditions
 are true, the else block is executed.
 
@@ -712,9 +709,8 @@ if n % 3 == 0:
 </div>
 :::
 
-As you can see, the syntax and the output are very similar in both
-languages, except that R uses `%%` for the modulo operator, while Python
-uses `%`. Note that both if statements are executed, as both conditions
+In R the modulo operator is `%%`, while Python
+uses `%`. Both if statements are executed, as both conditions
 are true. If we used an if - else if - else statement instead, only the
 first condition would be executed, and the second condition would be
 ignored.
@@ -904,7 +900,7 @@ x = np.array([1, 2, 3])
 x
 ```
 
-Note that we need to import the `numpy` library before using the `array` function, and we use the alias `np` to refer to the module. Therefore, before we proceed it is probably a good time to introduce what a library is. 
+We need to import the `numpy` library before using the `array` function, and we use the alias `np` to refer to the module. Therefore, before we proceed it is probably a good time to introduce what a library is. 
 
 #### Libraries
 A library is a collection of code that provides predefined functions, classes, variables, and other resources that can be used by other programs. Libraries can save time and effort by allowing programmers to reuse existing code and avoid writing everything from scratch. Libraries can also enhance the functionality and the performance of a programming language by offering specialized tools and features that are not built-in.
@@ -1029,7 +1025,7 @@ x
 </div>
 :::
 
-As you can see, the syntax and the output are different in both languages, as R uses `vector` and Python uses `np.empty` to access the functions from the `numpy` module. Note that the `vector` function in R takes the `mode` argument to specify the type of the vector, and the `length` argument to specify the length of the vector. Note also that the `np.empty` function in Python takes the `dtype` argument to specify the type of the array, and the length of the array as the first argument.
+Note that the `vector` function in R takes the `mode` argument to specify the type of the vector, and the `length` argument to specify the length of the vector. The `np.empty` function in Python takes the the length of the array as the first argument, and the `dtype` argument to specify the type of the array, e.g. integer, float, Python object, etc.
 
 ### Modifying vectors
 
@@ -1079,7 +1075,7 @@ x / 2
 </div>
 :::
 
-Note that the element wise operations are performed by using the same arithmetic operators as before, such as `+`, `-`, `*`, and `/`.
+The element wise operations are performed by using the same arithmetic operators as the past chapter, such as `+`, `-`, `*`, and `/`.
 
 #### Functions and algebra with vectors
 
@@ -1161,7 +1157,7 @@ x + y
 </div>
 :::
 
-As you can see, the syntax and the output are very similar in both languages, except that Python uses `np.array` to access the function from the `numpy` module. Note that the elementwise product and sum are performed by using the same arithmetic operators as before, such as `*` and `+`. Note also that the elementwise product and sum preserve the shape and the length of the vectors or the arrays, meaning that the resulting vector or array has the same number of elements as the input vectors or arrays.
+The elementwise product and sum are performed by using the same arithmetic operators as before, such as `*` and `+`. Note also that the elementwise product and sum preserve the shape and the length of the vectors or the arrays, meaning that the resulting vector or array has the same number of elements as the input vectors or arrays.
 
 #### Doing the dot product of two vectors
 
@@ -1183,10 +1179,9 @@ x %*% y
 np.dot(x, y)
 ```
 
-As you can see, the syntax and the output are different in both languages, as R uses a special operator and Python uses a function from `numpy`. Note also that the dot product requires the input vectors or arrays to have the same length, otherwise it will produce an error.
+The syntax are quite different in both languages, as R uses a special operator and Python uses a function from `numpy`. Note also that the dot product requires the input vectors or arrays to have the same length, otherwise it will produce an error.
 
-We will cover how to do algebra with Python and R in the future chapters. 
-
+We will cover how to do algebra with Python and R in the next chapters. 
 
 ## Accessing vectors
 
@@ -1211,7 +1206,7 @@ length(x)
 dim(x)
 ```
 
-As you can see, the `length` function returns the number of elements in the vector, which is 4, and the `dim` function returns `NULL`, which means that the vector has no dimension. This is because a vector in R is always one-dimensional, and the `dim` function is more useful for higher-dimensional objects, such as **matrices** or **data frames**. We will learn about these structures later on, so do not worry about it for now. 
+The `length` function returns the number of elements in the vector, which is 4, and the `dim` function returns `NULL`, which means that the vector has no dimension. This is because a vector in R is always one-dimensional, and the `dim` function is more useful for higher-dimensional objects, such as **matrices** or **data frames**. We will learn about these structures later on, so do not worry about it for now. 
 
 - In Python, we can use the `size` attribute or the `len` function to get the size of an array, and the `shape` attribute or the `ndim` attribute to get the dimension of an array.
 
@@ -1233,7 +1228,7 @@ x.ndim
 # 1
 ```
 
-As you can see, the `size` attribute and the `len` function both return the number of elements in the array, which is 4, and the `shape` attribute and the `ndim` attribute both return the dimension of the array, which is 1. The `shape` attribute returns a *tuple*, that contains the length of each axis of the array, and the `ndim` attribute returns an integer that represents the number of axes of the array. Note that a one-dimensional array in Python has a shape of `(n,)`, where `n` is the size of the array, and a comma is needed to indicate that it is a tuple. A *tuple* is another one dimentional structure in Python, but for now you can treat it as just a couple of numbers.
+The `size` attribute and the `len` function both return the number of elements in the array, which is 4, and the `shape` attribute and the `ndim` attribute both return the dimension of the array, which is 1. The `shape` attribute returns a *tuple*, that contains the length of each axis of the array, and the `ndim` attribute returns an integer that represents the number of axes of the array. Note that a one-dimensional array in Python has a shape of `(n,)`, where `n` is the size of the array, and a comma is needed to indicate that it is a tuple. A *tuple* is another one dimentional structure in Python, but for now you can treat it as just a couple of numbers.
 
 ### Accessing Vector Elements
 
@@ -1284,7 +1279,7 @@ x[length(x)]
 x[3]
 ```
 
-As you can see, the first element of the vector has an index of 1, the last element of the vector has an index of the size of the vector, which is 4. The square brackets `[ ]` are used to access the elements of the vector: therefore the index must be an integer between 1 and the size of the vector, otherwise it will produce an error or a missing value.
+The first element of the vector has an index of 1, the last element of the vector has an index of the size of the vector, which is 4. The square brackets `[ ]` are used to access the elements of the vector: therefore the index must be an integer between 1 and the size of the vector, otherwise it will produce an error or a missing value.
 
 - In Python, the elements of an array are indexed from 0 to the size of the array minus 1, and we can use the square brackets `[ ]` to access them by using their index.
 
@@ -1299,7 +1294,7 @@ x[len(x) - 1]
 x[2]
 ```
 
-As you can see, the first element of the array has an index of 0, the last element of the array has an index of the size of the array minus 1, which in our case is 3. Note that the square brackets `[ ]` are used to access the elements of the array by using their index, and that the index must be an integer between 0 and the size of the array minus 1, otherwise it will produce an error or an out of bounds exception. 
+In Python, the first element of the array has an index of 0, the last element of the array has an index of the size of the array minus 1, which in our case is 3. The square brackets `[ ]` are used to access the elements of the array by using their index, and that the index must be an integer between 0 and the size of the array minus 1, otherwise it will produce an error or an out of bounds exception. 
 Differently from R, in Python, however we can access the arrays from the back, using negative integers. Try:
 ```{python}
 # Accessing the last element of the array
@@ -1514,7 +1509,7 @@ x[2] = 30
 x
 ```
 
-As you can see, the square brackets `[ ]` are used to access the elements of the array by using their index, and the equal sign `=` is used to assign new values to them
+In this code, the square brackets `[ ]` are used to access the elements of the array by using their index, and the equal sign `=` is used to assign new values to them
 
 Note that the final vector has the three elements we accessed all changed. 
 As mentioned, we can select and replace multiple elements simultaneously in a single command, look for instance at the code below. 
