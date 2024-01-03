@@ -1552,15 +1552,13 @@ x[fizz_index] = "fizz"
 x[buzz_index] = "buzz"
 x[np.logical_and(fizz_index, buzz_index)] = "fizzbuzz"
 x
-
-# small hint: python does not convert the type of vector automatically, the dtype 
-# argument is needed to ensure the vector can contain both integers and strings.
-# remove the dtype argument from the first line and see what happens
 ```
 
 </div>
 :::
 
+Small hint: You should be careful about the type of output vector in R. You'll notice now it's a character vector. 
+Python does not convert the type of vector automatically, the dtype argument is needed to ensure the vector can contain both integers and strings. Remove the dtype argument from the first line and see what happens.
 
 ```{=html}
 <style type="text/css">
