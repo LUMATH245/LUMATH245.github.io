@@ -1235,7 +1235,7 @@ x.ndim
 
 As you can see, the `size` attribute and the `len` function both return the number of elements in the array, which is 4, and the `shape` attribute and the `ndim` attribute both return the dimension of the array, which is 1. The `shape` attribute returns a *tuple*, that contains the length of each axis of the array, and the `ndim` attribute returns an integer that represents the number of axes of the array. Note that a one-dimensional array in Python has a shape of `(n,)`, where `n` is the size of the array, and a comma is needed to indicate that it is a tuple. A *tuple* is another one dimentional structure in Python, but for now you can treat it as just a couple of numbers.
 
-### Accessing the elements of a vector
+### Accessing Vector Elements
 
 We can access the elements of the vector or the array by using indexing. Indexing is a way of referring to a specific element or a subset of elements of a vector or an array by using their position or location. Every element of a vector, in fact, has an index, that is a number that indicates its order in the vector.
 
