@@ -909,6 +909,8 @@ For example, the numpy library is a library that provides various tools and func
 
 Normally, one has to reference import numpy as np only at the beginning of the script, before using any of the functions or resources from the numpy library:
 
+**python**
+
 ```{python}
 # Importing the numpy library and assigning an alias
 import numpy as np
@@ -1014,9 +1016,6 @@ x
 **python**
 
 ```{python}
-# Importing the numpy module
-import numpy as np
-
 # Creating an empty array of type numeric and length 5
 x = np.empty(5, dtype = "float")
 x
@@ -1193,7 +1192,9 @@ Before we access the elements of a vector or an array, it is useful to know the 
 
 To check the size and the dimension of a vector or an array in R and Python, we can use the following functions:
 
-- In R, we can use the `length` function to get the size of a vector, and the `dim` function to get the dimension of a vector.
+In R, we can use the `length` function to get the size of a vector, and the `dim` function to get the dimension of a vector.
+
+**R**
 
 ```{r}
 # Creating a vector of numbers
@@ -1208,7 +1209,9 @@ dim(x)
 
 The `length` function returns the number of elements in the vector, which is 4, and the `dim` function returns `NULL`, which means that the vector has no dimension. This is because a vector in R is always one-dimensional, and the `dim` function is more useful for higher-dimensional objects, such as **matrices** or **data frames**. We will learn about these structures later on, so do not worry about it for now. 
 
-- In Python, we can use the `size` attribute or the `len` function to get the size of an array, and the `shape` attribute or the `ndim` attribute to get the dimension of an array.
+In Python, we can use the `size` attribute or the `len` function to get the size of an array, and the `shape` attribute or the `ndim` attribute to get the dimension of an array.
+
+**python**
 
 ```{python}
 
@@ -1471,7 +1474,9 @@ x[x % 2 == 0]
 
 Finally, as we can overwrite variables, we can overwrite single (or multiple!) elements of a vector without modifying the entire vector. This is essentially achieved by selecting the elements of interest, and then assigning new elements to those. The replacement, of course needs to be of the same length of the elements we wish to replace. If the new values are not compatible with the type and the length of the vector, both languages will produce an error or a warning.
 
-- In R, we can use the square brackets `[ ]` to access the elements of the vector by using their index, and the left arrow `<-` to assign new values to them. For example, to overwrite the first element, the last element, and the third element:
+In R, we can use the square brackets `[ ]` to access the elements of the vector by using their index, and the left arrow `<-` to assign new values to them. For example, to overwrite the first element, the last element, and the third element:
+
+**R**
 
 ```{r}
 # Creating a vector of numbers
@@ -1490,7 +1495,9 @@ x[3] <- 30
 x
 ```
 
-- In Python, we can use the square brackets `[ ]` to access the elements of the array by using their index, and the equal sign `=` to assign new values to them. For example, to overwrite the first element, the last element, and third element:
+In Python, we can use the square brackets `[ ]` to access the elements of the array by using their index, and the equal sign `=` to assign new values to them. For example, to overwrite the first element, the last element, and third element:
+
+**python**
 
 ```{python}
 # Creating an array of numbers

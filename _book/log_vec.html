@@ -921,6 +921,7 @@ We can create an array that contains the numbers 1, 2, and 3, as shown below:</p
 <p>A library is a collection of code that provides predefined functions, classes, variables, and other resources that can be used by other programs. Libraries can save time and effort by allowing programmers to reuse existing code and avoid writing everything from scratch. Libraries can also enhance the functionality and the performance of a programming language by offering specialized tools and features that are not built-in.</p>
 <p>For example, the numpy library is a library that provides various tools and functions for working with numerical data and scientific computing. The numpy library is not part of the standard Python language, but it can be installed and imported by using the import statement. The import statement tells Python to load the library and make it available for use. The import statement can also assign an alias or a nickname to the library, such as np, to make it easier to refer to the library in the code.</p>
 <p>Normally, one has to reference import numpy as np only at the beginning of the script, before using any of the functions or resources from the numpy library:</p>
+<p><strong>python</strong></p>
 <div class="sourceCode" id="cb242"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb242-1"><a href="log_vec.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the numpy library and assigning an alias</span></span>
 <span id="cb242-2"><a href="log_vec.html#cb242-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb242-3"><a href="log_vec.html#cb242-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -989,12 +990,9 @@ As you will see, here the syntax is going to be a bit different in each language
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb257"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb257-1"><a href="log_vec.html#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the numpy module</span></span>
-<span id="cb257-2"><a href="log_vec.html#cb257-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb257-3"><a href="log_vec.html#cb257-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb257-4"><a href="log_vec.html#cb257-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating an empty array of type numeric and length 5</span></span>
-<span id="cb257-5"><a href="log_vec.html#cb257-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.empty(<span class="dv">5</span>, dtype <span class="op">=</span> <span class="st">&quot;float&quot;</span>)</span>
-<span id="cb257-6"><a href="log_vec.html#cb257-6" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb257-1"><a href="log_vec.html#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating an empty array of type numeric and length 5</span></span>
+<span id="cb257-2"><a href="log_vec.html#cb257-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.empty(<span class="dv">5</span>, dtype <span class="op">=</span> <span class="st">&quot;float&quot;</span>)</span>
+<span id="cb257-3"><a href="log_vec.html#cb257-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>## array([4.9e-324, 9.9e-324, 1.5e-323, 2.0e-323, 2.5e-323])</code></pre>
 </div>
 </div>
@@ -1125,9 +1123,8 @@ As you will see, here the syntax is going to be a bit different in each language
 <h3><span class="header-section-number">2.5.1</span> Checking the size and dimension of a vector<a href="log_vec.html#checking-the-size-and-dimension-of-a-vector" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Before we access the elements of a vector or an array, it is useful to know the size and the dimension of the vector or the array. <strong>The size</strong> of a vector or an array is the number of elements that it contains. <strong>The dimension</strong>, on the other hand, is the number of axes or directions that it has. For example, a one-dimensional vector or array has only one axis or direction, and a two-dimensional vector or a matrix will have two axes or directions, such as rows and columns.</p>
 <p>To check the size and the dimension of a vector or an array in R and Python, we can use the following functions:</p>
-<ul>
-<li>In R, we can use the <code>length</code> function to get the size of a vector, and the <code>dim</code> function to get the dimension of a vector.</li>
-</ul>
+<p>In R, we can use the <code>length</code> function to get the size of a vector, and the <code>dim</code> function to get the dimension of a vector.</p>
+<p><strong>R</strong></p>
 <div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="log_vec.html#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a vector of numbers</span></span>
 <span id="cb295-2"><a href="log_vec.html#cb295-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
 <span id="cb295-3"><a href="log_vec.html#cb295-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1138,9 +1135,8 @@ As you will see, here the syntax is going to be a bit different in each language
 <span id="cb297-2"><a href="log_vec.html#cb297-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x)</span></code></pre></div>
 <pre><code>## NULL</code></pre>
 <p>The <code>length</code> function returns the number of elements in the vector, which is 4, and the <code>dim</code> function returns <code>NULL</code>, which means that the vector has no dimension. This is because a vector in R is always one-dimensional, and the <code>dim</code> function is more useful for higher-dimensional objects, such as <strong>matrices</strong> or <strong>data frames</strong>. We will learn about these structures later on, so do not worry about it for now.</p>
-<ul>
-<li>In Python, we can use the <code>size</code> attribute or the <code>len</code> function to get the size of an array, and the <code>shape</code> attribute or the <code>ndim</code> attribute to get the dimension of an array.</li>
-</ul>
+<p>In Python, we can use the <code>size</code> attribute or the <code>len</code> function to get the size of an array, and the <code>shape</code> attribute or the <code>ndim</code> attribute to get the dimension of an array.</p>
+<p><strong>python</strong></p>
 <div class="sourceCode" id="cb299"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb299-1"><a href="log_vec.html#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating an array of numbers</span></span>
 <span id="cb299-2"><a href="log_vec.html#cb299-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">4</span>)</span>
 <span id="cb299-3"><a href="log_vec.html#cb299-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1337,9 +1333,8 @@ Differently from R, in Python, however we can access the arrays from the back, u
 <div id="overwriting-elements-of-vectors" class="section level4 hasAnchor" number="2.5.2.2">
 <h4><span class="header-section-number">2.5.2.2</span> Overwriting elements of vectors<a href="log_vec.html#overwriting-elements-of-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Finally, as we can overwrite variables, we can overwrite single (or multiple!) elements of a vector without modifying the entire vector. This is essentially achieved by selecting the elements of interest, and then assigning new elements to those. The replacement, of course needs to be of the same length of the elements we wish to replace. If the new values are not compatible with the type and the length of the vector, both languages will produce an error or a warning.</p>
-<ul>
-<li>In R, we can use the square brackets <code>[ ]</code> to access the elements of the vector by using their index, and the left arrow <code>&lt;-</code> to assign new values to them. For example, to overwrite the first element, the last element, and the third element:</li>
-</ul>
+<p>In R, we can use the square brackets <code>[ ]</code> to access the elements of the vector by using their index, and the left arrow <code>&lt;-</code> to assign new values to them. For example, to overwrite the first element, the last element, and the third element:</p>
+<p><strong>R</strong></p>
 <div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="log_vec.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a vector of numbers</span></span>
 <span id="cb360-2"><a href="log_vec.html#cb360-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
 <span id="cb360-3"><a href="log_vec.html#cb360-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1355,9 +1350,8 @@ Differently from R, in Python, however we can access the arrays from the back, u
 <span id="cb364-2"><a href="log_vec.html#cb364-2" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="dv">30</span></span>
 <span id="cb364-3"><a href="log_vec.html#cb364-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>## [1] 10  2 30 20</code></pre>
-<ul>
-<li>In Python, we can use the square brackets <code>[ ]</code> to access the elements of the array by using their index, and the equal sign <code>=</code> to assign new values to them. For example, to overwrite the first element, the last element, and third element:</li>
-</ul>
+<p>In Python, we can use the square brackets <code>[ ]</code> to access the elements of the array by using their index, and the equal sign <code>=</code> to assign new values to them. For example, to overwrite the first element, the last element, and third element:</p>
+<p><strong>python</strong></p>
 <div class="sourceCode" id="cb366"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb366-1"><a href="log_vec.html#cb366-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating an array of numbers</span></span>
 <span id="cb366-2"><a href="log_vec.html#cb366-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span>
 <span id="cb366-3"><a href="log_vec.html#cb366-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1437,6 +1431,12 @@ Break down, comment and describe the following code, and adapt it do perform Ski
 </div>
 <p>Small hint: You should be careful about the type of output vector in R. You’ll notice now it’s a character vector.
 Python does not convert the type of vector automatically, the dtype argument is needed to ensure the vector can contain both integers and strings. Remove the dtype argument from the first line and see what happens.</p>
+<style type="text/css">
+.book .book-body .page-wrapper .page-inner {
+  max-width: 1200px !important;
+}
+</style>
+
 <style type="text/css">
 .book .book-body .page-wrapper .page-inner {
   max-width: 1200px !important;
