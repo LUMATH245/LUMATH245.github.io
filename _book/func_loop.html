@@ -244,20 +244,28 @@ g = 453.5924 * lbs
 <span id="cb379-2"><a href="func_loop.html#cb379-2" aria-hidden="true" tabindex="-1"></a>  grams <span class="op">=</span> <span class="fl">453.5924</span> <span class="op">*</span> lbs</span>
 <span id="cb379-3"><a href="func_loop.html#cb379-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> grams</span></code></pre></div>
 <p>In this function, <code>lbs</code> is the input (or argument), and the function returns the equivalent weight in grams: following the <code>def</code> keyword we need both the function name, followed by the argument. The <code>return</code> statement is used to specify the result that the function should output.</p>
-<p>Now, once we have made the new function, we can call it by:</p>
+<p>Now, once we have made the new function, we can call it with:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="func_loop.html#cb380-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_grams</span>(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="func_loop.html#cb380-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_grams</span>(<span class="at">lbs=</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 907.1848</code></pre>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="func_loop.html#cb382-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_grams</span>(<span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="func_loop.html#cb382-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_grams</span>(<span class="at">lbs=</span><span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 1360.777</code></pre>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="func_loop.html#cb384-1" aria-hidden="true" tabindex="-1"></a><span class="co"># when calling we can also omit </span></span>
+<span id="cb384-2"><a href="func_loop.html#cb384-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the argument name for brevity</span></span>
+<span id="cb384-3"><a href="func_loop.html#cb384-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_grams</span>(<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] 1360.777</code></pre>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb384"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb384-1"><a href="func_loop.html#cb384-1" aria-hidden="true" tabindex="-1"></a>lbs_to_grams(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb386"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb386-1"><a href="func_loop.html#cb386-1" aria-hidden="true" tabindex="-1"></a>lbs_to_grams(lbs<span class="op">=</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## 907.1848</code></pre>
-<div class="sourceCode" id="cb386"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb386-1"><a href="func_loop.html#cb386-1" aria-hidden="true" tabindex="-1"></a>lbs_to_grams(<span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb388"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb388-1"><a href="func_loop.html#cb388-1" aria-hidden="true" tabindex="-1"></a>lbs_to_grams(lbs<span class="op">=</span><span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## 1360.7772</code></pre>
+<div class="sourceCode" id="cb390"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb390-1"><a href="func_loop.html#cb390-1" aria-hidden="true" tabindex="-1"></a><span class="co"># when calling we can also omit </span></span>
+<span id="cb390-2"><a href="func_loop.html#cb390-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the argument name for brevity</span></span>
+<span id="cb390-3"><a href="func_loop.html#cb390-3" aria-hidden="true" tabindex="-1"></a>lbs_to_grams(<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## 1360.7772</code></pre>
 </div>
 </div>
@@ -276,35 +284,35 @@ Before we continue, we need to introduce the concept of <em>environments</em>.</
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="func_loop.html#cb388-1" aria-hidden="true" tabindex="-1"></a>lbs_to_grams <span class="ot">&lt;-</span> <span class="cf">function</span>(lbs) {</span>
-<span id="cb388-2"><a href="func_loop.html#cb388-2" aria-hidden="true" tabindex="-1"></a>  grams <span class="ot">=</span> <span class="fl">453.5924</span> <span class="sc">*</span> lbs</span>
-<span id="cb388-3"><a href="func_loop.html#cb388-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(grams)</span>
-<span id="cb388-4"><a href="func_loop.html#cb388-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb388-5"><a href="func_loop.html#cb388-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb388-6"><a href="func_loop.html#cb388-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a variable in the global environment</span></span>
-<span id="cb388-7"><a href="func_loop.html#cb388-7" aria-hidden="true" tabindex="-1"></a>glo_grams <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb388-8"><a href="func_loop.html#cb388-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb388-9"><a href="func_loop.html#cb388-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Try to access the local variable &quot;grams&quot;</span></span>
-<span id="cb388-10"><a href="func_loop.html#cb388-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(grams)</span></code></pre></div>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="func_loop.html#cb392-1" aria-hidden="true" tabindex="-1"></a>lbs_to_grams <span class="ot">&lt;-</span> <span class="cf">function</span>(lbs) {</span>
+<span id="cb392-2"><a href="func_loop.html#cb392-2" aria-hidden="true" tabindex="-1"></a>  grams <span class="ot">=</span> <span class="fl">453.5924</span> <span class="sc">*</span> lbs</span>
+<span id="cb392-3"><a href="func_loop.html#cb392-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(grams)</span>
+<span id="cb392-4"><a href="func_loop.html#cb392-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb392-5"><a href="func_loop.html#cb392-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb392-6"><a href="func_loop.html#cb392-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a variable in the global environment</span></span>
+<span id="cb392-7"><a href="func_loop.html#cb392-7" aria-hidden="true" tabindex="-1"></a>glo_grams <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb392-8"><a href="func_loop.html#cb392-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb392-9"><a href="func_loop.html#cb392-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Try to access the local variable &quot;grams&quot;</span></span>
+<span id="cb392-10"><a href="func_loop.html#cb392-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(grams)</span></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;grams&#39; not found</code></pre>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="func_loop.html#cb390-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Try to access the global variable &quot;glo_grams&quot;</span></span>
-<span id="cb390-2"><a href="func_loop.html#cb390-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(glo_grams)</span></code></pre></div>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="func_loop.html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Try to access the global variable &quot;glo_grams&quot;</span></span>
+<span id="cb394-2"><a href="func_loop.html#cb394-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(glo_grams)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb392"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb392-1"><a href="func_loop.html#cb392-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lbs_to_grams(lbs):</span>
-<span id="cb392-2"><a href="func_loop.html#cb392-2" aria-hidden="true" tabindex="-1"></a>  grams <span class="op">=</span> <span class="fl">453.5924</span> <span class="op">*</span> lbs</span>
-<span id="cb392-3"><a href="func_loop.html#cb392-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> grams</span>
-<span id="cb392-4"><a href="func_loop.html#cb392-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb392-5"><a href="func_loop.html#cb392-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a variable in the global environment</span></span>
-<span id="cb392-6"><a href="func_loop.html#cb392-6" aria-hidden="true" tabindex="-1"></a>glo_grams <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb392-7"><a href="func_loop.html#cb392-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb392-8"><a href="func_loop.html#cb392-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Try to access the local variable &quot;grams&quot;</span></span>
-<span id="cb392-9"><a href="func_loop.html#cb392-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(grams)</span></code></pre></div>
+<div class="sourceCode" id="cb396"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb396-1"><a href="func_loop.html#cb396-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lbs_to_grams(lbs):</span>
+<span id="cb396-2"><a href="func_loop.html#cb396-2" aria-hidden="true" tabindex="-1"></a>  grams <span class="op">=</span> <span class="fl">453.5924</span> <span class="op">*</span> lbs</span>
+<span id="cb396-3"><a href="func_loop.html#cb396-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> grams</span>
+<span id="cb396-4"><a href="func_loop.html#cb396-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb396-5"><a href="func_loop.html#cb396-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a variable in the global environment</span></span>
+<span id="cb396-6"><a href="func_loop.html#cb396-6" aria-hidden="true" tabindex="-1"></a>glo_grams <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb396-7"><a href="func_loop.html#cb396-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb396-8"><a href="func_loop.html#cb396-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Try to access the local variable &quot;grams&quot;</span></span>
+<span id="cb396-9"><a href="func_loop.html#cb396-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(grams)</span></code></pre></div>
 <pre><code>## name &#39;grams&#39; is not defined</code></pre>
-<div class="sourceCode" id="cb394"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb394-1"><a href="func_loop.html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Try to access the global variable &quot;glo_grams&quot;</span></span>
-<span id="cb394-2"><a href="func_loop.html#cb394-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(glo_grams)</span></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb398-1"><a href="func_loop.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Try to access the global variable &quot;glo_grams&quot;</span></span>
+<span id="cb398-2"><a href="func_loop.html#cb398-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(glo_grams)</span></code></pre></div>
 <pre><code>## 2</code></pre>
 </div>
 </div>
@@ -314,43 +322,43 @@ Before we continue, we need to introduce the concept of <em>environments</em>.</
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="func_loop.html#cb396-1" aria-hidden="true" tabindex="-1"></a><span class="co"># I specified in the global lbs at some point </span></span>
-<span id="cb396-2"><a href="func_loop.html#cb396-2" aria-hidden="true" tabindex="-1"></a>lbs <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb396-3"><a href="func_loop.html#cb396-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb396-4"><a href="func_loop.html#cb396-4" aria-hidden="true" tabindex="-1"></a><span class="co"># and here I made a typo!</span></span>
-<span id="cb396-5"><a href="func_loop.html#cb396-5" aria-hidden="true" tabindex="-1"></a><span class="co">#                            V</span></span>
-<span id="cb396-6"><a href="func_loop.html#cb396-6" aria-hidden="true" tabindex="-1"></a>bug_lbs_to_grams <span class="ot">&lt;-</span> <span class="cf">function</span>(lb) {</span>
-<span id="cb396-7"><a href="func_loop.html#cb396-7" aria-hidden="true" tabindex="-1"></a>  grams <span class="ot">=</span> <span class="fl">453.5924</span> <span class="sc">*</span> lbs</span>
-<span id="cb396-8"><a href="func_loop.html#cb396-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(grams)</span>
-<span id="cb396-9"><a href="func_loop.html#cb396-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb396-10"><a href="func_loop.html#cb396-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb396-11"><a href="func_loop.html#cb396-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, no matter what I call, I will always get the same result! </span></span>
-<span id="cb396-12"><a href="func_loop.html#cb396-12" aria-hidden="true" tabindex="-1"></a><span class="co"># e.g.: 453.5924 * 3 </span></span>
-<span id="cb396-13"><a href="func_loop.html#cb396-13" aria-hidden="true" tabindex="-1"></a><span class="fu">bug_lbs_to_grams</span>(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="func_loop.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="co"># I specified in the global lbs at some point </span></span>
+<span id="cb400-2"><a href="func_loop.html#cb400-2" aria-hidden="true" tabindex="-1"></a>lbs <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb400-3"><a href="func_loop.html#cb400-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb400-4"><a href="func_loop.html#cb400-4" aria-hidden="true" tabindex="-1"></a><span class="co"># and here I made a typo!</span></span>
+<span id="cb400-5"><a href="func_loop.html#cb400-5" aria-hidden="true" tabindex="-1"></a><span class="co">#                            V</span></span>
+<span id="cb400-6"><a href="func_loop.html#cb400-6" aria-hidden="true" tabindex="-1"></a>bug_lbs_to_grams <span class="ot">&lt;-</span> <span class="cf">function</span>(lb) {</span>
+<span id="cb400-7"><a href="func_loop.html#cb400-7" aria-hidden="true" tabindex="-1"></a>  grams <span class="ot">=</span> <span class="fl">453.5924</span> <span class="sc">*</span> lbs</span>
+<span id="cb400-8"><a href="func_loop.html#cb400-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(grams)</span>
+<span id="cb400-9"><a href="func_loop.html#cb400-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb400-10"><a href="func_loop.html#cb400-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb400-11"><a href="func_loop.html#cb400-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, no matter what I call, I will always get the same result! </span></span>
+<span id="cb400-12"><a href="func_loop.html#cb400-12" aria-hidden="true" tabindex="-1"></a><span class="co"># e.g.: 453.5924 * 3 </span></span>
+<span id="cb400-13"><a href="func_loop.html#cb400-13" aria-hidden="true" tabindex="-1"></a><span class="fu">bug_lbs_to_grams</span>(<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 1360.777</code></pre>
-<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="func_loop.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bug_lbs_to_grams</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="func_loop.html#cb402-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bug_lbs_to_grams</span>(<span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## [1] 1360.777</code></pre>
-<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="func_loop.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bug_lbs_to_grams</span>(<span class="dv">42</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="func_loop.html#cb404-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bug_lbs_to_grams</span>(<span class="dv">42</span>)</span></code></pre></div>
 <pre><code>## [1] 1360.777</code></pre>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb402"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb402-1"><a href="func_loop.html#cb402-1" aria-hidden="true" tabindex="-1"></a><span class="co"># I specified in the global lbs at some point </span></span>
-<span id="cb402-2"><a href="func_loop.html#cb402-2" aria-hidden="true" tabindex="-1"></a>lbs <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb402-3"><a href="func_loop.html#cb402-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb402-4"><a href="func_loop.html#cb402-4" aria-hidden="true" tabindex="-1"></a><span class="co"># and here I made a typo!</span></span>
-<span id="cb402-5"><a href="func_loop.html#cb402-5" aria-hidden="true" tabindex="-1"></a><span class="co">#                     V</span></span>
-<span id="cb402-6"><a href="func_loop.html#cb402-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> bug_lbs_to_grams(lb):</span>
-<span id="cb402-7"><a href="func_loop.html#cb402-7" aria-hidden="true" tabindex="-1"></a>  grams <span class="op">=</span> <span class="fl">453.5924</span> <span class="op">*</span> lbs</span>
-<span id="cb402-8"><a href="func_loop.html#cb402-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> grams</span>
-<span id="cb402-9"><a href="func_loop.html#cb402-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb402-10"><a href="func_loop.html#cb402-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, no matter what I call, I will always get the same result! </span></span>
-<span id="cb402-11"><a href="func_loop.html#cb402-11" aria-hidden="true" tabindex="-1"></a><span class="co"># e.g.: 453.5924 * 3 </span></span>
-<span id="cb402-12"><a href="func_loop.html#cb402-12" aria-hidden="true" tabindex="-1"></a>bug_lbs_to_grams(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb406"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb406-1"><a href="func_loop.html#cb406-1" aria-hidden="true" tabindex="-1"></a><span class="co"># I specified in the global lbs at some point </span></span>
+<span id="cb406-2"><a href="func_loop.html#cb406-2" aria-hidden="true" tabindex="-1"></a>lbs <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb406-3"><a href="func_loop.html#cb406-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb406-4"><a href="func_loop.html#cb406-4" aria-hidden="true" tabindex="-1"></a><span class="co"># and here I made a typo!</span></span>
+<span id="cb406-5"><a href="func_loop.html#cb406-5" aria-hidden="true" tabindex="-1"></a><span class="co">#                     V</span></span>
+<span id="cb406-6"><a href="func_loop.html#cb406-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> bug_lbs_to_grams(lb):</span>
+<span id="cb406-7"><a href="func_loop.html#cb406-7" aria-hidden="true" tabindex="-1"></a>  grams <span class="op">=</span> <span class="fl">453.5924</span> <span class="op">*</span> lbs</span>
+<span id="cb406-8"><a href="func_loop.html#cb406-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> grams</span>
+<span id="cb406-9"><a href="func_loop.html#cb406-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb406-10"><a href="func_loop.html#cb406-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, no matter what I call, I will always get the same result! </span></span>
+<span id="cb406-11"><a href="func_loop.html#cb406-11" aria-hidden="true" tabindex="-1"></a><span class="co"># e.g.: 453.5924 * 3 </span></span>
+<span id="cb406-12"><a href="func_loop.html#cb406-12" aria-hidden="true" tabindex="-1"></a>bug_lbs_to_grams(<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## 1360.7772</code></pre>
-<div class="sourceCode" id="cb404"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb404-1"><a href="func_loop.html#cb404-1" aria-hidden="true" tabindex="-1"></a>bug_lbs_to_grams(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb408"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb408-1"><a href="func_loop.html#cb408-1" aria-hidden="true" tabindex="-1"></a>bug_lbs_to_grams(<span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## 1360.7772</code></pre>
-<div class="sourceCode" id="cb406"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb406-1"><a href="func_loop.html#cb406-1" aria-hidden="true" tabindex="-1"></a>bug_lbs_to_grams(<span class="dv">42</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb410"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb410-1"><a href="func_loop.html#cb410-1" aria-hidden="true" tabindex="-1"></a>bug_lbs_to_grams(<span class="dv">42</span>)</span></code></pre></div>
 <pre><code>## 1360.7772</code></pre>
 </div>
 </div>
@@ -360,28 +368,28 @@ Hence, no matter what I feed to the function, it will return the evaluation with
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="func_loop.html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="co"># global lbs</span></span>
-<span id="cb408-2"><a href="func_loop.html#cb408-2" aria-hidden="true" tabindex="-1"></a>lbs <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb408-3"><a href="func_loop.html#cb408-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb408-4"><a href="func_loop.html#cb408-4" aria-hidden="true" tabindex="-1"></a><span class="co"># but this does not affect the &quot;lbs&quot; of the function argument</span></span>
-<span id="cb408-5"><a href="func_loop.html#cb408-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_grams</span>(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="func_loop.html#cb412-1" aria-hidden="true" tabindex="-1"></a><span class="co"># global lbs</span></span>
+<span id="cb412-2"><a href="func_loop.html#cb412-2" aria-hidden="true" tabindex="-1"></a>lbs <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb412-3"><a href="func_loop.html#cb412-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb412-4"><a href="func_loop.html#cb412-4" aria-hidden="true" tabindex="-1"></a><span class="co"># but this does not affect the &quot;lbs&quot; of the function argument</span></span>
+<span id="cb412-5"><a href="func_loop.html#cb412-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_grams</span>(<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 907.1848</code></pre>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="func_loop.html#cb410-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_grams</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="func_loop.html#cb414-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_grams</span>(<span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## [1] 4535.924</code></pre>
-<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="func_loop.html#cb412-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_grams</span>(<span class="dv">42</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="func_loop.html#cb416-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_grams</span>(<span class="dv">42</span>)</span></code></pre></div>
 <pre><code>## [1] 19050.88</code></pre>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb414"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb414-1"><a href="func_loop.html#cb414-1" aria-hidden="true" tabindex="-1"></a><span class="co"># global lbs </span></span>
-<span id="cb414-2"><a href="func_loop.html#cb414-2" aria-hidden="true" tabindex="-1"></a>lbs <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb414-3"><a href="func_loop.html#cb414-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb414-4"><a href="func_loop.html#cb414-4" aria-hidden="true" tabindex="-1"></a><span class="co"># but this does not affect the &quot;lbs&quot; of the function argument</span></span>
-<span id="cb414-5"><a href="func_loop.html#cb414-5" aria-hidden="true" tabindex="-1"></a>lbs_to_grams(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb418"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb418-1"><a href="func_loop.html#cb418-1" aria-hidden="true" tabindex="-1"></a><span class="co"># global lbs </span></span>
+<span id="cb418-2"><a href="func_loop.html#cb418-2" aria-hidden="true" tabindex="-1"></a>lbs <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb418-3"><a href="func_loop.html#cb418-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb418-4"><a href="func_loop.html#cb418-4" aria-hidden="true" tabindex="-1"></a><span class="co"># but this does not affect the &quot;lbs&quot; of the function argument</span></span>
+<span id="cb418-5"><a href="func_loop.html#cb418-5" aria-hidden="true" tabindex="-1"></a>lbs_to_grams(<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## 907.1848</code></pre>
-<div class="sourceCode" id="cb416"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb416-1"><a href="func_loop.html#cb416-1" aria-hidden="true" tabindex="-1"></a>lbs_to_grams(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb420"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb420-1"><a href="func_loop.html#cb420-1" aria-hidden="true" tabindex="-1"></a>lbs_to_grams(<span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## 4535.924</code></pre>
-<div class="sourceCode" id="cb418"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb418-1"><a href="func_loop.html#cb418-1" aria-hidden="true" tabindex="-1"></a>lbs_to_grams(<span class="dv">42</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb422"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb422-1"><a href="func_loop.html#cb422-1" aria-hidden="true" tabindex="-1"></a>lbs_to_grams(<span class="dv">42</span>)</span></code></pre></div>
 <pre><code>## 19050.8808</code></pre>
 </div>
 </div>
@@ -390,42 +398,42 @@ Hence, no matter what I feed to the function, it will return the evaluation with
 <h4><span class="header-section-number">3.1.1.2</span> Multiple arguments<a href="func_loop.html#multiple-arguments" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Say we want now to convert pounds to milliliters. To convert from mass to volume, we will need an additional information, the specific mass. In physics, the specific mass (also known as the volumetric mass density) of a substance is the mass per unit volume.</p>
 <p>Fortunately for us, functions can take multiple arguments, allowing us to give more elements to the local environment of the function. This means we can customize the function’s behavior based on these inputs. Let’s see how we can add more arguments to a function.</p>
-<p>We’ll create a new function to convert pounds to milliliters. This function will take a second argument: <code>specific_mass</code>. We’ll use the function we created earlier to convert pounds to grams, and then, using the <code>specific_mass</code>, we’ll convert grams to liters. We’ll set the default value of <code>specific_mass</code> to be the specific mass of water: the default value is the value that the argument will assume if we do not specify the argument.</p>
+<p>We’ll create a new function to convert pounds to milliliters. This function will take a second argument: <code>specific_mass</code>. We’ll use the function <strong>we created earlier</strong> to convert pounds to grams, and then, using the <code>specific_mass</code>, we’ll convert grams to liters. We’ll set the default value of <code>specific_mass</code> to be the specific mass of water: the default value is the value that the argument will assume if we do not specify the argument.</p>
 <p>Here’s how we can do this in both R and Python:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="func_loop.html#cb420-1" aria-hidden="true" tabindex="-1"></a>lbs_to_ml <span class="ot">&lt;-</span> <span class="cf">function</span>(lbs, <span class="at">specific_mass =</span> <span class="dv">1</span>) {</span>
-<span id="cb420-2"><a href="func_loop.html#cb420-2" aria-hidden="true" tabindex="-1"></a>  grams <span class="ot">&lt;-</span> <span class="fu">lbs_to_grams</span>(lbs)</span>
-<span id="cb420-3"><a href="func_loop.html#cb420-3" aria-hidden="true" tabindex="-1"></a>  ml <span class="ot">&lt;-</span> grams <span class="sc">/</span> specific_mass</span>
-<span id="cb420-4"><a href="func_loop.html#cb420-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(ml)</span>
-<span id="cb420-5"><a href="func_loop.html#cb420-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb420-6"><a href="func_loop.html#cb420-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb420-7"><a href="func_loop.html#cb420-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Specific mass of water and oil</span></span>
-<span id="cb420-8"><a href="func_loop.html#cb420-8" aria-hidden="true" tabindex="-1"></a>water_mass <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb420-9"><a href="func_loop.html#cb420-9" aria-hidden="true" tabindex="-1"></a>oil_mass <span class="ot">=</span> <span class="fl">0.92</span></span>
-<span id="cb420-10"><a href="func_loop.html#cb420-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb420-11"><a href="func_loop.html#cb420-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 2 lbs of water and oil to ml</span></span>
-<span id="cb420-12"><a href="func_loop.html#cb420-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_ml</span>(<span class="dv">2</span>, water_mass)</span></code></pre></div>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="func_loop.html#cb424-1" aria-hidden="true" tabindex="-1"></a>lbs_to_ml <span class="ot">&lt;-</span> <span class="cf">function</span>(lbs, <span class="at">specific_mass =</span> <span class="dv">1</span>) {</span>
+<span id="cb424-2"><a href="func_loop.html#cb424-2" aria-hidden="true" tabindex="-1"></a>  grams <span class="ot">&lt;-</span> <span class="fu">lbs_to_grams</span>(lbs)</span>
+<span id="cb424-3"><a href="func_loop.html#cb424-3" aria-hidden="true" tabindex="-1"></a>  ml <span class="ot">&lt;-</span> grams <span class="sc">/</span> specific_mass</span>
+<span id="cb424-4"><a href="func_loop.html#cb424-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(ml)</span>
+<span id="cb424-5"><a href="func_loop.html#cb424-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb424-6"><a href="func_loop.html#cb424-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb424-7"><a href="func_loop.html#cb424-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Specific mass of water and oil</span></span>
+<span id="cb424-8"><a href="func_loop.html#cb424-8" aria-hidden="true" tabindex="-1"></a>water_mass <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb424-9"><a href="func_loop.html#cb424-9" aria-hidden="true" tabindex="-1"></a>oil_mass <span class="ot">=</span> <span class="fl">0.92</span></span>
+<span id="cb424-10"><a href="func_loop.html#cb424-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb424-11"><a href="func_loop.html#cb424-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 2 lbs of water and oil to ml</span></span>
+<span id="cb424-12"><a href="func_loop.html#cb424-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_ml</span>(<span class="dv">2</span>, water_mass)</span></code></pre></div>
 <pre><code>## [1] 907.1848</code></pre>
-<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="func_loop.html#cb422-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_ml</span>(<span class="dv">2</span>, oil_mass)</span></code></pre></div>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="func_loop.html#cb426-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_ml</span>(<span class="dv">2</span>, oil_mass)</span></code></pre></div>
 <pre><code>## [1] 986.0704</code></pre>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb424"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb424-1"><a href="func_loop.html#cb424-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lbs_to_ml(lbs, specific_mass<span class="op">=</span><span class="dv">1</span>):</span>
-<span id="cb424-2"><a href="func_loop.html#cb424-2" aria-hidden="true" tabindex="-1"></a>  grams <span class="op">=</span> lbs_to_grams(lbs)</span>
-<span id="cb424-3"><a href="func_loop.html#cb424-3" aria-hidden="true" tabindex="-1"></a>  ml <span class="op">=</span> grams <span class="op">/</span> specific_mass</span>
-<span id="cb424-4"><a href="func_loop.html#cb424-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> ml</span>
-<span id="cb424-5"><a href="func_loop.html#cb424-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb424-6"><a href="func_loop.html#cb424-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Specific mass of water and oil</span></span>
-<span id="cb424-7"><a href="func_loop.html#cb424-7" aria-hidden="true" tabindex="-1"></a>water_mass <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb424-8"><a href="func_loop.html#cb424-8" aria-hidden="true" tabindex="-1"></a>oil_mass <span class="op">=</span> <span class="fl">0.92</span></span>
-<span id="cb424-9"><a href="func_loop.html#cb424-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb424-10"><a href="func_loop.html#cb424-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 2 lbs of water and oil to ml</span></span>
-<span id="cb424-11"><a href="func_loop.html#cb424-11" aria-hidden="true" tabindex="-1"></a>lbs_to_ml(<span class="dv">2</span>, water_mass)</span></code></pre></div>
+<div class="sourceCode" id="cb428"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb428-1"><a href="func_loop.html#cb428-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lbs_to_ml(lbs, specific_mass<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb428-2"><a href="func_loop.html#cb428-2" aria-hidden="true" tabindex="-1"></a>  grams <span class="op">=</span> lbs_to_grams(lbs)</span>
+<span id="cb428-3"><a href="func_loop.html#cb428-3" aria-hidden="true" tabindex="-1"></a>  ml <span class="op">=</span> grams <span class="op">/</span> specific_mass</span>
+<span id="cb428-4"><a href="func_loop.html#cb428-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> ml</span>
+<span id="cb428-5"><a href="func_loop.html#cb428-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb428-6"><a href="func_loop.html#cb428-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Specific mass of water and oil</span></span>
+<span id="cb428-7"><a href="func_loop.html#cb428-7" aria-hidden="true" tabindex="-1"></a>water_mass <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb428-8"><a href="func_loop.html#cb428-8" aria-hidden="true" tabindex="-1"></a>oil_mass <span class="op">=</span> <span class="fl">0.92</span></span>
+<span id="cb428-9"><a href="func_loop.html#cb428-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb428-10"><a href="func_loop.html#cb428-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 2 lbs of water and oil to ml</span></span>
+<span id="cb428-11"><a href="func_loop.html#cb428-11" aria-hidden="true" tabindex="-1"></a>lbs_to_ml(<span class="dv">2</span>, water_mass)</span></code></pre></div>
 <pre><code>## 907.1848</code></pre>
-<div class="sourceCode" id="cb426"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb426-1"><a href="func_loop.html#cb426-1" aria-hidden="true" tabindex="-1"></a>lbs_to_ml(<span class="dv">2</span>, oil_mass)</span></code></pre></div>
+<div class="sourceCode" id="cb430"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb430-1"><a href="func_loop.html#cb430-1" aria-hidden="true" tabindex="-1"></a>lbs_to_ml(<span class="dv">2</span>, oil_mass)</span></code></pre></div>
 <pre><code>## 986.0704347826087</code></pre>
 </div>
 </div>
@@ -433,34 +441,34 @@ Hence, no matter what I feed to the function, it will return the evaluation with
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="func_loop.html#cb428-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specific mass of water and oil</span></span>
-<span id="cb428-2"><a href="func_loop.html#cb428-2" aria-hidden="true" tabindex="-1"></a>water_mass <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb428-3"><a href="func_loop.html#cb428-3" aria-hidden="true" tabindex="-1"></a>oil_mass <span class="ot">=</span> <span class="fl">0.92</span></span>
-<span id="cb428-4"><a href="func_loop.html#cb428-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb428-5"><a href="func_loop.html#cb428-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 2 lbs of water and oil to ml</span></span>
-<span id="cb428-6"><a href="func_loop.html#cb428-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_ml</span>(<span class="dv">2</span>, <span class="at">specific_mass =</span>  water_mass)</span></code></pre></div>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="func_loop.html#cb432-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specific mass of water and oil</span></span>
+<span id="cb432-2"><a href="func_loop.html#cb432-2" aria-hidden="true" tabindex="-1"></a>water_mass <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb432-3"><a href="func_loop.html#cb432-3" aria-hidden="true" tabindex="-1"></a>oil_mass <span class="ot">=</span> <span class="fl">0.92</span></span>
+<span id="cb432-4"><a href="func_loop.html#cb432-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb432-5"><a href="func_loop.html#cb432-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 2 lbs of water and oil to ml</span></span>
+<span id="cb432-6"><a href="func_loop.html#cb432-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_ml</span>(<span class="dv">2</span>, <span class="at">specific_mass=</span>water_mass)</span></code></pre></div>
 <pre><code>## [1] 907.1848</code></pre>
-<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="func_loop.html#cb430-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_ml</span>(<span class="dv">2</span>) <span class="co"># equivalent, as the argument defaults to water</span></span></code></pre></div>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="func_loop.html#cb434-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_ml</span>(<span class="dv">2</span>) <span class="co"># equivalent, as the argument defaults to water</span></span></code></pre></div>
 <pre><code>## [1] 907.1848</code></pre>
-<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="func_loop.html#cb432-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_ml</span>(<span class="dv">2</span>, <span class="at">specific_mass =</span>  oil_mass)</span></code></pre></div>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="func_loop.html#cb436-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_ml</span>(<span class="dv">2</span>, <span class="at">specific_mass=</span>oil_mass)</span></code></pre></div>
 <pre><code>## [1] 986.0704</code></pre>
-<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="func_loop.html#cb434-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_ml</span>(<span class="dv">2</span>, oil_mass) <span class="co"># equivalent, omitting the argument name</span></span></code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="func_loop.html#cb438-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_ml</span>(<span class="dv">2</span>, oil_mass) <span class="co"># equivalent, omitting the argument name</span></span></code></pre></div>
 <pre><code>## [1] 986.0704</code></pre>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb436"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb436-1"><a href="func_loop.html#cb436-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specific mass of water and oil</span></span>
-<span id="cb436-2"><a href="func_loop.html#cb436-2" aria-hidden="true" tabindex="-1"></a>water_mass <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb436-3"><a href="func_loop.html#cb436-3" aria-hidden="true" tabindex="-1"></a>oil_mass <span class="op">=</span> <span class="fl">0.92</span></span>
-<span id="cb436-4"><a href="func_loop.html#cb436-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb436-5"><a href="func_loop.html#cb436-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 2 lbs of water and oil to ml</span></span>
-<span id="cb436-6"><a href="func_loop.html#cb436-6" aria-hidden="true" tabindex="-1"></a>lbs_to_ml(<span class="dv">2</span>, specific_mass <span class="op">=</span>  water_mass)</span></code></pre></div>
+<div class="sourceCode" id="cb440"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb440-1"><a href="func_loop.html#cb440-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specific mass of water and oil</span></span>
+<span id="cb440-2"><a href="func_loop.html#cb440-2" aria-hidden="true" tabindex="-1"></a>water_mass <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb440-3"><a href="func_loop.html#cb440-3" aria-hidden="true" tabindex="-1"></a>oil_mass <span class="op">=</span> <span class="fl">0.92</span></span>
+<span id="cb440-4"><a href="func_loop.html#cb440-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb440-5"><a href="func_loop.html#cb440-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 2 lbs of water and oil to ml</span></span>
+<span id="cb440-6"><a href="func_loop.html#cb440-6" aria-hidden="true" tabindex="-1"></a>lbs_to_ml(<span class="dv">2</span>, specific_mass<span class="op">=</span>water_mass)</span></code></pre></div>
 <pre><code>## 907.1848</code></pre>
-<div class="sourceCode" id="cb438"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb438-1"><a href="func_loop.html#cb438-1" aria-hidden="true" tabindex="-1"></a>lbs_to_ml(<span class="dv">2</span>) <span class="co"># equivalent, as the argument defaults to water</span></span></code></pre></div>
+<div class="sourceCode" id="cb442"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb442-1"><a href="func_loop.html#cb442-1" aria-hidden="true" tabindex="-1"></a>lbs_to_ml(<span class="dv">2</span>) <span class="co"># equivalent, as the argument defaults to water</span></span></code></pre></div>
 <pre><code>## 907.1848</code></pre>
-<div class="sourceCode" id="cb440"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb440-1"><a href="func_loop.html#cb440-1" aria-hidden="true" tabindex="-1"></a>lbs_to_ml(<span class="dv">2</span>, specific_mass <span class="op">=</span>  oil_mass)</span></code></pre></div>
+<div class="sourceCode" id="cb444"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb444-1"><a href="func_loop.html#cb444-1" aria-hidden="true" tabindex="-1"></a>lbs_to_ml(<span class="dv">2</span>, specific_mass<span class="op">=</span>oil_mass)</span></code></pre></div>
 <pre><code>## 986.0704347826087</code></pre>
-<div class="sourceCode" id="cb442"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb442-1"><a href="func_loop.html#cb442-1" aria-hidden="true" tabindex="-1"></a>lbs_to_ml(<span class="dv">2</span>, oil_mass) <span class="co"># equivalent, omitting the argument name</span></span></code></pre></div>
+<div class="sourceCode" id="cb446"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb446-1"><a href="func_loop.html#cb446-1" aria-hidden="true" tabindex="-1"></a>lbs_to_ml(<span class="dv">2</span>, oil_mass) <span class="co"># equivalent, omitting the argument name</span></span></code></pre></div>
 <pre><code>## 986.0704347826087</code></pre>
 </div>
 </div>

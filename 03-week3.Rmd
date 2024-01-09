@@ -110,7 +110,7 @@ def lbs_to_grams(lbs):
 
 In this function, `lbs` is the input (or argument), and the function returns the equivalent weight in grams: following the `def` keyword we need both the function name, followed by the argument. The `return` statement is used to specify the result that the function should output.
 
-Now, once we have made the new function, we can call it by:
+Now, once we have made the new function, we can call it with:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -118,7 +118,11 @@ Now, once we have made the new function, we can call it by:
 **R**
 
 ```{r}
-lbs_to_grams(2)
+lbs_to_grams(lbs=2)
+lbs_to_grams(lbs=3)
+
+# when calling we can also omit 
+# the argument name for brevity
 lbs_to_grams(3)
 ```
 
@@ -129,7 +133,11 @@ lbs_to_grams(3)
 **python**
 
 ```{python}
-lbs_to_grams(2)
+lbs_to_grams(lbs=2)
+lbs_to_grams(lbs=3)
+
+# when calling we can also omit 
+# the argument name for brevity
 lbs_to_grams(3)
 ```
 
@@ -294,7 +302,7 @@ Say we want now to convert pounds to milliliters. To convert from mass to volume
 
 Fortunately for us, functions can take multiple arguments, allowing us to give more elements to the local environment of the function. This means we can customize the function's behavior based on these inputs. Let's see how we can add more arguments to a function.
 
-We'll create a new function to convert pounds to milliliters. This function will take a second argument: `specific_mass`. We'll use the function we created earlier to convert pounds to grams, and then, using the `specific_mass`, we'll convert grams to liters. We'll set the default value of `specific_mass` to be the specific mass of water: the default value is the value that the argument will assume if we do not specify the argument.
+We'll create a new function to convert pounds to milliliters. This function will take a second argument: `specific_mass`. We'll use the function **we created earlier** to convert pounds to grams, and then, using the `specific_mass`, we'll convert grams to liters. We'll set the default value of `specific_mass` to be the specific mass of water: the default value is the value that the argument will assume if we do not specify the argument.
 
 Here's how we can do this in both R and Python:
 
@@ -357,9 +365,9 @@ water_mass = 1
 oil_mass = 0.92
 
 # Convert 2 lbs of water and oil to ml
-lbs_to_ml(2, specific_mass =  water_mass)
+lbs_to_ml(2, specific_mass=water_mass)
 lbs_to_ml(2) # equivalent, as the argument defaults to water
-lbs_to_ml(2, specific_mass =  oil_mass)
+lbs_to_ml(2, specific_mass=oil_mass)
 lbs_to_ml(2, oil_mass) # equivalent, omitting the argument name
 ```
 
@@ -375,9 +383,9 @@ water_mass = 1
 oil_mass = 0.92
 
 # Convert 2 lbs of water and oil to ml
-lbs_to_ml(2, specific_mass =  water_mass)
+lbs_to_ml(2, specific_mass=water_mass)
 lbs_to_ml(2) # equivalent, as the argument defaults to water
-lbs_to_ml(2, specific_mass =  oil_mass)
+lbs_to_ml(2, specific_mass=oil_mass)
 lbs_to_ml(2, oil_mass) # equivalent, omitting the argument name
 ```
 
