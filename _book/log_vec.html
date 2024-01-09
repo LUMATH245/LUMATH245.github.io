@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="intro_prog.html"/>
-
+<link rel="next" href="func_loop.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -149,6 +149,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4" data-path="log_vec.html"><a href="log_vec.html#vectors"><i class="fa fa-check"></i><b>2.4</b> Vectors</a></li>
 <li class="chapter" data-level="2.5" data-path="log_vec.html"><a href="log_vec.html#accessing-vectors"><i class="fa fa-check"></i><b>2.5</b> Accessing vectors</a></li>
 </ul></li>
+<li class="chapter" data-level="3" data-path="func_loop.html"><a href="func_loop.html"><i class="fa fa-check"></i><b>3</b> Functions and Loops</a></li>
 </ul>
 
       </nav>
@@ -922,11 +923,13 @@ We can create an array that contains the numbers 1, 2, and 3, as shown below:</p
 <p>For example, the numpy library is a library that provides various tools and functions for working with numerical data and scientific computing. The numpy library is not part of the standard Python language, but it can be installed and imported by using the import statement. The import statement tells Python to load the library and make it available for use. The import statement can also assign an alias or a nickname to the library, such as np, to make it easier to refer to the library in the code.</p>
 <p>Normally, one has to reference import numpy as np only at the beginning of the script, before using any of the functions or resources from the numpy library:</p>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb242-1"><a href="log_vec.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the numpy library and assigning an alias</span></span>
-<span id="cb242-2"><a href="log_vec.html#cb242-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb242-3"><a href="log_vec.html#cb242-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb242-4"><a href="log_vec.html#cb242-4" aria-hidden="true" tabindex="-1"></a><span class="co">#     rest of your script!    #</span></span>
-<span id="cb242-5"><a href="log_vec.html#cb242-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ~~~~~~~~~~~~~~~~~~~~~~~~~~~ # </span></span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb242-1"><a href="log_vec.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this is the math library from past week!</span></span>
+<span id="cb242-2"><a href="log_vec.html#cb242-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb242-3"><a href="log_vec.html#cb242-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the numpy library and assigning an alias</span></span>
+<span id="cb242-4"><a href="log_vec.html#cb242-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb242-5"><a href="log_vec.html#cb242-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb242-6"><a href="log_vec.html#cb242-6" aria-hidden="true" tabindex="-1"></a><span class="co">#     rest of your script!    #</span></span>
+<span id="cb242-7"><a href="log_vec.html#cb242-7" aria-hidden="true" tabindex="-1"></a><span class="co"># ~~~~~~~~~~~~~~~~~~~~~~~~~~~ # </span></span></code></pre></div>
 <p>This way, Python knows where to find the functions that is needed, and the programmer does not have to repeat the import statement every time.</p>
 <p>R has libraries too, those are imported via the command <code>library</code>, but we will see how to use these at a later time as R has already plenty of scientific computing functions and structures built in.</p>
 </div>
@@ -1315,14 +1318,11 @@ Differently from R, in Python, however we can access the arrays from the back, u
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb356"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb356-1"><a href="log_vec.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the numpy module</span></span>
-<span id="cb356-2"><a href="log_vec.html#cb356-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode" id="cb356"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb356-1"><a href="log_vec.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating an array of numbers</span></span>
+<span id="cb356-2"><a href="log_vec.html#cb356-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>])</span>
 <span id="cb356-3"><a href="log_vec.html#cb356-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb356-4"><a href="log_vec.html#cb356-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating an array of numbers</span></span>
-<span id="cb356-5"><a href="log_vec.html#cb356-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>])</span>
-<span id="cb356-6"><a href="log_vec.html#cb356-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb356-7"><a href="log_vec.html#cb356-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the elements that are greater than 3 of the array</span></span>
-<span id="cb356-8"><a href="log_vec.html#cb356-8" aria-hidden="true" tabindex="-1"></a>x[x <span class="op">&gt;</span> <span class="dv">3</span>]</span></code></pre></div>
+<span id="cb356-4"><a href="log_vec.html#cb356-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the elements that are greater than 3 of the array</span></span>
+<span id="cb356-5"><a href="log_vec.html#cb356-5" aria-hidden="true" tabindex="-1"></a>x[x <span class="op">&gt;</span> <span class="dv">3</span>]</span></code></pre></div>
 <pre><code>## array([4, 5, 6])</code></pre>
 <div class="sourceCode" id="cb358"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb358-1"><a href="log_vec.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing even elements </span></span>
 <span id="cb358-2"><a href="log_vec.html#cb358-2" aria-hidden="true" tabindex="-1"></a>x[x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>]</span></code></pre></div>
@@ -1437,12 +1437,6 @@ Python does not convert the type of vector automatically, the dtype argument is 
 }
 </style>
 
-<style type="text/css">
-.book .book-body .page-wrapper .page-inner {
-  max-width: 1200px !important;
-}
-</style>
-
 </div>
 </div>
 </div>
@@ -1452,8 +1446,8 @@ Python does not convert the type of vector automatically, the dtype argument is 
           </div>
         </div>
       </div>
-<a href="intro_prog.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="intro_prog.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="func_loop.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

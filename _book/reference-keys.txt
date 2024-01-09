@@ -33,3 +33,4 @@ accessing-vector-elements
 accessing-multiple-elements-at-once
 overwriting-elements-of-vectors
 exercise-vector-fizzbuzz
+func_loop

@@ -1,3 +1,10 @@
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+# Functions and Loops {#func_loop}
 
 ```{=html}
 <style type="text/css">

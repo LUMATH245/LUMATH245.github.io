@@ -912,6 +912,8 @@ Normally, one has to reference import numpy as np only at the beginning of the s
 **python**
 
 ```{python}
+# this is the math library from past week!
+import math
 # Importing the numpy library and assigning an alias
 import numpy as np
 
@@ -1454,9 +1456,6 @@ x[x %% 2 == 0]
 **python**
 
 ```{python}
-# Importing the numpy module
-import numpy as np
-
 # Creating an array of numbers
 x = np.array([1, 2, 3, 4, 5, 6])
 
