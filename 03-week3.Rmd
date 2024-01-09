@@ -110,6 +110,7 @@ def lbs_to_grams(lbs):
 
 In this function, `lbs` is the input (or argument), and the function returns the equivalent weight in grams: following the `def` keyword we need both the function name, followed by the argument. The `return` statement is used to specify the result that the function should output.
 
+
 Now, once we have made the new function, we can call it with:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
@@ -146,8 +147,14 @@ lbs_to_grams(3)
 
 By creating functions like these, we can make our code more efficient and easier to read. Plus, it saves us from having to remember the conversion rate each time we want to convert pounds to grams!
 
-You might have noticed we made a variable within the function code, `grams`. But what does it mean to have variables within functions?
-Before we continue, we need to introduce the concept of *environments*.
+The name of the function `lbs_to_grams` and its argument `lbs` are just names that I chose.
+There are a few guidelines that could be useful when naming functions:
+-   Names should be lowercase.
+-   Use an underscore, _, to separate words within a name.
+-   Strive for names that are concise and meaningful (this is not easy!).
+-   Avoid existing function names in R and python, such as `length()` or `len()`.
+
+Also, you might have noticed we made a variable within the function code, `grams`. But what does it mean to have variables within functions? The variables used inside a function are local to that function. Think of your function as a guarded sandbox, where no child leaves unless you specifically tell them to. This sandbox is called and *enviroment*. Let's cover this concept formally!
 
 #### Enviroments 
 In programming, an environment refers to a structure that holds variables. When you create a variable in a program, the environment is where this variable lives. The environment keeps track of the variable's name and its current value.

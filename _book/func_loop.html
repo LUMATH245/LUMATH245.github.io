@@ -270,8 +270,13 @@ g = 453.5924 * lbs
 </div>
 </div>
 <p>By creating functions like these, we can make our code more efficient and easier to read. Plus, it saves us from having to remember the conversion rate each time we want to convert pounds to grams!</p>
-<p>You might have noticed we made a variable within the function code, <code>grams</code>. But what does it mean to have variables within functions?
-Before we continue, we need to introduce the concept of <em>environments</em>.</p>
+<p>The name of the function <code>lbs_to_grams</code> and its argument <code>lbs</code> are just names that I chose.
+There are a few guidelines that could be useful when naming functions:
+- Names should be lowercase.
+- Use an underscore, _, to separate words within a name.
+- Strive for names that are concise and meaningful (this is not easy!).
+- Avoid existing function names in R and python, such as <code>length()</code> or <code>len()</code>.</p>
+<p>Also, you might have noticed we made a variable within the function code, <code>grams</code>. But what does it mean to have variables within functions? The variables used inside a function are local to that function. Think of your function as a guarded sandbox, where no child leaves unless you specifically tell them to. This sandbox is called and <em>enviroment</em>. Let’s cover this concept formally!</p>
 <div id="enviroments" class="section level4 hasAnchor" number="3.1.1.1">
 <h4><span class="header-section-number">3.1.1.1</span> Enviroments<a href="func_loop.html#enviroments" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>In programming, an environment refers to a structure that holds variables. When you create a variable in a program, the environment is where this variable lives. The environment keeps track of the variable’s name and its current value.</p>
