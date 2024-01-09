@@ -309,7 +309,7 @@ Say we want now to convert pounds to milliliters. To convert from mass to volume
 
 Fortunately for us, functions can take multiple arguments, allowing us to give more elements to the local environment of the function. This means we can customize the function's behavior based on these inputs. Let's see how we can add more arguments to a function.
 
-We'll create a new function to convert pounds to milliliters. This function will take a second argument: `specific_mass`. We'll use the function **we created earlier** to convert pounds to grams, and then, using the `specific_mass`, we'll convert grams to liters. We'll set the default value of `specific_mass` to be the specific mass of water: the default value is the value that the argument will assume if we do not specify the argument.
+We'll create a new function to convert pounds to milliliters. This function will take a second argument: `specific_mass`. We'll use the function **we created earlier** to convert pounds to grams, and then, using the `specific_mass`, we'll convert grams to liters.
 
 Here's how we can do this in both R and Python:
 
@@ -319,7 +319,7 @@ Here's how we can do this in both R and Python:
 **R**
 
 ```{r}
-lbs_to_ml <- function(lbs, specific_mass = 1) {
+lbs_to_ml <- function(lbs, specific_mass) {
   grams <- lbs_to_grams(lbs)
   ml <- grams / specific_mass
   return(ml)
@@ -341,7 +341,7 @@ lbs_to_ml(2, oil_mass)
 **python**
 
 ```{python}
-def lbs_to_ml(lbs, specific_mass=1):
+def lbs_to_ml(lbs, specific_mass):
   grams = lbs_to_grams(lbs)
   ml = grams / specific_mass
   return ml
@@ -360,7 +360,6 @@ lbs_to_ml(2, oil_mass)
 
 To run the functions we just made: 
 
-
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
 
@@ -373,9 +372,7 @@ oil_mass = 0.92
 
 # Convert 2 lbs of water and oil to ml
 lbs_to_ml(2, specific_mass=water_mass)
-lbs_to_ml(2) # equivalent, as the argument defaults to water
 lbs_to_ml(2, specific_mass=oil_mass)
-lbs_to_ml(2, oil_mass) # equivalent, omitting the argument name
 ```
 
 </div>
@@ -391,15 +388,64 @@ oil_mass = 0.92
 
 # Convert 2 lbs of water and oil to ml
 lbs_to_ml(2, specific_mass=water_mass)
-lbs_to_ml(2) # equivalent, as the argument defaults to water
 lbs_to_ml(2, specific_mass=oil_mass)
-lbs_to_ml(2, oil_mass) # equivalent, omitting the argument name
 ```
 
 </div>
 :::
 
+Let's say that 90% of the time when we are doing these calculations, they are relative to using water. Then, to be more efficient, rather than continuously having to give the mass of water, we could set the arguments to have these as default values. 
 
+This is where default arguments in functions come into play. They are incredibly useful for several reasons:
+
+- They allow us to make certain parameters optional, which can make the function easier to use.
+- They can provide sensible defaults for a function, allowing it to be used without requiring the user to specify every single parameter.
+- They can make the code more readable by clearly stating what the default behavior of the function is.
+
+Here's how we can do this in both R and Python:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+cups_to_ml <- function(cups, specific_weight = 1) {
+  grams <- cups_to_grams(cups)
+  ml <- grams / specific_weight
+  return(ml)
+}
+
+# Convert 2 cups of water to ml (default behavior)
+cups_to_ml(2)
+
+# Convert 2 cups of oil to ml (specific behavior)
+cups_to_ml(2, 0.92)
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+def cups_to_ml(cups, specific_weight=1):
+  grams = cups_to_grams(cups)
+  ml = grams / specific_weight
+  return ml
+
+# Convert 2 cups of water to ml (default behavior)
+cups_to_ml(2)
+
+# Convert 2 cups of oil to ml (specific behavior)
+cups_to_ml(2, 0.92)
+```
+
+</div>
+:::
+
+As you can see, default arguments make our function more flexible and easier to use. They allow the function to handle a wider range of scenarios while keeping the code clean and readable.
 ```{=html}
 <style type="text/css">
 .book .book-body .page-wrapper .page-inner {
