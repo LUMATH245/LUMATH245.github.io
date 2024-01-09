@@ -256,67 +256,127 @@ functions!</p>
 </div>
 </div>
 <p>By creating functions like these, we can make our code more efficient and easier to read. Plus, it saves us from having to remember the conversion rate each time we want to convert cups to grams!</p>
-<div id="multiple-arguments" class="section level4 hasAnchor" number="3.1.1.1">
-<h4><span class="header-section-number">3.1.1.1</span> Multiple arguments<a href="func_loop.html#multiple-arguments" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>You noticed we made a variable within the function: <code>grams</code>. Before we proceed, we need to introduce the concept of <em>environments</em>.</p>
+<div id="enviroments" class="section level4 hasAnchor" number="3.1.1.1">
+<h4><span class="header-section-number">3.1.1.1</span> Enviroments<a href="func_loop.html#enviroments" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>In programming, an environment refers to a structure that holds variables. When you create a variable in a program, the environment is where this variable lives. The environment keeps track of the variable’s name and its current value.</p>
+<p>There are two types of environments: global and local.</p>
+<ul>
+<li><p>The <strong>global environment</strong> is the default environment where your variables live unless you specify otherwise. When you create a variable at the top level of your script, it’s stored in the global environment.</p></li>
+<li><p>A <strong>local environment</strong> is created when you call a function. Each time a function is called, a new local environment is created for that function call. This environment holds the variables that are created within the function. These variables are only accessible within the function call and cease to exist once the function call is over.</p></li>
+</ul>
+<p>Let’s consider the <code>cups_to_grams</code> function we made:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="func_loop.html#cb388-1" aria-hidden="true" tabindex="-1"></a>cups_to_grams <span class="ot">&lt;-</span> <span class="cf">function</span>(cups) {</span>
+<span id="cb388-2"><a href="func_loop.html#cb388-2" aria-hidden="true" tabindex="-1"></a>  grams <span class="ot">&lt;-</span> cups <span class="sc">*</span> <span class="fl">201.6</span></span>
+<span id="cb388-3"><a href="func_loop.html#cb388-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(grams)</span>
+<span id="cb388-4"><a href="func_loop.html#cb388-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb388-5"><a href="func_loop.html#cb388-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb388-6"><a href="func_loop.html#cb388-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a variable in the global environment</span></span>
+<span id="cb388-7"><a href="func_loop.html#cb388-7" aria-hidden="true" tabindex="-1"></a>my_cups <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb388-8"><a href="func_loop.html#cb388-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb388-9"><a href="func_loop.html#cb388-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Try to access the local variable &quot;grams&quot;</span></span>
+<span id="cb388-10"><a href="func_loop.html#cb388-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(grams)</span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;grams&#39; not found</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb390"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb390-1"><a href="func_loop.html#cb390-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cups_to_grams(cups):</span>
+<span id="cb390-2"><a href="func_loop.html#cb390-2" aria-hidden="true" tabindex="-1"></a>  grams <span class="op">=</span> cups <span class="op">*</span> <span class="fl">201.6</span></span>
+<span id="cb390-3"><a href="func_loop.html#cb390-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> grams</span>
+<span id="cb390-4"><a href="func_loop.html#cb390-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb390-5"><a href="func_loop.html#cb390-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a variable in the global environment</span></span>
+<span id="cb390-6"><a href="func_loop.html#cb390-6" aria-hidden="true" tabindex="-1"></a>my_cups <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb390-7"><a href="func_loop.html#cb390-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb390-8"><a href="func_loop.html#cb390-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Try to access the local variable &quot;grams&quot;</span></span>
+<span id="cb390-9"><a href="func_loop.html#cb390-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(grams)</span></code></pre></div>
+<pre><code>## name &#39;grams&#39; is not defined</code></pre>
+</div>
+</div>
+<p>In these functions, <code>cups</code> and <code>grams</code> are variables in the local environment of the function. They are created when the function is called and cease to exist when the function call is over. If you try to access <code>grams</code> outside of the function, you’ll get an error because <code>grams</code> is not in the global environment.</p>
+<p>On the other hand, <code>my_cups</code> is in the global environment because it’s created at the top level of the script, not within a function. You can access <code>my_cups</code> anywhere in your script.</p>
+<p>This distinction between global and local environments helps keep our code clean and reduces the chance of errors. It ensures that the function does its job without interfering with the rest of our script! <strong>Avoid for this reason to name the variables inside your functions as those outside it, in the rest of your script</strong></p>
+</div>
+<div id="multiple-arguments" class="section level4 hasAnchor" number="3.1.1.2">
+<h4><span class="header-section-number">3.1.1.2</span> Multiple arguments<a href="func_loop.html#multiple-arguments" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Say we want now to convert cups to milliliters. To convert from weight to volume, we will need an additional information, the specific weight. In physics, the specific weight (also known as the volumetric weight density) of a substance is the weight per unit volume.</p>
 <p>Fortunately for us, functions can take multiple arguments, allowing us to give more elements to the local environment of the function. This means we can customize the function’s behavior based on these inputs. Let’s see how we can add more arguments to a function.</p>
-<p>We’ll create a new function to convert cups to milliliters. This function will take a second argument: “specific_weight”. We’ll use the function we created earlier to convert cups to grams, and then, using the “specific_weight”, we’ll convert grams to liters. We’ll set the default value of “specific_weight” to be the specific weight of water.</p>
+<p>We’ll create a new function to convert cups to milliliters. This function will take a second argument: <code>specific_weight</code>. We’ll use the function we created earlier to convert cups to grams, and then, using the <code>specific_weight</code>, we’ll convert grams to liters. We’ll set the default value of <code>specific_weight</code> to be the specific weight of water: the default value is the value that the argument will assume if we do not specify the argument.</p>
 <p>Here’s how we can do this in both R and Python:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="func_loop.html#cb388-1" aria-hidden="true" tabindex="-1"></a>cups_to_ml <span class="ot">&lt;-</span> <span class="cf">function</span>(cups, <span class="at">specific_weight =</span> <span class="dv">1</span>) {</span>
-<span id="cb388-2"><a href="func_loop.html#cb388-2" aria-hidden="true" tabindex="-1"></a>  grams <span class="ot">&lt;-</span> <span class="fu">cups_to_grams</span>(cups)</span>
-<span id="cb388-3"><a href="func_loop.html#cb388-3" aria-hidden="true" tabindex="-1"></a>  ml <span class="ot">&lt;-</span> grams <span class="sc">/</span> specific_weight</span>
-<span id="cb388-4"><a href="func_loop.html#cb388-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(ml)</span>
-<span id="cb388-5"><a href="func_loop.html#cb388-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb388-6"><a href="func_loop.html#cb388-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb388-7"><a href="func_loop.html#cb388-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Specific weight of water and oil</span></span>
-<span id="cb388-8"><a href="func_loop.html#cb388-8" aria-hidden="true" tabindex="-1"></a>water_weight <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb388-9"><a href="func_loop.html#cb388-9" aria-hidden="true" tabindex="-1"></a>oil_weight <span class="ot">=</span> <span class="fl">0.92</span></span>
-<span id="cb388-10"><a href="func_loop.html#cb388-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb388-11"><a href="func_loop.html#cb388-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 2 cups of water and oil to ml</span></span>
-<span id="cb388-12"><a href="func_loop.html#cb388-12" aria-hidden="true" tabindex="-1"></a><span class="fu">cups_to_ml</span>(<span class="dv">2</span>, water_weight)</span></code></pre></div>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="func_loop.html#cb392-1" aria-hidden="true" tabindex="-1"></a>cups_to_ml <span class="ot">&lt;-</span> <span class="cf">function</span>(cups, <span class="at">specific_weight =</span> <span class="dv">1</span>) {</span>
+<span id="cb392-2"><a href="func_loop.html#cb392-2" aria-hidden="true" tabindex="-1"></a>  grams <span class="ot">&lt;-</span> <span class="fu">cups_to_grams</span>(cups)</span>
+<span id="cb392-3"><a href="func_loop.html#cb392-3" aria-hidden="true" tabindex="-1"></a>  ml <span class="ot">&lt;-</span> grams <span class="sc">/</span> specific_weight</span>
+<span id="cb392-4"><a href="func_loop.html#cb392-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(ml)</span>
+<span id="cb392-5"><a href="func_loop.html#cb392-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb392-6"><a href="func_loop.html#cb392-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb392-7"><a href="func_loop.html#cb392-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Specific weight of water and oil</span></span>
+<span id="cb392-8"><a href="func_loop.html#cb392-8" aria-hidden="true" tabindex="-1"></a>water_weight <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb392-9"><a href="func_loop.html#cb392-9" aria-hidden="true" tabindex="-1"></a>oil_weight <span class="ot">=</span> <span class="fl">0.92</span></span>
+<span id="cb392-10"><a href="func_loop.html#cb392-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb392-11"><a href="func_loop.html#cb392-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 2 cups of water and oil to ml</span></span>
+<span id="cb392-12"><a href="func_loop.html#cb392-12" aria-hidden="true" tabindex="-1"></a><span class="fu">cups_to_ml</span>(<span class="dv">2</span>, water_weight)</span></code></pre></div>
 <pre><code>## [1] 403.2</code></pre>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="func_loop.html#cb390-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cups_to_ml</span>(<span class="dv">2</span>, oil_weight)</span></code></pre></div>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="func_loop.html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cups_to_ml</span>(<span class="dv">2</span>, oil_weight)</span></code></pre></div>
 <pre><code>## [1] 438.2609</code></pre>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb392"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb392-1"><a href="func_loop.html#cb392-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cups_to_ml(cups, specific_weight<span class="op">=</span><span class="dv">1</span>):</span>
-<span id="cb392-2"><a href="func_loop.html#cb392-2" aria-hidden="true" tabindex="-1"></a>  grams <span class="op">=</span> cups_to_grams(cups)</span>
-<span id="cb392-3"><a href="func_loop.html#cb392-3" aria-hidden="true" tabindex="-1"></a>  ml <span class="op">=</span> grams <span class="op">/</span> specific_weight</span>
-<span id="cb392-4"><a href="func_loop.html#cb392-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> ml</span>
-<span id="cb392-5"><a href="func_loop.html#cb392-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb392-6"><a href="func_loop.html#cb392-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Specific weight of water and oil</span></span>
-<span id="cb392-7"><a href="func_loop.html#cb392-7" aria-hidden="true" tabindex="-1"></a>water_weight <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb392-8"><a href="func_loop.html#cb392-8" aria-hidden="true" tabindex="-1"></a>oil_weight <span class="op">=</span> <span class="fl">0.92</span></span>
-<span id="cb392-9"><a href="func_loop.html#cb392-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb392-10"><a href="func_loop.html#cb392-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 2 cups of water and oil to ml</span></span>
-<span id="cb392-11"><a href="func_loop.html#cb392-11" aria-hidden="true" tabindex="-1"></a>cups_to_ml(<span class="dv">2</span>, water_weight)</span></code></pre></div>
+<div class="sourceCode" id="cb396"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb396-1"><a href="func_loop.html#cb396-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cups_to_ml(cups, specific_weight<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb396-2"><a href="func_loop.html#cb396-2" aria-hidden="true" tabindex="-1"></a>  grams <span class="op">=</span> cups_to_grams(cups)</span>
+<span id="cb396-3"><a href="func_loop.html#cb396-3" aria-hidden="true" tabindex="-1"></a>  ml <span class="op">=</span> grams <span class="op">/</span> specific_weight</span>
+<span id="cb396-4"><a href="func_loop.html#cb396-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> ml</span>
+<span id="cb396-5"><a href="func_loop.html#cb396-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb396-6"><a href="func_loop.html#cb396-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Specific weight of water and oil</span></span>
+<span id="cb396-7"><a href="func_loop.html#cb396-7" aria-hidden="true" tabindex="-1"></a>water_weight <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb396-8"><a href="func_loop.html#cb396-8" aria-hidden="true" tabindex="-1"></a>oil_weight <span class="op">=</span> <span class="fl">0.92</span></span>
+<span id="cb396-9"><a href="func_loop.html#cb396-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb396-10"><a href="func_loop.html#cb396-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 2 cups of water and oil to ml</span></span>
+<span id="cb396-11"><a href="func_loop.html#cb396-11" aria-hidden="true" tabindex="-1"></a>cups_to_ml(<span class="dv">2</span>, water_weight)</span></code></pre></div>
 <pre><code>## 403.2</code></pre>
-<div class="sourceCode" id="cb394"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb394-1"><a href="func_loop.html#cb394-1" aria-hidden="true" tabindex="-1"></a>cups_to_ml(<span class="dv">2</span>, oil_weight)</span></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb398-1"><a href="func_loop.html#cb398-1" aria-hidden="true" tabindex="-1"></a>cups_to_ml(<span class="dv">2</span>, oil_weight)</span></code></pre></div>
 <pre><code>## 438.2608695652174</code></pre>
 </div>
 </div>
-<p>By adding more arguments to our function, we can make it more flexible and powerful. We can now convert cups to milliliters for different substances, not just water! This is the power of functions in programming. 😊</p>
-<ul>
-<li>tell that we can have multiple arguments to a function</li>
-<li>show how to add more arguments to a function, to give more elements to the local
-enviroment.</li>
-<li>for instance, make a new function to convert cups to milliliters
-<ul>
-<li>the function should take a second argument: “specific_weight”</li>
-<li>use the function above to convert cups to grams</li>
-<li>then, using the second argument, specific weight, convert grams to liters</li>
-<li>this second argument should default to water</li>
-<li>keep the R and python code side to side</li>
-<li>give an example where you run the function with the specific weight of water and of oil</li>
-</ul></li>
-<li>give an explanation of what an enviroment is, and what is the global envirment and local
-enviroment</li>
-<li>give an example of that using the function above</li>
-</ul>
+<p>To run the functions we just made:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="func_loop.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specific weight of water and oil</span></span>
+<span id="cb400-2"><a href="func_loop.html#cb400-2" aria-hidden="true" tabindex="-1"></a>water_weight <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb400-3"><a href="func_loop.html#cb400-3" aria-hidden="true" tabindex="-1"></a>oil_weight <span class="ot">=</span> <span class="fl">0.92</span></span>
+<span id="cb400-4"><a href="func_loop.html#cb400-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb400-5"><a href="func_loop.html#cb400-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 2 cups of water and oil to ml</span></span>
+<span id="cb400-6"><a href="func_loop.html#cb400-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cups_to_ml</span>(<span class="dv">2</span>, <span class="at">specific_weight =</span>  water_weight)</span></code></pre></div>
+<pre><code>## [1] 403.2</code></pre>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="func_loop.html#cb402-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cups_to_ml</span>(<span class="dv">2</span>) <span class="co"># equivalent, as the argument defaults to water</span></span></code></pre></div>
+<pre><code>## [1] 403.2</code></pre>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="func_loop.html#cb404-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cups_to_ml</span>(<span class="dv">2</span>, <span class="at">specific_weight =</span>  oil_weight)</span></code></pre></div>
+<pre><code>## [1] 438.2609</code></pre>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="func_loop.html#cb406-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cups_to_ml</span>(<span class="dv">2</span>, oil_weight) <span class="co"># equivalent, omitting the argument name</span></span></code></pre></div>
+<pre><code>## [1] 438.2609</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb408"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb408-1"><a href="func_loop.html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specific weight of water and oil</span></span>
+<span id="cb408-2"><a href="func_loop.html#cb408-2" aria-hidden="true" tabindex="-1"></a>water_weight <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb408-3"><a href="func_loop.html#cb408-3" aria-hidden="true" tabindex="-1"></a>oil_weight <span class="op">=</span> <span class="fl">0.92</span></span>
+<span id="cb408-4"><a href="func_loop.html#cb408-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb408-5"><a href="func_loop.html#cb408-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 2 cups of water and oil to ml</span></span>
+<span id="cb408-6"><a href="func_loop.html#cb408-6" aria-hidden="true" tabindex="-1"></a>cups_to_ml(<span class="dv">2</span>, specific_weight <span class="op">=</span>  water_weight)</span></code></pre></div>
+<pre><code>## 403.2</code></pre>
+<div class="sourceCode" id="cb410"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb410-1"><a href="func_loop.html#cb410-1" aria-hidden="true" tabindex="-1"></a>cups_to_ml(<span class="dv">2</span>) <span class="co"># equivalent, as the argument defaults to water</span></span></code></pre></div>
+<pre><code>## 403.2</code></pre>
+<div class="sourceCode" id="cb412"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb412-1"><a href="func_loop.html#cb412-1" aria-hidden="true" tabindex="-1"></a>cups_to_ml(<span class="dv">2</span>, specific_weight <span class="op">=</span>  oil_weight)</span></code></pre></div>
+<pre><code>## 438.2608695652174</code></pre>
+<div class="sourceCode" id="cb414"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb414-1"><a href="func_loop.html#cb414-1" aria-hidden="true" tabindex="-1"></a>cups_to_ml(<span class="dv">2</span>, oil_weight) <span class="co"># equivalent, omitting the argument name</span></span></code></pre></div>
+<pre><code>## 438.2608695652174</code></pre>
+</div>
+</div>
 <style type="text/css">
 .book .book-body .page-wrapper .page-inner {
   max-width: 1200px !important;

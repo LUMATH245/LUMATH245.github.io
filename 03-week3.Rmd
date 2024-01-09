@@ -131,13 +131,71 @@ cups_to_grams(3)
 
 By creating functions like these, we can make our code more efficient and easier to read. Plus, it saves us from having to remember the conversion rate each time we want to convert cups to grams!
 
+You noticed we made a variable within the function: `grams`. Before we proceed, we need to introduce the concept of *environments*.
+
+#### Enviroments 
+In programming, an environment refers to a structure that holds variables. When you create a variable in a program, the environment is where this variable lives. The environment keeps track of the variable's name and its current value.
+
+There are two types of environments: global and local.
+
+- The **global environment** is the default environment where your variables live unless you specify otherwise. When you create a variable at the top level of your script, it's stored in the global environment.
+
+- A **local environment** is created when you call a function. Each time a function is called, a new local environment is created for that function call. This environment holds the variables that are created within the function. These variables are only accessible within the function call and cease to exist once the function call is over.
+
+Let's consider the `cups_to_grams` function we made:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r error=TRUE}
+cups_to_grams <- function(cups) {
+  grams <- cups * 201.6
+  return(grams)
+}
+
+# Create a variable in the global environment
+my_cups <- 2
+
+# Try to access the local variable "grams"
+print(grams)
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python error=TRUE}
+def cups_to_grams(cups):
+  grams = cups * 201.6
+  return grams
+
+# Create a variable in the global environment
+my_cups = 2
+
+# Try to access the local variable "grams"
+print(grams)
+```
+
+</div>
+:::
+
+In these functions, `cups` and `grams` are variables in the local environment of the function. They are created when the function is called and cease to exist when the function call is over. If you try to access `grams` outside of the function, you'll get an error because `grams` is not in the global environment.
+
+On the other hand, `my_cups` is in the global environment because it's created at the top level of the script, not within a function. You can access `my_cups` anywhere in your script.
+
+This distinction between global and local environments helps keep our code clean and reduces the chance of errors. It ensures that the function does its job without interfering with the rest of our script! **Avoid for this reason to name the variables inside your functions as those outside it, in the rest of your script**
+
 #### Multiple arguments
 
 Say we want now to convert cups to milliliters. To convert from weight to volume, we will need an additional information, the specific weight. In physics, the specific weight (also known as the volumetric weight density) of a substance is the weight per unit volume. 
 
 Fortunately for us, functions can take multiple arguments, allowing us to give more elements to the local environment of the function. This means we can customize the function's behavior based on these inputs. Let's see how we can add more arguments to a function.
 
-We'll create a new function to convert cups to milliliters. This function will take a second argument: "specific_weight". We'll use the function we created earlier to convert cups to grams, and then, using the "specific_weight", we'll convert grams to liters. We'll set the default value of "specific_weight" to be the specific weight of water.
+We'll create a new function to convert cups to milliliters. This function will take a second argument: `specific_weight`. We'll use the function we created earlier to convert cups to grams, and then, using the `specific_weight`, we'll convert grams to liters. We'll set the default value of `specific_weight` to be the specific weight of water: the default value is the value that the argument will assume if we do not specify the argument.
 
 Here's how we can do this in both R and Python:
 
@@ -186,22 +244,47 @@ cups_to_ml(2, oil_weight)
 </div>
 :::
 
-By adding more arguments to our function, we can make it more flexible and powerful. We can now convert cups to milliliters for different substances, not just water! This is the power of functions in programming. 😊
+To run the functions we just made: 
 
-- tell that we can have multiple arguments to a function
-- show how to add more arguments to a function, to give more elements to the local
-enviroment. 
-- for instance, make a new function to convert cups to milliliters
-  - the function should take a second argument: "specific_weight"
-  - use the function above to convert cups to grams 
-  - then, using the second argument, specific weight, convert grams to liters
-  - this second argument should default to water
-  - keep the R and python code side to side
-  - give an example where you run the function with the specific weight of water and of oil
-  
-- give an explanation of what an enviroment is, and what is the global envirment and local
-enviroment 
-- give an example of that using the function above 
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Specific weight of water and oil
+water_weight = 1
+oil_weight = 0.92
+
+# Convert 2 cups of water and oil to ml
+cups_to_ml(2, specific_weight =  water_weight)
+cups_to_ml(2) # equivalent, as the argument defaults to water
+cups_to_ml(2, specific_weight =  oil_weight)
+cups_to_ml(2, oil_weight) # equivalent, omitting the argument name
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Specific weight of water and oil
+water_weight = 1
+oil_weight = 0.92
+
+# Convert 2 cups of water and oil to ml
+cups_to_ml(2, specific_weight =  water_weight)
+cups_to_ml(2) # equivalent, as the argument defaults to water
+cups_to_ml(2, specific_weight =  oil_weight)
+cups_to_ml(2, oil_weight) # equivalent, omitting the argument name
+```
+
+</div>
+:::
+
 
 ```{=html}
 <style type="text/css">
