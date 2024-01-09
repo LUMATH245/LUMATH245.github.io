@@ -149,7 +149,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4" data-path="log_vec.html"><a href="log_vec.html#vectors"><i class="fa fa-check"></i><b>2.4</b> Vectors</a></li>
 <li class="chapter" data-level="2.5" data-path="log_vec.html"><a href="log_vec.html#accessing-vectors"><i class="fa fa-check"></i><b>2.5</b> Accessing vectors</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="func_loop.html"><a href="func_loop.html"><i class="fa fa-check"></i><b>3</b> Functions and Loops</a></li>
+<li class="chapter" data-level="3" data-path="func_loop.html"><a href="func_loop.html"><i class="fa fa-check"></i><b>3</b> Functions and Loops</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="func_loop.html"><a href="func_loop.html#functions"><i class="fa fa-check"></i><b>3.1</b> Functions</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -169,12 +172,160 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="func_loop" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">3</span> Functions and Loops<a href="func_loop.html#func_loop" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="functions" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Functions<a href="func_loop.html#functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Functions in mathematics, is an assignment of an element from a set to a
+different set. Here we give a more “practical” definition.</p>
+<p>In the realm of programming, a function is a reusable piece of code that
+performs a specific task. Think of it as a mini-program within your
+program, a tool you create to do a job so you don’t have to. And as a
+program does, you give it an input, it will do some voudou magic, and it
+will spit an output.</p>
+<p><img src="images/chapter3/dark_magic.png" /></p>
+<p>What’s the point of a function you might ask? Well, in programming, we
+use functions when we have tasks that must be performed again and again.
+When we notice a repetitive task occurring, it is a good idea to write a
+function that performs this task. If you find yourself copying and
+pasting the same piece of code more than three times, it’s time to stop
+and think: “Should I write a function for this?” Remember, in the world
+of coding, being lazy is often a good thing! We aim for efficiency, not
+repetitive strain injury.</p>
+<p><img src="images/chapter3/homer.jpg" width="366" /></p>
+<p>Imagine if every time you need to compute the square root, you need to
+write the code to compute the square root over and over again. In fact,
+it won’t come as a surprise that we’ve already encountered many
+functions in the past weeks. For instance:</p>
+<ul>
+<li>Mathematical functions like <code>sqrt()</code> or <code>sin()</code> in R, and
+<code>math.sqrt()</code> or <code>math.sin()</code> in Python.</li>
+<li>Functions like <code>np.array()</code> or <code>c()</code> to create vectors.</li>
+<li>Functions like <code>length()</code> in R or <code>len()</code> in Python to get
+information about our data structures.</li>
+</ul>
+<p>Again, each function I mentioned, has an input, and an output: <code>sqrt</code>
+takes a number as input and returns the square root of such number,
+<code>length</code> or <code>len</code> take a whole vector as input, and return the length of
+it…</p>
+<p>Another incredibly useful function is the <code>help()</code> function, available
+in both R and Python. This function takes a <strong>function</strong> as an input,
+and provides us with information said function as ouput! For example:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="func_loop.html#cb376-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(sqrt)</span></code></pre></div>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb377"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb377-1"><a href="func_loop.html#cb377-1" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(math.sqrt)</span></code></pre></div>
+</div>
+</div>
+<p>But the real power of functions comes when we start creating our own. We
+can write new functions that perform specific tasks, tailored to our
+needs. This allows us to do more complex, interesting, and fun things
+with our code. So let’s dive in and learn how to create our own
+functions!</p>
+<div id="writing-new-functions" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Writing new functions<a href="func_loop.html#writing-new-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can wrap our code in a function, and every time the function is called, this code is run. This is incredibly useful for tasks we need to perform multiple times. Let’s look at an example of a simple function that converts cups to grams.</p>
+<p>In <strong>R</strong>, we define a function using the <code>function()</code> command. The arguments of the function are placed within the parentheses. Here’s how we can create a function in R:</p>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="func_loop.html#cb378-1" aria-hidden="true" tabindex="-1"></a>cups_to_grams <span class="ot">&lt;-</span> <span class="cf">function</span>(cups) {</span>
+<span id="cb378-2"><a href="func_loop.html#cb378-2" aria-hidden="true" tabindex="-1"></a>  grams <span class="ot">&lt;-</span> cups <span class="sc">*</span> <span class="fl">201.6</span></span>
+<span id="cb378-3"><a href="func_loop.html#cb378-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(grams)</span>
+<span id="cb378-4"><a href="func_loop.html#cb378-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>In this function, <code>cups</code> is the input (or argument), and the function returns the equivalent weight in grams. In R, we create a new function with the <code>function</code> statement, and then we assign it to a variable, which is going to be containing our function. The <code>return()</code> statement is used to specify the result that the function should output.</p>
+<p>In <strong>Python</strong>, we define a function using the <code>def</code> keyword. The arguments of the function are placed within the parentheses. Again we need to use indentation: this is crucial in Python as it determines the code blocks. Here’s how we can create a function in Python:</p>
+<div class="sourceCode" id="cb379"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb379-1"><a href="func_loop.html#cb379-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cups_to_grams(cups):</span>
+<span id="cb379-2"><a href="func_loop.html#cb379-2" aria-hidden="true" tabindex="-1"></a>  grams <span class="op">=</span> cups <span class="op">*</span> <span class="fl">201.6</span></span>
+<span id="cb379-3"><a href="func_loop.html#cb379-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> grams</span></code></pre></div>
+<p>In this function, <code>cups</code> is the input (or argument), and the function returns the equivalent weight in grams: following the <code>def</code> keyword we need both the function name, followed by the argument. The <code>return</code> statement is used to specify the result that the function should output.</p>
+<p>Now, once we have made the new function, we can call it by:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="func_loop.html#cb380-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cups_to_grams</span>(<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 403.2</code></pre>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="func_loop.html#cb382-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cups_to_grams</span>(<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 604.8</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb384"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb384-1"><a href="func_loop.html#cb384-1" aria-hidden="true" tabindex="-1"></a>cups_to_grams(<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## 403.2</code></pre>
+<div class="sourceCode" id="cb386"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb386-1"><a href="func_loop.html#cb386-1" aria-hidden="true" tabindex="-1"></a>cups_to_grams(<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## 604.8</code></pre>
+</div>
+</div>
+<p>By creating functions like these, we can make our code more efficient and easier to read. Plus, it saves us from having to remember the conversion rate each time we want to convert cups to grams!</p>
+<div id="multiple-arguments" class="section level4 hasAnchor" number="3.1.1.1">
+<h4><span class="header-section-number">3.1.1.1</span> Multiple arguments<a href="func_loop.html#multiple-arguments" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Say we want now to convert cups to milliliters. To convert from weight to volume, we will need an additional information, the specific weight. In physics, the specific weight (also known as the volumetric weight density) of a substance is the weight per unit volume.</p>
+<p>Fortunately for us, functions can take multiple arguments, allowing us to give more elements to the local environment of the function. This means we can customize the function’s behavior based on these inputs. Let’s see how we can add more arguments to a function.</p>
+<p>We’ll create a new function to convert cups to milliliters. This function will take a second argument: “specific_weight”. We’ll use the function we created earlier to convert cups to grams, and then, using the “specific_weight”, we’ll convert grams to liters. We’ll set the default value of “specific_weight” to be the specific weight of water.</p>
+<p>Here’s how we can do this in both R and Python:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="func_loop.html#cb388-1" aria-hidden="true" tabindex="-1"></a>cups_to_ml <span class="ot">&lt;-</span> <span class="cf">function</span>(cups, <span class="at">specific_weight =</span> <span class="dv">1</span>) {</span>
+<span id="cb388-2"><a href="func_loop.html#cb388-2" aria-hidden="true" tabindex="-1"></a>  grams <span class="ot">&lt;-</span> <span class="fu">cups_to_grams</span>(cups)</span>
+<span id="cb388-3"><a href="func_loop.html#cb388-3" aria-hidden="true" tabindex="-1"></a>  ml <span class="ot">&lt;-</span> grams <span class="sc">/</span> specific_weight</span>
+<span id="cb388-4"><a href="func_loop.html#cb388-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(ml)</span>
+<span id="cb388-5"><a href="func_loop.html#cb388-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb388-6"><a href="func_loop.html#cb388-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb388-7"><a href="func_loop.html#cb388-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Specific weight of water and oil</span></span>
+<span id="cb388-8"><a href="func_loop.html#cb388-8" aria-hidden="true" tabindex="-1"></a>water_weight <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb388-9"><a href="func_loop.html#cb388-9" aria-hidden="true" tabindex="-1"></a>oil_weight <span class="ot">=</span> <span class="fl">0.92</span></span>
+<span id="cb388-10"><a href="func_loop.html#cb388-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb388-11"><a href="func_loop.html#cb388-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 2 cups of water and oil to ml</span></span>
+<span id="cb388-12"><a href="func_loop.html#cb388-12" aria-hidden="true" tabindex="-1"></a><span class="fu">cups_to_ml</span>(<span class="dv">2</span>, water_weight)</span></code></pre></div>
+<pre><code>## [1] 403.2</code></pre>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="func_loop.html#cb390-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cups_to_ml</span>(<span class="dv">2</span>, oil_weight)</span></code></pre></div>
+<pre><code>## [1] 438.2609</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb392"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb392-1"><a href="func_loop.html#cb392-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cups_to_ml(cups, specific_weight<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb392-2"><a href="func_loop.html#cb392-2" aria-hidden="true" tabindex="-1"></a>  grams <span class="op">=</span> cups_to_grams(cups)</span>
+<span id="cb392-3"><a href="func_loop.html#cb392-3" aria-hidden="true" tabindex="-1"></a>  ml <span class="op">=</span> grams <span class="op">/</span> specific_weight</span>
+<span id="cb392-4"><a href="func_loop.html#cb392-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> ml</span>
+<span id="cb392-5"><a href="func_loop.html#cb392-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb392-6"><a href="func_loop.html#cb392-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Specific weight of water and oil</span></span>
+<span id="cb392-7"><a href="func_loop.html#cb392-7" aria-hidden="true" tabindex="-1"></a>water_weight <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb392-8"><a href="func_loop.html#cb392-8" aria-hidden="true" tabindex="-1"></a>oil_weight <span class="op">=</span> <span class="fl">0.92</span></span>
+<span id="cb392-9"><a href="func_loop.html#cb392-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb392-10"><a href="func_loop.html#cb392-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 2 cups of water and oil to ml</span></span>
+<span id="cb392-11"><a href="func_loop.html#cb392-11" aria-hidden="true" tabindex="-1"></a>cups_to_ml(<span class="dv">2</span>, water_weight)</span></code></pre></div>
+<pre><code>## 403.2</code></pre>
+<div class="sourceCode" id="cb394"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb394-1"><a href="func_loop.html#cb394-1" aria-hidden="true" tabindex="-1"></a>cups_to_ml(<span class="dv">2</span>, oil_weight)</span></code></pre></div>
+<pre><code>## 438.2608695652174</code></pre>
+</div>
+</div>
+<p>By adding more arguments to our function, we can make it more flexible and powerful. We can now convert cups to milliliters for different substances, not just water! This is the power of functions in programming. 😊</p>
+<ul>
+<li>tell that we can have multiple arguments to a function</li>
+<li>show how to add more arguments to a function, to give more elements to the local
+enviroment.</li>
+<li>for instance, make a new function to convert cups to milliliters
+<ul>
+<li>the function should take a second argument: “specific_weight”</li>
+<li>use the function above to convert cups to grams</li>
+<li>then, using the second argument, specific weight, convert grams to liters</li>
+<li>this second argument should default to water</li>
+<li>keep the R and python code side to side</li>
+<li>give an example where you run the function with the specific weight of water and of oil</li>
+</ul></li>
+<li>give an explanation of what an enviroment is, and what is the global envirment and local
+enviroment</li>
+<li>give an example of that using the function above</li>
+</ul>
 <style type="text/css">
 .book .book-body .page-wrapper .page-inner {
   max-width: 1200px !important;
 }
 </style>
 
+</div>
+</div>
+</div>
 </div>
             </section>
 
