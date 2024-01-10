@@ -44,3 +44,6 @@ a-question-of-state
 the-for-loop
 coding-the-fibonacci-sequence
 nested-loops
+while-loops
+break-and-next
+break-and-nextcontinue

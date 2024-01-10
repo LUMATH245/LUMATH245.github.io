@@ -1105,3 +1105,96 @@ for i in range(1, 4):
 
 </div>
 :::
+
+### While loops
+
+Similarly to for loops, we have the while loops. They allow us to repeat a block of code until a certain condition is met. This can be incredibly useful in many situations, such as when we want to perform an operation until a certain threshold is reached.
+
+We can see how a while loop works below:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+i <- 1
+while (i <= 10) {
+  print(i)
+  i <- i + 1
+}
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+i = 1
+while i <= 10:
+  print(i)
+  i += 1
+```
+
+</div>
+:::
+
+In these codes:
+
+- `i <- 1` and `i = 1` initialize the counter at 1.
+- `while (i <= 10)` and `while i <= 10:` start the while loop. The condition `i <= 10` is what we check at each step. If it's true, we execute the code chunk inside the loop.
+- `print(i)` and `print(i)` are the code chunks that we want to repeat. They print the current value of `i`.
+- `i <- i + 1` and `i += 1` are crucial. They update `i` at each step, ensuring that our condition will eventually be false. Without these lines, `i` would always be 1, the condition would always be true, and the while loop would run indefinitely.
+- The while loop ends when the condition `i <= 10` is no longer met, i.e., when `i` is greater than 10.
+
+### Break and next
+
+We are missing one last ingredient to looping! Break and next.
+
+### Break and next/continue
+
+Break and next/continue are control flow statements that can be used to alter the flow of a loop. They can be incredibly useful in many situations, such as when we want to stop a loop if a certain condition is met or skip an iteration if a certain condition is met.
+
+To see how they work, we write a loop that prints the numbers from 1 to 10, but skips the number 5 and stops after the number 8.
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+for (i in 1:10) {
+  if (i == 5) {
+    next  # Skip the rest of the loop and continue with the next iteration
+  }
+  if (i > 8) {
+    break  # Immediately terminate the loop
+  }
+  print(i)  # Print the current value of i
+}
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+for i in range(1, 11):
+  if i == 5:
+    continue  # Skip the rest of the loop and continue with the next iteration
+  if i > 8:
+    break  # Immediately terminate the loop
+  print(i)  # Print the current value of i
+```
+
+</div>
+:::
+
+Let's break it down:
+
+- `if (i == 5) { next }` and `if i == 5: continue` are the next/continue statements. If `i` is equal to 5, they skip the rest of the loop and continue with the next iteration. 5 won't be printed!
+- `if (i > 8) { break }` and `if i > 8: break` are the break statements. If `i` is greater than 8, they immediately terminate the loop, regardless of the loop condition. As a result, we stop at 8, and don't continue to up to 10. `break` could be an alternative stopping condition to a while loop. 

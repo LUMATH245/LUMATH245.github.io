@@ -1203,6 +1203,107 @@ multiplication table from 1 to 4.</p>
 ## 3 x 3 = 9</code></pre>
 </div>
 </div>
+</div>
+<div id="while-loops" class="section level3 hasAnchor" number="3.2.5">
+<h3><span class="header-section-number">3.2.5</span> While loops<a href="func_loop.html#while-loops" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Similarly to for loops, we have the while loops. They allow us to repeat a block of code until a certain condition is met. This can be incredibly useful in many situations, such as when we want to perform an operation until a certain threshold is reached.</p>
+<p>We can see how a while loop works below:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="func_loop.html#cb502-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb502-2"><a href="func_loop.html#cb502-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&lt;=</span> <span class="dv">10</span>) {</span>
+<span id="cb502-3"><a href="func_loop.html#cb502-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb502-4"><a href="func_loop.html#cb502-4" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb502-5"><a href="func_loop.html#cb502-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5
+## [1] 6
+## [1] 7
+## [1] 8
+## [1] 9
+## [1] 10</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb504"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb504-1"><a href="func_loop.html#cb504-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb504-2"><a href="func_loop.html#cb504-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> i <span class="op">&lt;=</span> <span class="dv">10</span>:</span>
+<span id="cb504-3"><a href="func_loop.html#cb504-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(i)</span>
+<span id="cb504-4"><a href="func_loop.html#cb504-4" aria-hidden="true" tabindex="-1"></a>  i <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div>
+<pre><code>## 1
+## 2
+## 3
+## 4
+## 5
+## 6
+## 7
+## 8
+## 9
+## 10</code></pre>
+</div>
+</div>
+<p>In these codes:</p>
+<ul>
+<li><code>i &lt;- 1</code> and <code>i = 1</code> initialize the counter at 1.</li>
+<li><code>while (i &lt;= 10)</code> and <code>while i &lt;= 10:</code> start the while loop. The condition <code>i &lt;= 10</code> is what we check at each step. If it’s true, we execute the code chunk inside the loop.</li>
+<li><code>print(i)</code> and <code>print(i)</code> are the code chunks that we want to repeat. They print the current value of <code>i</code>.</li>
+<li><code>i &lt;- i + 1</code> and <code>i += 1</code> are crucial. They update <code>i</code> at each step, ensuring that our condition will eventually be false. Without these lines, <code>i</code> would always be 1, the condition would always be true, and the while loop would run indefinitely.</li>
+<li>The while loop ends when the condition <code>i &lt;= 10</code> is no longer met, i.e., when <code>i</code> is greater than 10.</li>
+</ul>
+</div>
+<div id="break-and-next" class="section level3 hasAnchor" number="3.2.6">
+<h3><span class="header-section-number">3.2.6</span> Break and next<a href="func_loop.html#break-and-next" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We are missing one last ingredient to looping! Break and next.</p>
+</div>
+<div id="break-and-nextcontinue" class="section level3 hasAnchor" number="3.2.7">
+<h3><span class="header-section-number">3.2.7</span> Break and next/continue<a href="func_loop.html#break-and-nextcontinue" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Break and next/continue are control flow statements that can be used to alter the flow of a loop. They can be incredibly useful in many situations, such as when we want to stop a loop if a certain condition is met or skip an iteration if a certain condition is met.</p>
+<p>To see how they work, we write a loop that prints the numbers from 1 to 10, but skips the number 5 and stops after the number 8.</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="func_loop.html#cb506-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb506-2"><a href="func_loop.html#cb506-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">5</span>) {</span>
+<span id="cb506-3"><a href="func_loop.html#cb506-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">next</span>  <span class="co"># Skip the rest of the loop and continue with the next iteration</span></span>
+<span id="cb506-4"><a href="func_loop.html#cb506-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb506-5"><a href="func_loop.html#cb506-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">&gt;</span> <span class="dv">8</span>) {</span>
+<span id="cb506-6"><a href="func_loop.html#cb506-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span>  <span class="co"># Immediately terminate the loop</span></span>
+<span id="cb506-7"><a href="func_loop.html#cb506-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb506-8"><a href="func_loop.html#cb506-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)  <span class="co"># Print the current value of i</span></span>
+<span id="cb506-9"><a href="func_loop.html#cb506-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 6
+## [1] 7
+## [1] 8</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb508"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb508-1"><a href="func_loop.html#cb508-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>):</span>
+<span id="cb508-2"><a href="func_loop.html#cb508-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> i <span class="op">==</span> <span class="dv">5</span>:</span>
+<span id="cb508-3"><a href="func_loop.html#cb508-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">continue</span>  <span class="co"># Skip the rest of the loop and continue with the next iteration</span></span>
+<span id="cb508-4"><a href="func_loop.html#cb508-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> i <span class="op">&gt;</span> <span class="dv">8</span>:</span>
+<span id="cb508-5"><a href="func_loop.html#cb508-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span>  <span class="co"># Immediately terminate the loop</span></span>
+<span id="cb508-6"><a href="func_loop.html#cb508-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(i)  <span class="co"># Print the current value of i</span></span></code></pre></div>
+<pre><code>## 1
+## 2
+## 3
+## 4
+## 6
+## 7
+## 8</code></pre>
+</div>
+</div>
+<p>Let’s break it down:</p>
+<ul>
+<li><code>if (i == 5) { next }</code> and <code>if i == 5: continue</code> are the next/continue statements. If <code>i</code> is equal to 5, they skip the rest of the loop and continue with the next iteration. 5 won’t be printed!</li>
+<li><code>if (i &gt; 8) { break }</code> and <code>if i &gt; 8: break</code> are the break statements. If <code>i</code> is greater than 8, they immediately terminate the loop, regardless of the loop condition. As a result, we stop at 8, and don’t continue to up to 10. <code>break</code> could be an alternative stopping condition to a while loop.</li>
+</ul>
 
 </div>
 </div>
