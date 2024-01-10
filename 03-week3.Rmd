@@ -410,17 +410,17 @@ Here's how we can do this in both R and Python:
 **R**
 
 ```{r}
-cups_to_ml <- function(cups, specific_weight = 1) {
-  grams <- cups_to_grams(cups)
+lbs_to_ml <- function(lbs, specific_weight = 1) {
+  grams <- lbs_to_grams(lbs)
   ml <- grams / specific_weight
   return(ml)
 }
 
-# Convert 2 cups of water to ml (default behavior)
-cups_to_ml(2)
+# Convert 2 lbs of water to ml (default behavior)
+lbs_to_ml(2)
 
-# Convert 2 cups of oil to ml (specific behavior)
-cups_to_ml(2, 0.92)
+# Convert 2 lbs of oil to ml (specific behavior)
+lbs_to_ml(2, 0.92)
 ```
 
 </div>
@@ -430,16 +430,16 @@ cups_to_ml(2, 0.92)
 **python**
 
 ```{python}
-def cups_to_ml(cups, specific_weight=1):
-  grams = cups_to_grams(cups)
+def lbs_to_ml(lbs, specific_weight=1):
+  grams = lbs_to_grams(lbs)
   ml = grams / specific_weight
   return ml
 
-# Convert 2 cups of water to ml (default behavior)
-cups_to_ml(2)
+# Convert 2 lbs of water to ml (default behavior)
+lbs_to_ml(2)
 
-# Convert 2 cups of oil to ml (specific behavior)
-cups_to_ml(2, 0.92)
+# Convert 2 lbs of oil to ml (specific behavior)
+lbs_to_ml(2, 0.92)
 ```
 
 </div>
