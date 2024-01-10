@@ -1088,8 +1088,8 @@ It gets updated at each step over the sequence.</li>
 <code>fruit</code> has taken all values in the numpy array <code>arr</code>.</li>
 </ul>
 </div>
-<div id="the-fibonacci-sequence" class="section level3 hasAnchor" number="3.2.3">
-<h3><span class="header-section-number">3.2.3</span> The Fibonacci sequence<a href="func_loop.html#the-fibonacci-sequence" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="coding-the-fibonacci-sequence" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Coding The Fibonacci sequence<a href="func_loop.html#coding-the-fibonacci-sequence" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Having covered how to write a for cycle, we come back to our Fibonacci
 example:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
@@ -1153,6 +1153,56 @@ appends it to the <code>fibonacci</code> list using the <code>append()</code> me
 append method extends our vector, adding a new element at the end of
 the existing one.</li>
 </ul>
+</div>
+<div id="nested-loops" class="section level3 hasAnchor" number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> Nested loops<a href="func_loop.html#nested-loops" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Nested loops are useful when we have to repeat a block of code for each
+combination of elements from two or more sequences. This can be
+incredibly useful in many situations, such as when we want to perform an
+operation for each pair of elements in two lists or vectors.</p>
+<p>A simple example, for instance, could be a nested loop that prints the
+multiplication table from 1 to 4.</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="func_loop.html#cb498-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
+<span id="cb498-2"><a href="func_loop.html#cb498-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
+<span id="cb498-3"><a href="func_loop.html#cb498-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">&quot;x&quot;</span>, j, <span class="st">&quot;=&quot;</span>, i<span class="sc">*</span>j))</span>
+<span id="cb498-4"><a href="func_loop.html#cb498-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb498-5"><a href="func_loop.html#cb498-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;1 x 1 = 1&quot;
+## [1] &quot;1 x 2 = 2&quot;
+## [1] &quot;1 x 3 = 3&quot;
+## [1] &quot;1 x 4 = 4&quot;
+## [1] &quot;2 x 1 = 2&quot;
+## [1] &quot;2 x 2 = 4&quot;
+## [1] &quot;2 x 3 = 6&quot;
+## [1] &quot;2 x 4 = 8&quot;
+## [1] &quot;3 x 1 = 3&quot;
+## [1] &quot;3 x 2 = 6&quot;
+## [1] &quot;3 x 3 = 9&quot;
+## [1] &quot;3 x 4 = 12&quot;
+## [1] &quot;4 x 1 = 4&quot;
+## [1] &quot;4 x 2 = 8&quot;
+## [1] &quot;4 x 3 = 12&quot;
+## [1] &quot;4 x 4 = 16&quot;</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb500"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb500-1"><a href="func_loop.html#cb500-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">4</span>):</span>
+<span id="cb500-2"><a href="func_loop.html#cb500-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">4</span>):</span>
+<span id="cb500-3"><a href="func_loop.html#cb500-3" aria-hidden="true" tabindex="-1"></a>      <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss"> x </span><span class="sc">{</span>j<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span>i<span class="op">*</span>j<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<pre><code>## 1 x 1 = 1
+## 1 x 2 = 2
+## 1 x 3 = 3
+## 2 x 1 = 2
+## 2 x 2 = 4
+## 2 x 3 = 6
+## 3 x 1 = 3
+## 3 x 2 = 6
+## 3 x 3 = 9</code></pre>
+</div>
+</div>
 
 </div>
 </div>

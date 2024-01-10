@@ -42,4 +42,5 @@ exercise-cups-to-grams-converter
 loops-and-state
 a-question-of-state
 the-for-loop
-the-fibonacci-sequence
+coding-the-fibonacci-sequence
+nested-loops

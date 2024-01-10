@@ -875,8 +875,9 @@ each number is the sum of the two preceding ones, usually starting with
 0 and 1. The first 10 values in the series will be:
 
 | $r_{i}$ | $r_{0}$ | $r_{1}$ | $r_{2}$ | $r_{3}$ | $r_{4}$ | $r_{5}$ | $r_{6}$ | $r_{7}$ | $r_{8}$ | $r_{9}$ |
-|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------| 
+|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
 | Value   | 0       | 1       | 1       | 2       | 3       | 5       | 8       | 13      | 21      | 34      |
+
 : This table shows the first 10 numbers of the Fibonacci sequence,
 starting from $r_{0}$ to $r_{9}$.
 
@@ -993,7 +994,7 @@ In this Python code:
 -   The for loop ends when it has exhausted the sequence, i.e., when
     `fruit` has taken all values in the numpy array `arr`.
 
-### The Fibonacci sequence
+### Coding The Fibonacci sequence
 
 Having covered how to write a for cycle, we come back to our Fibonacci
 example:
@@ -1066,3 +1067,41 @@ In this Python code:
     appends it to the `fibonacci` list using the `append()` method. The
     append method extends our vector, adding a new element at the end of
     the existing one.
+
+### Nested loops
+
+Nested loops are useful when we have to repeat a block of code for each
+combination of elements from two or more sequences. This can be
+incredibly useful in many situations, such as when we want to perform an
+operation for each pair of elements in two lists or vectors.
+
+A simple example, for instance, could be a nested loop that prints the
+multiplication table from 1 to 4.
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+for (i in 1:4) {
+  for (j in 1:4) {
+    print(paste(i, "x", j, "=", i*j))
+  }
+}
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+for i in range(1, 4):
+  for j in range(1, 4):
+      print(f"{i} x {j} = {i*j}")
+```
+
+</div>
+:::
