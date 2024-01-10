@@ -152,7 +152,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="func_loop.html"><a href="func_loop.html"><i class="fa fa-check"></i><b>3</b> Functions and Loops</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="func_loop.html"><a href="func_loop.html#functions"><i class="fa fa-check"></i><b>3.1</b> Functions</a></li>
-<li class="chapter" data-level="3.2" data-path="func_loop.html"><a href="func_loop.html#for-loops-and-state"><i class="fa fa-check"></i><b>3.2</b> For Loops and State</a></li>
+<li class="chapter" data-level="3.2" data-path="func_loop.html"><a href="func_loop.html#loops-and-state"><i class="fa fa-check"></i><b>3.2</b> Loops and State</a></li>
 </ul></li>
 </ul>
 
@@ -867,8 +867,8 @@ and their specific weights in our example!</p>
 </style>
 </div>
 </div>
-<div id="for-loops-and-state" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> For Loops and State<a href="func_loop.html#for-loops-and-state" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="loops-and-state" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Loops and State<a href="func_loop.html#loops-and-state" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Normally, if you have to run some operations on multiple objects, you
 would store these objects in a vector, and then work with the vector
 directly. This is what we’ve been doing in the past weeks, and what
@@ -991,7 +991,8 @@ previous two numbers.</li>
 newly calculated number.</li>
 </ul></li>
 </ol>
-<p>We will return to the Fibonacci example after having introduced the for loop syntax.</p>
+<p>We will return to the Fibonacci example after having introduced the for
+loop syntax.</p>
 </div>
 <div id="the-for-loop" class="section level3 hasAnchor" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> The For loop<a href="func_loop.html#the-for-loop" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1012,12 +1013,19 @@ newly calculated number.</li>
 ## [1] 10</code></pre>
 <p>In this R code, to explain the syntax:</p>
 <ul>
-<li><code>for (i in 1:10)</code> is the start of the for loop. The iterator <code>i</code> goes from 1 to 10. <code>1:10</code> creates a vector: this is the sequence of values we want to iterate over.</li>
-<li><code>print(i)</code> is the code chunk that we want to repeat. In this case it prints the current value of <code>i</code>.</li>
-<li><code>i</code> is the object that stores our current index. It gets updated at each step over the sequence of values for 1 to 10.</li>
-<li>The for loop ends when it has exhausted the sequence, i.e., when <code>i</code> has taken all values from 1 to 10.</li>
+<li><code>for (i in 1:10)</code> is the start of the for loop. The iterator <code>i</code>
+goes from 1 to 10. <code>1:10</code> creates a vector: this is the sequence of
+values we want to iterate over.</li>
+<li><code>print(i)</code> is the code chunk that we want to repeat. In this case it
+prints the current value of <code>i</code>.</li>
+<li><code>i</code> is the object that stores our current index. It gets updated at
+each step over the sequence of values for 1 to 10.</li>
+<li>The for loop ends when it has exhausted the sequence, i.e., when <code>i</code>
+has taken all values from 1 to 10.</li>
 </ul>
-<p>We can also use the for loop to iterate over the elements of a vector directly, rather than their indices. For example, a for loop that prints the elements of a vector:</p>
+<p>We can also use the for loop to iterate over the elements of a vector
+directly, rather than their indices. For example, a for loop that prints
+the elements of a vector:</p>
 <div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="func_loop.html#cb488-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cherry&quot;</span>)</span>
 <span id="cb488-2"><a href="func_loop.html#cb488-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (fruit <span class="cf">in</span> vec) {</span>
 <span id="cb488-3"><a href="func_loop.html#cb488-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(fruit)</span>
@@ -1025,9 +1033,12 @@ newly calculated number.</li>
 <pre><code>## [1] &quot;apple&quot;
 ## [1] &quot;banana&quot;
 ## [1] &quot;cherry&quot;</code></pre>
-<p>In this case, <code>fruit</code> is the iterator that gets updated at each step over the sequence with the current element of the sequence. The for loop ends when it has exhausted the sequence.</p>
+<p>In this case, <code>fruit</code> is the iterator that gets updated at each step
+over the sequence with the current element of the sequence. The for loop
+ends when it has exhausted the sequence.</p>
 <p><strong>In Python:</strong></p>
-<p>In Python, we can print the numbers from 1 to 10 using a for loop as follows:</p>
+<p>In Python, we can print the numbers from 1 to 10 using a for loop as
+follows:</p>
 <div class="sourceCode" id="cb490"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb490-1"><a href="func_loop.html#cb490-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>):</span>
 <span id="cb490-2"><a href="func_loop.html#cb490-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(i)</span></code></pre></div>
 <pre><code>## 1
@@ -1042,12 +1053,21 @@ newly calculated number.</li>
 ## 10</code></pre>
 <p>In this Python code, to explain the syntax:</p>
 <ul>
-<li><code>for i in range(1, 11)</code> is the start of the for loop. The iterator <code>i</code> goes from 1 to 10. This is the sequence we want to iterate over. We use <code>range</code> function to generate this figure: this function is analogue to <code>np.arange</code> from numpy, but generates a different object called “range” that is specific to iterators</li>
-<li><code>print(i)</code> is the code chunk that we want to repeat. It prints the current value of <code>i</code>.</li>
-<li><code>i</code> is the object that stores our current index. It gets updated at each step over the sequence.</li>
-<li>The for loop ends when it has exhausted the sequence, i.e., when <code>i</code> has taken all values from 1 to 10.</li>
+<li><code>for i in range(1, 11)</code> is the start of the for loop. The iterator
+<code>i</code> goes from 1 to 10. This is the sequence we want to iterate over.
+We use <code>range</code> function to generate this figure: this function is
+analogue to <code>np.arange</code> from numpy, but generates a different object
+called “range” that is specific to iterators</li>
+<li><code>print(i)</code> is the code chunk that we want to repeat. It prints the
+current value of <code>i</code>.</li>
+<li><code>i</code> is the object that stores our current index. It gets updated at
+each step over the sequence.</li>
+<li>The for loop ends when it has exhausted the sequence, i.e., when <code>i</code>
+has taken all values from 1 to 10.</li>
 </ul>
-<p>We can also use the for loop to iterate over the elements of a numpy array directly, rather than their indices. For example, a for loop that prints the elements of a numpy array:</p>
+<p>We can also use the for loop to iterate over the elements of a numpy
+array directly, rather than their indices. For example, a for loop that
+prints the elements of a numpy array:</p>
 <div class="sourceCode" id="cb492"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb492-1"><a href="func_loop.html#cb492-1" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.array([<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cherry&quot;</span>])</span>
 <span id="cb492-2"><a href="func_loop.html#cb492-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> fruit <span class="kw">in</span> arr:</span>
 <span id="cb492-3"><a href="func_loop.html#cb492-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(fruit)</span></code></pre></div>
@@ -1056,16 +1076,22 @@ newly calculated number.</li>
 ## cherry</code></pre>
 <p>In this Python code:</p>
 <ul>
-<li><code>arr = np.array(["apple", "banana", "cherry"])</code> creates a numpy array with the elements “apple”, “banana”, and “cherry”.</li>
-<li><code>for fruit in arr:</code> is the start of the for loop. The iterator <code>fruit</code> goes over each element in the numpy array <code>arr</code>.</li>
-<li><code>print(fruit)</code> is the code chunk that we want to repeat. It prints the current value of <code>fruit</code>.</li>
-<li><code>fruit</code> is the object that stores the current element of the array. It gets updated at each step over the sequence.</li>
-<li>The for loop ends when it has exhausted the sequence, i.e., when <code>fruit</code> has taken all values in the numpy array <code>arr</code>.</li>
+<li><code>arr = np.array(["apple", "banana", "cherry"])</code> creates a numpy
+array with the elements “apple”, “banana”, and “cherry”.</li>
+<li><code>for fruit in arr:</code> is the start of the for loop. The iterator
+<code>fruit</code> goes over each element in the numpy array <code>arr</code>.</li>
+<li><code>print(fruit)</code> is the code chunk that we want to repeat. It prints
+the current value of <code>fruit</code>.</li>
+<li><code>fruit</code> is the object that stores the current element of the array.
+It gets updated at each step over the sequence.</li>
+<li>The for loop ends when it has exhausted the sequence, i.e., when
+<code>fruit</code> has taken all values in the numpy array <code>arr</code>.</li>
 </ul>
 </div>
 <div id="the-fibonacci-sequence" class="section level3 hasAnchor" number="3.2.3">
 <h3><span class="header-section-number">3.2.3</span> The Fibonacci sequence<a href="func_loop.html#the-fibonacci-sequence" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Having covered how to write a for cycle, we come back to our Fibonacci example:</p>
+<p>Having covered how to write a for cycle, we come back to our Fibonacci
+example:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
@@ -1103,17 +1129,29 @@ newly calculated number.</li>
 </div>
 <p>In this R code:</p>
 <ul>
-<li><code>fibonacci &lt;- c(0, 1)</code> initializes the first two numbers in the Fibonacci sequence.</li>
-<li><code>for (i in 3:20)</code> is the start of the for loop. The iterator <code>i</code> goes from 3 to 20. This is the sequence we want to iterate over.</li>
-<li><code>fibonacci[i] &lt;- fibonacci[i - 1] + fibonacci[i - 2]</code> is the code chunk that we want to repeat. It calculates the <code>i</code>th number in the Fibonacci sequence as the sum of the two preceding numbers and appends it to the <code>fibonacci</code> vector.</li>
-<li><code>i</code> is the object that stores our current index. It gets updated at each step over the sequence.</li>
+<li><code>fibonacci &lt;- c(0, 1)</code> initializes the first two numbers in the
+Fibonacci sequence.</li>
+<li><code>for (i in 3:20)</code> is the start of the for loop. The iterator <code>i</code>
+goes from 3 to 20. This is the sequence we want to iterate over.</li>
+<li><code>fibonacci[i] &lt;- fibonacci[i - 1] + fibonacci[i - 2]</code> is the code
+chunk that we want to repeat. It calculates the <code>i</code>th number in the
+Fibonacci sequence as the sum of the two preceding numbers and
+appends it to the <code>fibonacci</code> vector. Given that at iteration <code>i</code> we
+have no element <code>i</code> in the vector yet (this is still <code>i-1</code> long), R
+will automatically extend the vector of one extra element.</li>
 </ul>
 <p>In this Python code:</p>
 <ul>
-<li><code>fibonacci = [0, 1]</code> initializes the first two numbers in the Fibonacci sequence.</li>
-<li><code>for i in range(2, 20)</code> is the start of the for loop. The iterator <code>i</code> goes from 2 to 19. This is the sequence we want to iterate over.</li>
-<li><code>fibonacci.append(fibonacci[i - 1] + fibonacci[i - 2])</code> is the code chunk that we want to repeat. It calculates the <code>i</code>th number in the Fibonacci sequence as the sum of the two preceding numbers and appends it to the <code>fibonacci</code> list using the <code>append()</code> method.</li>
-<li><code>i</code> is the object that stores our current index. It gets updated at each step over the sequence.</li>
+<li><code>fibonacci = [0, 1]</code> initializes the first two numbers in the
+Fibonacci sequence.</li>
+<li><code>for i in range(2, 20)</code> is the start of the for loop. The iterator
+<code>i</code> goes from 2 to 19. This is the sequence we want to iterate over.</li>
+<li><code>fibonacci.append(fibonacci[i - 1] + fibonacci[i - 2])</code> is the code
+chunk that we want to repeat. It calculates the <code>i</code>th number in the
+Fibonacci sequence as the sum of the two preceding numbers and
+appends it to the <code>fibonacci</code> list using the <code>append()</code> method. The
+append method extends our vector, adding a new element at the end of
+the existing one.</li>
 </ul>
 
 </div>

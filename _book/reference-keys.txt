@@ -39,7 +39,7 @@ writing-new-functions
 enviroments
 multiple-arguments
 exercise-cups-to-grams-converter
-for-loops-and-state
+loops-and-state
 a-question-of-state
 the-for-loop
 the-fibonacci-sequence

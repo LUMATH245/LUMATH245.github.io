@@ -803,7 +803,7 @@ and their specific weights in our example!
 }
 </style>
 ```
-## For Loops and State
+## Loops and State
 
 Normally, if you have to run some operations on multiple objects, you
 would store these objects in a vector, and then work with the vector
@@ -875,9 +875,8 @@ each number is the sum of the two preceding ones, usually starting with
 0 and 1. The first 10 values in the series will be:
 
 | $r_{i}$ | $r_{0}$ | $r_{1}$ | $r_{2}$ | $r_{3}$ | $r_{4}$ | $r_{5}$ | $r_{6}$ | $r_{7}$ | $r_{8}$ | $r_{9}$ |
-|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------| 
 | Value   | 0       | 1       | 1       | 2       | 3       | 5       | 8       | 13      | 21      | 34      |
-
 : This table shows the first 10 numbers of the Fibonacci sequence,
 starting from $r_{0}$ to $r_{9}$.
 
@@ -905,7 +904,8 @@ could use the following algorithm:
     -   Update the previous two numbers to be the last number and the
         newly calculated number.
 
-We will return to the Fibonacci example after having introduced the for loop syntax.
+We will return to the Fibonacci example after having introduced the for
+loop syntax.
 
 ### The For loop
 
@@ -921,12 +921,19 @@ for (i in 1:10) {
 
 In this R code, to explain the syntax:
 
-- `for (i in 1:10)` is the start of the for loop. The iterator `i` goes from 1 to 10. `1:10` creates a vector: this is the sequence of values we want to iterate over.
-- `print(i)` is the code chunk that we want to repeat. In this case it prints the current value of `i`.
-- `i` is the object that stores our current index. It gets updated at each step over the sequence of values for 1 to 10.
-- The for loop ends when it has exhausted the sequence, i.e., when `i` has taken all values from 1 to 10.
+-   `for (i in 1:10)` is the start of the for loop. The iterator `i`
+    goes from 1 to 10. `1:10` creates a vector: this is the sequence of
+    values we want to iterate over.
+-   `print(i)` is the code chunk that we want to repeat. In this case it
+    prints the current value of `i`.
+-   `i` is the object that stores our current index. It gets updated at
+    each step over the sequence of values for 1 to 10.
+-   The for loop ends when it has exhausted the sequence, i.e., when `i`
+    has taken all values from 1 to 10.
 
-We can also use the for loop to iterate over the elements of a vector directly, rather than their indices. For example, a for loop that prints the elements of a vector:
+We can also use the for loop to iterate over the elements of a vector
+directly, rather than their indices. For example, a for loop that prints
+the elements of a vector:
 
 ```{r}
 vec <- c("apple", "banana", "cherry")
@@ -935,11 +942,14 @@ for (fruit in vec) {
 }
 ```
 
-In this case, `fruit` is the iterator that gets updated at each step over the sequence with the current element of the sequence. The for loop ends when it has exhausted the sequence.
+In this case, `fruit` is the iterator that gets updated at each step
+over the sequence with the current element of the sequence. The for loop
+ends when it has exhausted the sequence.
 
 **In Python:**
 
-In Python, we can print the numbers from 1 to 10 using a for loop as follows:
+In Python, we can print the numbers from 1 to 10 using a for loop as
+follows:
 
 ```{python}
 for i in range(1, 11):
@@ -948,12 +958,21 @@ for i in range(1, 11):
 
 In this Python code, to explain the syntax:
 
-- `for i in range(1, 11)` is the start of the for loop. The iterator `i` goes from 1 to 10. This is the sequence we want to iterate over. We use `range` function to generate this figure: this function is analogue to `np.arange` from numpy, but generates a different object called "range" that is specific to iterators
-- `print(i)` is the code chunk that we want to repeat. It prints the current value of `i`.
-- `i` is the object that stores our current index. It gets updated at each step over the sequence.
-- The for loop ends when it has exhausted the sequence, i.e., when `i` has taken all values from 1 to 10.
+-   `for i in range(1, 11)` is the start of the for loop. The iterator
+    `i` goes from 1 to 10. This is the sequence we want to iterate over.
+    We use `range` function to generate this figure: this function is
+    analogue to `np.arange` from numpy, but generates a different object
+    called "range" that is specific to iterators
+-   `print(i)` is the code chunk that we want to repeat. It prints the
+    current value of `i`.
+-   `i` is the object that stores our current index. It gets updated at
+    each step over the sequence.
+-   The for loop ends when it has exhausted the sequence, i.e., when `i`
+    has taken all values from 1 to 10.
 
-We can also use the for loop to iterate over the elements of a numpy array directly, rather than their indices. For example, a for loop that prints the elements of a numpy array:
+We can also use the for loop to iterate over the elements of a numpy
+array directly, rather than their indices. For example, a for loop that
+prints the elements of a numpy array:
 
 ```{python}
 arr = np.array(["apple", "banana", "cherry"])
@@ -963,15 +982,21 @@ for fruit in arr:
 
 In this Python code:
 
-- `arr = np.array(["apple", "banana", "cherry"])` creates a numpy array with the elements "apple", "banana", and "cherry".
-- `for fruit in arr:` is the start of the for loop. The iterator `fruit` goes over each element in the numpy array `arr`.
-- `print(fruit)` is the code chunk that we want to repeat. It prints the current value of `fruit`.
-- `fruit` is the object that stores the current element of the array. It gets updated at each step over the sequence.
-- The for loop ends when it has exhausted the sequence, i.e., when `fruit` has taken all values in the numpy array `arr`.
+-   `arr = np.array(["apple", "banana", "cherry"])` creates a numpy
+    array with the elements "apple", "banana", and "cherry".
+-   `for fruit in arr:` is the start of the for loop. The iterator
+    `fruit` goes over each element in the numpy array `arr`.
+-   `print(fruit)` is the code chunk that we want to repeat. It prints
+    the current value of `fruit`.
+-   `fruit` is the object that stores the current element of the array.
+    It gets updated at each step over the sequence.
+-   The for loop ends when it has exhausted the sequence, i.e., when
+    `fruit` has taken all values in the numpy array `arr`.
 
 ### The Fibonacci sequence
 
-Having covered how to write a for cycle, we come back to our Fibonacci example:
+Having covered how to write a for cycle, we come back to our Fibonacci
+example:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -1018,14 +1043,26 @@ print(fibonacci)
 
 In this R code:
 
-- `fibonacci <- c(0, 1)` initializes the first two numbers in the Fibonacci sequence.
-- `for (i in 3:20)` is the start of the for loop. The iterator `i` goes from 3 to 20. This is the sequence we want to iterate over.
-- `fibonacci[i] <- fibonacci[i - 1] + fibonacci[i - 2]` is the code chunk that we want to repeat. It calculates the `i`th number in the Fibonacci sequence as the sum of the two preceding numbers and appends it to the `fibonacci` vector.
-- `i` is the object that stores our current index. It gets updated at each step over the sequence.
+-   `fibonacci <- c(0, 1)` initializes the first two numbers in the
+    Fibonacci sequence.
+-   `for (i in 3:20)` is the start of the for loop. The iterator `i`
+    goes from 3 to 20. This is the sequence we want to iterate over.
+-   `fibonacci[i] <- fibonacci[i - 1] + fibonacci[i - 2]` is the code
+    chunk that we want to repeat. It calculates the `i`th number in the
+    Fibonacci sequence as the sum of the two preceding numbers and
+    appends it to the `fibonacci` vector. Given that at iteration `i` we
+    have no element `i` in the vector yet (this is still `i-1` long), R
+    will automatically extend the vector of one extra element.
 
 In this Python code:
 
-- `fibonacci = [0, 1]` initializes the first two numbers in the Fibonacci sequence.
-- `for i in range(2, 20)` is the start of the for loop. The iterator `i` goes from 2 to 19. This is the sequence we want to iterate over.
-- `fibonacci.append(fibonacci[i - 1] + fibonacci[i - 2])` is the code chunk that we want to repeat. It calculates the `i`th number in the Fibonacci sequence as the sum of the two preceding numbers and appends it to the `fibonacci` list using the `append()` method.
-- `i` is the object that stores our current index. It gets updated at each step over the sequence.
+-   `fibonacci = [0, 1]` initializes the first two numbers in the
+    Fibonacci sequence.
+-   `for i in range(2, 20)` is the start of the for loop. The iterator
+    `i` goes from 2 to 19. This is the sequence we want to iterate over.
+-   `fibonacci.append(fibonacci[i - 1] + fibonacci[i - 2])` is the code
+    chunk that we want to repeat. It calculates the `i`th number in the
+    Fibonacci sequence as the sum of the two preceding numbers and
+    appends it to the `fibonacci` list using the `append()` method. The
+    append method extends our vector, adding a new element at the end of
+    the existing one.
