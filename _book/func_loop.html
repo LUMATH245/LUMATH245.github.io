@@ -152,6 +152,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="func_loop.html"><a href="func_loop.html"><i class="fa fa-check"></i><b>3</b> Functions and Loops</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="func_loop.html"><a href="func_loop.html#functions"><i class="fa fa-check"></i><b>3.1</b> Functions</a></li>
+<li class="chapter" data-level="3.2" data-path="func_loop.html"><a href="func_loop.html#for-loops-and-state"><i class="fa fa-check"></i><b>3.2</b> For Loops and State</a></li>
 </ul></li>
 </ul>
 
@@ -864,6 +865,256 @@ and their specific weights in our example!</p>
   max-width: 1200px !important;
 }
 </style>
+</div>
+</div>
+<div id="for-loops-and-state" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> For Loops and State<a href="func_loop.html#for-loops-and-state" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Normally, if you have to run some operations on multiple objects, you
+would store these objects in a vector, and then work with the vector
+directly. This is what we’ve been doing in the past weeks, and what
+works for most of the times. For instance, let’s say we have a vector
+called <code>measurements</code> in lbs and we want to convert all these
+measurements to grams. Then, we can simply take our function
+<code>lbs_to_grams</code> we made above, and run it on the <code>measurements</code> vector:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="func_loop.html#cb482-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a vector of measurements in lbs</span></span>
+<span id="cb482-2"><a href="func_loop.html#cb482-2" aria-hidden="true" tabindex="-1"></a>measurements <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb482-3"><a href="func_loop.html#cb482-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb482-4"><a href="func_loop.html#cb482-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert measurements to grams</span></span>
+<span id="cb482-5"><a href="func_loop.html#cb482-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_grams</span>(measurements)</span></code></pre></div>
+<pre><code>## [1]  453.5924  907.1848 1360.7772</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb484"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb484-1"><a href="func_loop.html#cb484-1" aria-hidden="true" tabindex="-1"></a><span class="co"># importing numpy</span></span>
+<span id="cb484-2"><a href="func_loop.html#cb484-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb484-3"><a href="func_loop.html#cb484-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb484-4"><a href="func_loop.html#cb484-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a list of measurements in lbs</span></span>
+<span id="cb484-5"><a href="func_loop.html#cb484-5" aria-hidden="true" tabindex="-1"></a>measurements <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb484-6"><a href="func_loop.html#cb484-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb484-7"><a href="func_loop.html#cb484-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert measurements to grams</span></span>
+<span id="cb484-8"><a href="func_loop.html#cb484-8" aria-hidden="true" tabindex="-1"></a>lbs_to_grams(measurements)</span></code></pre></div>
+<pre><code>## array([ 453.5924,  907.1848, 1360.7772])</code></pre>
+</div>
+</div>
+<p>This will run the function on each element of the vector
+<strong>independently</strong>.</p>
+<p>More formally: in the first two weeks, we learned how to work with
+vectors and vectorised functions, designed to operate on whole vectors
+directly. Technically, we say that vectorised functions are trivially
+parallelizable because there’s no dependency between elements (the value
+of an element of the output vector does not depend on any other
+element).</p>
+<p>However, <em>while you should use vectorised functions as much as you can</em>,
+they are not suitable for all programming tasks, particularly when the
+computation of an element depends on the previous ones, i.e., when there
+is a state involved.</p>
+<div id="a-question-of-state" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> A question of state<a href="func_loop.html#a-question-of-state" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A state is a scenario where certain steps in your code must be executed
+in a specific order because the output of one step is the input to the
+next step. In these circumstances, we find an answer in <strong>looping</strong>.
+Loops allow us to execute a block of code multiple times, which is
+exactly what we want in these scenarios.</p>
+<p>The Fibonacci sequence is a classic example of a state. If you’re not
+familiar with it, the Fibonacci sequence is a series of numbers in which
+each number is the sum of the two preceding ones, usually starting with
+0 and 1. The first 10 values in the series will be:</p>
+<table>
+<caption>This table shows the first 10 numbers of the Fibonacci sequence,
+starting from <span class="math inline">\(r_{0}\)</span> to <span class="math inline">\(r_{9}\)</span>.</caption>
+<colgroup>
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(r_{i}\)</span></th>
+<th><span class="math inline">\(r_{0}\)</span></th>
+<th><span class="math inline">\(r_{1}\)</span></th>
+<th><span class="math inline">\(r_{2}\)</span></th>
+<th><span class="math inline">\(r_{3}\)</span></th>
+<th><span class="math inline">\(r_{4}\)</span></th>
+<th><span class="math inline">\(r_{5}\)</span></th>
+<th><span class="math inline">\(r_{6}\)</span></th>
+<th><span class="math inline">\(r_{7}\)</span></th>
+<th><span class="math inline">\(r_{8}\)</span></th>
+<th><span class="math inline">\(r_{9}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Value</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>5</td>
+<td>8</td>
+<td>13</td>
+<td>21</td>
+<td>34</td>
+</tr>
+</tbody>
+</table>
+<p>More formally, the Fibonacci sequence is defined by the recurrence
+relation:</p>
+<p><span class="math display">\[
+r_{i} = r_{i - 1} + r_{i - 2} \quad \text{for}\quad i &gt; 2,
+\]</span></p>
+<p>with initial conditions <span class="math inline">\(r_{1} = 0\)</span> and <span class="math inline">\(r_{2} = 1\)</span>.</p>
+<p>Well, unsurprisingly, in mathematics, you have already met the “for”
+statements! As in mathematics a “for” allows to build a relation, a
+“for” loop is a control flow statement that allows code to be executed
+repeatedly.</p>
+<p>Therefore, to generate the Fibonacci sequence using a “for” loop, we
+could use the following algorithm:</p>
+<ol style="list-style-type: decimal">
+<li>Start by defining the first two numbers in the sequence, 0 and 1.</li>
+<li>For a given number of iterations, do the following:
+<ul>
+<li>Calculate the next number in the sequence as the sum of the
+previous two numbers.</li>
+<li>Update the previous two numbers to be the last number and the
+newly calculated number.</li>
+</ul></li>
+</ol>
+<p>We will return to the Fibonacci example after having introduced the for loop syntax.</p>
+</div>
+<div id="the-for-loop" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> The For loop<a href="func_loop.html#the-for-loop" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can code a for loop as following.</p>
+<p><strong>In R:</strong></p>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="func_loop.html#cb486-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb486-2"><a href="func_loop.html#cb486-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb486-3"><a href="func_loop.html#cb486-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5
+## [1] 6
+## [1] 7
+## [1] 8
+## [1] 9
+## [1] 10</code></pre>
+<p>In this R code, to explain the syntax:</p>
+<ul>
+<li><code>for (i in 1:10)</code> is the start of the for loop. The iterator <code>i</code> goes from 1 to 10. <code>1:10</code> creates a vector: this is the sequence of values we want to iterate over.</li>
+<li><code>print(i)</code> is the code chunk that we want to repeat. In this case it prints the current value of <code>i</code>.</li>
+<li><code>i</code> is the object that stores our current index. It gets updated at each step over the sequence of values for 1 to 10.</li>
+<li>The for loop ends when it has exhausted the sequence, i.e., when <code>i</code> has taken all values from 1 to 10.</li>
+</ul>
+<p>We can also use the for loop to iterate over the elements of a vector directly, rather than their indices. For example, a for loop that prints the elements of a vector:</p>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="func_loop.html#cb488-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cherry&quot;</span>)</span>
+<span id="cb488-2"><a href="func_loop.html#cb488-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (fruit <span class="cf">in</span> vec) {</span>
+<span id="cb488-3"><a href="func_loop.html#cb488-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(fruit)</span>
+<span id="cb488-4"><a href="func_loop.html#cb488-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;apple&quot;
+## [1] &quot;banana&quot;
+## [1] &quot;cherry&quot;</code></pre>
+<p>In this case, <code>fruit</code> is the iterator that gets updated at each step over the sequence with the current element of the sequence. The for loop ends when it has exhausted the sequence.</p>
+<p><strong>In Python:</strong></p>
+<p>In Python, we can print the numbers from 1 to 10 using a for loop as follows:</p>
+<div class="sourceCode" id="cb490"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb490-1"><a href="func_loop.html#cb490-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>):</span>
+<span id="cb490-2"><a href="func_loop.html#cb490-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(i)</span></code></pre></div>
+<pre><code>## 1
+## 2
+## 3
+## 4
+## 5
+## 6
+## 7
+## 8
+## 9
+## 10</code></pre>
+<p>In this Python code, to explain the syntax:</p>
+<ul>
+<li><code>for i in range(1, 11)</code> is the start of the for loop. The iterator <code>i</code> goes from 1 to 10. This is the sequence we want to iterate over. We use <code>range</code> function to generate this figure: this function is analogue to <code>np.arange</code> from numpy, but generates a different object called “range” that is specific to iterators</li>
+<li><code>print(i)</code> is the code chunk that we want to repeat. It prints the current value of <code>i</code>.</li>
+<li><code>i</code> is the object that stores our current index. It gets updated at each step over the sequence.</li>
+<li>The for loop ends when it has exhausted the sequence, i.e., when <code>i</code> has taken all values from 1 to 10.</li>
+</ul>
+<p>We can also use the for loop to iterate over the elements of a numpy array directly, rather than their indices. For example, a for loop that prints the elements of a numpy array:</p>
+<div class="sourceCode" id="cb492"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb492-1"><a href="func_loop.html#cb492-1" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.array([<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cherry&quot;</span>])</span>
+<span id="cb492-2"><a href="func_loop.html#cb492-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> fruit <span class="kw">in</span> arr:</span>
+<span id="cb492-3"><a href="func_loop.html#cb492-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(fruit)</span></code></pre></div>
+<pre><code>## apple
+## banana
+## cherry</code></pre>
+<p>In this Python code:</p>
+<ul>
+<li><code>arr = np.array(["apple", "banana", "cherry"])</code> creates a numpy array with the elements “apple”, “banana”, and “cherry”.</li>
+<li><code>for fruit in arr:</code> is the start of the for loop. The iterator <code>fruit</code> goes over each element in the numpy array <code>arr</code>.</li>
+<li><code>print(fruit)</code> is the code chunk that we want to repeat. It prints the current value of <code>fruit</code>.</li>
+<li><code>fruit</code> is the object that stores the current element of the array. It gets updated at each step over the sequence.</li>
+<li>The for loop ends when it has exhausted the sequence, i.e., when <code>fruit</code> has taken all values in the numpy array <code>arr</code>.</li>
+</ul>
+</div>
+<div id="the-fibonacci-sequence" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> The Fibonacci sequence<a href="func_loop.html#the-fibonacci-sequence" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Having covered how to write a for cycle, we come back to our Fibonacci example:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="func_loop.html#cb494-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the first two numbers in the sequence</span></span>
+<span id="cb494-2"><a href="func_loop.html#cb494-2" aria-hidden="true" tabindex="-1"></a>fibonacci <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb494-3"><a href="func_loop.html#cb494-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb494-4"><a href="func_loop.html#cb494-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate the next 18 numbers in the sequence</span></span>
+<span id="cb494-5"><a href="func_loop.html#cb494-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">20</span>) {</span>
+<span id="cb494-6"><a href="func_loop.html#cb494-6" aria-hidden="true" tabindex="-1"></a>  fibonacci[i] <span class="ot">&lt;-</span> fibonacci[i <span class="sc">-</span> <span class="dv">1</span>] <span class="sc">+</span> fibonacci[i <span class="sc">-</span> <span class="dv">2</span>]</span>
+<span id="cb494-7"><a href="func_loop.html#cb494-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb494-8"><a href="func_loop.html#cb494-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb494-9"><a href="func_loop.html#cb494-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the Fibonacci sequence</span></span>
+<span id="cb494-10"><a href="func_loop.html#cb494-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(fibonacci)</span></code></pre></div>
+<pre><code>##  [1]    0    1    1    2    3    5    8   13   21   34   55   89  144  233  377
+## [16]  610  987 1597 2584 4181</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb496"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb496-1"><a href="func_loop.html#cb496-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the first two numbers in the sequence</span></span>
+<span id="cb496-2"><a href="func_loop.html#cb496-2" aria-hidden="true" tabindex="-1"></a>fibonacci <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>]</span>
+<span id="cb496-3"><a href="func_loop.html#cb496-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb496-4"><a href="func_loop.html#cb496-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate the next 18 numbers in the sequence</span></span>
+<span id="cb496-5"><a href="func_loop.html#cb496-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">20</span>):</span>
+<span id="cb496-6"><a href="func_loop.html#cb496-6" aria-hidden="true" tabindex="-1"></a>  fibonacci.append(fibonacci[i <span class="op">-</span> <span class="dv">1</span>] <span class="op">+</span> fibonacci[i <span class="op">-</span> <span class="dv">2</span>])</span>
+<span id="cb496-7"><a href="func_loop.html#cb496-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb496-8"><a href="func_loop.html#cb496-8" aria-hidden="true" tabindex="-1"></a><span class="co"># converting the list into a numpy array </span></span>
+<span id="cb496-9"><a href="func_loop.html#cb496-9" aria-hidden="true" tabindex="-1"></a><span class="co"># (useful if we want to use vectorised operations later!)</span></span>
+<span id="cb496-10"><a href="func_loop.html#cb496-10" aria-hidden="true" tabindex="-1"></a>fibonacci <span class="op">=</span> np.array(fibonacci)</span>
+<span id="cb496-11"><a href="func_loop.html#cb496-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb496-12"><a href="func_loop.html#cb496-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the Fibonacci sequence</span></span>
+<span id="cb496-13"><a href="func_loop.html#cb496-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fibonacci)</span></code></pre></div>
+<pre><code>## [   0    1    1    2    3    5    8   13   21   34   55   89  144  233
+##   377  610  987 1597 2584 4181]</code></pre>
+</div>
+</div>
+<p>In this R code:</p>
+<ul>
+<li><code>fibonacci &lt;- c(0, 1)</code> initializes the first two numbers in the Fibonacci sequence.</li>
+<li><code>for (i in 3:20)</code> is the start of the for loop. The iterator <code>i</code> goes from 3 to 20. This is the sequence we want to iterate over.</li>
+<li><code>fibonacci[i] &lt;- fibonacci[i - 1] + fibonacci[i - 2]</code> is the code chunk that we want to repeat. It calculates the <code>i</code>th number in the Fibonacci sequence as the sum of the two preceding numbers and appends it to the <code>fibonacci</code> vector.</li>
+<li><code>i</code> is the object that stores our current index. It gets updated at each step over the sequence.</li>
+</ul>
+<p>In this Python code:</p>
+<ul>
+<li><code>fibonacci = [0, 1]</code> initializes the first two numbers in the Fibonacci sequence.</li>
+<li><code>for i in range(2, 20)</code> is the start of the for loop. The iterator <code>i</code> goes from 2 to 19. This is the sequence we want to iterate over.</li>
+<li><code>fibonacci.append(fibonacci[i - 1] + fibonacci[i - 2])</code> is the code chunk that we want to repeat. It calculates the <code>i</code>th number in the Fibonacci sequence as the sum of the two preceding numbers and appends it to the <code>fibonacci</code> list using the <code>append()</code> method.</li>
+<li><code>i</code> is the object that stores our current index. It gets updated at each step over the sequence.</li>
+</ul>
 
 </div>
 </div>
