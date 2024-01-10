@@ -524,9 +524,22 @@ scenarios while keeping the code clean and readable.
 
 ### Exercise: cups to grams converter
 
-Time to fuel the little chef in you. Anyone can cook after all.
+So I once watched this movie with a small rat chef named Remy. Like it's
+a very popular one, but I can't say the title for copyright reasons.
+Anyway, let's say that one day, Remy decides to leave his home in France
+and set sail for the culinary world of the United States.
+
+But as soon as Remy gets onto American soil, and he starts to explore
+American recipes, he encounters a problem. All the measurements are in
+cups! Back in France, he was used to grams and liters. "Mon Dieu!" he
+exclaimed, "How am I supposed to cook with these cup measurements?"
+[Imagine this phrase with a French accent].
 
 ![](images/chapter3/chef.jpeg){width="292"}
+
+But Remy is not a rat to be easily defeated: To make his life easier, he
+decides to hire a programmer on Fiverr to convert cups to grams. You are
+that programmer.
 
 As we did with the functions we created before, you should:
 
@@ -545,23 +558,243 @@ As we did with the functions we created before, you should:
         that specifies an ingredient, e.g. `"flour"` or `"water"`.
         Default this second argument to `water`.
 
-    ii. With an if-if else-else statement, it should check the
-        ingredient, and within the relative code block, should run the
-        functions to convert cps to ml, and ml to grams. For
-        `specific_weight` it should use the value relative to the
-        ingredient, from the table below:
+    ii. Convert the amount of cups in milliliters using the function
+        `cups_to_ml`.
 
-        | Ingredient | Specific Weight (g/ml) |
-        |:-----------|:-----------------------|
-        | water      | 1                      |
-        | flour      | 0.53                   |
-        | oil        | 0.92                   |
-        | oat Milk   | 1.03                   |
+    iii. With an if-if else-else statement, it should check the argument
+         `ingredient`, and set a `specific_weight` variable based on the
+         ingredient. You can find the values in the table below:
+
+         | Ingredient | Specific Weight (g/ml) |
+         |:-----------|:-----------------------|
+         | water      | 1                      |
+         | flour      | 0.53                   |
+         | oil        | 0.92                   |
+         | oat Milk   | 1.03                   |
+
+    iv. Call the `ml_to_grams` function with the relative ml and
+        specific weight computed above, and return the result.
 4.  Run the function to convert the following:
     i.  2 cups of water
     ii. Half a cup of oil
     iii. 3 cups of oat milk
     iv. 2 cups of flour plus one cup of water
+
+**Solution:**
+
+This is the solution with the if-elsif-else statement:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Function to convert cups to milliliters
+cups_to_ml <- function(cups) {
+  ml <- cups * 236.588
+  return(ml)
+}
+
+# Function to convert milliliters to grams
+ml_to_grams <- function(ml, specific_weight) {
+  grams <- ml * specific_weight
+  return(grams)
+}
+
+# Function to convert cups to grams
+cups_to_grams <- function(cups, ingredient = "water") {
+  # Convert cups to ml
+  ml <- cups_to_ml(cups)
+  
+  # Select specific weight based on ingredient
+  if (ingredient == "water") {
+    specific_weight <- 1
+  } else if (ingredient == "flour") {
+    specific_weight <- 0.53
+  } else if (ingredient == "oil") {
+    specific_weight <- 0.92
+  } else if (ingredient == "oat_milk") {
+    specific_weight <- 1.03
+  } else {
+    specific_weight <- 1  # Default to water if ingredient is not recognized
+  }
+  
+  # Convert ml to grams
+  grams <- ml_to_grams(ml, specific_weight)
+  
+  return(grams)
+}
+
+
+# Run the function to convert the following
+cups_to_grams(2, "water")
+cups_to_grams(0.5, "oil")
+cups_to_grams(3, "oat_milk")
+cups_to_grams(2, "flour") + cups_to_grams(1, "water")
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Function to convert cups to milliliters
+def cups_to_ml(cups):
+  ml = cups * 236.588
+  return ml
+
+# Function to convert milliliters to grams
+def ml_to_grams(ml, specific_weight):
+  grams = ml * specific_weight
+  return grams
+
+# Function to convert cups to grams
+def cups_to_grams(cups, ingredient = "water"):
+  # Convert cups to ml
+  ml = cups_to_ml(cups)
+  
+  # Select specific weight based on ingredient
+  if ingredient == "water":
+    specific_weight = 1
+  elif ingredient == "flour":
+    specific_weight = 0.53
+  elif ingredient == "oil":
+    specific_weight = 0.92
+  elif ingredient == "oat_milk":
+    specific_weight = 1.03
+  else:
+    specific_weight = 1  # Default to water if ingredient is not recognized
+  
+  # Convert ml to grams
+  grams = ml_to_grams(ml, specific_weight)
+  
+  return grams
+
+
+# Run the function to convert the following
+cups_to_grams(2, "water")
+cups_to_grams(0.5, "oil")
+cups_to_grams(3, "oat_milk")
+cups_to_grams(2, "flour") + cups_to_grams(1, "water")
+```
+
+</div>
+:::
+
+**Bonus** However, there's a better solution that uses named vectors (in
+R) and dictionaries (in Python) to avoid the if-elseif-else statement.
+These are two new structures we have never seen earlier. Have a look
+below:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Function to convert cups to milliliters
+cups_to_ml <- function(cups) {
+  ml <- cups * 236.588
+  return(ml)
+}
+
+# Function to convert milliliters to grams
+ml_to_grams <- function(ml, specific_weight) {
+  grams <- ml * specific_weight
+  return(grams)
+}
+
+# Function to convert cups to grams
+cups_to_grams <- function(cups, ingredient = "water") {
+  # Specific weights
+  weights <- c(water = 1, flour = 0.53, oil = 0.92, oat_milk = 1.03)
+  
+  # Convert cups to ml
+  ml <- cups_to_ml(cups)
+  
+  # Convert ml to grams
+  grams <- ml_to_grams(ml, weights[ingredient])
+  
+  return(grams)
+}
+
+# Run the function to convert the following
+cups_to_grams(2, "water")
+cups_to_grams(0.5, "oil")
+cups_to_grams(3, "oat_milk")
+cups_to_grams(2, "flour") + cups_to_grams(1, "water")
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Function to convert cups to milliliters
+def cups_to_ml(cups):
+  ml = cups * 236.588
+  return ml
+
+# Function to convert milliliters to grams
+def ml_to_grams(ml, specific_weight):
+  grams = ml * specific_weight
+  return grams
+
+# Function to convert cups to grams
+def cups_to_grams(cups, ingredient = "water"):
+  # Specific weights
+  weights = {"water": 1, "flour": 0.53, "oil": 0.92, "oat_milk": 1.03}
+  
+  # Convert cups to ml
+  ml = cups_to_ml(cups)
+  
+  # Convert ml to grams
+  grams = ml_to_grams(ml, weights[ingredient])
+  
+  return grams
+
+# Run the function to convert the following
+cups_to_grams(2, "water")
+cups_to_grams(0.5, "oil")
+cups_to_grams(3, "oat_milk")
+cups_to_grams(2, "flour") + cups_to_grams(1, "water")
+```
+
+</div>
+:::
+
+Let's break it down!
+
+In **R**, we used a named vector. A named vector is just like a regular
+vector, but each element in the vector has a name. In our case, the
+names are the ingredients ("water", "flour", "oil", "oat_milk"), and the
+elements are the specific weights. We can access the elements of a named
+vector using their names. For example, `weights["water"]` gives us the
+specific weight of water.
+
+```{r}
+weights <- c(water = 1, flour = 0.53, oil = 0.92, oat_milk = 1.03)
+```
+
+In **Python**, we used a dictionary. A dictionary is a collection of
+key-value pairs. The keys in our dictionary are the ingredients
+("water", "flour", "oil", "oat_milk"), and the values are the specific
+weights. We can access the values in a dictionary using their keys. For
+example, `weights["water"]` gives us the specific weight of water.
+
+```{python}
+weights = {"water": 1, "flour": 0.53, "oil": 0.92, "oat_milk": 1.03}
+```
+
+Both named vectors in R and dictionaries in Python provide a convenient
+way to store and access related pieces of information. They're
+particularly useful when we have pairs of related data, like ingredients
+and their specific weights in our example!
 
 ```{=html}
 <style type="text/css">
