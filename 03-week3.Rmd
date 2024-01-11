@@ -873,7 +873,7 @@ each number is the sum of the two preceding ones, usually starting with
 0 and 1. The first 10 values in the series will be:
 
 | $r_{i}$ | $r_{0}$ | $r_{1}$ | $r_{2}$ | $r_{3}$ | $r_{4}$ | $r_{5}$ | $r_{6}$ | $r_{7}$ | $r_{8}$ | $r_{9}$ |
-|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
+|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
 | Value   | 0       | 1       | 1       | 2       | 3       | 5       | 8       | 13      | 21      | 34      |
 
 : This table shows the first 10 numbers of the Fibonacci sequence,
@@ -1218,7 +1218,8 @@ To see how they work, we write a loop that prints the numbers from 1 to
 ```{r}
 for (i in 1:10) {
   if (i == 5) {
-    next  # Skip the rest of the loop and continue with the next iteration
+    next  # Skip the rest of the loop 
+          # and continue with the next iteration
   }
   if (i > 8) {
     break  # Immediately terminate the loop
@@ -1236,7 +1237,8 @@ for (i in 1:10) {
 ```{python}
 for i in range(1, 11):
   if i == 5:
-    continue  # Skip the rest of the loop and continue with the next iteration
+    continue  # Skip the rest of the loop 
+              # and continue with the next iteration
   if i > 8:
     break  # Immediately terminate the loop
   print(i)  # Print the current value of i
