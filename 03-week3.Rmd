@@ -1249,7 +1249,7 @@ for i in range(1, 11):
 
 Let's break it down:
 
--   `if (i == 5) { next }` and `if i == 5: continue` are the
+-   `if (i == 5) { next }` (R) and `if i == 5: continue` (python) are the
     next/continue statements. If `i` is equal to 5, they skip the rest
     of the loop and continue with the next iteration. 5 won't be
     printed!

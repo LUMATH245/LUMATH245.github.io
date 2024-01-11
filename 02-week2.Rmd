@@ -409,11 +409,11 @@ In logical operations, as in general algebra, the precedence of
 operators determines the order in which operations are performed:
 
 1.  **Logical NOT**: This operator has the highest precedence and is
-    performed first¹⁴.
+    performed first
 2.  **Logical AND**: This operator has the next highest precedence after
-    Logical NOT¹⁵.
+    Logical NOT
 3.  **Logical OR**: This operator has lower precedence than Logical
-    AND¹⁵.
+    AND
 
 So, in an expression without parentheses, the NOT operation is performed
 first, followed by the AND operation, and finally the OR operation.
@@ -466,38 +466,6 @@ the value of:
 You should use the console in R or Python to check your answers. You can
 review the table and the examples above, and try to understand the logic
 behind each expression.
-
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
-<div>
-
-**R**
-
-```{r}
-# Checking the answers
-TRUE | TRUE & FALSE
-FALSE | FALSE & TRUE
-(TRUE & FALSE) | (FALSE & TRUE)
-(TRUE | TRUE) & FALSE
-(TRUE | FALSE) & (FALSE | TRUE)
-```
-
-</div>
-
-<div>
-
-**python**
-
-```{python}
-# Checking the answers
-True and False or True
-False or False and True
-(True and False) or (False and True)
-True and (False or True)
-(True or False) and (False or True)
-```
-
-</div>
-:::
 
 ## Flow
 
@@ -866,6 +834,42 @@ have to add "Skibbidi" if the number is divisible by 2. For example,
 given the number 12, print "SkibbidiFizz", given the number 20, print
 "SkibbidiBuzz", given the number 30, print "SkibbidiFizzBuzz", and given
 the number 8, print "Skibbidi".
+
+**HINT** To make a quick solution, you will need to collate strings. This means that if we have the strings `"a"`, `"b"`, collated those will be `"ab"`, and if we have `"a"`, `"b"`, `"b"`, `"a"`, collated they will read `"abba"` (mammamia).
+
+To collate strings in R and python:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# collate strings
+paste0("a", "b", "b", "c")
+
+# you can also collate strings saved in variables
+string_in_a_variable <- "mia"
+paste0("mamma", string_in_a_variable)
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# collate strings
+"a" + "b" + "b" + "c"
+
+# you can also collate strings saved in variables
+string_in_a_variable = "mia"
+"mamma" + string_in_a_variable
+```
+
+</div>
+:::
 
 
 ## Vectors
