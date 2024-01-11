@@ -835,7 +835,7 @@ given the number 12, print "SkibbidiFizz", given the number 20, print
 "SkibbidiBuzz", given the number 30, print "SkibbidiFizzBuzz", and given
 the number 8, print "Skibbidi".
 
-**HINT** To make a quick solution, you will need to collate strings. This means that if we have the strings `"a"`, `"b"`, collated those will be `"ab"`, and if we have `"a"`, `"b"`, `"b"`, `"a"`, collated they will read `"abba"` (mammamia).
+**HINT** To write a quick solution, you will need to collate strings. This means that if we have the strings `"a"`, `"b"`, collated those will be `"ab"`, and if we have `"a"`, `"b"`, `"b"`, `"a"`, collated they will read `"abba"` (mammamia).
 
 To collate strings in R and python:
 
@@ -870,6 +870,8 @@ string_in_a_variable = "mia"
 
 </div>
 :::
+
+Which strings could you collate for "SkibbidiFizzBuzz"? 
 
 
 ## Vectors
