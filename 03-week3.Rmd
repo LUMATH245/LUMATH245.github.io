@@ -873,7 +873,7 @@ each number is the sum of the two preceding ones, usually starting with
 0 and 1. The first 10 values in the series will be:
 
 | $r_{i}$ | $r_{0}$ | $r_{1}$ | $r_{2}$ | $r_{3}$ | $r_{4}$ | $r_{5}$ | $r_{6}$ | $r_{7}$ | $r_{8}$ | $r_{9}$ |
-|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
+|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
 | Value   | 0       | 1       | 1       | 2       | 3       | 5       | 8       | 13      | 21      | 34      |
 
 : This table shows the first 10 numbers of the Fibonacci sequence,
@@ -903,13 +903,14 @@ could use the following algorithm:
     -   Update the previous two numbers to be the last number and the
         newly calculated number.
 
-We will return to the Fibonacci example after having introduced the `for`
-loop syntax.
+We will return to the Fibonacci example after having introduced the
+`for` loop syntax.
 
 ### The syntax
 
-As the syntax in R and python for looping is quite different, **R and python chunks will be separate**.
-You should be able to read each language independently.
+As the syntax in R and python for looping is quite different, **R and
+python chunks will be separate**. You should be able to read each
+language independently.
 
 We can code a for loop as following.
 
@@ -1063,9 +1064,10 @@ In the Python code:
     append method extends our vector, adding a new element at the end of
     the existing one.
 
+Our vectors, where we stored our results at every iteration, should be
+20 elements long, containing the sequence. ::: {style="display: grid;
+grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 
-Our vectors, where we stored our results at every iteration, should be 20 elements long, containing the sequence. 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -1085,18 +1087,23 @@ print(fibonacci)
 # Print the Fibonacci sequence
 print(fibonacci)
 ```
+
 </div>
+
 :::
 
-**Before you proceed** make sure you understand what's going on inside the for loop. 
-Add extra `print` statements to understand what's happening at every iteration, e.g. try to add:
-`print(i)`, `print(fibonacci[i])` and `print(fibonacci[i-1])` before the computation, or `print(fibonacci)` after the computation has been done. `print` statements are extremely useful for debugging for cycles!
-
+**Before you proceed** make sure you understand what's going on inside
+the for loop. Add extra `print` statements to understand what's
+happening at every iteration, e.g. try to add: `print(i)`,
+`print(fibonacci[i])` and `print(fibonacci[i-1])` before the
+computation, or `print(fibonacci)` after the computation has been done.
+`print` statements are extremely useful for debugging for cycles!
 
 ## More about looping
 
-In this section we will be giving few extra details and concepts you should know about looping.
-If you got familiar with the `for` cycle above, they should be fairly straightforward to understand! 
+In this section we will be giving few extra details and concepts you
+should know about looping. If you got familiar with the `for` cycle
+above, they should be fairly straightforward to understand!
 
 ### Nested loops
 
@@ -1138,7 +1145,10 @@ for i in range(1, 5):
 
 ### While loops
 
-Similarly to for loops, we have the while loops. They allow us to repeat a block of code until a certain condition is met. This can be incredibly useful in many situations, such as when we want to perform an operation until a certain threshold is reached.
+Similarly to for loops, we have the while loops. They allow us to repeat
+a block of code until a certain condition is met. This can be incredibly
+useful in many situations, such as when we want to perform an operation
+until a certain threshold is reached.
 
 We can see how a while loop works below:
 
@@ -1173,11 +1183,18 @@ while i <= 10:
 
 In these codes:
 
-- `i <- 1` and `i = 1` initialize the counter at 1.
-- `while (i <= 10)` and `while i <= 10:` start the while loop. The condition `i <= 10` is what we check at each step. If it's true, we execute the code chunk inside the loop.
-- `print(i)` and `print(i)` are the code chunks that we want to repeat. They print the current value of `i`.
-- `i <- i + 1` and `i += 1` are crucial. They update `i` at each step, ensuring that our condition will eventually be false. Without these lines, `i` would always be 1, the condition would always be true, and the while loop would run indefinitely.
-- The while loop ends when the condition `i <= 10` is no longer met, i.e., when `i` is greater than 10.
+-   `i <- 1` and `i = 1` initialize the counter at 1.
+-   `while (i <= 10)` and `while i <= 10:` start the while loop. The
+    condition `i <= 10` is what we check at each step. If it's true, we
+    execute the code chunk inside the loop.
+-   `print(i)` and `print(i)` are the code chunks that we want to
+    repeat. They print the current value of `i`.
+-   `i <- i + 1` and `i += 1` are crucial. They update `i` at each step,
+    ensuring that our condition will eventually be false. Without these
+    lines, `i` would always be 1, the condition would always be true,
+    and the while loop would run indefinitely.
+-   The while loop ends when the condition `i <= 10` is no longer met,
+    i.e., when `i` is greater than 10.
 
 ### Break and next
 
@@ -1185,9 +1202,13 @@ We are missing one last ingredient to looping! Break and next.
 
 ### Break and next/continue
 
-Break and next/continue are control flow statements that can be used to alter the flow of a loop. They can be incredibly useful in many situations, such as when we want to stop a loop if a certain condition is met or skip an iteration if a certain condition is met.
+Break and next/continue are control flow statements that can be used to
+alter the flow of a loop. They can be incredibly useful in many
+situations, such as when we want to stop a loop if a certain condition
+is met or skip an iteration if a certain condition is met.
 
-To see how they work, we write a loop that prints the numbers from 1 to 10, but skips the number 5 and stops after the number 8.
+To see how they work, we write a loop that prints the numbers from 1 to
+10, but skips the number 5 and stops after the number 8.
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -1226,5 +1247,12 @@ for i in range(1, 11):
 
 Let's break it down:
 
-- `if (i == 5) { next }` and `if i == 5: continue` are the next/continue statements. If `i` is equal to 5, they skip the rest of the loop and continue with the next iteration. 5 won't be printed!
-- `if (i > 8) { break }` and `if i > 8: break` are the break statements. If `i` is greater than 8, they immediately terminate the loop, regardless of the loop condition. As a result, we stop at 8, and don't continue to up to 10. `break` could be an alternative stopping condition to a while loop. 
+-   `if (i == 5) { next }` and `if i == 5: continue` are the
+    next/continue statements. If `i` is equal to 5, they skip the rest
+    of the loop and continue with the next iteration. 5 won't be
+    printed!
+-   `if (i > 8) { break }` and `if i > 8: break` are the break
+    statements. If `i` is greater than 8, they immediately terminate the
+    loop, regardless of the loop condition. As a result, we stop at 8,
+    and don't continue to up to 10. `break` could be an alternative
+    stopping condition to a while loop.

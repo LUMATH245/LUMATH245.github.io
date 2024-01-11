@@ -990,12 +990,13 @@ previous two numbers.</li>
 newly calculated number.</li>
 </ul></li>
 </ol>
-<p>We will return to the Fibonacci example after having introduced the <code>for</code>
-loop syntax.</p>
+<p>We will return to the Fibonacci example after having introduced the
+<code>for</code> loop syntax.</p>
 <div id="the-syntax" class="section level3 hasAnchor" number="3.2.1">
 <h3><span class="header-section-number">3.2.1</span> The syntax<a href="func_loop.html#the-syntax" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>As the syntax in R and python for looping is quite different, <strong>R and python chunks will be separate</strong>.
-You should be able to read each language independently.</p>
+<p>As the syntax in R and python for looping is quite different, <strong>R and
+python chunks will be separate</strong>. You should be able to read each
+language independently.</p>
 <p>We can code a for loop as following.</p>
 <p><strong>In R:</strong></p>
 <div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="func_loop.html#cb486-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
@@ -1143,8 +1144,9 @@ appends it to the <code>fibonacci</code> list using the <code>append()</code> me
 append method extends our vector, adding a new element at the end of
 the existing one.</li>
 </ul>
-Our vectors, where we stored our results at every iteration, should be 20 elements long, containing the sequence.
-::: {style=“display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;”}
+<p>Our vectors, where we stored our results at every iteration, should be
+20 elements long, containing the sequence. ::: {style=“display: grid;
+grid-template-columns: 1fr 1fr; grid-column-gap: 10px;”}</p>
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="func_loop.html#cb496-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the Fibonacci sequence</span></span>
@@ -1160,15 +1162,19 @@ Our vectors, where we stored our results at every iteration, should be 20 elemen
 ##   377  610  987 1597 2584 4181]</code></pre>
 </div>
 <p>:::</p>
-<p><strong>Before you proceed</strong> make sure you understand what’s going on inside the for loop.
-Add extra <code>print</code> statements to understand what’s happening at every iteration, e.g. try to add:
-<code>print(i)</code>, <code>print(fibonacci[i])</code> and <code>print(fibonacci[i-1])</code> before the computation, or <code>print(fibonacci)</code> after the computation has been done. <code>print</code> statements are extremely useful for debugging for cycles!</p>
+<p><strong>Before you proceed</strong> make sure you understand what’s going on inside
+the for loop. Add extra <code>print</code> statements to understand what’s
+happening at every iteration, e.g. try to add: <code>print(i)</code>,
+<code>print(fibonacci[i])</code> and <code>print(fibonacci[i-1])</code> before the
+computation, or <code>print(fibonacci)</code> after the computation has been done.
+<code>print</code> statements are extremely useful for debugging for cycles!</p>
 </div>
 </div>
 <div id="more-about-looping" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> More about looping<a href="func_loop.html#more-about-looping" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In this section we will be giving few extra details and concepts you should know about looping.
-If you got familiar with the <code>for</code> cycle above, they should be fairly straightforward to understand!</p>
+<p>In this section we will be giving few extra details and concepts you
+should know about looping. If you got familiar with the <code>for</code> cycle
+above, they should be fairly straightforward to understand!</p>
 <div id="nested-loops" class="section level3 hasAnchor" number="3.3.1">
 <h3><span class="header-section-number">3.3.1</span> Nested loops<a href="func_loop.html#nested-loops" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Nested loops are useful when we have to repeat a block of code for each
@@ -1228,7 +1234,10 @@ multiplication table from 1 to 4.</p>
 </div>
 <div id="while-loops" class="section level3 hasAnchor" number="3.3.2">
 <h3><span class="header-section-number">3.3.2</span> While loops<a href="func_loop.html#while-loops" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Similarly to for loops, we have the while loops. They allow us to repeat a block of code until a certain condition is met. This can be incredibly useful in many situations, such as when we want to perform an operation until a certain threshold is reached.</p>
+<p>Similarly to for loops, we have the while loops. They allow us to repeat
+a block of code until a certain condition is met. This can be incredibly
+useful in many situations, such as when we want to perform an operation
+until a certain threshold is reached.</p>
 <p>We can see how a while loop works below:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
@@ -1270,10 +1279,17 @@ multiplication table from 1 to 4.</p>
 <p>In these codes:</p>
 <ul>
 <li><code>i &lt;- 1</code> and <code>i = 1</code> initialize the counter at 1.</li>
-<li><code>while (i &lt;= 10)</code> and <code>while i &lt;= 10:</code> start the while loop. The condition <code>i &lt;= 10</code> is what we check at each step. If it’s true, we execute the code chunk inside the loop.</li>
-<li><code>print(i)</code> and <code>print(i)</code> are the code chunks that we want to repeat. They print the current value of <code>i</code>.</li>
-<li><code>i &lt;- i + 1</code> and <code>i += 1</code> are crucial. They update <code>i</code> at each step, ensuring that our condition will eventually be false. Without these lines, <code>i</code> would always be 1, the condition would always be true, and the while loop would run indefinitely.</li>
-<li>The while loop ends when the condition <code>i &lt;= 10</code> is no longer met, i.e., when <code>i</code> is greater than 10.</li>
+<li><code>while (i &lt;= 10)</code> and <code>while i &lt;= 10:</code> start the while loop. The
+condition <code>i &lt;= 10</code> is what we check at each step. If it’s true, we
+execute the code chunk inside the loop.</li>
+<li><code>print(i)</code> and <code>print(i)</code> are the code chunks that we want to
+repeat. They print the current value of <code>i</code>.</li>
+<li><code>i &lt;- i + 1</code> and <code>i += 1</code> are crucial. They update <code>i</code> at each step,
+ensuring that our condition will eventually be false. Without these
+lines, <code>i</code> would always be 1, the condition would always be true,
+and the while loop would run indefinitely.</li>
+<li>The while loop ends when the condition <code>i &lt;= 10</code> is no longer met,
+i.e., when <code>i</code> is greater than 10.</li>
 </ul>
 </div>
 <div id="break-and-next" class="section level3 hasAnchor" number="3.3.3">
@@ -1282,8 +1298,12 @@ multiplication table from 1 to 4.</p>
 </div>
 <div id="break-and-nextcontinue" class="section level3 hasAnchor" number="3.3.4">
 <h3><span class="header-section-number">3.3.4</span> Break and next/continue<a href="func_loop.html#break-and-nextcontinue" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Break and next/continue are control flow statements that can be used to alter the flow of a loop. They can be incredibly useful in many situations, such as when we want to stop a loop if a certain condition is met or skip an iteration if a certain condition is met.</p>
-<p>To see how they work, we write a loop that prints the numbers from 1 to 10, but skips the number 5 and stops after the number 8.</p>
+<p>Break and next/continue are control flow statements that can be used to
+alter the flow of a loop. They can be incredibly useful in many
+situations, such as when we want to stop a loop if a certain condition
+is met or skip an iteration if a certain condition is met.</p>
+<p>To see how they work, we write a loop that prints the numbers from 1 to
+10, but skips the number 5 and stops after the number 8.</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
@@ -1323,8 +1343,15 @@ multiplication table from 1 to 4.</p>
 </div>
 <p>Let’s break it down:</p>
 <ul>
-<li><code>if (i == 5) { next }</code> and <code>if i == 5: continue</code> are the next/continue statements. If <code>i</code> is equal to 5, they skip the rest of the loop and continue with the next iteration. 5 won’t be printed!</li>
-<li><code>if (i &gt; 8) { break }</code> and <code>if i &gt; 8: break</code> are the break statements. If <code>i</code> is greater than 8, they immediately terminate the loop, regardless of the loop condition. As a result, we stop at 8, and don’t continue to up to 10. <code>break</code> could be an alternative stopping condition to a while loop.</li>
+<li><code>if (i == 5) { next }</code> and <code>if i == 5: continue</code> are the
+next/continue statements. If <code>i</code> is equal to 5, they skip the rest
+of the loop and continue with the next iteration. 5 won’t be
+printed!</li>
+<li><code>if (i &gt; 8) { break }</code> and <code>if i &gt; 8: break</code> are the break
+statements. If <code>i</code> is greater than 8, they immediately terminate the
+loop, regardless of the loop condition. As a result, we stop at 8,
+and don’t continue to up to 10. <code>break</code> could be an alternative
+stopping condition to a while loop.</li>
 </ul>
 
 </div>
