@@ -39,10 +39,10 @@ writing-new-functions
 enviroments
 multiple-arguments
 exercise-cups-to-grams-converter
-loops-and-state
-a-question-of-state
-the-for-loop
+state-and-for-loop
+the-syntax
 coding-the-fibonacci-sequence
+more-about-looping
 nested-loops
 while-loops
 break-and-next

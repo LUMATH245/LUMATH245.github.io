@@ -152,7 +152,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="func_loop.html"><a href="func_loop.html"><i class="fa fa-check"></i><b>3</b> Functions and Loops</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="func_loop.html"><a href="func_loop.html#functions"><i class="fa fa-check"></i><b>3.1</b> Functions</a></li>
-<li class="chapter" data-level="3.2" data-path="func_loop.html"><a href="func_loop.html#loops-and-state"><i class="fa fa-check"></i><b>3.2</b> Loops and State</a></li>
+<li class="chapter" data-level="3.2" data-path="func_loop.html"><a href="func_loop.html#state-and-for-loop"><i class="fa fa-check"></i><b>3.2</b> State and For Loop</a></li>
+<li class="chapter" data-level="3.3" data-path="func_loop.html"><a href="func_loop.html#more-about-looping"><i class="fa fa-check"></i><b>3.3</b> More about looping</a></li>
 </ul></li>
 </ul>
 
@@ -867,8 +868,8 @@ and their specific weights in our example!</p>
 </style>
 </div>
 </div>
-<div id="loops-and-state" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Loops and State<a href="func_loop.html#loops-and-state" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="state-and-for-loop" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> State and For Loop<a href="func_loop.html#state-and-for-loop" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Normally, if you have to run some operations on multiple objects, you
 would store these objects in a vector, and then work with the vector
 directly. This is what we’ve been doing in the past weeks, and what
@@ -911,8 +912,6 @@ element).</p>
 they are not suitable for all programming tasks, particularly when the
 computation of an element depends on the previous ones, i.e., when there
 is a state involved.</p>
-<div id="a-question-of-state" class="section level3 hasAnchor" number="3.2.1">
-<h3><span class="header-section-number">3.2.1</span> A question of state<a href="func_loop.html#a-question-of-state" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A state is a scenario where certain steps in your code must be executed
 in a specific order because the output of one step is the input to the
 next step. In these circumstances, we find an answer in <strong>looping</strong>.
@@ -991,11 +990,12 @@ previous two numbers.</li>
 newly calculated number.</li>
 </ul></li>
 </ol>
-<p>We will return to the Fibonacci example after having introduced the for
+<p>We will return to the Fibonacci example after having introduced the <code>for</code>
 loop syntax.</p>
-</div>
-<div id="the-for-loop" class="section level3 hasAnchor" number="3.2.2">
-<h3><span class="header-section-number">3.2.2</span> The For loop<a href="func_loop.html#the-for-loop" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="the-syntax" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> The syntax<a href="func_loop.html#the-syntax" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As the syntax in R and python for looping is quite different, <strong>R and python chunks will be separate</strong>.
+You should be able to read each language independently.</p>
 <p>We can code a for loop as following.</p>
 <p><strong>In R:</strong></p>
 <div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="func_loop.html#cb486-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
@@ -1088,8 +1088,8 @@ It gets updated at each step over the sequence.</li>
 <code>fruit</code> has taken all values in the numpy array <code>arr</code>.</li>
 </ul>
 </div>
-<div id="coding-the-fibonacci-sequence" class="section level3 hasAnchor" number="3.2.3">
-<h3><span class="header-section-number">3.2.3</span> Coding The Fibonacci sequence<a href="func_loop.html#coding-the-fibonacci-sequence" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="coding-the-fibonacci-sequence" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Coding The Fibonacci sequence<a href="func_loop.html#coding-the-fibonacci-sequence" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Having covered how to write a for cycle, we come back to our Fibonacci
 example:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
@@ -1101,33 +1101,23 @@ example:</p>
 <span id="cb494-4"><a href="func_loop.html#cb494-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate the next 18 numbers in the sequence</span></span>
 <span id="cb494-5"><a href="func_loop.html#cb494-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">20</span>) {</span>
 <span id="cb494-6"><a href="func_loop.html#cb494-6" aria-hidden="true" tabindex="-1"></a>  fibonacci[i] <span class="ot">&lt;-</span> fibonacci[i <span class="sc">-</span> <span class="dv">1</span>] <span class="sc">+</span> fibonacci[i <span class="sc">-</span> <span class="dv">2</span>]</span>
-<span id="cb494-7"><a href="func_loop.html#cb494-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb494-8"><a href="func_loop.html#cb494-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb494-9"><a href="func_loop.html#cb494-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the Fibonacci sequence</span></span>
-<span id="cb494-10"><a href="func_loop.html#cb494-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(fibonacci)</span></code></pre></div>
-<pre><code>##  [1]    0    1    1    2    3    5    8   13   21   34   55   89  144  233  377
-## [16]  610  987 1597 2584 4181</code></pre>
+<span id="cb494-7"><a href="func_loop.html#cb494-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb496"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb496-1"><a href="func_loop.html#cb496-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the first two numbers in the sequence</span></span>
-<span id="cb496-2"><a href="func_loop.html#cb496-2" aria-hidden="true" tabindex="-1"></a>fibonacci <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>]</span>
-<span id="cb496-3"><a href="func_loop.html#cb496-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb496-4"><a href="func_loop.html#cb496-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate the next 18 numbers in the sequence</span></span>
-<span id="cb496-5"><a href="func_loop.html#cb496-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">20</span>):</span>
-<span id="cb496-6"><a href="func_loop.html#cb496-6" aria-hidden="true" tabindex="-1"></a>  fibonacci.append(fibonacci[i <span class="op">-</span> <span class="dv">1</span>] <span class="op">+</span> fibonacci[i <span class="op">-</span> <span class="dv">2</span>])</span>
-<span id="cb496-7"><a href="func_loop.html#cb496-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb496-8"><a href="func_loop.html#cb496-8" aria-hidden="true" tabindex="-1"></a><span class="co"># converting the list into a numpy array </span></span>
-<span id="cb496-9"><a href="func_loop.html#cb496-9" aria-hidden="true" tabindex="-1"></a><span class="co"># (useful if we want to use vectorised operations later!)</span></span>
-<span id="cb496-10"><a href="func_loop.html#cb496-10" aria-hidden="true" tabindex="-1"></a>fibonacci <span class="op">=</span> np.array(fibonacci)</span>
-<span id="cb496-11"><a href="func_loop.html#cb496-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb496-12"><a href="func_loop.html#cb496-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the Fibonacci sequence</span></span>
-<span id="cb496-13"><a href="func_loop.html#cb496-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fibonacci)</span></code></pre></div>
-<pre><code>## [   0    1    1    2    3    5    8   13   21   34   55   89  144  233
-##   377  610  987 1597 2584 4181]</code></pre>
+<div class="sourceCode" id="cb495"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb495-1"><a href="func_loop.html#cb495-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the first two numbers in the sequence</span></span>
+<span id="cb495-2"><a href="func_loop.html#cb495-2" aria-hidden="true" tabindex="-1"></a>fibonacci <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>]</span>
+<span id="cb495-3"><a href="func_loop.html#cb495-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb495-4"><a href="func_loop.html#cb495-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate the next 18 numbers in the sequence</span></span>
+<span id="cb495-5"><a href="func_loop.html#cb495-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">20</span>):</span>
+<span id="cb495-6"><a href="func_loop.html#cb495-6" aria-hidden="true" tabindex="-1"></a>  fibonacci.append(fibonacci[i <span class="op">-</span> <span class="dv">1</span>] <span class="op">+</span> fibonacci[i <span class="op">-</span> <span class="dv">2</span>])</span>
+<span id="cb495-7"><a href="func_loop.html#cb495-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb495-8"><a href="func_loop.html#cb495-8" aria-hidden="true" tabindex="-1"></a><span class="co"># converting the list into a numpy array </span></span>
+<span id="cb495-9"><a href="func_loop.html#cb495-9" aria-hidden="true" tabindex="-1"></a><span class="co"># (useful if we want to use vectorised operations later!)</span></span>
+<span id="cb495-10"><a href="func_loop.html#cb495-10" aria-hidden="true" tabindex="-1"></a>fibonacci <span class="op">=</span> np.array(fibonacci)</span></code></pre></div>
 </div>
 </div>
-<p>In this R code:</p>
+<p>In the R code:</p>
 <ul>
 <li><code>fibonacci &lt;- c(0, 1)</code> initializes the first two numbers in the
 Fibonacci sequence.</li>
@@ -1140,7 +1130,7 @@ appends it to the <code>fibonacci</code> vector. Given that at iteration <code>i
 have no element <code>i</code> in the vector yet (this is still <code>i-1</code> long), R
 will automatically extend the vector of one extra element.</li>
 </ul>
-<p>In this Python code:</p>
+<p>In the Python code:</p>
 <ul>
 <li><code>fibonacci = [0, 1]</code> initializes the first two numbers in the
 Fibonacci sequence.</li>
@@ -1153,9 +1143,34 @@ appends it to the <code>fibonacci</code> list using the <code>append()</code> me
 append method extends our vector, adding a new element at the end of
 the existing one.</li>
 </ul>
+Our vectors, where we stored our results at every iteration, should be 20 elements long, containing the sequence.
+::: {style=“display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;”}
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="func_loop.html#cb496-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the Fibonacci sequence</span></span>
+<span id="cb496-2"><a href="func_loop.html#cb496-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(fibonacci)</span></code></pre></div>
+<pre><code>##  [1]    0    1    1    2    3    5    8   13   21   34   55   89  144  233  377
+## [16]  610  987 1597 2584 4181</code></pre>
 </div>
-<div id="nested-loops" class="section level3 hasAnchor" number="3.2.4">
-<h3><span class="header-section-number">3.2.4</span> Nested loops<a href="func_loop.html#nested-loops" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb498"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb498-1"><a href="func_loop.html#cb498-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the Fibonacci sequence</span></span>
+<span id="cb498-2"><a href="func_loop.html#cb498-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fibonacci)</span></code></pre></div>
+<pre><code>## [   0    1    1    2    3    5    8   13   21   34   55   89  144  233
+##   377  610  987 1597 2584 4181]</code></pre>
+</div>
+<p>:::</p>
+<p><strong>Before you proceed</strong> make sure you understand what’s going on inside the for loop.
+Add extra <code>print</code> statements to understand what’s happening at every iteration, e.g. try to add:
+<code>print(i)</code>, <code>print(fibonacci[i])</code> and <code>print(fibonacci[i-1])</code> before the computation, or <code>print(fibonacci)</code> after the computation has been done. <code>print</code> statements are extremely useful for debugging for cycles!</p>
+</div>
+</div>
+<div id="more-about-looping" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> More about looping<a href="func_loop.html#more-about-looping" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this section we will be giving few extra details and concepts you should know about looping.
+If you got familiar with the <code>for</code> cycle above, they should be fairly straightforward to understand!</p>
+<div id="nested-loops" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Nested loops<a href="func_loop.html#nested-loops" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Nested loops are useful when we have to repeat a block of code for each
 combination of elements from two or more sequences. This can be
 incredibly useful in many situations, such as when we want to perform an
@@ -1165,11 +1180,11 @@ multiplication table from 1 to 4.</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="func_loop.html#cb498-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
-<span id="cb498-2"><a href="func_loop.html#cb498-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
-<span id="cb498-3"><a href="func_loop.html#cb498-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">&quot;x&quot;</span>, j, <span class="st">&quot;=&quot;</span>, i<span class="sc">*</span>j))</span>
-<span id="cb498-4"><a href="func_loop.html#cb498-4" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb498-5"><a href="func_loop.html#cb498-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="func_loop.html#cb500-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
+<span id="cb500-2"><a href="func_loop.html#cb500-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
+<span id="cb500-3"><a href="func_loop.html#cb500-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">&quot;x&quot;</span>, j, <span class="st">&quot;=&quot;</span>, i<span class="sc">*</span>j))</span>
+<span id="cb500-4"><a href="func_loop.html#cb500-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb500-5"><a href="func_loop.html#cb500-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;1 x 1 = 1&quot;
 ## [1] &quot;1 x 2 = 2&quot;
 ## [1] &quot;1 x 3 = 3&quot;
@@ -1189,33 +1204,40 @@ multiplication table from 1 to 4.</p>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb500"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb500-1"><a href="func_loop.html#cb500-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">4</span>):</span>
-<span id="cb500-2"><a href="func_loop.html#cb500-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">4</span>):</span>
-<span id="cb500-3"><a href="func_loop.html#cb500-3" aria-hidden="true" tabindex="-1"></a>      <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss"> x </span><span class="sc">{</span>j<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span>i<span class="op">*</span>j<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb502"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb502-1"><a href="func_loop.html#cb502-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">5</span>):</span>
+<span id="cb502-2"><a href="func_loop.html#cb502-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">5</span>):</span>
+<span id="cb502-3"><a href="func_loop.html#cb502-3" aria-hidden="true" tabindex="-1"></a>      <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss"> x </span><span class="sc">{</span>j<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span>i<span class="op">*</span>j<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
 <pre><code>## 1 x 1 = 1
 ## 1 x 2 = 2
 ## 1 x 3 = 3
+## 1 x 4 = 4
 ## 2 x 1 = 2
 ## 2 x 2 = 4
 ## 2 x 3 = 6
+## 2 x 4 = 8
 ## 3 x 1 = 3
 ## 3 x 2 = 6
-## 3 x 3 = 9</code></pre>
+## 3 x 3 = 9
+## 3 x 4 = 12
+## 4 x 1 = 4
+## 4 x 2 = 8
+## 4 x 3 = 12
+## 4 x 4 = 16</code></pre>
 </div>
 </div>
 </div>
-<div id="while-loops" class="section level3 hasAnchor" number="3.2.5">
-<h3><span class="header-section-number">3.2.5</span> While loops<a href="func_loop.html#while-loops" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="while-loops" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> While loops<a href="func_loop.html#while-loops" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Similarly to for loops, we have the while loops. They allow us to repeat a block of code until a certain condition is met. This can be incredibly useful in many situations, such as when we want to perform an operation until a certain threshold is reached.</p>
 <p>We can see how a while loop works below:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="func_loop.html#cb502-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb502-2"><a href="func_loop.html#cb502-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&lt;=</span> <span class="dv">10</span>) {</span>
-<span id="cb502-3"><a href="func_loop.html#cb502-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
-<span id="cb502-4"><a href="func_loop.html#cb502-4" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb502-5"><a href="func_loop.html#cb502-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="func_loop.html#cb504-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb504-2"><a href="func_loop.html#cb504-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&lt;=</span> <span class="dv">10</span>) {</span>
+<span id="cb504-3"><a href="func_loop.html#cb504-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb504-4"><a href="func_loop.html#cb504-4" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb504-5"><a href="func_loop.html#cb504-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 2
 ## [1] 3
@@ -1229,10 +1251,10 @@ multiplication table from 1 to 4.</p>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb504"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb504-1"><a href="func_loop.html#cb504-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb504-2"><a href="func_loop.html#cb504-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> i <span class="op">&lt;=</span> <span class="dv">10</span>:</span>
-<span id="cb504-3"><a href="func_loop.html#cb504-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(i)</span>
-<span id="cb504-4"><a href="func_loop.html#cb504-4" aria-hidden="true" tabindex="-1"></a>  i <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb506"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb506-1"><a href="func_loop.html#cb506-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb506-2"><a href="func_loop.html#cb506-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> i <span class="op">&lt;=</span> <span class="dv">10</span>:</span>
+<span id="cb506-3"><a href="func_loop.html#cb506-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(i)</span>
+<span id="cb506-4"><a href="func_loop.html#cb506-4" aria-hidden="true" tabindex="-1"></a>  i <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div>
 <pre><code>## 1
 ## 2
 ## 3
@@ -1254,26 +1276,26 @@ multiplication table from 1 to 4.</p>
 <li>The while loop ends when the condition <code>i &lt;= 10</code> is no longer met, i.e., when <code>i</code> is greater than 10.</li>
 </ul>
 </div>
-<div id="break-and-next" class="section level3 hasAnchor" number="3.2.6">
-<h3><span class="header-section-number">3.2.6</span> Break and next<a href="func_loop.html#break-and-next" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="break-and-next" class="section level3 hasAnchor" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Break and next<a href="func_loop.html#break-and-next" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We are missing one last ingredient to looping! Break and next.</p>
 </div>
-<div id="break-and-nextcontinue" class="section level3 hasAnchor" number="3.2.7">
-<h3><span class="header-section-number">3.2.7</span> Break and next/continue<a href="func_loop.html#break-and-nextcontinue" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="break-and-nextcontinue" class="section level3 hasAnchor" number="3.3.4">
+<h3><span class="header-section-number">3.3.4</span> Break and next/continue<a href="func_loop.html#break-and-nextcontinue" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Break and next/continue are control flow statements that can be used to alter the flow of a loop. They can be incredibly useful in many situations, such as when we want to stop a loop if a certain condition is met or skip an iteration if a certain condition is met.</p>
 <p>To see how they work, we write a loop that prints the numbers from 1 to 10, but skips the number 5 and stops after the number 8.</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="func_loop.html#cb506-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
-<span id="cb506-2"><a href="func_loop.html#cb506-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">5</span>) {</span>
-<span id="cb506-3"><a href="func_loop.html#cb506-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">next</span>  <span class="co"># Skip the rest of the loop and continue with the next iteration</span></span>
-<span id="cb506-4"><a href="func_loop.html#cb506-4" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb506-5"><a href="func_loop.html#cb506-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">&gt;</span> <span class="dv">8</span>) {</span>
-<span id="cb506-6"><a href="func_loop.html#cb506-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span>  <span class="co"># Immediately terminate the loop</span></span>
-<span id="cb506-7"><a href="func_loop.html#cb506-7" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb506-8"><a href="func_loop.html#cb506-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)  <span class="co"># Print the current value of i</span></span>
-<span id="cb506-9"><a href="func_loop.html#cb506-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="func_loop.html#cb508-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb508-2"><a href="func_loop.html#cb508-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">5</span>) {</span>
+<span id="cb508-3"><a href="func_loop.html#cb508-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">next</span>  <span class="co"># Skip the rest of the loop and continue with the next iteration</span></span>
+<span id="cb508-4"><a href="func_loop.html#cb508-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb508-5"><a href="func_loop.html#cb508-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">&gt;</span> <span class="dv">8</span>) {</span>
+<span id="cb508-6"><a href="func_loop.html#cb508-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span>  <span class="co"># Immediately terminate the loop</span></span>
+<span id="cb508-7"><a href="func_loop.html#cb508-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb508-8"><a href="func_loop.html#cb508-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)  <span class="co"># Print the current value of i</span></span>
+<span id="cb508-9"><a href="func_loop.html#cb508-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 2
 ## [1] 3
@@ -1284,12 +1306,12 @@ multiplication table from 1 to 4.</p>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb508"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb508-1"><a href="func_loop.html#cb508-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>):</span>
-<span id="cb508-2"><a href="func_loop.html#cb508-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> i <span class="op">==</span> <span class="dv">5</span>:</span>
-<span id="cb508-3"><a href="func_loop.html#cb508-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">continue</span>  <span class="co"># Skip the rest of the loop and continue with the next iteration</span></span>
-<span id="cb508-4"><a href="func_loop.html#cb508-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> i <span class="op">&gt;</span> <span class="dv">8</span>:</span>
-<span id="cb508-5"><a href="func_loop.html#cb508-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span>  <span class="co"># Immediately terminate the loop</span></span>
-<span id="cb508-6"><a href="func_loop.html#cb508-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(i)  <span class="co"># Print the current value of i</span></span></code></pre></div>
+<div class="sourceCode" id="cb510"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb510-1"><a href="func_loop.html#cb510-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>):</span>
+<span id="cb510-2"><a href="func_loop.html#cb510-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> i <span class="op">==</span> <span class="dv">5</span>:</span>
+<span id="cb510-3"><a href="func_loop.html#cb510-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">continue</span>  <span class="co"># Skip the rest of the loop and continue with the next iteration</span></span>
+<span id="cb510-4"><a href="func_loop.html#cb510-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> i <span class="op">&gt;</span> <span class="dv">8</span>:</span>
+<span id="cb510-5"><a href="func_loop.html#cb510-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span>  <span class="co"># Immediately terminate the loop</span></span>
+<span id="cb510-6"><a href="func_loop.html#cb510-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(i)  <span class="co"># Print the current value of i</span></span></code></pre></div>
 <pre><code>## 1
 ## 2
 ## 3

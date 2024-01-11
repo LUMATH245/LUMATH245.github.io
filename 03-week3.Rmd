@@ -803,7 +803,7 @@ and their specific weights in our example!
 }
 </style>
 ```
-## Loops and State
+## State and For Loop
 
 Normally, if you have to run some operations on multiple objects, you
 would store these objects in a vector, and then work with the vector
@@ -861,8 +861,6 @@ they are not suitable for all programming tasks, particularly when the
 computation of an element depends on the previous ones, i.e., when there
 is a state involved.
 
-### A question of state
-
 A state is a scenario where certain steps in your code must be executed
 in a specific order because the output of one step is the input to the
 next step. In these circumstances, we find an answer in **looping**.
@@ -905,10 +903,13 @@ could use the following algorithm:
     -   Update the previous two numbers to be the last number and the
         newly calculated number.
 
-We will return to the Fibonacci example after having introduced the for
+We will return to the Fibonacci example after having introduced the `for`
 loop syntax.
 
-### The For loop
+### The syntax
+
+As the syntax in R and python for looping is quite different, **R and python chunks will be separate**.
+You should be able to read each language independently.
 
 We can code a for loop as following.
 
@@ -1012,9 +1013,6 @@ fibonacci <- c(0, 1)
 for (i in 3:20) {
   fibonacci[i] <- fibonacci[i - 1] + fibonacci[i - 2]
 }
-
-# Print the Fibonacci sequence
-print(fibonacci)
 ```
 
 </div>
@@ -1034,15 +1032,12 @@ for i in range(2, 20):
 # converting the list into a numpy array 
 # (useful if we want to use vectorised operations later!)
 fibonacci = np.array(fibonacci)
-
-# Print the Fibonacci sequence
-print(fibonacci)
 ```
 
 </div>
 :::
 
-In this R code:
+In the R code:
 
 -   `fibonacci <- c(0, 1)` initializes the first two numbers in the
     Fibonacci sequence.
@@ -1055,7 +1050,7 @@ In this R code:
     have no element `i` in the vector yet (this is still `i-1` long), R
     will automatically extend the vector of one extra element.
 
-In this Python code:
+In the Python code:
 
 -   `fibonacci = [0, 1]` initializes the first two numbers in the
     Fibonacci sequence.
@@ -1067,6 +1062,41 @@ In this Python code:
     appends it to the `fibonacci` list using the `append()` method. The
     append method extends our vector, adding a new element at the end of
     the existing one.
+
+
+Our vectors, where we stored our results at every iteration, should be 20 elements long, containing the sequence. 
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Print the Fibonacci sequence
+print(fibonacci)
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# Print the Fibonacci sequence
+print(fibonacci)
+```
+</div>
+:::
+
+**Before you proceed** make sure you understand what's going on inside the for loop. 
+Add extra `print` statements to understand what's happening at every iteration, e.g. try to add:
+`print(i)`, `print(fibonacci[i])` and `print(fibonacci[i-1])` before the computation, or `print(fibonacci)` after the computation has been done. `print` statements are extremely useful for debugging for cycles!
+
+
+## More about looping
+
+In this section we will be giving few extra details and concepts you should know about looping.
+If you got familiar with the `for` cycle above, they should be fairly straightforward to understand! 
 
 ### Nested loops
 
@@ -1098,8 +1128,8 @@ for (i in 1:4) {
 **Python**
 
 ```{python}
-for i in range(1, 4):
-  for j in range(1, 4):
+for i in range(1, 5):
+  for j in range(1, 5):
       print(f"{i} x {j} = {i*j}")
 ```
 
