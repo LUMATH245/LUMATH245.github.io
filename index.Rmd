@@ -53,7 +53,7 @@ Chapters 6 to 10 will be focusing on algorithms. We'll cover:
 
 10. ODEs solvers
 
-All contents are still subject to change. The notes are both in Python and R. You are expected to only learn one programming language. However, these notes could be used also as a reference to go from one language to the other!
+All contents are still subject to change. The notes are both in Python and R. You are expected to only learn one programming language. However, these notes could be used also as a reference to go from one language to the other! Please access them from a wide screen machine, as they were not optimized for mobile.
 
 Every week, you are expected to follow one lecture and one lab. Over the lecture, an overview of the contents of the week will be given. But during the lab, you should give it a go at the notes at your own pace, and follow the contents by copy and pasting commands from the notes onto your pc, and completing the exercises.
 Solutions to the exercises will be uploaded on Moodle after all labs of the week end.
