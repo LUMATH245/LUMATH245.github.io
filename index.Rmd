@@ -14,13 +14,49 @@ output:
       #in_header: preamble.tex
   bookdown::gitbook:
     toc_depth: 2
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
-# Preface {-}
+# Preface {.unnumbered}
 
-These are the R programming notes for MATH245 Computational Mathematics. They were written by.... They were based off...
+These are the R programming notes for MATH245 Computational Mathematics.
+They were written by Gaetano Romano (Chapter 1-5) and Eduard
+Campillo-Funollet (Chapters 6-10).
 
-Here we should have the table of content of the module?
+The module will introduce you to scientific computing (with a bit of
+functional programming), and algorithms.
+
+The first 5 Chapters will be focusing on scientific computing.
+Specifically, we'll cover:
+
+1.  Intro to computing, variables and saving to file
+
+2.  Logic and Vectors
+
+3.  Functions and Loops
+
+4.  Maps and Linear Algebra
+
+5.  Data Frames and Plotting
+
+Chapters 6 to 10 will be focusing on algorithms. We'll cover:
+
+6.  Fixed Points
+
+7.  Root finding
+
+8.  Gradient Descent
+
+9.  Monte Carlo and Integration
+
+10. ODEs solvers
+
+All contents are still subject to change. The notes are both in Python and R. You are expected to only learn one programming language. However, these notes could be used also as a reference to go from one language to the other!
+
+Every week, you are expected to follow one lecture and one lab. Over the lecture, an overview of the contents of the week will be given. But during the lab, you should give it a go at the notes at your own pace, and follow the contents by copy and pasting commands from the notes onto your pc, and completing the exercises.
+Solutions to the exercises will be uploaded on Moodle after all labs of the week end.
 
 ```{r include=FALSE}
 knitr::opts_chunk$set(fig.path = "images/", out.width = "50%")
