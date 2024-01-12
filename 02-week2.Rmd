@@ -23,13 +23,13 @@ data.
 
 ## Comparisons
 
-Before we start with the logic, we should cover what *comparison* is. I
-mean, we can again phylosofize about it, but pulling out the Oxford
+Before we start with logic, we should cover what *comparison* is. I
+mean, we can again philosophize about it, but pulling out the Oxford
 English Dictionary, "[Comparison is ] the action, or an act, of
 comparing, likening, or representing as similar: see compare." If we
 pull out the definition of *compare,* we simply get "To liken". The
 concept of comparison is inherit in human existence, as it's the concept
-of what `TRUE` is, (Kierkegaard lost his mind to find out that there's
+of what `TRUE` is, (Kierkegaard lost his mind finding out that there's
 not a way that two things are the same, that truth is subjective, and
 that please do not compare people, that is not nice).
 
@@ -48,7 +48,7 @@ means that two objects or values are exactly the same in every aspect.
 To check for equality, we use the operator `==`, which returns `TRUE` if
 the objects or values are equal, and `FALSE` if they are not. As you
 will see, R uses uppercase letters for `TRUE` and `FALSE`, while
-Python uses lowercase letters for `True` and `False`.
+Python starts with a capital letter and uses lower case for the remaining letters, e.g. `True` and `False`.
 
 For example, we can compare two strings, two integers, or two doubles,
 as shown below:
