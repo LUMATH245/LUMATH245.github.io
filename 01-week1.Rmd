@@ -105,7 +105,7 @@ print("Beep bop beep")
 
 As the comment (that bit in gray that starts with the `#)`, suggests, what you saw is a chunk of R code that *prints to output* the text "Beep bop beep". On top you will find the code, and on the bottom the result, *i.e.* the output. The comment does not get executed, so it's just an explanation of what you are seeing. The actual code statement, `print("Beep bop beep")`, is the one that does all the job, and, as the comments sugests, prints the text "Beep bop beep".
 
-*Wait, but I thought we would have learned Python in this module?* Well, patience, my dear friend (btw, we are not friends). The python equivalent of that statement would be:
+*Wait, but I thought we would have learned Python in this module?* Well, patience, my dear friend. The python equivalent of that statement would be:
 
 ```{python}
 # Hi, I am a chunk of Python code that prints to output "Beep bop beep"

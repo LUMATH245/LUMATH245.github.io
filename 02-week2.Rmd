@@ -871,7 +871,7 @@ string_in_a_variable = "mia"
 </div>
 :::
 
-Which strings could you collate for "SkibbidiFizzBuzz"? 
+Which strings could you collate for "SkibbidiFizzBuzz"?
 
 
 ## Vectors
