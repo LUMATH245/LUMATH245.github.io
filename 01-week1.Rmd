@@ -92,6 +92,8 @@ Both R and Python have many advantages and features that make them suitable for 
 
 -   They have interactive and user-friendly environments and interfaces that facilitate development and debugging, such as the console, the editor, and the notebook. We will be using, for this module **R studio.**
 
+**You should install R Studio with either R or Python at this point. You will find how to do this in the first part of the lab. Do not continue unless you have R Studio installed and ready.**
+
 ## Computing, Accessing Memory and Storing
 
 We covered the three components of the computer: the CPU, the memory and the storage. Well, a programming language is a powerful tool that allows to build a set of instructions that use all these three components. By the end of this chapter, we won't be able to write a full program yet, but hopefully we will show how these three interact.
