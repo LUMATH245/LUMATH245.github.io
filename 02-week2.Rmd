@@ -71,7 +71,7 @@ as shown below:
 2 == 3
 
 
-# Comparing two doubles
+# Comparing two no. with decimals
 3.14 == 3.14
 
 3.14 == 3.1415
@@ -97,7 +97,7 @@ as shown below:
 2 == 3
 
 
-# Comparing two doubles
+# Comparing two no. with decimals
 3.14 == 3.14
 
 3.14 == 3.1415
@@ -114,7 +114,7 @@ or likely to be the same, but they are not.
 Note that the comparison is case-sensitive, meaning that uppercase and
 lowercase letters are considered different. Also note that the
 comparison is precise, meaning that even a small difference in the
-decimal places can make two doubles unequal. Try adding more decimals to
+decimal places can make two numbers unequal. Numbers with decimal places and fractional numbers, in computing are called *doubles*. Try adding more decimals to
 the above examples, and see how far you can get until you get two same
 numbers! The amount of decimal places in doubles *is at the basis of
 precision* and how comparisons of doubles are made will affect your
