@@ -90,13 +90,13 @@ Both R and Python have many advantages and features that make them suitable for 
 
 -   They have rich and comprehensive libraries and packages that provide a wide range of functions and tools for various domains and tasks, such as linear algebra, optimization, machine learning, visualization, and web scraping.
 
--   They have interactive and user-friendly environments and interfaces that facilitate development and debugging, such as the console, the editor, and the notebook. We will be using, for this module **R studio.**
+-   They have interactive and user-friendly environments and interfaces that facilitate development and debugging, such as the console, the editor, and the notebook. For this module, for both programming languages, we will be using **R Studio**.
 
-**You should install R Studio with either R or Python at this point. You will find how to do this in the first part of the lab. Do not continue unless you have R Studio installed and ready.**
+**You should have installed R Studio with either R or Python at this point. You will find how to do this in the first part of the lab. Do not continue unless you have R Studio installed and ready.**
 
 ## Computing, Accessing Memory and Storing
 
-We covered the three components of the computer: the CPU, the memory and the storage. Well, a programming language is a powerful tool that allows to build a set of instructions that use all these three components. By the end of this chapter, we won't be able to write a full program yet, but hopefully we will show how these three interact.
+We covered the three components of the computer: the CPU, the memory and the storage. Well, a programming language is a powerful tool that allows you to build a set of instructions that use all three of these components. By the end of this chapter, we won't be able to write a full program, but we will show how these three interact.
 
 Before we proceed, a quick rundown on how to read the lines of code in these notes. Every once in a while you will see a chunk of code, and sometimes a result of what the chunk of code does. For example:
 
@@ -105,18 +105,18 @@ Before we proceed, a quick rundown on how to read the lines of code in these not
 print("Beep bop beep")
 ```
 
-As the comment (that bit in gray that starts with the `#)`, suggests, what you saw is a chunk of R code that *prints to output* the text "Beep bop beep". On top you will find the code, and on the bottom the result, *i.e.* the output. The comment does not get executed, so it's just an explanation of what you are seeing. The actual code statement, `print("Beep bop beep")`, is the one that does all the job, and, as the comments sugests, prints the text "Beep bop beep".
+As the comment (that bit in that starts with the `#)`, suggests, what you saw is a chunk of R code that *prints to output* the text "Beep bop beep". On top you will find the code, and on the bottom the result, *i.e.* the output. The comment does not get executed, so it's just an explanation of what you are seeing. The actual code statement, `print("Beep bop beep")`, is the one that does all the job, and, as the comments suggests, prints the text "Beep bop beep".
 
-*Wait, but I thought we would have learned Python in this module?* Well, patience, my dear friend. The python equivalent of that statement would be:
+*Wait, but I thought we would have learned Python in this module?* Well, patience, my dear friend. The Python equivalent of that statement would be:
 
 ```{python}
 # Hi, I am a chunk of Python code that prints to output "Beep bop beep"
 print("Beep bop beep")
 ```
 
-Wait, they're basically the same? Well, yes, that's the point, and the reason why we teach them both simultaneously. Despite the culture war that there's currently in Statistics and Data Science, we believe that there's no such thing as a best programming language: **the expert carpenter should use all tools available at this hand**. R and Python, for scientific computing, are almost equivalent at this day, and given recent developments, **they can work together**. Now that you are learning, pick one, based off your future modules. Don't worry, for your project you will have to pick either one, or the other, so it's not a requirement to learn both R and Python. But if you are confident enough, feel to learn both, you're more then welcome.
+Wait, they're basically the same? Well, yes, that's the point, and the reason why we teach them both simultaneously. Despite the current culture war in Statistics and Data Science, we believe that there's no such thing as a best programming language: **for each task the expert worker should use the most appropriate of the available tools**. Right now, Python and R are almost equivalent for scientific computing; and, given recent developments **they can be used together, in tandem**. Now that you are learning, pick one, based off your future modules. Don't worry, for your project you will have to pick either one, or the other so it's not a requirement to learn both R and Python. But if you feel confident enough, feel to learn both, you're more than welcome.
 
-As a matter of fact, for all the these notes, we will always try to have them both side to side.\
+As a matter of fact, for all the these notes, we will always try to display code in both languages side by side.\
 **On the left you will always an R code chunk, and on the right you will find the Python equivalent:**
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
