@@ -114,7 +114,7 @@ As the comment (that bit in gray that starts with the `#)`, suggests, what you s
 print("Beep bop beep")
 ```
 
-Wait, they're basically the same? Well, yes, that's the point, and the reason why we teach them both simultaneously. Despite the culture war that there's currently in Statistics and Data Science, we believe that there's no such thing as a best programming language: **the expert carpenter should use all tools available at this hand**. R and Python, for scientific computing, are almost equivalent at this day, and given recent developments, **they can work together**. For your project you will have to pick either one, or the other, but if you are confident enough, feel to learn both, you're more then welcome.
+Wait, they're basically the same? Well, yes, that's the point, and the reason why we teach them both simultaneously. Despite the culture war that there's currently in Statistics and Data Science, we believe that there's no such thing as a best programming language: **the expert carpenter should use all tools available at this hand**. R and Python, for scientific computing, are almost equivalent at this day, and given recent developments, **they can work together**. Now that you are learning, pick one, based off your future modules. Don't worry, for your project you will have to pick either one, or the other, so it's not a requirement to learn both R and Python. But if you are confident enough, feel to learn both, you're more then welcome.
 
 As a matter of fact, for all the these notes, we will always try to have them both side to side.\
 **On the left you will always an R code chunk, and on the right you will find the Python equivalent:**
