@@ -516,29 +516,29 @@ AND</li>
 </ol>
 <p>So, in an expression without parentheses, the NOT operation is performed
 first, followed by the AND operation, and finally the OR operation.</p>
-<p>For example, in the expression <code>NOT p AND q AND r</code>, the operations would
+<p>For example, in the expression <code>p or NOT q AND r</code> is <code>p OR ((NOT q) AND r)</code>, the operations would
 be performed in the following order:</p>
 <ol style="list-style-type: decimal">
-<li><code>NOT p</code> is performed first due to the highest precedence of <code>NOT</code>.</li>
-<li>Then, <code>(NOT p) AND q</code> is performed due to the next highest precedence
+<li><code>NOT q</code> is performed first due to the highest precedence of <code>NOT</code>.</li>
+<li>Then, <code>(NOT q) AND r</code> is performed due to the next highest precedence
 of <code>AND</code>.</li>
-<li>Finally, <code>((NOT p) AND q) OR r</code> is performed due to the lowest
+<li>Finally, <code>((NOT q) AND r) OR p</code> is performed due to the lowest
 precedence of <code>OR</code>.</li>
 </ol>
 <p>Parentheses can be used to change this order. For example, in the
 expression <code>p AND (q OR r)</code>, the operation <code>q OR r</code> is performed first due
 to the parentheses, even though <code>AND</code> has lower precedence than <code>OR</code>.</p>
 <p>For example, consider the following expression:</p>
-<p><code>TRUE | TRUE &amp; FALSE</code></p>
+<p><code>TRUE OR TRUE AND FALSE</code></p>
 <p>Without parentheses, in this expression the <code>AND</code> operator has higher
 precedence than the <code>OR</code> operator, so it is evaluated first. The result
 is then combined with the <code>OR</code> operator. The expression is equivalent
 to:</p>
-<p><code>TRUE | (TRUE &amp; FALSE)</code></p>
+<p><code>TRUE OR (TRUE AND FALSE)</code></p>
 <p>However, if we use parentheses to group the operands differently, we can
 change the order of evaluation and the result of the expression. If we
 use parentheses to group the first and the last operands, we get:</p>
-<p><code>(TRUE | TRUE) &amp; FALSE</code></p>
+<p><code>(TRUE OR TRUE) AND FALSE</code></p>
 <p>The value of this expression is in fact <code>FALSE</code>. Now, the <code>OR</code> operator
 is evaluated first, giving <code>TRUE</code> and the result is then combined with
 the <code>AND</code> operator, giving <code>FALSE</code>.</p>
@@ -547,11 +547,11 @@ the <code>AND</code> operator, giving <code>FALSE</code>.</p>
 <p>To test your understanding of logical arithmetic, try to find what is
 the value of:</p>
 <ul>
-<li><code>TRUE | TRUE &amp; FALSE</code>?</li>
-<li><code>FALSE | FALSE &amp; TRUE</code>?</li>
-<li><code>(TRUE &amp; FALSE) | (FALSE &amp; TRUE)</code>?</li>
-<li><code>(TRUE | TRUE) &amp; FALSE</code>?</li>
-<li><code>(TRUE | FALSE) &amp; (FALSE | TRUE)</code>?</li>
+<li><code>TRUE OR TRUE AND FALSE</code>?</li>
+<li><code>FALSE OR FALSE AND TRUE</code>?</li>
+<li><code>(TRUE AND FALSE) OR (FALSE AND TRUE)</code>?</li>
+<li><code>(TRUE OR TRUE) AND FALSE</code>?</li>
+<li><code>(TRUE OR FALSE) AND (FALSE OR TRUE)</code>?</li>
 </ul>
 <p>You should use the console in R or Python to check your answers. You can
 review the table and the examples above, and try to understand the logic

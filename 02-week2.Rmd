@@ -416,13 +416,13 @@ operators determines the order in which operations are performed:
 So, in an expression without parentheses, the NOT operation is performed
 first, followed by the AND operation, and finally the OR operation.
 
-For example, in the expression `NOT p AND q AND r`, the operations would
+For example, in the expression `p or NOT q AND r` is `p OR ((NOT q) AND r)`, the operations would
 be performed in the following order:
 
-1.  `NOT p` is performed first due to the highest precedence of `NOT`.
-2.  Then, `(NOT p) AND q` is performed due to the next highest precedence
+1.  `NOT q` is performed first due to the highest precedence of `NOT`.
+2.  Then, `(NOT q) AND r` is performed due to the next highest precedence
     of `AND`.
-3.  Finally, `((NOT p) AND q) OR r` is performed due to the lowest
+3.  Finally, `((NOT q) AND r) OR p` is performed due to the lowest
     precedence of `OR`.
 
 Parentheses can be used to change this order. For example, in the
@@ -431,20 +431,20 @@ to the parentheses, even though `AND` has lower precedence than `OR`.
 
 For example, consider the following expression:
 
-`TRUE | TRUE & FALSE`
+`TRUE OR TRUE AND FALSE`
 
 Without parentheses, in this expression the `AND` operator has higher
 precedence than the `OR` operator, so it is evaluated first. The result
 is then combined with the `OR` operator. The expression is equivalent
 to:
 
-`TRUE | (TRUE & FALSE)`
+`TRUE OR (TRUE AND FALSE)`
 
 However, if we use parentheses to group the operands differently, we can
 change the order of evaluation and the result of the expression. If we
 use parentheses to group the first and the last operands, we get:
 
-`(TRUE | TRUE) & FALSE`
+`(TRUE OR TRUE) AND FALSE`
 
 The value of this expression is in fact `FALSE`. Now, the `OR` operator
 is evaluated first, giving `TRUE` and the result is then combined with
@@ -455,11 +455,11 @@ the `AND` operator, giving `FALSE`.
 To test your understanding of logical arithmetic, try to find what is
 the value of:
 
--   `TRUE | TRUE & FALSE`?
--   `FALSE | FALSE & TRUE`?
--   `(TRUE & FALSE) | (FALSE & TRUE)`?
--   `(TRUE | TRUE) & FALSE`?
--   `(TRUE | FALSE) & (FALSE | TRUE)`?
+-   `TRUE OR TRUE AND FALSE`?
+-   `FALSE OR FALSE AND TRUE`?
+-   `(TRUE AND FALSE) OR (FALSE AND TRUE)`?
+-   `(TRUE OR TRUE) AND FALSE`?
+-   `(TRUE OR FALSE) AND (FALSE OR TRUE)`?
 
 You should use the console in R or Python to check your answers. You can
 review the table and the examples above, and try to understand the logic
