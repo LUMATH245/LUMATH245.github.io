@@ -143,7 +143,6 @@ print("Python chunk on the right.")
 
 If for formatting reasons we won't be able to show the code side to side, you can always tell which is which by the bold text immediately above the chunk, e.g. **R** or **python**.
 
-Anyway, how did we made such a fancy set of lecture notes? Through **Rmarkdown** using **Rstudio**. Don't worry, we will learn about these two tools later. Another cool thing you can do with a computer.
 
 ### A glorified calculator
 
