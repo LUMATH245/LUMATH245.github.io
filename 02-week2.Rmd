@@ -71,7 +71,7 @@ as shown below:
 2 == 3
 
 
-# Comparing two no. with decimals
+# Comparing two reals
 3.14 == 3.14
 
 3.14 == 3.1415
@@ -97,7 +97,7 @@ as shown below:
 2 == 3
 
 
-# Comparing two no. with decimals
+# Comparing two reals
 3.14 == 3.14
 
 3.14 == 3.1415
@@ -114,12 +114,12 @@ or likely to be the same, but they are not.
 Note that the comparison is case-sensitive, meaning that uppercase and
 lowercase letters are considered different. Also note that the
 comparison is precise, meaning that even a small difference in the
-decimal places can make two numbers unequal. Numbers with decimal places and fractional numbers, in computing are called *doubles*. Try adding more decimals to
-the above examples, and see how far you can get until you get two same
-numbers! The amount of decimal places in doubles *is at the basis of
-precision* and how comparisons of doubles are made will affect your
-programs. For this reason **be careful when you compare two floats** and
-try to avoid equality.
+decimal places can make two numbers unequal. Numbers with decimal places and fractional numbers, in computing are called *floating precision numbers (floats)*. Floats are a way of representing real numbers in computer systems. They are designed to handle a wide range of values, from extremely small to extremely large, with fractional components.
+
+Try adding more decimals to the above examples, and see how far you can get until you get two same
+numbers! The amount of decimal places in floats *is at the basis of
+precision* and how comparisons of floats are made will affect your
+programs. The precision of a floating-point number is determined by the number of significant digits that it can represent: double-precision floats, the defaults in R and python, can represent about 16 decimal digits of precision. Albeit systems are in place to avoid numerical errors for smaller numbers, **be careful when you compare two floats** and try to avoid equality.
 
 Similar to equality, we can check for inequality. Inequality means that
 two objects or values are not exactly the same in every aspect. To check
