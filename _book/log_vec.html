@@ -262,7 +262,7 @@ decimal places can make two numbers unequal. Numbers with decimal places and fra
 <p>Try adding more decimals to the above examples, and see how far you can get until you get two same
 numbers! The amount of decimal places in floats <em>is at the basis of
 precision</em> and how comparisons of floats are made will affect your
-programs. The precision of a floating-point number is determined by the number of significant digits that it can represent: double-precision floats, the defaults in R and python, can represent about 16 decimal digits of precision. Albeit systems are in place to avoid numerical errors for smaller numbers, <strong>be careful when you compare two floats</strong> and try to avoid equality.</p>
+programs. The precision of a floating-point number is determined by the number of significant digits that it can represent: double-precision floats, the defaults in R and python, can represent about 16 decimal digits of precision. Albeit systems are in place to avoid numerical errors for smaller numbers, <strong>be careful when you compare two floats</strong> and try to avoid comparing two floating point numbers to see if they are equal. Instead you could see if the discrepancy between them is less than some small, positive number (see later).</p>
 <p>Similar to equality, we can check for inequality. Inequality means that
 two objects or values are not exactly the same in every aspect. To check
 for inequality, we use the operator <code>!=</code>, which returns <code>TRUE</code> if the
@@ -395,10 +395,7 @@ of logic: logical arithmetic. Logical arithmetic is the process of
 combining and manipulating logical values, such as <code>TRUE</code> and <code>FALSE</code>,
 using logical operators, such as <code>AND</code> and <code>OR</code>. Logical arithmetic can
 be used for various purposes, such as creating complex conditions,
-testing multiple hypotheses, or performing set operations. In this
-section, we will show you how to use logical arithmetic in both R and
-Python, and how to use the results of logical arithmetic in your
-programs.</p>
+testing multiple hypotheses, or performing set operations.</p>
 </div>
 <div id="logical-arithmetic" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Logical Arithmetic<a href="log_vec.html#logical-arithmetic" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -414,6 +411,7 @@ values, <code>TRUE</code> and <code>FALSE</code>, which are <em>logic operands</
 <code>FALSE</code> otherwise.</p></li>
 <li><p>The <code>OR</code> operator returns <code>TRUE</code> if either or both operands are
 <code>TRUE</code>, and <code>FALSE</code> otherwise.</p></li>
+<li><p>The <code>NOT</code> operator returns the opposite of the operand, e.g. <code>NOT TRUE</code> gives <code>FALSE</code>.</p></li>
 </ul>
 <p>We can use the <code>AND</code> and <code>OR</code> operators to combine two logical values,
 such as <code>TRUE</code> and <code>FALSE</code>, as shown below:</p>
@@ -461,8 +459,7 @@ such as <code>TRUE</code> and <code>FALSE</code>, as shown below:</p>
 <pre><code>## False</code></pre>
 </div>
 </div>
-<p>The syntax and the output are very similar in both languages, except that R uses <code>&amp;</code> and <code>|</code> for <code>AND</code> and <code>OR</code>, while
-Python uses <code>and</code> and <code>or</code>. More formally, we can use a table to show
+<p>The syntax and the output are very similar in both languages, except that R uses <code>AND</code> and <code>OR</code> for <code>AND</code> and <code>OR</code>, while Python uses <code>and</code> and <code>or</code>. More formally, we can use a table to show
 all the possible outcomes of the <code>AND</code> and <code>OR</code> operators. Let’s say
 that <span class="math inline">\(a, \ b\)</span> are our operands, then:</p>
 <table>
@@ -523,14 +520,14 @@ first, followed by the AND operation, and finally the OR operation.</p>
 be performed in the following order:</p>
 <ol style="list-style-type: decimal">
 <li><code>NOT p</code> is performed first due to the highest precedence of <code>NOT</code>.</li>
-<li>Then, <code>(NOTp) AND q</code> is performed due to the next highest precedence
+<li>Then, <code>(NOT p) AND q</code> is performed due to the next highest precedence
 of <code>AND</code>.</li>
 <li>Finally, <code>((NOT p) AND q) OR r</code> is performed due to the lowest
 precedence of <code>OR</code>.</li>
 </ol>
 <p>Parentheses can be used to change this order. For example, in the
-expression <code>p ∧ (q ∨ r)</code>, the operation <code>q ∨ r</code> is performed first due
-to the parentheses, even though <code>∨</code> has lower precedence than <code>∧</code>.</p>
+expression <code>p AND (q OR r)</code>, the operation <code>q OR r</code> is performed first due
+to the parentheses, even though <code>AND</code> has lower precedence than <code>OR</code>.</p>
 <p>For example, consider the following expression:</p>
 <p><code>TRUE | TRUE &amp; FALSE</code></p>
 <p>Without parentheses, in this expression the <code>AND</code> operator has higher

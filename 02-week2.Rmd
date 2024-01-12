@@ -119,7 +119,7 @@ decimal places can make two numbers unequal. Numbers with decimal places and fra
 Try adding more decimals to the above examples, and see how far you can get until you get two same
 numbers! The amount of decimal places in floats *is at the basis of
 precision* and how comparisons of floats are made will affect your
-programs. The precision of a floating-point number is determined by the number of significant digits that it can represent: double-precision floats, the defaults in R and python, can represent about 16 decimal digits of precision. Albeit systems are in place to avoid numerical errors for smaller numbers, **be careful when you compare two floats** and try to avoid equality.
+programs. The precision of a floating-point number is determined by the number of significant digits that it can represent: double-precision floats, the defaults in R and python, can represent about 16 decimal digits of precision. Albeit systems are in place to avoid numerical errors for smaller numbers, **be careful when you compare two floats** and try to avoid comparing two floating point numbers to see if they are equal. Instead you could see if the discrepancy between them is less than some small, positive number (see later).
 
 Similar to equality, we can check for inequality. Inequality means that
 two objects or values are not exactly the same in every aspect. To check
@@ -302,10 +302,7 @@ of logic: logical arithmetic. Logical arithmetic is the process of
 combining and manipulating logical values, such as `TRUE` and `FALSE`,
 using logical operators, such as `AND` and `OR`. Logical arithmetic can
 be used for various purposes, such as creating complex conditions,
-testing multiple hypotheses, or performing set operations. In this
-section, we will show you how to use logical arithmetic in both R and
-Python, and how to use the results of logical arithmetic in your
-programs.
+testing multiple hypotheses, or performing set operations.
 
 ## Logical Arithmetic
 
@@ -324,6 +321,8 @@ Let's start from `AND` and `OR`:
 
 -   The `OR` operator returns `TRUE` if either or both operands are
     `TRUE`, and `FALSE` otherwise.
+
+-   The `NOT` operator returns the opposite of the operand, e.g. `NOT TRUE` gives `FALSE`.
 
 We can use the `AND` and `OR` operators to combine two logical values,
 such as `TRUE` and `FALSE`, as shown below:
@@ -386,8 +385,7 @@ False or False
 </div>
 :::
 
-The syntax and the output are very similar in both languages, except that R uses `&` and `|` for `AND` and `OR`, while
-Python uses `and` and `or`. More formally, we can use a table to show
+The syntax and the output are very similar in both languages, except that R uses `AND` and `OR` for `AND` and `OR`, while Python uses `and` and `or`. More formally, we can use a table to show
 all the possible outcomes of the `AND` and `OR` operators. Let's say
 that $a, \ b$ are our operands, then:
 
@@ -422,14 +420,14 @@ For example, in the expression `NOT p AND q AND r`, the operations would
 be performed in the following order:
 
 1.  `NOT p` is performed first due to the highest precedence of `NOT`.
-2.  Then, `(NOTp) AND q` is performed due to the next highest precedence
+2.  Then, `(NOT p) AND q` is performed due to the next highest precedence
     of `AND`.
 3.  Finally, `((NOT p) AND q) OR r` is performed due to the lowest
     precedence of `OR`.
 
 Parentheses can be used to change this order. For example, in the
-expression `p ∧ (q ∨ r)`, the operation `q ∨ r` is performed first due
-to the parentheses, even though `∨` has lower precedence than `∧`.
+expression `p AND (q OR r)`, the operation `q OR r` is performed first due
+to the parentheses, even though `AND` has lower precedence than `OR`.
 
 For example, consider the following expression:
 
