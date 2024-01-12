@@ -6,7 +6,7 @@ computing-accessing-memory-and-storing
 a-glorified-calculator
 exercise
 putting-an-order-to-operations
-what-if-calculators-could-remember
+what-if-modern-calculators-can-remember
 doing-maths-with-variables
 storing-data-on-the-hard-drive
 reading-back-your-data

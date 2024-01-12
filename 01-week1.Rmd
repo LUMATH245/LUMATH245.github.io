@@ -141,12 +141,12 @@ print("Python chunk on the right.")
 </div>
 :::
 
-If for formatting reasons we won't be able to show the code side to side, you can always tell which is which by the bold text immediately above the chunk, e.g. **R** or **python**.
+If for formatting reasons we aren't able to show the code side to side, you can always tell which is which by the bold text immediately above the chunk, e.g. **R** or **python**.
 
 
 ### A glorified calculator
 
-That's it, the CPU. End of the Section. The CPU is a glorified calculator, nothing more to it, even if sometimes you might have heard complex codes and names like i7, i5, A4, Pentium 5, Neural Pre-processor, Snapdragon, Qbits, SmartBpprop, Bombastic, Mr fantastic, etc. Anyway, let us not worry about this now, but open up a new script, either an R or Python. Copy and paste the following code snippets into it. Then, placing your cursor next to each snippet, press `ctrl + enter` on your keyboard, you will see the result popping up in the console. What's going to happen under the hood once you are sending a command to R or Python, is that process I mentioned earlier. The interpreter, will convert your command into machine code, and pass it down to the processor. The processor is going to crunch the numbers, and send back an output, that will then be displayed on your screen. 
+That's it, the CPU is a glorified calculator, end of the Section. Nothing more to it, even if sometimes you might have heard complex codes and names like i7, i5, A4, Pentium 5, Neural Pre-processor, Snapdragon, Qbits, SmartBpprop, Bombastic, Mr fantastic, etc. Anyway, let us not worry about this now, but open up a new script, either an R or Python script. Copy and paste the following code snippets into it. Then, placing your cursor next to each snippet, press `ctrl + enter` on your keyboard, you will see the result popping up in the console. What's going to happen under the hood once you are sending a command to R or Python, is that process I mentioned earlier. The interpreter, will convert your command into machine code, and pass it down to the processor. The processor is going to crunch the numbers, and send back an output, that will then be displayed on your screen. 
 
 This is how we do additions:
 
@@ -280,9 +280,9 @@ Once you're happy, try stringing some of these calculations all into one command
 
 The multiplication and division calculations are performed first (`*` and `/`), followed by addition and subtraction (`+` and `-`), going from left to right.
 
-You may remember this from School as BODMAS: Brackets, Orders (powers, square roots), Division, Multiplication, Addition, Subtraction
+You may remember this from School as BODMAS/BEDMAS: Brackets, Orders (Exponential, powers and square roots), Division, Multiplication, Addition, Subtraction
 
-This can be overridden by using putting the calculations we want to perform first in brackets. For instance, there's this formula that has been really bothering me. It popped up this morning at 4am, and kept me awake. What is the square root of three fourth, over a third minus 2 divided by pi square? A hunted seagull of chalk flying around the vast sea of obsidian that is the blackboard of my mind, over and over and over again: 
+This can be overridden by using putting the calculations we want to perform first in brackets. For instance, there's this formula that has been really bothering me. It popped up this morning at 4am, and kept me awake. What is the square root of three fourth, over a third minus 2 divided by pi squared? A hunted seagull of chalk flying around the vast sea of obsidian that is the blackboard of my mind, over and over and over again: 
 $$
 \frac{\sqrt{3/4}}{\frac{1}{3} - \frac{2}{\pi^2}}.
 $$ 
@@ -310,7 +310,7 @@ math.sqrt(3 / 4) / (1 / 3 - 2 / math.pi**2)
 </div>
 :::
 
-### What if calculators could remember?
+### What if modern calculators can remember?
 
 Yeah, what if? Well, that's what the memory is for, keeping things in mind. You can think of the memory as a bookshelf, filled with boxes. Or if you're one fan of that Henry Popper, the Magician Kid of Hogtwarz, (I do not wish to pay for the rights to Warner Bros) it's like that room filled with shelves and bottles of thoughts and spells. Yes, that's a better image. So the CPU is the Ministerium of Evil Magicians can access each shelf whenever it feels or needs. Now, in a computer, of course, instead of bottles, you have areas of the memory, and instead of spells, you have numbers, or vectors, or strings (text, e.g. a series of characters).
 
