@@ -685,7 +685,7 @@ print(data_from_file)
 </div>
 :::
 
-In these examples, we're using the `read.csv` function in R and the `read_csv` function in Python to read the data from the file back into our program. When we print this data, we can see that the content of the output is the same as the data we originally wrote to the file.
+In these examples, we're using the `read.csv` function in R and the `read_csv` function in Python to read the data from the file back into our program. When we print these data, we can see that the content of the output is the same as the data we originally wrote to the file.
 
 This is a basic introduction to storing data on your hard drive using R and Python. There's a lot more you can do with file input and output, but this should give you a good starting point. Remember, the key is to use variables to store your data in memory while your program is running, and then write this data to a file on your hard drive if you want to keep it for later.
 
