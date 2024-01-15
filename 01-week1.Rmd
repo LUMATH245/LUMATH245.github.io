@@ -611,7 +611,7 @@ Let's look at how you can write data to a file in R and Python.
 data <- c(1, 2, 3, 4, 5)
 
 # Write the data to a file
-write.csv(data, file = "data.csv")
+write.csv(data, file = "data.csv", row.names = FALSE)
 ```
 
 </div>
