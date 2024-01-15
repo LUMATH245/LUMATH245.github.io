@@ -727,6 +727,9 @@ In this case, `fruit` is the iterator that gets updated at each step
 over the sequence with the current element of the sequence. The for loop
 ends when it has exhausted the sequence.
 
+Try to edit both code chunks above, by adding a new variable called `iter_counts`. Initialize this variable at 0, e.g. `iter_counts <- 0`, and update it in the cycle with `iter_counts <- iter_counts + 1`. Print it at the end: what's the value for the first cycle? And for the second?
+
+
 **In Python:**
 
 In Python, we can print the numbers from 1 to 10 using a for loop as
@@ -773,6 +776,8 @@ In this Python code:
     It gets updated at each step over the sequence.
 -   The for loop ends when it has exhausted the sequence, i.e., when
     `fruit` has taken all values in the numpy array `arr`.
+
+Try to edit both code chunks above, by adding a new variable called `iter_counts`. Initialize this variable at 0, e.g. `iter_counts = 0`, and update it in the cycle with `iter_counts = iter_counts + 1`. Print it at the end: what's the value for the first cycle? And for the second?
 
 ### Coding The Fibonacci sequence
 
