@@ -66,12 +66,17 @@ This notes are heavily inspired from the materials of including:
 "Lancaster University MATH550/SCC.461 R Programming",
 https://www.lancaster.ac.uk/~romano/teaching/2324MATH550/
 
-Some of the structure of the notes and some of the exercises are from: 
+Some of the structure of the notes, some example and exercises are from: 
 
 -   Azalee Bostroem, Trevor Bekolay, and Valentina Staneva (eds):
 "Software Carpentry: Programming with Python."  Version 2016.06, June
 2016, https://github.com/swcarpentry/python-novice-inflammation,
 10.5281/zenodo.57492.
+
+-   Gabriel A. Devenyi (Ed.), Gerard Capes (Ed.), Colin Morris (Ed.), Will Pitchers (Ed.),
+Greg Wilson, Gerard Capes, Gabriel A. Devenyi, Christina Koch, Raniere Silva, Ashwin Srinath, … Vikram Chhatre.
+(2019, July). swcarpentry/shell-novice: Software Carpentry: the UNIX shell, June 2019 (Version v2019.06.1).
+Zenodo. http://doi.org/10.5281/zenodo.3266823
 
 ```{r include=FALSE}
 knitr::opts_chunk$set(fig.path = "images/", out.width = "50%")

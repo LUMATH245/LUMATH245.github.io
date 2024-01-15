@@ -143,10 +143,9 @@ print("Python chunk on the right.")
 
 If for formatting reasons we aren't able to show the code side to side, you can always tell which is which by the bold text immediately above the chunk, e.g. **R** or **python**.
 
-
 ### A glorified calculator
 
-That's it, the CPU is a glorified calculator, end of the Section. Nothing more to it, even if sometimes you might have heard complex codes and names like i7, i5, A4, Pentium 5, Neural Pre-processor, Snapdragon, Qbits, SmartBpprop, Bombastic, Mr fantastic, etc. Anyway, let us not worry about this now, but open up a new script, either an R or Python script. Copy and paste the following code snippets into it. Then, placing your cursor next to each snippet, press `ctrl + enter` on your keyboard, you will see the result popping up in the console. What's going to happen under the hood once you are sending a command to R or Python, is that process I mentioned earlier. The interpreter, will convert your command into machine code, and pass it down to the processor. The processor is going to crunch the numbers, and send back an output, that will then be displayed on your screen. 
+That's it, the CPU is a glorified calculator, end of the Section. Nothing more to it, even if sometimes you might have heard complex codes and names like i7, i5, A4, Pentium 5, Neural Pre-processor, Snapdragon, Qbits, SmartBpprop, Bombastic, Mr fantastic, etc. Anyway, let us not worry about this now, but open up a new script, either an R or Python script. Copy and paste the following code snippets into it. Then, placing your cursor next to each snippet, press `ctrl + enter` on your keyboard, you will see the result popping up in the console. What's going to happen under the hood once you are sending a command to R or Python, is that process I mentioned earlier. The interpreter, will convert your command into machine code, and pass it down to the processor. The processor is going to crunch the numbers, and send back an output, that will then be displayed on your screen.
 
 This is how we do additions:
 
@@ -222,28 +221,29 @@ And this is how we do additions and subtractions, and multiplications, and algeb
 
 The order of the operations comes from algebra, so in that snippet, we will first have `5 * 2`, that gives us `10`, and then we will do `3 + 10`. Of course we can do much more then simple additions of subtractions and multiplications. Here I have a list of basic operations we can do with both the languages. Note that the syntax will not always be the same:
 
-| Operation    | R Example     | Python Example           |
-|--------------|---------------|--------------------------|
-| Add          | `2 + 3`       | `2 + 3`                  |
-| Subtract     | `2 - 3`       | `2 - 3`                  |
-| Multiply     | `2 * 3`       | `2 * 3`                  |
-| Divide       | `2 / 3`       | `2 / 3`                  |
-| Modulus      | `2 %% 3`      | `2 % 3`                  |
-| Square root  | `sqrt(2)`     | `math.sqrt(2)`           |
-| Power        | `2^3`         | `2 ** 3`                 |
-| Cosine       | `cos(2 * pi)` | `math.cos(2 * math.pi)`  |
-| Sine         | `sin(pi / 2)` | `math.sin(math.pi / 2)`  |
-| Tangent      | `tan(pi / 4)` | `math.tan(math.pi / 4)`  |
-| Natural log  | `log(2)`      | `math.log(2)`            |
-| Expontential | `exp(2)`      | `math.exp(2)`            |
+| Operation    | R Example     | Python Example          |
+|--------------|---------------|-------------------------|
+| Add          | `2 + 3`       | `2 + 3`                 |
+| Subtract     | `2 - 3`       | `2 - 3`                 |
+| Multiply     | `2 * 3`       | `2 * 3`                 |
+| Divide       | `2 / 3`       | `2 / 3`                 |
+| Modulus      | `2 %% 3`      | `2 % 3`                 |
+| Square root  | `sqrt(2)`     | `math.sqrt(2)`          |
+| Power        | `2^3`         | `2 ** 3`                |
+| Cosine       | `cos(2 * pi)` | `math.cos(2 * math.pi)` |
+| Sine         | `sin(pi / 2)` | `math.sin(math.pi / 2)` |
+| Tangent      | `tan(pi / 4)` | `math.tan(math.pi / 4)` |
+| Natural log  | `log(2)`      | `math.log(2)`           |
+| Expontential | `exp(2)`      | `math.exp(2)`           |
 
-Please note that in Python, you need to import the `math` library to use mathematical functions like `sqrt`, `cos`, `sin`, `tan`, `log`, and `exp`. Also, `pi` is accessed as `math.pi` in Python. We will see what a library is in details in the next chapter.
-At the start of your **python** script, just add the following:
+Please note that in Python, you need to import the `math` library to use mathematical functions like `sqrt`, `cos`, `sin`, `tan`, `log`, and `exp`. Also, `pi` is accessed as `math.pi` in Python. We will see what a library is in details in the next chapter. At the start of your **python** script, just add the following:
 
 **Python**
+
 ```{python}
 import math
 ```
+
 Don't worry too much about this for now.
 
 #### Exercise
@@ -282,11 +282,9 @@ The multiplication and division calculations are performed first (`*` and `/`), 
 
 You may remember this from School as BODMAS/BEDMAS: Brackets, Orders (Exponential, powers and square roots), Division, Multiplication, Addition, Subtraction
 
-This can be overridden by using putting the calculations we want to perform first in brackets. For instance, there's this formula that has been really bothering me. It popped up this morning at 4am, and kept me awake. What is the square root of three fourth, over a third minus 2 divided by pi squared? A hunted seagull of chalk flying around the vast sea of obsidian that is the blackboard of my mind, over and over and over again: 
-$$
+This can be overridden by using putting the calculations we want to perform first in brackets. For instance, there's this formula that has been really bothering me. It popped up this morning at 4am, and kept me awake. What is the square root of three fourth, over a third minus 2 divided by pi squared? A hunted seagull of chalk flying around the vast sea of obsidian that is the blackboard of my mind, over and over and over again: $$
 \frac{\sqrt{3/4}}{\frac{1}{3} - \frac{2}{\pi^2}}.
-$$ 
-Here you go, be free, little bird:
+$$ Here you go, be free, little bird:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -344,9 +342,9 @@ spell_to_kill = "avada kebaba"
 </div>
 :::
 
-What did we do? We assigned two strings (sequences of text), `"porcosus"` and `"avada kebaba"`, indicative of our spells, in two variables, called `spell_to_torture` and `spell_to_kill` (the labels). You can read the code above as *assign "porcosus" to spell_to_torture, and assign "avada kebaba" to spell_to_kill*. This can be done with the `<-` sign in R and with the `=` sign in Python. What we did reserved an area of memory where now our two strings are stored and are accessible to our program. 
+What did we do? We assigned two strings (sequences of text), `"porcosus"` and `"avada kebaba"`, indicative of our spells, in two variables, called `spell_to_torture` and `spell_to_kill` (the labels). You can read the code above as *assign "porcosus" to spell_to_torture, and assign "avada kebaba" to spell_to_kill*. This can be done with the `<-` sign in R and with the `=` sign in Python. What we did reserved an area of memory where now our two strings are stored and are accessible to our program.
 
-**Note for R users** It is worth pointing out that you can use the `=` for assignment in R just like with Python. Try to change above in R `spell_to_torture = "porcosus"`: the result won't change. However, the  `<-`, meaning "gets", and is a more intuitive symbol in my opinion when referring to assignment. So we'll be using this where we can in R. Feel free to use whichever you prefer.
+**Note for R users** It is worth pointing out that you can use the `=` for assignment in R just like with Python. Try to change above in R `spell_to_torture = "porcosus"`: the result won't change. However, the `<-`, meaning "gets", and is a more intuitive symbol in my opinion when referring to assignment. So we'll be using this where we can in R. Feel free to use whichever you prefer.
 
 Our dear Prof. Sinsinius Snap, to access the spells again, all he needs to do, is to recall the labels he used, e.g. the variable names, and the archive will remind him of the content of the bottles:
 
@@ -426,8 +424,7 @@ spell_to_torture
 
 #### Doing maths with variables
 
-Now of course, this is a university, not a school of magic and divination, so we ultimately need to do some maths.
-In programming, we often need to store the results of our calculations for later use. This is where variables come in handy. We mentioned you can think of a variable as a bottle where you can store a value. You can give this bottle a label (a name), and use this label to refer to the bottled value later on.
+Now of course, this is a university, not a school of magic and divination, so we ultimately need to do some maths. In programming, we often need to store the results of our calculations for later use. This is where variables come in handy. We mentioned you can think of a variable as a bottle where you can store a value. You can give this bottle a label (a name), and use this label to refer to the bottled value later on.
 
 For example, let's say we want to perform some calculations:
 
@@ -639,10 +636,9 @@ df.to_csv("data.csv", index=False)
 
 In both of these examples, we're creating a set of data (the numbers 1 through 5), and then writing this data to a file called "data.csv". The `write.csv` function in R and the `to_csv` function in Python are used to write the data to a file.
 
-In R, when you see `c(1, 2, 3)`, we're making a vector. As in maths, this is a collection of numbers that you’ve bundled together in a specific order: first 1, then 2, then 3.
-In Python, when you see `[1, 2, 3]`, it’s very similar. This in python is called a list.
+In R, when you see `c(1, 2, 3)`, we're making a vector. As in maths, this is a collection of numbers that you've bundled together in a specific order: first 1, then 2, then 3. In Python, when you see `[1, 2, 3]`, it's very similar. This in python is called a list.
 
-We’ll learn more about these collections (vectors in R and lists in Python) in the **next chapter**. For now, just remember that they are a way to keep your items organized and in a specific order. It’s like having a container where you can keep your things neatly instead of having them scattered all over the place. This makes it easier to find what you need later on. Moreover, in the Python example, you might have noticed the `pd.DataFrame` statement. This is a way to create a DataFrame, which is a kind of table, using the pandas library. This, as `maths` above, is another collection of functions, and you will usually refer to these functions via `pd.FUNCNAME`. Again, don't worry! We'll cover these topics in more detail later on. For now, just know that we're using a DataFrame to store our information in a structured way that can be easily written to a file. We will refer to this information as data. Data, in a broader sense, can be a lot of things: the image from a satellite in space, some medical information from a clinical trial, the output from an ODE solver or a long list of prime numbers that the computer has worked out.
+We'll learn more about these collections (vectors in R and lists in Python) in the **next chapter**. For now, just remember that they are a way to keep your items organized and in a specific order. It's like having a container where you can keep your things neatly instead of having them scattered all over the place. This makes it easier to find what you need later on. Moreover, in the Python example, you might have noticed the `pd.DataFrame` statement. This is a way to create a DataFrame, which is a kind of table, using the pandas library. This, as `maths` above, is another collection of functions, and you will usually refer to these functions via `pd.FUNCNAME`. Again, don't worry! We'll cover these topics in more detail later on. For now, just know that we're using a DataFrame to store our information in a structured way that can be easily written to a file. We will refer to this information as data. Data, in a broader sense, can be a lot of things: the image from a satellite in space, some medical information from a clinical trial, the output from an ODE solver or a long list of prime numbers that the computer has worked out.
 
 Now, let's talk about CSV files. CSV stands for "Comma-Separated Values". It's a simple file format used to store tabular data, such as a spreadsheet or database. Each line of the file is a data record, and each record consists of one or more fields, separated by commas. This is why it's called a "comma-separated values" file.
 
@@ -653,6 +649,7 @@ I encourage you to open the "data.csv" file we created in a text editor or sprea
 Remember, storing data on your hard drive is a great way to preserve your data for later use. It's also a great way to share your data with others, or to move your data between different programs. So don't be afraid to use file input and output in your own programs. It's a powerful tool that can help you do more with your data.
 
 #### Reading back your data
+
 Now, let's say we want to access this data at a later time. We can do this by reading the file back into our program. Here's how you can do it in R and Python:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
@@ -691,12 +688,15 @@ This is just a basic introduction to storing data on your hard drive using R and
 
 ### Working Directory and File Structures
 
-But _where_ have we stored our `data.csv`? Well, in the working directory. The **working directory** is the folder on your computer where R or Python is currently operating. When you run a script, it's as if you're standing in your working directory. Any files you read or write will be searched for or created within this directory. But what is a _directory_? Well, you can think of a directory as a folder, in a filing cabinet, where you can organise your files more easily.
+But *where* have we stored our `data.csv`? Well, in the working directory. The **working directory** is the folder on your computer where R or Python is currently operating. When you run a script, it's as if you're standing in your working directory. Any files you read or write will be searched for or created within this directory. But what is a *directory*? Well, you can think of a directory as a folder, in a filing cabinet, where you can organise your files more easily.
 
 In **R**, you can learn about your current working directory with `getwd()` and set it with `setwd("your/directory/path")`. In **Python**, you can use `os.getcwd()` to get the current working directory and `os.chdir("your/directory/path")` to change it. Try to run the `getwd()` or `os.getcwd()` command in your script, and this should print the location where you will find.
 
-Now what you might wonder, _what is a file path? What on earth is a location?_. Well, a file path is a string that tells us the location of a file on our computer. You may familiar with this concept already, but if you're not, don't worry, you will find what you need below. The idea is that files are stored on your hard drive, and, to access these, at user level, you'll need to navigate a file structure.
-A **file structure** is how files are organized on your computer. You can think of it like a tree, where each folder (also known as a directory) is a branch that can hold more folders or files (the leaves). If you've ever used a file explorer or finder on your computer, you've navigated a file structure. It's like having a series of nested folders, each containing more folders or files. And this structure helps us keep our files organised and easily accessible.
+Now what you might wonder, *what is a file path? What on earth is a location?*. Well, a file path is a string that tells us the location of a file on our computer. You may familiar with this concept already, but if you're not, don't worry, you will find what you need below. The idea is that files are stored on your hard drive, and, to access these, at user level, you'll need to navigate a file structure. A **file structure** is how files are organized on your computer. You can think of it like a tree, where each folder (also known as a directory) is a branch that can hold more folders or files (the leaves):
+
+![A file structure in unix: you can see how from the root directory "/", you have some sub-directories, and sub-directories, e.g. "/bin" or "/Users". In turn, those directories have other sub-directories, e.g. "/Users/larry". In Windows or Mac you'd find a slightly different structure, but the concept is the same.](https://swcarpentry.github.io/shell-novice/fig/home-directories.svg)
+
+If you've ever used a file explorer or finder on your computer, you've navigated a file structure. It's like having a series of nested folders, each containing more folders or files. And this structure helps us keep our files organised and easily accessible.
 
 A **file path** is the specific location of a file or folder in the file structure. It's like a list of directions to get to the file. In our previous examples, `"data.csv"` is a file path. Because it doesn't include any directory names, it refers to a file in the current working directory. This is similar to saying, "the report on my desk," where the report is the file and the desk is the current working directory.
 
@@ -736,11 +736,12 @@ df.to_csv("../data2.csv", index=False)
 </div>
 :::
 
-In both of these examples, we're writing the same data to a file in a subdirectory and a file in the parent directory of the current working directory. See if you can locate (and delete, please), the files you just created! 
+In both of these examples, we're writing the same data to a file in a subdirectory and a file in the parent directory of the current working directory. See if you can locate (and delete, please), the files you just created!
 
-
+```{=html}
 <style type="text/css">
 .book .book-body .page-wrapper .page-inner {
   max-width: 1200px !important;
 }
 </style>
+```
