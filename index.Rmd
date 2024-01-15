@@ -58,6 +58,21 @@ All contents are still subject to change. The notes are both in Python and R. Yo
 Every week, you are expected to follow one lecture and one lab. Over the lecture, an overview of the contents of the week will be given. But during the lab, you should give it a go at the notes at your own pace, and follow the contents by copy and pasting commands from the notes onto your pc, and completing the exercises.
 Solutions to the exercises will be uploaded on Moodle after all labs of the week end.
 
+### Sources
+
+This notes are heavily inspired from the materials of including:
+Debbie Costain, Clement Lee, Chris Nemeth, Tom Palmer, Florian Pein, Gaetano Romano, Stuart Sharples 
+"Lancaster University MATH550/SCC.461 R Programming",
+https://www.lancaster.ac.uk/~romano/teaching/2324MATH550/
+
+Some of the structure of the notes and some of the exercises are from: 
+
+-   Azalee Bostroem, Trevor Bekolay, and Valentina Staneva (eds):
+"Software Carpentry: Programming with Python."  Version 2016.06, June
+2016, https://github.com/swcarpentry/python-novice-inflammation,
+10.5281/zenodo.57492.
+-   
+
 ```{r include=FALSE}
 knitr::opts_chunk$set(fig.path = "images/", out.width = "50%")
 ```
