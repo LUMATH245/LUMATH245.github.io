@@ -711,7 +711,7 @@ Let's see how this works in R and Python:
 
 **R**
 
-```{r}
+```{r eval=FALSE}
 # Write data to a file in a subdirectory
 write.csv(data, file = "subdirectory/data1.csv")
 
@@ -725,7 +725,7 @@ write.csv(data, file = "../data2.csv")
 
 **Python**
 
-```{python}
+```{python eval=FALSE}
 # Write data to a file in a subdirectory
 df.to_csv("subdirectory/data1.csv", index=False)
 

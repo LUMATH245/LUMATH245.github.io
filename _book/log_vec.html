@@ -992,7 +992,7 @@ As you will see, here the syntax is going to be a bit different in each language
 <div class="sourceCode" id="cb247"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb247-1"><a href="log_vec.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating an empty array of type numeric and length 5</span></span>
 <span id="cb247-2"><a href="log_vec.html#cb247-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.empty(<span class="dv">5</span>, dtype <span class="op">=</span> <span class="st">&quot;float&quot;</span>)</span>
 <span id="cb247-3"><a href="log_vec.html#cb247-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
-<pre><code>## array([0., 0., 0., 0., 0.])</code></pre>
+<pre><code>## array([4.9e-324, 9.9e-324, 1.5e-323, 2.0e-323, 2.5e-323])</code></pre>
 </div>
 </div>
 <p>Note that the <code>vector</code> function in R takes the <code>mode</code> argument to specify the type of the vector, and the <code>length</code> argument to specify the length of the vector. The <code>np.empty</code> function in Python takes the the length of the array as the first argument, and the <code>dtype</code> argument to specify the type of the array, e.g. integer, float, Python object, etc.</p>
@@ -1028,10 +1028,10 @@ As you will see, here the syntax is going to be a bit different in each language
 <pre><code>## array([-1., -1., -1., -1., -1.])</code></pre>
 <div class="sourceCode" id="cb261"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb261-1"><a href="log_vec.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiplying an array by a scalar</span></span>
 <span id="cb261-2"><a href="log_vec.html#cb261-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">*</span> <span class="dv">2</span></span></code></pre></div>
-<pre><code>## array([0., 0., 0., 0., 0.])</code></pre>
+<pre><code>## array([1.e-323, 2.e-323, 3.e-323, 4.e-323, 5.e-323])</code></pre>
 <div class="sourceCode" id="cb263"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb263-1"><a href="log_vec.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dividing an array by a scalar</span></span>
 <span id="cb263-2"><a href="log_vec.html#cb263-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">/</span> <span class="dv">2</span></span></code></pre></div>
-<pre><code>## array([0., 0., 0., 0., 0.])</code></pre>
+<pre><code>## array([0.e+000, 5.e-324, 1.e-323, 1.e-323, 1.e-323])</code></pre>
 </div>
 </div>
 <p>The element wise operations are performed by using the same arithmetic operators as the past chapter, such as <code>+</code>, <code>-</code>, <code>*</code>, and <code>/</code>.</p>
