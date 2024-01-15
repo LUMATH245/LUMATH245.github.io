@@ -43,6 +43,7 @@ exercise-cups-to-grams-converter
 state-and-for-loop
 the-syntax
 coding-the-fibonacci-sequence
+exercise-2
 more-about-looping
 nested-loops
 while-loops

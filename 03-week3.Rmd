@@ -92,7 +92,8 @@ code is run. This is incredibly useful for tasks we need to perform
 multiple times. Let's build for example a simple function that converts
 pounds (lbs) to grams (g).
 
-Mathematically, this is simply done by the formula: $$
+Mathematically, this is simply done by the formula:
+$$
 g = 453.5924 * lbs
 $$
 
@@ -776,7 +777,11 @@ In this Python code:
 ### Coding The Fibonacci sequence
 
 Having covered how to write a for cycle, we come back to our Fibonacci
-example:
+example. Differently from the loop above, in order to implement our algorithm, 
+we will need to **update a variable** within our loop. In our case, this variable, 
+is going to be a vector storing our Fibonacci sequence, called `fibonacci`. At iteration 1, the vector
+will be 2 elements long (the first two number of the sequence), but as we go through
+the loop, we will be adding more and more elements to the vector. 
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -842,8 +847,9 @@ In the Python code:
     the existing one.
 
 Our vectors, where we stored our results at every iteration, should be
-20 elements long, containing the sequence. ::: {style="display: grid;
-grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+20 elements long, containing the sequence. 
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 
 <div>
 
@@ -875,6 +881,21 @@ happening at every iteration, e.g. try to add: `print(i)`,
 `print(fibonacci[i])` and `print(fibonacci[i-1])` before the
 computation, or `print(fibonacci)` after the computation has been done.
 `print` statements are extremely useful for debugging for cycles!
+
+
+### Exercise 
+
+Write now a new function `my_cusum` to compute the cumulative sum of a list of numbers, using a for loop. Use the function to calculate the cumulative sum of the first 10 elements of the Fibonacci sequence.
+The function should:
+-   Take as input a vector
+-   Initialize a new vector to store the cumulative sum 
+-   Then, in a cycle, update this vector with the cumulative sum of the elements of the input vector
+    -     The output vector should be of the same length of the input vector
+    -     The first element should be the same first element of the input vector
+-   Using the code above, generate a Fibonacci sequence of 10 numbers
+-   Run the function `my_cusum(fibonacci)` to obtain the cumulative sum of the first then numbers of the Fibonacci sequence.
+-   Compare the output of `my_cusum` with the built in function `cumsum` (R) or numpy's `np.cumsum`.
+
 
 ## More about looping
 

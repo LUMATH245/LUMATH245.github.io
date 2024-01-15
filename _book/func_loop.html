@@ -239,7 +239,8 @@ wrap our code in a function, and every time the function is called, this
 code is run. This is incredibly useful for tasks we need to perform
 multiple times. Let’s build for example a simple function that converts
 pounds (lbs) to grams (g).</p>
-<p>Mathematically, this is simply done by the formula: <span class="math display">\[
+<p>Mathematically, this is simply done by the formula:
+<span class="math display">\[
 g = 453.5924 * lbs
 \]</span></p>
 <p>In <strong>R</strong>, we define a function using the <code>function()</code> command. The
@@ -888,7 +889,11 @@ It gets updated at each step over the sequence.</li>
 <div id="coding-the-fibonacci-sequence" class="section level3 hasAnchor" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> Coding The Fibonacci sequence<a href="func_loop.html#coding-the-fibonacci-sequence" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Having covered how to write a for cycle, we come back to our Fibonacci
-example:</p>
+example. Differently from the loop above, in order to implement our algorithm,
+we will need to <strong>update a variable</strong> within our loop. In our case, this variable,
+is going to be a vector storing our Fibonacci sequence, called <code>fibonacci</code>. At iteration 1, the vector
+will be 2 elements long (the first two number of the sequence), but as we go through
+the loop, we will be adding more and more elements to the vector.</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
@@ -941,8 +946,8 @@ append method extends our vector, adding a new element at the end of
 the existing one.</li>
 </ul>
 <p>Our vectors, where we stored our results at every iteration, should be
-20 elements long, containing the sequence. ::: {style=“display: grid;
-grid-template-columns: 1fr 1fr; grid-column-gap: 10px;”}</p>
+20 elements long, containing the sequence.</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="func_loop.html#cb452-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the Fibonacci sequence</span></span>
@@ -957,13 +962,26 @@ grid-template-columns: 1fr 1fr; grid-column-gap: 10px;”}</p>
 <pre><code>## [   0    1    1    2    3    5    8   13   21   34   55   89  144  233
 ##   377  610  987 1597 2584 4181]</code></pre>
 </div>
-<p>:::</p>
+</div>
 <p><strong>Before you proceed</strong> make sure you understand what’s going on inside
 the for loop. Add extra <code>print</code> statements to understand what’s
 happening at every iteration, e.g. try to add: <code>print(i)</code>,
 <code>print(fibonacci[i])</code> and <code>print(fibonacci[i-1])</code> before the
 computation, or <code>print(fibonacci)</code> after the computation has been done.
 <code>print</code> statements are extremely useful for debugging for cycles!</p>
+</div>
+<div id="exercise-2" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Exercise<a href="func_loop.html#exercise-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Write now a new function <code>my_cusum</code> to compute the cumulative sum of a list of numbers, using a for loop. Use the function to calculate the cumulative sum of the first 10 elements of the Fibonacci sequence.
+The function should:
+- Take as input a vector
+- Initialize a new vector to store the cumulative sum
+- Then, in a cycle, update this vector with the cumulative sum of the elements of the input vector
+- The output vector should be of the same length of the input vector
+- The first element should be the same first element of the input vector
+- Using the code above, generate a Fibonacci sequence of 10 numbers
+- Run the function <code>my_cusum(fibonacci)</code> to obtain the cumulative sum of the first then numbers of the Fibonacci sequence.
+- Compare the output of <code>my_cusum</code> with the built in function <code>cumsum</code> (R) or numpy’s <code>np.cumsum</code>.</p>
 </div>
 </div>
 <div id="more-about-looping" class="section level2 hasAnchor" number="3.3">
