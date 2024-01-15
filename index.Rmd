@@ -61,7 +61,8 @@ Solutions to the exercises will be uploaded on Moodle after all labs of the week
 **Sources**
 
 This notes are heavily inspired from the materials of including:
--   Debbie Costain, Clement Lee, Chris Nemeth, Tom Palmer, Florian Pein, Gaetano Romano, Stuart Sharples 
+
+-   Debbie Costain, Clement Lee, Chris Nemeth, Tom Palmer, Florian Pein, Gaetano Romano, Stuart Sharples.
 "Lancaster University MATH550/SCC.461 R Programming",
 https://www.lancaster.ac.uk/~romano/teaching/2324MATH550/
 
