@@ -664,14 +664,44 @@ In Python, when you see <code>[1, 2, 3]</code>, it’s very similar. This in pyt
 </div>
 </div>
 <p>In these examples, we’re using the <code>read.csv</code> function in R and the <code>read_csv</code> function in Python to read the data from the file back into our program. When we print these data, we can see that the content of the output is the same as the data we originally wrote to the file.</p>
-<p>This is a basic introduction to storing data on your hard drive using R and Python. There’s a lot more you can do with file input and output, but this should give you a good starting point. Remember, the key is to use variables to store your data in memory while your program is running, and then write this data to a file on your hard drive if you want to keep it for later.</p>
+<p>This is just a basic introduction to storing data on your hard drive using R and Python. There’s a lot more you can do with file input and output, but this should give you a good starting point. Remember, the key is to use variables to store your data in memory while your program is running, and then write this data to a file on your hard drive if you want to keep it for later.</p>
+</div>
+</div>
+<div id="working-directory-and-file-structures" class="section level3 hasAnchor" number="1.2.4">
+<h3><span class="header-section-number">1.2.4</span> Working Directory and File Structures<a href="intro_prog.html#working-directory-and-file-structures" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>But <em>where</em> have we stored our <code>data.csv</code>? Well, in the working directory. The <strong>working directory</strong> is the folder on your computer where R or Python is currently operating. When you run a script, it’s as if you’re standing in your working directory. Any files you read or write will be searched for or created within this directory. But what is a <em>directory</em>? Well, you can think of a directory as a folder, in a filing cabinet, where you can organise your files more easily.</p>
+<p>In <strong>R</strong>, you can learn about your current working directory with <code>getwd()</code> and set it with <code>setwd("your/directory/path")</code>. In <strong>Python</strong>, you can use <code>os.getcwd()</code> to get the current working directory and <code>os.chdir("your/directory/path")</code> to change it. Try to run the <code>getwd()</code> or <code>os.getcwd()</code> command in your script, and this should print the location where you will find.</p>
+<p>Now what you might wonder, <em>what is a file path? What on earth is a location?</em>. Well, a file path is a string that tells us the location of a file on our computer. You may familiar with this concept already, but if you’re not, don’t worry, you will find what you need below. The idea is that files are stored on your hard drive, and, to access these, at user level, you’ll need to navigate a file structure.
+A <strong>file structure</strong> is how files are organized on your computer. You can think of it like a tree, where each folder (also known as a directory) is a branch that can hold more folders or files (the leaves). If you’ve ever used a file explorer or finder on your computer, you’ve navigated a file structure. It’s like having a series of nested folders, each containing more folders or files. And this structure helps us keep our files organised and easily accessible.</p>
+<p>A <strong>file path</strong> is the specific location of a file or folder in the file structure. It’s like a list of directions to get to the file. In our previous examples, <code>"data.csv"</code> is a file path. Because it doesn’t include any directory names, it refers to a file in the current working directory. This is similar to saying, “the report on my desk,” where the report is the file and the desk is the current working directory.</p>
+<p>You can also specify files in directories below the working directory in your file path. For example, <code>"subdirectory/data.csv"</code> would refer to a file in a folder named “subdirectory” within the current working directory. This is like saying, “the report in the top drawer of my desk.”</p>
+<p>To go up to a parent directory, you can use <code>".."</code>. So <code>"../data.csv"</code> would refer to a file in the parent directory of the current working directory. This is like saying, “the report on my colleague’s desk next to mine.”</p>
+<p>Let’s see how this works in R and Python:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="intro_prog.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write data to a file in a subdirectory</span></span>
+<span id="cb84-2"><a href="intro_prog.html#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(data, <span class="at">file =</span> <span class="st">&quot;subdirectory/data1.csv&quot;</span>)</span>
+<span id="cb84-3"><a href="intro_prog.html#cb84-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-4"><a href="intro_prog.html#cb84-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Write data to a file in the parent directory</span></span>
+<span id="cb84-5"><a href="intro_prog.html#cb84-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(data, <span class="at">file =</span> <span class="st">&quot;../data2.csv&quot;</span>)</span></code></pre></div>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb85-1"><a href="intro_prog.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write data to a file in a subdirectory</span></span>
+<span id="cb85-2"><a href="intro_prog.html#cb85-2" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">&quot;subdirectory/data1.csv&quot;</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb85-3"><a href="intro_prog.html#cb85-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-4"><a href="intro_prog.html#cb85-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Write data to a file in the parent directory</span></span>
+<span id="cb85-5"><a href="intro_prog.html#cb85-5" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">&quot;../data2.csv&quot;</span>, index<span class="op">=</span><span class="va">False</span>)</span></code></pre></div>
+</div>
+</div>
+<p>In both of these examples, we’re writing the same data to a file in a subdirectory and a file in the parent directory of the current working directory. See if you can locate (and delete, please), the files you just created!</p>
 <style type="text/css">
 .book .book-body .page-wrapper .page-inner {
   max-width: 1200px !important;
 }
 </style>
 
-</div>
 </div>
 </div>
 </div>
