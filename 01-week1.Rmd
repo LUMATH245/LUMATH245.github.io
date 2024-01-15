@@ -687,7 +687,57 @@ print(data_from_file)
 
 In these examples, we're using the `read.csv` function in R and the `read_csv` function in Python to read the data from the file back into our program. When we print these data, we can see that the content of the output is the same as the data we originally wrote to the file.
 
-This is a basic introduction to storing data on your hard drive using R and Python. There's a lot more you can do with file input and output, but this should give you a good starting point. Remember, the key is to use variables to store your data in memory while your program is running, and then write this data to a file on your hard drive if you want to keep it for later.
+This is just a basic introduction to storing data on your hard drive using R and Python. There's a lot more you can do with file input and output, but this should give you a good starting point. Remember, the key is to use variables to store your data in memory while your program is running, and then write this data to a file on your hard drive if you want to keep it for later.
+
+### Working Directory and File Structures
+
+But _where_ have we stored our `data.csv`? Well, in the working directory. The **working directory** is the folder on your computer where R or Python is currently operating. When you run a script, it's as if you're standing in your working directory. Any files you read or write will be searched for or created within this directory. But what is a _directory_? Well, you can think of a directory as a folder, in a filing cabinet, where you can organise your files more easily.
+
+In **R**, you can learn about your current working directory with `getwd()` and set it with `setwd("your/directory/path")`. In **Python**, you can use `os.getcwd()` to get the current working directory and `os.chdir("your/directory/path")` to change it. Try to run the `getwd()` or `os.getcwd()` command in your script, and this should print the location where you will find.
+
+Now what you might wonder, _what is a file path? What on earth is a location?_. Well, a file path is a string that tells us the location of a file on our computer. You may familiar with this concept already, but if you're not, don't worry, you will find what you need below. The idea is that files are stored on your hard drive, and, to access these, at user level, you'll need to navigate a file structure.
+A **file structure** is how files are organized on your computer. You can think of it like a tree, where each folder (also known as a directory) is a branch that can hold more folders or files (the leaves). If you've ever used a file explorer or finder on your computer, you've navigated a file structure. It's like having a series of nested folders, each containing more folders or files. And this structure helps us keep our files organised and easily accessible.
+
+A **file path** is the specific location of a file or folder in the file structure. It's like a list of directions to get to the file. In our previous examples, `"data.csv"` is a file path. Because it doesn't include any directory names, it refers to a file in the current working directory. This is similar to saying, "the report on my desk," where the report is the file and the desk is the current working directory.
+
+You can also specify files in directories below the working directory in your file path. For example, `"subdirectory/data.csv"` would refer to a file in a folder named "subdirectory" within the current working directory. This is like saying, "the report in the top drawer of my desk."
+
+To go up to a parent directory, you can use `".."`. So `"../data.csv"` would refer to a file in the parent directory of the current working directory. This is like saying, "the report on my colleague's desk next to mine."
+
+Let's see how this works in R and Python:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Write data to a file in a subdirectory
+write.csv(data, file = "subdirectory/data1.csv")
+
+# Write data to a file in the parent directory
+write.csv(data, file = "../data2.csv")
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# Write data to a file in a subdirectory
+df.to_csv("subdirectory/data1.csv", index=False)
+
+# Write data to a file in the parent directory
+df.to_csv("../data2.csv", index=False)
+```
+
+</div>
+:::
+
+In both of these examples, we're writing the same data to a file in a subdirectory and a file in the parent directory of the current working directory. See if you can locate (and delete, please), the files you just created! 
+
 
 <style type="text/css">
 .book .book-body .page-wrapper .page-inner {
