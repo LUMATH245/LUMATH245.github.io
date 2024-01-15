@@ -891,15 +891,29 @@ computation, or `print(fibonacci)` after the computation has been done.
 ### Exercise 
 
 Write now a new function `my_cusum` to compute the cumulative sum of a list of numbers, using a for loop. Use the function to calculate the cumulative sum of the first 10 elements of the Fibonacci sequence.
+
 The function should:
+
 -   Take as input a vector
--   Initialize a new vector to store the cumulative sum 
--   Then, in a cycle, update this vector with the cumulative sum of the elements of the input vector
-    -     The output vector should be of the same length of the input vector
-    -     The first element should be the same first element of the input vector
+
+-   Initialize a new vector to store the cumulative sum
+
+-   Then, in a cycle, update this vector with the cumulative sum of the
+    elements of the input vector
+
+    -   The output vector should be of the same length of the input
+        vector
+
+    -   The first element of the output vector should be the same first
+        element of the input vector
+
 -   Using the code above, generate a Fibonacci sequence of 10 numbers
--   Run the function `my_cusum(fibonacci)` to obtain the cumulative sum of the first then numbers of the Fibonacci sequence.
--   Compare the output of `my_cusum` with the built in function `cumsum` (R) or numpy's `np.cumsum`.
+
+-   Run the function `my_cusum(fibonacci)` to obtain the cumulative sum
+    of the first then numbers of the Fibonacci sequence.
+
+-   Compare the output of `my_cusum` with the built in function `cumsum`
+    (R) or numpy's `np.cumsum`.
 
 
 ## More about looping
