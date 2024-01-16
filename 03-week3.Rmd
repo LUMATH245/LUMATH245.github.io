@@ -6,7 +6,7 @@ editor_options:
 
 # Functions and Loops {#func_loop}
 
-## Functions
+## Functions {#functions}
 
 Functions in mathematics, is an assignment of an element from a set to a
 different set. Here we give a more "practical" definition.
@@ -581,7 +581,7 @@ As we did with the functions we created before, you should:
     iii. 3 cups of oat milk
     iv. 2 cups of flour plus one cup of water
 
-## State and For Loop
+## State and For Loop {#looping}
 
 Normally, if you have to run some operations on multiple objects, you
 would store these objects in a vector, and then work with the vector

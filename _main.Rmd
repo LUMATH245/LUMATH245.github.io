@@ -66,12 +66,17 @@ This notes are heavily inspired from the materials of including:
 "Lancaster University MATH550/SCC.461 R Programming",
 https://www.lancaster.ac.uk/~romano/teaching/2324MATH550/
 
-Some of the structure of the notes and some of the exercises are from: 
+Some of the structure of the notes, some example and exercises are from: 
 
 -   Azalee Bostroem, Trevor Bekolay, and Valentina Staneva (eds):
 "Software Carpentry: Programming with Python."  Version 2016.06, June
 2016, https://github.com/swcarpentry/python-novice-inflammation,
 10.5281/zenodo.57492.
+
+-   Gabriel A. Devenyi (Ed.), Gerard Capes (Ed.), Colin Morris (Ed.), Will Pitchers (Ed.),
+Greg Wilson, Gerard Capes, Gabriel A. Devenyi, Christina Koch, Raniere Silva, Ashwin Srinath, … Vikram Chhatre.
+(2019, July). swcarpentry/shell-novice: Software Carpentry: the UNIX shell, June 2019 (Version v2019.06.1).
+Zenodo. http://doi.org/10.5281/zenodo.3266823
 
 ```{r include=FALSE}
 knitr::opts_chunk$set(fig.path = "images/", out.width = "50%")
@@ -224,10 +229,9 @@ print("Python chunk on the right.")
 
 If for formatting reasons we aren't able to show the code side to side, you can always tell which is which by the bold text immediately above the chunk, e.g. **R** or **python**.
 
-
 ### A glorified calculator
 
-That's it, the CPU is a glorified calculator, end of the Section. Nothing more to it, even if sometimes you might have heard complex codes and names like i7, i5, A4, Pentium 5, Neural Pre-processor, Snapdragon, Qbits, SmartBpprop, Bombastic, Mr fantastic, etc. Anyway, let us not worry about this now, but open up a new script, either an R or Python script. Copy and paste the following code snippets into it. Then, placing your cursor next to each snippet, press `ctrl + enter` on your keyboard, you will see the result popping up in the console. What's going to happen under the hood once you are sending a command to R or Python, is that process I mentioned earlier. The interpreter, will convert your command into machine code, and pass it down to the processor. The processor is going to crunch the numbers, and send back an output, that will then be displayed on your screen. 
+That's it, the CPU is a glorified calculator, end of the Section. Nothing more to it, even if sometimes you might have heard complex codes and names like i7, i5, A4, Pentium 5, Neural Pre-processor, Snapdragon, Qbits, SmartBpprop, Bombastic, Mr fantastic, etc. Anyway, let us not worry about this now, but open up a new script, either an R or Python script. Copy and paste the following code snippets into it. Then, placing your cursor next to each snippet, press `ctrl + enter` on your keyboard, you will see the result popping up in the console. What's going to happen under the hood once you are sending a command to R or Python, is that process I mentioned earlier. The interpreter, will convert your command into machine code, and pass it down to the processor. The processor is going to crunch the numbers, and send back an output, that will then be displayed on your screen.
 
 This is how we do additions:
 
@@ -303,28 +307,29 @@ And this is how we do additions and subtractions, and multiplications, and algeb
 
 The order of the operations comes from algebra, so in that snippet, we will first have `5 * 2`, that gives us `10`, and then we will do `3 + 10`. Of course we can do much more then simple additions of subtractions and multiplications. Here I have a list of basic operations we can do with both the languages. Note that the syntax will not always be the same:
 
-| Operation    | R Example     | Python Example           |
-|--------------|---------------|--------------------------|
-| Add          | `2 + 3`       | `2 + 3`                  |
-| Subtract     | `2 - 3`       | `2 - 3`                  |
-| Multiply     | `2 * 3`       | `2 * 3`                  |
-| Divide       | `2 / 3`       | `2 / 3`                  |
-| Modulus      | `2 %% 3`      | `2 % 3`                  |
-| Square root  | `sqrt(2)`     | `math.sqrt(2)`           |
-| Power        | `2^3`         | `2 ** 3`                 |
-| Cosine       | `cos(2 * pi)` | `math.cos(2 * math.pi)`  |
-| Sine         | `sin(pi / 2)` | `math.sin(math.pi / 2)`  |
-| Tangent      | `tan(pi / 4)` | `math.tan(math.pi / 4)`  |
-| Natural log  | `log(2)`      | `math.log(2)`            |
-| Expontential | `exp(2)`      | `math.exp(2)`            |
+| Operation    | R Example     | Python Example          |
+|--------------|---------------|-------------------------|
+| Add          | `2 + 3`       | `2 + 3`                 |
+| Subtract     | `2 - 3`       | `2 - 3`                 |
+| Multiply     | `2 * 3`       | `2 * 3`                 |
+| Divide       | `2 / 3`       | `2 / 3`                 |
+| Modulus      | `2 %% 3`      | `2 % 3`                 |
+| Square root  | `sqrt(2)`     | `math.sqrt(2)`          |
+| Power        | `2^3`         | `2 ** 3`                |
+| Cosine       | `cos(2 * pi)` | `math.cos(2 * math.pi)` |
+| Sine         | `sin(pi / 2)` | `math.sin(math.pi / 2)` |
+| Tangent      | `tan(pi / 4)` | `math.tan(math.pi / 4)` |
+| Natural log  | `log(2)`      | `math.log(2)`           |
+| Expontential | `exp(2)`      | `math.exp(2)`           |
 
-Please note that in Python, you need to import the `math` library to use mathematical functions like `sqrt`, `cos`, `sin`, `tan`, `log`, and `exp`. Also, `pi` is accessed as `math.pi` in Python. We will see what a library is in details in the next chapter.
-At the start of your **python** script, just add the following:
+Please note that in Python, you need to import the `math` library to use mathematical functions like `sqrt`, `cos`, `sin`, `tan`, `log`, and `exp`. Also, `pi` is accessed as `math.pi` in Python. We will see what a library is in details in the next chapter. At the start of your **python** script, just add the following:
 
 **Python**
+
 ```{python}
 import math
 ```
+
 Don't worry too much about this for now.
 
 #### Exercise
@@ -363,11 +368,9 @@ The multiplication and division calculations are performed first (`*` and `/`), 
 
 You may remember this from School as BODMAS/BEDMAS: Brackets, Orders (Exponential, powers and square roots), Division, Multiplication, Addition, Subtraction
 
-This can be overridden by using putting the calculations we want to perform first in brackets. For instance, there's this formula that has been really bothering me. It popped up this morning at 4am, and kept me awake. What is the square root of three fourth, over a third minus 2 divided by pi squared? A hunted seagull of chalk flying around the vast sea of obsidian that is the blackboard of my mind, over and over and over again: 
-$$
+This can be overridden by using putting the calculations we want to perform first in brackets. For instance, there's this formula that has been really bothering me. It popped up this morning at 4am, and kept me awake. What is the square root of three fourth, over a third minus 2 divided by pi squared? A hunted seagull of chalk flying around the vast sea of obsidian that is the blackboard of my mind, over and over and over again: $$
 \frac{\sqrt{3/4}}{\frac{1}{3} - \frac{2}{\pi^2}}.
-$$ 
-Here you go, be free, little bird:
+$$ Here you go, be free, little bird:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -425,9 +428,9 @@ spell_to_kill = "avada kebaba"
 </div>
 :::
 
-What did we do? We assigned two strings (sequences of text), `"porcosus"` and `"avada kebaba"`, indicative of our spells, in two variables, called `spell_to_torture` and `spell_to_kill` (the labels). You can read the code above as *assign "porcosus" to spell_to_torture, and assign "avada kebaba" to spell_to_kill*. This can be done with the `<-` sign in R and with the `=` sign in Python. What we did reserved an area of memory where now our two strings are stored and are accessible to our program. 
+What did we do? We assigned two strings (sequences of text), `"porcosus"` and `"avada kebaba"`, indicative of our spells, in two variables, called `spell_to_torture` and `spell_to_kill` (the labels). You can read the code above as *assign "porcosus" to spell_to_torture, and assign "avada kebaba" to spell_to_kill*. This can be done with the `<-` sign in R and with the `=` sign in Python. What we did reserved an area of memory where now our two strings are stored and are accessible to our program.
 
-**Note for R users** It is worth pointing out that you can use the `=` for assignment in R just like with Python. Try to change above in R `spell_to_torture = "porcosus"`: the result won't change. However, the  `<-`, meaning "gets", and is a more intuitive symbol in my opinion when referring to assignment. So we'll be using this where we can in R. Feel free to use whichever you prefer.
+**Note for R users** It is worth pointing out that you can use the `=` for assignment in R just like with Python. Try to change above in R `spell_to_torture = "porcosus"`: the result won't change. However, the `<-`, meaning "gets", and is a more intuitive symbol in my opinion when referring to assignment. So we'll be using this where we can in R. Feel free to use whichever you prefer.
 
 Our dear Prof. Sinsinius Snap, to access the spells again, all he needs to do, is to recall the labels he used, e.g. the variable names, and the archive will remind him of the content of the bottles:
 
@@ -507,8 +510,7 @@ spell_to_torture
 
 #### Doing maths with variables
 
-Now of course, this is a university, not a school of magic and divination, so we ultimately need to do some maths.
-In programming, we often need to store the results of our calculations for later use. This is where variables come in handy. We mentioned you can think of a variable as a bottle where you can store a value. You can give this bottle a label (a name), and use this label to refer to the bottled value later on.
+Now of course, this is a university, not a school of magic and divination, so we ultimately need to do some maths. In programming, we often need to store the results of our calculations for later use. This is where variables come in handy. We mentioned you can think of a variable as a bottle where you can store a value. You can give this bottle a label (a name), and use this label to refer to the bottled value later on.
 
 For example, let's say we want to perform some calculations:
 
@@ -692,7 +694,7 @@ Let's look at how you can write data to a file in R and Python.
 data <- c(1, 2, 3, 4, 5)
 
 # Write the data to a file
-write.csv(data, file = "data.csv")
+write.csv(data, file = "data.csv", row.names = FALSE)
 ```
 
 </div>
@@ -720,10 +722,9 @@ df.to_csv("data.csv", index=False)
 
 In both of these examples, we're creating a set of data (the numbers 1 through 5), and then writing this data to a file called "data.csv". The `write.csv` function in R and the `to_csv` function in Python are used to write the data to a file.
 
-In R, when you see `c(1, 2, 3)`, we're making a vector. As in maths, this is a collection of numbers that you’ve bundled together in a specific order: first 1, then 2, then 3.
-In Python, when you see `[1, 2, 3]`, it’s very similar. This in python is called a list.
+In R, when you see `c(1, 2, 3)`, we're making a vector. As in maths, this is a collection of numbers that you've bundled together in a specific order: first 1, then 2, then 3. In Python, when you see `[1, 2, 3]`, it's very similar. This in python is called a list.
 
-We’ll learn more about these collections (vectors in R and lists in Python) in the **next chapter**. For now, just remember that they are a way to keep your items organized and in a specific order. It’s like having a container where you can keep your things neatly instead of having them scattered all over the place. This makes it easier to find what you need later on. Moreover, in the Python example, you might have noticed the `pd.DataFrame` statement. This is a way to create a DataFrame, which is a kind of table, using the pandas library. This, as `maths` above, is another collection of functions, and you will usually refer to these functions via `pd.FUNCNAME`. Again, don't worry! We'll cover these topics in more detail later on. For now, just know that we're using a DataFrame to store our information in a structured way that can be easily written to a file. We will refer to this information as data. Data, in a broader sense, can be a lot of things: the image from a satellite in space, some medical information from a clinical trial, the output from an ODE solver or a long list of prime numbers that the computer has worked out.
+We'll learn more about these collections (vectors in R and lists in Python) in the **next chapter**. For now, just remember that they are a way to keep your items organized and in a specific order. It's like having a container where you can keep your things neatly instead of having them scattered all over the place. This makes it easier to find what you need later on. Moreover, in the Python example, you might have noticed the `pd.DataFrame` statement. This is a way to create a DataFrame, which is a kind of table, using the pandas library. This, as `maths` above, is another collection of functions, and you will usually refer to these functions via `pd.FUNCNAME`. Again, don't worry! We'll cover these topics in more detail later on. For now, just know that we're using a DataFrame to store our information in a structured way that can be easily written to a file. We will refer to this information as data. Data, in a broader sense, can be a lot of things: the image from a satellite in space, some medical information from a clinical trial, the output from an ODE solver or a long list of prime numbers that the computer has worked out.
 
 Now, let's talk about CSV files. CSV stands for "Comma-Separated Values". It's a simple file format used to store tabular data, such as a spreadsheet or database. Each line of the file is a data record, and each record consists of one or more fields, separated by commas. This is why it's called a "comma-separated values" file.
 
@@ -734,6 +735,7 @@ I encourage you to open the "data.csv" file we created in a text editor or sprea
 Remember, storing data on your hard drive is a great way to preserve your data for later use. It's also a great way to share your data with others, or to move your data between different programs. So don't be afraid to use file input and output in your own programs. It's a powerful tool that can help you do more with your data.
 
 #### Reading back your data
+
 Now, let's say we want to access this data at a later time. We can do this by reading the file back into our program. Here's how you can do it in R and Python:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
@@ -772,12 +774,15 @@ This is just a basic introduction to storing data on your hard drive using R and
 
 ### Working Directory and File Structures
 
-But _where_ have we stored our `data.csv`? Well, in the working directory. The **working directory** is the folder on your computer where R or Python is currently operating. When you run a script, it's as if you're standing in your working directory. Any files you read or write will be searched for or created within this directory. But what is a _directory_? Well, you can think of a directory as a folder, in a filing cabinet, where you can organise your files more easily.
+But *where* have we stored our `data.csv`? Well, in the working directory. The **working directory** is the folder on your computer where R or Python is currently operating. When you run a script, it's as if you're standing in your working directory. Any files you read or write will be searched for or created within this directory. But what is a *directory*? Well, you can think of a directory as a folder, in a filing cabinet, where you can organise your files more easily.
 
 In **R**, you can learn about your current working directory with `getwd()` and set it with `setwd("your/directory/path")`. In **Python**, you can use `os.getcwd()` to get the current working directory and `os.chdir("your/directory/path")` to change it. Try to run the `getwd()` or `os.getcwd()` command in your script, and this should print the location where you will find.
 
-Now what you might wonder, _what is a file path? What on earth is a location?_. Well, a file path is a string that tells us the location of a file on our computer. You may familiar with this concept already, but if you're not, don't worry, you will find what you need below. The idea is that files are stored on your hard drive, and, to access these, at user level, you'll need to navigate a file structure.
-A **file structure** is how files are organized on your computer. You can think of it like a tree, where each folder (also known as a directory) is a branch that can hold more folders or files (the leaves). If you've ever used a file explorer or finder on your computer, you've navigated a file structure. It's like having a series of nested folders, each containing more folders or files. And this structure helps us keep our files organised and easily accessible.
+Now what you might wonder, *what is a file path? What on earth is a location?*. Well, a file path is a string that tells us the location of a file on our computer. You may familiar with this concept already, but if you're not, don't worry, you will find what you need below. The idea is that files are stored on your hard drive, and, to access these, at user level, you'll need to navigate a file structure. A **file structure** is how files are organized on your computer. You can think of it like a tree, where each folder (also known as a directory) is a branch that can hold more folders or files (the leaves):
+
+![A file structure in unix: you can see how from the root directory `"/"`, you have some sub-directories, and sub-directories, e.g. `"/bin"` or `"/Users"`. In turn, those directories have other sub-directories, e.g. `"/Users/larry"`. In Windows or Mac you'd find a slightly different structure, but the concept is the same.](https://swcarpentry.github.io/shell-novice/fig/home-directories.svg)
+
+If you've ever used a file explorer or finder on your computer, you've navigated a file structure. It's like having a series of nested folders, each containing more folders or files. And this structure helps us keep our files organised and easily accessible.
 
 A **file path** is the specific location of a file or folder in the file structure. It's like a list of directions to get to the file. In our previous examples, `"data.csv"` is a file path. Because it doesn't include any directory names, it refers to a file in the current working directory. This is similar to saying, "the report on my desk," where the report is the file and the desk is the current working directory.
 
@@ -792,7 +797,7 @@ Let's see how this works in R and Python:
 
 **R**
 
-```{r}
+```{r eval=FALSE}
 # Write data to a file in a subdirectory
 write.csv(data, file = "subdirectory/data1.csv")
 
@@ -806,7 +811,7 @@ write.csv(data, file = "../data2.csv")
 
 **Python**
 
-```{python}
+```{python eval=FALSE}
 # Write data to a file in a subdirectory
 df.to_csv("subdirectory/data1.csv", index=False)
 
@@ -817,14 +822,15 @@ df.to_csv("../data2.csv", index=False)
 </div>
 :::
 
-In both of these examples, we're writing the same data to a file in a subdirectory and a file in the parent directory of the current working directory. See if you can locate (and delete, please), the files you just created! 
+In both of these examples, we're writing the same data to a file in a subdirectory and a file in the parent directory of the current working directory. See if you can locate (and delete, please), the files you just created!
 
-
+```{=html}
 <style type="text/css">
 .book .book-body .page-wrapper .page-inner {
   max-width: 1200px !important;
 }
 </style>
+```
 
 <!--chapter:end:01-week1.Rmd-->
 
@@ -1912,7 +1918,7 @@ x / 2
 
 The element wise operations are performed by using the same arithmetic operators as the past chapter, such as `+`, `-`, `*`, and `/`.
 
-#### Functions and algebra with vectors
+#### Functions and algebra with vectors {#vec-func}
 
 But we can do more! One of the benefits of using vectors or arrays is that we can apply a whole function, such as `sin(.)` or `log(.)`, on the entire vector elementwise. This means that the function is applied to each element of the vector individually, and returns a new vector that contains the results. For example, let's apply the `sin(.)` function, which calculates the sine of an angle in radians, on a vector that contains the angles $0$, $\pi/2$, $\pi$, and $3 \pi/2$:
 
@@ -2418,7 +2424,7 @@ editor_options:
 
 # Functions and Loops {#func_loop}
 
-## Functions
+## Functions {#functions}
 
 Functions in mathematics, is an assignment of an element from a set to a
 different set. Here we give a more "practical" definition.
@@ -2504,7 +2510,8 @@ code is run. This is incredibly useful for tasks we need to perform
 multiple times. Let's build for example a simple function that converts
 pounds (lbs) to grams (g).
 
-Mathematically, this is simply done by the formula: $$
+Mathematically, this is simply done by the formula:
+$$
 g = 453.5924 * lbs
 $$
 
@@ -2992,7 +2999,7 @@ As we did with the functions we created before, you should:
     iii. 3 cups of oat milk
     iv. 2 cups of flour plus one cup of water
 
-## State and For Loop
+## State and For Loop {#looping}
 
 Normally, if you have to run some operations on multiple objects, you
 would store these objects in a vector, and then work with the vector
@@ -3138,6 +3145,9 @@ In this case, `fruit` is the iterator that gets updated at each step
 over the sequence with the current element of the sequence. The for loop
 ends when it has exhausted the sequence.
 
+Try to edit both code chunks above, by adding a new variable called `iter_counts`. Initialize this variable at 0, e.g. `iter_counts <- 0`, and update it in the cycle with `iter_counts <- iter_counts + 1`. Print it at the end: what's the value for the first cycle? And for the second?
+
+
 **In Python:**
 
 In Python, we can print the numbers from 1 to 10 using a for loop as
@@ -3185,10 +3195,16 @@ In this Python code:
 -   The for loop ends when it has exhausted the sequence, i.e., when
     `fruit` has taken all values in the numpy array `arr`.
 
+Try to edit both code chunks above, by adding a new variable called `iter_counts`. Initialize this variable at 0, e.g. `iter_counts = 0`, and update it in the cycle with `iter_counts = iter_counts + 1`. Print it at the end: what's the value for the first cycle? And for the second?
+
 ### Coding The Fibonacci sequence
 
 Having covered how to write a for cycle, we come back to our Fibonacci
-example:
+example. Differently from the loop above, in order to implement our algorithm, 
+we will need to **update a variable** within our loop. In our case, this variable, 
+is going to be a vector storing our Fibonacci sequence, called `fibonacci`. At iteration 1, the vector
+will be 2 elements long (the first two number of the sequence), but as we go through
+the loop, we will be adding more and more elements to the vector. 
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -3254,8 +3270,9 @@ In the Python code:
     the existing one.
 
 Our vectors, where we stored our results at every iteration, should be
-20 elements long, containing the sequence. ::: {style="display: grid;
-grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+20 elements long, containing the sequence. 
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 
 <div>
 
@@ -3287,6 +3304,34 @@ happening at every iteration, e.g. try to add: `print(i)`,
 `print(fibonacci[i])` and `print(fibonacci[i-1])` before the
 computation, or `print(fibonacci)` after the computation has been done.
 `print` statements are extremely useful for debugging for cycles!
+
+
+### Exercise 
+
+Write now a new function `my_cusum` to compute the cumulative sum of a list of numbers, using a for loop. Use the function to calculate the cumulative sum of the first 10 elements of the Fibonacci sequence.
+
+The function should:
+
+-   Take as input a vector
+
+-   Initialize a new vector to store the cumulative sum
+
+-   Then, in a cycle, update this vector with the cumulative sum of the
+    elements of the input vector
+
+    -   The output vector should be of the same length of the input
+        vector
+
+    -   The first element of the output vector should be the same first
+        element of the input vector
+
+-   Using the code above, generate a Fibonacci sequence of 10 numbers
+
+-   Run the function `my_cusum(fibonacci)` to obtain the cumulative sum
+    of the first then numbers of the Fibonacci sequence.
+
+-   Compare the output of `my_cusum` with the built in function `cumsum` (in R) or numpy's `np.cumsum` (in Python).
+
 
 ## More about looping
 
@@ -3458,4 +3503,280 @@ Let's break it down:
 ```
 
 <!--chapter:end:03-week3.Rmd-->
+
+# Maps and Linear Algebra {#maps_alg}
+
+## Functional Programming {#Maps}
+
+We have seen so far two concepts from past week on how to run functions over collections of objects (in our case vectors). From [this section](#maps_alg) we learned how to run a function on a vector, whilst last week, we learned how to implement [looping](#looping), with `for` or `while` cycle, changing things as you go. We learned, *most importantly*, that we should use the for cycle if and only if we have state. Well, this is not my personal opinion only, as a matter of fact, there's a programming philosophy called *functional programming*. Hadley, in his Advanced R book (sources in the index), gives a beautiful definition that sums up the properties of **a functional programming language**:
+
+-   Functional languages have *first class functions*. This means that functions are the primary building blocks. In this style, you can do a lot with functions. For example, you can treat functions just like vectors: you can assign them to variables, store them in lists, pass them as arguments to other functions, create them inside functions, and even return them as the result of a function.
+
+-   In functional languages functions are *pure*. This means that there two properties to follow:
+
+    1.  The output of a function depends only on its inputs. This means if you call a function with the same inputs, you'll always get the same output.
+
+    2.  A function doesn't change anything outside of it, like a *global* variable (from the global enviroment), or do something like writing to disk or displaying to the screen. These are called side-effects.
+
+Funny enough, he quotes Stroustroup, the father of C++:
+
+*"To become significantly more reliable, code must become more transparent. In particular, nested conditions and loops must be viewed with great suspicion. Complicated control flows confuse programmers. Messy code often hides bugs."*
+
+--- Bjarne Stroustrup\
+
+![The father of c++](https://i.redd.it/x00fit1u9ol11.png){width="472"}
+
+In a way you have already written in a functional programming way from the beginning of this module, with the exception of the loops in the past chapter. However, in this chapter, we will be introducing a couple of more concepts that should get rid of for cycles for most of the times!
+
+### Lambda Functions and Function Factories
+
+A lambda function, also known as an anonymous function, is a function that is defined without a name, e.g. a function assigned to a variable. Lambda functions can have any number of arguments but **only one expression**, which is immediately evaluated and returned.
+
+-   **In R**, we assign functions to variables by default (one of the reasons I prefer it as a language). Hence the only difference between a function and a lambda function (as you will see), is that a lambda function is only one expression long, so we don't need to use the brackets `{}`.
+-   **In Python** lambda functions are defined using the `lambda` keyword, whilst normal functions are defined using the `def` keyword. These will need to be one line long, and can be assigned to a variable.
+
+In both languages **we can avoid the return statement**, which makes them very easy and compact to write.
+
+For example:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Define a lambda function in R
+add_two_numbers <- function(x, y) x + y
+# Use the lambda function
+add_two_numbers(1, 2)
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# Define a lambda function in Python
+add_two_numbers = lambda x, y: x + y
+# Use the lambda function
+add_two_numbers(1, 2)
+```
+
+</div>
+:::
+
+In the above examples, we've defined a lambda function `add_two_numbers` in both R and Python that takes two arguments `x` and `y`, and returns their sum. When we call this function with `1` and `2`, as we would expect from any regular function, it returns `3`.
+
+Now the cool stuff, as mentioned above, is that you can have a function that takes a number (or vector) as an input and return a function as output. This is often referred to as a **function factory**. To do so, we have to define functions inside functions, and then return those newly defined functions. Well, lambda functions, being compact, are the perfect candidate for this task.
+
+Here is an example:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Define a function factory in R
+make_power <- function(exponent) {
+  # lambda here
+  pow <- function(x) x^exponent
+  return(pow)
+}
+# Use the function factory
+cube <- make_power(3)
+cube(2)  # Outputs 8
+to_the_tenth <- make_power(10)
+to_the_tenth(2) # Outputs 1024
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# Define a function factory in Python
+def make_power(exponent):
+  # lambda here
+  pow = lambda x: x ** exponent
+  return pow
+# Use the function factory
+cube = make_power(3)
+cube(2)  # Outputs 8
+to_the_tenth = make_power(10)
+to_the_tenth(2) # Outputs 1024
+```
+
+</div>
+:::
+
+In the above examples, we've defined a function factory `make_power` in both R and Python that takes a number `exponent` as input (the exponent of our exponentiation function we want to built) and returns a function `pow` that raises its input `x` to the power of `exponent`. When we call this function factory with the argument `3`, it returns a function `cube` that cubes its input. When we call this `cube` function with the argument `2`, it returns `8`. Similarly, we create a function `to_the_tent` that returns a function capable of doing the power of 10 of an input number.
+
+### Fizzbuzz v10299384
+
+We're about to create the most powerful version of FizzBuzz: `fizzbuzz_v10299384` (although I think that the vector solution we had in Chapter 2 was quite elegant already).
+
+Recall, that a function can take *another function* as input and return a new function by overloading its arguments. It gets pretty crazy what you can do with these things sometimes.
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# A lambda that prints a message 
+# given a remainder
+remainder_printer <- function(p, q, message) if (p %% q == 0) message else ""
+
+fizzbuzz_v10299384 <- function(x) {
+  f <- function(printer)
+    function(x) paste0(printer(x, 3, "fizz"), printer(x, 5, "buzz"))
+  
+  # creating a new function and calling it directly!
+  out <- f(remainder_printer)(x)
+  
+  if (nchar(out) == 0)
+    out <- x 
+  out
+}
+
+fizzbuzz_v10299384(15)
+fizzbuzz_v10299384(7)
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# A lambda that prints a message given a remainder
+remainder_printer = lambda p, q, message: message if p % q == 0 else ""
+
+def fizzbuzz_v10299384(x):
+    f = lambda printer: lambda x: printer(x, 3, "fizz") + printer(x, 5, "buzz")
+    
+    # creating a new function and calling it directly!
+    out = f(remainder_printer)(x)
+    
+    if len(out) == 0:
+        out = str(x)
+    return out
+
+print(fizzbuzz_v10299384(15))
+print(fizzbuzz_v10299384(7))
+```
+
+</div>
+:::
+
+What on earth is going on? Well, let's try to break it down:
+
+-   `remainder_printer` is a lambda function that takes three arguments: `p`, `q`, and `message`. It checks if `p` is divisible by `q` (i.e., `p` modulo `q` equals `0`), and if so, it returns `message`; otherwise, it returns an empty string.
+-   `fizzbuzz_v10299384` is a function that takes one argument: `x`. It defines a lambda function `f` that takes one argument: `printer` (which is expected to be a function). It returns a new lambda function that takes one argument `x` and returns the concatenation of the results of calling `printer` with `x`, `3`, and `"fizz"`, and with `x`, `5`, and `"buzz"`. When `printer` is called with a 3, this will return the `"fizz"`, similarly when called with a 5, this will return the `"buzz"`.
+-   It then calls `f` with `remainder_printer` as the argument, which returns a new function: the new **(unnassigned)** function is then called with `x`. If the result is an empty string (which is considered `FALSE` in a boolean context), it returns `x` instead. The condition on the length of the string is checked with `nchar` in R and `len` in Python.
+-   Finally, `fizzbuzz_v10299384(15)` and `fizzbuzz_v10299384(7)` call `fizzbuzz_v10299384` with `15` and `7` as the arguments, respectively, and print the results.
+
+Clearly, what we have written in Week 2, as FizzBuzz, is a better solution (fizzbuzz is a very simple program), however this was a good example to illustrate the possibilities of functional programming.
+
+The ability to return functions will be extremely useful when we introduce the `map` operation.
+
+## The map operation
+
+The `map` operation is a function that takes a function and a vector as input, and returns a vector. Each element of the output vector is the result of applying the input function to the corresponding element of the input vector:
+
+![](images/chapter4/map.png)
+
+This allows us to apply a function to each element of a vector without having to write a loop. We have already done this when running a function on a vector, however, as we are going to see in a moment, map is a much more general statement. In fact, there are many functions in R and python that are not *vectorized*, meaning they don\'t naturally handle vector inputs. If you try to apply a non-vectorized function directly to a vector, you might get a bug or unexpected results.
+
+Let's consider a simple function that squares a number. We will apply this function to a vector of numbers using the `map` operation in both R and Python:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# import the purrr library
+library(purrr)
+# this is how we import libraries in R!
+
+# Define a function that squares a number using the factory above
+square <- make_power(2)
+
+# Create a vector of numbers
+numbers <- c(1, 2, 3, 4, 5)
+
+# Use the map function to apply the square function to the vector
+squares <- map_dbl(numbers, square)
+
+squares
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# Define a function that squares a number
+square = make_power(2)
+
+# Create a list of numbers
+numbers = np.arange(1, 6)
+
+# Use the map function to apply the square function to the list
+squares = list(map(square, numbers))
+
+squares
+```
+
+</div>
+:::
+
+In the above examples, we've defined a function `square` that squares its input using the `make_power` function. We then created a vector (or list in Python) `numbers` with the numbers from `1` to `5`. We used the `map` function to apply `square` to each element of `numbers`, resulting in a new vector `squares` that contains the squares of the numbers.
+
+**NOTE: For R Users**: The `map` function in R returns a list by default. A list in R is similar to a vector, but unlike a vector, a list can contain elements of different types. This means a list can be a collection of numbers, vectors, matrices, characters, functions, potatoes, onions, parupzluplups and so on. The `map` function defaults to a list, as, _a priori_, does not know what the output of a function could be. If you want a vector as output, you should use the type-specific `map` functions like `map_lgl`, `map_int`, `map_dbl`, and `map_chr`. For this reason, above, we used the `map_dbl`, as we wanted a vector of double precision numbers. Try to swap the function `map_dbl` for `map_chr` and see what happens. 
+Also, note that `map` is implemented natively in R using the `apply` family of functions, see `help(apply)` for more details. The code above would have been:
+```{r}
+squares = sapply(square, x)
+```
+Where now the function and the vector are swapped in the argument. Also, we are using `sapply` as this returns a vector, whilst the simple `apply` function returns a list.
+
+**NOTE: For Python Users**: In Python, the map function returns a map object, which is an iterator that yields results on demand. This means that the map function doesn’t actually compute the results until you iterate over the map object. This can be very efficient for large inputs, as it allows the computation to be spread out over time. However, if you want to see all the results at once, you need to convert the map object to a list, which is what the list function does. So when you see `list(map(...))` in Python, it means “apply this function to each element of this iterable, and give me a list of the results right away”.
+The `map` operation in Python can also be achieved with list comprehensions, which provide a more Pythonic way to create lists based on existing lists. Here's how you can rewrite the previous example using a list comprehension:
+
+```{python}
+# Use a list comprehension to apply the square function to the list
+squares = [square(x) for x in numbers]
+
+squares
+```
+
+In this example, `square(x) for x in numbers` is a list comprehension that applies `square` to each element of `numbers`. You can read it as: "Run square of x for every x in numbers", which is very similar to writing in maths $x^2 \ \text{for} \ x \in N$. The result is a new list `squares` that contains the squares of the numbers.
+
+### Exercise
+
+Run the `fizzbuzz_v10299384` function created above with map on the first 15 numbers.
+
+### Map 2
+
+There's a lot of examples in cinema where the second film is arguably better then the first one.
+
+
+```{=html}
+<style type="text/css">
+.book .book-body .page-wrapper .page-inner {
+  max-width: 1200px !important;
+}
+</style>
+```
+
+<!--chapter:end:04-week4.Rmd-->
 

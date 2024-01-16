@@ -1082,7 +1082,7 @@ x / 2
 
 The element wise operations are performed by using the same arithmetic operators as the past chapter, such as `+`, `-`, `*`, and `/`.
 
-#### Functions and algebra with vectors
+#### Functions and algebra with vectors {#vec-func}
 
 But we can do more! One of the benefits of using vectors or arrays is that we can apply a whole function, such as `sin(.)` or `log(.)`, on the entire vector elementwise. This means that the function is applied to each element of the vector individually, and returns a new vector that contains the results. For example, let's apply the `sin(.)` function, which calculates the sine of an angle in radians, on a vector that contains the angles $0$, $\pi/2$, $\pi$, and $3 \pi/2$:
 

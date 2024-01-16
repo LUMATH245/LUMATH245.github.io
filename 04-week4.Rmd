@@ -1,0 +1,273 @@
+# Maps and Linear Algebra {#maps_alg}
+
+## Functional Programming {#Maps}
+
+We have seen so far two concepts from past week on how to run functions over collections of objects (in our case vectors). From [this section](#maps_alg) we learned how to run a function on a vector, whilst last week, we learned how to implement [looping](#looping), with `for` or `while` cycle, changing things as you go. We learned, *most importantly*, that we should use the for cycle if and only if we have state. Well, this is not my personal opinion only, as a matter of fact, there's a programming philosophy called *functional programming*. Hadley, in his Advanced R book (sources in the index), gives a beautiful definition that sums up the properties of **a functional programming language**:
+
+-   Functional languages have *first class functions*. This means that functions are the primary building blocks. In this style, you can do a lot with functions. For example, you can treat functions just like vectors: you can assign them to variables, store them in lists, pass them as arguments to other functions, create them inside functions, and even return them as the result of a function.
+
+-   In functional languages functions are *pure*. This means that there two properties to follow:
+
+    1.  The output of a function depends only on its inputs. This means if you call a function with the same inputs, you'll always get the same output.
+
+    2.  A function doesn't change anything outside of it, like a *global* variable (from the global enviroment), or do something like writing to disk or displaying to the screen. These are called side-effects.
+
+Funny enough, he quotes Stroustroup, the father of C++:
+
+*"To become significantly more reliable, code must become more transparent. In particular, nested conditions and loops must be viewed with great suspicion. Complicated control flows confuse programmers. Messy code often hides bugs."*
+
+--- Bjarne Stroustrup\
+
+![The father of c++](https://i.redd.it/x00fit1u9ol11.png){width="472"}
+
+In a way you have already written in a functional programming way from the beginning of this module, with the exception of the loops in the past chapter. However, in this chapter, we will be introducing a couple of more concepts that should get rid of for cycles for most of the times!
+
+### Lambda Functions and Function Factories
+
+A lambda function, also known as an anonymous function, is a function that is defined without a name, e.g. a function assigned to a variable. Lambda functions can have any number of arguments but **only one expression**, which is immediately evaluated and returned.
+
+-   **In R**, we assign functions to variables by default (one of the reasons I prefer it as a language). Hence the only difference between a function and a lambda function (as you will see), is that a lambda function is only one expression long, so we don't need to use the brackets `{}`.
+-   **In Python** lambda functions are defined using the `lambda` keyword, whilst normal functions are defined using the `def` keyword. These will need to be one line long, and can be assigned to a variable.
+
+In both languages **we can avoid the return statement**, which makes them very easy and compact to write.
+
+For example:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Define a lambda function in R
+add_two_numbers <- function(x, y) x + y
+# Use the lambda function
+add_two_numbers(1, 2)
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# Define a lambda function in Python
+add_two_numbers = lambda x, y: x + y
+# Use the lambda function
+add_two_numbers(1, 2)
+```
+
+</div>
+:::
+
+In the above examples, we've defined a lambda function `add_two_numbers` in both R and Python that takes two arguments `x` and `y`, and returns their sum. When we call this function with `1` and `2`, as we would expect from any regular function, it returns `3`.
+
+Now the cool stuff, as mentioned above, is that you can have a function that takes a number (or vector) as an input and return a function as output. This is often referred to as a **function factory**. To do so, we have to define functions inside functions, and then return those newly defined functions. Well, lambda functions, being compact, are the perfect candidate for this task.
+
+Here is an example:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Define a function factory in R
+make_power <- function(exponent) {
+  # lambda here
+  pow <- function(x) x^exponent
+  return(pow)
+}
+# Use the function factory
+cube <- make_power(3)
+cube(2)  # Outputs 8
+to_the_tenth <- make_power(10)
+to_the_tenth(2) # Outputs 1024
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# Define a function factory in Python
+def make_power(exponent):
+  # lambda here
+  pow = lambda x: x ** exponent
+  return pow
+# Use the function factory
+cube = make_power(3)
+cube(2)  # Outputs 8
+to_the_tenth = make_power(10)
+to_the_tenth(2) # Outputs 1024
+```
+
+</div>
+:::
+
+In the above examples, we've defined a function factory `make_power` in both R and Python that takes a number `exponent` as input (the exponent of our exponentiation function we want to built) and returns a function `pow` that raises its input `x` to the power of `exponent`. When we call this function factory with the argument `3`, it returns a function `cube` that cubes its input. When we call this `cube` function with the argument `2`, it returns `8`. Similarly, we create a function `to_the_tent` that returns a function capable of doing the power of 10 of an input number.
+
+### Fizzbuzz v10299384
+
+We're about to create the most powerful version of FizzBuzz: `fizzbuzz_v10299384` (although I think that the vector solution we had in Chapter 2 was quite elegant already).
+
+Recall, that a function can take *another function* as input and return a new function by overloading its arguments. It gets pretty crazy what you can do with these things sometimes.
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# A lambda that prints a message 
+# given a remainder
+remainder_printer <- function(p, q, message) if (p %% q == 0) message else ""
+
+fizzbuzz_v10299384 <- function(x) {
+  f <- function(printer)
+    function(x) paste0(printer(x, 3, "fizz"), printer(x, 5, "buzz"))
+  
+  # creating a new function and calling it directly!
+  out <- f(remainder_printer)(x)
+  
+  if (nchar(out) == 0)
+    out <- x 
+  out
+}
+
+fizzbuzz_v10299384(15)
+fizzbuzz_v10299384(7)
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# A lambda that prints a message given a remainder
+remainder_printer = lambda p, q, message: message if p % q == 0 else ""
+
+def fizzbuzz_v10299384(x):
+    f = lambda printer: lambda x: printer(x, 3, "fizz") + printer(x, 5, "buzz")
+    
+    # creating a new function and calling it directly!
+    out = f(remainder_printer)(x)
+    
+    if len(out) == 0:
+        out = str(x)
+    return out
+
+print(fizzbuzz_v10299384(15))
+print(fizzbuzz_v10299384(7))
+```
+
+</div>
+:::
+
+What on earth is going on? Well, let's try to break it down:
+
+-   `remainder_printer` is a lambda function that takes three arguments: `p`, `q`, and `message`. It checks if `p` is divisible by `q` (i.e., `p` modulo `q` equals `0`), and if so, it returns `message`; otherwise, it returns an empty string.
+-   `fizzbuzz_v10299384` is a function that takes one argument: `x`. It defines a lambda function `f` that takes one argument: `printer` (which is expected to be a function). It returns a new lambda function that takes one argument `x` and returns the concatenation of the results of calling `printer` with `x`, `3`, and `"fizz"`, and with `x`, `5`, and `"buzz"`. When `printer` is called with a 3, this will return the `"fizz"`, similarly when called with a 5, this will return the `"buzz"`.
+-   It then calls `f` with `remainder_printer` as the argument, which returns a new function: the new **(unnassigned)** function is then called with `x`. If the result is an empty string (which is considered `FALSE` in a boolean context), it returns `x` instead. The condition on the length of the string is checked with `nchar` in R and `len` in Python.
+-   Finally, `fizzbuzz_v10299384(15)` and `fizzbuzz_v10299384(7)` call `fizzbuzz_v10299384` with `15` and `7` as the arguments, respectively, and print the results.
+
+Clearly, what we have written in Week 2, as FizzBuzz, is a better solution (fizzbuzz is a very simple program), however this was a good example to illustrate the possibilities of functional programming.
+
+The ability to return functions will be extremely useful when we introduce the `map` operation.
+
+## The map operation
+
+The `map` operation is a function that takes a function and a vector as input, and returns a vector. Each element of the output vector is the result of applying the input function to the corresponding element of the input vector:
+
+![](images/chapter4/map.png)
+
+This allows us to apply a function to each element of a vector without having to write a loop. We have already done this when running a function on a vector, however, as we are going to see in a moment, map is a much more general statement. In fact, there are many functions in R and python that are not *vectorized*, meaning they don\'t naturally handle vector inputs. If you try to apply a non-vectorized function directly to a vector, you might get a bug or unexpected results.
+
+Let's consider a simple function that squares a number. We will apply this function to a vector of numbers using the `map` operation in both R and Python:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# import the purrr library
+library(purrr)
+# this is how we import libraries in R!
+
+# Define a function that squares a number using the factory above
+square <- make_power(2)
+
+# Create a vector of numbers
+numbers <- c(1, 2, 3, 4, 5)
+
+# Use the map function to apply the square function to the vector
+squares <- map_dbl(numbers, square)
+
+squares
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# Define a function that squares a number
+square = make_power(2)
+
+# Create a list of numbers
+numbers = np.arange(1, 6)
+
+# Use the map function to apply the square function to the list
+squares = list(map(square, numbers))
+
+squares
+```
+
+</div>
+:::
+
+In the above examples, we've defined a function `square` that squares its input using the `make_power` function. We then created a vector (or list in Python) `numbers` with the numbers from `1` to `5`. We used the `map` function to apply `square` to each element of `numbers`, resulting in a new vector `squares` that contains the squares of the numbers.
+
+**NOTE: For R Users**: The `map` function in R returns a list by default. A list in R is similar to a vector, but unlike a vector, a list can contain elements of different types. This means a list can be a collection of numbers, vectors, matrices, characters, functions, potatoes, onions, parupzluplups and so on. The `map` function defaults to a list, as, _a priori_, does not know what the output of a function could be. If you want a vector as output, you should use the type-specific `map` functions like `map_lgl`, `map_int`, `map_dbl`, and `map_chr`. For this reason, above, we used the `map_dbl`, as we wanted a vector of double precision numbers. Try to swap the function `map_dbl` for `map_chr` and see what happens. 
+Also, note that `map` is implemented natively in R using the `apply` family of functions, see `help(apply)` for more details. The code above would have been:
+```{r}
+squares = sapply(square, x)
+```
+Where now the function and the vector are swapped in the argument. Also, we are using `sapply` as this returns a vector, whilst the simple `apply` function returns a list.
+
+**NOTE: For Python Users**: In Python, the map function returns a map object, which is an iterator that yields results on demand. This means that the map function doesn’t actually compute the results until you iterate over the map object. This can be very efficient for large inputs, as it allows the computation to be spread out over time. However, if you want to see all the results at once, you need to convert the map object to a list, which is what the list function does. So when you see `list(map(...))` in Python, it means “apply this function to each element of this iterable, and give me a list of the results right away”.
+The `map` operation in Python can also be achieved with list comprehensions, which provide a more Pythonic way to create lists based on existing lists. Here's how you can rewrite the previous example using a list comprehension:
+
+```{python}
+# Use a list comprehension to apply the square function to the list
+squares = [square(x) for x in numbers]
+
+squares
+```
+
+In this example, `square(x) for x in numbers` is a list comprehension that applies `square` to each element of `numbers`. You can read it as: "Run square of x for every x in numbers", which is very similar to writing in maths $x^2 \ \text{for} \ x \in N$. The result is a new list `squares` that contains the squares of the numbers.
+
+### Exercise
+
+Run the `fizzbuzz_v10299384` function created above with map on the first 15 numbers.
+
+### Map 2
+
+There's a lot of examples in cinema where the second film is arguably better then the first one.
+
+
+```{=html}
+<style type="text/css">
+.book .book-body .page-wrapper .page-inner {
+  max-width: 1200px !important;
+}
+</style>
+```
