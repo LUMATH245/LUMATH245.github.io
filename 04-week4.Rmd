@@ -124,7 +124,8 @@ Recall, that a function can take *another function* as input and return a new fu
 ```{r}
 # A lambda that prints a message 
 # given a remainder
-remainder_printer <- function(p, q, message) if (p %% q == 0) message else ""
+remainder_printer <- function(p, q, message)
+  if (p %% q == 0) message else ""
 
 fizzbuzz_v10299384 <- function(x) {
   f <- function(printer)
@@ -176,7 +177,7 @@ What on earth is going on? Well, let's try to break it down:
 -   It then calls `f` with `remainder_printer` as the argument, which returns a new function: the new **(unnassigned)** function is then called with `x`. If the result is an empty string (which is considered `FALSE` in a boolean context), it returns `x` instead. The condition on the length of the string is checked with `nchar` in R and `len` in Python.
 -   Finally, `fizzbuzz_v10299384(15)` and `fizzbuzz_v10299384(7)` call `fizzbuzz_v10299384` with `15` and `7` as the arguments, respectively, and print the results.
 
-Clearly, what we have written in Week 2, as FizzBuzz, is a better solution (fizzbuzz is a very simple program), however this was a good example to illustrate the possibilities of functional programming.
+Clearly, what we have written in Week 2, as FizzBuzz, is a better solution (FizzBuzz is a very simple program), however this was a good example to illustrate the possibilities of functional programming.
 
 The ability to return functions will be extremely useful when we introduce the `map` operation.
 
@@ -349,7 +350,6 @@ In the above examples, we've defined a function `add` that adds its two inputs. 
 ```{python}
 # Use a list comprehension to apply the add function to the lists
 sums = [add(x, y) for x, y in zip(numbers1, numbers2)]
-
 sums
 ```
 
@@ -357,6 +357,7 @@ In this example, the list comprehension statement relies on the `zip` function. 
 
 **Shorter statements**
 
+We can write the map2 statements above in a very compact way again: 
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -365,7 +366,6 @@ In this example, the list comprehension statement relies on the `zip` function. 
 
 ```{r}
 sums <- map2_dbl( c(1, 2, 3),  c(10, 11, 12), function(x, y) x+y)
-
 sums
 ```
 

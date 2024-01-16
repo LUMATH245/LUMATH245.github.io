@@ -273,21 +273,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="maps_alg.html#cb480-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A lambda that prints a message </span></span>
 <span id="cb480-2"><a href="maps_alg.html#cb480-2" aria-hidden="true" tabindex="-1"></a><span class="co"># given a remainder</span></span>
-<span id="cb480-3"><a href="maps_alg.html#cb480-3" aria-hidden="true" tabindex="-1"></a>remainder_printer <span class="ot">&lt;-</span> <span class="cf">function</span>(p, q, message) <span class="cf">if</span> (p <span class="sc">%%</span> q <span class="sc">==</span> <span class="dv">0</span>) message <span class="cf">else</span> <span class="st">&quot;&quot;</span></span>
-<span id="cb480-4"><a href="maps_alg.html#cb480-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb480-5"><a href="maps_alg.html#cb480-5" aria-hidden="true" tabindex="-1"></a>fizzbuzz_v10299384 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb480-6"><a href="maps_alg.html#cb480-6" aria-hidden="true" tabindex="-1"></a>  f <span class="ot">&lt;-</span> <span class="cf">function</span>(printer)</span>
-<span id="cb480-7"><a href="maps_alg.html#cb480-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">function</span>(x) <span class="fu">paste0</span>(<span class="fu">printer</span>(x, <span class="dv">3</span>, <span class="st">&quot;fizz&quot;</span>), <span class="fu">printer</span>(x, <span class="dv">5</span>, <span class="st">&quot;buzz&quot;</span>))</span>
-<span id="cb480-8"><a href="maps_alg.html#cb480-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb480-9"><a href="maps_alg.html#cb480-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># creating a new function and calling it directly!</span></span>
-<span id="cb480-10"><a href="maps_alg.html#cb480-10" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">f</span>(remainder_printer)(x)</span>
-<span id="cb480-11"><a href="maps_alg.html#cb480-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb480-12"><a href="maps_alg.html#cb480-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">nchar</span>(out) <span class="sc">==</span> <span class="dv">0</span>)</span>
-<span id="cb480-13"><a href="maps_alg.html#cb480-13" aria-hidden="true" tabindex="-1"></a>    out <span class="ot">&lt;-</span> x </span>
-<span id="cb480-14"><a href="maps_alg.html#cb480-14" aria-hidden="true" tabindex="-1"></a>  out</span>
-<span id="cb480-15"><a href="maps_alg.html#cb480-15" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb480-16"><a href="maps_alg.html#cb480-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb480-17"><a href="maps_alg.html#cb480-17" aria-hidden="true" tabindex="-1"></a><span class="fu">fizzbuzz_v10299384</span>(<span class="dv">15</span>)</span></code></pre></div>
+<span id="cb480-3"><a href="maps_alg.html#cb480-3" aria-hidden="true" tabindex="-1"></a>remainder_printer <span class="ot">&lt;-</span> <span class="cf">function</span>(p, q, message)</span>
+<span id="cb480-4"><a href="maps_alg.html#cb480-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (p <span class="sc">%%</span> q <span class="sc">==</span> <span class="dv">0</span>) message <span class="cf">else</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb480-5"><a href="maps_alg.html#cb480-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb480-6"><a href="maps_alg.html#cb480-6" aria-hidden="true" tabindex="-1"></a>fizzbuzz_v10299384 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb480-7"><a href="maps_alg.html#cb480-7" aria-hidden="true" tabindex="-1"></a>  f <span class="ot">&lt;-</span> <span class="cf">function</span>(printer)</span>
+<span id="cb480-8"><a href="maps_alg.html#cb480-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">function</span>(x) <span class="fu">paste0</span>(<span class="fu">printer</span>(x, <span class="dv">3</span>, <span class="st">&quot;fizz&quot;</span>), <span class="fu">printer</span>(x, <span class="dv">5</span>, <span class="st">&quot;buzz&quot;</span>))</span>
+<span id="cb480-9"><a href="maps_alg.html#cb480-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb480-10"><a href="maps_alg.html#cb480-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># creating a new function and calling it directly!</span></span>
+<span id="cb480-11"><a href="maps_alg.html#cb480-11" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">f</span>(remainder_printer)(x)</span>
+<span id="cb480-12"><a href="maps_alg.html#cb480-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb480-13"><a href="maps_alg.html#cb480-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">nchar</span>(out) <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb480-14"><a href="maps_alg.html#cb480-14" aria-hidden="true" tabindex="-1"></a>    out <span class="ot">&lt;-</span> x </span>
+<span id="cb480-15"><a href="maps_alg.html#cb480-15" aria-hidden="true" tabindex="-1"></a>  out</span>
+<span id="cb480-16"><a href="maps_alg.html#cb480-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb480-17"><a href="maps_alg.html#cb480-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb480-18"><a href="maps_alg.html#cb480-18" aria-hidden="true" tabindex="-1"></a><span class="fu">fizzbuzz_v10299384</span>(<span class="dv">15</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;fizzbuzz&quot;</code></pre>
 <div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="maps_alg.html#cb482-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fizzbuzz_v10299384</span>(<span class="dv">7</span>)</span></code></pre></div>
 <pre><code>## [1] 7</code></pre>
@@ -320,7 +321,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>It then calls <code>f</code> with <code>remainder_printer</code> as the argument, which returns a new function: the new <strong>(unnassigned)</strong> function is then called with <code>x</code>. If the result is an empty string (which is considered <code>FALSE</code> in a boolean context), it returns <code>x</code> instead. The condition on the length of the string is checked with <code>nchar</code> in R and <code>len</code> in Python.</li>
 <li>Finally, <code>fizzbuzz_v10299384(15)</code> and <code>fizzbuzz_v10299384(7)</code> call <code>fizzbuzz_v10299384</code> with <code>15</code> and <code>7</code> as the arguments, respectively, and print the results.</li>
 </ul>
-<p>Clearly, what we have written in Week 2, as FizzBuzz, is a better solution (fizzbuzz is a very simple program), however this was a good example to illustrate the possibilities of functional programming.</p>
+<p>Clearly, what we have written in Week 2, as FizzBuzz, is a better solution (FizzBuzz is a very simple program), however this was a good example to illustrate the possibilities of functional programming.</p>
 <p>The ability to return functions will be extremely useful when we introduce the <code>map</code> operation.</p>
 </div>
 </div>
@@ -445,17 +446,16 @@ The <code>map2</code> operation is a function that takes two vectors and a funct
 <p><strong>Note for Python Users</strong>: The <code>map</code> operation with two arguments can also be achieved in a more “Pythonic way” with list comprehensions. Here’s how you can rewrite the previous example:</p>
 <div class="sourceCode" id="cb503"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb503-1"><a href="maps_alg.html#cb503-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a list comprehension to apply the add function to the lists</span></span>
 <span id="cb503-2"><a href="maps_alg.html#cb503-2" aria-hidden="true" tabindex="-1"></a>sums <span class="op">=</span> [add(x, y) <span class="cf">for</span> x, y <span class="kw">in</span> <span class="bu">zip</span>(numbers1, numbers2)]</span>
-<span id="cb503-3"><a href="maps_alg.html#cb503-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb503-4"><a href="maps_alg.html#cb503-4" aria-hidden="true" tabindex="-1"></a>sums</span></code></pre></div>
+<span id="cb503-3"><a href="maps_alg.html#cb503-3" aria-hidden="true" tabindex="-1"></a>sums</span></code></pre></div>
 <pre><code>## [11, 13, 15]</code></pre>
 <p>In this example, the list comprehension statement relies on the <code>zip</code> function. <code>zip</code> is used to pair up the elements from <code>numbers1</code> and <code>numbers2</code>. Try to run <code>zip(numbers1, numbers2)</code> alone to see the output! I personally find that the <code>map</code> function is more readable, however you should be familiar with both ways as you will be encountering both if you keep programming with Python.</p>
 <p><strong>Shorter statements</strong></p>
+<p>We can write the map2 statements above in a very compact way again:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="maps_alg.html#cb505-1" aria-hidden="true" tabindex="-1"></a>sums <span class="ot">&lt;-</span> <span class="fu">map2_dbl</span>( <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),  <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>), <span class="cf">function</span>(x, y) x<span class="sc">+</span>y)</span>
-<span id="cb505-2"><a href="maps_alg.html#cb505-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb505-3"><a href="maps_alg.html#cb505-3" aria-hidden="true" tabindex="-1"></a>sums</span></code></pre></div>
+<span id="cb505-2"><a href="maps_alg.html#cb505-2" aria-hidden="true" tabindex="-1"></a>sums</span></code></pre></div>
 <pre><code>## [1] 11 13 15</code></pre>
 </div>
 <div>
