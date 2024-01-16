@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Maps and Linear Algebra | Lancaster University MATH245 Computational Mathematics</title>
+  <meta name="description" content="4 Maps and Linear Algebra | Lancaster University MATH245 Computational Mathematics" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Maps and Linear Algebra | Lancaster University MATH245 Computational Mathematics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Maps and Linear Algebra | Lancaster University MATH245 Computational Mathematics" />
+  
+  
+  
+
+<meta name="author" content="Lecturers: Dr Eduard Campillo-Funollet and Dr Gaetano Romano" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="func_loop.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="intro_prog.html"><a href="intro_prog.html"><i class="fa fa-check"></i><b>1</b> Introduction to Computational Mathematics</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro_prog.html"><a href="intro_prog.html#what-is-a-computer"><i class="fa fa-check"></i><b>1.1</b> What is a Computer?</a></li>
+<li class="chapter" data-level="1.2" data-path="intro_prog.html"><a href="intro_prog.html#computing-accessing-memory-and-storing"><i class="fa fa-check"></i><b>1.2</b> Computing, Accessing Memory and Storing</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="log_vec.html"><a href="log_vec.html"><i class="fa fa-check"></i><b>2</b> Logic and Vectors</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="log_vec.html"><a href="log_vec.html#comparisons"><i class="fa fa-check"></i><b>2.1</b> Comparisons</a></li>
+<li class="chapter" data-level="2.2" data-path="log_vec.html"><a href="log_vec.html#logical-arithmetic"><i class="fa fa-check"></i><b>2.2</b> Logical Arithmetic</a></li>
+<li class="chapter" data-level="2.3" data-path="log_vec.html"><a href="log_vec.html#flow"><i class="fa fa-check"></i><b>2.3</b> Flow</a></li>
+<li class="chapter" data-level="2.4" data-path="log_vec.html"><a href="log_vec.html#vectors"><i class="fa fa-check"></i><b>2.4</b> Vectors</a></li>
+<li class="chapter" data-level="2.5" data-path="log_vec.html"><a href="log_vec.html#accessing-vectors"><i class="fa fa-check"></i><b>2.5</b> Accessing vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="func_loop.html"><a href="func_loop.html"><i class="fa fa-check"></i><b>3</b> Functions and Loops</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="func_loop.html"><a href="func_loop.html#functions"><i class="fa fa-check"></i><b>3.1</b> Functions</a></li>
+<li class="chapter" data-level="3.2" data-path="func_loop.html"><a href="func_loop.html#looping"><i class="fa fa-check"></i><b>3.2</b> State and For Loop</a></li>
+<li class="chapter" data-level="3.3" data-path="func_loop.html"><a href="func_loop.html#more-about-looping"><i class="fa fa-check"></i><b>3.3</b> More about looping</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="maps_alg.html"><a href="maps_alg.html"><i class="fa fa-check"></i><b>4</b> Maps and Linear Algebra</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="maps_alg.html"><a href="maps_alg.html#Maps"><i class="fa fa-check"></i><b>4.1</b> Functional Programming</a></li>
+<li class="chapter" data-level="4.2" data-path="maps_alg.html"><a href="maps_alg.html#the-map-operation"><i class="fa fa-check"></i><b>4.2</b> The map operation</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lancaster University MATH245 Computational Mathematics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="maps_alg" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Maps and Linear Algebra<a href="maps_alg.html#maps_alg" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="Maps" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Functional Programming<a href="maps_alg.html#Maps" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We have seen so far two concepts from past week on how to run functions over collections of objects (in our case vectors). From <a href="maps_alg.html#maps_alg">this section</a> we learned how to run a function on a vector, whilst last week, we learned how to implement <a href="func_loop.html#looping">looping</a>, with <code>for</code> or <code>while</code> cycle, changing things as you go. We learned, <em>most importantly</em>, that we should use the for cycle if and only if we have state. Well, this is not my personal opinion only, as a matter of fact, there’s a programming philosophy called <em>functional programming</em>. Hadley, in his Advanced R book (sources in the index), gives a beautiful definition that sums up the properties of <strong>a functional programming language</strong>:</p>
+<ul>
+<li><p>Functional languages have <em>first class functions</em>. This means that functions are the primary building blocks. In this style, you can do a lot with functions. For example, you can treat functions just like vectors: you can assign them to variables, store them in lists, pass them as arguments to other functions, create them inside functions, and even return them as the result of a function.</p></li>
+<li><p>In functional languages functions are <em>pure</em>. This means that there two properties to follow:</p>
+<ol style="list-style-type: decimal">
+<li><p>The output of a function depends only on its inputs. This means if you call a function with the same inputs, you’ll always get the same output.</p></li>
+<li><p>A function doesn’t change anything outside of it, like a <em>global</em> variable (from the global enviroment), or do something like writing to disk or displaying to the screen. These are called side-effects.</p></li>
+</ol></li>
+</ul>
+<p>Funny enough, he quotes Stroustroup, the father of C++:</p>
+<p><em>“To become significantly more reliable, code must become more transparent. In particular, nested conditions and loops must be viewed with great suspicion. Complicated control flows confuse programmers. Messy code often hides bugs.”</em></p>
+<p>— Bjarne Stroustrup<br />
+</p>
+<div class="figure">
+<img src="https://i.redd.it/x00fit1u9ol11.png" width="472" alt="" />
+<p class="caption">The father of c++</p>
+</div>
+<p>In a way you have already written in a functional programming way from the beginning of this module, with the exception of the loops in the past chapter. However, in this chapter, we will be introducing a couple of more concepts that should get rid of for cycles for most of the times!</p>
+<div id="lambda-functions-and-function-factories" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Lambda Functions and Function Factories<a href="maps_alg.html#lambda-functions-and-function-factories" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A lambda function, also known as an anonymous function, is a function that is defined without a name, e.g. a function assigned to a variable. Lambda functions can have any number of arguments but <strong>only one expression</strong>, which is immediately evaluated and returned.</p>
+<ul>
+<li><strong>In R</strong>, we assign functions to variables by default (one of the reasons I prefer it as a language). Hence the only difference between a function and a lambda function (as you will see), is that a lambda function is only one expression long, so we don’t need to use the brackets <code>{}</code>.</li>
+<li><strong>In Python</strong> lambda functions are defined using the <code>lambda</code> keyword, whilst normal functions are defined using the <code>def</code> keyword. These will need to be one line long, and can be assigned to a variable.</li>
+</ul>
+<p>In both languages <strong>we can avoid the return statement</strong>, which makes them very easy and compact to write.</p>
+<p>For example:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="maps_alg.html#cb468-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a lambda function in R</span></span>
+<span id="cb468-2"><a href="maps_alg.html#cb468-2" aria-hidden="true" tabindex="-1"></a>add_two_numbers <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) x <span class="sc">+</span> y</span>
+<span id="cb468-3"><a href="maps_alg.html#cb468-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the lambda function</span></span>
+<span id="cb468-4"><a href="maps_alg.html#cb468-4" aria-hidden="true" tabindex="-1"></a><span class="fu">add_two_numbers</span>(<span class="dv">1</span>, <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb470"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb470-1"><a href="maps_alg.html#cb470-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a lambda function in Python</span></span>
+<span id="cb470-2"><a href="maps_alg.html#cb470-2" aria-hidden="true" tabindex="-1"></a>add_two_numbers <span class="op">=</span> <span class="kw">lambda</span> x, y: x <span class="op">+</span> y</span>
+<span id="cb470-3"><a href="maps_alg.html#cb470-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the lambda function</span></span>
+<span id="cb470-4"><a href="maps_alg.html#cb470-4" aria-hidden="true" tabindex="-1"></a>add_two_numbers(<span class="dv">1</span>, <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## 3</code></pre>
+</div>
+</div>
+<p>In the above examples, we’ve defined a lambda function <code>add_two_numbers</code> in both R and Python that takes two arguments <code>x</code> and <code>y</code>, and returns their sum. When we call this function with <code>1</code> and <code>2</code>, as we would expect from any regular function, it returns <code>3</code>.</p>
+<p>Now the cool stuff, as mentioned above, is that you can have a function that takes a number (or vector) as an input and return a function as output. This is often referred to as a <strong>function factory</strong>. To do so, we have to define functions inside functions, and then return those newly defined functions. Well, lambda functions, being compact, are the perfect candidate for this task.</p>
+<p>Here is an example:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="maps_alg.html#cb472-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function factory in R</span></span>
+<span id="cb472-2"><a href="maps_alg.html#cb472-2" aria-hidden="true" tabindex="-1"></a>make_power <span class="ot">&lt;-</span> <span class="cf">function</span>(exponent) {</span>
+<span id="cb472-3"><a href="maps_alg.html#cb472-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lambda here</span></span>
+<span id="cb472-4"><a href="maps_alg.html#cb472-4" aria-hidden="true" tabindex="-1"></a>  pow <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x<span class="sc">^</span>exponent</span>
+<span id="cb472-5"><a href="maps_alg.html#cb472-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(pow)</span>
+<span id="cb472-6"><a href="maps_alg.html#cb472-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb472-7"><a href="maps_alg.html#cb472-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the function factory</span></span>
+<span id="cb472-8"><a href="maps_alg.html#cb472-8" aria-hidden="true" tabindex="-1"></a>cube <span class="ot">&lt;-</span> <span class="fu">make_power</span>(<span class="dv">3</span>)</span>
+<span id="cb472-9"><a href="maps_alg.html#cb472-9" aria-hidden="true" tabindex="-1"></a><span class="fu">cube</span>(<span class="dv">2</span>)  <span class="co"># Outputs 8</span></span></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="maps_alg.html#cb474-1" aria-hidden="true" tabindex="-1"></a>to_the_tenth <span class="ot">&lt;-</span> <span class="fu">make_power</span>(<span class="dv">10</span>)</span>
+<span id="cb474-2"><a href="maps_alg.html#cb474-2" aria-hidden="true" tabindex="-1"></a><span class="fu">to_the_tenth</span>(<span class="dv">2</span>) <span class="co"># Outputs 1024</span></span></code></pre></div>
+<pre><code>## [1] 1024</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb476"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb476-1"><a href="maps_alg.html#cb476-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function factory in Python</span></span>
+<span id="cb476-2"><a href="maps_alg.html#cb476-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_power(exponent):</span>
+<span id="cb476-3"><a href="maps_alg.html#cb476-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lambda here</span></span>
+<span id="cb476-4"><a href="maps_alg.html#cb476-4" aria-hidden="true" tabindex="-1"></a>  <span class="bu">pow</span> <span class="op">=</span> <span class="kw">lambda</span> x: x <span class="op">**</span> exponent</span>
+<span id="cb476-5"><a href="maps_alg.html#cb476-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="bu">pow</span></span>
+<span id="cb476-6"><a href="maps_alg.html#cb476-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the function factory</span></span>
+<span id="cb476-7"><a href="maps_alg.html#cb476-7" aria-hidden="true" tabindex="-1"></a>cube <span class="op">=</span> make_power(<span class="dv">3</span>)</span>
+<span id="cb476-8"><a href="maps_alg.html#cb476-8" aria-hidden="true" tabindex="-1"></a>cube(<span class="dv">2</span>)  <span class="co"># Outputs 8</span></span></code></pre></div>
+<pre><code>## 8</code></pre>
+<div class="sourceCode" id="cb478"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb478-1"><a href="maps_alg.html#cb478-1" aria-hidden="true" tabindex="-1"></a>to_the_tenth <span class="op">=</span> make_power(<span class="dv">10</span>)</span>
+<span id="cb478-2"><a href="maps_alg.html#cb478-2" aria-hidden="true" tabindex="-1"></a>to_the_tenth(<span class="dv">2</span>) <span class="co"># Outputs 1024</span></span></code></pre></div>
+<pre><code>## 1024</code></pre>
+</div>
+</div>
+<p>In the above examples, we’ve defined a function factory <code>make_power</code> in both R and Python that takes a number <code>exponent</code> as input (the exponent of our exponentiation function we want to built) and returns a function <code>pow</code> that raises its input <code>x</code> to the power of <code>exponent</code>. When we call this function factory with the argument <code>3</code>, it returns a function <code>cube</code> that cubes its input. When we call this <code>cube</code> function with the argument <code>2</code>, it returns <code>8</code>. Similarly, we create a function <code>to_the_tent</code> that returns a function capable of doing the power of 10 of an input number.</p>
+</div>
+<div id="fizzbuzz-v10299384" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Fizzbuzz v10299384<a href="maps_alg.html#fizzbuzz-v10299384" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We’re about to create the most powerful version of FizzBuzz: <code>fizzbuzz_v10299384</code> (although I think that the vector solution we had in Chapter 2 was quite elegant already).</p>
+<p>Recall, that a function can take <em>another function</em> as input and return a new function by overloading its arguments. It gets pretty crazy what you can do with these things sometimes.</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="maps_alg.html#cb480-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A lambda that prints a message </span></span>
+<span id="cb480-2"><a href="maps_alg.html#cb480-2" aria-hidden="true" tabindex="-1"></a><span class="co"># given a remainder</span></span>
+<span id="cb480-3"><a href="maps_alg.html#cb480-3" aria-hidden="true" tabindex="-1"></a>remainder_printer <span class="ot">&lt;-</span> <span class="cf">function</span>(p, q, message) <span class="cf">if</span> (p <span class="sc">%%</span> q <span class="sc">==</span> <span class="dv">0</span>) message <span class="cf">else</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb480-4"><a href="maps_alg.html#cb480-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb480-5"><a href="maps_alg.html#cb480-5" aria-hidden="true" tabindex="-1"></a>fizzbuzz_v10299384 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb480-6"><a href="maps_alg.html#cb480-6" aria-hidden="true" tabindex="-1"></a>  f <span class="ot">&lt;-</span> <span class="cf">function</span>(printer)</span>
+<span id="cb480-7"><a href="maps_alg.html#cb480-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">function</span>(x) <span class="fu">paste0</span>(<span class="fu">printer</span>(x, <span class="dv">3</span>, <span class="st">&quot;fizz&quot;</span>), <span class="fu">printer</span>(x, <span class="dv">5</span>, <span class="st">&quot;buzz&quot;</span>))</span>
+<span id="cb480-8"><a href="maps_alg.html#cb480-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb480-9"><a href="maps_alg.html#cb480-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># creating a new function and calling it directly!</span></span>
+<span id="cb480-10"><a href="maps_alg.html#cb480-10" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">f</span>(remainder_printer)(x)</span>
+<span id="cb480-11"><a href="maps_alg.html#cb480-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb480-12"><a href="maps_alg.html#cb480-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">nchar</span>(out) <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb480-13"><a href="maps_alg.html#cb480-13" aria-hidden="true" tabindex="-1"></a>    out <span class="ot">&lt;-</span> x </span>
+<span id="cb480-14"><a href="maps_alg.html#cb480-14" aria-hidden="true" tabindex="-1"></a>  out</span>
+<span id="cb480-15"><a href="maps_alg.html#cb480-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb480-16"><a href="maps_alg.html#cb480-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb480-17"><a href="maps_alg.html#cb480-17" aria-hidden="true" tabindex="-1"></a><span class="fu">fizzbuzz_v10299384</span>(<span class="dv">15</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;fizzbuzz&quot;</code></pre>
+<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="maps_alg.html#cb482-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fizzbuzz_v10299384</span>(<span class="dv">7</span>)</span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb484"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb484-1"><a href="maps_alg.html#cb484-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A lambda that prints a message given a remainder</span></span>
+<span id="cb484-2"><a href="maps_alg.html#cb484-2" aria-hidden="true" tabindex="-1"></a>remainder_printer <span class="op">=</span> <span class="kw">lambda</span> p, q, message: message <span class="cf">if</span> p <span class="op">%</span> q <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb484-3"><a href="maps_alg.html#cb484-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb484-4"><a href="maps_alg.html#cb484-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fizzbuzz_v10299384(x):</span>
+<span id="cb484-5"><a href="maps_alg.html#cb484-5" aria-hidden="true" tabindex="-1"></a>    f <span class="op">=</span> <span class="kw">lambda</span> printer: <span class="kw">lambda</span> x: printer(x, <span class="dv">3</span>, <span class="st">&quot;fizz&quot;</span>) <span class="op">+</span> printer(x, <span class="dv">5</span>, <span class="st">&quot;buzz&quot;</span>)</span>
+<span id="cb484-6"><a href="maps_alg.html#cb484-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb484-7"><a href="maps_alg.html#cb484-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># creating a new function and calling it directly!</span></span>
+<span id="cb484-8"><a href="maps_alg.html#cb484-8" aria-hidden="true" tabindex="-1"></a>    out <span class="op">=</span> f(remainder_printer)(x)</span>
+<span id="cb484-9"><a href="maps_alg.html#cb484-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb484-10"><a href="maps_alg.html#cb484-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(out) <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb484-11"><a href="maps_alg.html#cb484-11" aria-hidden="true" tabindex="-1"></a>        out <span class="op">=</span> <span class="bu">str</span>(x)</span>
+<span id="cb484-12"><a href="maps_alg.html#cb484-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> out</span>
+<span id="cb484-13"><a href="maps_alg.html#cb484-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb484-14"><a href="maps_alg.html#cb484-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fizzbuzz_v10299384(<span class="dv">15</span>))</span></code></pre></div>
+<pre><code>## fizzbuzz</code></pre>
+<div class="sourceCode" id="cb486"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb486-1"><a href="maps_alg.html#cb486-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fizzbuzz_v10299384(<span class="dv">7</span>))</span></code></pre></div>
+<pre><code>## 7</code></pre>
+</div>
+</div>
+<p>What on earth is going on? Well, let’s try to break it down:</p>
+<ul>
+<li><code>remainder_printer</code> is a lambda function that takes three arguments: <code>p</code>, <code>q</code>, and <code>message</code>. It checks if <code>p</code> is divisible by <code>q</code> (i.e., <code>p</code> modulo <code>q</code> equals <code>0</code>), and if so, it returns <code>message</code>; otherwise, it returns an empty string.</li>
+<li><code>fizzbuzz_v10299384</code> is a function that takes one argument: <code>x</code>. It defines a lambda function <code>f</code> that takes one argument: <code>printer</code> (which is expected to be a function). It returns a new lambda function that takes one argument <code>x</code> and returns the concatenation of the results of calling <code>printer</code> with <code>x</code>, <code>3</code>, and <code>"fizz"</code>, and with <code>x</code>, <code>5</code>, and <code>"buzz"</code>. When <code>printer</code> is called with a 3, this will return the <code>"fizz"</code>, similarly when called with a 5, this will return the <code>"buzz"</code>.</li>
+<li>It then calls <code>f</code> with <code>remainder_printer</code> as the argument, which returns a new function: the new <strong>(unnassigned)</strong> function is then called with <code>x</code>. If the result is an empty string (which is considered <code>FALSE</code> in a boolean context), it returns <code>x</code> instead. The condition on the length of the string is checked with <code>nchar</code> in R and <code>len</code> in Python.</li>
+<li>Finally, <code>fizzbuzz_v10299384(15)</code> and <code>fizzbuzz_v10299384(7)</code> call <code>fizzbuzz_v10299384</code> with <code>15</code> and <code>7</code> as the arguments, respectively, and print the results.</li>
+</ul>
+<p>Clearly, what we have written in Week 2, as FizzBuzz, is a better solution (fizzbuzz is a very simple program), however this was a good example to illustrate the possibilities of functional programming.</p>
+<p>The ability to return functions will be extremely useful when we introduce the <code>map</code> operation.</p>
+</div>
+</div>
+<div id="the-map-operation" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> The map operation<a href="maps_alg.html#the-map-operation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <code>map</code> operation is a function that takes a function and a vector as input, and returns a vector. Each element of the output vector is the result of applying the input function to the corresponding element of the input vector:</p>
+<p><img src="images/chapter4/map.png" /></p>
+<p>This allows us to apply a function to each element of a vector without having to write a loop. We have already done this when running a function on a vector, however, as we are going to see in a moment, map is a much more general statement. In fact, there are many functions in R and python that are not <em>vectorized</em>, meaning they don't naturally handle vector inputs. If you try to apply a non-vectorized function directly to a vector, you might get a bug or unexpected results.</p>
+<p>Let’s consider a simple function that squares a number. We will apply this function to a vector of numbers using the <code>map</code> operation in both R and Python:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="maps_alg.html#cb488-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import the purrr library</span></span>
+<span id="cb488-2"><a href="maps_alg.html#cb488-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb488-3"><a href="maps_alg.html#cb488-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this is how we import libraries in R!</span></span>
+<span id="cb488-4"><a href="maps_alg.html#cb488-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb488-5"><a href="maps_alg.html#cb488-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function that squares a number using the factory above</span></span>
+<span id="cb488-6"><a href="maps_alg.html#cb488-6" aria-hidden="true" tabindex="-1"></a>square <span class="ot">&lt;-</span> <span class="fu">make_power</span>(<span class="dv">2</span>)</span>
+<span id="cb488-7"><a href="maps_alg.html#cb488-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb488-8"><a href="maps_alg.html#cb488-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a vector of numbers</span></span>
+<span id="cb488-9"><a href="maps_alg.html#cb488-9" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb488-10"><a href="maps_alg.html#cb488-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb488-11"><a href="maps_alg.html#cb488-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the map function to apply the square function to the vector</span></span>
+<span id="cb488-12"><a href="maps_alg.html#cb488-12" aria-hidden="true" tabindex="-1"></a>squares <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(numbers, square)</span>
+<span id="cb488-13"><a href="maps_alg.html#cb488-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb488-14"><a href="maps_alg.html#cb488-14" aria-hidden="true" tabindex="-1"></a>squares</span></code></pre></div>
+<pre><code>## [1]  1  4  9 16 25</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb490"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb490-1"><a href="maps_alg.html#cb490-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function that squares a number</span></span>
+<span id="cb490-2"><a href="maps_alg.html#cb490-2" aria-hidden="true" tabindex="-1"></a>square <span class="op">=</span> make_power(<span class="dv">2</span>)</span>
+<span id="cb490-3"><a href="maps_alg.html#cb490-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb490-4"><a href="maps_alg.html#cb490-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a list of numbers</span></span>
+<span id="cb490-5"><a href="maps_alg.html#cb490-5" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">6</span>)</span>
+<span id="cb490-6"><a href="maps_alg.html#cb490-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb490-7"><a href="maps_alg.html#cb490-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the map function to apply the square function to the list</span></span>
+<span id="cb490-8"><a href="maps_alg.html#cb490-8" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(square, numbers))</span>
+<span id="cb490-9"><a href="maps_alg.html#cb490-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb490-10"><a href="maps_alg.html#cb490-10" aria-hidden="true" tabindex="-1"></a>squares</span></code></pre></div>
+<pre><code>## [1, 4, 9, 16, 25]</code></pre>
+</div>
+</div>
+<p>In the above examples, we’ve defined a function <code>square</code> that squares its input using the <code>make_power</code> function. We then created a vector (or list in Python) <code>numbers</code> with the numbers from <code>1</code> to <code>5</code>. We used the <code>map</code> function to apply <code>square</code> to each element of <code>numbers</code>, resulting in a new vector <code>squares</code> that contains the squares of the numbers.</p>
+<p><strong>NOTE: For R Users</strong>: The <code>map</code> function in R takes as argument the vector first, and then the function. The <code>map</code> function in R returns a list by default. A list in R is similar to a vector, but unlike a vector, a list can contain elements of different types. This means a list can be a collection of numbers, vectors, matrices, characters, functions, potatoes, onions, parupzluplups and so on. The <code>map</code> function defaults to a list, as, <em>a priori</em>, does not know what the output of a function could be. If you want a vector as output, you should use the type-specific <code>map</code> functions like <code>map_lgl</code>, <code>map_int</code>, <code>map_dbl</code>, and <code>map_chr</code>. For this reason, above, we used the <code>map_dbl</code>, as we wanted a vector of double precision numbers. Try to swap the function <code>map_dbl</code> for <code>map_chr</code> and see what happens.
+Also, note that <code>map</code> is implemented natively in R using the <code>apply</code> family of functions, see <code>help(apply)</code> for more details. The code above would have been:</p>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="maps_alg.html#cb492-1" aria-hidden="true" tabindex="-1"></a>squares <span class="ot">=</span> <span class="fu">sapply</span>(numbers, square)</span></code></pre></div>
+<p>Where now the function and the vector are swapped in the argument. Also, we are using <code>sapply</code> as this returns a vector, whilst the simple <code>apply</code> function returns a list.</p>
+<p><strong>NOTE: For Python Users</strong>: The <code>map</code> function in Python takes as argument the function first, and then the vector. In Python, the map function returns a map object, which is an iterator that yields results on demand. This means that the map function doesn’t actually compute the results until you iterate over the map object. This can be very efficient for large inputs, as it allows the computation to be spread out over time. However, if you want to see all the results at once, you need to convert the map object to a list, which is what the list function does. So when you see <code>list(map(...))</code> in Python, it means “apply this function to each element of this iterable, and give me a list of the results right away”.
+The <code>map</code> operation in Python can also be achieved with list comprehensions, which provide a more “Pythonic” way to create lists based on existing lists. Here’s how you can rewrite the previous example using a list comprehension:</p>
+<div class="sourceCode" id="cb493"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb493-1"><a href="maps_alg.html#cb493-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a list comprehension to apply the square function to the list</span></span>
+<span id="cb493-2"><a href="maps_alg.html#cb493-2" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> [square(x) <span class="cf">for</span> x <span class="kw">in</span> numbers]</span>
+<span id="cb493-3"><a href="maps_alg.html#cb493-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb493-4"><a href="maps_alg.html#cb493-4" aria-hidden="true" tabindex="-1"></a>squares</span></code></pre></div>
+<pre><code>## [1, 4, 9, 16, 25]</code></pre>
+<p>In this example, <code>square(x) for x in numbers</code> is a list comprehension that applies <code>square</code> to each element of <code>numbers</code>. You can read it as: “Run square of x for every x in numbers”, which is very similar to writing in maths <span class="math inline">\(x^2 \ \text{for} \ x \in N\)</span>. The result is a new list <code>squares</code> that contains the squares of the numbers.</p>
+<p><strong>Equivalent Faster Statements</strong></p>
+<p>Of course, the advantage is that you can write very compact code with maps, lambdas and function factories!
+So far, I have been expanding lines upon lines, to make sure that everything is clear, however you could have done the above tasks with a one liner:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="maps_alg.html#cb495-1" aria-hidden="true" tabindex="-1"></a>squares <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="fu">make_power</span>(<span class="dv">2</span>))</span>
+<span id="cb495-2"><a href="maps_alg.html#cb495-2" aria-hidden="true" tabindex="-1"></a>squares</span></code></pre></div>
+<pre><code>## [1]  1  4  9 16 25</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb497"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb497-1"><a href="maps_alg.html#cb497-1" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(make_power(<span class="dv">2</span>), np.arange(<span class="dv">1</span>, <span class="dv">6</span>)))</span>
+<span id="cb497-2"><a href="maps_alg.html#cb497-2" aria-hidden="true" tabindex="-1"></a>squares</span></code></pre></div>
+<pre><code>## [1, 4, 9, 16, 25]</code></pre>
+</div>
+</div>
+<div id="exercise-3" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Exercise<a href="maps_alg.html#exercise-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Create a vector of the first 15 natural numbers.</li>
+<li>Run the <code>fizzbuzz_v10299384</code> function on the vector above and see what happens. It should work, right? No?</li>
+<li>Now, run <code>fizzbuzz_v10299384</code> with map on the same vector, and see the result.</li>
+<li>Lastly, research the two function factories <code>Vectorised</code> and <code>np.vectorise</code>, try to vectorise <code>fizzbuzz_v10299384</code> and run it as you did in point 1. Did you fix the issue?</li>
+</ol>
+</div>
+<div id="map-2" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Map 2<a href="maps_alg.html#map-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There’s a lot of examples in cinema where the sequel is arguably better then the first one, like Shrek 2, Cars 2, Jaws 2, The second Star Wars trilogy, The Hangover 2, Bee Movie 2, Karate Kid 2… the list is endless!</p>
+<p>Well, even in programming <code>map2</code> is better then <code>map</code>. You might be in fact wondering: what’s the point of having <code>map</code> when we already have vectorised functions? Well, <code>map2</code> is the answer.
+The <code>map2</code> operation is a function that takes two vectors and a function as input, and returns a vector. Each element of the output vector is the result of applying the input function to the corresponding elements of the input vectors. In a vectorized function, on the other hand, there’s no straightforward way of passing two arguments to a function.</p>
+<p>Let’s consider a simple function that adds two numbers. We will apply this function to two vectors using the <code>map2</code> operation (in R) and the <code>map</code> operation (in Python it can take as many arguments as necessary by default):</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="maps_alg.html#cb499-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function that adds two numbers</span></span>
+<span id="cb499-2"><a href="maps_alg.html#cb499-2" aria-hidden="true" tabindex="-1"></a>add <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) x <span class="sc">+</span> y</span>
+<span id="cb499-3"><a href="maps_alg.html#cb499-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb499-4"><a href="maps_alg.html#cb499-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create two vectors of numbers</span></span>
+<span id="cb499-5"><a href="maps_alg.html#cb499-5" aria-hidden="true" tabindex="-1"></a>numbers1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb499-6"><a href="maps_alg.html#cb499-6" aria-hidden="true" tabindex="-1"></a>numbers2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>)</span>
+<span id="cb499-7"><a href="maps_alg.html#cb499-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb499-8"><a href="maps_alg.html#cb499-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the map2 function to apply the add function to the vectors</span></span>
+<span id="cb499-9"><a href="maps_alg.html#cb499-9" aria-hidden="true" tabindex="-1"></a>sums <span class="ot">&lt;-</span> <span class="fu">map2_dbl</span>(numbers1, numbers2, add)</span>
+<span id="cb499-10"><a href="maps_alg.html#cb499-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb499-11"><a href="maps_alg.html#cb499-11" aria-hidden="true" tabindex="-1"></a>sums</span></code></pre></div>
+<pre><code>## [1] 11 13 15</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb501"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb501-1"><a href="maps_alg.html#cb501-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function that adds two numbers</span></span>
+<span id="cb501-2"><a href="maps_alg.html#cb501-2" aria-hidden="true" tabindex="-1"></a>add <span class="op">=</span> <span class="kw">lambda</span> x, y: x <span class="op">+</span> y</span>
+<span id="cb501-3"><a href="maps_alg.html#cb501-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb501-4"><a href="maps_alg.html#cb501-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create two lists of numbers</span></span>
+<span id="cb501-5"><a href="maps_alg.html#cb501-5" aria-hidden="true" tabindex="-1"></a>numbers1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb501-6"><a href="maps_alg.html#cb501-6" aria-hidden="true" tabindex="-1"></a>numbers2 <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]</span>
+<span id="cb501-7"><a href="maps_alg.html#cb501-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb501-8"><a href="maps_alg.html#cb501-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the map function to apply the add function to the lists</span></span>
+<span id="cb501-9"><a href="maps_alg.html#cb501-9" aria-hidden="true" tabindex="-1"></a>sums <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(add, numbers1, numbers2))</span>
+<span id="cb501-10"><a href="maps_alg.html#cb501-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb501-11"><a href="maps_alg.html#cb501-11" aria-hidden="true" tabindex="-1"></a>sums</span></code></pre></div>
+<pre><code>## [11, 13, 15]</code></pre>
+</div>
+</div>
+<p>In the above examples, we’ve defined a function <code>add</code> that adds its two inputs. We then created two vectors (or lists in Python) <code>numbers1</code> and <code>numbers2</code>. We used the <code>map2</code>/<code>map</code> function to apply <code>add</code> to each pair of elements from <code>numbers1</code> and <code>numbers2</code>, resulting in a new vector <code>sums</code> that contains the sums of the numbers.</p>
+<p><strong>Note for Python Users</strong>: The <code>map</code> operation with two arguments can also be achieved in a more “Pythonic way” with list comprehensions. Here’s how you can rewrite the previous example:</p>
+<div class="sourceCode" id="cb503"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb503-1"><a href="maps_alg.html#cb503-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a list comprehension to apply the add function to the lists</span></span>
+<span id="cb503-2"><a href="maps_alg.html#cb503-2" aria-hidden="true" tabindex="-1"></a>sums <span class="op">=</span> [add(x, y) <span class="cf">for</span> x, y <span class="kw">in</span> <span class="bu">zip</span>(numbers1, numbers2)]</span>
+<span id="cb503-3"><a href="maps_alg.html#cb503-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb503-4"><a href="maps_alg.html#cb503-4" aria-hidden="true" tabindex="-1"></a>sums</span></code></pre></div>
+<pre><code>## [11, 13, 15]</code></pre>
+<p>In this example, the list comprehension statement relies on the <code>zip</code> function. <code>zip</code> is used to pair up the elements from <code>numbers1</code> and <code>numbers2</code>. Try to run <code>zip(numbers1, numbers2)</code> alone to see the output! I personally find that the <code>map</code> function is more readable, however you should be familiar with both ways as you will be encountering both if you keep programming with Python.</p>
+<p><strong>Shorter statements</strong></p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="maps_alg.html#cb505-1" aria-hidden="true" tabindex="-1"></a>sums <span class="ot">&lt;-</span> <span class="fu">map2_dbl</span>( <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),  <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>), <span class="cf">function</span>(x, y) x<span class="sc">+</span>y)</span>
+<span id="cb505-2"><a href="maps_alg.html#cb505-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb505-3"><a href="maps_alg.html#cb505-3" aria-hidden="true" tabindex="-1"></a>sums</span></code></pre></div>
+<pre><code>## [1] 11 13 15</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb507"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb507-1"><a href="maps_alg.html#cb507-1" aria-hidden="true" tabindex="-1"></a>sums <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x, y: x <span class="op">+</span> y, [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]))</span>
+<span id="cb507-2"><a href="maps_alg.html#cb507-2" aria-hidden="true" tabindex="-1"></a>sums</span></code></pre></div>
+<pre><code>## [11, 13, 15]</code></pre>
+</div>
+</div>
+<style type="text/css">
+.book .book-body .page-wrapper .page-inner {
+  max-width: 1200px !important;
+}
+</style>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="func_loop.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

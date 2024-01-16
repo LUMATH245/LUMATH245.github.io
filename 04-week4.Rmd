@@ -204,7 +204,7 @@ library(purrr)
 square <- make_power(2)
 
 # Create a vector of numbers
-numbers <- c(1, 2, 3, 4, 5)
+numbers <- 1:5
 
 # Use the map function to apply the square function to the vector
 squares <- map_dbl(numbers, square)
@@ -236,15 +236,15 @@ squares
 
 In the above examples, we've defined a function `square` that squares its input using the `make_power` function. We then created a vector (or list in Python) `numbers` with the numbers from `1` to `5`. We used the `map` function to apply `square` to each element of `numbers`, resulting in a new vector `squares` that contains the squares of the numbers.
 
-**NOTE: For R Users**: The `map` function in R returns a list by default. A list in R is similar to a vector, but unlike a vector, a list can contain elements of different types. This means a list can be a collection of numbers, vectors, matrices, characters, functions, potatoes, onions, parupzluplups and so on. The `map` function defaults to a list, as, _a priori_, does not know what the output of a function could be. If you want a vector as output, you should use the type-specific `map` functions like `map_lgl`, `map_int`, `map_dbl`, and `map_chr`. For this reason, above, we used the `map_dbl`, as we wanted a vector of double precision numbers. Try to swap the function `map_dbl` for `map_chr` and see what happens. 
+**NOTE: For R Users**: The `map` function in R takes as argument the vector first, and then the function. The `map` function in R returns a list by default. A list in R is similar to a vector, but unlike a vector, a list can contain elements of different types. This means a list can be a collection of numbers, vectors, matrices, characters, functions, potatoes, onions, parupzluplups and so on. The `map` function defaults to a list, as, _a priori_, does not know what the output of a function could be. If you want a vector as output, you should use the type-specific `map` functions like `map_lgl`, `map_int`, `map_dbl`, and `map_chr`. For this reason, above, we used the `map_dbl`, as we wanted a vector of double precision numbers. Try to swap the function `map_dbl` for `map_chr` and see what happens. 
 Also, note that `map` is implemented natively in R using the `apply` family of functions, see `help(apply)` for more details. The code above would have been:
 ```{r}
-squares = sapply(square, x)
+squares = sapply(numbers, square)
 ```
 Where now the function and the vector are swapped in the argument. Also, we are using `sapply` as this returns a vector, whilst the simple `apply` function returns a list.
 
-**NOTE: For Python Users**: In Python, the map function returns a map object, which is an iterator that yields results on demand. This means that the map function doesn’t actually compute the results until you iterate over the map object. This can be very efficient for large inputs, as it allows the computation to be spread out over time. However, if you want to see all the results at once, you need to convert the map object to a list, which is what the list function does. So when you see `list(map(...))` in Python, it means “apply this function to each element of this iterable, and give me a list of the results right away”.
-The `map` operation in Python can also be achieved with list comprehensions, which provide a more Pythonic way to create lists based on existing lists. Here's how you can rewrite the previous example using a list comprehension:
+**NOTE: For Python Users**: The `map` function in Python takes as argument the function first, and then the vector. In Python, the map function returns a map object, which is an iterator that yields results on demand. This means that the map function doesn’t actually compute the results until you iterate over the map object. This can be very efficient for large inputs, as it allows the computation to be spread out over time. However, if you want to see all the results at once, you need to convert the map object to a list, which is what the list function does. So when you see `list(map(...))` in Python, it means “apply this function to each element of this iterable, and give me a list of the results right away”.
+The `map` operation in Python can also be achieved with list comprehensions, which provide a more "Pythonic" way to create lists based on existing lists. Here's how you can rewrite the previous example using a list comprehension:
 
 ```{python}
 # Use a list comprehension to apply the square function to the list
@@ -255,13 +255,133 @@ squares
 
 In this example, `square(x) for x in numbers` is a list comprehension that applies `square` to each element of `numbers`. You can read it as: "Run square of x for every x in numbers", which is very similar to writing in maths $x^2 \ \text{for} \ x \in N$. The result is a new list `squares` that contains the squares of the numbers.
 
+**Equivalent Faster Statements**
+
+Of course, the advantage is that you can write very compact code with maps, lambdas and function factories! 
+So far, I have been expanding lines upon lines, to make sure that everything is clear, however you could have done the above tasks with a one liner:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+squares <- map_dbl(1:5, make_power(2))
+squares
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+squares = list(map(make_power(2), np.arange(1, 6)))
+squares
+```
+
+</div>
+:::
+
 ### Exercise
 
-Run the `fizzbuzz_v10299384` function created above with map on the first 15 numbers.
+1.    Create a vector of the first 15 natural numbers.
+2.    Run the `fizzbuzz_v10299384` function on the vector above and see what happens. It should work, right? No?
+3.    Now, run `fizzbuzz_v10299384` with map on the same vector, and see the result. 
+4.    Lastly, research the two function factories `Vectorised` and `np.vectorise`, try to vectorise `fizzbuzz_v10299384` and run it as you did in point 1. Did you fix the issue?
 
 ### Map 2
 
-There's a lot of examples in cinema where the second film is arguably better then the first one.
+There's a lot of examples in cinema where the sequel is arguably better then the first one, like Shrek 2, Cars 2, Jaws 2, The second Star Wars trilogy, The Hangover 2, Bee Movie 2, Karate Kid 2... the list is endless!
+
+Well, even in programming `map2` is better then `map`. You might be in fact wondering: what's the point of having `map` when we already have vectorised functions? Well, `map2` is the answer.
+The `map2` operation is a function that takes two vectors and a function as input, and returns a vector. Each element of the output vector is the result of applying the input function to the corresponding elements of the input vectors. In a vectorized function, on the other hand, there's no straightforward way of passing two arguments to a function.
+
+Let's consider a simple function that adds two numbers. We will apply this function to two vectors using the `map2` operation (in R) and the `map` operation (in Python it can take as many arguments as necessary by default):
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Define a function that adds two numbers
+add <- function(x, y) x + y
+
+# Create two vectors of numbers
+numbers1 <- c(1, 2, 3)
+numbers2 <- c(10, 11, 12)
+
+# Use the map2 function to apply the add function to the vectors
+sums <- map2_dbl(numbers1, numbers2, add)
+
+sums
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# Define a function that adds two numbers
+add = lambda x, y: x + y
+
+# Create two lists of numbers
+numbers1 = [1, 2, 3]
+numbers2 = [10, 11, 12]
+
+# Use the map function to apply the add function to the lists
+sums = list(map(add, numbers1, numbers2))
+
+sums
+```
+
+</div>
+:::
+
+In the above examples, we've defined a function `add` that adds its two inputs. We then created two vectors (or lists in Python) `numbers1` and `numbers2`. We used the `map2`/`map` function to apply `add` to each pair of elements from `numbers1` and `numbers2`, resulting in a new vector `sums` that contains the sums of the numbers.
+
+**Note for Python Users**: The `map` operation with two arguments can also be achieved in a more "Pythonic way" with list comprehensions. Here's how you can rewrite the previous example:
+
+```{python}
+# Use a list comprehension to apply the add function to the lists
+sums = [add(x, y) for x, y in zip(numbers1, numbers2)]
+
+sums
+```
+
+In this example, the list comprehension statement relies on the `zip` function. `zip` is used to pair up the elements from `numbers1` and `numbers2`. Try to run `zip(numbers1, numbers2)` alone to see the output! I personally find that the `map` function is more readable, however you should be familiar with both ways as you will be encountering both if you keep programming with Python.
+
+**Shorter statements**
+
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+sums <- map2_dbl( c(1, 2, 3),  c(10, 11, 12), function(x, y) x+y)
+
+sums
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+sums = list(map(lambda x, y: x + y, [1, 2, 3], [10, 11, 12]))
+sums
+```
+
+</div>
+:::
 
 
 ```{=html}
