@@ -255,7 +255,7 @@ squares
 
 In this example, `square(x) for x in numbers` is a list comprehension that applies `square` to each element of `numbers`. You can read it as: "Run square of x for every x in numbers", which is very similar to writing in maths $x^2 \ \text{for} \ x \in N$. The result is a new list `squares` that contains the squares of the numbers.
 
-**Equivalent Faster Statements**
+**Equivalent Shorter Statements**
 
 Of course, the advantage is that you can write very compact code with maps, lambdas and function factories! 
 So far, I have been expanding lines upon lines, to make sure that everything is clear, however you could have done the above tasks with a one liner:
