@@ -56,3 +56,4 @@ fizzbuzz-v10299384
 the-map-operation
 exercise-3
 map-2
+reduce-operation

@@ -110,7 +110,7 @@ to_the_tenth(2) # Outputs 1024
 
 In the above examples, we've defined a function factory `make_power` in both R and Python that takes a number `exponent` as input (the exponent of our exponentiation function we want to built) and returns a function `pow` that raises its input `x` to the power of `exponent`. When we call this function factory with the argument `3`, it returns a function `cube` that cubes its input. When we call this `cube` function with the argument `2`, it returns `8`. Similarly, we create a function `to_the_tent` that returns a function capable of doing the power of 10 of an input number.
 
-### Fizzbuzz v10299384
+#### Fizzbuzz v10299384
 
 We're about to create the most powerful version of FizzBuzz: `fizzbuzz_v10299384` (although I think that the vector solution we had in Chapter 2 was quite elegant already).
 
@@ -181,13 +181,13 @@ Clearly, what we have written in Week 2, as FizzBuzz, is a better solution (Fizz
 
 The ability to return functions will be extremely useful when we introduce the `map` operation.
 
-## The map operation
+### The map operation
 
 The `map` operation is a function that takes a function and a vector as input, and returns a vector. Each element of the output vector is the result of applying the input function to the corresponding element of the input vector:
 
 ![](images/chapter4/map.png)
 
-This allows us to apply a function to each element of a vector without having to write a loop. We have already done this when running a function on a vector, however, as we are going to see in a moment, map is a much more general statement. In fact, there are many functions in R and python that are not *vectorized*, meaning they don\'t naturally handle vector inputs. If you try to apply a non-vectorized function directly to a vector, you might get a bug or unexpected results.
+This allows us to apply a function to each element of a vector without having to write a loop. We have already done this when running a function on a vector, however, as we are going to see in a moment, map is a much more general statement. In fact, there are many functions in R and python that are not *vectorized*, meaning they don't naturally handle vector inputs. If you try to apply a non-vectorized function directly to a vector, you might get a bug or unexpected results.
 
 Let's consider a simple function that squares a number. We will apply this function to a vector of numbers using the `map` operation in both R and Python:
 
@@ -237,15 +237,15 @@ squares
 
 In the above examples, we've defined a function `square` that squares its input using the `make_power` function. We then created a vector (or list in Python) `numbers` with the numbers from `1` to `5`. We used the `map` function to apply `square` to each element of `numbers`, resulting in a new vector `squares` that contains the squares of the numbers.
 
-**NOTE: For R Users**: The `map` function in R takes as argument the vector first, and then the function. The `map` function in R returns a list by default. A list in R is similar to a vector, but unlike a vector, a list can contain elements of different types. This means a list can be a collection of numbers, vectors, matrices, characters, functions, potatoes, onions, parupzluplups and so on. The `map` function defaults to a list, as, _a priori_, does not know what the output of a function could be. If you want a vector as output, you should use the type-specific `map` functions like `map_lgl`, `map_int`, `map_dbl`, and `map_chr`. For this reason, above, we used the `map_dbl`, as we wanted a vector of double precision numbers. Try to swap the function `map_dbl` for `map_chr` and see what happens. 
-Also, note that `map` is implemented natively in R using the `apply` family of functions, see `help(apply)` for more details. The code above would have been:
+**NOTE: For R Users**: The `map` function is part of the `purrr` package, so you need to import it with `library(purrr)`; you can have this code at the start of the script. The `map` function in R takes as argument the vector first, and then the function. The `map` function in R returns a list by default. A list in R is similar to a vector, but unlike a vector, a list can contain elements of different types. This means a list can be a collection of numbers, vectors, matrices, characters, functions, potatoes, onions, parupzluplups and so on. The `map` function defaults to a list, as, *a priori*, does not know what the output of a function could be. If you want a vector as output, you should use the type-specific `map` functions like `map_lgl`, `map_int`, `map_dbl`, and `map_chr`. For this reason, above, we used the `map_dbl`, as we wanted a vector of double precision numbers. Try to swap the function `map_dbl` for `map_chr` and see what happens. Also, note that `map` is implemented natively in R using the `apply` family of functions, see `help(apply)` for more details. The code above would have been:
+
 ```{r}
 squares = sapply(numbers, square)
 ```
+
 Where now the function and the vector are swapped in the argument. Also, we are using `sapply` as this returns a vector, whilst the simple `apply` function returns a list.
 
-**NOTE: For Python Users**: The `map` function in Python takes as argument the function first, and then the vector. In Python, the map function returns a map object, which is an iterator that yields results on demand. This means that the map function doesn’t actually compute the results until you iterate over the map object. This can be very efficient for large inputs, as it allows the computation to be spread out over time. However, if you want to see all the results at once, you need to convert the map object to a list, which is what the list function does. So when you see `list(map(...))` in Python, it means “apply this function to each element of this iterable, and give me a list of the results right away”.
-The `map` operation in Python can also be achieved with list comprehensions, which provide a more "Pythonic" way to create lists based on existing lists. Here's how you can rewrite the previous example using a list comprehension:
+**NOTE: For Python Users**: The `map` function in Python takes as argument the function first, and then the vector. In Python, the map function returns a map object, which is an iterator that yields results on demand. This means that the map function doesn't actually compute the results until you iterate over the map object. This can be very efficient for large inputs, as it allows the computation to be spread out over time. However, if you want to see all the results at once, you need to convert the map object to a list, which is what the list function does. So when you see `list(map(...))` in Python, it means "apply this function to each element of this iterable, and give me a list of the results right away". The `map` operation in Python can also be achieved with list comprehensions, which provide a more "Pythonic" way to create lists based on existing lists. Here's how you can rewrite the previous example using a list comprehension:
 
 ```{python}
 # Use a list comprehension to apply the square function to the list
@@ -258,8 +258,7 @@ In this example, `square(x) for x in numbers` is a list comprehension that appli
 
 **Equivalent Shorter Statements**
 
-Of course, the advantage is that you can write very compact code with maps, lambdas and function factories! 
-So far, I have been expanding lines upon lines, to make sure that everything is clear, however you could have done the above tasks with a one liner:
+Of course, the advantage is that you can write very compact code with maps, lambdas and function factories! So far, I have been expanding lines upon lines, to make sure that everything is clear, however you could have done the above tasks with a one liner:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -285,19 +284,18 @@ squares
 </div>
 :::
 
-### Exercise
+#### Exercise
 
-1.    Create a vector of the first 15 natural numbers.
-2.    Run the `fizzbuzz_v10299384` function on the vector above and see what happens. It should work, right? No?
-3.    Now, run `fizzbuzz_v10299384` with map on the same vector, and see the result. 
-4.    Lastly, research the two function factories `Vectorised` and `np.vectorise`, try to vectorise `fizzbuzz_v10299384` and run it as you did in point 1. Did you fix the issue?
+1.  Create a vector of the first 15 natural numbers.
+2.  Run the `fizzbuzz_v10299384` function on the vector above and see what happens. It should work, right? No?
+3.  Now, run `fizzbuzz_v10299384` with map on the same vector, and see the result.
+4.  Lastly, research the two function factories `Vectorised` and `np.vectorise`, try to vectorise `fizzbuzz_v10299384` and run it as you did in point 1. Did you fix the issue?
 
-### Map 2
+#### Map 2
 
 There's a lot of examples in cinema where the sequel is arguably better then the first one, like Shrek 2, Cars 2, Jaws 2, The second Star Wars trilogy, The Hangover 2, Bee Movie 2, Karate Kid 2... the list is endless!
 
-Well, even in programming `map2` is better then `map`. You might be in fact wondering: what's the point of having `map` when we already have vectorised functions? Well, `map2` is the answer.
-The `map2` operation is a function that takes two vectors and a function as input, and returns a vector. Each element of the output vector is the result of applying the input function to the corresponding elements of the input vectors. In a vectorized function, on the other hand, there's no straightforward way of passing two arguments to a function.
+Well, even in programming `map2` is better then `map`. You might be in fact wondering: what's the point of having `map` when we already have vectorised functions? Well, `map2` is the answer. The `map2` operation is a function that takes two vectors and a function as input, and returns a vector. Each element of the output vector is the result of applying the input function to the corresponding elements of the input vectors. In a vectorized function, on the other hand, there's no straightforward way of passing two arguments to a function.
 
 Let's consider a simple function that adds two numbers. We will apply this function to two vectors using the `map2` operation (in R) and the `map` operation (in Python it can take as many arguments as necessary by default):
 
@@ -357,7 +355,7 @@ In this example, the list comprehension statement relies on the `zip` function. 
 
 **Shorter statements**
 
-We can write the map2 statements above in a very compact way again: 
+We can write the map2 statements above in a very compact way again:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -383,6 +381,63 @@ sums
 </div>
 :::
 
+### Reduce Operation
+
+The `reduce` operation is a function that takes a binary function (a function that takes two arguments) and a list or vector as input, and returns a single value. It works by applying the function to the first two elements of the list, then applying the function to the result and the next element, and so on, until it has processed all the elements of the list.
+
+This operation is called `reduce` because it reduces a list of values down to a single value. It's also known as `fold`, `accumulate`, `compress`, or `inject` in other programming languages.
+
+![](images/chapter4/reduce.png){width="265"}
+
+To give an example, let's use the `reduce` operation to compute the dot product of two vectors. We have seen this already in Chapter \@ref(vectors), however, this time, we will implement the function ourselves! We can compute this using the `map2` operation to multiply the components and the `reduce` operation to sum the results:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Define two vectors
+v1 <- c(1, 2, 3)
+v2 <- c(10, 11, 12)
+
+# Use the map2 function to multiply the components of the vectors
+products <- map2_dbl(v1, v2, `*`)
+
+# Use the reduce function to sum the products
+dot_product <- reduce(products, `+`)
+
+print(dot_product)
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+from functools import reduce
+
+# Define two lists
+v1 = [1, 2, 3]
+v2 = [10, 11, 12]
+
+# Use the map function to multiply the components of the lists
+products = list(map(lambda x, y: x * y, v1, v2))
+
+# Use the reduce function to sum the products
+dot_product = reduce(lambda x, y: x + y, products)
+
+print(dot_product)
+```
+
+</div>
+:::
+
+In the above examples, we've used the `map2`/`map` operation to multiply the components of two vectors, and the `reduce` operation to sum the results, computing the dot product of the vectors.
+
+**Note for Python Users**: The `reduce` operation in Python is part of the `functools` module, so you need to import it with `from functools import reduce`.
 
 ```{=html}
 <style type="text/css">
