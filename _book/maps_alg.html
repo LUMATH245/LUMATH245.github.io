@@ -466,7 +466,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">4.1.3</span> Reduce Operation<a href="maps_alg.html#reduce-operation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>reduce</code> operation is a function that takes a binary function (a function that takes two arguments) and a list or vector as input, and returns a single value. It works by applying the function to the first two elements of the list, then applying the function to the result and the next element, and so on, until it has processed all the elements of the list.</p>
 <p>This operation is called <code>reduce</code> because it reduces a list of values down to a single value. It’s also known as <code>fold</code>, <code>accumulate</code>, <code>compress</code>, or <code>inject</code> in other programming languages.</p>
-<p><a href="reduce_scheme"><img src="images/chapter4/reduce.png" width="265" /></a></p>
+<p><a href="reduce_scheme" id="reduce_scheme"><img src="images/chapter4/reduce.png" width="265" /></a></p>
 <p>To give an example, let’s use the <code>reduce</code> operation to compute the dot product of two vectors. We have seen this already in Chapter <a href="log_vec.html#vectors">2.4</a>, however, this time, we will implement the function ourselves! We can compute this using the <code>map2</code> operation to multiply the components and the <code>reduce</code> operation to sum the results:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>

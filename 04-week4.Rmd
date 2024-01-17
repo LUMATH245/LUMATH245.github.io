@@ -387,7 +387,7 @@ The `reduce` operation is a function that takes a binary function (a function th
 
 This operation is called `reduce` because it reduces a list of values down to a single value. It's also known as `fold`, `accumulate`, `compress`, or `inject` in other programming languages.
 
-[![](images/chapter4/reduce.png){width="265"}](reduce_scheme)
+[![](images/chapter4/reduce.png){width="265"}](reduce_scheme){#reduce_scheme}
 
 To give an example, let's use the `reduce` operation to compute the dot product of two vectors. We have seen this already in Chapter \@ref(vectors), however, this time, we will implement the function ourselves! We can compute this using the `map2` operation to multiply the components and the `reduce` operation to sum the results:
 
