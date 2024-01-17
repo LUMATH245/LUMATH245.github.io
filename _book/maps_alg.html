@@ -158,6 +158,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="maps_alg.html"><a href="maps_alg.html"><i class="fa fa-check"></i><b>4</b> Functional Programming and Linear Algebra</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="maps_alg.html"><a href="maps_alg.html#Maps"><i class="fa fa-check"></i><b>4.1</b> An intro to Functional Programming</a></li>
+<li class="chapter" data-level="4.2" data-path="maps_alg.html"><a href="maps_alg.html#doing-linear-algebra"><i class="fa fa-check"></i><b>4.2</b> Doing Linear Algebra</a></li>
 </ul></li>
 </ul>
 
@@ -539,9 +540,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="state-in-functional-programming" class="section level3 hasAnchor" number="4.1.5">
 <h3><span class="header-section-number">4.1.5</span> State in Functional Programming<a href="maps_alg.html#state-in-functional-programming" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The <code>reduce</code> operation is a way of performing a <em>recursion</em> operation in functional programming. It applies a binary function to the first two elements of a list, then applies the function to the result and the next element, and so on, until it has processed all the elements of the list. This is essentially a function concatenation on the result of a previous iteration.</p>
-<p>If you go and have a look at Figure <a href="#fig:reduce-scheme"><strong>??</strong></a>, you can see how this statement introduces the concept of recursion, which is a method where the solution to a problem depends on solutions to smaller instances of the same problem. In functional programming, recursion is often used as a way to deal with state, where the output of one step is the input to the next step.</p>
-<p>Let’s illustrate this with an example of how to solve the Fibonacci series using recursion. The Fibonacci series is a sequence of numbers where each number is the sum of the two preceding ones, usually starting with 0 and 1.</p>
+<p>The <code>reduce</code> operation is a way of performing a <em>recursion</em> operation in functional programming. It applies a binary function to the first two elements of a list, then applies the function to the result and the next element, and so on, until it has processed all the elements of the list. This is essentially a function concatenation on the result of a previous iteration. Go and have a better look at Figure <a href="#fig:reduce-scheme"><strong>??</strong></a>!</p>
+<p>This brings us to the concept of recursion, which is a method where the solution to a problem depends on solutions to smaller instances of the same problem. In functional programming, recursion is often used as a way to deal with <strong>state</strong>.</p>
+<p>Let’s illustrate how the recursion works with the same Fibonacci series example recursion.
+We can define a function called <span class="math inline">\(f\)</span> that:</p>
+<p><span class="math display">\[
+    f(n)=
+\begin{cases}
+    n,&amp; \text{if } n \leq 1\\
+    f(n-1) + f(n-2),              &amp; \text{otherwise}
+\end{cases}
+\]</span>
+This function, for a given <span class="math inline">\(n\)</span>, will return the corresponding <span class="math inline">\(r_n\)</span> value of the Fibonacci sequence (see past week).</p>
+<p>Now, the cool thing is: it is possible to write this exact statement as a program too! Have a look at the code below:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
@@ -568,18 +579,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb521-6"><a href="maps_alg.html#cb521-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span>(fibonacci(n <span class="op">-</span> <span class="dv">1</span>) <span class="op">+</span> fibonacci(n <span class="op">-</span> <span class="dv">2</span>))</span>
 <span id="cb521-7"><a href="maps_alg.html#cb521-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb521-8"><a href="maps_alg.html#cb521-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first 10 numbers of the Fibonacci series</span></span>
-<span id="cb521-9"><a href="maps_alg.html#cb521-9" aria-hidden="true" tabindex="-1"></a>[fibonacci(i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)]</span></code></pre></div>
+<span id="cb521-9"><a href="maps_alg.html#cb521-9" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">map</span>(fibonacci, <span class="bu">range</span>(<span class="dv">10</span>)))</span></code></pre></div>
+<pre><code>## [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]</code></pre>
 </div>
 </div>
-<p>In the above examples, we’ve defined a recursive function <code>fibonacci</code> that computes the Fibonacci series. We then used this function to print the first 10 numbers of the Fibonacci series.</p>
-<p>However, it’s important to note that while recursion is a powerful concept, it can be impractical in practice due to its high computational complexity and the risk of stack overflow for large inputs. Most of the tasks in functional programming are either solved via <code>map</code> and <code>reduce</code> operations or, eventually, through for loops. These methods are generally more efficient and can handle larger inputs.</p>
+<p>In the above examples, we’ve defined a recursive function <code>fibonacci</code> that computes the Fibonacci series. We then used this function compute Fibonacci series: recall that the <code>fibonacci</code> function only returns the <span class="math inline">\(n^{th}\)</span> element of the series, so to get the first 10 numbers we need a map statement.</p>
+<p>However, it’s important to note that while recursion is a powerful concept, it can be impractical in practice due to its high computational complexity and the risk of stack overflow for large inputs.
+Most of the tasks in functional programming are either solved via <code>map</code> and <code>reduce</code> operations or, eventually, through for loops. These methods are generally more efficient and can handle larger inputs. <strong>For this reason, my friends, this is the last time we will be seeing recursions in this module</strong>. Brief but intense.</p>
+</div>
+</div>
+<div id="doing-linear-algebra" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Doing Linear Algebra<a href="maps_alg.html#doing-linear-algebra" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>foobar</p>
 <style type="text/css">
 .book .book-body .page-wrapper .page-inner {
   max-width: 1200px !important;
 }
 </style>
 
-</div>
 </div>
 </div>
             </section>
