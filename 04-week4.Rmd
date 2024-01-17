@@ -1,6 +1,6 @@
-# Maps and Linear Algebra {#maps_alg}
+# Functional Programming and Linear Algebra {#maps_alg}
 
-## Functional Programming {#Maps}
+## An intro to Functional Programming {#Maps}
 
 We have seen so far two concepts from past week on how to run functions over collections of objects (in our case vectors). From [this section](#maps_alg) we learned how to run a function on a vector, whilst last week, we learned how to implement [looping](#looping), with `for` or `while` cycle, changing things as you go. We learned, *most importantly*, that we should use the for cycle if and only if we have state. Well, this is not my personal opinion only, as a matter of fact, there's a programming philosophy called *functional programming*. Hadley, in his Advanced R book (sources in the index), gives a beautiful definition that sums up the properties of **a functional programming language**:
 
@@ -387,7 +387,7 @@ The `reduce` operation is a function that takes a binary function (a function th
 
 This operation is called `reduce` because it reduces a list of values down to a single value. It's also known as `fold`, `accumulate`, `compress`, or `inject` in other programming languages.
 
-![](images/chapter4/reduce.png){width="265"}
+[![](images/chapter4/reduce.png){width="265"}](reduce_scheme)
 
 To give an example, let's use the `reduce` operation to compute the dot product of two vectors. We have seen this already in Chapter \@ref(vectors), however, this time, we will implement the function ourselves! We can compute this using the `map2` operation to multiply the components and the `reduce` operation to sum the results:
 
@@ -439,14 +439,9 @@ In the above examples, we've used the `map2`/`map` operation to multiply the com
 
 **Note for Python Users**: The `reduce` operation in Python is part of the `functools` module, so you need to import it with `from functools import reduce`.
 
-
 ### Exercise: Implement a Generic FizzBuzz Function
 
-Ok, this is going to be great. The ultimate FizzBuzz. The final boss.
-You are a mathematician, and mathematicians generalize things.
-In this exercise, you are asked to generalize FizzBuzz. Solve it all. 
-You should write a function that takes three arguments: a vector of numbers, and a vector of primes, and a vector of phrases. The vectors of primes and phrases should be of the same length, not necessarily the same length of the vector of numbers.
-The function should return a vector of the same length as the input vector of numbers. Each element of the output vector should be obtained by replacing each number in the input vector with the corresponding phrase if the number is divisible by the corresponding prime. If a number is divisible by more than one prime, the phrases should be formed by concatenating the phrases. If a number is not divisible by any of the primes, the number itself should be returned as a string.
+Ok, this is going to be great. The ultimate FizzBuzz. The final boss. You are a mathematician, and mathematicians generalize things. In this exercise, you are asked to generalize FizzBuzz. Solve it all. You should write a function that takes three arguments: a vector of numbers, and a vector of primes, and a vector of phrases. The vectors of primes and phrases should be of the same length, not necessarily the same length of the vector of numbers. The function should return a vector of the same length as the input vector of numbers. Each element of the output vector should be obtained by replacing each number in the input vector with the corresponding phrase if the number is divisible by the corresponding prime. If a number is divisible by more than one prime, the phrases should be formed by concatenating the phrases. If a number is not divisible by any of the primes, the number itself should be returned as a string.
 
 For example, the simple FizzBuzz, should be, then, obtained via:
 
@@ -471,7 +466,6 @@ generic_fizzbuzz(range(1, 16), [3, 5], ["Fizz", "Buzz"])
 
 </div>
 :::
-
 
 Here's the function signature in R to get you started:
 
@@ -512,6 +506,57 @@ or in Python:
 generic_fizzbuzz(range(1, 16), [2, 3, 5, 7], ["Skibbidi", "Fizz", "Buzz", "Yo"])
 ```
 
+### State in Functional Programming
+
+The `reduce` operation is a way of performing a *recursion* operation in functional programming. It applies a binary function to the first two elements of a list, then applies the function to the result and the next element, and so on, until it has processed all the elements of the list. This is essentially a function concatenation on the result of a previous iteration.
+
+If you go and have a look at Figure \@ref(fig:reduce-scheme), you can see how this statement introduces the concept of recursion, which is a method where the solution to a problem depends on solutions to smaller instances of the same problem. In functional programming, recursion is often used as a way to deal with state, where the output of one step is the input to the next step.
+
+Let's illustrate this with an example of how to solve the Fibonacci series using recursion. The Fibonacci series is a sequence of numbers where each number is the sum of the two preceding ones, usually starting with 0 and 1.
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Define a recursive function to compute the Fibonacci series
+fibonacci <- function(n) {
+  if (n <= 1) {
+    return(n)
+  } else {
+    return(fibonacci(n - 1) + fibonacci(n - 2))
+  }
+}
+
+# Print the first 10 numbers of the Fibonacci series
+map_dbl(0:9, fibonacci)
+```
+
+</div>
+
+<div>
+
+**Python**
+
+``` python
+# Define a recursive function to compute the Fibonacci series
+def fibonacci(n):
+    if n <= 1:
+        return n
+    else:
+        return(fibonacci(n - 1) + fibonacci(n - 2))
+
+# Print the first 10 numbers of the Fibonacci series
+[fibonacci(i) for i in range(10)]
+```
+
+</div>
+:::
+
+In the above examples, we've defined a recursive function `fibonacci` that computes the Fibonacci series. We then used this function to print the first 10 numbers of the Fibonacci series.
+
+However, it's important to note that while recursion is a powerful concept, it can be impractical in practice due to its high computational complexity and the risk of stack overflow for large inputs. Most of the tasks in functional programming are either solved via `map` and `reduce` operations or, eventually, through for loops. These methods are generally more efficient and can handle larger inputs.
 
 ```{=html}
 <style type="text/css">

@@ -58,3 +58,4 @@ exercise-3
 map-2
 reduce-operation
 exercise-implement-a-generic-fizzbuzz-function
+state-in-functional-programming
