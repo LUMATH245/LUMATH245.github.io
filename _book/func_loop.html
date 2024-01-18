@@ -159,8 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.1" data-path="maps_alg.html"><a href="maps_alg.html#Maps"><i class="fa fa-check"></i><b>4.1</b> An intro to Functional Programming</a></li>
 <li class="chapter" data-level="4.2" data-path="maps_alg.html"><a href="maps_alg.html#doing-linear-algebra"><i class="fa fa-check"></i><b>4.2</b> Doing Linear Algebra</a></li>
-<li class="chapter" data-level="4.3" data-path="maps_alg.html"><a href="maps_alg.html#exercise-implementing-a-linear-model-solver"><i class="fa fa-check"></i><b>4.3</b> 5. Exercise: Implementing a Linear Model Solver</a></li>
-<li class="chapter" data-level="4.4" data-path="maps_alg.html"><a href="maps_alg.html#an-end-note-to-this-chapter"><i class="fa fa-check"></i><b>4.4</b> An end note to this chapter</a></li>
+<li class="chapter" data-level="4.3" data-path="maps_alg.html"><a href="maps_alg.html#an-end-note-to-this-chapter"><i class="fa fa-check"></i><b>4.3</b> An end note to this chapter</a></li>
 </ul></li>
 </ul>
 
@@ -1122,16 +1121,12 @@ and the while loop would run indefinitely.</li>
 <li>The while loop ends when the condition <code>i &lt;= 10</code> is no longer met,
 i.e., when <code>i</code> is greater than 10.</li>
 </ul>
-</div>
-<div id="break-and-next" class="section level3 hasAnchor" number="3.3.3">
-<h3><span class="header-section-number">3.3.3</span> Break and next<a href="func_loop.html#break-and-next" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We are missing one last ingredient to looping! Break and next.</p>
 </div>
-<div id="break-and-nextcontinue" class="section level3 hasAnchor" number="3.3.4">
-<h3><span class="header-section-number">3.3.4</span> Break and next/continue<a href="func_loop.html#break-and-nextcontinue" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="break-and-nextcontinue" class="section level3 hasAnchor" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Break and next/continue<a href="func_loop.html#break-and-nextcontinue" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Break and next/continue are control flow statements that can be used to
-alter the flow of a loop. They can be incredibly useful in many
-situations, such as when we want to stop a loop if a certain condition
+alter the flow of a loop. They can be used when we want to stop a loop if a certain condition
 is met or skip an iteration if a certain condition is met.</p>
 <p>To see how they work, we write a loop that prints the numbers from 1 to
 10, but skips the number 5 and stops after the number 8.</p>
@@ -1186,6 +1181,60 @@ loop, regardless of the loop condition. As a result, we stop at 8,
 and don’t continue to up to 10. <code>break</code> could be an alternative
 stopping condition to a while loop.</li>
 </ul>
+<p><strong>NOTE</strong> Using <code>break</code> and <code>next</code> (or <code>continue</code> in Python) statements in loops can sometimes make the code harder to understand and debug, because they can lead to unexpected jumps in the control flow. This is especially true in more complex loops where it’s not immediately clear when or if the loop will be prematurely terminated or skipped.</p>
+<p>Let’s consider a simple example where we want to find the first number in a list that is divisible by a certain number. Using <code>break</code>:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="func_loop.html#cb468-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">30</span>)</span>
+<span id="cb468-2"><a href="func_loop.html#cb468-2" aria-hidden="true" tabindex="-1"></a>divisor <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb468-3"><a href="func_loop.html#cb468-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (num <span class="cf">in</span> numbers) {</span>
+<span id="cb468-4"><a href="func_loop.html#cb468-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (num <span class="sc">%%</span> divisor <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb468-5"><a href="func_loop.html#cb468-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(num, <span class="st">&quot;is the first number divisible by&quot;</span>, divisor))</span>
+<span id="cb468-6"><a href="func_loop.html#cb468-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb468-7"><a href="func_loop.html#cb468-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb468-8"><a href="func_loop.html#cb468-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;24 is the first number divisible by 4&quot;</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb470"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb470-1"><a href="func_loop.html#cb470-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">30</span>]</span>
+<span id="cb470-2"><a href="func_loop.html#cb470-2" aria-hidden="true" tabindex="-1"></a>divisor <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb470-3"><a href="func_loop.html#cb470-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> num <span class="kw">in</span> numbers:</span>
+<span id="cb470-4"><a href="func_loop.html#cb470-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> num <span class="op">%</span> divisor <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb470-5"><a href="func_loop.html#cb470-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>num<span class="sc">}</span><span class="ss"> is the first number divisible by </span><span class="sc">{</span>divisor<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb470-6"><a href="func_loop.html#cb470-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span></code></pre></div>
+<pre><code>## 24 is the first number divisible by 4</code></pre>
+</div>
+</div>
+<p>In this case, as soon as we find a number that meets our condition, we <code>break</code> out of the loop. However, if we want to avoid using <code>break</code>, we could rewrite the loop to use a boolean flag that indicates whether we’ve found a suitable number:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="func_loop.html#cb472-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">30</span>)</span>
+<span id="cb472-2"><a href="func_loop.html#cb472-2" aria-hidden="true" tabindex="-1"></a>divisor <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb472-3"><a href="func_loop.html#cb472-3" aria-hidden="true" tabindex="-1"></a>found <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb472-4"><a href="func_loop.html#cb472-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (num <span class="cf">in</span> numbers) {</span>
+<span id="cb472-5"><a href="func_loop.html#cb472-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span>found <span class="sc">&amp;&amp;</span> num <span class="sc">%%</span> divisor <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb472-6"><a href="func_loop.html#cb472-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(num, <span class="st">&quot;is the first number divisible by&quot;</span>, divisor))</span>
+<span id="cb472-7"><a href="func_loop.html#cb472-7" aria-hidden="true" tabindex="-1"></a>    found <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb472-8"><a href="func_loop.html#cb472-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb472-9"><a href="func_loop.html#cb472-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;24 is the first number divisible by 4&quot;</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb474"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb474-1"><a href="func_loop.html#cb474-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">30</span>]</span>
+<span id="cb474-2"><a href="func_loop.html#cb474-2" aria-hidden="true" tabindex="-1"></a>divisor <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb474-3"><a href="func_loop.html#cb474-3" aria-hidden="true" tabindex="-1"></a>found <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb474-4"><a href="func_loop.html#cb474-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> num <span class="kw">in</span> numbers:</span>
+<span id="cb474-5"><a href="func_loop.html#cb474-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="kw">not</span> found <span class="kw">and</span> num <span class="op">%</span> divisor <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb474-6"><a href="func_loop.html#cb474-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>num<span class="sc">}</span><span class="ss"> is the first number divisible by </span><span class="sc">{</span>divisor<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb474-7"><a href="func_loop.html#cb474-7" aria-hidden="true" tabindex="-1"></a>    found <span class="op">=</span> <span class="va">True</span></span></code></pre></div>
+<pre><code>## 24 is the first number divisible by 4</code></pre>
+</div>
+</div>
+<p>In this version, instead of breaking out of the loop, we use the <code>found</code> variable to keep track of whether we’ve found a number that meets our condition. If we have, we skip the rest of the loop iterations without explicitly using a <code>break</code> statement. This can make the control flow of the loop clearer and easier to follow.</p>
 <style type="text/css">
 .book .book-body .page-wrapper .page-inner {
   max-width: 1200px !important;

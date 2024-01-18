@@ -47,7 +47,6 @@ exercise-2
 more-about-looping
 nested-loops
 while-loops
-break-and-next
 break-and-nextcontinue
 maps_alg
 Maps

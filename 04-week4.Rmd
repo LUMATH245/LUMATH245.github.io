@@ -787,7 +787,7 @@ A ** 2
 A @ A
 
 # Matrix-vector multiplication
-np.dot(A, v)
+np.dot(A, v) # as we saw in week 2
 A @ v
 ```
 
@@ -922,7 +922,7 @@ Sure, here's a draft for the exercise:
 
 ---
 
-## 5. Exercise: Implementing a Linear Model Solver
+### Exercise: Implementing a Linear Model Solver
 
 In this exercise, we will implement a linear model solver from scratch. This will help you understand the underlying mathematics of linear regression and how it can be implemented in code.
 

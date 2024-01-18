@@ -1012,15 +1012,13 @@ In these codes:
 -   The while loop ends when the condition `i <= 10` is no longer met,
     i.e., when `i` is greater than 10.
 
-### Break and next
 
 We are missing one last ingredient to looping! Break and next.
 
 ### Break and next/continue
 
 Break and next/continue are control flow statements that can be used to
-alter the flow of a loop. They can be incredibly useful in many
-situations, such as when we want to stop a loop if a certain condition
+alter the flow of a loop. They can be used when we want to stop a loop if a certain condition
 is met or skip an iteration if a certain condition is met.
 
 To see how they work, we write a loop that prints the numbers from 1 to
@@ -1075,6 +1073,83 @@ Let's break it down:
     and don't continue to up to 10. `break` could be an alternative
     stopping condition to a while loop.
 
+**NOTE** Using `break` and `next` (or `continue` in Python) statements in loops can sometimes make the code harder to understand and debug, because they can lead to unexpected jumps in the control flow. This is especially true in more complex loops where it's not immediately clear when or if the loop will be prematurely terminated or skipped.
+
+Let's consider a simple example where we want to find the first number in a list that is divisible by a certain number. Using `break`:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+numbers <- c(15, 18, 21, 24, 27, 30)
+divisor <- 4
+for (num in numbers) {
+  if (num %% divisor == 0) {
+    print(paste(num, "is the first number divisible by", divisor))
+    break
+  }
+}
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+numbers = [15, 18, 21, 24, 27, 30]
+divisor = 4
+for num in numbers:
+  if num % divisor == 0:
+    print(f"{num} is the first number divisible by {divisor}")
+    break
+```
+
+</div>
+:::
+
+In this case, as soon as we find a number that meets our condition, we `break` out of the loop. However, if we want to avoid using `break`, we could rewrite the loop to use a boolean flag that indicates whether we've found a suitable number:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+numbers <- c(15, 18, 21, 24, 27, 30)
+divisor <- 4
+found <- FALSE
+for (num in numbers) {
+  if (!found && num %% divisor == 0) {
+    print(paste(num, "is the first number divisible by", divisor))
+    found <- TRUE
+  }
+}
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+numbers = [15, 18, 21, 24, 27, 30]
+divisor = 4
+found = False
+for num in numbers:
+  if not found and num % divisor == 0:
+    print(f"{num} is the first number divisible by {divisor}")
+    found = True
+```
+
+</div>
+:::
+
+In this version, instead of breaking out of the loop, we use the `found` variable to keep track of whether we've found a number that meets our condition. If we have, we skip the rest of the loop iterations without explicitly using a `break` statement. This can make the control flow of the loop clearer and easier to follow.
 
 ```{=html}
 <style type="text/css">
