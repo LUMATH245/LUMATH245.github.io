@@ -203,7 +203,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">4.1.1</span> Lambda Functions and Function Factories<a href="maps_alg.html#lambda-functions-and-function-factories" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A lambda function, also known as an anonymous function, is a function that is defined without a name, e.g. a function assigned to a variable. Lambda functions can have any number of arguments but <strong>only one expression</strong>, which is immediately evaluated and returned.</p>
 <ul>
-<li><strong>In R</strong>, we assign functions to variables by default (one of the reasons I prefer it as a language). Hence the only difference between a function and a lambda function (as you will see), is that a lambda function is only one expression long, so we don’t need to use the brackets <code>{}</code>.</li>
+<li><strong>In R</strong>, we assign functions to variables by default (one of the reasons I prefer it as a language). Hence the only difference between a function and a lambda function (as you will see), is that a lambda function is only one expression long, so we don’t need to use the brackets <code>{}</code>. <strong>Recently from version 4.1</strong>, the lambda notation has been replaced by the <code>\</code> keyword, e.g. <code>function()</code> is equivalent to <code>\()</code>.</li>
 <li><strong>In Python</strong> lambda functions are defined using the <code>lambda</code> keyword, whilst normal functions are defined using the <code>def</code> keyword. These will need to be one line long, and can be assigned to a variable.</li>
 </ul>
 <p>In both languages <strong>we can avoid the return statement</strong>, which makes them very easy and compact to write.</p>
@@ -213,8 +213,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="maps_alg.html#cb468-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a lambda function in R</span></span>
 <span id="cb468-2"><a href="maps_alg.html#cb468-2" aria-hidden="true" tabindex="-1"></a>add_two_numbers <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) x <span class="sc">+</span> y</span>
-<span id="cb468-3"><a href="maps_alg.html#cb468-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the lambda function</span></span>
-<span id="cb468-4"><a href="maps_alg.html#cb468-4" aria-hidden="true" tabindex="-1"></a><span class="fu">add_two_numbers</span>(<span class="dv">1</span>, <span class="dv">2</span>)</span></code></pre></div>
+<span id="cb468-3"><a href="maps_alg.html#cb468-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb468-4"><a href="maps_alg.html#cb468-4" aria-hidden="true" tabindex="-1"></a><span class="co"># equivalently, from R 4.1.0</span></span>
+<span id="cb468-5"><a href="maps_alg.html#cb468-5" aria-hidden="true" tabindex="-1"></a>add_two_numbers <span class="ot">&lt;-</span> \(x, y) x <span class="sc">+</span> y</span>
+<span id="cb468-6"><a href="maps_alg.html#cb468-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb468-7"><a href="maps_alg.html#cb468-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the lambda function</span></span>
+<span id="cb468-8"><a href="maps_alg.html#cb468-8" aria-hidden="true" tabindex="-1"></a><span class="fu">add_two_numbers</span>(<span class="dv">1</span>, <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 </div>
 <div>
@@ -235,7 +239,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="maps_alg.html#cb472-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function factory in R</span></span>
 <span id="cb472-2"><a href="maps_alg.html#cb472-2" aria-hidden="true" tabindex="-1"></a>make_power <span class="ot">&lt;-</span> <span class="cf">function</span>(exponent) {</span>
 <span id="cb472-3"><a href="maps_alg.html#cb472-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lambda here</span></span>
-<span id="cb472-4"><a href="maps_alg.html#cb472-4" aria-hidden="true" tabindex="-1"></a>  pow <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x<span class="sc">^</span>exponent</span>
+<span id="cb472-4"><a href="maps_alg.html#cb472-4" aria-hidden="true" tabindex="-1"></a>  pow <span class="ot">&lt;-</span> \(x) x<span class="sc">^</span>exponent</span>
 <span id="cb472-5"><a href="maps_alg.html#cb472-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(pow)</span>
 <span id="cb472-6"><a href="maps_alg.html#cb472-6" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb472-7"><a href="maps_alg.html#cb472-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the function factory</span></span>
@@ -265,19 +269,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In the above examples, we’ve defined a function factory <code>make_power</code> in both R and Python that takes a number <code>exponent</code> as input (the exponent of our exponentiation function we want to built) and returns a function <code>pow</code> that raises its input <code>x</code> to the power of <code>exponent</code>. When we call this function factory with the argument <code>3</code>, it returns a function <code>cube</code> that cubes its input. When we call this <code>cube</code> function with the argument <code>2</code>, it returns <code>8</code>. Similarly, we create a function <code>to_the_tent</code> that returns a function capable of doing the power of 10 of an input number.</p>
 <div id="fizzbuzz-v10299384" class="section level4 hasAnchor" number="4.1.1.1">
 <h4><span class="header-section-number">4.1.1.1</span> Fizzbuzz v10299384<a href="maps_alg.html#fizzbuzz-v10299384" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>We’re about to create the most powerful version of FizzBuzz: <code>fizzbuzz_v10299384</code> (although I think that the vector solution we had in Chapter 2 was quite elegant already).</p>
-<p>Recall, that a function can take <em>another function</em> as input and return a new function by overloading its arguments. It gets pretty crazy what you can do with these things sometimes.</p>
+<p>We’re about to create a weird overly-engineered version of FizzBuzz: <code>fizzbuzz_v10299384</code> (the vector solution we had in Chapter 2 was pretty elegant already, so use that in coding interviews).</p>
+<p>Recall, that a function can take <em>another function</em> as input and return a new function by overloading its arguments. It gets pretty crazy what you can do with these things:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="maps_alg.html#cb480-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A lambda that prints a message </span></span>
 <span id="cb480-2"><a href="maps_alg.html#cb480-2" aria-hidden="true" tabindex="-1"></a><span class="co"># given a remainder</span></span>
-<span id="cb480-3"><a href="maps_alg.html#cb480-3" aria-hidden="true" tabindex="-1"></a>remainder_printer <span class="ot">&lt;-</span> <span class="cf">function</span>(p, q, message)</span>
+<span id="cb480-3"><a href="maps_alg.html#cb480-3" aria-hidden="true" tabindex="-1"></a>remainder_printer <span class="ot">&lt;-</span> \(p, q, message)</span>
 <span id="cb480-4"><a href="maps_alg.html#cb480-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (p <span class="sc">%%</span> q <span class="sc">==</span> <span class="dv">0</span>) message <span class="cf">else</span> <span class="st">&quot;&quot;</span></span>
 <span id="cb480-5"><a href="maps_alg.html#cb480-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb480-6"><a href="maps_alg.html#cb480-6" aria-hidden="true" tabindex="-1"></a>fizzbuzz_v10299384 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb480-7"><a href="maps_alg.html#cb480-7" aria-hidden="true" tabindex="-1"></a>  f <span class="ot">&lt;-</span> <span class="cf">function</span>(printer)</span>
-<span id="cb480-8"><a href="maps_alg.html#cb480-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">function</span>(x) <span class="fu">paste0</span>(<span class="fu">printer</span>(x, <span class="dv">3</span>, <span class="st">&quot;fizz&quot;</span>), <span class="fu">printer</span>(x, <span class="dv">5</span>, <span class="st">&quot;buzz&quot;</span>))</span>
+<span id="cb480-7"><a href="maps_alg.html#cb480-7" aria-hidden="true" tabindex="-1"></a>  f <span class="ot">&lt;-</span> \(printer)</span>
+<span id="cb480-8"><a href="maps_alg.html#cb480-8" aria-hidden="true" tabindex="-1"></a>    \(x) <span class="fu">paste0</span>(<span class="fu">printer</span>(x, <span class="dv">3</span>, <span class="st">&quot;fizz&quot;</span>), <span class="fu">printer</span>(x, <span class="dv">5</span>, <span class="st">&quot;buzz&quot;</span>))</span>
 <span id="cb480-9"><a href="maps_alg.html#cb480-9" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb480-10"><a href="maps_alg.html#cb480-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># creating a new function and calling it directly!</span></span>
 <span id="cb480-11"><a href="maps_alg.html#cb480-11" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">f</span>(remainder_printer)(x)</span>
@@ -320,8 +324,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>It then calls <code>f</code> with <code>remainder_printer</code> as the argument, which returns a new function: the new <strong>(unnassigned)</strong> function is then called with <code>x</code>. If the result is an empty string (which is considered <code>FALSE</code> in a boolean context), it returns <code>x</code> instead. The condition on the length of the string is checked with <code>nchar</code> in R and <code>len</code> in Python.</li>
 <li>Finally, <code>fizzbuzz_v10299384(15)</code> and <code>fizzbuzz_v10299384(7)</code> call <code>fizzbuzz_v10299384</code> with <code>15</code> and <code>7</code> as the arguments, respectively, and print the results.</li>
 </ul>
-<p>Clearly, what we have written in Week 2, as FizzBuzz, is a better solution (FizzBuzz is a very simple program), however this was a good example to illustrate the possibilities of functional programming.</p>
-<p>The ability to return functions will be extremely useful when we introduce the <code>map</code> operation.</p>
+<p>Clearly, what we have written in Week 2, as FizzBuzz, is a better solution (FizzBuzz is a very simple program), however this was a good example to illustrate the possibilities of functional programming. Soon, in the next exercise, we are going to use some of these concepts to build <em>the ultimate FizzBuzz program</em> (not underselling).</p>
+<p>In fact, the ability to overload and return functions will be extremely useful when we introduce the <code>map</code> and <code>reduce</code> operations.</p>
 </div>
 </div>
 <div id="the-map-operation" class="section level3 hasAnchor" number="4.1.2">
@@ -408,8 +412,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="maps_alg.html#cb499-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function that adds two numbers</span></span>
-<span id="cb499-2"><a href="maps_alg.html#cb499-2" aria-hidden="true" tabindex="-1"></a>add <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) x <span class="sc">+</span> y</span>
+<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="maps_alg.html#cb499-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a lambda that adds two numbers</span></span>
+<span id="cb499-2"><a href="maps_alg.html#cb499-2" aria-hidden="true" tabindex="-1"></a>add <span class="ot">&lt;-</span> \(x, y) x <span class="sc">+</span> y</span>
 <span id="cb499-3"><a href="maps_alg.html#cb499-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb499-4"><a href="maps_alg.html#cb499-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create two vectors of numbers</span></span>
 <span id="cb499-5"><a href="maps_alg.html#cb499-5" aria-hidden="true" tabindex="-1"></a>numbers1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
@@ -423,7 +427,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb501"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb501-1"><a href="maps_alg.html#cb501-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function that adds two numbers</span></span>
+<div class="sourceCode" id="cb501"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb501-1"><a href="maps_alg.html#cb501-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a lambda that adds two numbers</span></span>
 <span id="cb501-2"><a href="maps_alg.html#cb501-2" aria-hidden="true" tabindex="-1"></a>add <span class="op">=</span> <span class="kw">lambda</span> x, y: x <span class="op">+</span> y</span>
 <span id="cb501-3"><a href="maps_alg.html#cb501-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb501-4"><a href="maps_alg.html#cb501-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create two lists of numbers</span></span>
@@ -449,7 +453,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="maps_alg.html#cb505-1" aria-hidden="true" tabindex="-1"></a>sums <span class="ot">&lt;-</span> <span class="fu">map2_dbl</span>( <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),  <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>), <span class="cf">function</span>(x, y) x<span class="sc">+</span>y)</span>
+<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="maps_alg.html#cb505-1" aria-hidden="true" tabindex="-1"></a>sums <span class="ot">&lt;-</span> <span class="fu">map2_dbl</span>( <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),  <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>), \(x, y) x<span class="sc">+</span>y)</span>
 <span id="cb505-2"><a href="maps_alg.html#cb505-2" aria-hidden="true" tabindex="-1"></a>sums</span></code></pre></div>
 <pre><code>## [1] 11 13 15</code></pre>
 </div>
@@ -507,7 +511,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="exercise-implement-a-generic-fizzbuzz-function" class="section level3 hasAnchor" number="4.1.4">
 <h3><span class="header-section-number">4.1.4</span> Exercise: Implement a Generic FizzBuzz Function<a href="maps_alg.html#exercise-implement-a-generic-fizzbuzz-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Ok, this is going to be great. The ultimate FizzBuzz. The final boss. You are a mathematician, and mathematicians generalize things. In this exercise, you are asked to generalize FizzBuzz. Solve it all. You should write a function that takes three arguments: a vector of numbers, and a vector of primes, and a vector of phrases. The vectors of primes and phrases should be of the same length, not necessarily the same length of the vector of numbers. The function should return a vector of the same length as the input vector of numbers. Each element of the output vector should be obtained by replacing each number in the input vector with the corresponding phrase if the number is divisible by the corresponding prime. If a number is divisible by more than one prime, the phrases should be formed by concatenating the phrases. If a number is not divisible by any of the primes, the number itself should be returned as a string.</p>
+<p>Ok, this is going to be great. The ultimate FizzBuzz. The final boss. You are a mathematician, and mathematicians generalize things. In this exercise, you are asked to generalize FizzBuzz. Solve it all. You should write a function that takes three arguments: a vector of numbers, and a vector of primes, and a vector of phrases. The vectors of primes and phrases should be of the same length, not necessarily the same length of the vector of numbers. The function should return a vector of the same length as the input vector of numbers. Each element of the output vector should be obtained by replacing each number in the input vector with the corresponding phrase if the number is divisible by the corresponding prime. If a number is divisible by more than one prime, the complete phrase should be formed by concatenating the phrases. If a number is not divisible by any of the primes, the number itself should be returned as a string.</p>
 <p>For example, the simple FizzBuzz, should be, then, obtained via:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
@@ -537,6 +541,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="maps_alg.html#cb517-1" aria-hidden="true" tabindex="-1"></a><span class="fu">generic_fizzbuzz</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>),  <span class="fu">c</span>(<span class="st">&quot;Skibbidi&quot;</span>, <span class="st">&quot;Fizz&quot;</span>, <span class="st">&quot;Buzz&quot;</span>, <span class="st">&quot;Yo&quot;</span>))</span></code></pre></div>
 <p>or in Python:</p>
 <div class="sourceCode" id="cb518"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb518-1"><a href="maps_alg.html#cb518-1" aria-hidden="true" tabindex="-1"></a>generic_fizzbuzz(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">16</span>), [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>], [<span class="st">&quot;Skibbidi&quot;</span>, <span class="st">&quot;Fizz&quot;</span>, <span class="st">&quot;Buzz&quot;</span>, <span class="st">&quot;Yo&quot;</span>])</span></code></pre></div>
+<p><strong>NOTE for R users</strong> Bored? This module is too easy? Well, R, in the recent years, has been undergoing one of the most beautiful transformations of the languages. In general, inexperienced R users tend to drift away from the language as it’s seen as inelegant, ugly, or “hacky”. Well, that was prior to the <code>ggplot2</code>, <code>purrr</code> and, more in general, <code>tidyverse</code> revolution. What if I tell you that you can code the above <code>generic_fizzbuzz</code> in under 4 statements (lines) without using any brackets <code>{}</code>? You will need the pipe operator <code>|&gt;</code> (which we’ll be seeing next week), and another couple of functions. You can learn about these functions quickly via the <code>purrr</code> cheatsheet, <a href="https://rstudio.github.io/cheatsheets/html/purrr.html">which you can find here</a>.</p>
 </div>
 <div id="state-in-functional-programming" class="section level3 hasAnchor" number="4.1.5">
 <h3><span class="header-section-number">4.1.5</span> State in Functional Programming<a href="maps_alg.html#state-in-functional-programming" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -558,15 +563,14 @@ This function, for a given <span class="math inline">\(n\)</span>, will return t
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="maps_alg.html#cb519-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a recursive function to compute the Fibonacci series</span></span>
 <span id="cb519-2"><a href="maps_alg.html#cb519-2" aria-hidden="true" tabindex="-1"></a>fibonacci <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
-<span id="cb519-3"><a href="maps_alg.html#cb519-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (n <span class="sc">&lt;=</span> <span class="dv">1</span>) {</span>
+<span id="cb519-3"><a href="maps_alg.html#cb519-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (n <span class="sc">&lt;=</span> <span class="dv">1</span>) </span>
 <span id="cb519-4"><a href="maps_alg.html#cb519-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(n)</span>
-<span id="cb519-5"><a href="maps_alg.html#cb519-5" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb519-5"><a href="maps_alg.html#cb519-5" aria-hidden="true" tabindex="-1"></a>   <span class="cf">else</span> </span>
 <span id="cb519-6"><a href="maps_alg.html#cb519-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">fibonacci</span>(n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">fibonacci</span>(n <span class="sc">-</span> <span class="dv">2</span>))</span>
-<span id="cb519-7"><a href="maps_alg.html#cb519-7" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb519-8"><a href="maps_alg.html#cb519-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb519-9"><a href="maps_alg.html#cb519-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb519-10"><a href="maps_alg.html#cb519-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first 10 numbers of the Fibonacci series</span></span>
-<span id="cb519-11"><a href="maps_alg.html#cb519-11" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dbl</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">9</span>, fibonacci)</span></code></pre></div>
+<span id="cb519-7"><a href="maps_alg.html#cb519-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb519-8"><a href="maps_alg.html#cb519-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb519-9"><a href="maps_alg.html#cb519-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first 10 numbers of the Fibonacci series</span></span>
+<span id="cb519-10"><a href="maps_alg.html#cb519-10" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dbl</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">9</span>, fibonacci)</span></code></pre></div>
 <pre><code>##  [1]  0  1  1  2  3  5  8 13 21 34</code></pre>
 </div>
 <div>
@@ -590,7 +594,11 @@ Most of the tasks in functional programming are either solved via <code>map</cod
 </div>
 <div id="doing-linear-algebra" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Doing Linear Algebra<a href="maps_alg.html#doing-linear-algebra" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>foobar</p>
+<ul>
+<li>Mention how we have already covered some basics on how to do functions on one dimensional vectors</li>
+<li>We will now introduce two dimentional arrays, e.g. homogeneous vectors of vectors of doubles, aka matrices</li>
+<li>Give an example on how to write a 4x4 matrix in R and python</li>
+</ul>
 <style type="text/css">
 .book .book-body .page-wrapper .page-inner {
   max-width: 1200px !important;

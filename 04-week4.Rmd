@@ -26,7 +26,7 @@ In a way you have already written in a functional programming way from the begin
 
 A lambda function, also known as an anonymous function, is a function that is defined without a name, e.g. a function assigned to a variable. Lambda functions can have any number of arguments but **only one expression**, which is immediately evaluated and returned.
 
--   **In R**, we assign functions to variables by default (one of the reasons I prefer it as a language). Hence the only difference between a function and a lambda function (as you will see), is that a lambda function is only one expression long, so we don't need to use the brackets `{}`.
+-   **In R**, we assign functions to variables by default (one of the reasons I prefer it as a language). Hence the only difference between a function and a lambda function (as you will see), is that a lambda function is only one expression long, so we don't need to use the brackets `{}`. **Recently from version 4.1**, the lambda notation has been replaced by the `\` keyword, e.g. `function()` is equivalent to `\()`.
 -   **In Python** lambda functions are defined using the `lambda` keyword, whilst normal functions are defined using the `def` keyword. These will need to be one line long, and can be assigned to a variable.
 
 In both languages **we can avoid the return statement**, which makes them very easy and compact to write.
@@ -41,6 +41,10 @@ For example:
 ```{r}
 # Define a lambda function in R
 add_two_numbers <- function(x, y) x + y
+
+# equivalently, from R 4.1.0
+add_two_numbers <- \(x, y) x + y
+
 # Use the lambda function
 add_two_numbers(1, 2)
 ```
@@ -76,7 +80,7 @@ Here is an example:
 # Define a function factory in R
 make_power <- function(exponent) {
   # lambda here
-  pow <- function(x) x^exponent
+  pow <- \(x) x^exponent
   return(pow)
 }
 # Use the function factory
@@ -112,9 +116,9 @@ In the above examples, we've defined a function factory `make_power` in both R a
 
 #### Fizzbuzz v10299384
 
-We're about to create the most powerful version of FizzBuzz: `fizzbuzz_v10299384` (although I think that the vector solution we had in Chapter 2 was quite elegant already).
+We're about to create a weird overly-engineered version of FizzBuzz: `fizzbuzz_v10299384` (the vector solution we had in Chapter 2 was pretty elegant already, so use that in coding interviews).
 
-Recall, that a function can take *another function* as input and return a new function by overloading its arguments. It gets pretty crazy what you can do with these things sometimes.
+Recall, that a function can take *another function* as input and return a new function by overloading its arguments. It gets pretty crazy what you can do with these things:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -124,12 +128,12 @@ Recall, that a function can take *another function* as input and return a new fu
 ```{r}
 # A lambda that prints a message 
 # given a remainder
-remainder_printer <- function(p, q, message)
+remainder_printer <- \(p, q, message)
   if (p %% q == 0) message else ""
 
 fizzbuzz_v10299384 <- function(x) {
-  f <- function(printer)
-    function(x) paste0(printer(x, 3, "fizz"), printer(x, 5, "buzz"))
+  f <- \(printer)
+    \(x) paste0(printer(x, 3, "fizz"), printer(x, 5, "buzz"))
   
   # creating a new function and calling it directly!
   out <- f(remainder_printer)(x)
@@ -177,9 +181,9 @@ What on earth is going on? Well, let's try to break it down:
 -   It then calls `f` with `remainder_printer` as the argument, which returns a new function: the new **(unnassigned)** function is then called with `x`. If the result is an empty string (which is considered `FALSE` in a boolean context), it returns `x` instead. The condition on the length of the string is checked with `nchar` in R and `len` in Python.
 -   Finally, `fizzbuzz_v10299384(15)` and `fizzbuzz_v10299384(7)` call `fizzbuzz_v10299384` with `15` and `7` as the arguments, respectively, and print the results.
 
-Clearly, what we have written in Week 2, as FizzBuzz, is a better solution (FizzBuzz is a very simple program), however this was a good example to illustrate the possibilities of functional programming.
+Clearly, what we have written in Week 2, as FizzBuzz, is a better solution (FizzBuzz is a very simple program), however this was a good example to illustrate the possibilities of functional programming. Soon, in the next exercise, we are going to use some of these concepts to build *the ultimate FizzBuzz program* (not underselling).
 
-The ability to return functions will be extremely useful when we introduce the `map` operation.
+In fact, the ability to overload and return functions will be extremely useful when we introduce the `map` and `reduce` operations.
 
 ### The map operation
 
@@ -305,8 +309,8 @@ Let's consider a simple function that adds two numbers. We will apply this funct
 **R**
 
 ```{r}
-# Define a function that adds two numbers
-add <- function(x, y) x + y
+# Define a lambda that adds two numbers
+add <- \(x, y) x + y
 
 # Create two vectors of numbers
 numbers1 <- c(1, 2, 3)
@@ -325,7 +329,7 @@ sums
 **Python**
 
 ```{python}
-# Define a function that adds two numbers
+# Define a lambda that adds two numbers
 add = lambda x, y: x + y
 
 # Create two lists of numbers
@@ -363,7 +367,7 @@ We can write the map2 statements above in a very compact way again:
 **R**
 
 ```{r}
-sums <- map2_dbl( c(1, 2, 3),  c(10, 11, 12), function(x, y) x+y)
+sums <- map2_dbl( c(1, 2, 3),  c(10, 11, 12), \(x, y) x+y)
 sums
 ```
 
@@ -441,7 +445,7 @@ In the above examples, we've used the `map2`/`map` operation to multiply the com
 
 ### Exercise: Implement a Generic FizzBuzz Function
 
-Ok, this is going to be great. The ultimate FizzBuzz. The final boss. You are a mathematician, and mathematicians generalize things. In this exercise, you are asked to generalize FizzBuzz. Solve it all. You should write a function that takes three arguments: a vector of numbers, and a vector of primes, and a vector of phrases. The vectors of primes and phrases should be of the same length, not necessarily the same length of the vector of numbers. The function should return a vector of the same length as the input vector of numbers. Each element of the output vector should be obtained by replacing each number in the input vector with the corresponding phrase if the number is divisible by the corresponding prime. If a number is divisible by more than one prime, the phrases should be formed by concatenating the phrases. If a number is not divisible by any of the primes, the number itself should be returned as a string.
+Ok, this is going to be great. The ultimate FizzBuzz. The final boss. You are a mathematician, and mathematicians generalize things. In this exercise, you are asked to generalize FizzBuzz. Solve it all. You should write a function that takes three arguments: a vector of numbers, and a vector of primes, and a vector of phrases. The vectors of primes and phrases should be of the same length, not necessarily the same length of the vector of numbers. The function should return a vector of the same length as the input vector of numbers. Each element of the output vector should be obtained by replacing each number in the input vector with the corresponding phrase if the number is divisible by the corresponding prime. If a number is divisible by more than one prime, the complete phrase should be formed by concatenating the phrases. If a number is not divisible by any of the primes, the number itself should be returned as a string.
 
 For example, the simple FizzBuzz, should be, then, obtained via:
 
@@ -506,6 +510,9 @@ or in Python:
 generic_fizzbuzz(range(1, 16), [2, 3, 5, 7], ["Skibbidi", "Fizz", "Buzz", "Yo"])
 ```
 
+
+**NOTE for R users** Bored? This module is too easy? Well, R, in the recent years, has been undergoing one of the most beautiful transformations of the languages. In general, inexperienced R users tend to drift away from the language as it's seen as inelegant, ugly, or "hacky". Well, that was prior to the `ggplot2`, `purrr` and, more in general, `tidyverse` revolution. What if I tell you that you can code the above `generic_fizzbuzz` in under 4 statements (lines) without using any brackets `{}`? You will need the pipe operator `|>` (which we'll be seeing next week), and another couple of functions. You can learn about these functions quickly via the `purrr` cheatsheet, [which you can find here](https://rstudio.github.io/cheatsheets/html/purrr.html).
+
 ### State in Functional Programming
 
 The `reduce` operation is a way of performing a *recursion* operation in functional programming. It applies a binary function to the first two elements of a list, then applies the function to the result and the next element, and so on, until it has processed all the elements of the list. This is essentially a function concatenation on the result of a previous iteration. Go and have a better look at Figure \@ref(fig:reduce-scheme)!
@@ -534,11 +541,10 @@ Now, the cool thing is: it is possible to write this exact statement as a progra
 ```{r}
 # Define a recursive function to compute the Fibonacci series
 fibonacci <- function(n) {
-  if (n <= 1) {
+  if (n <= 1) 
     return(n)
-  } else {
+   else 
     return(fibonacci(n - 1) + fibonacci(n - 2))
-  }
 }
 
 # Print the first 10 numbers of the Fibonacci series
@@ -573,7 +579,10 @@ Most of the tasks in functional programming are either solved via `map` and `red
 
 ## Doing Linear Algebra
 
-foobar
+- Mention how we have already covered some basics on how to do functions on one dimensional vectors
+- We will now introduce two dimentional arrays, e.g. homogeneous vectors of vectors of doubles, aka matrices
+- Give an example on how to write a 4x4 matrix in R and python
+
 
 ```{=html}
 <style type="text/css">
