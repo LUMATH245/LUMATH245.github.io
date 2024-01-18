@@ -37,7 +37,7 @@ Specifically, we'll cover:
 
 3.  Functions and Loops
 
-4.  Maps and Linear Algebra
+4.  Functional Programming and Linear Algebra
 
 5.  Data Frames and Plotting
 
@@ -67,6 +67,8 @@ This notes are heavily inspired from the materials of including:
 https://www.lancaster.ac.uk/~romano/teaching/2324MATH550/
 
 Some of the structure of the notes, some example and exercises are from: 
+
+-   Hadley Wickham: "Advanced R." 2nd Edition. https://adv-r.hadley.nz/index.html.
 
 -   Azalee Bostroem, Trevor Bekolay, and Valentina Staneva (eds):
 "Software Carpentry: Programming with Python."  Version 2016.06, June
@@ -776,7 +778,8 @@ This is just a basic introduction to storing data on your hard drive using R and
 
 But *where* have we stored our `data.csv`? Well, in the working directory. The **working directory** is the folder on your computer where R or Python is currently operating. When you run a script, it's as if you're standing in your working directory. Any files you read or write will be searched for or created within this directory. But what is a *directory*? Well, you can think of a directory as a folder, in a filing cabinet, where you can organise your files more easily.
 
-In **R**, you can learn about your current working directory with `getwd()` and set it with `setwd("your/directory/path")`. In **Python**, you can use `os.getcwd()` to get the current working directory and `os.chdir("your/directory/path")` to change it. Try to run the `getwd()` or `os.getcwd()` command in your script, and this should print the location where you will find.
+In **R**, you can learn about your current working directory with `getwd()` and set it with `setwd("your/directory/path")`. In **Python**, you can use `os.getcwd()` to get the current working directory and `os.chdir("your/directory/path")` to change it. Note, that as above, you will need to import the `os` module with `import os`.
+Try to run the `getwd()` or `os.getcwd()` command in your script, and this should print the location where you will find your file `data.csv` as this was the directory you were working in.
 
 Now what you might wonder, *what is a file path? What on earth is a location?*. Well, a file path is a string that tells us the location of a file on our computer. You may familiar with this concept already, but if you're not, don't worry, you will find what you need below. The idea is that files are stored on your hard drive, and, to access these, at user level, you'll need to navigate a file structure. A **file structure** is how files are organized on your computer. You can think of it like a tree, where each folder (also known as a directory) is a branch that can hold more folders or files (the leaves):
 
@@ -3504,9 +3507,9 @@ Let's break it down:
 
 <!--chapter:end:03-week3.Rmd-->
 
-# Maps and Linear Algebra {#maps_alg}
+# Functional Programming and Linear Algebra {#maps_alg}
 
-## Functional Programming {#Maps}
+## An intro to Functional Programming {#Maps}
 
 We have seen so far two concepts from past week on how to run functions over collections of objects (in our case vectors). From [this section](#maps_alg) we learned how to run a function on a vector, whilst last week, we learned how to implement [looping](#looping), with `for` or `while` cycle, changing things as you go. We learned, *most importantly*, that we should use the for cycle if and only if we have state. Well, this is not my personal opinion only, as a matter of fact, there's a programming philosophy called *functional programming*. Hadley, in his Advanced R book (sources in the index), gives a beautiful definition that sums up the properties of **a functional programming language**:
 
@@ -3532,7 +3535,7 @@ In a way you have already written in a functional programming way from the begin
 
 A lambda function, also known as an anonymous function, is a function that is defined without a name, e.g. a function assigned to a variable. Lambda functions can have any number of arguments but **only one expression**, which is immediately evaluated and returned.
 
--   **In R**, we assign functions to variables by default (one of the reasons I prefer it as a language). Hence the only difference between a function and a lambda function (as you will see), is that a lambda function is only one expression long, so we don't need to use the brackets `{}`.
+-   **In R**, we assign functions to variables by default (one of the reasons I prefer it as a language). Hence the only difference between a function and a lambda function (as you will see), is that a lambda function is only one expression long, so we don't need to use the brackets `{}`. **Recently from version 4.1**, the lambda notation has been replaced by the `\` keyword, e.g. `function()` is equivalent to `\()`.
 -   **In Python** lambda functions are defined using the `lambda` keyword, whilst normal functions are defined using the `def` keyword. These will need to be one line long, and can be assigned to a variable.
 
 In both languages **we can avoid the return statement**, which makes them very easy and compact to write.
@@ -3547,6 +3550,10 @@ For example:
 ```{r}
 # Define a lambda function in R
 add_two_numbers <- function(x, y) x + y
+
+# equivalently, from R 4.1.0
+add_two_numbers <- \(x, y) x + y
+
 # Use the lambda function
 add_two_numbers(1, 2)
 ```
@@ -3582,7 +3589,7 @@ Here is an example:
 # Define a function factory in R
 make_power <- function(exponent) {
   # lambda here
-  pow <- function(x) x^exponent
+  pow <- \(x) x^exponent
   return(pow)
 }
 # Use the function factory
@@ -3616,11 +3623,11 @@ to_the_tenth(2) # Outputs 1024
 
 In the above examples, we've defined a function factory `make_power` in both R and Python that takes a number `exponent` as input (the exponent of our exponentiation function we want to built) and returns a function `pow` that raises its input `x` to the power of `exponent`. When we call this function factory with the argument `3`, it returns a function `cube` that cubes its input. When we call this `cube` function with the argument `2`, it returns `8`. Similarly, we create a function `to_the_tent` that returns a function capable of doing the power of 10 of an input number.
 
-### Fizzbuzz v10299384
+#### Fizzbuzz v10299384
 
-We're about to create the most powerful version of FizzBuzz: `fizzbuzz_v10299384` (although I think that the vector solution we had in Chapter 2 was quite elegant already).
+We're about to create a weird overly-engineered version of FizzBuzz: `fizzbuzz_v10299384` (the vector solution we had in Chapter 2 was pretty elegant already, so use that in coding interviews).
 
-Recall, that a function can take *another function* as input and return a new function by overloading its arguments. It gets pretty crazy what you can do with these things sometimes.
+Recall, that a function can take *another function* as input and return a new function by overloading its arguments. It gets pretty crazy what you can do with these things:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -3630,11 +3637,12 @@ Recall, that a function can take *another function* as input and return a new fu
 ```{r}
 # A lambda that prints a message 
 # given a remainder
-remainder_printer <- function(p, q, message) if (p %% q == 0) message else ""
+remainder_printer <- \(p, q, message)
+  if (p %% q == 0) message else ""
 
 fizzbuzz_v10299384 <- function(x) {
-  f <- function(printer)
-    function(x) paste0(printer(x, 3, "fizz"), printer(x, 5, "buzz"))
+  f <- \(printer)
+    \(x) paste0(printer(x, 3, "fizz"), printer(x, 5, "buzz"))
   
   # creating a new function and calling it directly!
   out <- f(remainder_printer)(x)
@@ -3682,17 +3690,17 @@ What on earth is going on? Well, let's try to break it down:
 -   It then calls `f` with `remainder_printer` as the argument, which returns a new function: the new **(unnassigned)** function is then called with `x`. If the result is an empty string (which is considered `FALSE` in a boolean context), it returns `x` instead. The condition on the length of the string is checked with `nchar` in R and `len` in Python.
 -   Finally, `fizzbuzz_v10299384(15)` and `fizzbuzz_v10299384(7)` call `fizzbuzz_v10299384` with `15` and `7` as the arguments, respectively, and print the results.
 
-Clearly, what we have written in Week 2, as FizzBuzz, is a better solution (fizzbuzz is a very simple program), however this was a good example to illustrate the possibilities of functional programming.
+Clearly, what we have written in Week 2, as FizzBuzz, is a better solution (FizzBuzz is a very simple program), however this was a good example to illustrate the possibilities of functional programming. Soon, in the next exercise, we are going to use some of these concepts to build *the ultimate FizzBuzz program* (not underselling).
 
-The ability to return functions will be extremely useful when we introduce the `map` operation.
+In fact, the ability to overload and return functions will be extremely useful when we introduce the `map` and `reduce` operations.
 
-## The map operation
+### The map operation
 
 The `map` operation is a function that takes a function and a vector as input, and returns a vector. Each element of the output vector is the result of applying the input function to the corresponding element of the input vector:
 
 ![](images/chapter4/map.png)
 
-This allows us to apply a function to each element of a vector without having to write a loop. We have already done this when running a function on a vector, however, as we are going to see in a moment, map is a much more general statement. In fact, there are many functions in R and python that are not *vectorized*, meaning they don\'t naturally handle vector inputs. If you try to apply a non-vectorized function directly to a vector, you might get a bug or unexpected results.
+This allows us to apply a function to each element of a vector without having to write a loop. We have already done this when running a function on a vector, however, as we are going to see in a moment, map is a much more general statement. In fact, there are many functions in R and python that are not *vectorized*, meaning they don't naturally handle vector inputs. If you try to apply a non-vectorized function directly to a vector, you might get a bug or unexpected results.
 
 Let's consider a simple function that squares a number. We will apply this function to a vector of numbers using the `map` operation in both R and Python:
 
@@ -3710,7 +3718,7 @@ library(purrr)
 square <- make_power(2)
 
 # Create a vector of numbers
-numbers <- c(1, 2, 3, 4, 5)
+numbers <- 1:5
 
 # Use the map function to apply the square function to the vector
 squares <- map_dbl(numbers, square)
@@ -3742,15 +3750,15 @@ squares
 
 In the above examples, we've defined a function `square` that squares its input using the `make_power` function. We then created a vector (or list in Python) `numbers` with the numbers from `1` to `5`. We used the `map` function to apply `square` to each element of `numbers`, resulting in a new vector `squares` that contains the squares of the numbers.
 
-**NOTE: For R Users**: The `map` function in R returns a list by default. A list in R is similar to a vector, but unlike a vector, a list can contain elements of different types. This means a list can be a collection of numbers, vectors, matrices, characters, functions, potatoes, onions, parupzluplups and so on. The `map` function defaults to a list, as, _a priori_, does not know what the output of a function could be. If you want a vector as output, you should use the type-specific `map` functions like `map_lgl`, `map_int`, `map_dbl`, and `map_chr`. For this reason, above, we used the `map_dbl`, as we wanted a vector of double precision numbers. Try to swap the function `map_dbl` for `map_chr` and see what happens. 
-Also, note that `map` is implemented natively in R using the `apply` family of functions, see `help(apply)` for more details. The code above would have been:
+**NOTE: For R Users**: The `map` function is part of the `purrr` package, so you need to import it with `library(purrr)`; you can have this code at the start of the script. The `map` function in R takes as argument the vector first, and then the function. The `map` function in R returns a list by default. A list in R is similar to a vector, but unlike a vector, a list can contain elements of different types. This means a list can be a collection of numbers, vectors, matrices, characters, functions, potatoes, onions, parupzluplups and so on. The `map` function defaults to a list, as, *a priori*, does not know what the output of a function could be. If you want a vector as output, you should use the type-specific `map` functions like `map_lgl`, `map_int`, `map_dbl`, and `map_chr`. For this reason, above, we used the `map_dbl`, as we wanted a vector of double precision numbers. Try to swap the function `map_dbl` for `map_chr` and see what happens. Also, note that `map` is implemented natively in R using the `apply` family of functions, see `help(apply)` for more details. The code above would have been:
+
 ```{r}
-squares = sapply(square, x)
+squares = sapply(numbers, square)
 ```
+
 Where now the function and the vector are swapped in the argument. Also, we are using `sapply` as this returns a vector, whilst the simple `apply` function returns a list.
 
-**NOTE: For Python Users**: In Python, the map function returns a map object, which is an iterator that yields results on demand. This means that the map function doesn’t actually compute the results until you iterate over the map object. This can be very efficient for large inputs, as it allows the computation to be spread out over time. However, if you want to see all the results at once, you need to convert the map object to a list, which is what the list function does. So when you see `list(map(...))` in Python, it means “apply this function to each element of this iterable, and give me a list of the results right away”.
-The `map` operation in Python can also be achieved with list comprehensions, which provide a more Pythonic way to create lists based on existing lists. Here's how you can rewrite the previous example using a list comprehension:
+**NOTE: For Python Users**: The `map` function in Python takes as argument the function first, and then the vector. In Python, the map function returns a map object, which is an iterator that yields results on demand. This means that the map function doesn't actually compute the results until you iterate over the map object. This can be very efficient for large inputs, as it allows the computation to be spread out over time. However, if you want to see all the results at once, you need to convert the map object to a list, which is what the list function does. So when you see `list(map(...))` in Python, it means "apply this function to each element of this iterable, and give me a list of the results right away". The `map` operation in Python can also be achieved with list comprehensions, which provide a more "Pythonic" way to create lists based on existing lists. Here's how you can rewrite the previous example using a list comprehension:
 
 ```{python}
 # Use a list comprehension to apply the square function to the list
@@ -3761,13 +3769,445 @@ squares
 
 In this example, `square(x) for x in numbers` is a list comprehension that applies `square` to each element of `numbers`. You can read it as: "Run square of x for every x in numbers", which is very similar to writing in maths $x^2 \ \text{for} \ x \in N$. The result is a new list `squares` that contains the squares of the numbers.
 
-### Exercise
+**Equivalent Shorter Statements**
 
-Run the `fizzbuzz_v10299384` function created above with map on the first 15 numbers.
+Of course, the advantage is that you can write very compact code with maps, lambdas and function factories! So far, I have been expanding lines upon lines, to make sure that everything is clear, however you could have done the above tasks with a one liner:
 
-### Map 2
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
 
-There's a lot of examples in cinema where the second film is arguably better then the first one.
+**R**
+
+```{r}
+squares <- map_dbl(1:5, make_power(2))
+squares
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+squares = list(map(make_power(2), np.arange(1, 6)))
+squares
+```
+
+</div>
+:::
+
+#### Exercise
+
+1.  Create a vector of the first 15 natural numbers.
+2.  Run the `fizzbuzz_v10299384` function on the vector above and see what happens. It should work, right? No?
+3.  Now, run `fizzbuzz_v10299384` with map on the same vector, and see the result.
+4.  Lastly, research the two function factories `Vectorised` and `np.vectorise`, try to vectorise `fizzbuzz_v10299384` and run it as you did in point 1. Did you fix the issue?
+
+#### Map 2
+
+There's a lot of examples in cinema where the sequel is arguably better then the first one, like Shrek 2, Cars 2, Jaws 2, The second Star Wars trilogy, The Hangover 2, Bee Movie 2, Karate Kid 2... the list is endless!
+
+Well, even in programming `map2` is better then `map`. You might be in fact wondering: what's the point of having `map` when we already have vectorised functions? Well, `map2` is the answer. The `map2` operation is a function that takes two vectors and a function as input, and returns a vector. Each element of the output vector is the result of applying the input function to the corresponding elements of the input vectors. In a vectorized function, on the other hand, there's no straightforward way of passing two arguments to a function.
+
+Let's consider a simple function that adds two numbers. We will apply this function to two vectors using the `map2` operation (in R) and the `map` operation (in Python it can take as many arguments as necessary by default):
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Define a lambda that adds two numbers
+add <- \(x, y) x + y
+
+# Create two vectors of numbers
+numbers1 <- c(1, 2, 3)
+numbers2 <- c(10, 11, 12)
+
+# Use the map2 function to apply the add function to the vectors
+sums <- map2_dbl(numbers1, numbers2, add)
+
+sums
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# Define a lambda that adds two numbers
+add = lambda x, y: x + y
+
+# Create two lists of numbers
+numbers1 = [1, 2, 3]
+numbers2 = [10, 11, 12]
+
+# Use the map function to apply the add function to the lists
+sums = list(map(add, numbers1, numbers2))
+
+sums
+```
+
+</div>
+:::
+
+In the above examples, we've defined a function `add` that adds its two inputs. We then created two vectors (or lists in Python) `numbers1` and `numbers2`. We used the `map2`/`map` function to apply `add` to each pair of elements from `numbers1` and `numbers2`, resulting in a new vector `sums` that contains the sums of the numbers.
+
+**Note for Python Users**: The `map` operation with two arguments can also be achieved in a more "Pythonic way" with list comprehensions. Here's how you can rewrite the previous example:
+
+```{python}
+# Use a list comprehension to apply the add function to the lists
+sums = [add(x, y) for x, y in zip(numbers1, numbers2)]
+sums
+```
+
+In this example, the list comprehension statement relies on the `zip` function. `zip` is used to pair up the elements from `numbers1` and `numbers2`. Try to run `zip(numbers1, numbers2)` alone to see the output! I personally find that the `map` function is more readable, however you should be familiar with both ways as you will be encountering both if you keep programming with Python.
+
+**Shorter statements**
+
+We can write the map2 statements above in a very compact way again:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+sums <- map2_dbl( c(1, 2, 3),  c(10, 11, 12), \(x, y) x+y)
+sums
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+sums = list(map(lambda x, y: x + y, [1, 2, 3], [10, 11, 12]))
+sums
+```
+
+</div>
+:::
+
+### Reduce Operation
+
+The `reduce` operation is a function that takes a binary function (a function that takes two arguments) and a list or vector as input, and returns a single value. It works by applying the function to the first two elements of the list, then applying the function to the result and the next element, and so on, until it has processed all the elements of the list.
+
+This operation is called `reduce` because it reduces a list of values down to a single value. It's also known as `fold`, `accumulate`, `compress`, or `inject` in other programming languages.
+
+[![](images/chapter4/reduce.png){width="265"}](reduce_scheme){#reduce_scheme}
+
+To give an example, let's use the `reduce` operation to compute the dot product of two vectors. We have seen this already in Chapter \@ref(vectors), however, this time, we will implement the function ourselves! We can compute this using the `map2` operation to multiply the components and the `reduce` operation to sum the results:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Define two vectors
+v1 <- c(1, 2, 3)
+v2 <- c(10, 11, 12)
+
+# Use the map2 function to multiply the components of the vectors
+products <- map2_dbl(v1, v2, `*`)
+
+# Use the reduce function to sum the products
+dot_product <- reduce(products, `+`)
+
+print(dot_product)
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+from functools import reduce
+
+# Define two lists
+v1 = [1, 2, 3]
+v2 = [10, 11, 12]
+
+# Use the map function to multiply the components of the lists
+products = list(map(lambda x, y: x * y, v1, v2))
+
+# Use the reduce function to sum the products
+dot_product = reduce(lambda x, y: x + y, products)
+
+print(dot_product)
+```
+
+</div>
+:::
+
+In the above examples, we've used the `map2`/`map` operation to multiply the components of two vectors, and the `reduce` operation to sum the results, computing the dot product of the vectors.
+
+**Note for Python Users**: The `reduce` operation in Python is part of the `functools` module, so you need to import it with `from functools import reduce`.
+
+### Exercise: Implement a Generic FizzBuzz Function
+
+Ok, this is going to be great. The ultimate FizzBuzz. The final boss. You are a mathematician, and mathematicians generalize things. In this exercise, you are asked to generalize FizzBuzz. Solve it all. You should write a function that takes three arguments: a vector of numbers, and a vector of primes, and a vector of phrases. The vectors of primes and phrases should be of the same length, not necessarily the same length of the vector of numbers. The function should return a vector of the same length as the input vector of numbers. Each element of the output vector should be obtained by replacing each number in the input vector with the corresponding phrase if the number is divisible by the corresponding prime. If a number is divisible by more than one prime, the complete phrase should be formed by concatenating the phrases. If a number is not divisible by any of the primes, the number itself should be returned as a string.
+
+For example, the simple FizzBuzz, should be, then, obtained via:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r include=TRUE, eval=FALSE}
+generic_fizzbuzz(1:15, c(3, 5),  c("Fizz", "Buzz"))
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python include=TRUE, eval=FALSE}
+generic_fizzbuzz(range(1, 16), [3, 5], ["Fizz", "Buzz"])
+```
+
+</div>
+:::
+
+Here's the function signature in R to get you started:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r include=TRUE, eval=FALSE}
+generic_fizzbuzz <- function(x, primes, phrases) {
+  # Your code here
+}
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python include=TRUE, eval=FALSE}
+def generic_fizzbuzz(x, primes, phrases):
+    # Your code here
+```
+
+</div>
+:::
+
+As a test case, consider the following call to your function:
+
+```{r include=TRUE, eval=FALSE}
+generic_fizzbuzz(1:15, c(2, 3, 5, 7),  c("Skibbidi", "Fizz", "Buzz", "Yo"))
+```
+
+or in Python:
+
+```{python include=TRUE, eval=FALSE}
+generic_fizzbuzz(range(1, 16), [2, 3, 5, 7], ["Skibbidi", "Fizz", "Buzz", "Yo"])
+```
+
+
+**NOTE for R users** Bored? This module is too easy? Well, R, in the recent years, has been undergoing one of the most beautiful transformations of the languages. In general, inexperienced R users tend to drift away from the language as it's seen as inelegant, ugly, or "hacky". Well, that was prior to the `ggplot2`, `purrr` and, more in general, `tidyverse` revolution. What if I tell you that you can code the above `generic_fizzbuzz` in under 4 statements (lines) without using any brackets `{}`? You will need the pipe operator `|>` (which we'll be seeing next week), and another couple of functions. You can learn about these functions quickly via the `purrr` cheatsheet, [which you can find here](https://rstudio.github.io/cheatsheets/html/purrr.html).
+
+### State in Functional Programming
+
+The `reduce` operation is a way of performing a *recursion* operation in functional programming. It applies a binary function to the first two elements of a list, then applies the function to the result and the next element, and so on, until it has processed all the elements of the list. This is essentially a function concatenation on the result of a previous iteration. Go and have a better look at Figure \@ref(fig:reduce-scheme)!
+
+This brings us to the concept of recursion, which is a method where the solution to a problem depends on solutions to smaller instances of the same problem. In functional programming, recursion is often used as a way to deal with **state**.
+
+Let's illustrate how the recursion works with the same Fibonacci series example recursion. 
+We can define a function called $f$ that: 
+
+$$
+    f(n)= 
+\begin{cases}
+    n,& \text{if } n \leq 1\\
+    f(n-1) + f(n-2),              & \text{otherwise}
+\end{cases}
+$$
+This function, for a given $n$, will return the corresponding $r_n$ value of the Fibonacci sequence (see past week). 
+
+Now, the cool thing is: it is possible to write this exact statement as a program too! Have a look at the code below:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Define a recursive function to compute the Fibonacci series
+fibonacci <- function(n) {
+  if (n <= 1) 
+    return(n)
+   else 
+    return(fibonacci(n - 1) + fibonacci(n - 2))
+}
+
+# Print the first 10 numbers of the Fibonacci series
+map_dbl(0:9, fibonacci)
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# Define a recursive function to compute the Fibonacci series
+def fibonacci(n):
+    if n <= 1:
+        return n
+    else:
+        return(fibonacci(n - 1) + fibonacci(n - 2))
+
+# Print the first 10 numbers of the Fibonacci series
+list(map(fibonacci, range(10)))
+```
+
+</div>
+:::
+
+In the above examples, we've defined a recursive function `fibonacci` that computes the Fibonacci series. We then used this function compute Fibonacci series: recall that the `fibonacci` function only returns the $n^{th}$ element of the series, so to get the first 10 numbers we need a map statement.
+
+However, it's important to note that while recursion is a powerful concept, it can be impractical in practice due to its high computational complexity and the risk of running out of memory for large inputs. 
+Most of the tasks in functional programming are either solved via `map` and `reduce` operations or, eventually, through for loops. These methods are generally more efficient and can handle larger inputs. **For this reason, my friends, this is the last time we will be seeing recursions in this module**. Brief but intense.
+
+## Doing Linear Algebra
+
+### Building Matrices
+
+In the previous chapters, we have covered some basics on how to perform operations on one-dimensional vectors, and the dot product. Now, we are going to extend our understanding to two dimensions with **matrices**.
+
+A **matrix** is a mathematical term for a two-dimensional array of numbers, while a vector is a one-dimensional array. In other words, you can think of a matrix as a homogeneous vector of vectors of doubles, both in R and Python.
+
+Let's see how to create a 4x4 matrix in R and Python:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Create a 4x4 matrix in R
+matrix_by_row <- matrix(1:16, nrow=4, ncol=4, byrow = TRUE)
+print(matrix)
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# Create a 4x4 matrix in Python
+matrix_by_row = np.arange(1, 17).reshape(4, 4)
+print(matrix)
+```
+
+</div>
+:::
+
+In the above examples, we've created a 4x4 matrix filled by rows. You can also fill the matrix by columns by setting `byrow = FALSE` in R, or by reshaping a range in Python (`reshape` will fill automatically by row).
+
+Additionally, you can create a matrix by binding vectors together. In R, you can use `cbind()` to bind vectors as columns or `rbind()` to bind vectors as rows, whilist in python you can use `np.column_stack()` as columns and `np.row_stack()` as rows:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Create a matrix by binding vectors in R
+v1 <- c(1, 2, 3, 4)
+v2 <- c(5, 6, 7, 8)
+v3 <- c(9, 10, 11, 12)
+v4 <- c(13, 14, 15, 16)
+
+# Bind vectors as columns
+matrix_by_col <- cbind(v1, v2, v3, v4)
+print(matrix)
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# Create a matrix by binding vectors in Python
+v1 = np.array([1, 2, 3, 4])
+v2 = np.array([5, 6, 7, 8])
+v3 = np.array([9, 10, 11, 12])
+v4 = np.array([13, 14, 15, 16])
+
+# Bind vectors as columns
+matrix_by_col = np.column_stack((v1, v2, v3, v4))
+print(matrix)
+```
+
+</div>
+:::
+
+In the above examples, we've created a 4x4 matrix by binding four vectors as columns. You can also bind vectors as rows by using `rbind()` in R, or `np.vstack()` in Python.
+
+
+
+Sure, here's how you can expand on the concept of "reshaping a range" and illustrate the transpose operation:
+
+Now, let's illustrate the transpose operation. Recall that the transpose of a matrix is obtained by flipping it over its diagonal. This switches the row and column indices of each element. In R, you can use the `t()` function to transpose a matrix, while in Python, you can use the `T` attribute or the `transpose()` function.
+
+Let's compare the matrices created above with their transposes:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Transpose the matrix in R
+t(matrix_by_row)
+
+# comparing the elements of the transposed
+# matrix by row with that filled by columns
+t(matrix_by_row) == matrix_by_col
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# Transpose the matrix in Python
+matrix_by_row.T
+
+# comparing the elements of the transposed
+# matrix by row with that filled by columns
+matrix_by_row.T == matrix_by_col
+```
+
+</div>
+:::
+
+As you can see, unsurprisingly, the transpose of the filled by row has all elements equals to the one filled by column.
+
 
 
 ```{=html}

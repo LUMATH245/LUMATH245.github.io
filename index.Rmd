@@ -70,7 +70,6 @@ Some of the structure of the notes, some example and exercises are from:
 
 -   Hadley Wickham: "Advanced R." 2nd Edition. https://adv-r.hadley.nz/index.html.
 
-
 -   Azalee Bostroem, Trevor Bekolay, and Valentina Staneva (eds):
 "Software Carpentry: Programming with Python."  Version 2016.06, June
 2016, https://github.com/swcarpentry/python-novice-inflammation,

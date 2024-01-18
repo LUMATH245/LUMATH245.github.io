@@ -574,14 +574,131 @@ list(map(fibonacci, range(10)))
 
 In the above examples, we've defined a recursive function `fibonacci` that computes the Fibonacci series. We then used this function compute Fibonacci series: recall that the `fibonacci` function only returns the $n^{th}$ element of the series, so to get the first 10 numbers we need a map statement.
 
-However, it's important to note that while recursion is a powerful concept, it can be impractical in practice due to its high computational complexity and the risk of stack overflow for large inputs. 
+However, it's important to note that while recursion is a powerful concept, it can be impractical in practice due to its high computational complexity and the risk of running out of memory for large inputs. 
 Most of the tasks in functional programming are either solved via `map` and `reduce` operations or, eventually, through for loops. These methods are generally more efficient and can handle larger inputs. **For this reason, my friends, this is the last time we will be seeing recursions in this module**. Brief but intense.
 
 ## Doing Linear Algebra
 
-- Mention how we have already covered some basics on how to do functions on one dimensional vectors
-- We will now introduce two dimentional arrays, e.g. homogeneous vectors of vectors of doubles, aka matrices
-- Give an example on how to write a 4x4 matrix in R and python
+### Building Matrices
+
+In the previous chapters, we have covered some basics on how to perform operations on one-dimensional vectors, and the dot product. Now, we are going to extend our understanding to two dimensions with **matrices**.
+
+A **matrix** is a mathematical term for a two-dimensional array of numbers, while a vector is a one-dimensional array. In other words, you can think of a matrix as a homogeneous vector of vectors of doubles, both in R and Python.
+
+Let's see how to create a 4x4 matrix in R and Python:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Create a 4x4 matrix in R
+matrix_by_row <- matrix(1:16, nrow=4, ncol=4, byrow = TRUE)
+print(matrix)
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# Create a 4x4 matrix in Python
+matrix_by_row = np.arange(1, 17).reshape(4, 4)
+print(matrix)
+```
+
+</div>
+:::
+
+In the above examples, we've created a 4x4 matrix filled by rows. You can also fill the matrix by columns by setting `byrow = FALSE` in R, or by reshaping a range in Python (`reshape` will fill automatically by row).
+
+Additionally, you can create a matrix by binding vectors together. In R, you can use `cbind()` to bind vectors as columns or `rbind()` to bind vectors as rows, whilist in python you can use `np.column_stack()` as columns and `np.row_stack()` as rows:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Create a matrix by binding vectors in R
+v1 <- c(1, 2, 3, 4)
+v2 <- c(5, 6, 7, 8)
+v3 <- c(9, 10, 11, 12)
+v4 <- c(13, 14, 15, 16)
+
+# Bind vectors as columns
+matrix_by_col <- cbind(v1, v2, v3, v4)
+print(matrix)
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# Create a matrix by binding vectors in Python
+v1 = np.array([1, 2, 3, 4])
+v2 = np.array([5, 6, 7, 8])
+v3 = np.array([9, 10, 11, 12])
+v4 = np.array([13, 14, 15, 16])
+
+# Bind vectors as columns
+matrix_by_col = np.column_stack((v1, v2, v3, v4))
+print(matrix)
+```
+
+</div>
+:::
+
+In the above examples, we've created a 4x4 matrix by binding four vectors as columns. You can also bind vectors as rows by using `rbind()` in R, or `np.vstack()` in Python.
+
+
+
+Sure, here's how you can expand on the concept of "reshaping a range" and illustrate the transpose operation:
+
+Now, let's illustrate the transpose operation. Recall that the transpose of a matrix is obtained by flipping it over its diagonal. This switches the row and column indices of each element. In R, you can use the `t()` function to transpose a matrix, while in Python, you can use the `T` attribute or the `transpose()` function.
+
+Let's compare the matrices created above with their transposes:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Transpose the matrix in R
+t(matrix_by_row)
+
+# comparing the elements of the transposed
+# matrix by row with that filled by columns
+t(matrix_by_row) == matrix_by_col
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# Transpose the matrix in Python
+matrix_by_row.T
+
+# comparing the elements of the transposed
+# matrix by row with that filled by columns
+matrix_by_row.T == matrix_by_col
+```
+
+</div>
+:::
+
+As you can see, unsurprisingly, the transpose of the filled by row has all elements equals to the one filled by column.
+
 
 
 ```{=html}
