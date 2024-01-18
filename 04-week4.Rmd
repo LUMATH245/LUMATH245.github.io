@@ -607,6 +607,16 @@ print(matrix)
 ```{python}
 # Create a 4x4 matrix in Python
 matrix_by_row = np.arange(1, 17).reshape(4, 4)
+
+# alternatively, you can write it by hand as a list of lists
+matrix_by_row = np.array([
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+  [9, 10, 11, 12],
+  [13, 14, 15, 16]
+])
+
+
 print(matrix)
 ```
 
@@ -698,6 +708,98 @@ matrix_by_row.T == matrix_by_col
 :::
 
 As you can see, unsurprisingly, the transpose of the filled by row has all elements equals to the one filled by column.
+
+### Matrix Operations
+
+As with vectors, we can do operations with matrices. We'll start by creating a simple 3x3 matrix, and a 3x1 vector.
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Define a 3x3 full-rank matrix in R
+A <- matrix(c(1:9), nrow=3, ncol=3)
+
+# Define a 3x1 vector in R
+v <- c(1, 2, 3)
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# Define a 3x3 full-rank matrix in Python
+A = np.arange(1,10).reshape(3,3)
+
+# Define a 3x1 vector in Python
+v = np.array([1, 2, 3])
+```
+
+</div>
+:::
+
+Now, as in chapter two, R and Python (assuming you're using numpy) will be able to handle both:
+
+1. **Element-wise Operations**: These operations are performed on corresponding elements of matrices. This is simply done by calling a given function on a matrix. There's few examples below, including element-wise multiplication, also known as the Hadamard product.
+
+2. **Matrix Multiplication**: Remember, the dimensions of the matrices must be compatible for these operations to be valid:  when we multiply two matrices, the number of columns in the first matrix should be equal to the number of rows in the second matrix. If they're not, you'll get an error. The resulting matrix has each element as the dot product of the corresponding row and column from the input matrices.
+
+Let's see these operations in action:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Matrix addition
+A + A
+
+# Element-wise multiplication
+A * A
+
+# Squaring all elements (equivalent to above)
+A^2
+
+# Matrix multiplication
+A %*% A
+
+# Matrix-vector multiplication
+A %*% v
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# Matrix addition
+A + A
+
+# Element-wise multiplication
+A * A
+
+# Squaring all elements (equivalent to above)
+A ** 2
+
+# Matrix multiplication
+np.dot(A, A)
+
+# Matrix-vector multiplication
+np.dot(A, v)
+```
+
+</div>
+:::
+
+
 
 
 
