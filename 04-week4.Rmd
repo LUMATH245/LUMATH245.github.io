@@ -591,7 +591,7 @@ Let's see how to create a 4x4 matrix in R and Python:
 ```{r}
 # Create a 4x4 matrix in R
 matrix_by_row <- matrix(1:16, nrow=4, ncol=4, byrow = TRUE)
-print(matrix)
+matrix_by_row
 ```
 
 </div>
@@ -613,7 +613,7 @@ matrix_by_row = np.array([
 ])
 
 
-print(matrix)
+matrix_by_row
 ```
 
 </div>
@@ -637,7 +637,7 @@ v4 <- c(13, 14, 15, 16)
 
 # Bind vectors as columns
 matrix_by_col <- cbind(v1, v2, v3, v4)
-print(matrix)
+matrix_by_col
 ```
 
 </div>
@@ -655,7 +655,7 @@ v4 = np.array([13, 14, 15, 16])
 
 # Bind vectors as columns
 matrix_by_col = np.column_stack((v1, v2, v3, v4))
-print(matrix)
+matrix_by_col
 ```
 
 </div>
@@ -920,6 +920,8 @@ np.linalg.eig(B)
 ### An end note to this chapter
 
 Both R and Python are multi-paradigm languages. This means that they have functional programming features, such as those we saw today, as well as **object oriented programming** features (R, in particular, supports even *multiple dispatch*). We have covered the first today as this is a scientific computing module, but we won't cover the second. I heavily encourage you to research about it in your own time, in particular if you enjoy programming. Those are all concepts that gravitate around how we define objects on a computer, and how these objects should interact with functions. It can get pretty abstract really quickly, and there's no true answer -- I personally, to this date, have intense arguments with colleagues about what's the best way of coding something. R, in particular, being a slab of several programming paradigms, it's a great playground to test and compare these concepts in practice. Recall it was created by joining 2 programming languages, and was modernized at least 3 times, to include 3 implementations of object oriented programming and several functional programming features. You could say I have a love/hate relationship with R:
+
+![](images/chapter4/Rprog.png)
 
 ```{=html}
 <style type="text/css">

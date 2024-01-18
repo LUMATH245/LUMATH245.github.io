@@ -470,7 +470,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">4.1.3</span> Reduce Operation<a href="maps_alg.html#reduce-operation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>reduce</code> operation is a function that takes a binary function (a function that takes two arguments) and a list or vector as input, and returns a single value. It works by applying the function to the first two elements of the list, then applying the function to the result and the next element, and so on, until it has processed all the elements of the list.</p>
 <p>This operation is called <code>reduce</code> because it reduces a list of values down to a single value. It’s also known as <code>fold</code>, <code>accumulate</code>, <code>compress</code>, or <code>inject</code> in other programming languages.</p>
-<p><a href="reduce_scheme" id="reduce_scheme"><img src="images/chapter4/reduce.png" width="265" /></a></p>
+<p><a href="reduce_scheme"><img src="images/chapter4/reduce.png" width="265" /></a></p>
 <p>To give an example, let’s use the <code>reduce</code> operation to compute the dot product of two vectors. We have seen this already in Chapter <a href="log_vec.html#vectors">2.4</a>, however, this time, we will implement the function ourselves! We can compute this using the <code>map2</code> operation to multiply the components and the <code>reduce</code> operation to sum the results:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
@@ -547,16 +547,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">4.1.5</span> State in Functional Programming<a href="maps_alg.html#state-in-functional-programming" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>reduce</code> operation is a way of performing a <em>recursion</em> operation in functional programming. It applies a binary function to the first two elements of a list, then applies the function to the result and the next element, and so on, until it has processed all the elements of the list. This is essentially a function concatenation on the result of a previous iteration. Go and have a better look at Figure <a href="#fig:reduce-scheme"><strong>??</strong></a>!</p>
 <p>This brings us to the concept of recursion, which is a method where the solution to a problem depends on solutions to smaller instances of the same problem. In functional programming, recursion is often used as a way to deal with <strong>state</strong>.</p>
-<p>Let’s illustrate how the recursion works with the same Fibonacci series example recursion.
-We can define a function called <span class="math inline">\(f\)</span> that:</p>
+<p>Let’s illustrate how the recursion works with the same Fibonacci series example recursion. We can define a function called <span class="math inline">\(f\)</span> that:</p>
 <p><span class="math display">\[
     f(n)=
 \begin{cases}
     n,&amp; \text{if } n \leq 1\\
     f(n-1) + f(n-2),              &amp; \text{otherwise}
 \end{cases}
-\]</span>
-This function, for a given <span class="math inline">\(n\)</span>, will return the corresponding <span class="math inline">\(r_n\)</span> value of the Fibonacci sequence (see past week).</p>
+\]</span> This function, for a given <span class="math inline">\(n\)</span>, will return the corresponding <span class="math inline">\(r_n\)</span> value of the Fibonacci sequence (see past week).</p>
 <p>Now, the cool thing is: it is possible to write this exact statement as a program too! Have a look at the code below:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
@@ -588,23 +586,352 @@ This function, for a given <span class="math inline">\(n\)</span>, will return t
 </div>
 </div>
 <p>In the above examples, we’ve defined a recursive function <code>fibonacci</code> that computes the Fibonacci series. We then used this function compute Fibonacci series: recall that the <code>fibonacci</code> function only returns the <span class="math inline">\(n^{th}\)</span> element of the series, so to get the first 10 numbers we need a map statement.</p>
-<p>However, it’s important to note that while recursion is a powerful concept, it can be impractical in practice due to its high computational complexity and the risk of stack overflow for large inputs.
-Most of the tasks in functional programming are either solved via <code>map</code> and <code>reduce</code> operations or, eventually, through for loops. These methods are generally more efficient and can handle larger inputs. <strong>For this reason, my friends, this is the last time we will be seeing recursions in this module</strong>. Brief but intense.</p>
+<p>However, it’s important to note that while recursion is a powerful concept, it can be impractical in practice due to its high computational complexity and the risk of running out of memory for large inputs. Most of the tasks in functional programming are either solved via <code>map</code> and <code>reduce</code> operations or, eventually, through for loops. These methods are generally more efficient and can handle larger inputs. <strong>For this reason, my friends, this is the last time we will be seeing recursions in this module</strong>. Brief but intense.</p>
 </div>
 </div>
 <div id="doing-linear-algebra" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Doing Linear Algebra<a href="maps_alg.html#doing-linear-algebra" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>Mention how we have already covered some basics on how to do functions on one dimensional vectors</li>
-<li>We will now introduce two dimentional arrays, e.g. homogeneous vectors of vectors of doubles, aka matrices</li>
-<li>Give an example on how to write a 4x4 matrix in R and python</li>
-</ul>
+<div id="building-matrices" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Building Matrices<a href="maps_alg.html#building-matrices" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In the previous chapters, we have covered some basics on how to perform operations on one-dimensional vectors, and the dot product. Now, we are going to extend our understanding to two dimensions with <strong>matrices</strong>.</p>
+<p>A <strong>matrix</strong> is a mathematical term for a two-dimensional array of numbers, while a vector is a one-dimensional array. In other words, you can think of a matrix as a homogeneous vector of vectors of doubles, both in R and Python.</p>
+<p>Let’s see how to create a 4x4 matrix in R and Python:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="maps_alg.html#cb523-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 4x4 matrix in R</span></span>
+<span id="cb523-2"><a href="maps_alg.html#cb523-2" aria-hidden="true" tabindex="-1"></a>matrix_by_row <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">16</span>, <span class="at">nrow=</span><span class="dv">4</span>, <span class="at">ncol=</span><span class="dv">4</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb523-3"><a href="maps_alg.html#cb523-3" aria-hidden="true" tabindex="-1"></a>matrix_by_row</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    2    3    4
+## [2,]    5    6    7    8
+## [3,]    9   10   11   12
+## [4,]   13   14   15   16</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb525"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb525-1"><a href="maps_alg.html#cb525-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 4x4 matrix in Python</span></span>
+<span id="cb525-2"><a href="maps_alg.html#cb525-2" aria-hidden="true" tabindex="-1"></a>matrix_by_row <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">17</span>).reshape(<span class="dv">4</span>, <span class="dv">4</span>)</span>
+<span id="cb525-3"><a href="maps_alg.html#cb525-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb525-4"><a href="maps_alg.html#cb525-4" aria-hidden="true" tabindex="-1"></a><span class="co"># alternatively, you can write it by hand as a list of lists</span></span>
+<span id="cb525-5"><a href="maps_alg.html#cb525-5" aria-hidden="true" tabindex="-1"></a>matrix_by_row <span class="op">=</span> np.array([</span>
+<span id="cb525-6"><a href="maps_alg.html#cb525-6" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>],</span>
+<span id="cb525-7"><a href="maps_alg.html#cb525-7" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>],</span>
+<span id="cb525-8"><a href="maps_alg.html#cb525-8" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>],</span>
+<span id="cb525-9"><a href="maps_alg.html#cb525-9" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">16</span>]</span>
+<span id="cb525-10"><a href="maps_alg.html#cb525-10" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb525-11"><a href="maps_alg.html#cb525-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb525-12"><a href="maps_alg.html#cb525-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb525-13"><a href="maps_alg.html#cb525-13" aria-hidden="true" tabindex="-1"></a>matrix_by_row</span></code></pre></div>
+<pre><code>## array([[ 1,  2,  3,  4],
+##        [ 5,  6,  7,  8],
+##        [ 9, 10, 11, 12],
+##        [13, 14, 15, 16]])</code></pre>
+</div>
+</div>
+<p>In the above examples, we’ve created a 4x4 matrix filled by rows. You can also fill the matrix by columns by setting <code>byrow = FALSE</code> in R, or by reshaping a range in Python (<code>reshape</code> will fill automatically by row).</p>
+<p>Additionally, you can create a matrix by binding vectors together. In R, you can use <code>cbind()</code> to bind vectors as columns or <code>rbind()</code> to bind vectors as rows, whilist in python you can use <code>np.column_stack()</code> as columns and <code>np.row_stack()</code> as rows:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="maps_alg.html#cb527-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a matrix by binding vectors in R</span></span>
+<span id="cb527-2"><a href="maps_alg.html#cb527-2" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb527-3"><a href="maps_alg.html#cb527-3" aria-hidden="true" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>)</span>
+<span id="cb527-4"><a href="maps_alg.html#cb527-4" aria-hidden="true" tabindex="-1"></a>v3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>)</span>
+<span id="cb527-5"><a href="maps_alg.html#cb527-5" aria-hidden="true" tabindex="-1"></a>v4 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">16</span>)</span>
+<span id="cb527-6"><a href="maps_alg.html#cb527-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb527-7"><a href="maps_alg.html#cb527-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Bind vectors as columns</span></span>
+<span id="cb527-8"><a href="maps_alg.html#cb527-8" aria-hidden="true" tabindex="-1"></a>matrix_by_col <span class="ot">&lt;-</span> <span class="fu">cbind</span>(v1, v2, v3, v4)</span>
+<span id="cb527-9"><a href="maps_alg.html#cb527-9" aria-hidden="true" tabindex="-1"></a>matrix_by_col</span></code></pre></div>
+<pre><code>##      v1 v2 v3 v4
+## [1,]  1  5  9 13
+## [2,]  2  6 10 14
+## [3,]  3  7 11 15
+## [4,]  4  8 12 16</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb529"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb529-1"><a href="maps_alg.html#cb529-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a matrix by binding vectors in Python</span></span>
+<span id="cb529-2"><a href="maps_alg.html#cb529-2" aria-hidden="true" tabindex="-1"></a>v1 <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span>
+<span id="cb529-3"><a href="maps_alg.html#cb529-3" aria-hidden="true" tabindex="-1"></a>v2 <span class="op">=</span> np.array([<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>])</span>
+<span id="cb529-4"><a href="maps_alg.html#cb529-4" aria-hidden="true" tabindex="-1"></a>v3 <span class="op">=</span> np.array([<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>])</span>
+<span id="cb529-5"><a href="maps_alg.html#cb529-5" aria-hidden="true" tabindex="-1"></a>v4 <span class="op">=</span> np.array([<span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">16</span>])</span>
+<span id="cb529-6"><a href="maps_alg.html#cb529-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb529-7"><a href="maps_alg.html#cb529-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Bind vectors as columns</span></span>
+<span id="cb529-8"><a href="maps_alg.html#cb529-8" aria-hidden="true" tabindex="-1"></a>matrix_by_col <span class="op">=</span> np.column_stack((v1, v2, v3, v4))</span>
+<span id="cb529-9"><a href="maps_alg.html#cb529-9" aria-hidden="true" tabindex="-1"></a>matrix_by_col</span></code></pre></div>
+<pre><code>## array([[ 1,  5,  9, 13],
+##        [ 2,  6, 10, 14],
+##        [ 3,  7, 11, 15],
+##        [ 4,  8, 12, 16]])</code></pre>
+</div>
+</div>
+<p>In the above examples, we’ve created a 4x4 matrix by binding four vectors as columns. You can also bind vectors as rows by using <code>rbind()</code> in R, or <code>np.vstack()</code> in Python.</p>
+<p>Sure, here’s how you can expand on the concept of “reshaping a range” and illustrate the transpose operation:</p>
+<p>Now, let’s illustrate the transpose operation. Recall that the transpose of a matrix is obtained by flipping it over its diagonal. This switches the row and column indices of each element. In R, you can use the <code>t()</code> function to transpose a matrix, while in Python, you can use the <code>T</code> attribute or the <code>transpose()</code> function.</p>
+<p>Let’s compare the matrices created above with their transposes:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="maps_alg.html#cb531-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transpose the matrix in R</span></span>
+<span id="cb531-2"><a href="maps_alg.html#cb531-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(matrix_by_row)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    5    9   13
+## [2,]    2    6   10   14
+## [3,]    3    7   11   15
+## [4,]    4    8   12   16</code></pre>
+<div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="maps_alg.html#cb533-1" aria-hidden="true" tabindex="-1"></a><span class="co"># comparing the elements of the transposed</span></span>
+<span id="cb533-2"><a href="maps_alg.html#cb533-2" aria-hidden="true" tabindex="-1"></a><span class="co"># matrix by row with that filled by columns</span></span>
+<span id="cb533-3"><a href="maps_alg.html#cb533-3" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(matrix_by_row) <span class="sc">==</span> matrix_by_col</span></code></pre></div>
+<pre><code>##        v1   v2   v3   v4
+## [1,] TRUE TRUE TRUE TRUE
+## [2,] TRUE TRUE TRUE TRUE
+## [3,] TRUE TRUE TRUE TRUE
+## [4,] TRUE TRUE TRUE TRUE</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb535"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb535-1"><a href="maps_alg.html#cb535-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transpose the matrix in Python</span></span>
+<span id="cb535-2"><a href="maps_alg.html#cb535-2" aria-hidden="true" tabindex="-1"></a>matrix_by_row.T</span></code></pre></div>
+<pre><code>## array([[ 1,  5,  9, 13],
+##        [ 2,  6, 10, 14],
+##        [ 3,  7, 11, 15],
+##        [ 4,  8, 12, 16]])</code></pre>
+<div class="sourceCode" id="cb537"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb537-1"><a href="maps_alg.html#cb537-1" aria-hidden="true" tabindex="-1"></a><span class="co"># comparing the elements of the transposed</span></span>
+<span id="cb537-2"><a href="maps_alg.html#cb537-2" aria-hidden="true" tabindex="-1"></a><span class="co"># matrix by row with that filled by columns</span></span>
+<span id="cb537-3"><a href="maps_alg.html#cb537-3" aria-hidden="true" tabindex="-1"></a>matrix_by_row.T <span class="op">==</span> matrix_by_col</span></code></pre></div>
+<pre><code>## array([[ True,  True,  True,  True],
+##        [ True,  True,  True,  True],
+##        [ True,  True,  True,  True],
+##        [ True,  True,  True,  True]])</code></pre>
+</div>
+</div>
+<p>As you can see, unsurprisingly, the transpose of the filled by row has all elements equals to the one filled by column.</p>
+</div>
+<div id="matrix-operations" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Matrix Operations<a href="maps_alg.html#matrix-operations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As with vectors, we can do operations with matrices. We’ll start by creating a simple 3x3 matrix, and a 3x1 vector.</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="maps_alg.html#cb539-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a 3x3 matrix in R</span></span>
+<span id="cb539-2"><a href="maps_alg.html#cb539-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>), <span class="at">nrow=</span><span class="dv">3</span>, <span class="at">ncol=</span><span class="dv">3</span>)</span>
+<span id="cb539-3"><a href="maps_alg.html#cb539-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb539-4"><a href="maps_alg.html#cb539-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a 3x1 vector in R</span></span>
+<span id="cb539-5"><a href="maps_alg.html#cb539-5" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span></code></pre></div>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb540"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb540-1"><a href="maps_alg.html#cb540-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a 3x3 matrix in Python</span></span>
+<span id="cb540-2"><a href="maps_alg.html#cb540-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.arange(<span class="dv">1</span>,<span class="dv">10</span>).reshape(<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb540-3"><a href="maps_alg.html#cb540-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb540-4"><a href="maps_alg.html#cb540-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a 3x1 vector in Python</span></span>
+<span id="cb540-5"><a href="maps_alg.html#cb540-5" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span></code></pre></div>
+</div>
+</div>
+<p>Now, as in chapter two, R and Python (assuming you’re using numpy) will be able to handle both:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Element-wise Operations</strong>: These operations are performed on corresponding elements of matrices. This is simply done by calling a given function on a matrix. There’s few examples below, including element-wise multiplication, also known as the Hadamard product.</p></li>
+<li><p><strong>Matrix Multiplication</strong>: Remember, the dimensions of the matrices must be compatible for these operations to be valid: when we multiply two matrices, the number of columns in the first matrix should be equal to the number of rows in the second matrix. If they’re not, you’ll get an error. The resulting matrix has each element as the dot product of the corresponding row and column from the input matrices.</p></li>
+</ol>
+<p>Let’s see these operations in action:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="maps_alg.html#cb541-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrix addition</span></span>
+<span id="cb541-2"><a href="maps_alg.html#cb541-2" aria-hidden="true" tabindex="-1"></a>A <span class="sc">+</span> A</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    2    8   14
+## [2,]    4   10   16
+## [3,]    6   12   18</code></pre>
+<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="maps_alg.html#cb543-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Element-wise multiplication</span></span>
+<span id="cb543-2"><a href="maps_alg.html#cb543-2" aria-hidden="true" tabindex="-1"></a>A <span class="sc">*</span> A</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1   16   49
+## [2,]    4   25   64
+## [3,]    9   36   81</code></pre>
+<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="maps_alg.html#cb545-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Squaring all elements (equivalent to above)</span></span>
+<span id="cb545-2"><a href="maps_alg.html#cb545-2" aria-hidden="true" tabindex="-1"></a>A<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1   16   49
+## [2,]    4   25   64
+## [3,]    9   36   81</code></pre>
+<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="maps_alg.html#cb547-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrix multiplication</span></span>
+<span id="cb547-2"><a href="maps_alg.html#cb547-2" aria-hidden="true" tabindex="-1"></a>A <span class="sc">%*%</span> A</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]   30   66  102
+## [2,]   36   81  126
+## [3,]   42   96  150</code></pre>
+<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="maps_alg.html#cb549-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrix-vector multiplication</span></span>
+<span id="cb549-2"><a href="maps_alg.html#cb549-2" aria-hidden="true" tabindex="-1"></a>A <span class="sc">%*%</span> v</span></code></pre></div>
+<pre><code>##      [,1]
+## [1,]   30
+## [2,]   36
+## [3,]   42</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb551"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb551-1"><a href="maps_alg.html#cb551-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrix addition</span></span>
+<span id="cb551-2"><a href="maps_alg.html#cb551-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">+</span> A</span></code></pre></div>
+<pre><code>## array([[ 2,  4,  6],
+##        [ 8, 10, 12],
+##        [14, 16, 18]])</code></pre>
+<div class="sourceCode" id="cb553"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb553-1"><a href="maps_alg.html#cb553-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Element-wise multiplication</span></span>
+<span id="cb553-2"><a href="maps_alg.html#cb553-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">*</span> A</span></code></pre></div>
+<pre><code>## array([[ 1,  4,  9],
+##        [16, 25, 36],
+##        [49, 64, 81]])</code></pre>
+<div class="sourceCode" id="cb555"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb555-1"><a href="maps_alg.html#cb555-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Squaring all elements (equivalent to above)</span></span>
+<span id="cb555-2"><a href="maps_alg.html#cb555-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">**</span> <span class="dv">2</span></span></code></pre></div>
+<pre><code>## array([[ 1,  4,  9],
+##        [16, 25, 36],
+##        [49, 64, 81]])</code></pre>
+<div class="sourceCode" id="cb557"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb557-1"><a href="maps_alg.html#cb557-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrix multiplication</span></span>
+<span id="cb557-2"><a href="maps_alg.html#cb557-2" aria-hidden="true" tabindex="-1"></a>np.dot(A, A)</span></code></pre></div>
+<pre><code>## array([[ 30,  36,  42],
+##        [ 66,  81,  96],
+##        [102, 126, 150]])</code></pre>
+<div class="sourceCode" id="cb559"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb559-1"><a href="maps_alg.html#cb559-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrix-vector multiplication</span></span>
+<span id="cb559-2"><a href="maps_alg.html#cb559-2" aria-hidden="true" tabindex="-1"></a>np.dot(A, v)</span></code></pre></div>
+<pre><code>## array([14, 32, 50])</code></pre>
+</div>
+</div>
+<div id="inversion-eigenvalues-and-eigenvectors" class="section level4 hasAnchor" number="4.2.2.1">
+<h4><span class="header-section-number">4.2.2.1</span> Inversion, Eigenvalues and Eigenvectors<a href="maps_alg.html#inversion-eigenvalues-and-eigenvectors" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>For this section, we’ll reuse the matrix <code>A</code> from the previous examples. The rank of A, is, however, 2, as the third column is the sum of the first and second columns. This is going to be cool as it’s going to show us what happens on a computer when a matrix that does not have a unique inverse. Of course, as a counter example, we need to introduce a new full rank matrix <code>B</code> which will have a unique inverse:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="maps_alg.html#cb561-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a full rank matrix</span></span>
+<span id="cb561-2"><a href="maps_alg.html#cb561-2" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">3</span>), <span class="at">nrow=</span><span class="dv">3</span>, <span class="at">byrow=</span>T)</span>
+<span id="cb561-3"><a href="maps_alg.html#cb561-3" aria-hidden="true" tabindex="-1"></a>B</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    4    5    6
+## [3,]    1    4    3</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb563"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb563-1"><a href="maps_alg.html#cb563-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a full rank matrix</span></span>
+<span id="cb563-2"><a href="maps_alg.html#cb563-2" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">3</span>]])</span>
+<span id="cb563-3"><a href="maps_alg.html#cb563-3" aria-hidden="true" tabindex="-1"></a>B</span></code></pre></div>
+<pre><code>## array([[1, 2, 3],
+##        [4, 5, 6],
+##        [1, 4, 3]])</code></pre>
+</div>
+</div>
+<p>Now, let’s compute the determinant of our matrices <code>A</code> and <code>B</code>:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="maps_alg.html#cb565-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the determinant of A and B</span></span>
+<span id="cb565-2"><a href="maps_alg.html#cb565-2" aria-hidden="true" tabindex="-1"></a><span class="fu">det</span>(A)</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="maps_alg.html#cb567-1" aria-hidden="true" tabindex="-1"></a><span class="fu">det</span>(B)</span></code></pre></div>
+<pre><code>## [1] 12</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb569"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb569-1"><a href="maps_alg.html#cb569-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the determinant of A and B</span></span>
+<span id="cb569-2"><a href="maps_alg.html#cb569-2" aria-hidden="true" tabindex="-1"></a>np.linalg.det(A)</span></code></pre></div>
+<pre><code>## 0.0</code></pre>
+<div class="sourceCode" id="cb571"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb571-1"><a href="maps_alg.html#cb571-1" aria-hidden="true" tabindex="-1"></a>np.linalg.det(B)</span></code></pre></div>
+<pre><code>## 12.0</code></pre>
+</div>
+</div>
+<p>As you can see, the determinant of a full-rank matrix is non-zero, while the determinant of a non-full rank matrix is zero.</p>
+<p>Next, let’s compute the inverse of our matrices. Remember, only full-rank matrices have an inverse:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="maps_alg.html#cb573-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the inverse of A</span></span>
+<span id="cb573-2"><a href="maps_alg.html#cb573-2" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(A)</span></code></pre></div>
+<pre><code>## Error in solve.default(A): Lapack routine dgesv: system is exactly singular: U[3,3] = 0</code></pre>
+<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="maps_alg.html#cb575-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the inverse of B</span></span>
+<span id="cb575-2"><a href="maps_alg.html#cb575-2" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(B)</span></code></pre></div>
+<pre><code>##            [,1]       [,2]  [,3]
+## [1,] -0.7500000  0.5000000 -0.25
+## [2,] -0.5000000  0.0000000  0.50
+## [3,]  0.9166667 -0.1666667 -0.25</code></pre>
+<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="maps_alg.html#cb577-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(B) <span class="sc">%*%</span> B</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    0    0
+## [2,]    0    1    0
+## [3,]    0    0    1</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb579"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb579-1"><a href="maps_alg.html#cb579-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the inverse of A in Python</span></span>
+<span id="cb579-2"><a href="maps_alg.html#cb579-2" aria-hidden="true" tabindex="-1"></a>np.linalg.inv(A)</span></code></pre></div>
+<pre><code>## Singular matrix</code></pre>
+<div class="sourceCode" id="cb581"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb581-1"><a href="maps_alg.html#cb581-1" aria-hidden="true" tabindex="-1"></a>np.linalg.inv(B)</span></code></pre></div>
+<pre><code>## array([[-0.75      ,  0.5       , -0.25      ],
+##        [-0.5       ,  0.        ,  0.5       ],
+##        [ 0.91666667, -0.16666667, -0.25      ]])</code></pre>
+<div class="sourceCode" id="cb583"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb583-1"><a href="maps_alg.html#cb583-1" aria-hidden="true" tabindex="-1"></a>np.dot(np.linalg.inv(B), B)</span></code></pre></div>
+<pre><code>## array([[1., 0., 0.],
+##        [0., 1., 0.],
+##        [0., 0., 1.]])</code></pre>
+</div>
+</div>
+<p>Finally, let’s compute the eigenvalues and eigenvectors of our matrices <code>A</code> and <code>B</code>. The eigenvalues and eigenvectors provide important insights into the properties of the matrix:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="maps_alg.html#cb585-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the eigenvalues and eigenvectors of A and B in R</span></span>
+<span id="cb585-2"><a href="maps_alg.html#cb585-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen</span>(A)</span></code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1]  1.611684e+01 -1.116844e+00 -5.700691e-16
+## 
+## $vectors
+##            [,1]       [,2]       [,3]
+## [1,] -0.4645473 -0.8829060  0.4082483
+## [2,] -0.5707955 -0.2395204 -0.8164966
+## [3,] -0.6770438  0.4038651  0.4082483</code></pre>
+<div class="sourceCode" id="cb587"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb587-1"><a href="maps_alg.html#cb587-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen</span>(B)</span></code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1] 10.2807637+0.0000000i -0.6403818+0.8701377i -0.6403818-0.8701377i
+## 
+## $vectors
+##              [,1]                  [,2]                  [,3]
+## [1,] 0.3318753+0i -0.2937554-0.4626440i -0.2937554+0.4626440i
+## [2,] 0.8067885+0i -0.4955070+0.2516526i -0.4955070-0.2516526i
+## [3,] 0.4888263+0i  0.6251497+0.0000000i  0.6251497+0.0000000i</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb589"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb589-1"><a href="maps_alg.html#cb589-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the eigenvalues and eigenvectors of A and B in Python</span></span>
+<span id="cb589-2"><a href="maps_alg.html#cb589-2" aria-hidden="true" tabindex="-1"></a>np.linalg.eig(A)</span></code></pre></div>
+<pre><code>## EigResult(eigenvalues=array([ 1.61168440e+01, -1.11684397e+00, -1.30367773e-15]), eigenvectors=array([[-0.23197069, -0.78583024,  0.40824829],
+##        [-0.52532209, -0.08675134, -0.81649658],
+##        [-0.8186735 ,  0.61232756,  0.40824829]]))</code></pre>
+<div class="sourceCode" id="cb591"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb591-1"><a href="maps_alg.html#cb591-1" aria-hidden="true" tabindex="-1"></a>np.linalg.eig(B)</span></code></pre></div>
+<pre><code>## EigResult(eigenvalues=array([10.28076366+0.j        , -0.64038183+0.87013768j,
+##        -0.64038183-0.87013768j]), eigenvectors=array([[ 0.33187527+0.j        , -0.29375539-0.46264397j,
+##         -0.29375539+0.46264397j],
+##        [ 0.80678845+0.j        , -0.49550702+0.25165256j,
+##         -0.49550702-0.25165256j],
+##        [ 0.48882634+0.j        ,  0.62514967+0.j        ,
+##          0.62514967-0.j        ]]))</code></pre>
+</div>
+</div>
+<p><strong>In R</strong>, the <code>eigen()</code> function returns a list containing two components: <code>values</code> and <code>vectors</code>, which represent the eigenvalues and eigenvectors, respectively. Those are stored in a list (we have seen this earlier). You can access the elements of a list using the <code>$</code> operator. For example, if <code>result</code> is the output of <code>eigen(B)</code>, e.g. <code>result &lt;- eigen(B)</code> you can access the eigenvalues with <code>result$values</code> and the eigenvectors with <code>result$vectors</code>. Alternatively, you can access the first element of a list via <code>result[[1]]</code> and the second via <code>result[[2]]</code>.</p>
+<p><strong>In Python</strong>, the <code>np.linalg.eig()</code> function returns a tuple containing the eigenvalues and eigenvectors. This result can be interpreted as an object of type <code>EigResult</code>. An object in Python is an instance of a class, which can have attributes (data associated with the object) and methods (functions associated with the object). You can access the attributes of an object using the <code>.</code> operator. For example, if <code>result</code> is the output of <code>np.linalg.eig(B)</code>, e.g. <code>result &lt;- eigen(B)</code>, you can access the eigenvalues with <code>result.eigenvalues</code> and the eigenvectors with <code>result.eigenvectors</code>. Surprisingly enough, you used methods already all this time without knowing! Think about the many occasions you used a <code>.</code>: you were accessing a method in an object.</p>
+</div>
+</div>
+<div id="an-end-note-to-this-chapter" class="section level3 hasAnchor" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> An end note to this chapter<a href="maps_alg.html#an-end-note-to-this-chapter" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Both R and Python are multi-paradigm languages. This means that they have functional programming features, such as those we saw today, as well as <strong>object oriented programming</strong> features (R, in particular, supports even <em>multiple dispatch</em>). We have covered the first today as this is a scientific computing module, but we won’t cover the second. I heavily encourage you to research about it in your own time, in particular if you enjoy programming. Those are all concepts that gravitate around how we define objects on a computer, and how these objects should interact with functions. It can get pretty abstract really quickly, and there’s no true answer – I personally, to this date, have intense arguments with colleagues about what’s the best way of coding something. R, in particular, being a slab of several programming paradigms, it’s a great playground to test and compare these concepts in practice. Recall it was created by joining 2 programming languages, and was modernized at least 3 times, to include 3 implementations of object oriented programming and several functional programming features. You could say I have a love/hate relationship with R:</p>
+<p><img src="images/chapter4/Rprog.png" /></p>
 <style type="text/css">
 .book .book-body .page-wrapper .page-inner {
   max-width: 1200px !important;
 }
 </style>
 
+</div>
 </div>
 </div>
             </section>
