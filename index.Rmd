@@ -37,7 +37,7 @@ Specifically, we'll cover:
 
 3.  Functions and Loops
 
-4.  Maps and Linear Algebra
+4.  Functional Programming and Linear Algebra
 
 5.  Data Frames and Plotting
 
@@ -67,6 +67,9 @@ This notes are heavily inspired from the materials of including:
 https://www.lancaster.ac.uk/~romano/teaching/2324MATH550/
 
 Some of the structure of the notes, some example and exercises are from: 
+
+-   Hadley Wickham: "Advanced R." 2nd Edition. https://adv-r.hadley.nz/index.html.
+
 
 -   Azalee Bostroem, Trevor Bekolay, and Valentina Staneva (eds):
 "Software Carpentry: Programming with Python."  Version 2016.06, June
