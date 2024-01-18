@@ -1127,11 +1127,13 @@ In this case, as soon as we find a number that meets our condition, we `break` o
 numbers <- c(15, 18, 21, 24, 27, 30)
 divisor <- 4
 found <- FALSE
-for (num in numbers) {
-  if (!found && num %% divisor == 0) {
-    print(paste(num, "is the first number divisible by", divisor))
+i <- 1
+while (!found) {
+  if (numbers[i] %% divisor == 0) {
+    print(paste(numbers[i], "is the first number divisible by", divisor))
     found <- TRUE
   }
+  i <- i + 1
 }
 ```
 
@@ -1145,10 +1147,12 @@ for (num in numbers) {
 numbers = [15, 18, 21, 24, 27, 30]
 divisor = 4
 found = False
-for num in numbers:
-  if not found and num % divisor == 0:
-    print(f"{num} is the first number divisible by {divisor}")
+i = 0
+while not found:
+  if numbers[i] % divisor == 0:
+    print(f"{numbers[i]} is the first number divisible by {divisor}")
     found = True
+  i = i + 1
 ```
 
 </div>
