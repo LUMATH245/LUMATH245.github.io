@@ -959,6 +959,11 @@ for i in range(1, 5):
 </div>
 :::
 
+**NOTE for Python users** In the print statement `print(f"{i} x {j} = {i*j}")` we used **f-string formatting**, which was introduced in Python 3.6 (the code will break on previous versions). It's a way to embed expressions (like `i*j`) inside strings, using curly braces `{}`. The expressions will be replaced with their values when the string is created. The letter `f` at the beginning of the string tells Python to allow these embedded expressions.
+
+In our example `{i}` and `{j}` will be replaced by the values of the variables `i` and `j`, and `{i*j}` will be replaced by the result of the expression `i*j`. So if `i` is 2 and `j` is 3, the string would become `"2 x 3 = 6"`.
+F-string formatting can be very useful for debugging because it allows you to easily insert the values of variables into strings, which you can then print to see what's happening in your loops!
+
 ### While loops
 
 Similarly to for loops, we have the while loops. They allow us to repeat
@@ -1073,7 +1078,7 @@ Let's break it down:
     and don't continue to up to 10. `break` could be an alternative
     stopping condition to a while loop.
 
-**NOTE** Using `break` and `next` (or `continue` in Python) statements in loops can sometimes make the code harder to understand and debug, because they can lead to unexpected jumps in the control flow. This is especially true in more complex loops where it's not immediately clear when or if the loop will be prematurely terminated or skipped.
+Using `break` and `next` (or `continue` in Python) statements in loops can sometimes make the code harder to understand and debug, because they can lead to unexpected jumps in the control flow. This is especially true in more complex loops where it's not immediately clear when or if the loop will be prematurely terminated or skipped.
 
 Let's consider a simple example where we want to find the first number in a list that is divisible by a certain number. Using `break`:
 
