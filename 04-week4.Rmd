@@ -391,7 +391,7 @@ The `reduce` operation is a function that takes a binary function (a function th
 
 This operation is called `reduce` because it reduces a list of values down to a single value. It's also known as `fold`, `accumulate`, `compress`, or `inject` in other programming languages.
 
-[![](images/chapter4/reduce.png){width="265"}](reduce_scheme){#reduce_scheme}
+[![](images/chapter4/reduce.png){width="265"}](reduce_scheme)
 
 To give an example, let's use the `reduce` operation to compute the dot product of two vectors. We have seen this already in Chapter \@ref(vectors), however, this time, we will implement the function ourselves! We can compute this using the `map2` operation to multiply the components and the `reduce` operation to sum the results:
 
@@ -510,7 +510,6 @@ or in Python:
 generic_fizzbuzz(range(1, 16), [2, 3, 5, 7], ["Skibbidi", "Fizz", "Buzz", "Yo"])
 ```
 
-
 **NOTE for R users** Bored? This module is too easy? Well, R, in the recent years, has been undergoing one of the most beautiful transformations of the languages. In general, inexperienced R users tend to drift away from the language as it's seen as inelegant, ugly, or "hacky". Well, that was prior to the `ggplot2`, `purrr` and, more in general, `tidyverse` revolution. What if I tell you that you can code the above `generic_fizzbuzz` in under 4 statements (lines) without using any brackets `{}`? You will need the pipe operator `|>` (which we'll be seeing next week), and another couple of functions. You can learn about these functions quickly via the `purrr` cheatsheet, [which you can find here](https://rstudio.github.io/cheatsheets/html/purrr.html).
 
 ### State in Functional Programming
@@ -519,8 +518,7 @@ The `reduce` operation is a way of performing a *recursion* operation in functio
 
 This brings us to the concept of recursion, which is a method where the solution to a problem depends on solutions to smaller instances of the same problem. In functional programming, recursion is often used as a way to deal with **state**.
 
-Let's illustrate how the recursion works with the same Fibonacci series example recursion. 
-We can define a function called $f$ that: 
+Let's illustrate how the recursion works with the same Fibonacci series example recursion. We can define a function called $f$ that:
 
 $$
     f(n)= 
@@ -528,8 +526,7 @@ $$
     n,& \text{if } n \leq 1\\
     f(n-1) + f(n-2),              & \text{otherwise}
 \end{cases}
-$$
-This function, for a given $n$, will return the corresponding $r_n$ value of the Fibonacci sequence (see past week). 
+$$ This function, for a given $n$, will return the corresponding $r_n$ value of the Fibonacci sequence (see past week).
 
 Now, the cool thing is: it is possible to write this exact statement as a program too! Have a look at the code below:
 
@@ -574,8 +571,7 @@ list(map(fibonacci, range(10)))
 
 In the above examples, we've defined a recursive function `fibonacci` that computes the Fibonacci series. We then used this function compute Fibonacci series: recall that the `fibonacci` function only returns the $n^{th}$ element of the series, so to get the first 10 numbers we need a map statement.
 
-However, it's important to note that while recursion is a powerful concept, it can be impractical in practice due to its high computational complexity and the risk of running out of memory for large inputs. 
-Most of the tasks in functional programming are either solved via `map` and `reduce` operations or, eventually, through for loops. These methods are generally more efficient and can handle larger inputs. **For this reason, my friends, this is the last time we will be seeing recursions in this module**. Brief but intense.
+However, it's important to note that while recursion is a powerful concept, it can be impractical in practice due to its high computational complexity and the risk of running out of memory for large inputs. Most of the tasks in functional programming are either solved via `map` and `reduce` operations or, eventually, through for loops. These methods are generally more efficient and can handle larger inputs. **For this reason, my friends, this is the last time we will be seeing recursions in this module**. Brief but intense.
 
 ## Doing Linear Algebra
 
@@ -667,8 +663,6 @@ print(matrix)
 
 In the above examples, we've created a 4x4 matrix by binding four vectors as columns. You can also bind vectors as rows by using `rbind()` in R, or `np.vstack()` in Python.
 
-
-
 Sure, here's how you can expand on the concept of "reshaping a range" and illustrate the transpose operation:
 
 Now, let's illustrate the transpose operation. Recall that the transpose of a matrix is obtained by flipping it over its diagonal. This switches the row and column indices of each element. In R, you can use the `t()` function to transpose a matrix, while in Python, you can use the `T` attribute or the `transpose()` function.
@@ -719,7 +713,7 @@ As with vectors, we can do operations with matrices. We'll start by creating a s
 **R**
 
 ```{r}
-# Define a 3x3 full-rank matrix in R
+# Define a 3x3 matrix in R
 A <- matrix(c(1:9), nrow=3, ncol=3)
 
 # Define a 3x1 vector in R
@@ -733,7 +727,7 @@ v <- c(1, 2, 3)
 **Python**
 
 ```{python}
-# Define a 3x3 full-rank matrix in Python
+# Define a 3x3 matrix in Python
 A = np.arange(1,10).reshape(3,3)
 
 # Define a 3x1 vector in Python
@@ -745,9 +739,9 @@ v = np.array([1, 2, 3])
 
 Now, as in chapter two, R and Python (assuming you're using numpy) will be able to handle both:
 
-1. **Element-wise Operations**: These operations are performed on corresponding elements of matrices. This is simply done by calling a given function on a matrix. There's few examples below, including element-wise multiplication, also known as the Hadamard product.
+1.  **Element-wise Operations**: These operations are performed on corresponding elements of matrices. This is simply done by calling a given function on a matrix. There's few examples below, including element-wise multiplication, also known as the Hadamard product.
 
-2. **Matrix Multiplication**: Remember, the dimensions of the matrices must be compatible for these operations to be valid:  when we multiply two matrices, the number of columns in the first matrix should be equal to the number of rows in the second matrix. If they're not, you'll get an error. The resulting matrix has each element as the dot product of the corresponding row and column from the input matrices.
+2.  **Matrix Multiplication**: Remember, the dimensions of the matrices must be compatible for these operations to be valid: when we multiply two matrices, the number of columns in the first matrix should be equal to the number of rows in the second matrix. If they're not, you'll get an error. The resulting matrix has each element as the dot product of the corresponding row and column from the input matrices.
 
 Let's see these operations in action:
 
@@ -799,9 +793,133 @@ np.dot(A, v)
 </div>
 :::
 
+#### Inversion, Eigenvalues and Eigenvectors
 
+For this section, we'll reuse the matrix `A` from the previous examples. The rank of A, is, however, 2, as the third column is the sum of the first and second columns. This is going to be cool as it's going to show us what happens on a computer when a matrix that does not have a unique inverse. Of course, as a counter example, we need to introduce a new full rank matrix `B` which will have a unique inverse:
 
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
 
+**R**
+
+```{r}
+# Define a full rank matrix
+B <- matrix(c(1, 2, 3, 4, 5, 6, 1, 4, 3), nrow=3, byrow=T)
+B
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# Define a full rank matrix
+B = np.array([[1, 2, 3], [4, 5, 6], [1, 4, 3]])
+B
+```
+
+</div>
+:::
+
+Now, let's compute the determinant of our matrices `A` and `B`:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Compute the determinant of A and B
+det(A)
+det(B)
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# Compute the determinant of A and B
+np.linalg.det(A)
+np.linalg.det(B)
+```
+
+</div>
+:::
+
+As you can see, the determinant of a full-rank matrix is non-zero, while the determinant of a non-full rank matrix is zero.
+
+Next, let's compute the inverse of our matrices. Remember, only full-rank matrices have an inverse:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r error=TRUE}
+# Compute the inverse of A
+solve(A)
+# Compute the inverse of B
+solve(B)
+solve(B) %*% B
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python error=TRUE}
+# Compute the inverse of A in Python
+np.linalg.inv(A)
+
+np.linalg.inv(B)
+np.dot(np.linalg.inv(B), B)
+```
+
+</div>
+:::
+
+Finally, let's compute the eigenvalues and eigenvectors of our matrices `A` and `B`. The eigenvalues and eigenvectors provide important insights into the properties of the matrix:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Compute the eigenvalues and eigenvectors of A and B in R
+eigen(A)
+eigen(B)
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# Compute the eigenvalues and eigenvectors of A and B in Python
+np.linalg.eig(A)
+np.linalg.eig(B)
+```
+
+</div>
+:::
+
+**In R**, the `eigen()` function returns a list containing two components: `values` and `vectors`, which represent the eigenvalues and eigenvectors, respectively. Those are stored in a list (we have seen this earlier). You can access the elements of a list using the `$` operator. For example, if `result` is the output of `eigen(B)`, e.g. `result <- eigen(B)` you can access the eigenvalues with `result$values` and the eigenvectors with `result$vectors`. Alternatively, you can access the first element of a list via `result[[1]]` and the second via `result[[2]]`.
+
+**In Python**, the `np.linalg.eig()` function returns a tuple containing the eigenvalues and eigenvectors. This result can be interpreted as an object of type `EigResult`. An object in Python is an instance of a class, which can have attributes (data associated with the object) and methods (functions associated with the object). You can access the attributes of an object using the `.` operator. For example, if `result` is the output of `np.linalg.eig(B)`, e.g. `result <- eigen(B)`, you can access the eigenvalues with `result.eigenvalues` and the eigenvectors with `result.eigenvectors`. Surprisingly enough, you used methods already all this time without knowing! Think about the many occasions you used a `.`: you were accessing a method in an object.
+
+### An end note to this chapter
+
+Both R and Python are multi-paradigm languages. This means that they have functional programming features, such as those we saw today, as well as **object oriented programming** features (R, in particular, supports even *multiple dispatch*). We have covered the first today as this is a scientific computing module, but we won't cover the second. I heavily encourage you to research about it in your own time, in particular if you enjoy programming. Those are all concepts that gravitate around how we define objects on a computer, and how these objects should interact with functions. It can get pretty abstract really quickly, and there's no true answer -- I personally, to this date, have intense arguments with colleagues about what's the best way of coding something. R, in particular, being a slab of several programming paradigms, it's a great playground to test and compare these concepts in practice. Recall it was created by joining 2 programming languages, and was modernized at least 3 times, to include 3 implementations of object oriented programming and several functional programming features. You could say I have a love/hate relationship with R:
 
 ```{=html}
 <style type="text/css">
