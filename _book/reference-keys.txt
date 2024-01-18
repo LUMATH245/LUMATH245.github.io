@@ -63,4 +63,5 @@ doing-linear-algebra
 building-matrices
 matrix-operations
 inversion-eigenvalues-and-eigenvectors
+exercise-implementing-a-linear-model-solver
 an-end-note-to-this-chapter

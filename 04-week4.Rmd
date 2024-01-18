@@ -784,10 +784,11 @@ A * A
 A ** 2
 
 # Matrix multiplication
-np.dot(A, A)
+A @ A
 
 # Matrix-vector multiplication
 np.dot(A, v)
+A @ v
 ```
 
 </div>
@@ -917,9 +918,52 @@ np.linalg.eig(B)
 
 **In Python**, the `np.linalg.eig()` function returns a tuple containing the eigenvalues and eigenvectors. This result can be interpreted as an object of type `EigResult`. An object in Python is an instance of a class, which can have attributes (data associated with the object) and methods (functions associated with the object). You can access the attributes of an object using the `.` operator. For example, if `result` is the output of `np.linalg.eig(B)`, e.g. `result <- eigen(B)`, you can access the eigenvalues with `result.eigenvalues` and the eigenvectors with `result.eigenvectors`. Surprisingly enough, you used methods already all this time without knowing! Think about the many occasions you used a `.`: you were accessing a method in an object.
 
-### An end note to this chapter
+Sure, here's a draft for the exercise:
 
-Both R and Python are multi-paradigm languages. This means that they have functional programming features, such as those we saw today, as well as **object oriented programming** features (R, in particular, supports even *multiple dispatch*). We have covered the first today as this is a scientific computing module, but we won't cover the second. I heavily encourage you to research about it in your own time, in particular if you enjoy programming. Those are all concepts that gravitate around how we define objects on a computer, and how these objects should interact with functions. It can get pretty abstract really quickly, and there's no true answer -- I personally, to this date, have intense arguments with colleagues about what's the best way of coding something. R, in particular, being a slab of several programming paradigms, it's a great playground to test and compare these concepts in practice. Recall it was created by joining 2 programming languages, and was modernized at least 3 times, to include 3 implementations of object oriented programming and several functional programming features. You could say I have a love/hate relationship with R:
+---
+
+## 5. Exercise: Implementing a Linear Model Solver
+
+In this exercise, we will implement a linear model solver from scratch. This will help you understand the underlying mathematics of linear regression and how it can be implemented in code.
+
+A linear model is a mathematical model that assumes a linear relationship between the input variables ($X$) and the single output variable ($y$). More specifically, that y can be calculated from a linear combination of the input variables ($X$). When there is a single input variable, the method is referred to as simple linear regression.
+
+The general form of this model is:
+
+$$y = X\beta + \epsilon$$
+
+where:
+- $y$ is the output variable.
+- $X$ is the input variable.
+- $\beta$ is the vector of coefficients.
+- $\epsilon$ is the error term.
+
+The coefficients of the linear model can be estimated using the formula for $\hat{\beta}$:
+
+$$\hat{\beta} = (X^T X)^{-1} X^T y$$
+
+1.    Write some code to create the matrix and vector
+
+$$
+X = \begin{bmatrix}
+1 & 2 \\
+1 & 3 \\
+1 & 4 \\
+1 & 5 \\
+\end{bmatrix},\
+y = \begin{bmatrix}
+2 \\
+3 \\
+4 \\
+5 \\
+\end{bmatrix}.
+$$
+2.    Using the formula above, estimate the coefficients $\hat{\beta}$.
+
+
+## An end note to this chapter
+
+Both R and Python are multi-paradigm languages. This means that they have functional programming features, such as those we saw today, as well as **object oriented programming** features (R, in particular, supports even *multiple dispatch*). We have covered the first today as this is a scientific computing module, but we won't cover the second. I heavily encourage you to research about it in your own time, in particular if you enjoy programming. Those are all concepts that gravitate around how we define objects on a computer, and how these objects should interact with functions. It can get pretty abstract really quickly, and there's no true answer -- I personally, to this date, have intense arguments with colleagues about what's the best way of coding something. R, in particular, being a slab of several programming paradigms, it's a great playground to test and compare these concepts in practice. Recall it was created from a 1970s programming language, and was modernized at least 3 times, to include 3 implementations of object oriented programming and several functional programming features. You could say I have a love/hate relationship with R...
 
 ![](images/chapter4/Rprog.png)
 
