@@ -8,6 +8,10 @@ editor_options:
 
 ## Data Frames
 
+```{r}
+library(tidyverse)
+```
+
 ### Constructing a data frame
 
 ### Mutating a data frame
@@ -40,7 +44,6 @@ The exercise has two levels of completition, a basic level where we will be plot
 You should get something like:
 
 ```{r echo=FALSE}
-library(tidyverse)
 x = seq(0, 10, by=0.01)
 names = c("sin", "cos")
 funcs = c(sin, cos)
