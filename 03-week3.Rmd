@@ -862,7 +862,7 @@ Our vectors, where we stored our results at every iteration, should be
 
 ```{r}
 # Print the Fibonacci sequence
-print(fibonacci)
+fibonacci
 ```
 
 </div>
@@ -873,7 +873,7 @@ print(fibonacci)
 
 ```{python}
 # Print the Fibonacci sequence
-print(fibonacci)
+fibonacci
 ```
 
 </div>
@@ -1080,7 +1080,7 @@ Let's break it down:
 
 Using `break` and `next` (or `continue` in Python) statements in loops can sometimes make the code harder to understand and debug, because they can lead to unexpected jumps in the control flow. This is especially true in more complex loops where it's not immediately clear when or if the loop will be prematurely terminated or skipped.
 
-Let's consider a simple example where we want to find the first number in a list that is divisible by a certain number. Using `break`:
+Usually, there's always alternatives to `breaks`. Let's consider a simple example where we want to find the first number in a list that is divisible by a certain number. Using `break`:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -1116,7 +1116,7 @@ for num in numbers:
 </div>
 :::
 
-In this case, as soon as we find a number that meets our condition, we `break` out of the loop. However, if we want to avoid using `break`, we could rewrite the loop to use a boolean flag that indicates whether we've found a suitable number:
+In this case, as soon as we find a number that meets our condition, we `break` out of the loop. However, if we want to avoid using `break`, we could rewrite the loop with a while to use a boolean flag that indicates whether we've found a suitable number:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -1128,7 +1128,7 @@ numbers <- c(15, 18, 21, 24, 27, 30)
 divisor <- 4
 found <- FALSE
 i <- 1
-while (!found) {
+while (!found && i <= length(numbers)) {
   if (numbers[i] %% divisor == 0) {
     print(paste(numbers[i], "is the first number divisible by", divisor))
     found <- TRUE
@@ -1148,7 +1148,7 @@ numbers = [15, 18, 21, 24, 27, 30]
 divisor = 4
 found = False
 i = 0
-while not found:
+while not found and i < len(numbers):
   if numbers[i] % divisor == 0:
     print(f"{numbers[i]} is the first number divisible by {divisor}")
     found = True
@@ -1158,7 +1158,7 @@ while not found:
 </div>
 :::
 
-In this version, instead of breaking out of the loop, we use the `found` variable to keep track of whether we've found a number that meets our condition. If we have, we skip the rest of the loop iterations without explicitly using a `break` statement. This can make the control flow of the loop clearer and easier to follow.
+In this version, instead of breaking out of the loop, we use the `found` variable to keep track of whether we've found a number that meets our condition. If we have, we skip the rest of the loop iterations without explicitly using a `break` statement.
 
 ```{=html}
 <style type="text/css">
