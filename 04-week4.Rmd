@@ -116,9 +116,7 @@ In the above examples, we've defined a function factory `make_power` in both R a
 
 #### Fizzbuzz v10299384
 
-We're about to create a weird overly-engineered version of FizzBuzz: `fizzbuzz_v10299384` (the vector solution we had in Chapter 2 was pretty elegant already, so use that in coding interviews).
-
-Recall, that a function can take *another function* as input and return a new function by overloading its arguments. It gets pretty crazy what you can do with these things:
+We're about to create a weird overly-engineered version of FizzBuzz: `fizzbuzz_v10299384` (the vector solution we had in Chapter 2 was pretty elegant already, so use that in coding interviews). What will follow is an example *for you to break* to illustrate the possibilities of functional programming.
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -167,8 +165,8 @@ def fizzbuzz_v10299384(x):
         out = str(x)
     return out
 
-print(fizzbuzz_v10299384(15))
-print(fizzbuzz_v10299384(7))
+fizzbuzz_v10299384(15)
+fizzbuzz_v10299384(7)
 ```
 
 </div>
@@ -177,13 +175,15 @@ print(fizzbuzz_v10299384(7))
 What on earth is going on? Well, let's try to break it down:
 
 -   `remainder_printer` is a lambda function that takes three arguments: `p`, `q`, and `message`. It checks if `p` is divisible by `q` (i.e., `p` modulo `q` equals `0`), and if so, it returns `message`; otherwise, it returns an empty string.
--   `fizzbuzz_v10299384` is a function that takes one argument: `x`. It defines a lambda function `f` that takes one argument: `printer` (which is expected to be a function). It returns a new lambda function that takes one argument `x` and returns the concatenation of the results of calling `printer` with `x`, `3`, and `"fizz"`, and with `x`, `5`, and `"buzz"`. When `printer` is called with a 3, this will return the `"fizz"`, similarly when called with a 5, this will return the `"buzz"`.
--   It then calls `f` with `remainder_printer` as the argument, which returns a new function: the new **(unnassigned)** function is then called with `x`. If the result is an empty string (which is considered `FALSE` in a boolean context), it returns `x` instead. The condition on the length of the string is checked with `nchar` in R and `len` in Python.
--   Finally, `fizzbuzz_v10299384(15)` and `fizzbuzz_v10299384(7)` call `fizzbuzz_v10299384` with `15` and `7` as the arguments, respectively, and print the results.
+-   `fizzbuzz_v10299384` is a function that takes one argument: `x`, our number, and returns the FizzBuzz string.
+    -   It defines a lambda function `f` that takes one argument: `printer` (which is expected to be a function). It returns a new lambda function that takes one argument `x`, our number to check. Recall, that a function can take *another function* as input and return a new function by overloading its arguments.
+    -   The function returned by f, is another lambda: this returns the concatenation of the results of calling `printer` with `x`, `3`, and `"fizz"`, and with `x`, `5`, and `"buzz"`.
+    -   We we then call `f` with `remainder_printer` as the argument, this will return a lambda that, as described above, will concatenate the fizz and buzz strings. The first step is done with `f(remainder_printer)`. This new **unnassigned** function is then immediately called with `x` via `f(remainder_printer)(x)`.
+    -   If the result of this operation is an empty string, we return `x` instead. The condition on the length of the string is checked with `nchar` in R and `len` in Python.
 
-Clearly, what we have written in Week 2, as FizzBuzz, is a better solution (FizzBuzz is a very simple program), however this was a good example to illustrate the possibilities of functional programming. Soon, in the next exercise, we are going to use some of these concepts to build *the ultimate FizzBuzz program* (not underselling).
+This could have been shortened of at least a couple of statements (try it yourself!). In the next exercise, we are going to use some of these concepts to build *the ultimate FizzBuzz program* (not underselling).
 
-In fact, the ability to overload and return functions will be extremely useful when we introduce the `map` and `reduce` operations.
+Before doing that, however, we need to introduce the `map` and `reduce` operations.
 
 ### The map operation
 
@@ -920,7 +920,7 @@ np.linalg.eig(B)
 
 Sure, here's a draft for the exercise:
 
----
+------------------------------------------------------------------------
 
 ### Exercise: Implementing a Linear Model Solver
 
@@ -932,17 +932,13 @@ The general form of this model is:
 
 $$y = X\beta + \epsilon$$
 
-where:
-- $y$ is the output variable.
-- $X$ is the input variable.
-- $\beta$ is the vector of coefficients.
-- $\epsilon$ is the error term.
+where: - $y$ is the output variable. - $X$ is the input variable. - $\beta$ is the vector of coefficients. - $\epsilon$ is the error term.
 
 The coefficients of the linear model can be estimated using the formula for $\hat{\beta}$:
 
 $$\hat{\beta} = (X^T X)^{-1} X^T y$$
 
-1.    Write some code to create the matrix and vector
+1.  Write some code to create the matrix and vector
 
 $$
 X = \begin{bmatrix}
@@ -957,9 +953,7 @@ y = \begin{bmatrix}
 4 \\
 5 \\
 \end{bmatrix}.
-$$
-2.    Using the formula above, estimate the coefficients $\hat{\beta}$.
-
+$$ 2. Using the formula above, estimate the coefficients $\hat{\beta}$.
 
 ## An end note to this chapter
 

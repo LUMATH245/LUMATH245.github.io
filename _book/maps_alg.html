@@ -270,8 +270,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In the above examples, we’ve defined a function factory <code>make_power</code> in both R and Python that takes a number <code>exponent</code> as input (the exponent of our exponentiation function we want to built) and returns a function <code>pow</code> that raises its input <code>x</code> to the power of <code>exponent</code>. When we call this function factory with the argument <code>3</code>, it returns a function <code>cube</code> that cubes its input. When we call this <code>cube</code> function with the argument <code>2</code>, it returns <code>8</code>. Similarly, we create a function <code>to_the_tent</code> that returns a function capable of doing the power of 10 of an input number.</p>
 <div id="fizzbuzz-v10299384" class="section level4 hasAnchor" number="4.1.1.1">
 <h4><span class="header-section-number">4.1.1.1</span> Fizzbuzz v10299384<a href="maps_alg.html#fizzbuzz-v10299384" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>We’re about to create a weird overly-engineered version of FizzBuzz: <code>fizzbuzz_v10299384</code> (the vector solution we had in Chapter 2 was pretty elegant already, so use that in coding interviews).</p>
-<p>Recall, that a function can take <em>another function</em> as input and return a new function by overloading its arguments. It gets pretty crazy what you can do with these things:</p>
+<p>We’re about to create a weird overly-engineered version of FizzBuzz: <code>fizzbuzz_v10299384</code> (the vector solution we had in Chapter 2 was pretty elegant already, so use that in coding interviews). What will follow is an example <em>for you to break</em> to illustrate the possibilities of functional programming.</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
@@ -312,21 +311,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb492-11"><a href="maps_alg.html#cb492-11" aria-hidden="true" tabindex="-1"></a>        out <span class="op">=</span> <span class="bu">str</span>(x)</span>
 <span id="cb492-12"><a href="maps_alg.html#cb492-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> out</span>
 <span id="cb492-13"><a href="maps_alg.html#cb492-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb492-14"><a href="maps_alg.html#cb492-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fizzbuzz_v10299384(<span class="dv">15</span>))</span></code></pre></div>
-<pre><code>## fizzbuzz</code></pre>
-<div class="sourceCode" id="cb494"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb494-1"><a href="maps_alg.html#cb494-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fizzbuzz_v10299384(<span class="dv">7</span>))</span></code></pre></div>
-<pre><code>## 7</code></pre>
+<span id="cb492-14"><a href="maps_alg.html#cb492-14" aria-hidden="true" tabindex="-1"></a>fizzbuzz_v10299384(<span class="dv">15</span>)</span></code></pre></div>
+<pre><code>## &#39;fizzbuzz&#39;</code></pre>
+<div class="sourceCode" id="cb494"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb494-1"><a href="maps_alg.html#cb494-1" aria-hidden="true" tabindex="-1"></a>fizzbuzz_v10299384(<span class="dv">7</span>)</span></code></pre></div>
+<pre><code>## &#39;7&#39;</code></pre>
 </div>
 </div>
 <p>What on earth is going on? Well, let’s try to break it down:</p>
 <ul>
 <li><code>remainder_printer</code> is a lambda function that takes three arguments: <code>p</code>, <code>q</code>, and <code>message</code>. It checks if <code>p</code> is divisible by <code>q</code> (i.e., <code>p</code> modulo <code>q</code> equals <code>0</code>), and if so, it returns <code>message</code>; otherwise, it returns an empty string.</li>
-<li><code>fizzbuzz_v10299384</code> is a function that takes one argument: <code>x</code>. It defines a lambda function <code>f</code> that takes one argument: <code>printer</code> (which is expected to be a function). It returns a new lambda function that takes one argument <code>x</code> and returns the concatenation of the results of calling <code>printer</code> with <code>x</code>, <code>3</code>, and <code>"fizz"</code>, and with <code>x</code>, <code>5</code>, and <code>"buzz"</code>. When <code>printer</code> is called with a 3, this will return the <code>"fizz"</code>, similarly when called with a 5, this will return the <code>"buzz"</code>.</li>
-<li>It then calls <code>f</code> with <code>remainder_printer</code> as the argument, which returns a new function: the new <strong>(unnassigned)</strong> function is then called with <code>x</code>. If the result is an empty string (which is considered <code>FALSE</code> in a boolean context), it returns <code>x</code> instead. The condition on the length of the string is checked with <code>nchar</code> in R and <code>len</code> in Python.</li>
-<li>Finally, <code>fizzbuzz_v10299384(15)</code> and <code>fizzbuzz_v10299384(7)</code> call <code>fizzbuzz_v10299384</code> with <code>15</code> and <code>7</code> as the arguments, respectively, and print the results.</li>
+<li><code>fizzbuzz_v10299384</code> is a function that takes one argument: <code>x</code>, our number, and returns the FizzBuzz string.
+<ul>
+<li>It defines a lambda function <code>f</code> that takes one argument: <code>printer</code> (which is expected to be a function). It returns a new lambda function that takes one argument <code>x</code>, our number to check. Recall, that a function can take <em>another function</em> as input and return a new function by overloading its arguments.</li>
+<li>The function returned by f, is another lambda: this returns the concatenation of the results of calling <code>printer</code> with <code>x</code>, <code>3</code>, and <code>"fizz"</code>, and with <code>x</code>, <code>5</code>, and <code>"buzz"</code>.</li>
+<li>We we then call <code>f</code> with <code>remainder_printer</code> as the argument, this will return a lambda that, as described above, will concatenate the fizz and buzz strings. The first step is done with <code>f(remainder_printer)</code>. This new <strong>unnassigned</strong> function is then immediately called with <code>x</code> via <code>f(remainder_printer)(x)</code>.</li>
+<li>If the result of this operation is an empty string, we return <code>x</code> instead. The condition on the length of the string is checked with <code>nchar</code> in R and <code>len</code> in Python.</li>
+</ul></li>
 </ul>
-<p>Clearly, what we have written in Week 2, as FizzBuzz, is a better solution (FizzBuzz is a very simple program), however this was a good example to illustrate the possibilities of functional programming. Soon, in the next exercise, we are going to use some of these concepts to build <em>the ultimate FizzBuzz program</em> (not underselling).</p>
-<p>In fact, the ability to overload and return functions will be extremely useful when we introduce the <code>map</code> and <code>reduce</code> operations.</p>
+<p>This could have been shortened of at least a couple of statements (try it yourself!). In the next exercise, we are going to use some of these concepts to build <em>the ultimate FizzBuzz program</em> (not underselling).</p>
+<p>Before doing that, however, we need to introduce the <code>map</code> and <code>reduce</code> operations.</p>
 </div>
 </div>
 <div id="the-map-operation" class="section level3 hasAnchor" number="4.1.2">
@@ -932,11 +935,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>A linear model is a mathematical model that assumes a linear relationship between the input variables (<span class="math inline">\(X\)</span>) and the single output variable (<span class="math inline">\(y\)</span>). More specifically, that y can be calculated from a linear combination of the input variables (<span class="math inline">\(X\)</span>). When there is a single input variable, the method is referred to as simple linear regression.</p>
 <p>The general form of this model is:</p>
 <p><span class="math display">\[y = X\beta + \epsilon\]</span></p>
-<p>where:
-- <span class="math inline">\(y\)</span> is the output variable.
-- <span class="math inline">\(X\)</span> is the input variable.
-- <span class="math inline">\(\beta\)</span> is the vector of coefficients.
-- <span class="math inline">\(\epsilon\)</span> is the error term.</p>
+<p>where: - <span class="math inline">\(y\)</span> is the output variable. - <span class="math inline">\(X\)</span> is the input variable. - <span class="math inline">\(\beta\)</span> is the vector of coefficients. - <span class="math inline">\(\epsilon\)</span> is the error term.</p>
 <p>The coefficients of the linear model can be estimated using the formula for <span class="math inline">\(\hat{\beta}\)</span>:</p>
 <p><span class="math display">\[\hat{\beta} = (X^T X)^{-1} X^T y\]</span></p>
 <ol style="list-style-type: decimal">
@@ -955,8 +954,7 @@ y = \begin{bmatrix}
 4 \\
 5 \\
 \end{bmatrix}.
-\]</span>
-2. Using the formula above, estimate the coefficients <span class="math inline">\(\hat{\beta}\)</span>.</p>
+\]</span> 2. Using the formula above, estimate the coefficients <span class="math inline">\(\hat{\beta}\)</span>.</p>
 </div>
 </div>
 <div id="an-end-note-to-this-chapter" class="section level2 hasAnchor" number="4.3">
