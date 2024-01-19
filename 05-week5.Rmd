@@ -1,3 +1,9 @@
+---
+editor_options: 
+  markdown: 
+    wrap: sentence
+---
+
 # Data Frames and Plotting {#df_plt}
 
 ## Data Frames
@@ -16,21 +22,58 @@
 
 ### Exercise: ggplots of periodic functions
 
-In this exercises we will be plotting few sine and cosine waves. This should combine 
-both knowledge of creating a data frame, and ggplot.
-The exercise has two levels of completition, a basic level where we will be plotting a sine function 
-from 1 to 10, and an advance level where we will be displaying multiple periodic functions.
+In this exercises we will be plotting few sine and cosine waves.
+This should combine both knowledge of creating a data frame, and ggplot.
+The exercise has two levels of completition, a basic level where we will be plotting a sine function from 1 to 10, and an advance level where we will be displaying multiple periodic functions.
 
 **Basic.** Via ggplot, plot a sinusoidal function, $y = \sin(x)$, from 0 to 10:
-1.    You want to create a sequence of numbers, `x`, of at least 100 values ranging from 0 to 10.
-2.    You then want to run the sine function on this sequence to get the `y`
-3.    Store the results of this operation in a data frame
-4.    Plot using ggplot's `geom_line()`. Add labels! 
 
-**Advanced.** Using `ggplot`, write a program that returns a plot with three facets (subplots). Each facet will be comparing sines and cosines with different frequencies.
-- The x-axis should range from 0 to 10, with a step size of 0.01.
-- The plot should show 6 superimposed sinusoidal functions: $$\sin\left(\frac{x}{2}\right), \sin(x), \sin(2x), \cos\left(\frac{x}{2}\right), \cos(x), \cos(2x)$$.
-- The plot should have three facets, one for each frequency ($\frac{1}{2}$, 1, and 2). Each facet should contain both the sine and cosine functions of that frequency.
-- Use different colours for each curve within the facets. The functions $$\sin\left(\frac{x}{2}\right), \sin(x), \sin(2x)$$ should share the same colour, and the functions $$\cos\left(\frac{x}{2}\right), \cos(x), \cos(2x)$$ should share a different colour.
-- Make sure that the facets are aligned along the x-axis.
-- Avoid a `for` loop or computing everything by hand. Use `map` and `functools.reduce` to generate the dataframes and combine them. Use lambda functions where necessary.
+1.  You want to create a sequence of numbers, `x`, of at least 100 values ranging from 0 to 10.
+
+2.  You then want to run the sine function on this sequence to get the `y`
+
+3.  Store the results of this operation in a data frame
+
+4.  Plot a line using ggplot's `geom_line()`.
+
+**Medium.** Modify the code above to add the additional function $y=\cos(x)$.
+You should get something like:
+
+```{r echo=FALSE}
+library(tidyverse)
+x = seq(0, 10, by=0.01)
+names = c("sin", "cos")
+funcs = c(sin, cos)
+freqs = c(1, 1)
+df_gen <- \(name, fx, fr) data.frame(x = x,
+                           y = fx(fr * x),
+                           freq = fr,
+                           func = name)
+db <- pmap(list(names, funcs, freqs), df_gen) |> reduce(bind_rows)
+ggplot(db) + aes(x=x, y=y, col=func) + geom_line()
+```
+
+**Advanced.** Using `ggplot`, write a program that generates the plot below:
+
+```{r echo=FALSE}
+x = seq(0, 10, by=0.01)
+names = c("sin", "cos") |> rep(3)
+funcs = c(sin, cos) |> rep(3)
+freqs = c(.5, 1, 2) |> rep(2)
+db <- pmap(list(names, funcs, freqs), df_gen) |> reduce(bind_rows)
+ggplot(db) + aes(x=x, y=y, col=func) + geom_line() + facet_grid(freq~.)
+```
+
+Each subplot should be comparing sines and cosines with different frequencies.
+The plot should show 6 sinusoidal functions:$$\sin\left(\frac{x}{2}\right), \sin(x), \sin(2x), \cos\left(\frac{x}{2}\right), \cos(x), \cos(2x)$$
+
+-   The x-axis should range from 0 to 10, with a step size of 0.01.
+
+-   The plot should have three subplots, one for each frequency ($\frac{1}{2}$, 1, and 2).
+    Each subplot should contain both the sine and cosine functions of that frequency.
+
+-   Use different colours for each curve (sine or cosine) within the facets.
+
+-   Avoid a `for` loop or computing everything by hand.
+    TIP: Use `map` and `reduce` to generate the dataframes and combine them.
+    Use lambda functions where necessary.

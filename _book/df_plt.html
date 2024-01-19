@@ -207,22 +207,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="exercise-ggplots-of-periodic-functions" class="section level3 hasAnchor" number="5.2.3">
 <h3><span class="header-section-number">5.2.3</span> Exercise: ggplots of periodic functions<a href="df_plt.html#exercise-ggplots-of-periodic-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>In this exercises we will be plotting few sine and cosine waves. This should combine
-both knowledge of creating a data frame, and ggplot.
-The exercise has two levels of completition, a basic level where we will be plotting a sine function
-from 1 to 10, and an advance level where we will be displaying multiple periodic functions.</p>
-<p><strong>Basic.</strong> Via ggplot, plot a sinusoidal function, <span class="math inline">\(y = \sin(x)\)</span>, from 0 to 10:
-1. You want to create a sequence of numbers, <code>x</code>, of at least 100 values ranging from 0 to 10.
-2. You then want to run the sine function on this sequence to get the <code>y</code>
-3. Store the results of this operation in a data frame
-4. Plot using ggplot’s <code>geom_line()</code>. Add labels!</p>
-<p><strong>Advanced.</strong> Using <code>ggplot</code>, write a program that returns a plot with three facets (subplots). Each facet will be comparing sines and cosines with different frequencies.
-- The x-axis should range from 0 to 10, with a step size of 0.01.
-- The plot should show 6 superimposed sinusoidal functions: <span class="math display">\[\sin\left(\frac{x}{2}\right), \sin(x), \sin(2x), \cos\left(\frac{x}{2}\right), \cos(x), \cos(2x)\]</span>.
-- The plot should have three facets, one for each frequency (<span class="math inline">\(\frac{1}{2}\)</span>, 1, and 2). Each facet should contain both the sine and cosine functions of that frequency.
-- Use different colours for each curve within the facets. The functions <span class="math display">\[\sin\left(\frac{x}{2}\right), \sin(x), \sin(2x)\]</span> should share the same colour, and the functions <span class="math display">\[\cos\left(\frac{x}{2}\right), \cos(x), \cos(2x)\]</span> should share a different colour.
-- Make sure that the facets are aligned along the x-axis.
-- Avoid a <code>for</code> loop or computing everything by hand. Use <code>map</code> and <code>functools.reduce</code> to generate the dataframes and combine them. Use lambda functions where necessary.</p>
+<p>In this exercises we will be plotting few sine and cosine waves.
+This should combine both knowledge of creating a data frame, and ggplot.
+The exercise has two levels of completition, a basic level where we will be plotting a sine function from 1 to 10, and an advance level where we will be displaying multiple periodic functions.</p>
+<p><strong>Basic.</strong> Via ggplot, plot a sinusoidal function, <span class="math inline">\(y = \sin(x)\)</span>, from 0 to 10:</p>
+<ol style="list-style-type: decimal">
+<li><p>You want to create a sequence of numbers, <code>x</code>, of at least 100 values ranging from 0 to 10.</p></li>
+<li><p>You then want to run the sine function on this sequence to get the <code>y</code></p></li>
+<li><p>Store the results of this operation in a data frame</p></li>
+<li><p>Plot a line using ggplot’s <code>geom_line()</code>.</p></li>
+</ol>
+<p><strong>Medium.</strong> Modify the code above to add the additional function <span class="math inline">\(y=\cos(x)\)</span>.
+You should get something like:</p>
+<pre><code>## ── Attaching core tidyverse packages ──────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.2     ✔ readr     2.1.4
+## ✔ forcats   1.0.0     ✔ stringr   1.5.0
+## ✔ ggplot2   3.4.2     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<p><img src="images/unnamed-chunk-185-1.png" width="50%" /></p>
+<p><strong>Advanced.</strong> Using <code>ggplot</code>, write a program that generates the plot below:</p>
+<p><img src="images/unnamed-chunk-186-1.png" width="50%" /></p>
+<p>Each subplot should be comparing sines and cosines with different frequencies.
+The plot should show 6 sinusoidal functions:<span class="math display">\[\sin\left(\frac{x}{2}\right), \sin(x), \sin(2x), \cos\left(\frac{x}{2}\right), \cos(x), \cos(2x)\]</span></p>
+<ul>
+<li><p>The x-axis should range from 0 to 10, with a step size of 0.01.</p></li>
+<li><p>The plot should have three subplots, one for each frequency (<span class="math inline">\(\frac{1}{2}\)</span>, 1, and 2).
+Each subplot should contain both the sine and cosine functions of that frequency.</p></li>
+<li><p>Use different colours for each curve (sine or cosine) within the facets.</p></li>
+<li><p>Avoid a <code>for</code> loop or computing everything by hand.
+TIP: Use <code>map</code> and <code>reduce</code> to generate the dataframes and combine them.
+Use lambda functions where necessary.</p></li>
+</ul>
 
 </div>
 </div>
