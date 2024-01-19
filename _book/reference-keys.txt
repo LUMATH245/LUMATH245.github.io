@@ -64,3 +64,12 @@ matrix-operations
 inversion-eigenvalues-and-eigenvectors
 exercise-implementing-a-linear-model-solver
 an-end-note-to-this-chapter
+df_plt
+data-frames
+constructing-a-data-frame
+mutating-a-data-frame
+group-by-and-summarise
+plotting-with-ggplot
+more-basic-plots
+advanced-plots
+exercise-ggplots-of-periodic-functions

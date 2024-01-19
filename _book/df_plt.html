@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Lancaster University MATH245 Computational Mathematics</title>
-  <meta name="description" content="Page not found | Lancaster University MATH245 Computational Mathematics" />
+  <title>5 Data Frames and Plotting | Lancaster University MATH245 Computational Mathematics</title>
+  <meta name="description" content="5 Data Frames and Plotting | Lancaster University MATH245 Computational Mathematics" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Lancaster University MATH245 Computational Mathematics" />
+  <meta property="og:title" content="5 Data Frames and Plotting | Lancaster University MATH245 Computational Mathematics" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Lancaster University MATH245 Computational Mathematics" />
+  <meta name="twitter:title" content="5 Data Frames and Plotting | Lancaster University MATH245 Computational Mathematics" />
   
   
   
@@ -29,7 +29,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
+<link rel="prev" href="maps_alg.html"/>
 
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -183,18 +183,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="df_plt" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> Data Frames and Plotting<a href="df_plt.html#df_plt" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="data-frames" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Data Frames<a href="df_plt.html#data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="constructing-a-data-frame" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Constructing a data frame<a href="df_plt.html#constructing-a-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="mutating-a-data-frame" class="section level3 hasAnchor" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Mutating a data frame<a href="df_plt.html#mutating-a-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="group-by-and-summarise" class="section level3 hasAnchor" number="5.1.3">
+<h3><span class="header-section-number">5.1.3</span> Group by and summarise<a href="df_plt.html#group-by-and-summarise" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+</div>
+<div id="plotting-with-ggplot" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Plotting with ggplot<a href="df_plt.html#plotting-with-ggplot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="more-basic-plots" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> More basic plots<a href="df_plt.html#more-basic-plots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="advanced-plots" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Advanced plots<a href="df_plt.html#advanced-plots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="exercise-ggplots-of-periodic-functions" class="section level3 hasAnchor" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Exercise: ggplots of periodic functions<a href="df_plt.html#exercise-ggplots-of-periodic-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In this exercises we will be plotting few sine and cosine waves. This should combine
+both knowledge of creating a data frame, and ggplot.
+The exercise has two levels of completition, a basic level where we will be plotting a sine function
+from 1 to 10, and an advance level where we will be displaying multiple periodic functions.</p>
+<p><strong>Basic.</strong> Via ggplot, plot a sinusoidal function, <span class="math inline">\(y = \sin(x)\)</span>, from 0 to 10:
+1. You want to create a sequence of numbers, <code>x</code>, of at least 100 values ranging from 0 to 10.
+2. You then want to run the sine function on this sequence to get the <code>y</code>
+3. Store the results of this operation in a data frame
+4. Plot using ggplot’s <code>geom_line()</code>. Add labels!</p>
+<p><strong>Advanced.</strong> Using <code>ggplot</code>, write a program that returns a plot with three facets (subplots). Each facet will be comparing sines and cosines with different frequencies.
+- The x-axis should range from 0 to 10, with a step size of 0.01.
+- The plot should show 6 superimposed sinusoidal functions: <span class="math display">\[\sin\left(\frac{x}{2}\right), \sin(x), \sin(2x), \cos\left(\frac{x}{2}\right), \cos(x), \cos(2x)\]</span>.
+- The plot should have three facets, one for each frequency (<span class="math inline">\(\frac{1}{2}\)</span>, 1, and 2). Each facet should contain both the sine and cosine functions of that frequency.
+- Use different colours for each curve within the facets. The functions <span class="math display">\[\sin\left(\frac{x}{2}\right), \sin(x), \sin(2x)\]</span> should share the same colour, and the functions <span class="math display">\[\cos\left(\frac{x}{2}\right), \cos(x), \cos(2x)\]</span> should share a different colour.
+- Make sure that the facets are aligned along the x-axis.
+- Avoid a <code>for</code> loop or computing everything by hand. Use <code>map</code> and <code>functools.reduce</code> to generate the dataframes and combine them. Use lambda functions where necessary.</p>
+
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
+<a href="maps_alg.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
