@@ -958,7 +958,7 @@ decimal places can make two numbers unequal. Numbers with decimal places and fra
 Try adding more decimals to the above examples, and see how far you can get until you get two same
 numbers! The amount of decimal places in floats *is at the basis of
 precision* and how comparisons of floats are made will affect your
-programs. The precision of a floating-point number is determined by the number of significant digits that it can represent: double-precision floats, the defaults in R and python, can represent about 16 decimal digits of precision. Albeit systems are in place to avoid numerical errors for smaller numbers, **be careful when you compare two floats** and try to avoid comparing two floating point numbers to see if they are equal. Instead you could see if the discrepancy between them is less than some small, positive number (see later).
+programs. The precision of a floating-point number is determined by the number of significant digits that it can represent: double-precision floats, the defaults in R and python, can represent about 16 decimal digits of precision. Albeit systems are in place to avoid numerical errors for smaller numbers, **be careful when you compare two floats** and try to avoid comparing two floating point numbers to see if they are equal. Try to run the comparison `1e5/(1e5 + 1e-16) == 1` and see what happens. Instead you could see if the discrepancy between them is less than some small, positive number (see later to how to check less than).
 
 Similar to equality, we can check for inequality. Inequality means that
 two objects or values are not exactly the same in every aspect. To check
@@ -1765,12 +1765,20 @@ import numpy as np
 ```
 This way, Python knows where to find the functions that is needed, and the programmer does not have to repeat the import statement every time.
 
-R has libraries too, those are imported via the command `library`, but we will see how to use these at a later time as R has already plenty of scientific computing functions and structures built in.
+R has libraries too, those are imported via the command `library`. For example, at one point, we will be calling the tidyverse library, that is a collection of functions for modern R:
+
+**R**
+
+```{r}
+library(tidyverse)
+```
+
+We call these at a later time as R has already plenty of scientific computing functions and structures built in.
 
 #### Creating sequences
 
 One of the common ways to create vectors or arrays is to use sequences. Sequences are ordered collections of values that follow a certain pattern or rule. Sequences can be useful for generating data, plotting, or creating loops, as we will see later on.
-As you will see, here the syntax is going to be a bit different in each language, as R uses functions such `:` or `seq` and Python uses `np.arange` or `np.linspace` to create and initialize vectors. We will see how to create sequences of integers, any sequence of equally spaced numbers, and finally, how to initialize an empty vectors with all same values. 
+As you will see, here the syntax is going to be a bit different in each language, as R uses functions such `:` or `seq` and Python uses `np.arange` or `np.linspace` to create and initialize vectors. We will see how to create sequences of integers, any sequence of equally spaced numbers, and finally, how to initialize an empty vectors with all same values.
 
 **To create a sequence of integers in R**, we can use the colon operator `:`, in Python, we can use the `arange` function from `numpy`. Both take two integers as arguments, and returns a vector or an array that contains all the integers from the first argument to the second argument, with a step size of 1. For example, we can create a sequence of integers from -5 to 10, as shown below:
 
@@ -1883,6 +1891,11 @@ For example, we can add, subtract, multiply, or divide a vector or an array by a
 **R**
 
 ```{r}
+x <- 1:5
+
+# Raw vector
+x
+
 # Adding a scalar to a vector
 x + 1
 
@@ -1903,6 +1916,11 @@ x / 2
 **python**
 
 ```{python}
+x = arange(1, 6)
+
+# Raw vector
+x
+
 # Adding a scalar to an array
 x + 1
 
@@ -3283,7 +3301,7 @@ Our vectors, where we stored our results at every iteration, should be
 
 ```{r}
 # Print the Fibonacci sequence
-print(fibonacci)
+fibonacci
 ```
 
 </div>
@@ -3294,7 +3312,7 @@ print(fibonacci)
 
 ```{python}
 # Print the Fibonacci sequence
-print(fibonacci)
+fibonacci
 ```
 
 </div>
@@ -3380,6 +3398,11 @@ for i in range(1, 5):
 </div>
 :::
 
+**NOTE for Python users** In the print statement `print(f"{i} x {j} = {i*j}")` we used **f-string formatting**, which was introduced in Python 3.6 (the code above will break on previous versions). It's a way to embed expressions (like `i*j`) inside strings, using curly braces `{}`. The expressions will be replaced with their values when the string is created. The letter `f` at the beginning of the string tells Python to allow these embedded expressions.
+
+In our example `{i}` and `{j}` will be replaced by the values of the variables `i` and `j`, and `{i*j}` will be replaced by the result of the expression `i*j`. So if `i` is 2 and `j` is 3, the string would become `"2 x 3 = 6"`.
+F-string formatting can be very useful for debugging because it allows you to easily insert the values of variables into strings, which you can then print to see what's happening in your loops!
+
 ### While loops
 
 Similarly to for loops, we have the while loops. They allow us to repeat
@@ -3433,15 +3456,13 @@ In these codes:
 -   The while loop ends when the condition `i <= 10` is no longer met,
     i.e., when `i` is greater than 10.
 
-### Break and next
 
 We are missing one last ingredient to looping! Break and next.
 
 ### Break and next/continue
 
 Break and next/continue are control flow statements that can be used to
-alter the flow of a loop. They can be incredibly useful in many
-situations, such as when we want to stop a loop if a certain condition
+alter the flow of a loop. They can be used when we want to stop a loop if a certain condition
 is met or skip an iteration if a certain condition is met.
 
 To see how they work, we write a loop that prints the numbers from 1 to
@@ -3496,6 +3517,87 @@ Let's break it down:
     and don't continue to up to 10. `break` could be an alternative
     stopping condition to a while loop.
 
+Using `break` and `next` (or `continue` in Python) statements in loops can sometimes make the code harder to understand and debug, because they can lead to unexpected jumps in the control flow. This is especially true in more complex loops where it's not immediately clear when or if the loop will be prematurely terminated or skipped.
+
+Usually, there's always alternatives to `breaks`. Let's consider a simple example where we want to find the first number in a list that is divisible by a certain number. Using `break`:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+numbers <- c(15, 18, 21, 24, 27, 30)
+divisor <- 4
+for (num in numbers) {
+  if (num %% divisor == 0) {
+    print(paste(num, "is the first number divisible by", divisor))
+    break
+  }
+}
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+numbers = [15, 18, 21, 24, 27, 30]
+divisor = 4
+for num in numbers:
+  if num % divisor == 0:
+    print(f"{num} is the first number divisible by {divisor}")
+    break
+```
+
+</div>
+:::
+
+In this case, as soon as we find a number that meets our condition, we `break` out of the loop. However, if we want to avoid using `break`, we could rewrite the loop with a while to use a boolean flag that indicates whether we've found a suitable number:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+numbers <- c(15, 18, 21, 24, 27, 30)
+divisor <- 4
+found <- FALSE
+i <- 1
+while (!found && i <= length(numbers)) {
+  if (numbers[i] %% divisor == 0) {
+    print(paste(numbers[i], "is the first number divisible by", divisor))
+    found <- TRUE
+  }
+  i <- i + 1
+}
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+numbers = [15, 18, 21, 24, 27, 30]
+divisor = 4
+found = False
+i = 0
+while not found and i < len(numbers):
+  if numbers[i] % divisor == 0:
+    print(f"{numbers[i]} is the first number divisible by {divisor}")
+    found = True
+  i = i + 1
+```
+
+</div>
+:::
+
+In this version, instead of breaking out of the loop, we use the `found` variable to keep track of whether we've found a number that meets our condition. If we have, we skip the rest of the loop iterations without explicitly using a `break` statement.
 
 ```{=html}
 <style type="text/css">
@@ -3625,9 +3727,7 @@ In the above examples, we've defined a function factory `make_power` in both R a
 
 #### Fizzbuzz v10299384
 
-We're about to create a weird overly-engineered version of FizzBuzz: `fizzbuzz_v10299384` (the vector solution we had in Chapter 2 was pretty elegant already, so use that in coding interviews).
-
-Recall, that a function can take *another function* as input and return a new function by overloading its arguments. It gets pretty crazy what you can do with these things:
+We're about to create a weird overly-engineered version of FizzBuzz: `fizzbuzz_v10299384` (the vector solution we had in Chapter 2 was pretty elegant already, so use that in coding interviews). What will follow is an example *for you to break* to illustrate the possibilities of functional programming.
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -3676,8 +3776,8 @@ def fizzbuzz_v10299384(x):
         out = str(x)
     return out
 
-print(fizzbuzz_v10299384(15))
-print(fizzbuzz_v10299384(7))
+fizzbuzz_v10299384(15)
+fizzbuzz_v10299384(7)
 ```
 
 </div>
@@ -3686,13 +3786,15 @@ print(fizzbuzz_v10299384(7))
 What on earth is going on? Well, let's try to break it down:
 
 -   `remainder_printer` is a lambda function that takes three arguments: `p`, `q`, and `message`. It checks if `p` is divisible by `q` (i.e., `p` modulo `q` equals `0`), and if so, it returns `message`; otherwise, it returns an empty string.
--   `fizzbuzz_v10299384` is a function that takes one argument: `x`. It defines a lambda function `f` that takes one argument: `printer` (which is expected to be a function). It returns a new lambda function that takes one argument `x` and returns the concatenation of the results of calling `printer` with `x`, `3`, and `"fizz"`, and with `x`, `5`, and `"buzz"`. When `printer` is called with a 3, this will return the `"fizz"`, similarly when called with a 5, this will return the `"buzz"`.
--   It then calls `f` with `remainder_printer` as the argument, which returns a new function: the new **(unnassigned)** function is then called with `x`. If the result is an empty string (which is considered `FALSE` in a boolean context), it returns `x` instead. The condition on the length of the string is checked with `nchar` in R and `len` in Python.
--   Finally, `fizzbuzz_v10299384(15)` and `fizzbuzz_v10299384(7)` call `fizzbuzz_v10299384` with `15` and `7` as the arguments, respectively, and print the results.
+-   `fizzbuzz_v10299384` is a function that takes one argument: `x`, our number, and returns the FizzBuzz string.
+    -   It defines a lambda function `f` that takes one argument: `printer` (which is expected to be a function). It returns a new lambda function that takes one argument `x`, our number to check. Recall, that a function can take *another function* as input and return a new function by overloading its arguments.
+    -   The function returned by f, is another lambda: this returns the concatenation of the results of calling `printer` with `x`, `3`, and `"fizz"`, and with `x`, `5`, and `"buzz"`.
+    -   We we then call `f` with `remainder_printer` as the argument, this will return a lambda that, as described above, will concatenate the fizz and buzz strings. The first step is done with `f(remainder_printer)`. This new **unnassigned** function is then immediately called with `x` via `f(remainder_printer)(x)`.
+    -   If the result of this operation is an empty string, we return `x` instead. The condition on the length of the string is checked with `nchar` in R and `len` in Python.
 
-Clearly, what we have written in Week 2, as FizzBuzz, is a better solution (FizzBuzz is a very simple program), however this was a good example to illustrate the possibilities of functional programming. Soon, in the next exercise, we are going to use some of these concepts to build *the ultimate FizzBuzz program* (not underselling).
+This could have been shortened of at least a couple of statements (try it yourself!). In the next exercise, we are going to use some of these concepts to build *the ultimate FizzBuzz program* (not underselling).
 
-In fact, the ability to overload and return functions will be extremely useful when we introduce the `map` and `reduce` operations.
+Before doing that, however, we need to introduce the `map` and `reduce` operations.
 
 ### The map operation
 
@@ -3856,19 +3958,7 @@ sums
 
 In the above examples, we've defined a function `add` that adds its two inputs. We then created two vectors (or lists in Python) `numbers1` and `numbers2`. We used the `map2`/`map` function to apply `add` to each pair of elements from `numbers1` and `numbers2`, resulting in a new vector `sums` that contains the sums of the numbers.
 
-**Note for Python Users**: The `map` operation with two arguments can also be achieved in a more "Pythonic way" with list comprehensions. Here's how you can rewrite the previous example:
-
-```{python}
-# Use a list comprehension to apply the add function to the lists
-sums = [add(x, y) for x, y in zip(numbers1, numbers2)]
-sums
-```
-
-In this example, the list comprehension statement relies on the `zip` function. `zip` is used to pair up the elements from `numbers1` and `numbers2`. Try to run `zip(numbers1, numbers2)` alone to see the output! I personally find that the `map` function is more readable, however you should be familiar with both ways as you will be encountering both if you keep programming with Python.
-
-**Shorter statements**
-
-We can write the map2 statements above in a very compact way again:
+**Shorter statements**. We can write the map2 statements above in a very compact way again:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -3893,6 +3983,33 @@ sums
 
 </div>
 :::
+
+**Note for Python Users**: The `map` operation with two arguments can also be achieved in a more "Pythonic way" with list comprehensions. Here's how you can rewrite the previous example:
+
+```{python}
+# Use a list comprehension to apply the add function to the lists
+sums = [add(x, y) for x, y in zip(numbers1, numbers2)]
+sums
+```
+
+In this example, the list comprehension statement relies on the `zip` function. `zip` is used to pair up the elements from `numbers1` and `numbers2`. Try to run `zip(numbers1, numbers2)` alone to see the output! I personally find that the `map` function is more readable, however you should be familiar with both ways as you will be encountering both if you keep programming with Python. One other advantage is that the `map` function is inherently flexible and can take as many arguments as necessary. This is because it's designed to apply a function to multiple iterables in parallel. If you pass more than one iterable to `map`, it will pass corresponding elements from each iterable to the function. This allows you to easily apply a function to multiple arguments.
+
+**Note for R Users** `map2` is limited to two arguments, however in `purr`, we do have a `map` function that can take as many arguments as necessary: the `pmap` function. The `pmap` function has a slightly different notation, as it takes a list of vectors (or a list of lists) and a function as input, and returns a list. Each element of the output list is the result of applying the input function with the corresponding elements of the input vectors as arguments.
+Here's an example:
+```{r}
+# Define a function that adds two numbers
+add <- \(x, y) x + y
+
+# Create a list of two vectors of numbers
+numbers <- list(c(1, 2, 3), c(10, 11, 12))
+
+# Use the pmap function to apply the add function to the vectors
+sums <- pmap_dbl(numbers, add)
+
+sums
+```
+It's important to note that all vectors in the list passed to `pmap` should be the same length, as `pmap` will recycle shorter vectors to match the length of the longest vector, which can lead to unexpected results. If the vectors are not the same length, you should adjust them to be the same length before using `pmap`.
+
 
 ### Reduce Operation
 
@@ -4100,7 +4217,7 @@ Let's see how to create a 4x4 matrix in R and Python:
 ```{r}
 # Create a 4x4 matrix in R
 matrix_by_row <- matrix(1:16, nrow=4, ncol=4, byrow = TRUE)
-print(matrix)
+matrix_by_row
 ```
 
 </div>
@@ -4122,7 +4239,7 @@ matrix_by_row = np.array([
 ])
 
 
-print(matrix)
+matrix_by_row
 ```
 
 </div>
@@ -4146,7 +4263,7 @@ v4 <- c(13, 14, 15, 16)
 
 # Bind vectors as columns
 matrix_by_col <- cbind(v1, v2, v3, v4)
-print(matrix)
+matrix_by_col
 ```
 
 </div>
@@ -4164,15 +4281,13 @@ v4 = np.array([13, 14, 15, 16])
 
 # Bind vectors as columns
 matrix_by_col = np.column_stack((v1, v2, v3, v4))
-print(matrix)
+matrix_by_col
 ```
 
 </div>
 :::
 
 In the above examples, we've created a 4x4 matrix by binding four vectors as columns. You can also bind vectors as rows by using `rbind()` in R, or `np.vstack()` in Python.
-
-Sure, here's how you can expand on the concept of "reshaping a range" and illustrate the transpose operation:
 
 Now, let's illustrate the transpose operation. Recall that the transpose of a matrix is obtained by flipping it over its diagonal. This switches the row and column indices of each element. In R, you can use the `t()` function to transpose a matrix, while in Python, you can use the `T` attribute or the `transpose()` function.
 
@@ -4293,10 +4408,11 @@ A * A
 A ** 2
 
 # Matrix multiplication
-np.dot(A, A)
+A @ A
 
 # Matrix-vector multiplication
-np.dot(A, v)
+np.dot(A, v) # as we saw in week 2
+A @ v
 ```
 
 </div>
@@ -4426,9 +4542,49 @@ np.linalg.eig(B)
 
 **In Python**, the `np.linalg.eig()` function returns a tuple containing the eigenvalues and eigenvectors. This result can be interpreted as an object of type `EigResult`. An object in Python is an instance of a class, which can have attributes (data associated with the object) and methods (functions associated with the object). You can access the attributes of an object using the `.` operator. For example, if `result` is the output of `np.linalg.eig(B)`, e.g. `result <- eigen(B)`, you can access the eigenvalues with `result.eigenvalues` and the eigenvectors with `result.eigenvectors`. Surprisingly enough, you used methods already all this time without knowing! Think about the many occasions you used a `.`: you were accessing a method in an object.
 
-### An end note to this chapter
 
-Both R and Python are multi-paradigm languages. This means that they have functional programming features, such as those we saw today, as well as **object oriented programming** features (R, in particular, supports even *multiple dispatch*). We have covered the first today as this is a scientific computing module, but we won't cover the second. I heavily encourage you to research about it in your own time, in particular if you enjoy programming. Those are all concepts that gravitate around how we define objects on a computer, and how these objects should interact with functions. It can get pretty abstract really quickly, and there's no true answer -- I personally, to this date, have intense arguments with colleagues about what's the best way of coding something. R, in particular, being a slab of several programming paradigms, it's a great playground to test and compare these concepts in practice. Recall it was created by joining 2 programming languages, and was modernized at least 3 times, to include 3 implementations of object oriented programming and several functional programming features. You could say I have a love/hate relationship with R:
+### Exercise: Implementing a Linear Model Solver
+
+In this exercise, we will implement a linear model solver from scratch. This will help you understand the underlying mathematics of linear regression and how it can be implemented in code.
+
+A linear model is a mathematical model that assumes a linear relationship between the input variables ($X$) and the single output variable ($y$). More specifically, that y can be calculated from a linear combination of the input variables ($X$). When there is a single input variable, the method is referred to as simple linear regression.
+
+The general form of this model is:
+
+$$y = X\beta + \epsilon$$
+
+where: 
+-   $y$ is the output variable. 
+-   $X$ is the input variable. 
+-   $\beta$ is the vector of coefficients. 
+-   $\epsilon$ is the error term.
+
+The coefficients of the linear model can be estimated using the formula for $\hat{\beta}$:
+
+$$\hat{\beta} = (X^T X)^{-1} X^T y$$
+
+1.  Write some code to create the matrix and vector
+
+$$
+X = \begin{bmatrix}
+1 & 2 \\
+1 & 3 \\
+1 & 4 \\
+1 & 5 \\
+\end{bmatrix},\
+y = \begin{bmatrix}
+2 \\
+3 \\
+4 \\
+5 \\
+\end{bmatrix}.
+$$ 2. Using the formula above, estimate the coefficients $\hat{\beta}$.
+
+## An end note to this chapter
+
+Both R and Python are multi-paradigm languages. This means that they have functional programming features, such as those we saw today, as well as **object oriented programming** features (R, in particular, supports even *multiple dispatch*). We have covered the first today as this is a scientific computing module, but we won't cover the second. I heavily encourage you to research about it in your own time, in particular if you enjoy programming. Those are all concepts that gravitate around how we define objects on a computer, and how these objects should interact with functions. It can get pretty abstract really quickly, and there's no true answer -- I personally, to this date, have intense arguments with colleagues about what's the best way of coding something. R, in particular, being a slab of several programming paradigms, it's a great playground to test and compare these concepts in practice. Recall it was created from a 1970s programming language, and was modernized at least 3 times, to include 3 implementations of object oriented programming and several functional programming features. You could say I have a love/hate relationship with R...
+
+![](images/chapter4/Rprog.png)
 
 ```{=html}
 <style type="text/css">
@@ -4439,4 +4595,91 @@ Both R and Python are multi-paradigm languages. This means that they have functi
 ```
 
 <!--chapter:end:04-week4.Rmd-->
+
+---
+editor_options: 
+  markdown: 
+    wrap: sentence
+---
+
+# Data Frames and Plotting {#df_plt}
+
+## Data Frames
+
+```{r}
+library(tidyverse)
+```
+
+### Constructing a data frame
+
+### Mutating a data frame
+
+### Group by and summarise
+
+## Plotting with ggplot
+
+### More basic plots
+
+### Advanced plots
+
+### Exercise: ggplots of periodic functions
+
+In this exercises we will be plotting few sine and cosine waves.
+This should combine both knowledge of creating a data frame, and ggplot.
+The exercise has various levels of completition, from a basic level where we will be plotting a sine function from 1 to 10, to an advance level where we will be displaying multiple periodic functions.
+
+**Basic.** Via ggplot, plot a sinusoidal function, $y = \sin(x)$, from 0 to 10:
+
+1.  You want to create a sequence of numbers, `x`, of at least 100 values ranging from 0 to 10.
+
+2.  You then want to run the sine function on this sequence to get the `y`
+
+3.  Store the results of this operation in a data frame
+
+4.  Plot a line using ggplot's `geom_line()`.
+
+**Medium.** Modify the code above to add the additional function $y=\cos(x)$.
+You should get something like:
+
+```{r echo=FALSE}
+x = seq(0, 10, by=0.01)
+names = c("sin", "cos")
+funcs = c(sin, cos)
+freqs = c(1, 1)
+df_gen <- \(name, fx, fr) data.frame(x = x,
+                           y = fx(fr * x),
+                           freq = fr,
+                           func = name)
+db <- pmap(list(names, funcs, freqs), df_gen) |> reduce(bind_rows)
+ggplot(db) + aes(x=x, y=y, col=func) + geom_line()
+```
+
+-   The x-axis should range from 0 to 10, with a step size of 0.01.
+
+-   Use different colours for each curve (sine or cosine)
+
+-   How many columns should have your dataframe?
+
+**Advanced.** Using `ggplot`, write a program that generates the plot below:
+
+```{r echo=FALSE}
+x = seq(0, 10, by=0.01)
+names = c("sin", "cos") |> rep(3)
+funcs = c(sin, cos) |> rep(3)
+freqs = c(.5, 1, 2) |> rep(2)
+db <- pmap(list(names, funcs, freqs), df_gen) |> reduce(bind_rows)
+ggplot(db) + aes(x=x, y=y, col=func) + geom_line() + facet_grid(freq~.)
+```
+
+Each subplot should be comparing sines and cosines with different frequencies.
+The plot should show 6 sinusoidal functions:$$\sin\left(\frac{x}{2}\right), \sin(x), \sin(2x), \cos\left(\frac{x}{2}\right), \cos(x), \cos(2x)$$
+
+-   The plot should have three subplots, one for each frequency ($\frac{1}{2}$, 1, and 2).
+    Each subplot should contain both the sine and cosine functions, as above
+
+-   Avoid *computing everything by hand* (e.g. copy pasting the dataframe code 6 times) or `for` loop.
+    TIP: Use `map` to generate your dataframes and `reduce` to combine them.
+    Use lambda functions where necessary.
+
+<!--chapter:end:05-week5.Rmd-->
 

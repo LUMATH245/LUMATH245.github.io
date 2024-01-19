@@ -678,8 +678,6 @@ matrix_by_col
 
 In the above examples, we've created a 4x4 matrix by binding four vectors as columns. You can also bind vectors as rows by using `rbind()` in R, or `np.vstack()` in Python.
 
-Sure, here's how you can expand on the concept of "reshaping a range" and illustrate the transpose operation:
-
 Now, let's illustrate the transpose operation. Recall that the transpose of a matrix is obtained by flipping it over its diagonal. This switches the row and column indices of each element. In R, you can use the `t()` function to transpose a matrix, while in Python, you can use the `T` attribute or the `transpose()` function.
 
 Let's compare the matrices created above with their transposes:
@@ -933,9 +931,6 @@ np.linalg.eig(B)
 
 **In Python**, the `np.linalg.eig()` function returns a tuple containing the eigenvalues and eigenvectors. This result can be interpreted as an object of type `EigResult`. An object in Python is an instance of a class, which can have attributes (data associated with the object) and methods (functions associated with the object). You can access the attributes of an object using the `.` operator. For example, if `result` is the output of `np.linalg.eig(B)`, e.g. `result <- eigen(B)`, you can access the eigenvalues with `result.eigenvalues` and the eigenvectors with `result.eigenvectors`. Surprisingly enough, you used methods already all this time without knowing! Think about the many occasions you used a `.`: you were accessing a method in an object.
 
-Sure, here's a draft for the exercise:
-
-------------------------------------------------------------------------
 
 ### Exercise: Implementing a Linear Model Solver
 
