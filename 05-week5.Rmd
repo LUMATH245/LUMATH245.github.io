@@ -56,6 +56,12 @@ db <- pmap(list(names, funcs, freqs), df_gen) |> reduce(bind_rows)
 ggplot(db) + aes(x=x, y=y, col=func) + geom_line()
 ```
 
+-   The x-axis should range from 0 to 10, with a step size of 0.01.
+
+-   Use different colours for each curve (sine or cosine)
+
+-   How many columns should have your dataframe?
+
 **Advanced.** Using `ggplot`, write a program that generates the plot below:
 
 ```{r echo=FALSE}
@@ -70,13 +76,9 @@ ggplot(db) + aes(x=x, y=y, col=func) + geom_line() + facet_grid(freq~.)
 Each subplot should be comparing sines and cosines with different frequencies.
 The plot should show 6 sinusoidal functions:$$\sin\left(\frac{x}{2}\right), \sin(x), \sin(2x), \cos\left(\frac{x}{2}\right), \cos(x), \cos(2x)$$
 
--   The x-axis should range from 0 to 10, with a step size of 0.01.
-
 -   The plot should have three subplots, one for each frequency ($\frac{1}{2}$, 1, and 2).
-    Each subplot should contain both the sine and cosine functions of that frequency.
+    Each subplot should contain both the sine and cosine functions, as above
 
--   Use different colours for each curve (sine or cosine) within the facets.
-
--   Avoid a `for` loop or computing everything by hand.
-    TIP: Use `map` and `reduce` to generate the dataframes and combine them.
+-   Avoid *computing everything by hand* (e.g. copy pasting the dataframe code 6 times) or `for` loop.
+    TIP: Use `map` to generate your dataframes and `reduce` to combine them.
     Use lambda functions where necessary.

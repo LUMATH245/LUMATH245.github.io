@@ -230,17 +230,20 @@ The exercise has two levels of completition, a basic level where we will be plot
 <p><strong>Medium.</strong> Modify the code above to add the additional function <span class="math inline">\(y=\cos(x)\)</span>.
 You should get something like:</p>
 <p><img src="images/unnamed-chunk-186-1.png" width="50%" /></p>
+<ul>
+<li><p>The x-axis should range from 0 to 10, with a step size of 0.01.</p></li>
+<li><p>Use different colours for each curve (sine or cosine)</p></li>
+<li><p>How many columns should have your dataframe?</p></li>
+</ul>
 <p><strong>Advanced.</strong> Using <code>ggplot</code>, write a program that generates the plot below:</p>
 <p><img src="images/unnamed-chunk-187-1.png" width="50%" /></p>
 <p>Each subplot should be comparing sines and cosines with different frequencies.
 The plot should show 6 sinusoidal functions:<span class="math display">\[\sin\left(\frac{x}{2}\right), \sin(x), \sin(2x), \cos\left(\frac{x}{2}\right), \cos(x), \cos(2x)\]</span></p>
 <ul>
-<li><p>The x-axis should range from 0 to 10, with a step size of 0.01.</p></li>
 <li><p>The plot should have three subplots, one for each frequency (<span class="math inline">\(\frac{1}{2}\)</span>, 1, and 2).
-Each subplot should contain both the sine and cosine functions of that frequency.</p></li>
-<li><p>Use different colours for each curve (sine or cosine) within the facets.</p></li>
-<li><p>Avoid a <code>for</code> loop or computing everything by hand.
-TIP: Use <code>map</code> and <code>reduce</code> to generate the dataframes and combine them.
+Each subplot should contain both the sine and cosine functions, as above</p></li>
+<li><p>Avoid <em>computing everything by hand</em> (e.g. copy pasting the dataframe code 6 times) or <code>for</code> loop.
+TIP: Use <code>map</code> to generate your dataframes and <code>reduce</code> to combine them.
 Use lambda functions where necessary.</p></li>
 </ul>
 
