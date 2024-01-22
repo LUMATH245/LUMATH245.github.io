@@ -126,7 +126,6 @@ programs. The precision of a floating-point number is determined by the number o
 -   Try to run the comparison `1e5/(1e5 + 1e-16) == 1` and see what happens.
 -   The expression `0.1 + 0.3 == 0.4` gives `TRUE`, but `0.1 + 0.2 + 0.3 == 0.6` evaluates to `FALSE`. Why?
 
-_____
 Similar to equality, we can check for inequality. Inequality means that
 two objects or values are not exactly the same in every aspect. To check
 for inequality, we use the operator `!=`, which returns `TRUE` if the
