@@ -958,7 +958,15 @@ decimal places can make two numbers unequal. Numbers with decimal places and fra
 Try adding more decimals to the above examples, and see how far you can get until you get two same
 numbers! The amount of decimal places in floats *is at the basis of
 precision* and how comparisons of floats are made will affect your
-programs. The precision of a floating-point number is determined by the number of significant digits that it can represent: double-precision floats, the defaults in R and python, can represent about 16 decimal digits of precision. Albeit systems are in place to avoid numerical errors for smaller numbers, **be careful when you compare two floats** and try to avoid comparing two floating point numbers to see if they are equal. Try to run the comparison `1e5/(1e5 + 1e-16) == 1` and see what happens. Instead you could see if the discrepancy between them is less than some small, positive number (see later to how to check less than).
+programs. The precision of a floating-point number is determined by the number of significant digits that it can represent: double-precision floats, the defaults in R and python, can represent about 16 decimal digits of precision. Albeit systems are in place to avoid numerical errors for smaller numbers, **be careful when you compare two floats** and try to avoid comparing two floating point numbers to see if they are equal. Instead you could see if the discrepancy between them is less than some small, positive number (see later to how to check less than).
+
+#### Exercise
+
+-   Try to run the comparison `1e5/(1e5 + 1e-16) == 1` and see what happens.
+-   The expression `0.1 + 0.3 == 0.4` gives `TRUE`, but `0.1 + 0.2 + 0.3 == 0.6` evaluates to `FALSE`. Why?
+
+_____
+
 
 Similar to equality, we can check for inequality. Inequality means that
 two objects or values are not exactly the same in every aspect. To check
@@ -3476,7 +3484,7 @@ To see how they work, we write a loop that prints the numbers from 1 to
 ```{r}
 for (i in 1:10) {
   if (i == 5) {
-    next  # Skip the rest of the loop 
+    next  # Skip the rest of the iteration 
           # and continue with the next iteration
   }
   if (i > 8) {
@@ -3495,7 +3503,7 @@ for (i in 1:10) {
 ```{python}
 for i in range(1, 11):
   if i == 5:
-    continue  # Skip the rest of the loop 
+    continue  # Skip the rest of the iteration 
               # and continue with the next iteration
   if i > 8:
     break  # Immediately terminate the loop
