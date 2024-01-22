@@ -1083,7 +1083,7 @@ x / 2
 **python**
 
 ```{python}
-x = arange(1, 6)
+x = np.arange(1, 6)
 
 # Raw vector
 x
