@@ -66,8 +66,12 @@ inversion-eigenvalues-and-eigenvectors
 exercise-implementing-a-linear-model-solver
 an-end-note-to-this-chapter
 df_plt
+a-note-for-r-users.
+the-pipe-operator
+a-note-for-python-users
 data-frames
-constructing-a-data-frame
+constructing-and-accessing-data-frames
+accessing-information-about-the-data-frame
 mutating-a-data-frame
 group-by-and-summarise
 plotting-with-ggplot

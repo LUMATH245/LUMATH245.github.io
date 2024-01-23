@@ -6,13 +6,332 @@ editor_options:
 
 # Data Frames and Plotting {#df_plt}
 
-## Data Frames
+In this chapter, we will delve into the world of Data Frames and Plotting.
+These are crucial concepts in Computational Mathematics that will enable us to handle and visualize data effectively.
+
+#### A note for R users.
+
+Before we start, we will need to import a very important library for writing modern R code.
+
+This is the tidyverse...
 
 ```{r}
 library(tidyverse)
 ```
 
-### Constructing a data frame
+We should also discuss about a very important operator, the **pipe** operator, that, as you will see, it will enable us to concatenate functions on data frames and mutate and access their variables or rows with extreme ease compared to traditional R code.
+
+##### The pipe operator
+
+#### A note for python users
+
+```{python}
+import pandas as pd
+import plotnine as plt
+import numpy as np
+```
+
+## Data Frames
+
+A **data frame** is a table-like data structure available in languages like R and Python.
+It is similar to a spreadsheet or SQL table, or a dictionary of Series objects in Python.
+Data frames are generally used for statistical analysis in R and Python programming.
+
+In a data frame, the columns are named vectors, each containing a particular type of data (numeric, string, date, time).
+Unlike a matrix where every element must have the same data type, a data frame allows each column to have a different data type.
+This makes data frames more flexible for data analysis tasks where we often deal with data that have *heterogeneous* types.
+The columns of a data frame are often referred to as **variables** or **features** in statistics.
+In the context of mathematics or physics, these could be considered as **parameters** or **attributes**.
+The rows of the data frame correspond to a single observation across these variables.
+
+### Constructing and Accessing Data Frames
+
+Let\'s start by constructing a data frame.
+We\'ll use a dataset of different types of non-dairy milks, with their respective nutritional contents:
+
+| Milk Type | Calories | Protein (g) | Fiber (g) | Carbohydrates (g) | Sugars (g) | Fats (g) |
+|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+| Almond    | 60       | 1           | 1         | 8                 | 7          | 2.5      |
+| Soy       | 100      | 7           | 2         | 10                | NA         | 4        |
+| Oat       | 120      | 3           | NA        | 20                | 19         | 2.5      |
+| Rice      | 130      | 1           | NA        | 25                | NA         | 2.5      |
+
+In this dataset, the first column will be a `character` column, to indicate the type of the milk, whilst the others will be numericals.
+Furthemore, the "Fiber" and "Sugars" columns for Soy, Oat and Rice milk have NA values, indicating missing or not applicable data.
+This is often the case in real data, where usually information will not be available to us in the best way as possible.
+In this case, R and python will just tell us that we have a "Not Applicable (NA)" or "Not a Number (NaN)" unknown value.
+
+Now, let's see how we can create this data frame in R and Python:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Creating a data frame in R
+milk_df <- tibble(
+  Milk_Type = c("Almond", "Soy", "Oat", "Rice"),
+  Calories = c(60, 100, 120, 130),
+  Protein = c(1, 7, 3, 1),
+  Fiber = c(1, 2, NA, NA),
+  Carbohydrates = c(8, 10, 20, 25),
+  Sugars = c(7, NA, 19, NA),
+  Fats = c(2.5, 4, 2.5, 2.5)
+)
+print(milk_df)
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Creating a data frame in Python
+data = {
+    'Milk_Type': ['Almond', 'Soy', 'Oat', 'Rice'],
+    'Calories': [60, 100, 120, 130],
+    'Protein': [1, 7, 3, 1],
+    'Fiber': [1, 2, np.nan, np.nan],
+    'Carbohydrates': [8, 10, 20, 25],
+    'Sugars': [7, np.nan, 19, np.nan],
+    'Fats': [2.5, 4, 2.5, 2.5]
+}
+
+milk_df = pd.DataFrame(data)
+print(milk_df)
+```
+
+</div>
+:::
+
+**Accessing Variables** To access individual variables (columns) of the data frame, we can use the `$` operator in R and the `[]` operator in Python:
+  
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+  
+**R**
+  
+```{r}
+# Accessing the 'Calories' column in R
+milk_df$Calories
+```
+
+</div>
+  
+<div>
+  
+**python**
+  
+```{python}
+# Accessing the 'Calories' column in Python
+milk_df['Calories']
+```
+
+</div>
+:::
+
+This will return the relative column, which, note, in R is returned *as a vector*, while in python as a column of a data frame. 
+  
+**NOTE for R users.** In R, we use the `select()` function from the `tidyverse` package to select columns.
+
+```{r}
+# Using the select() function in R
+milk_df |> select(Calories)
+```
+
+Recall that the pipe operator (`|>`) is used to chain operations together, so it will take whatever we have at the left, and use it as a first argument to the function to the right. The above R code is equivalent to `select(milk_df, Calories)`. Note, `select` will return the column as a vector of a data frame. Sometimes this can be better, as you might not want to change the type of your objects *inadvertently during execution*. 
+
+To access multiple variables at the same time, we can pass a vector of variable names:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Accessing the 'Calories' and 'Protein' columns in R and storing it 
+# in a new variable
+calories_protein <- milk_df |> select(Calories, Protein)
+calories_protein
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Accessing the 'Calories' and 'Protein' columns in Python and storing it 
+# in a new variable
+calories_protein = milk_df[['Calories', 'Protein']]
+calories_protein
+```
+
+</div>
+:::
+
+Note that once we access (and store, as in this second example) a subset of a data frame, we get out another data frame.
+
+**Accessing rows.** To access individual rows in the data frames, we can use indexing. 
+Similarly to vectors, to access multiple rows at the same time, we can pass a vector of row indices:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Accessing the first row in R
+milk_df[1, ]
+
+# Accessing the first and second rows in R
+milk_df[1:2, ]
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Accessing the first row in Python
+milk_df.iloc[0]
+
+# Accessing the first and second rows in Python
+milk_df.iloc[0:2]
+```
+
+</div>
+:::
+
+**In R**, when we use `[1:2, ]` on a data frame, we are working with a two-dimensional object. The `1:2` represents the row indices that we want to select, and the empty space after the comma indicates that we want to select all columns. So, `[1:2, ]` will select the first two rows and all columns of the data frame. This is different from selecting a vector because a vector is a one-dimensional object, and we only need to specify the indices of the elements we want to select.
+
+**In Python**, when we use `.iloc[0:2]` on a data frame, we are working with a two-dimensional object. The `0:2` represents the row indices that we want to select, and the absence of a second argument after the comma indicates that we want to select all columns. So, `.iloc[0:2]` will select the first two rows and all columns of the data frame. This is different from selecting elements from a vector because a list is a one-dimensional object, and we only need to specify the indices of the elements we want to select. Note also that when accessing only one row, in python, the returned element will be reshaped into a column vector. 
+
+Having said that, we can also access a subset of the data frame by specifying both rows and columns **simultaneously**:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Accessing a subset of the data frame in R
+subset_df <- milk_df[1:2, c("Milk_Type", "Calories", "Protein")]
+# alternatively 
+# subset_df <- milk_df[1:2, 1:3]
+
+subset_df
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Accessing a subset of the data frame in Python
+subset_df = milk_df.loc[0:2, ["Milk_Type", "Calories", "Protein"]]
+# alternatively 
+# subset_df = milk_df.iloc[0:2, [0, 1, 2]]
+
+subset_df
+```
+
+</div>
+:::
+
+**NOTE for Python users**: Be careful, in this second statement we used an even different function, `loc`. In pandas, `loc` and `iloc` are two ways to select data from a DataFrame, called *indexers*.
+
+The `loc` indexer is used with the actual labels of the index or columns. On the other hand, `iloc` is used for indexing by integer position. This means that you’re referring to the row or column by its position in the DataFrame (like the index in a vector), not by its label. In summary, use loc when you want to refer to items by their label and iloc when you want to refer to them by their integer position.
+
+**Overwriting Elements**  We can, of course, overwrite and change elements of our data frames. For instance, the simplest thing we could do at the moment, is to fill in the missing values of our data frame for our column "Fibers". 
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Imputing missing values in R
+# overwriting the original dataset
+milk_df$Fiber[is.na(milk_df$Fiber)] <- c(1.2, 0.7)
+milk_df
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Imputing missing values in Python
+# overwriting the original dataset
+milk_df.loc[np.isnan(milk_df['Fiber']), 'Fiber'] =  [1.2, 0.7]
+milk_df
+```
+
+</div>
+:::
+
+Note that, to impute the missing values, we can also use the `replace_na()` function in R and the `fillna()` function in Python, but these functions will overwrite all NAs in the dataset, leaving little to no flexibility. 
+
+#### Accessing Information about the Data Frame
+
+We can access various information about the data frame, such as its dimensions, number of rows, number of columns, column names, and a summary of its contents, with a lot of different functions. These will be not explained in detail, but can be useful for a lot of reasons related to exploratory analysis.
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Accessing information about the data frame in R
+# dimensions 
+dim(milk_df)
+# number of rows and columns
+nrow(milk_df)
+ncol(milk_df)
+
+# variable names
+colnames(milk_df)
+
+# summary statistics
+summary(milk_df)
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Accessing information about the data frame in Python
+# dimensions 
+milk_df.shape
+# number of rows and columns
+len(milk_df)
+len(milk_df.columns) # or milk_df.shape[1]
+
+# variable names
+milk_df.columns
+
+# summary statistics
+milk_df.describe()
+```
+
+</div>
+:::
+
+Based on the information above, how would you access the last 5 rows and the last 2 columns of your data frame? 
 
 ### Mutating a data frame
 
