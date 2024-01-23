@@ -562,9 +562,188 @@ Similarly to vectors, to access multiple rows at the same time, we can pass a ve
 </div>
 <div id="mutating-a-data-frame" class="section level3 hasAnchor" number="5.1.2">
 <h3><span class="header-section-number">5.1.2</span> Mutating a data frame<a href="df_plt.html#mutating-a-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When working with data in R or Python, most of the time we need to perform some data manipulation. This could involve modifying our data frame, accessing specific parts of it that are of interest, or creating new variables based on existing ones. Fortunately, both R and Python provide a set of powerful functions for these tasks.</p>
+<p>In R, we have <code>filter()</code>, <code>arrange()</code>, <code>select()</code>, and <code>mutate()</code>. In Python, we have <code>query</code>, <code>sort_values</code>, <code>loc</code> or <code>iloc</code>, and <code>assign</code>. We will now explore each of these functions in detail.</p>
+<div id="adding-new-columns" class="section level4 hasAnchor" number="5.1.2.1">
+<h4><span class="header-section-number">5.1.2.1</span> Adding New Columns<a href="df_plt.html#adding-new-columns" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Adding new columns allows us to easily add new columns that are functions of existing ones. In R, we use <code>mutate()</code>, and in Python, we use <code>assign</code>.</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb663"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb663-1"><a href="df_plt.html#cb663-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute percentage of sugars over carbohydrates in R</span></span>
+<span id="cb663-2"><a href="df_plt.html#cb663-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, adding the total weight of the components and computing the </span></span>
+<span id="cb663-3"><a href="df_plt.html#cb663-3" aria-hidden="true" tabindex="-1"></a><span class="co"># protein content</span></span>
+<span id="cb663-4"><a href="df_plt.html#cb663-4" aria-hidden="true" tabindex="-1"></a>milk_df <span class="ot">&lt;-</span> milk_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">sugar_percent =</span> (Sugars <span class="sc">/</span> Carbohydrates) <span class="sc">*</span> <span class="dv">100</span>, </span>
+<span id="cb663-5"><a href="df_plt.html#cb663-5" aria-hidden="true" tabindex="-1"></a>                              <span class="at">tot_wei =</span> Protein <span class="sc">+</span> Fiber <span class="sc">+</span> Carbohydrates <span class="sc">+</span> Fats,</span>
+<span id="cb663-6"><a href="df_plt.html#cb663-6" aria-hidden="true" tabindex="-1"></a>                              <span class="at">protein_content =</span> Protein <span class="sc">/</span> tot_wei <span class="sc">*</span> <span class="dv">100</span>)</span>
+<span id="cb663-7"><a href="df_plt.html#cb663-7" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 10
+##   Milk_Type Calories Protein Fiber Carbohydrates Sugars  Fats sugar_percent
+##   &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;
+## 1 Almond          60       1   1               8      7   2.5          87.5
+## 2 Soy            100       7   2              10     NA   4            NA  
+## 3 Oat            120       3   1.2            20     19   2.5          95  
+## 4 Rice           130       1   0.7            25     NA   2.5          NA  
+## # ℹ 2 more variables: tot_wei &lt;dbl&gt;, protein_content &lt;dbl&gt;</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb665"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb665-1"><a href="df_plt.html#cb665-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute percentage of sugars over carbohydrates in Python</span></span>
+<span id="cb665-2"><a href="df_plt.html#cb665-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, adding the total weight of the components and computing the </span></span>
+<span id="cb665-3"><a href="df_plt.html#cb665-3" aria-hidden="true" tabindex="-1"></a><span class="co"># protein content</span></span>
+<span id="cb665-4"><a href="df_plt.html#cb665-4" aria-hidden="true" tabindex="-1"></a>milk_df <span class="op">=</span> milk_df.assign(</span>
+<span id="cb665-5"><a href="df_plt.html#cb665-5" aria-hidden="true" tabindex="-1"></a>    sugar_percent <span class="op">=</span> <span class="kw">lambda</span> df: (df[<span class="st">&#39;Sugars&#39;</span>] <span class="op">/</span> df[<span class="st">&#39;Carbohydrates&#39;</span>]) <span class="op">*</span> <span class="dv">100</span>,</span>
+<span id="cb665-6"><a href="df_plt.html#cb665-6" aria-hidden="true" tabindex="-1"></a>    tot_wei <span class="op">=</span> <span class="kw">lambda</span> df: df[<span class="st">&#39;Protein&#39;</span>] <span class="op">+</span> df[<span class="st">&#39;Fiber&#39;</span>] <span class="op">+</span> df[<span class="st">&#39;Carbohydrates&#39;</span>] <span class="op">+</span> df[<span class="st">&#39;Fats&#39;</span>],</span>
+<span id="cb665-7"><a href="df_plt.html#cb665-7" aria-hidden="true" tabindex="-1"></a>    protein_content <span class="op">=</span> <span class="kw">lambda</span> df: df[<span class="st">&#39;Protein&#39;</span>] <span class="op">/</span> df[<span class="st">&#39;tot_wei&#39;</span>] <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb665-8"><a href="df_plt.html#cb665-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb665-9"><a href="df_plt.html#cb665-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb665-10"><a href="df_plt.html#cb665-10" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
+<pre><code>##   Milk_Type  Calories  Protein  Fiber  Carbohydrates  Sugars  Fats  sugar_percent  tot_wei  protein_content
+## 0    Almond        60        1    1.0              8     7.0   2.5           87.5     12.5         8.000000
+## 1       Soy       100        7    2.0             10     NaN   4.0            NaN     23.0        30.434783
+## 2       Oat       120        3    1.2             20    19.0   2.5           95.0     26.7        11.235955
+## 3      Rice       130        1    0.7             25     NaN   2.5            NaN     29.2         3.424658</code></pre>
+</div>
+</div>
+<p>The advantage of using <code>mutate</code> and <code>assign</code> over directly overwriting columns is that those function allow you to reference other columns that are being created within the same call. This makes it possible to create multiple interdependent columns in one go. In contrast, when overwriting columns directly, you would have to create each new column one at a time, which could be less efficient and harder to read.</p>
+<p>If we had to do the same code manually, each one at a time, this would have looked like the following:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb667-1"><a href="df_plt.html#cb667-1" aria-hidden="true" tabindex="-1"></a><span class="do">### equivalent to above statement</span></span>
+<span id="cb667-2"><a href="df_plt.html#cb667-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb667-3"><a href="df_plt.html#cb667-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute percentage of sugars over carbohydrates in R</span></span>
+<span id="cb667-4"><a href="df_plt.html#cb667-4" aria-hidden="true" tabindex="-1"></a>milk_df<span class="sc">$</span>sugar_percent <span class="ot">&lt;-</span> (milk_df<span class="sc">$</span>Sugars <span class="sc">/</span> milk_df<span class="sc">$</span>Carbohydrates) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb667-5"><a href="df_plt.html#cb667-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb667-6"><a href="df_plt.html#cb667-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, adding the total weight of the components</span></span>
+<span id="cb667-7"><a href="df_plt.html#cb667-7" aria-hidden="true" tabindex="-1"></a>milk_df<span class="sc">$</span>tot_wei <span class="ot">&lt;-</span> milk_df<span class="sc">$</span>Protein <span class="sc">+</span> milk_df<span class="sc">$</span>Fiber <span class="sc">+</span> milk_df<span class="sc">$</span>Carbohydrates <span class="sc">+</span> milk_df<span class="sc">$</span>Fats</span>
+<span id="cb667-8"><a href="df_plt.html#cb667-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb667-9"><a href="df_plt.html#cb667-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Finally, computing the protein content</span></span>
+<span id="cb667-10"><a href="df_plt.html#cb667-10" aria-hidden="true" tabindex="-1"></a>milk_df<span class="sc">$</span>protein_content <span class="ot">=</span> milk_df<span class="sc">$</span>Protein <span class="sc">/</span> milk_df<span class="sc">$</span>tot_wei <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb667-11"><a href="df_plt.html#cb667-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb667-12"><a href="df_plt.html#cb667-12" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 10
+##   Milk_Type Calories Protein Fiber Carbohydrates Sugars  Fats sugar_percent
+##   &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;
+## 1 Almond          60       1   1               8      7   2.5          87.5
+## 2 Soy            100       7   2              10     NA   4            NA  
+## 3 Oat            120       3   1.2            20     19   2.5          95  
+## 4 Rice           130       1   0.7            25     NA   2.5          NA  
+## # ℹ 2 more variables: tot_wei &lt;dbl&gt;, protein_content &lt;dbl&gt;</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb669"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb669-1"><a href="df_plt.html#cb669-1" aria-hidden="true" tabindex="-1"></a><span class="co">### equivalent to above statement</span></span>
+<span id="cb669-2"><a href="df_plt.html#cb669-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb669-3"><a href="df_plt.html#cb669-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute percentage of sugars over carbohydrates in Python</span></span>
+<span id="cb669-4"><a href="df_plt.html#cb669-4" aria-hidden="true" tabindex="-1"></a>milk_df[<span class="st">&#39;sugar_percent&#39;</span>] <span class="op">=</span> (milk_df[<span class="st">&#39;Sugars&#39;</span>] <span class="op">/</span> milk_df[<span class="st">&#39;Carbohydrates&#39;</span>]) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb669-5"><a href="df_plt.html#cb669-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb669-6"><a href="df_plt.html#cb669-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, adding the total weight of the components</span></span>
+<span id="cb669-7"><a href="df_plt.html#cb669-7" aria-hidden="true" tabindex="-1"></a>milk_df[<span class="st">&#39;tot_wei&#39;</span>] <span class="op">=</span> milk_df[<span class="st">&#39;Protein&#39;</span>] <span class="op">+</span> milk_df[<span class="st">&#39;Fiber&#39;</span>] <span class="op">+</span> milk_df[<span class="st">&#39;Carbohydrates&#39;</span>] <span class="op">+</span> milk_df[<span class="st">&#39;Fats&#39;</span>]</span>
+<span id="cb669-8"><a href="df_plt.html#cb669-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb669-9"><a href="df_plt.html#cb669-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Finally, computing the protein content</span></span>
+<span id="cb669-10"><a href="df_plt.html#cb669-10" aria-hidden="true" tabindex="-1"></a>milk_df[<span class="st">&#39;protein_content&#39;</span>] <span class="op">=</span> milk_df[<span class="st">&#39;Protein&#39;</span>] <span class="op">/</span> milk_df[<span class="st">&#39;tot_wei&#39;</span>] <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb669-11"><a href="df_plt.html#cb669-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb669-12"><a href="df_plt.html#cb669-12" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
+<pre><code>##   Milk_Type  Calories  Protein  Fiber  Carbohydrates  Sugars  Fats  sugar_percent  tot_wei  protein_content
+## 0    Almond        60        1    1.0              8     7.0   2.5           87.5     12.5         8.000000
+## 1       Soy       100        7    2.0             10     NaN   4.0            NaN     23.0        30.434783
+## 2       Oat       120        3    1.2             20    19.0   2.5           95.0     26.7        11.235955
+## 3      Rice       130        1    0.7             25     NaN   2.5            NaN     29.2         3.424658</code></pre>
+</div>
+</div>
+<p>You can see how this makes the code longer and potentially harder to read. However, it can be useful when the computation of each new column depends on the columns added in the previous steps.</p>
+<p>Note also how, over the rows of soy and rice, the <code>sugar_percent</code> column has missing values, and similarly the <code>protein_content</code> variable has skewed values: this is because the value of the sugar content was missing originally. Be careful about missing values!</p>
+</div>
+<div id="filtering-rows" class="section level4 hasAnchor" number="5.1.2.2">
+<h4><span class="header-section-number">5.1.2.2</span> Filtering Rows<a href="df_plt.html#filtering-rows" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Filtering allows us to focus on a subset of the rows of a data frame. This is based on the result of a vectorised logic expression. In a way, we have already seen this in the past when selecting subsets of vectors! In R, we use <code>filter()</code>, and in Python, we use <code>query()</code>.</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb671-1"><a href="df_plt.html#cb671-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering rows where Calories is greater than 100 in R</span></span>
+<span id="cb671-2"><a href="df_plt.html#cb671-2" aria-hidden="true" tabindex="-1"></a>milk_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Calories <span class="sc">&gt;</span> <span class="dv">100</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 10
+##   Milk_Type Calories Protein Fiber Carbohydrates Sugars  Fats sugar_percent
+##   &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;
+## 1 Oat            120       3   1.2            20     19   2.5            95
+## 2 Rice           130       1   0.7            25     NA   2.5            NA
+## # ℹ 2 more variables: tot_wei &lt;dbl&gt;, protein_content &lt;dbl&gt;</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb673"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb673-1"><a href="df_plt.html#cb673-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering rows where Calories is greater than 100 in Python</span></span>
+<span id="cb673-2"><a href="df_plt.html#cb673-2" aria-hidden="true" tabindex="-1"></a>milk_df.query(<span class="st">&#39;Calories &gt; 100&#39;</span>)</span></code></pre></div>
+<pre><code>##   Milk_Type  Calories  Protein  Fiber  Carbohydrates  Sugars  Fats  sugar_percent  tot_wei  protein_content
+## 2       Oat       120        3    1.2             20    19.0   2.5           95.0     26.7        11.235955
+## 3      Rice       130        1    0.7             25     NaN   2.5            NaN     29.2         3.424658</code></pre>
+</div>
+</div>
+</div>
+<div id="reordering-rows" class="section level4 hasAnchor" number="5.1.2.3">
+<h4><span class="header-section-number">5.1.2.3</span> Reordering Rows<a href="df_plt.html#reordering-rows" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Reordering allows us to arrange the rows in the data frame in a specific order. In R, we use <code>arrange()</code>, and in Python, we use <code>sort_values()</code>.</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb675-1"><a href="df_plt.html#cb675-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arranging rows by decreasing sugar_percent in R</span></span>
+<span id="cb675-2"><a href="df_plt.html#cb675-2" aria-hidden="true" tabindex="-1"></a>milk_df <span class="ot">&lt;-</span> milk_df <span class="sc">|&gt;</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(sugar_percent))</span>
+<span id="cb675-3"><a href="df_plt.html#cb675-3" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 10
+##   Milk_Type Calories Protein Fiber Carbohydrates Sugars  Fats sugar_percent
+##   &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;
+## 1 Oat            120       3   1.2            20     19   2.5          95  
+## 2 Almond          60       1   1               8      7   2.5          87.5
+## 3 Soy            100       7   2              10     NA   4            NA  
+## 4 Rice           130       1   0.7            25     NA   2.5          NA  
+## # ℹ 2 more variables: tot_wei &lt;dbl&gt;, protein_content &lt;dbl&gt;</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb677"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb677-1"><a href="df_plt.html#cb677-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arranging rows by decreasing sugar_percent in Python</span></span>
+<span id="cb677-2"><a href="df_plt.html#cb677-2" aria-hidden="true" tabindex="-1"></a>milk_df <span class="op">=</span> milk_df.sort_values(<span class="st">&#39;sugar_percent&#39;</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb677-3"><a href="df_plt.html#cb677-3" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
+<pre><code>##   Milk_Type  Calories  Protein  Fiber  Carbohydrates  Sugars  Fats  sugar_percent  tot_wei  protein_content
+## 2       Oat       120        3    1.2             20    19.0   2.5           95.0     26.7        11.235955
+## 0    Almond        60        1    1.0              8     7.0   2.5           87.5     12.5         8.000000
+## 1       Soy       100        7    2.0             10     NaN   4.0            NaN     23.0        30.434783
+## 3      Rice       130        1    0.7             25     NaN   2.5            NaN     29.2         3.424658</code></pre>
+</div>
+</div>
+</div>
+<div id="selecting-columns" class="section level4 hasAnchor" number="5.1.2.4">
+<h4><span class="header-section-number">5.1.2.4</span> Selecting Columns<a href="df_plt.html#selecting-columns" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Selecting allows us to zoom in on a useful number of columns. In R, we use <code>select()</code>, and in Python, we use <code>loc</code> or <code>iloc</code>.</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="df_plt.html#cb679-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting only Milk_Type and protein content columns in R</span></span>
+<span id="cb679-2"><a href="df_plt.html#cb679-2" aria-hidden="true" tabindex="-1"></a>milk_df <span class="sc">|&gt;</span> <span class="fu">select</span>(Milk_Type, protein_content)</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 2
+##   Milk_Type protein_content
+##   &lt;chr&gt;               &lt;dbl&gt;
+## 1 Oat                 11.2 
+## 2 Almond               8   
+## 3 Soy                 30.4 
+## 4 Rice                 3.42</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb681"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb681-1"><a href="df_plt.html#cb681-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting only Milk_Type and protein content columns in Python</span></span>
+<span id="cb681-2"><a href="df_plt.html#cb681-2" aria-hidden="true" tabindex="-1"></a>milk_df[[<span class="st">&#39;Milk_Type&#39;</span>, <span class="st">&#39;protein_content&#39;</span>]]</span></code></pre></div>
+<pre><code>##   Milk_Type  protein_content
+## 2       Oat        11.235955
+## 0    Almond         8.000000
+## 1       Soy        30.434783
+## 3      Rice         3.424658</code></pre>
+</div>
+</div>
+<p>These examples show the power of modern R and Python for data manipulation! By understanding these functions, we can perform complex data manipulations with just a few lines of code.</p>
+</div>
 </div>
 <div id="group-by-and-summarise" class="section level3 hasAnchor" number="5.1.3">
 <h3><span class="header-section-number">5.1.3</span> Group by and summarise<a href="df_plt.html#group-by-and-summarise" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>How to extract information… For doing so we need a real data frame…</p>
 </div>
 </div>
 <div id="plotting-with-ggplot" class="section level2 hasAnchor" number="5.2">
@@ -589,14 +768,14 @@ The exercise has various levels of completition, from a basic level where we wil
 </ol>
 <p><strong>Medium.</strong> Modify the code above to add the additional function <span class="math inline">\(y=\cos(x)\)</span>.
 You should get something like:</p>
-<p><img src="images/unnamed-chunk-203-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-213-1.png" width="50%" /></p>
 <ul>
 <li><p>The x-axis should range from 0 to 10, with a step size of 0.01.</p></li>
 <li><p>Use different colours for each curve (sine or cosine)</p></li>
 <li><p>How many columns should have your dataframe?</p></li>
 </ul>
 <p><strong>Advanced.</strong> Using <code>ggplot</code>, write a program that generates the plot below:</p>
-<p><img src="images/unnamed-chunk-204-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-214-1.png" width="50%" /></p>
 <p>Each subplot should be comparing sines and cosines with different frequencies.
 The plot should show 6 sinusoidal functions:<span class="math display">\[\sin\left(\frac{x}{2}\right), \sin(x), \sin(2x), \cos\left(\frac{x}{2}\right), \cos(x), \cos(2x)\]</span></p>
 <ul>

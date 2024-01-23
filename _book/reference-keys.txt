@@ -73,6 +73,10 @@ data-frames
 constructing-and-accessing-data-frames
 accessing-information-about-the-data-frame
 mutating-a-data-frame
+adding-new-columns
+filtering-rows
+reordering-rows
+selecting-columns
 group-by-and-summarise
 plotting-with-ggplot
 more-basic-plots

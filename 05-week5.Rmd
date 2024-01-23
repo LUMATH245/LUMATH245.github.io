@@ -335,7 +335,195 @@ Based on the information above, how would you access the last 5 rows and the las
 
 ### Mutating a data frame
 
+When working with data in R or Python, most of the time we need to perform some data manipulation. This could involve modifying our data frame, accessing specific parts of it that are of interest, or creating new variables based on existing ones. Fortunately, both R and Python provide a set of powerful functions for these tasks.
+
+In R, we have `filter()`, `arrange()`, `select()`, and `mutate()`. In Python, we have `query`, `sort_values`, `loc` or `iloc`, and `assign`. We will now explore each of these functions in detail.
+
+#### Adding New Columns
+
+Adding new columns allows us to easily add new columns that are functions of existing ones. In R, we use `mutate()`, and in Python, we use `assign`.
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Compute percentage of sugars over carbohydrates in R
+# Then, adding the total weight of the components and computing the 
+# protein content
+milk_df <- milk_df |> mutate(sugar_percent = (Sugars / Carbohydrates) * 100, 
+                              tot_wei = Protein + Fiber + Carbohydrates + Fats,
+                              protein_content = Protein / tot_wei * 100)
+milk_df
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Compute percentage of sugars over carbohydrates in Python
+# Then, adding the total weight of the components and computing the 
+# protein content
+milk_df = milk_df.assign(
+    sugar_percent = lambda df: (df['Sugars'] / df['Carbohydrates']) * 100,
+    tot_wei = lambda df: df['Protein'] + df['Fiber'] + df['Carbohydrates'] + df['Fats'],
+    protein_content = lambda df: df['Protein'] / df['tot_wei'] * 100
+)
+
+milk_df
+```
+
+</div>
+:::
+
+The advantage of using `mutate` and `assign` over directly overwriting columns is that those function allow you to reference other columns that are being created within the same call. This makes it possible to create multiple interdependent columns in one go. In contrast, when overwriting columns directly, you would have to create each new column one at a time, which could be less efficient and harder to read.
+
+If we had to do the same code manually, each one at a time, this would have looked like the following:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+### equivalent to above statement
+
+# Compute percentage of sugars over carbohydrates in R
+milk_df$sugar_percent <- (milk_df$Sugars / milk_df$Carbohydrates) * 100
+
+# Then, adding the total weight of the components
+milk_df$tot_wei <- milk_df$Protein + milk_df$Fiber + milk_df$Carbohydrates + milk_df$Fats
+
+# Finally, computing the protein content
+milk_df$protein_content = milk_df$Protein / milk_df$tot_wei * 100
+
+milk_df
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+### equivalent to above statement
+
+# Compute percentage of sugars over carbohydrates in Python
+milk_df['sugar_percent'] = (milk_df['Sugars'] / milk_df['Carbohydrates']) * 100
+
+# Then, adding the total weight of the components
+milk_df['tot_wei'] = milk_df['Protein'] + milk_df['Fiber'] + milk_df['Carbohydrates'] + milk_df['Fats']
+
+# Finally, computing the protein content
+milk_df['protein_content'] = milk_df['Protein'] / milk_df['tot_wei'] * 100
+
+milk_df
+```
+
+</div>
+:::
+
+You can see how this makes the code longer and potentially harder to read. However, it can be useful when the computation of each new column depends on the columns added in the previous steps.
+
+Note also how, over the rows of soy and rice, the `sugar_percent` column has missing values, and similarly the `protein_content` variable has skewed values: this is because the value of the sugar content was missing originally. Be careful about missing values!
+
+#### Filtering Rows
+
+Filtering allows us to focus on a subset of the rows of a data frame. This is based on the result of a vectorised logic expression. In a way, we have already seen this in the past when selecting subsets of vectors! In R, we use `filter()`, and in Python, we use `query()`.
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Filtering rows where Calories is greater than 100 in R
+milk_df |> filter(Calories > 100)
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Filtering rows where Calories is greater than 100 in Python
+milk_df.query('Calories > 100')
+```
+
+</div>
+:::
+
+#### Reordering Rows
+
+Reordering allows us to arrange the rows in the data frame in a specific order. In R, we use `arrange()`, and in Python, we use `sort_values()`.
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Arranging rows by decreasing sugar_percent in R
+milk_df <- milk_df |> arrange(desc(sugar_percent))
+milk_df
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Arranging rows by decreasing sugar_percent in Python
+milk_df = milk_df.sort_values('sugar_percent', ascending=False)
+milk_df
+```
+
+</div>
+:::
+
+#### Selecting Columns
+
+Selecting allows us to zoom in on a useful number of columns. In R, we use `select()`, and in Python, we use `loc` or `iloc`.
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Selecting only Milk_Type and protein content columns in R
+milk_df |> select(Milk_Type, protein_content)
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Selecting only Milk_Type and protein content columns in Python
+milk_df[['Milk_Type', 'protein_content']]
+```
+
+</div>
+:::
+
+
+These examples show the power of modern R and Python for data manipulation! By understanding these functions, we can perform complex data manipulations with just a few lines of code.
+
 ### Group by and summarise
+
+How to extract information... For doing so we need a real data frame...
 
 ## Plotting with ggplot
 
