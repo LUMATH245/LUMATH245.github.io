@@ -589,3 +589,12 @@ The plot should show 6 sinusoidal functions:$$\sin\left(\frac{x}{2}\right), \sin
 -   Avoid *computing everything by hand* (e.g. copy pasting the dataframe code 6 times) or `for` loop.
     TIP: Use `map` to generate your dataframes and `reduce` to combine them.
     Use lambda functions where necessary.
+
+
+```{=html}
+<style type="text/css">
+.book .book-body .page-wrapper .page-inner {
+  max-width: 1200px !important;
+}
+</style>
+```
