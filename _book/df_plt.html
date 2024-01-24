@@ -718,8 +718,134 @@ Similarly to vectors, to access multiple rows at the same time, we can pass a ve
 <p>These examples show the power of modern R and Python for data manipulation! By understanding these functions, we can perform complex data manipulations with just a few lines of code.</p>
 </div>
 </div>
-<div id="group-by-and-summarise" class="section level3 hasAnchor" number="5.1.3">
-<h3><span class="header-section-number">5.1.3</span> Group by and summarise<a href="df_plt.html#group-by-and-summarise" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="a-real-data-frame" class="section level3 hasAnchor" number="5.1.3">
+<h3><span class="header-section-number">5.1.3</span> A Real Data Frame<a href="df_plt.html#a-real-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now that we have the basis of manipulating data frames, before proceeding to the next steps, let’s work with a real-world data frame: <code>mtcars</code>! This data frame is available in both R (natively) and Python (in <code>plotnine.data.mtcars</code>) and contains various car attributes. However, to simulate a real world scenario, we’ll see how to import it from a csv file.</p>
+<div id="importing-the-data-frame" class="section level4 hasAnchor" number="5.1.3.1">
+<h4><span class="header-section-number">5.1.3.1</span> Importing the Data Frame<a href="df_plt.html#importing-the-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>First, let’s import the <code>mtcars</code> data frame. You’ll need to download this from Moodle, and save it under your working directory as “mtcars.csv”. Remember that we learned how to read from CSV files in week 1! Well, this is the first time we are doing this in a practical sense.</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="df_plt.html#cb679-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the data frame in R</span></span>
+<span id="cb679-2"><a href="df_plt.html#cb679-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;mtcars.csv&quot;</span>)</span></code></pre></div>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb680"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb680-1"><a href="df_plt.html#cb680-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the data frame in Python</span></span>
+<span id="cb680-2"><a href="df_plt.html#cb680-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb680-3"><a href="df_plt.html#cb680-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb680-4"><a href="df_plt.html#cb680-4" aria-hidden="true" tabindex="-1"></a>mtcars <span class="op">=</span> pd.read_csv(<span class="st">&quot;mtcars.csv&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="understanding-the-data-frames" class="section level4 hasAnchor" number="5.1.3.2">
+<h4><span class="header-section-number">5.1.3.2</span> Understanding the Data Frames<a href="df_plt.html#understanding-the-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The <code>mtcars</code> data frame contains the following columns:</p>
+<ul>
+<li><code>mpg</code>: Miles/(US) gallon</li>
+<li><code>cyl</code>: Number of cylinders</li>
+<li><code>disp</code>: Displacement (cu.in.)</li>
+<li><code>hp</code>: Gross horsepower</li>
+<li><code>drat</code>: Rear axle ratio</li>
+<li><code>wt</code>: Weight (1000 lbs)</li>
+<li><code>qsec</code>: 1/4 mile time</li>
+<li><code>vs</code>: Engine (0 = V-shaped, 1 = straight)</li>
+<li><code>am</code>: Transmission (0 = automatic, 1 = manual)</li>
+<li><code>gear</code>: Number of forward gears</li>
+<li><code>carb</code>: Number of carburetors</li>
+</ul>
+</div>
+<div id="displaying-the-first-few-values" class="section level4 hasAnchor" number="5.1.3.3">
+<h4><span class="header-section-number">5.1.3.3</span> Displaying the First Few Values<a href="df_plt.html#displaying-the-first-few-values" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>We can display the first few values of the data frame using the <code>head()</code> function in R and Python.</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb681"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb681-1"><a href="df_plt.html#cb681-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Displaying the first few values in R</span></span>
+<span id="cb681-2"><a href="df_plt.html#cb681-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code></pre></div>
+<pre><code>##    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## 1 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## 2 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## 3 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## 4 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## 5 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## 6 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb683"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb683-1"><a href="df_plt.html#cb683-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Displaying the first few values in Python</span></span>
+<span id="cb683-2"><a href="df_plt.html#cb683-2" aria-hidden="true" tabindex="-1"></a>mtcars.head()</span></code></pre></div>
+<pre><code>##     mpg  cyl   disp   hp  drat     wt   qsec  vs  am  gear  carb
+## 0  21.0    6  160.0  110  3.90  2.620  16.46   0   1     4     4
+## 1  21.0    6  160.0  110  3.90  2.875  17.02   0   1     4     4
+## 2  22.8    4  108.0   93  3.85  2.320  18.61   1   1     4     1
+## 3  21.4    6  258.0  110  3.08  3.215  19.44   1   0     3     1
+## 4  18.7    8  360.0  175  3.15  3.440  17.02   0   0     3     2</code></pre>
+</div>
+</div>
+<p>In RStudio, you can also explore the data frame via the <code>View()</code> function. This opens the data frame in a spreadsheet-like view, which can be very useful for getting a sense of the data.</p>
+</div>
+<div id="factor-variables" class="section level4 hasAnchor" number="5.1.3.4">
+<h4><span class="header-section-number">5.1.3.4</span> Factor Variables<a href="df_plt.html#factor-variables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>In R, a factor is a variable that can take on a limited number of distinct values, such as ‘yes’ and ‘no’. It’s used to store categorical data. In Python, we use the <code>category</code> data type for similar purposes.</p>
+<p>In the <code>mtcars</code> data frame, the <code>vs</code> and <code>am</code> columns are currently integers, but they represent categorical data. Therefore, we should convert them to factors in R or categories in Python.</p>
+<p>Here’s how we can do this:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb685"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb685-1"><a href="df_plt.html#cb685-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting to factors in R</span></span>
+<span id="cb685-2"><a href="df_plt.html#cb685-2" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>vs <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(mtcars<span class="sc">$</span>vs)</span>
+<span id="cb685-3"><a href="df_plt.html#cb685-3" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>am <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(mtcars<span class="sc">$</span>am)</span>
+<span id="cb685-4"><a href="df_plt.html#cb685-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb685-5"><a href="df_plt.html#cb685-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the conversion</span></span>
+<span id="cb685-6"><a href="df_plt.html#cb685-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    32 obs. of  11 variables:
+##  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+##  $ cyl : int  6 6 4 6 8 6 8 4 4 6 ...
+##  $ disp: num  160 160 108 258 360 ...
+##  $ hp  : int  110 110 93 110 175 105 245 62 95 123 ...
+##  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
+##  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
+##  $ qsec: num  16.5 17 18.6 19.4 17 ...
+##  $ vs  : Factor w/ 2 levels &quot;0&quot;,&quot;1&quot;: 1 1 2 2 1 2 1 2 2 2 ...
+##  $ am  : Factor w/ 2 levels &quot;0&quot;,&quot;1&quot;: 2 2 2 1 1 1 1 1 1 1 ...
+##  $ gear: int  4 4 4 3 3 3 3 4 4 4 ...
+##  $ carb: int  4 4 1 1 2 1 4 2 2 4 ...</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb687"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb687-1"><a href="df_plt.html#cb687-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting to categories in Python</span></span>
+<span id="cb687-2"><a href="df_plt.html#cb687-2" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="st">&#39;vs&#39;</span>] <span class="op">=</span> mtcars[<span class="st">&#39;vs&#39;</span>].astype(<span class="st">&#39;category&#39;</span>)</span>
+<span id="cb687-3"><a href="df_plt.html#cb687-3" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="st">&#39;am&#39;</span>] <span class="op">=</span> mtcars[<span class="st">&#39;am&#39;</span>].astype(<span class="st">&#39;category&#39;</span>)</span>
+<span id="cb687-4"><a href="df_plt.html#cb687-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb687-5"><a href="df_plt.html#cb687-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the conversion</span></span>
+<span id="cb687-6"><a href="df_plt.html#cb687-6" aria-hidden="true" tabindex="-1"></a>mtcars.info()</span></code></pre></div>
+<pre><code>## &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+## RangeIndex: 32 entries, 0 to 31
+## Data columns (total 11 columns):
+##  #   Column  Non-Null Count  Dtype   
+## ---  ------  --------------  -----   
+##  0   mpg     32 non-null     float64 
+##  1   cyl     32 non-null     int64   
+##  2   disp    32 non-null     float64 
+##  3   hp      32 non-null     int64   
+##  4   drat    32 non-null     float64 
+##  5   wt      32 non-null     float64 
+##  6   qsec    32 non-null     float64 
+##  7   vs      32 non-null     category
+##  8   am      32 non-null     category
+##  9   gear    32 non-null     int64   
+##  10  carb    32 non-null     int64   
+## dtypes: category(2), float64(5), int64(4)
+## memory usage: 2.7 KB</code></pre>
+</div>
+</div>
+<p>This code converts the <code>vs</code> and <code>am</code> columns to factors or categories and then checks that the conversion was successful. By correctly representing these columns as categorical variables, we can perform more appropriate statistical analyses and get more meaningful insights from our data.</p>
+</div>
+</div>
+<div id="group-by-and-summarise" class="section level3 hasAnchor" number="5.1.4">
+<h3><span class="header-section-number">5.1.4</span> Group by and summarise<a href="df_plt.html#group-by-and-summarise" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>How to extract information… For doing so we need a real data frame…</p>
 </div>
 </div>
@@ -745,14 +871,14 @@ The exercise has various levels of completition, from a basic level where we wil
 </ol>
 <p><strong>Medium.</strong> Modify the code above to add the additional function <span class="math inline">\(y=\cos(x)\)</span>.
 You should get something like:</p>
-<p><img src="images/unnamed-chunk-211-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-218-1.png" width="50%" /></p>
 <ul>
 <li><p>The x-axis should range from 0 to 10, with a step size of 0.01.</p></li>
 <li><p>Use different colours for each curve (sine or cosine)</p></li>
 <li><p>How many columns should have your dataframe?</p></li>
 </ul>
 <p><strong>Advanced.</strong> Using <code>ggplot</code>, write a program that generates the plot below:</p>
-<p><img src="images/unnamed-chunk-212-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-219-1.png" width="50%" /></p>
 <p>Each subplot should be comparing sines and cosines with different frequencies.
 The plot should show 6 sinusoidal functions:<span class="math display">\[\sin\left(\frac{x}{2}\right), \sin(x), \sin(2x), \cos\left(\frac{x}{2}\right), \cos(x), \cos(2x)\]</span></p>
 <ul>
