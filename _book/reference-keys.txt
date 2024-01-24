@@ -79,8 +79,8 @@ reordering-rows
 a-real-data-frame
 importing-the-data-frame
 understanding-the-data-frames
-displaying-the-first-few-values
-factor-variables
+exploring-your-data-frame
+factor-or-categorical-variables
 group-by-and-summarise
 plotting-with-ggplot
 more-basic-plots

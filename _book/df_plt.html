@@ -216,8 +216,8 @@ In the context of mathematics or physics, these could be considered as <strong>p
 The rows of the data frame correspond to a single observation across these variables.</p>
 <div id="constructing-and-accessing-data-frames" class="section level3 hasAnchor" number="5.1.1">
 <h3><span class="header-section-number">5.1.1</span> Constructing and Accessing Data Frames<a href="df_plt.html#constructing-and-accessing-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Let's start by constructing a data frame.
-We'll use a dataset of different types of non-dairy milks, with their respective nutritional contents:</p>
+<p>Let’s start by constructing a data frame.
+We’ll use a dataset of different types of non-dairy milks, with their respective nutritional contents:</p>
 <table style="width:100%;">
 <colgroup>
 <col width="14%" />
@@ -358,7 +358,10 @@ In this case, R and python will just tell us that we have a “Not Applicable (N
 ## 2      100
 ## 3      120
 ## 4      130</code></pre>
-<p>Recall that the pipe operator (<code>|&gt;</code>) is used to chain operations together, so it will take whatever we have at the left, and use it as a first argument to the function to the right. The above R code is equivalent to <code>select(milk_df, Calories)</code>. Note, <code>select</code> will return the column as a vector of a data frame. Sometimes this can be better, as you might not want to change the type of your objects <em>inadvertently during execution</em>.</p>
+<p>Recall that the pipe operator (<code>|&gt;</code>) is used to chain operations together, so it will take whatever we have at the left, and use it as a first argument to the function to the right.
+The above R code is equivalent to <code>select(milk_df, Calories)</code>.
+Note, <code>select</code> will return the column as a vector of a data frame.
+Sometimes this can be better, as you might not want to change the type of your objects <em>inadvertently during execution</em>.</p>
 <p>To access multiple variables at the same time, we can pass a vector of variable names:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
@@ -429,8 +432,15 @@ Similarly to vectors, to access multiple rows at the same time, we can pass a ve
 ## 1       Soy       100        7    2.0             10     NaN   4.0</code></pre>
 </div>
 </div>
-<p><strong>In R</strong>, when we use <code>[1:2, ]</code> on a data frame, we are working with a two-dimensional object. The <code>1:2</code> represents the row indices that we want to select, and the empty space after the comma indicates that we want to select all columns. So, <code>[1:2, ]</code> will select the first two rows and all columns of the data frame. This is different from selecting a vector because a vector is a one-dimensional object, and we only need to specify the indices of the elements we want to select.</p>
-<p><strong>In Python</strong>, when we use <code>.iloc[0:2]</code> on a data frame, we are working with a two-dimensional object. The <code>0:2</code> represents the row indices that we want to select, and the absence of a second argument after the comma indicates that we want to select all columns. So, <code>.iloc[0:2]</code> will select the first two rows and all columns of the data frame. This is different from selecting elements from a vector because a list is a one-dimensional object, and we only need to specify the indices of the elements we want to select. Note also that when accessing only one row, in python, the returned element will be reshaped into a column vector.</p>
+<p><strong>In R</strong>, when we use <code>[1:2, ]</code> on a data frame, we are working with a two-dimensional object.
+The <code>1:2</code> represents the row indices that we want to select, and the empty space after the comma indicates that we want to select all columns.
+So, <code>[1:2, ]</code> will select the first two rows and all columns of the data frame.
+This is different from selecting a vector because a vector is a one-dimensional object, and we only need to specify the indices of the elements we want to select.</p>
+<p><strong>In Python</strong>, when we use <code>.iloc[0:2]</code> on a data frame, we are working with a two-dimensional object.
+The <code>0:2</code> represents the row indices that we want to select, and the absence of a second argument after the comma indicates that we want to select all columns.
+So, <code>.iloc[0:2]</code> will select the first two rows and all columns of the data frame.
+This is different from selecting elements from a vector because a list is a one-dimensional object, and we only need to specify the indices of the elements we want to select.
+Note also that when accessing only one row, in python, the returned element will be reshaped into a column vector.</p>
 <p>Having said that, we can also access a subset of the data frame by specifying both rows and columns <strong>simultaneously</strong>:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
@@ -461,9 +471,14 @@ Similarly to vectors, to access multiple rows at the same time, we can pass a ve
 ## 2       Oat       120        3</code></pre>
 </div>
 </div>
-<p><strong>NOTE for Python users</strong>: Be careful, in this second statement we used an even different function, <code>loc</code>. In pandas, <code>loc</code> and <code>iloc</code> are two ways to select data from a DataFrame, called <em>indexers</em>.</p>
-<p>The <code>loc</code> indexer is used with the actual labels of the index or columns. On the other hand, <code>iloc</code> is used for indexing by integer position. This means that you’re referring to the row or column by its position in the DataFrame (like the index in a vector), not by its label. In summary, use loc when you want to refer to items by their label and iloc when you want to refer to them by their integer position.</p>
-<p><strong>Overwriting Elements</strong> We can, of course, overwrite and change elements of our data frames. For instance, the simplest thing we could do at the moment, is to fill in the missing values of our data frame for our column “Fibers”.</p>
+<p><strong>NOTE for Python users</strong>: Be careful, in this second statement we used an even different function, <code>loc</code>.
+In pandas, <code>loc</code> and <code>iloc</code> are two ways to select data from a DataFrame, called <em>indexers</em>.</p>
+<p>The <code>loc</code> indexer is used with the actual labels of the index or columns.
+On the other hand, <code>iloc</code> is used for indexing by integer position.
+This means that you’re referring to the row or column by its position in the DataFrame (like the index in a vector), not by its label.
+In summary, use loc when you want to refer to items by their label and iloc when you want to refer to them by their integer position.</p>
+<p><strong>Overwriting Elements</strong> We can, of course, overwrite and change elements of our data frames.
+For instance, the simplest thing we could do at the moment, is to fill in the missing values of our data frame for our column “Fibers”.</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
@@ -496,7 +511,8 @@ Similarly to vectors, to access multiple rows at the same time, we can pass a ve
 <p>Note that, to impute the missing values, we can also use the <code>replace_na()</code> function in R and the <code>fillna()</code> function in Python, but these functions will overwrite all NAs in the dataset, leaving little to no flexibility.</p>
 <div id="accessing-information-about-the-data-frame" class="section level4 hasAnchor" number="5.1.1.1">
 <h4><span class="header-section-number">5.1.1.1</span> Accessing Information about the Data Frame<a href="df_plt.html#accessing-information-about-the-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>We can access various information about the data frame, such as its dimensions, number of rows, number of columns, column names, and a summary of its contents, with a lot of different functions. These will be not explained in detail, but can be useful for a lot of reasons related to exploratory analysis.</p>
+<p>We can access various information about the data frame, such as its dimensions, number of rows, number of columns, column names, and a summary of its contents, with a lot of different functions.
+These will be not explained in detail, but can be useful for a lot of reasons related to exploratory analysis.</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
@@ -514,8 +530,18 @@ Similarly to vectors, to access multiple rows at the same time, we can pass a ve
 <pre><code>## [1] &quot;Milk_Type&quot;     &quot;Calories&quot;      &quot;Protein&quot;      
 ## [4] &quot;Fiber&quot;         &quot;Carbohydrates&quot; &quot;Sugars&quot;       
 ## [7] &quot;Fats&quot;</code></pre>
-<div class="sourceCode" id="cb651"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb651-1"><a href="df_plt.html#cb651-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary statistics</span></span>
-<span id="cb651-2"><a href="df_plt.html#cb651-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(milk_df)</span></code></pre></div>
+<div class="sourceCode" id="cb651"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb651-1"><a href="df_plt.html#cb651-1" aria-hidden="true" tabindex="-1"></a><span class="co">#variable names and types</span></span>
+<span id="cb651-2"><a href="df_plt.html#cb651-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(milk_df)</span></code></pre></div>
+<pre><code>## tibble [4 × 7] (S3: tbl_df/tbl/data.frame)
+##  $ Milk_Type    : chr [1:4] &quot;Almond&quot; &quot;Soy&quot; &quot;Oat&quot; &quot;Rice&quot;
+##  $ Calories     : num [1:4] 60 100 120 130
+##  $ Protein      : num [1:4] 1 7 3 1
+##  $ Fiber        : num [1:4] 1 2 1.2 0.7
+##  $ Carbohydrates: num [1:4] 8 10 20 25
+##  $ Sugars       : num [1:4] 7 NA 19 NA
+##  $ Fats         : num [1:4] 2.5 4 2.5 2.5</code></pre>
+<div class="sourceCode" id="cb653"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb653-1"><a href="df_plt.html#cb653-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary statistics</span></span>
+<span id="cb653-2"><a href="df_plt.html#cb653-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(milk_df)</span></code></pre></div>
 <pre><code>##   Milk_Type            Calories        Protein 
 ##  Length:4           Min.   : 60.0   Min.   :1  
 ##  Class :character   1st Qu.: 90.0   1st Qu.:1  
@@ -543,22 +569,38 @@ Similarly to vectors, to access multiple rows at the same time, we can pass a ve
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb653"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb653-1"><a href="df_plt.html#cb653-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing information about the data frame in Python</span></span>
-<span id="cb653-2"><a href="df_plt.html#cb653-2" aria-hidden="true" tabindex="-1"></a><span class="co"># dimensions </span></span>
-<span id="cb653-3"><a href="df_plt.html#cb653-3" aria-hidden="true" tabindex="-1"></a>milk_df.shape</span></code></pre></div>
+<div class="sourceCode" id="cb655"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb655-1"><a href="df_plt.html#cb655-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing information about the data frame in Python</span></span>
+<span id="cb655-2"><a href="df_plt.html#cb655-2" aria-hidden="true" tabindex="-1"></a><span class="co"># dimensions </span></span>
+<span id="cb655-3"><a href="df_plt.html#cb655-3" aria-hidden="true" tabindex="-1"></a>milk_df.shape</span></code></pre></div>
 <pre><code>## (4, 7)</code></pre>
-<div class="sourceCode" id="cb655"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb655-1"><a href="df_plt.html#cb655-1" aria-hidden="true" tabindex="-1"></a><span class="co"># number of rows and columns</span></span>
-<span id="cb655-2"><a href="df_plt.html#cb655-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(milk_df)</span></code></pre></div>
+<div class="sourceCode" id="cb657"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb657-1"><a href="df_plt.html#cb657-1" aria-hidden="true" tabindex="-1"></a><span class="co"># number of rows and columns</span></span>
+<span id="cb657-2"><a href="df_plt.html#cb657-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(milk_df)</span></code></pre></div>
 <pre><code>## 4</code></pre>
-<div class="sourceCode" id="cb657"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb657-1"><a href="df_plt.html#cb657-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(milk_df.columns) <span class="co"># or milk_df.shape[1]</span></span></code></pre></div>
+<div class="sourceCode" id="cb659"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb659-1"><a href="df_plt.html#cb659-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(milk_df.columns) <span class="co"># or milk_df.shape[1]</span></span></code></pre></div>
 <pre><code>## 7</code></pre>
-<div class="sourceCode" id="cb659"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb659-1"><a href="df_plt.html#cb659-1" aria-hidden="true" tabindex="-1"></a><span class="co"># variable names</span></span>
-<span id="cb659-2"><a href="df_plt.html#cb659-2" aria-hidden="true" tabindex="-1"></a>milk_df.columns</span></code></pre></div>
+<div class="sourceCode" id="cb661"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb661-1"><a href="df_plt.html#cb661-1" aria-hidden="true" tabindex="-1"></a><span class="co"># variable names</span></span>
+<span id="cb661-2"><a href="df_plt.html#cb661-2" aria-hidden="true" tabindex="-1"></a>milk_df.columns</span></code></pre></div>
 <pre><code>## Index([&#39;Milk_Type&#39;, &#39;Calories&#39;, &#39;Protein&#39;, &#39;Fiber&#39;, &#39;Carbohydrates&#39;, &#39;Sugars&#39;,
 ##        &#39;Fats&#39;],
 ##       dtype=&#39;object&#39;)</code></pre>
-<div class="sourceCode" id="cb661"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb661-1"><a href="df_plt.html#cb661-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary statistics</span></span>
-<span id="cb661-2"><a href="df_plt.html#cb661-2" aria-hidden="true" tabindex="-1"></a>milk_df.describe()</span></code></pre></div>
+<div class="sourceCode" id="cb663"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb663-1"><a href="df_plt.html#cb663-1" aria-hidden="true" tabindex="-1"></a><span class="co"># variable names and types</span></span>
+<span id="cb663-2"><a href="df_plt.html#cb663-2" aria-hidden="true" tabindex="-1"></a>milk_df.info()</span></code></pre></div>
+<pre><code>## &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+## RangeIndex: 4 entries, 0 to 3
+## Data columns (total 7 columns):
+##  #   Column         Non-Null Count  Dtype  
+## ---  ------         --------------  -----  
+##  0   Milk_Type      4 non-null      object 
+##  1   Calories       4 non-null      int64  
+##  2   Protein        4 non-null      int64  
+##  3   Fiber          4 non-null      float64
+##  4   Carbohydrates  4 non-null      int64  
+##  5   Sugars         2 non-null      float64
+##  6   Fats           4 non-null      float64
+## dtypes: float64(3), int64(3), object(1)
+## memory usage: 356.0+ bytes</code></pre>
+<div class="sourceCode" id="cb665"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb665-1"><a href="df_plt.html#cb665-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary statistics</span></span>
+<span id="cb665-2"><a href="df_plt.html#cb665-2" aria-hidden="true" tabindex="-1"></a>milk_df.describe()</span></code></pre></div>
 <pre><code>##          Calories   Protein     Fiber  Carbohydrates     Sugars   Fats
 ## count    4.000000  4.000000  4.000000       4.000000   2.000000  4.000
 ## mean   102.500000  3.000000  1.225000      15.750000  13.000000  2.875
@@ -575,19 +617,24 @@ Similarly to vectors, to access multiple rows at the same time, we can pass a ve
 </div>
 <div id="manipulating-data-frames" class="section level3 hasAnchor" number="5.1.2">
 <h3><span class="header-section-number">5.1.2</span> Manipulating Data Frames<a href="df_plt.html#manipulating-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>When working with data in R or Python, most of the time we need to perform some data manipulation. This could involve modifying our data frame, accessing specific parts of it that are of interest, or creating new variables based on existing ones. Fortunately, both R and Python provide a set of powerful functions for these tasks.</p>
-<p>In R, we have <code>filter()</code>, <code>arrange()</code>, <code>select()</code>, and <code>mutate()</code>. In Python, we have <code>query</code>, <code>sort_values</code>, <code>loc</code> or <code>iloc</code>, and <code>assign</code>. We will now explore each of these functions in detail.</p>
+<p>When working with data in R or Python, most of the time we need to perform some data manipulation.
+This could involve modifying our data frame, accessing specific parts of it that are of interest, or creating new variables based on existing ones.
+Fortunately, both R and Python provide a set of powerful functions for these tasks.</p>
+<p>In R, we have <code>filter()</code>, <code>arrange()</code>, <code>select()</code>, and <code>mutate()</code>.
+In Python, we have <code>query</code>, <code>sort_values</code>, <code>loc</code> or <code>iloc</code>, and <code>assign</code>.
+We will now explore each of these functions in detail.</p>
 <div id="adding-new-columns" class="section level4 hasAnchor" number="5.1.2.1">
 <h4><span class="header-section-number">5.1.2.1</span> Adding New Columns<a href="df_plt.html#adding-new-columns" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Adding new columns allows us to easily add new columns that are functions of existing ones. In R, we use <code>mutate()</code>, and in Python, we use <code>assign</code>.</p>
+<p>Adding new columns allows us to easily add new columns that are functions of existing ones.
+In R, we use <code>mutate()</code>, and in Python, we use <code>assign</code>.</p>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb663"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb663-1"><a href="df_plt.html#cb663-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute percentage of sugars over carbohydrates in R</span></span>
-<span id="cb663-2"><a href="df_plt.html#cb663-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, adding the total weight of the components and computing the </span></span>
-<span id="cb663-3"><a href="df_plt.html#cb663-3" aria-hidden="true" tabindex="-1"></a><span class="co"># protein content</span></span>
-<span id="cb663-4"><a href="df_plt.html#cb663-4" aria-hidden="true" tabindex="-1"></a>milk_df <span class="ot">&lt;-</span> milk_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">sugar_percent =</span> (Sugars <span class="sc">/</span> Carbohydrates) <span class="sc">*</span> <span class="dv">100</span>, </span>
-<span id="cb663-5"><a href="df_plt.html#cb663-5" aria-hidden="true" tabindex="-1"></a>                              <span class="at">tot_wei =</span> Protein <span class="sc">+</span> Fiber <span class="sc">+</span> Carbohydrates <span class="sc">+</span> Fats,</span>
-<span id="cb663-6"><a href="df_plt.html#cb663-6" aria-hidden="true" tabindex="-1"></a>                              <span class="at">protein_content =</span> Protein <span class="sc">/</span> tot_wei <span class="sc">*</span> <span class="dv">100</span>)</span>
-<span id="cb663-7"><a href="df_plt.html#cb663-7" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
+<div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb667-1"><a href="df_plt.html#cb667-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute percentage of sugars over carbohydrates in R</span></span>
+<span id="cb667-2"><a href="df_plt.html#cb667-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, adding the total weight of the components and computing the </span></span>
+<span id="cb667-3"><a href="df_plt.html#cb667-3" aria-hidden="true" tabindex="-1"></a><span class="co"># protein content</span></span>
+<span id="cb667-4"><a href="df_plt.html#cb667-4" aria-hidden="true" tabindex="-1"></a>milk_df <span class="ot">&lt;-</span> milk_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">sugar_percent =</span> (Sugars <span class="sc">/</span> Carbohydrates) <span class="sc">*</span> <span class="dv">100</span>, </span>
+<span id="cb667-5"><a href="df_plt.html#cb667-5" aria-hidden="true" tabindex="-1"></a>                              <span class="at">tot_wei =</span> Protein <span class="sc">+</span> Fiber <span class="sc">+</span> Carbohydrates <span class="sc">+</span> Fats,</span>
+<span id="cb667-6"><a href="df_plt.html#cb667-6" aria-hidden="true" tabindex="-1"></a>                              <span class="at">protein_content =</span> Protein <span class="sc">/</span> tot_wei <span class="sc">*</span> <span class="dv">100</span>)</span>
+<span id="cb667-7"><a href="df_plt.html#cb667-7" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 10
 ##   Milk_Type Calories Protein Fiber Carbohydrates Sugars
 ##   &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt;
@@ -598,36 +645,38 @@ Similarly to vectors, to access multiple rows at the same time, we can pass a ve
 ## # ℹ 4 more variables: Fats &lt;dbl&gt;, sugar_percent &lt;dbl&gt;,
 ## #   tot_wei &lt;dbl&gt;, protein_content &lt;dbl&gt;</code></pre>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb665"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb665-1"><a href="df_plt.html#cb665-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute percentage of sugars over carbohydrates in Python</span></span>
-<span id="cb665-2"><a href="df_plt.html#cb665-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, adding the total weight of the components and computing the </span></span>
-<span id="cb665-3"><a href="df_plt.html#cb665-3" aria-hidden="true" tabindex="-1"></a><span class="co"># protein content</span></span>
-<span id="cb665-4"><a href="df_plt.html#cb665-4" aria-hidden="true" tabindex="-1"></a>milk_df <span class="op">=</span> milk_df.assign(</span>
-<span id="cb665-5"><a href="df_plt.html#cb665-5" aria-hidden="true" tabindex="-1"></a>    sugar_percent <span class="op">=</span> <span class="kw">lambda</span> df: (df[<span class="st">&#39;Sugars&#39;</span>] <span class="op">/</span> df[<span class="st">&#39;Carbohydrates&#39;</span>]) <span class="op">*</span> <span class="dv">100</span>,</span>
-<span id="cb665-6"><a href="df_plt.html#cb665-6" aria-hidden="true" tabindex="-1"></a>    tot_wei <span class="op">=</span> <span class="kw">lambda</span> df: df[<span class="st">&#39;Protein&#39;</span>] <span class="op">+</span> df[<span class="st">&#39;Fiber&#39;</span>] <span class="op">+</span> df[<span class="st">&#39;Carbohydrates&#39;</span>] <span class="op">+</span> df[<span class="st">&#39;Fats&#39;</span>],</span>
-<span id="cb665-7"><a href="df_plt.html#cb665-7" aria-hidden="true" tabindex="-1"></a>    protein_content <span class="op">=</span> <span class="kw">lambda</span> df: df[<span class="st">&#39;Protein&#39;</span>] <span class="op">/</span> df[<span class="st">&#39;tot_wei&#39;</span>] <span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb665-8"><a href="df_plt.html#cb665-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb665-9"><a href="df_plt.html#cb665-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb665-10"><a href="df_plt.html#cb665-10" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
+<div class="sourceCode" id="cb669"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb669-1"><a href="df_plt.html#cb669-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute percentage of sugars over carbohydrates in Python</span></span>
+<span id="cb669-2"><a href="df_plt.html#cb669-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, adding the total weight of the components and computing the </span></span>
+<span id="cb669-3"><a href="df_plt.html#cb669-3" aria-hidden="true" tabindex="-1"></a><span class="co"># protein content</span></span>
+<span id="cb669-4"><a href="df_plt.html#cb669-4" aria-hidden="true" tabindex="-1"></a>milk_df <span class="op">=</span> milk_df.assign(</span>
+<span id="cb669-5"><a href="df_plt.html#cb669-5" aria-hidden="true" tabindex="-1"></a>    sugar_percent <span class="op">=</span> <span class="kw">lambda</span> df: (df[<span class="st">&#39;Sugars&#39;</span>] <span class="op">/</span> df[<span class="st">&#39;Carbohydrates&#39;</span>]) <span class="op">*</span> <span class="dv">100</span>,</span>
+<span id="cb669-6"><a href="df_plt.html#cb669-6" aria-hidden="true" tabindex="-1"></a>    tot_wei <span class="op">=</span> <span class="kw">lambda</span> df: df[<span class="st">&#39;Protein&#39;</span>] <span class="op">+</span> df[<span class="st">&#39;Fiber&#39;</span>] <span class="op">+</span> df[<span class="st">&#39;Carbohydrates&#39;</span>] <span class="op">+</span> df[<span class="st">&#39;Fats&#39;</span>],</span>
+<span id="cb669-7"><a href="df_plt.html#cb669-7" aria-hidden="true" tabindex="-1"></a>    protein_content <span class="op">=</span> <span class="kw">lambda</span> df: df[<span class="st">&#39;Protein&#39;</span>] <span class="op">/</span> df[<span class="st">&#39;tot_wei&#39;</span>] <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb669-8"><a href="df_plt.html#cb669-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb669-9"><a href="df_plt.html#cb669-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb669-10"><a href="df_plt.html#cb669-10" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
 <pre><code>##   Milk_Type  Calories  Protein  Fiber  Carbohydrates  Sugars  Fats  sugar_percent  tot_wei  protein_content
 ## 0    Almond        60        1    1.0              8     7.0   2.5           87.5     12.5         8.000000
 ## 1       Soy       100        7    2.0             10     NaN   4.0            NaN     23.0        30.434783
 ## 2       Oat       120        3    1.2             20    19.0   2.5           95.0     26.7        11.235955
 ## 3      Rice       130        1    0.7             25     NaN   2.5            NaN     29.2         3.424658</code></pre>
-<p>The advantage of using <code>mutate</code> and <code>assign</code> over directly overwriting columns is that those function allow you to reference other columns that are being created within the same call. This makes it possible to create multiple interdependent columns in one go. In contrast, when overwriting columns directly, you would have to create each new column one at a time, which could be less efficient and harder to read.</p>
+<p>The advantage of using <code>mutate</code> and <code>assign</code> over directly overwriting columns is that those function allow you to reference other columns that are being created within the same call.
+This makes it possible to create multiple interdependent columns in one go.
+In contrast, when overwriting columns directly, you would have to create each new column one at a time, which could be less efficient and harder to read.</p>
 <p>If we had to do the same code manually, each one at a time, this would have looked like the following:</p>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb667-1"><a href="df_plt.html#cb667-1" aria-hidden="true" tabindex="-1"></a><span class="do">### equivalent to above statement</span></span>
-<span id="cb667-2"><a href="df_plt.html#cb667-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb667-3"><a href="df_plt.html#cb667-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute percentage of sugars over carbohydrates in R</span></span>
-<span id="cb667-4"><a href="df_plt.html#cb667-4" aria-hidden="true" tabindex="-1"></a>milk_df<span class="sc">$</span>sugar_percent <span class="ot">&lt;-</span> (milk_df<span class="sc">$</span>Sugars <span class="sc">/</span> milk_df<span class="sc">$</span>Carbohydrates) <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb667-5"><a href="df_plt.html#cb667-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb667-6"><a href="df_plt.html#cb667-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, adding the total weight of the components</span></span>
-<span id="cb667-7"><a href="df_plt.html#cb667-7" aria-hidden="true" tabindex="-1"></a>milk_df<span class="sc">$</span>tot_wei <span class="ot">&lt;-</span> milk_df<span class="sc">$</span>Protein <span class="sc">+</span> milk_df<span class="sc">$</span>Fiber <span class="sc">+</span> milk_df<span class="sc">$</span>Carbohydrates <span class="sc">+</span> milk_df<span class="sc">$</span>Fats</span>
-<span id="cb667-8"><a href="df_plt.html#cb667-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb667-9"><a href="df_plt.html#cb667-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Finally, computing the protein content</span></span>
-<span id="cb667-10"><a href="df_plt.html#cb667-10" aria-hidden="true" tabindex="-1"></a>milk_df<span class="sc">$</span>protein_content <span class="ot">=</span> milk_df<span class="sc">$</span>Protein <span class="sc">/</span> milk_df<span class="sc">$</span>tot_wei <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb667-11"><a href="df_plt.html#cb667-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb667-12"><a href="df_plt.html#cb667-12" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
+<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb671-1"><a href="df_plt.html#cb671-1" aria-hidden="true" tabindex="-1"></a><span class="do">### equivalent to above statement</span></span>
+<span id="cb671-2"><a href="df_plt.html#cb671-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb671-3"><a href="df_plt.html#cb671-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute percentage of sugars over carbohydrates in R</span></span>
+<span id="cb671-4"><a href="df_plt.html#cb671-4" aria-hidden="true" tabindex="-1"></a>milk_df<span class="sc">$</span>sugar_percent <span class="ot">&lt;-</span> (milk_df<span class="sc">$</span>Sugars <span class="sc">/</span> milk_df<span class="sc">$</span>Carbohydrates) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb671-5"><a href="df_plt.html#cb671-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb671-6"><a href="df_plt.html#cb671-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, adding the total weight of the components</span></span>
+<span id="cb671-7"><a href="df_plt.html#cb671-7" aria-hidden="true" tabindex="-1"></a>milk_df<span class="sc">$</span>tot_wei <span class="ot">&lt;-</span> milk_df<span class="sc">$</span>Protein <span class="sc">+</span> milk_df<span class="sc">$</span>Fiber <span class="sc">+</span> milk_df<span class="sc">$</span>Carbohydrates <span class="sc">+</span> milk_df<span class="sc">$</span>Fats</span>
+<span id="cb671-8"><a href="df_plt.html#cb671-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb671-9"><a href="df_plt.html#cb671-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Finally, computing the protein content</span></span>
+<span id="cb671-10"><a href="df_plt.html#cb671-10" aria-hidden="true" tabindex="-1"></a>milk_df<span class="sc">$</span>protein_content <span class="ot">=</span> milk_df<span class="sc">$</span>Protein <span class="sc">/</span> milk_df<span class="sc">$</span>tot_wei <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb671-11"><a href="df_plt.html#cb671-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb671-12"><a href="df_plt.html#cb671-12" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 10
 ##   Milk_Type Calories Protein Fiber Carbohydrates Sugars
 ##   &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt;
@@ -638,34 +687,39 @@ Similarly to vectors, to access multiple rows at the same time, we can pass a ve
 ## # ℹ 4 more variables: Fats &lt;dbl&gt;, sugar_percent &lt;dbl&gt;,
 ## #   tot_wei &lt;dbl&gt;, protein_content &lt;dbl&gt;</code></pre>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb669"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb669-1"><a href="df_plt.html#cb669-1" aria-hidden="true" tabindex="-1"></a><span class="co">### equivalent to above statement</span></span>
-<span id="cb669-2"><a href="df_plt.html#cb669-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb669-3"><a href="df_plt.html#cb669-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute percentage of sugars over carbohydrates in Python</span></span>
-<span id="cb669-4"><a href="df_plt.html#cb669-4" aria-hidden="true" tabindex="-1"></a>milk_df[<span class="st">&#39;sugar_percent&#39;</span>] <span class="op">=</span> (milk_df[<span class="st">&#39;Sugars&#39;</span>] <span class="op">/</span> milk_df[<span class="st">&#39;Carbohydrates&#39;</span>]) <span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb669-5"><a href="df_plt.html#cb669-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb669-6"><a href="df_plt.html#cb669-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, adding the total weight of the components</span></span>
-<span id="cb669-7"><a href="df_plt.html#cb669-7" aria-hidden="true" tabindex="-1"></a>milk_df[<span class="st">&#39;tot_wei&#39;</span>] <span class="op">=</span> milk_df[<span class="st">&#39;Protein&#39;</span>] <span class="op">+</span> milk_df[<span class="st">&#39;Fiber&#39;</span>] <span class="op">+</span> milk_df[<span class="st">&#39;Carbohydrates&#39;</span>] <span class="op">+</span> milk_df[<span class="st">&#39;Fats&#39;</span>]</span>
-<span id="cb669-8"><a href="df_plt.html#cb669-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb669-9"><a href="df_plt.html#cb669-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Finally, computing the protein content</span></span>
-<span id="cb669-10"><a href="df_plt.html#cb669-10" aria-hidden="true" tabindex="-1"></a>milk_df[<span class="st">&#39;protein_content&#39;</span>] <span class="op">=</span> milk_df[<span class="st">&#39;Protein&#39;</span>] <span class="op">/</span> milk_df[<span class="st">&#39;tot_wei&#39;</span>] <span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb669-11"><a href="df_plt.html#cb669-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb669-12"><a href="df_plt.html#cb669-12" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
+<div class="sourceCode" id="cb673"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb673-1"><a href="df_plt.html#cb673-1" aria-hidden="true" tabindex="-1"></a><span class="co">### equivalent to above statement</span></span>
+<span id="cb673-2"><a href="df_plt.html#cb673-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb673-3"><a href="df_plt.html#cb673-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute percentage of sugars over carbohydrates in Python</span></span>
+<span id="cb673-4"><a href="df_plt.html#cb673-4" aria-hidden="true" tabindex="-1"></a>milk_df[<span class="st">&#39;sugar_percent&#39;</span>] <span class="op">=</span> (milk_df[<span class="st">&#39;Sugars&#39;</span>] <span class="op">/</span> milk_df[<span class="st">&#39;Carbohydrates&#39;</span>]) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb673-5"><a href="df_plt.html#cb673-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb673-6"><a href="df_plt.html#cb673-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, adding the total weight of the components</span></span>
+<span id="cb673-7"><a href="df_plt.html#cb673-7" aria-hidden="true" tabindex="-1"></a>milk_df[<span class="st">&#39;tot_wei&#39;</span>] <span class="op">=</span> milk_df[<span class="st">&#39;Protein&#39;</span>] <span class="op">+</span> milk_df[<span class="st">&#39;Fiber&#39;</span>] <span class="op">+</span> milk_df[<span class="st">&#39;Carbohydrates&#39;</span>] <span class="op">+</span> milk_df[<span class="st">&#39;Fats&#39;</span>]</span>
+<span id="cb673-8"><a href="df_plt.html#cb673-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb673-9"><a href="df_plt.html#cb673-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Finally, computing the protein content</span></span>
+<span id="cb673-10"><a href="df_plt.html#cb673-10" aria-hidden="true" tabindex="-1"></a>milk_df[<span class="st">&#39;protein_content&#39;</span>] <span class="op">=</span> milk_df[<span class="st">&#39;Protein&#39;</span>] <span class="op">/</span> milk_df[<span class="st">&#39;tot_wei&#39;</span>] <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb673-11"><a href="df_plt.html#cb673-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb673-12"><a href="df_plt.html#cb673-12" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
 <pre><code>##   Milk_Type  Calories  Protein  Fiber  Carbohydrates  Sugars  Fats  sugar_percent  tot_wei  protein_content
 ## 0    Almond        60        1    1.0              8     7.0   2.5           87.5     12.5         8.000000
 ## 1       Soy       100        7    2.0             10     NaN   4.0            NaN     23.0        30.434783
 ## 2       Oat       120        3    1.2             20    19.0   2.5           95.0     26.7        11.235955
 ## 3      Rice       130        1    0.7             25     NaN   2.5            NaN     29.2         3.424658</code></pre>
-<p>You can see how this makes the code longer and potentially harder to read. However, it can be useful when the computation of each new column depends on the columns added in the previous steps.</p>
-<p>Note also how, over the rows of soy and rice, the <code>sugar_percent</code> column has missing values, and similarly the <code>protein_content</code> variable has skewed values: this is because the value of the sugar content was missing originally. Be careful about missing values!</p>
+<p>You can see how this makes the code longer and potentially harder to read.
+However, it can be useful when the computation of each new column depends on the columns added in the previous steps.</p>
+<p>Note also how, over the rows of soy and rice, the <code>sugar_percent</code> column has missing values, and similarly the <code>protein_content</code> variable has skewed values: this is because the value of the sugar content was missing originally.
+Be careful about missing values!</p>
 </div>
 <div id="filtering-rows" class="section level4 hasAnchor" number="5.1.2.2">
 <h4><span class="header-section-number">5.1.2.2</span> Filtering Rows<a href="df_plt.html#filtering-rows" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Filtering allows us to focus on a subset of the rows of a data frame. This is based on the result of a vectorised logic expression. In a way, we have already seen this in the past when selecting subsets of vectors! In R, we use <code>filter()</code>, and in Python, we use <code>query()</code>.</p>
+<p>Filtering allows us to focus on a subset of the rows of a data frame.
+This is based on the result of a vectorised logic expression.
+In a way, we have already seen this in the past when selecting subsets of vectors!
+In R, we use <code>filter()</code>, and in Python, we use <code>query()</code>.</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb671-1"><a href="df_plt.html#cb671-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering rows where Calories is greater than 100 in R</span></span>
-<span id="cb671-2"><a href="df_plt.html#cb671-2" aria-hidden="true" tabindex="-1"></a>milk_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Calories <span class="sc">&gt;</span> <span class="dv">100</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb675-1"><a href="df_plt.html#cb675-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering rows where Calories is greater than 100 in R</span></span>
+<span id="cb675-2"><a href="df_plt.html#cb675-2" aria-hidden="true" tabindex="-1"></a>milk_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Calories <span class="sc">&gt;</span> <span class="dv">100</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 10
 ##   Milk_Type Calories Protein Fiber Carbohydrates Sugars
 ##   &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt;
@@ -676,8 +730,8 @@ Similarly to vectors, to access multiple rows at the same time, we can pass a ve
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb673"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb673-1"><a href="df_plt.html#cb673-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering rows where Calories is greater than 100 in Python</span></span>
-<span id="cb673-2"><a href="df_plt.html#cb673-2" aria-hidden="true" tabindex="-1"></a>milk_df.query(<span class="st">&#39;Calories &gt; 100&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb677"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb677-1"><a href="df_plt.html#cb677-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering rows where Calories is greater than 100 in Python</span></span>
+<span id="cb677-2"><a href="df_plt.html#cb677-2" aria-hidden="true" tabindex="-1"></a>milk_df.query(<span class="st">&#39;Calories &gt; 100&#39;</span>)</span></code></pre></div>
 <pre><code>##   Milk_Type  Calories  Protein  Fiber  Carbohydrates  Sugars  Fats  sugar_percent  tot_wei  protein_content
 ## 2       Oat       120        3    1.2             20    19.0   2.5           95.0     26.7        11.235955
 ## 3      Rice       130        1    0.7             25     NaN   2.5            NaN     29.2         3.424658</code></pre>
@@ -686,13 +740,14 @@ Similarly to vectors, to access multiple rows at the same time, we can pass a ve
 </div>
 <div id="reordering-rows" class="section level4 hasAnchor" number="5.1.2.3">
 <h4><span class="header-section-number">5.1.2.3</span> Reordering Rows<a href="df_plt.html#reordering-rows" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Reordering allows us to arrange the rows in the data frame in a specific order. In R, we use <code>arrange()</code>, and in Python, we use <code>sort_values()</code>.</p>
+<p>Reordering allows us to arrange the rows in the data frame in a specific order.
+In R, we use <code>arrange()</code>, and in Python, we use <code>sort_values()</code>.</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb675-1"><a href="df_plt.html#cb675-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arranging rows by decreasing sugar_percent in R</span></span>
-<span id="cb675-2"><a href="df_plt.html#cb675-2" aria-hidden="true" tabindex="-1"></a>milk_df <span class="ot">&lt;-</span> milk_df <span class="sc">|&gt;</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(sugar_percent))</span>
-<span id="cb675-3"><a href="df_plt.html#cb675-3" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
+<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="df_plt.html#cb679-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arranging rows by decreasing sugar_percent in R</span></span>
+<span id="cb679-2"><a href="df_plt.html#cb679-2" aria-hidden="true" tabindex="-1"></a>milk_df <span class="ot">&lt;-</span> milk_df <span class="sc">|&gt;</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(sugar_percent))</span>
+<span id="cb679-3"><a href="df_plt.html#cb679-3" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 10
 ##   Milk_Type Calories Protein Fiber Carbohydrates Sugars
 ##   &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt;
@@ -705,9 +760,9 @@ Similarly to vectors, to access multiple rows at the same time, we can pass a ve
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb677"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb677-1"><a href="df_plt.html#cb677-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arranging rows by decreasing sugar_percent in Python</span></span>
-<span id="cb677-2"><a href="df_plt.html#cb677-2" aria-hidden="true" tabindex="-1"></a>milk_df <span class="op">=</span> milk_df.sort_values(<span class="st">&#39;sugar_percent&#39;</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb677-3"><a href="df_plt.html#cb677-3" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
+<div class="sourceCode" id="cb681"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb681-1"><a href="df_plt.html#cb681-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arranging rows by decreasing sugar_percent in Python</span></span>
+<span id="cb681-2"><a href="df_plt.html#cb681-2" aria-hidden="true" tabindex="-1"></a>milk_df <span class="op">=</span> milk_df.sort_values(<span class="st">&#39;sugar_percent&#39;</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb681-3"><a href="df_plt.html#cb681-3" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
 <pre><code>##   Milk_Type  Calories  Protein  Fiber  Carbohydrates  Sugars  Fats  sugar_percent  tot_wei  protein_content
 ## 2       Oat       120        3    1.2             20    19.0   2.5           95.0     26.7        11.235955
 ## 0    Almond        60        1    1.0              8     7.0   2.5           87.5     12.5         8.000000
@@ -715,27 +770,33 @@ Similarly to vectors, to access multiple rows at the same time, we can pass a ve
 ## 3      Rice       130        1    0.7             25     NaN   2.5            NaN     29.2         3.424658</code></pre>
 </div>
 </div>
-<p>These examples show the power of modern R and Python for data manipulation! By understanding these functions, we can perform complex data manipulations with just a few lines of code.</p>
+<p>These examples show the power of modern R and Python for data manipulation!
+By understanding these functions, we can perform complex data manipulations with just a few lines of code.</p>
 </div>
 </div>
 <div id="a-real-data-frame" class="section level3 hasAnchor" number="5.1.3">
 <h3><span class="header-section-number">5.1.3</span> A Real Data Frame<a href="df_plt.html#a-real-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Now that we have the basis of manipulating data frames, before proceeding to the next steps, let’s work with a real-world data frame: <code>mtcars</code>! This data frame is available in both R (natively) and Python (in <code>plotnine.data.mtcars</code>) and contains various car attributes. However, to simulate a real world scenario, we’ll see how to import it from a csv file.</p>
+<p>Now that we have the basis of manipulating data frames, before proceeding to the next steps, let’s work with a real-world data frame: <code>mtcars</code>!
+This data frame is available in both R (natively) and Python (in <code>plotnine.data.mtcars</code>) and contains various car attributes.
+However, to simulate a real world scenario, we’ll see how to import it from a csv file.</p>
 <div id="importing-the-data-frame" class="section level4 hasAnchor" number="5.1.3.1">
 <h4><span class="header-section-number">5.1.3.1</span> Importing the Data Frame<a href="df_plt.html#importing-the-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>First, let’s import the <code>mtcars</code> data frame. You’ll need to download this from Moodle, and save it under your working directory as “mtcars.csv”. Remember that we learned how to read from CSV files in week 1! Well, this is the first time we are doing this in a practical sense.</p>
+<p>First, let’s import the <code>mtcars</code> data frame.
+You’ll need to download this from Moodle, and save it under your working directory as “mtcars.csv”.
+Remember that we learned how to read from CSV files in week 1!
+Well, this is the first time we are doing this in a practical sense.</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="df_plt.html#cb679-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the data frame in R</span></span>
-<span id="cb679-2"><a href="df_plt.html#cb679-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;mtcars.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb683"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb683-1"><a href="df_plt.html#cb683-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the data frame in R</span></span>
+<span id="cb683-2"><a href="df_plt.html#cb683-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;mtcars.csv&quot;</span>)</span></code></pre></div>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb680"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb680-1"><a href="df_plt.html#cb680-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the data frame in Python</span></span>
-<span id="cb680-2"><a href="df_plt.html#cb680-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb680-3"><a href="df_plt.html#cb680-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb680-4"><a href="df_plt.html#cb680-4" aria-hidden="true" tabindex="-1"></a>mtcars <span class="op">=</span> pd.read_csv(<span class="st">&quot;mtcars.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb684"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb684-1"><a href="df_plt.html#cb684-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the data frame in Python</span></span>
+<span id="cb684-2"><a href="df_plt.html#cb684-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb684-3"><a href="df_plt.html#cb684-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb684-4"><a href="df_plt.html#cb684-4" aria-hidden="true" tabindex="-1"></a>mtcars <span class="op">=</span> pd.read_csv(<span class="st">&quot;mtcars.csv&quot;</span>)</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -756,14 +817,14 @@ Similarly to vectors, to access multiple rows at the same time, we can pass a ve
 <li><code>carb</code>: Number of carburetors</li>
 </ul>
 </div>
-<div id="displaying-the-first-few-values" class="section level4 hasAnchor" number="5.1.3.3">
-<h4><span class="header-section-number">5.1.3.3</span> Displaying the First Few Values<a href="df_plt.html#displaying-the-first-few-values" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="exploring-your-data-frame" class="section level4 hasAnchor" number="5.1.3.3">
+<h4><span class="header-section-number">5.1.3.3</span> Exploring your data frame<a href="df_plt.html#exploring-your-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>We can display the first few values of the data frame using the <code>head()</code> function in R and Python.</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb681"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb681-1"><a href="df_plt.html#cb681-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Displaying the first few values in R</span></span>
-<span id="cb681-2"><a href="df_plt.html#cb681-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code></pre></div>
+<div class="sourceCode" id="cb685"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb685-1"><a href="df_plt.html#cb685-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Displaying the first few values in R</span></span>
+<span id="cb685-2"><a href="df_plt.html#cb685-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code></pre></div>
 <pre><code>##    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 ## 1 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
 ## 2 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
@@ -774,8 +835,8 @@ Similarly to vectors, to access multiple rows at the same time, we can pass a ve
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb683"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb683-1"><a href="df_plt.html#cb683-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Displaying the first few values in Python</span></span>
-<span id="cb683-2"><a href="df_plt.html#cb683-2" aria-hidden="true" tabindex="-1"></a>mtcars.head()</span></code></pre></div>
+<div class="sourceCode" id="cb687"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb687-1"><a href="df_plt.html#cb687-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Displaying the first few values in Python</span></span>
+<span id="cb687-2"><a href="df_plt.html#cb687-2" aria-hidden="true" tabindex="-1"></a>mtcars.head()</span></code></pre></div>
 <pre><code>##     mpg  cyl   disp   hp  drat     wt   qsec  vs  am  gear  carb
 ## 0  21.0    6  160.0  110  3.90  2.620  16.46   0   1     4     4
 ## 1  21.0    6  160.0  110  3.90  2.875  17.02   0   1     4     4
@@ -784,22 +845,32 @@ Similarly to vectors, to access multiple rows at the same time, we can pass a ve
 ## 4  18.7    8  360.0  175  3.15  3.440  17.02   0   0     3     2</code></pre>
 </div>
 </div>
-<p>In RStudio, you can also explore the data frame via the <code>View()</code> function. This opens the data frame in a spreadsheet-like view, which can be very useful for getting a sense of the data.</p>
+<p>In RStudio, you can also explore the data frame visually via the <code>View()</code> function.
+This opens the data frame in a spreadsheet-like view, which can be very useful for getting a sense of the data.
+A shortcut for this is via the “spreadsheet” button on your environment pane, highlighted in yellow in the figure below:<br />
+<br />
+<img src="images/chapter5/view_button.png" /></p>
+<p>Try to click it!</p>
 </div>
-<div id="factor-variables" class="section level4 hasAnchor" number="5.1.3.4">
-<h4><span class="header-section-number">5.1.3.4</span> Factor Variables<a href="df_plt.html#factor-variables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>In R, a factor is a variable that can take on a limited number of distinct values, such as ‘yes’ and ‘no’. It’s used to store categorical data. In Python, we use the <code>category</code> data type for similar purposes.</p>
-<p>In the <code>mtcars</code> data frame, the <code>vs</code> and <code>am</code> columns are currently integers, but they represent categorical data. Therefore, we should convert them to factors in R or categories in Python.</p>
+<div id="factor-or-categorical-variables" class="section level4 hasAnchor" number="5.1.3.4">
+<h4><span class="header-section-number">5.1.3.4</span> Factor (or Categorical) Variables<a href="df_plt.html#factor-or-categorical-variables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>In R, a factor is a variable that can take on a limited number of distinct values, such as ‘yes’ and ‘no’.
+It’s used to store categorical data.
+In Python, we use the <code>category</code> data type for similar purposes.</p>
+<p>In the <code>mtcars</code> data frame, the <code>vs</code> and <code>am</code> columns are currently integers, but they represent categorical data.
+In fact, one represent the engine type of the car, and the other the type of transmission.
+Therefore, to specifically tell our programming languages this, we should convert them to factors (in R) or categories (in Python).
+This will affect many things when dealing with those variables, like producing summaries or displaying those in plots.</p>
 <p>Here’s how we can do this:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb685"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb685-1"><a href="df_plt.html#cb685-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting to factors in R</span></span>
-<span id="cb685-2"><a href="df_plt.html#cb685-2" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>vs <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(mtcars<span class="sc">$</span>vs)</span>
-<span id="cb685-3"><a href="df_plt.html#cb685-3" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>am <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(mtcars<span class="sc">$</span>am)</span>
-<span id="cb685-4"><a href="df_plt.html#cb685-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb685-5"><a href="df_plt.html#cb685-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the conversion</span></span>
-<span id="cb685-6"><a href="df_plt.html#cb685-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars)</span></code></pre></div>
+<div class="sourceCode" id="cb689"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb689-1"><a href="df_plt.html#cb689-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting to factors in R</span></span>
+<span id="cb689-2"><a href="df_plt.html#cb689-2" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>vs <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(mtcars<span class="sc">$</span>vs)</span>
+<span id="cb689-3"><a href="df_plt.html#cb689-3" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>am <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(mtcars<span class="sc">$</span>am)</span>
+<span id="cb689-4"><a href="df_plt.html#cb689-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb689-5"><a href="df_plt.html#cb689-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the conversion</span></span>
+<span id="cb689-6"><a href="df_plt.html#cb689-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    32 obs. of  11 variables:
 ##  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
 ##  $ cyl : int  6 6 4 6 8 6 8 4 4 6 ...
@@ -815,12 +886,12 @@ Similarly to vectors, to access multiple rows at the same time, we can pass a ve
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb687"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb687-1"><a href="df_plt.html#cb687-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting to categories in Python</span></span>
-<span id="cb687-2"><a href="df_plt.html#cb687-2" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="st">&#39;vs&#39;</span>] <span class="op">=</span> mtcars[<span class="st">&#39;vs&#39;</span>].astype(<span class="st">&#39;category&#39;</span>)</span>
-<span id="cb687-3"><a href="df_plt.html#cb687-3" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="st">&#39;am&#39;</span>] <span class="op">=</span> mtcars[<span class="st">&#39;am&#39;</span>].astype(<span class="st">&#39;category&#39;</span>)</span>
-<span id="cb687-4"><a href="df_plt.html#cb687-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb687-5"><a href="df_plt.html#cb687-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the conversion</span></span>
-<span id="cb687-6"><a href="df_plt.html#cb687-6" aria-hidden="true" tabindex="-1"></a>mtcars.info()</span></code></pre></div>
+<div class="sourceCode" id="cb691"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb691-1"><a href="df_plt.html#cb691-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting to categories in Python</span></span>
+<span id="cb691-2"><a href="df_plt.html#cb691-2" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="st">&#39;vs&#39;</span>] <span class="op">=</span> mtcars[<span class="st">&#39;vs&#39;</span>].astype(<span class="st">&#39;category&#39;</span>)</span>
+<span id="cb691-3"><a href="df_plt.html#cb691-3" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="st">&#39;am&#39;</span>] <span class="op">=</span> mtcars[<span class="st">&#39;am&#39;</span>].astype(<span class="st">&#39;category&#39;</span>)</span>
+<span id="cb691-4"><a href="df_plt.html#cb691-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb691-5"><a href="df_plt.html#cb691-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the conversion</span></span>
+<span id="cb691-6"><a href="df_plt.html#cb691-6" aria-hidden="true" tabindex="-1"></a>mtcars.info()</span></code></pre></div>
 <pre><code>## &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 ## RangeIndex: 32 entries, 0 to 31
 ## Data columns (total 11 columns):
@@ -841,7 +912,7 @@ Similarly to vectors, to access multiple rows at the same time, we can pass a ve
 ## memory usage: 2.7 KB</code></pre>
 </div>
 </div>
-<p>This code converts the <code>vs</code> and <code>am</code> columns to factors or categories and then checks that the conversion was successful. By correctly representing these columns as categorical variables, we can perform more appropriate statistical analyses and get more meaningful insights from our data.</p>
+<p>This code converts the <code>vs</code> and <code>am</code> columns to factors or categories and then checks that the conversion was successful via the <code>str</code> function in R and the <code>info()</code> method in python.</p>
 </div>
 </div>
 <div id="group-by-and-summarise" class="section level3 hasAnchor" number="5.1.4">

@@ -46,8 +46,8 @@ The rows of the data frame correspond to a single observation across these varia
 
 ### Constructing and Accessing Data Frames
 
-Let\'s start by constructing a data frame.
-We\'ll use a dataset of different types of non-dairy milks, with their respective nutritional contents:
+Let's start by constructing a data frame.
+We'll use a dataset of different types of non-dairy milks, with their respective nutritional contents:
 
 | Milk Type | Calories | Protein (g) | Fiber (g) | Carbohydrates (g) | Sugars (g) | Fats (g) |
 |-----------|-----------|-----------|-----------|-----------|-----------|-----------|
@@ -108,23 +108,23 @@ print(milk_df)
 :::
 
 **Accessing Variables** To access individual variables (columns) of the data frame, we can use the `$` operator in R and the `[]` operator in Python:
-  
+
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
-  
+
 **R**
-  
+
 ```{r}
 # Accessing the 'Calories' column in R
 milk_df$Calories
 ```
 
 </div>
-  
+
 <div>
-  
+
 **python**
-  
+
 ```{python}
 # Accessing the 'Calories' column in Python
 milk_df['Calories']
@@ -133,8 +133,8 @@ milk_df['Calories']
 </div>
 :::
 
-This will return the relative column, which, note, in R is returned *as a vector*, while in python as a column of a data frame. 
-  
+This will return the relative column, which, note, in R is returned *as a vector*, while in python as a column of a data frame.
+
 **NOTE for R users.** In R, we use the `select()` function from the `tidyverse` package to select columns.
 
 ```{r}
@@ -142,7 +142,10 @@ This will return the relative column, which, note, in R is returned *as a vector
 milk_df |> select(Calories)
 ```
 
-Recall that the pipe operator (`|>`) is used to chain operations together, so it will take whatever we have at the left, and use it as a first argument to the function to the right. The above R code is equivalent to `select(milk_df, Calories)`. Note, `select` will return the column as a vector of a data frame. Sometimes this can be better, as you might not want to change the type of your objects *inadvertently during execution*. 
+Recall that the pipe operator (`|>`) is used to chain operations together, so it will take whatever we have at the left, and use it as a first argument to the function to the right.
+The above R code is equivalent to `select(milk_df, Calories)`.
+Note, `select` will return the column as a vector of a data frame.
+Sometimes this can be better, as you might not want to change the type of your objects *inadvertently during execution*.
 
 To access multiple variables at the same time, we can pass a vector of variable names:
 
@@ -176,7 +179,7 @@ calories_protein
 
 Note that once we access (and store, as in this second example) a subset of a data frame, we get out another data frame.
 
-**Accessing rows.** To access individual rows in the data frames, we can use indexing. 
+**Accessing rows.** To access individual rows in the data frames, we can use indexing.
 Similarly to vectors, to access multiple rows at the same time, we can pass a vector of row indices:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
@@ -209,9 +212,16 @@ milk_df.iloc[0:2]
 </div>
 :::
 
-**In R**, when we use `[1:2, ]` on a data frame, we are working with a two-dimensional object. The `1:2` represents the row indices that we want to select, and the empty space after the comma indicates that we want to select all columns. So, `[1:2, ]` will select the first two rows and all columns of the data frame. This is different from selecting a vector because a vector is a one-dimensional object, and we only need to specify the indices of the elements we want to select.
+**In R**, when we use `[1:2, ]` on a data frame, we are working with a two-dimensional object.
+The `1:2` represents the row indices that we want to select, and the empty space after the comma indicates that we want to select all columns.
+So, `[1:2, ]` will select the first two rows and all columns of the data frame.
+This is different from selecting a vector because a vector is a one-dimensional object, and we only need to specify the indices of the elements we want to select.
 
-**In Python**, when we use `.iloc[0:2]` on a data frame, we are working with a two-dimensional object. The `0:2` represents the row indices that we want to select, and the absence of a second argument after the comma indicates that we want to select all columns. So, `.iloc[0:2]` will select the first two rows and all columns of the data frame. This is different from selecting elements from a vector because a list is a one-dimensional object, and we only need to specify the indices of the elements we want to select. Note also that when accessing only one row, in python, the returned element will be reshaped into a column vector. 
+**In Python**, when we use `.iloc[0:2]` on a data frame, we are working with a two-dimensional object.
+The `0:2` represents the row indices that we want to select, and the absence of a second argument after the comma indicates that we want to select all columns.
+So, `.iloc[0:2]` will select the first two rows and all columns of the data frame.
+This is different from selecting elements from a vector because a list is a one-dimensional object, and we only need to specify the indices of the elements we want to select.
+Note also that when accessing only one row, in python, the returned element will be reshaped into a column vector.
 
 Having said that, we can also access a subset of the data frame by specifying both rows and columns **simultaneously**:
 
@@ -247,11 +257,16 @@ subset_df
 </div>
 :::
 
-**NOTE for Python users**: Be careful, in this second statement we used an even different function, `loc`. In pandas, `loc` and `iloc` are two ways to select data from a DataFrame, called *indexers*.
+**NOTE for Python users**: Be careful, in this second statement we used an even different function, `loc`.
+In pandas, `loc` and `iloc` are two ways to select data from a DataFrame, called *indexers*.
 
-The `loc` indexer is used with the actual labels of the index or columns. On the other hand, `iloc` is used for indexing by integer position. This means that you’re referring to the row or column by its position in the DataFrame (like the index in a vector), not by its label. In summary, use loc when you want to refer to items by their label and iloc when you want to refer to them by their integer position.
+The `loc` indexer is used with the actual labels of the index or columns.
+On the other hand, `iloc` is used for indexing by integer position.
+This means that you're referring to the row or column by its position in the DataFrame (like the index in a vector), not by its label.
+In summary, use loc when you want to refer to items by their label and iloc when you want to refer to them by their integer position.
 
-**Overwriting Elements**  We can, of course, overwrite and change elements of our data frames. For instance, the simplest thing we could do at the moment, is to fill in the missing values of our data frame for our column "Fibers". 
+**Overwriting Elements** We can, of course, overwrite and change elements of our data frames.
+For instance, the simplest thing we could do at the moment, is to fill in the missing values of our data frame for our column "Fibers".
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -281,11 +296,12 @@ milk_df
 </div>
 :::
 
-Note that, to impute the missing values, we can also use the `replace_na()` function in R and the `fillna()` function in Python, but these functions will overwrite all NAs in the dataset, leaving little to no flexibility. 
+Note that, to impute the missing values, we can also use the `replace_na()` function in R and the `fillna()` function in Python, but these functions will overwrite all NAs in the dataset, leaving little to no flexibility.
 
 #### Accessing Information about the Data Frame
 
-We can access various information about the data frame, such as its dimensions, number of rows, number of columns, column names, and a summary of its contents, with a lot of different functions. These will be not explained in detail, but can be useful for a lot of reasons related to exploratory analysis.
+We can access various information about the data frame, such as its dimensions, number of rows, number of columns, column names, and a summary of its contents, with a lot of different functions.
+These will be not explained in detail, but can be useful for a lot of reasons related to exploratory analysis.
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -302,6 +318,9 @@ ncol(milk_df)
 
 # variable names
 colnames(milk_df)
+
+#variable names and types
+str(milk_df)
 
 # summary statistics
 summary(milk_df)
@@ -324,6 +343,9 @@ len(milk_df.columns) # or milk_df.shape[1]
 # variable names
 milk_df.columns
 
+# variable names and types
+milk_df.info()
+
 # summary statistics
 milk_df.describe()
 ```
@@ -331,17 +353,22 @@ milk_df.describe()
 </div>
 :::
 
-Based on the information above, how would you access the last 5 rows and the last 2 columns of your data frame? 
+Based on the information above, how would you access the last 5 rows and the last 2 columns of your data frame?
 
 ### Manipulating Data Frames
 
-When working with data in R or Python, most of the time we need to perform some data manipulation. This could involve modifying our data frame, accessing specific parts of it that are of interest, or creating new variables based on existing ones. Fortunately, both R and Python provide a set of powerful functions for these tasks.
+When working with data in R or Python, most of the time we need to perform some data manipulation.
+This could involve modifying our data frame, accessing specific parts of it that are of interest, or creating new variables based on existing ones.
+Fortunately, both R and Python provide a set of powerful functions for these tasks.
 
-In R, we have `filter()`, `arrange()`, `select()`, and `mutate()`. In Python, we have `query`, `sort_values`, `loc` or `iloc`, and `assign`. We will now explore each of these functions in detail.
+In R, we have `filter()`, `arrange()`, `select()`, and `mutate()`.
+In Python, we have `query`, `sort_values`, `loc` or `iloc`, and `assign`.
+We will now explore each of these functions in detail.
 
 #### Adding New Columns
 
-Adding new columns allows us to easily add new columns that are functions of existing ones. In R, we use `mutate()`, and in Python, we use `assign`.
+Adding new columns allows us to easily add new columns that are functions of existing ones.
+In R, we use `mutate()`, and in Python, we use `assign`.
 
 **R**
 
@@ -370,7 +397,9 @@ milk_df = milk_df.assign(
 milk_df
 ```
 
-The advantage of using `mutate` and `assign` over directly overwriting columns is that those function allow you to reference other columns that are being created within the same call. This makes it possible to create multiple interdependent columns in one go. In contrast, when overwriting columns directly, you would have to create each new column one at a time, which could be less efficient and harder to read.
+The advantage of using `mutate` and `assign` over directly overwriting columns is that those function allow you to reference other columns that are being created within the same call.
+This makes it possible to create multiple interdependent columns in one go.
+In contrast, when overwriting columns directly, you would have to create each new column one at a time, which could be less efficient and harder to read.
 
 If we had to do the same code manually, each one at a time, this would have looked like the following:
 
@@ -408,13 +437,18 @@ milk_df['protein_content'] = milk_df['Protein'] / milk_df['tot_wei'] * 100
 milk_df
 ```
 
-You can see how this makes the code longer and potentially harder to read. However, it can be useful when the computation of each new column depends on the columns added in the previous steps.
+You can see how this makes the code longer and potentially harder to read.
+However, it can be useful when the computation of each new column depends on the columns added in the previous steps.
 
-Note also how, over the rows of soy and rice, the `sugar_percent` column has missing values, and similarly the `protein_content` variable has skewed values: this is because the value of the sugar content was missing originally. Be careful about missing values!
+Note also how, over the rows of soy and rice, the `sugar_percent` column has missing values, and similarly the `protein_content` variable has skewed values: this is because the value of the sugar content was missing originally.
+Be careful about missing values!
 
 #### Filtering Rows
 
-Filtering allows us to focus on a subset of the rows of a data frame. This is based on the result of a vectorised logic expression. In a way, we have already seen this in the past when selecting subsets of vectors! In R, we use `filter()`, and in Python, we use `query()`.
+Filtering allows us to focus on a subset of the rows of a data frame.
+This is based on the result of a vectorised logic expression.
+In a way, we have already seen this in the past when selecting subsets of vectors!
+In R, we use `filter()`, and in Python, we use `query()`.
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -442,7 +476,8 @@ milk_df.query('Calories > 100')
 
 #### Reordering Rows
 
-Reordering allows us to arrange the rows in the data frame in a specific order. In R, we use `arrange()`, and in Python, we use `sort_values()`.
+Reordering allows us to arrange the rows in the data frame in a specific order.
+In R, we use `arrange()`, and in Python, we use `sort_values()`.
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -470,11 +505,14 @@ milk_df
 </div>
 :::
 
-These examples show the power of modern R and Python for data manipulation! By understanding these functions, we can perform complex data manipulations with just a few lines of code.
+These examples show the power of modern R and Python for data manipulation!
+By understanding these functions, we can perform complex data manipulations with just a few lines of code.
 
 ### A Real Data Frame
 
-Now that we have the basis of manipulating data frames, before proceeding to the next steps, let's work with a real-world data frame: `mtcars`! This data frame is available in both R (natively) and Python (in `plotnine.data.mtcars`) and contains various car attributes. However, to simulate a real world scenario, we'll see how to import it from a csv file.
+Now that we have the basis of manipulating data frames, before proceeding to the next steps, let's work with a real-world data frame: `mtcars`!
+This data frame is available in both R (natively) and Python (in `plotnine.data.mtcars`) and contains various car attributes.
+However, to simulate a real world scenario, we'll see how to import it from a csv file.
 
 ```{r, include=FALSE}
 # saving the mtcars dataset in a hidden code chunk to hide it from the rendered version
@@ -483,10 +521,12 @@ to_save_mtcars <- mtcars
 write_csv(to_save_mtcars, "mtcars.csv")
 ```
 
-
 #### Importing the Data Frame
 
-First, let's import the `mtcars` data frame. You'll need to download this from Moodle, and save it under your working directory as "mtcars.csv". Remember that we learned how to read from CSV files in week 1! Well, this is the first time we are doing this in a practical sense. 
+First, let's import the `mtcars` data frame.
+You'll need to download this from Moodle, and save it under your working directory as "mtcars.csv".
+Remember that we learned how to read from CSV files in week 1!
+Well, this is the first time we are doing this in a practical sense.
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -518,19 +558,19 @@ mtcars = pd.read_csv("mtcars.csv")
 
 The `mtcars` data frame contains the following columns:
 
-- `mpg`: Miles/(US) gallon
-- `cyl`: Number of cylinders
-- `disp`: Displacement (cu.in.)
-- `hp`: Gross horsepower
-- `drat`: Rear axle ratio
-- `wt`: Weight (1000 lbs)
-- `qsec`: 1/4 mile time
-- `vs`: Engine (0 = V-shaped, 1 = straight)
-- `am`: Transmission (0 = automatic, 1 = manual)
-- `gear`: Number of forward gears
-- `carb`: Number of carburetors
+-   `mpg`: Miles/(US) gallon
+-   `cyl`: Number of cylinders
+-   `disp`: Displacement (cu.in.)
+-   `hp`: Gross horsepower
+-   `drat`: Rear axle ratio
+-   `wt`: Weight (1000 lbs)
+-   `qsec`: 1/4 mile time
+-   `vs`: Engine (0 = V-shaped, 1 = straight)
+-   `am`: Transmission (0 = automatic, 1 = manual)
+-   `gear`: Number of forward gears
+-   `carb`: Number of carburetors
 
-#### Displaying the First Few Values
+#### Exploring your data frame
 
 We can display the first few values of the data frame using the `head()` function in R and Python.
 
@@ -558,13 +598,24 @@ mtcars.head()
 </div>
 :::
 
-In RStudio, you can also explore the data frame via the `View()` function. This opens the data frame in a spreadsheet-like view, which can be very useful for getting a sense of the data.
+In RStudio, you can also explore the data frame visually via the `View()` function.
+This opens the data frame in a spreadsheet-like view, which can be very useful for getting a sense of the data.
+A shortcut for this is via the "spreadsheet" button on your environment pane, highlighted in yellow in the figure below:\
+\
+![](images/chapter5/view_button.png)
 
-#### Factor Variables
+Try to click it!
 
-In R, a factor is a variable that can take on a limited number of distinct values, such as 'yes' and 'no'. It's used to store categorical data. In Python, we use the `category` data type for similar purposes.
+#### Factor (or Categorical) Variables
 
-In the `mtcars` data frame, the `vs` and `am` columns are currently integers, but they represent categorical data. Therefore, we should convert them to factors in R or categories in Python.
+In R, a factor is a variable that can take on a limited number of distinct values, such as 'yes' and 'no'.
+It's used to store categorical data.
+In Python, we use the `category` data type for similar purposes.
+
+In the `mtcars` data frame, the `vs` and `am` columns are currently integers, but they represent categorical data.
+In fact, one represent the engine type of the car, and the other the type of transmission.
+Therefore, to specifically tell our programming languages this, we should convert them to factors (in R) or categories (in Python).
+This will affect many things when dealing with those variables, like producing summaries or displaying those in plots.
 
 Here's how we can do this:
 
@@ -600,8 +651,7 @@ mtcars.info()
 </div>
 :::
 
-This code converts the `vs` and `am` columns to factors or categories and then checks that the conversion was successful. By correctly representing these columns as categorical variables, we can perform more appropriate statistical analyses and get more meaningful insights from our data.
-
+This code converts the `vs` and `am` columns to factors or categories and then checks that the conversion was successful via the `str` function in R and the `info()` method in python.
 
 ### Group by and summarise
 
@@ -671,7 +721,6 @@ The plot should show 6 sinusoidal functions:$$\sin\left(\frac{x}{2}\right), \sin
 -   Avoid *computing everything by hand* (e.g. copy pasting the dataframe code 6 times) or `for` loop.
     TIP: Use `map` to generate your dataframes and `reduce` to combine them.
     Use lambda functions where necessary.
-
 
 ```{=html}
 <style type="text/css">
