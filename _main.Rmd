@@ -82,6 +82,7 @@ Zenodo. http://doi.org/10.5281/zenodo.3266823
 
 ```{r include=FALSE}
 knitr::opts_chunk$set(fig.path = "images/", out.width = "50%")
+options(width = 60)
 ```
 
 <!--chapter:end:index.Rmd-->
@@ -827,6 +828,8 @@ df.to_csv("../data2.csv", index=False)
 
 In both of these examples, we're writing the same data to a file in a subdirectory and a file in the parent directory of the current working directory. See if you can locate (and delete, please), the files you just created!
 
+**NOTE:** if you didn't create a directory named (literally) `subdirectory` under your working directory path, then the first write statement will give you an error! Try to create the directory and see if the error still pops up.
+
 ```{=html}
 <style type="text/css">
 .book .book-body .page-wrapper .page-inner {
@@ -965,7 +968,6 @@ programs. The precision of a floating-point number is determined by the number o
 -   Try to run the comparison `1e5/(1e5 + 1e-16) == 1` and see what happens.
 -   The expression `0.1 + 0.3 == 0.4` gives `TRUE`, but `0.1 + 0.2 + 0.3 == 0.6` evaluates to `FALSE`. Why?
 
-_____
 Similar to equality, we can check for inequality. Inequality means that
 two objects or values are not exactly the same in every aspect. To check
 for inequality, we use the operator `!=`, which returns `TRUE` if the
@@ -1922,7 +1924,7 @@ x / 2
 **python**
 
 ```{python}
-x = arange(1, 6)
+x = np.arange(1, 6)
 
 # Raw vector
 x
@@ -4491,7 +4493,7 @@ Next, let's compute the inverse of our matrices. Remember, only full-rank matric
 
 **R**
 
-```{r error=TRUE}
+```{r error=TRUE, R.options = list(width = 50)}
 # Compute the inverse of A
 solve(A)
 # Compute the inverse of B
@@ -4610,17 +4612,598 @@ editor_options:
 
 # Data Frames and Plotting {#df_plt}
 
-## Data Frames
+In this chapter, we will delve into the world of Data Frames and Plotting.
+These are crucial concepts in Computational Mathematics that will enable us to handle and visualize data effectively.
+
+#### A note for R users.
+
+Before we start, we will need to import a very important library for writing modern R code.
+
+This is the tidyverse...
 
 ```{r}
 library(tidyverse)
 ```
 
-### Constructing a data frame
+We should also discuss about a very important operator, the **pipe** operator, that, as you will see, it will enable us to concatenate functions on data frames and mutate and access their variables or rows with extreme ease compared to traditional R code.
 
-### Mutating a data frame
+##### The pipe operator
+
+#### A note for python users
+
+```{python}
+import pandas as pd
+import plotnine as plt
+import numpy as np
+```
+
+## Data Frames
+
+A **data frame** is a table-like data structure available in languages like R and Python.
+It is similar to a spreadsheet or SQL table, or a dictionary of Series objects in Python.
+Data frames are generally used for statistical analysis in R and Python programming.
+
+In a data frame, the columns are named vectors, each containing a particular type of data (numeric, string, date, time).
+Unlike a matrix where every element must have the same data type, a data frame allows each column to have a different data type.
+This makes data frames more flexible for data analysis tasks where we often deal with data that have *heterogeneous* types.
+The columns of a data frame are often referred to as **variables** or **features** in statistics.
+In the context of mathematics or physics, these could be considered as **parameters** or **attributes**.
+The rows of the data frame correspond to a single observation across these variables.
+
+### Constructing and Accessing Data Frames
+
+Let\'s start by constructing a data frame.
+We\'ll use a dataset of different types of non-dairy milks, with their respective nutritional contents:
+
+| Milk Type | Calories | Protein (g) | Fiber (g) | Carbohydrates (g) | Sugars (g) | Fats (g) |
+|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+| Almond    | 60       | 1           | 1         | 8                 | 7          | 2.5      |
+| Soy       | 100      | 7           | 2         | 10                | NA         | 4        |
+| Oat       | 120      | 3           | NA        | 20                | 19         | 2.5      |
+| Rice      | 130      | 1           | NA        | 25                | NA         | 2.5      |
+
+In this dataset, the first column will be a `character` column, to indicate the type of the milk, whilst the others will be numericals.
+Furthemore, the "Fiber" and "Sugars" columns for Soy, Oat and Rice milk have NA values, indicating missing or not applicable data.
+This is often the case in real data, where usually information will not be available to us in the best way as possible.
+In this case, R and python will just tell us that we have a "Not Applicable (NA)" or "Not a Number (NaN)" unknown value.
+
+Now, let's see how we can create this data frame in R and Python:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Creating a data frame in R
+milk_df <- tibble(
+  Milk_Type = c("Almond", "Soy", "Oat", "Rice"),
+  Calories = c(60, 100, 120, 130),
+  Protein = c(1, 7, 3, 1),
+  Fiber = c(1, 2, NA, NA),
+  Carbohydrates = c(8, 10, 20, 25),
+  Sugars = c(7, NA, 19, NA),
+  Fats = c(2.5, 4, 2.5, 2.5)
+)
+print(milk_df)
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Creating a data frame in Python
+data = {
+    'Milk_Type': ['Almond', 'Soy', 'Oat', 'Rice'],
+    'Calories': [60, 100, 120, 130],
+    'Protein': [1, 7, 3, 1],
+    'Fiber': [1, 2, np.nan, np.nan],
+    'Carbohydrates': [8, 10, 20, 25],
+    'Sugars': [7, np.nan, 19, np.nan],
+    'Fats': [2.5, 4, 2.5, 2.5]
+}
+
+milk_df = pd.DataFrame(data)
+print(milk_df)
+```
+
+</div>
+:::
+
+**Accessing Variables** To access individual variables (columns) of the data frame, we can use the `$` operator in R and the `[]` operator in Python:
+  
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+  
+**R**
+  
+```{r}
+# Accessing the 'Calories' column in R
+milk_df$Calories
+```
+
+</div>
+  
+<div>
+  
+**python**
+  
+```{python}
+# Accessing the 'Calories' column in Python
+milk_df['Calories']
+```
+
+</div>
+:::
+
+This will return the relative column, which, note, in R is returned *as a vector*, while in python as a column of a data frame. 
+  
+**NOTE for R users.** In R, we use the `select()` function from the `tidyverse` package to select columns.
+
+```{r}
+# Using the select() function in R
+milk_df |> select(Calories)
+```
+
+Recall that the pipe operator (`|>`) is used to chain operations together, so it will take whatever we have at the left, and use it as a first argument to the function to the right. The above R code is equivalent to `select(milk_df, Calories)`. Note, `select` will return the column as a vector of a data frame. Sometimes this can be better, as you might not want to change the type of your objects *inadvertently during execution*. 
+
+To access multiple variables at the same time, we can pass a vector of variable names:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Accessing the 'Calories' and 'Protein' columns in R and storing it 
+# in a new variable
+calories_protein <- milk_df |> select(Calories, Protein)
+calories_protein
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Accessing the 'Calories' and 'Protein' columns in Python and storing it 
+# in a new variable
+calories_protein = milk_df[['Calories', 'Protein']]
+calories_protein
+```
+
+</div>
+:::
+
+Note that once we access (and store, as in this second example) a subset of a data frame, we get out another data frame.
+
+**Accessing rows.** To access individual rows in the data frames, we can use indexing. 
+Similarly to vectors, to access multiple rows at the same time, we can pass a vector of row indices:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Accessing the first row in R
+milk_df[1, ]
+
+# Accessing the first and second rows in R
+milk_df[1:2, ]
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Accessing the first row in Python
+milk_df.iloc[0]
+
+# Accessing the first and second rows in Python
+milk_df.iloc[0:2]
+```
+
+</div>
+:::
+
+**In R**, when we use `[1:2, ]` on a data frame, we are working with a two-dimensional object. The `1:2` represents the row indices that we want to select, and the empty space after the comma indicates that we want to select all columns. So, `[1:2, ]` will select the first two rows and all columns of the data frame. This is different from selecting a vector because a vector is a one-dimensional object, and we only need to specify the indices of the elements we want to select.
+
+**In Python**, when we use `.iloc[0:2]` on a data frame, we are working with a two-dimensional object. The `0:2` represents the row indices that we want to select, and the absence of a second argument after the comma indicates that we want to select all columns. So, `.iloc[0:2]` will select the first two rows and all columns of the data frame. This is different from selecting elements from a vector because a list is a one-dimensional object, and we only need to specify the indices of the elements we want to select. Note also that when accessing only one row, in python, the returned element will be reshaped into a column vector. 
+
+Having said that, we can also access a subset of the data frame by specifying both rows and columns **simultaneously**:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Accessing a subset of the data frame in R
+subset_df <- milk_df[1:2, c("Milk_Type", "Calories", "Protein")]
+# alternatively 
+# subset_df <- milk_df[1:2, 1:3]
+
+subset_df
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Accessing a subset of the data frame in Python
+subset_df = milk_df.loc[0:2, ["Milk_Type", "Calories", "Protein"]]
+# alternatively 
+# subset_df = milk_df.iloc[0:2, [0, 1, 2]]
+
+subset_df
+```
+
+</div>
+:::
+
+**NOTE for Python users**: Be careful, in this second statement we used an even different function, `loc`. In pandas, `loc` and `iloc` are two ways to select data from a DataFrame, called *indexers*.
+
+The `loc` indexer is used with the actual labels of the index or columns. On the other hand, `iloc` is used for indexing by integer position. This means that you’re referring to the row or column by its position in the DataFrame (like the index in a vector), not by its label. In summary, use loc when you want to refer to items by their label and iloc when you want to refer to them by their integer position.
+
+**Overwriting Elements**  We can, of course, overwrite and change elements of our data frames. For instance, the simplest thing we could do at the moment, is to fill in the missing values of our data frame for our column "Fibers". 
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Imputing missing values in R
+# overwriting the original dataset
+milk_df$Fiber[is.na(milk_df$Fiber)] <- c(1.2, 0.7)
+milk_df
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Imputing missing values in Python
+# overwriting the original dataset
+milk_df.loc[np.isnan(milk_df['Fiber']), 'Fiber'] =  [1.2, 0.7]
+milk_df
+```
+
+</div>
+:::
+
+Note that, to impute the missing values, we can also use the `replace_na()` function in R and the `fillna()` function in Python, but these functions will overwrite all NAs in the dataset, leaving little to no flexibility. 
+
+#### Accessing Information about the Data Frame
+
+We can access various information about the data frame, such as its dimensions, number of rows, number of columns, column names, and a summary of its contents, with a lot of different functions. These will be not explained in detail, but can be useful for a lot of reasons related to exploratory analysis.
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Accessing information about the data frame in R
+# dimensions 
+dim(milk_df)
+# number of rows and columns
+nrow(milk_df)
+ncol(milk_df)
+
+# variable names
+colnames(milk_df)
+
+# summary statistics
+summary(milk_df)
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Accessing information about the data frame in Python
+# dimensions 
+milk_df.shape
+# number of rows and columns
+len(milk_df)
+len(milk_df.columns) # or milk_df.shape[1]
+
+# variable names
+milk_df.columns
+
+# summary statistics
+milk_df.describe()
+```
+
+</div>
+:::
+
+Based on the information above, how would you access the last 5 rows and the last 2 columns of your data frame? 
+
+### Manipulating Data Frames
+
+When working with data in R or Python, most of the time we need to perform some data manipulation. This could involve modifying our data frame, accessing specific parts of it that are of interest, or creating new variables based on existing ones. Fortunately, both R and Python provide a set of powerful functions for these tasks.
+
+In R, we have `filter()`, `arrange()`, `select()`, and `mutate()`. In Python, we have `query`, `sort_values`, `loc` or `iloc`, and `assign`. We will now explore each of these functions in detail.
+
+#### Adding New Columns
+
+Adding new columns allows us to easily add new columns that are functions of existing ones. In R, we use `mutate()`, and in Python, we use `assign`.
+
+**R**
+
+```{r}
+# Compute percentage of sugars over carbohydrates in R
+# Then, adding the total weight of the components and computing the 
+# protein content
+milk_df <- milk_df |> mutate(sugar_percent = (Sugars / Carbohydrates) * 100, 
+                              tot_wei = Protein + Fiber + Carbohydrates + Fats,
+                              protein_content = Protein / tot_wei * 100)
+milk_df
+```
+
+**python**
+
+```{python}
+# Compute percentage of sugars over carbohydrates in Python
+# Then, adding the total weight of the components and computing the 
+# protein content
+milk_df = milk_df.assign(
+    sugar_percent = lambda df: (df['Sugars'] / df['Carbohydrates']) * 100,
+    tot_wei = lambda df: df['Protein'] + df['Fiber'] + df['Carbohydrates'] + df['Fats'],
+    protein_content = lambda df: df['Protein'] / df['tot_wei'] * 100
+)
+
+milk_df
+```
+
+The advantage of using `mutate` and `assign` over directly overwriting columns is that those function allow you to reference other columns that are being created within the same call. This makes it possible to create multiple interdependent columns in one go. In contrast, when overwriting columns directly, you would have to create each new column one at a time, which could be less efficient and harder to read.
+
+If we had to do the same code manually, each one at a time, this would have looked like the following:
+
+**R**
+
+```{r}
+### equivalent to above statement
+
+# Compute percentage of sugars over carbohydrates in R
+milk_df$sugar_percent <- (milk_df$Sugars / milk_df$Carbohydrates) * 100
+
+# Then, adding the total weight of the components
+milk_df$tot_wei <- milk_df$Protein + milk_df$Fiber + milk_df$Carbohydrates + milk_df$Fats
+
+# Finally, computing the protein content
+milk_df$protein_content = milk_df$Protein / milk_df$tot_wei * 100
+
+milk_df
+```
+
+**python**
+
+```{python}
+### equivalent to above statement
+
+# Compute percentage of sugars over carbohydrates in Python
+milk_df['sugar_percent'] = (milk_df['Sugars'] / milk_df['Carbohydrates']) * 100
+
+# Then, adding the total weight of the components
+milk_df['tot_wei'] = milk_df['Protein'] + milk_df['Fiber'] + milk_df['Carbohydrates'] + milk_df['Fats']
+
+# Finally, computing the protein content
+milk_df['protein_content'] = milk_df['Protein'] / milk_df['tot_wei'] * 100
+
+milk_df
+```
+
+You can see how this makes the code longer and potentially harder to read. However, it can be useful when the computation of each new column depends on the columns added in the previous steps.
+
+Note also how, over the rows of soy and rice, the `sugar_percent` column has missing values, and similarly the `protein_content` variable has skewed values: this is because the value of the sugar content was missing originally. Be careful about missing values!
+
+#### Filtering Rows
+
+Filtering allows us to focus on a subset of the rows of a data frame. This is based on the result of a vectorised logic expression. In a way, we have already seen this in the past when selecting subsets of vectors! In R, we use `filter()`, and in Python, we use `query()`.
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Filtering rows where Calories is greater than 100 in R
+milk_df |> filter(Calories > 100)
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Filtering rows where Calories is greater than 100 in Python
+milk_df.query('Calories > 100')
+```
+
+</div>
+:::
+
+#### Reordering Rows
+
+Reordering allows us to arrange the rows in the data frame in a specific order. In R, we use `arrange()`, and in Python, we use `sort_values()`.
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Arranging rows by decreasing sugar_percent in R
+milk_df <- milk_df |> arrange(desc(sugar_percent))
+milk_df
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Arranging rows by decreasing sugar_percent in Python
+milk_df = milk_df.sort_values('sugar_percent', ascending=False)
+milk_df
+```
+
+</div>
+:::
+
+These examples show the power of modern R and Python for data manipulation! By understanding these functions, we can perform complex data manipulations with just a few lines of code.
+
+### A Real Data Frame
+
+Now that we have the basis of manipulating data frames, before proceeding to the next steps, let's work with a real-world data frame: `mtcars`! This data frame is available in both R (natively) and Python (in `plotnine.data.mtcars`) and contains various car attributes. However, to simulate a real world scenario, we'll see how to import it from a csv file.
+
+#### Importing the Data Frame
+
+First, let's import the `mtcars` data frame. You'll need to download this from Moodle, and save it under your working directory as "mtcars.csv". Remember that we learned how to read from CSV files in week 1! Well, this is the first time we are doing this in a practical sense. 
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Importing the data frame in R
+mtcars <- read.csv("mtcars.csv")
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Importing the data frame in Python
+import pandas as pd
+
+mtcars = pd.read_csv("mtcars.csv")
+```
+
+</div>
+:::
+
+#### Understanding the Data Frames
+
+The `mtcars` data frame contains the following columns:
+
+- `mpg`: Miles/(US) gallon
+- `cyl`: Number of cylinders
+- `disp`: Displacement (cu.in.)
+- `hp`: Gross horsepower
+- `drat`: Rear axle ratio
+- `wt`: Weight (1000 lbs)
+- `qsec`: 1/4 mile time
+- `vs`: Engine (0 = V-shaped, 1 = straight)
+- `am`: Transmission (0 = automatic, 1 = manual)
+- `gear`: Number of forward gears
+- `carb`: Number of carburetors
+
+#### Displaying the First Few Values
+
+We can display the first few values of the data frame using the `head()` function in R and Python.
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Displaying the first few values in R
+head(mtcars)
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Displaying the first few values in Python
+mtcars.head()
+```
+
+</div>
+:::
+
+In RStudio, you can also explore the data frame via the `View()` function. This opens the data frame in a spreadsheet-like view, which can be very useful for getting a sense of the data.
+
+#### Factor Variables
+
+In R, a factor is a variable that can take on a limited number of distinct values, such as 'yes' and 'no'. It's used to store categorical data. In Python, we use the `category` data type for similar purposes.
+
+In the `mtcars` data frame, the `vs` and `am` columns are currently integers, but they represent categorical data. Therefore, we should convert them to factors in R or categories in Python.
+
+Here's how we can do this:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Converting to factors in R
+mtcars$vs <- as.factor(mtcars$vs)
+mtcars$am <- as.factor(mtcars$am)
+
+# Checking the conversion
+str(mtcars)
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Converting to categories in Python
+mtcars['vs'] = mtcars['vs'].astype('category')
+mtcars['am'] = mtcars['am'].astype('category')
+
+# Checking the conversion
+mtcars.info()
+```
+
+</div>
+:::
+
+This code converts the `vs` and `am` columns to factors or categories and then checks that the conversion was successful. By correctly representing these columns as categorical variables, we can perform more appropriate statistical analyses and get more meaningful insights from our data.
+
 
 ### Group by and summarise
+
+How to extract information... For doing so we need a real data frame...
 
 ## Plotting with ggplot
 
@@ -4686,6 +5269,15 @@ The plot should show 6 sinusoidal functions:$$\sin\left(\frac{x}{2}\right), \sin
 -   Avoid *computing everything by hand* (e.g. copy pasting the dataframe code 6 times) or `for` loop.
     TIP: Use `map` to generate your dataframes and `reduce` to combine them.
     Use lambda functions where necessary.
+
+
+```{=html}
+<style type="text/css">
+.book .book-body .page-wrapper .page-inner {
+  max-width: 1200px !important;
+}
+</style>
+```
 
 <!--chapter:end:05-week5.Rmd-->
 

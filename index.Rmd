@@ -82,4 +82,5 @@ Zenodo. http://doi.org/10.5281/zenodo.3266823
 
 ```{r include=FALSE}
 knitr::opts_chunk$set(fig.path = "images/", out.width = "50%")
+options(width = 60)
 ```

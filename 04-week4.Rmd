@@ -874,7 +874,7 @@ Next, let's compute the inverse of our matrices. Remember, only full-rank matric
 
 **R**
 
-```{r error=TRUE}
+```{r error=TRUE, R.options = list(width = 50)}
 # Compute the inverse of A
 solve(A)
 # Compute the inverse of B

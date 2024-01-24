@@ -333,7 +333,7 @@ milk_df.describe()
 
 Based on the information above, how would you access the last 5 rows and the last 2 columns of your data frame? 
 
-### Mutating a data frame
+### Manipulating Data Frames
 
 When working with data in R or Python, most of the time we need to perform some data manipulation. This could involve modifying our data frame, accessing specific parts of it that are of interest, or creating new variables based on existing ones. Fortunately, both R and Python provide a set of powerful functions for these tasks.
 
@@ -342,9 +342,6 @@ In R, we have `filter()`, `arrange()`, `select()`, and `mutate()`. In Python, we
 #### Adding New Columns
 
 Adding new columns allows us to easily add new columns that are functions of existing ones. In R, we use `mutate()`, and in Python, we use `assign`.
-
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
-<div>
 
 **R**
 
@@ -357,10 +354,6 @@ milk_df <- milk_df |> mutate(sugar_percent = (Sugars / Carbohydrates) * 100,
                               protein_content = Protein / tot_wei * 100)
 milk_df
 ```
-
-</div>
-
-<div>
 
 **python**
 
@@ -377,15 +370,9 @@ milk_df = milk_df.assign(
 milk_df
 ```
 
-</div>
-:::
-
 The advantage of using `mutate` and `assign` over directly overwriting columns is that those function allow you to reference other columns that are being created within the same call. This makes it possible to create multiple interdependent columns in one go. In contrast, when overwriting columns directly, you would have to create each new column one at a time, which could be less efficient and harder to read.
 
 If we had to do the same code manually, each one at a time, this would have looked like the following:
-
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
-<div>
 
 **R**
 
@@ -404,10 +391,6 @@ milk_df$protein_content = milk_df$Protein / milk_df$tot_wei * 100
 milk_df
 ```
 
-</div>
-
-<div>
-
 **python**
 
 ```{python}
@@ -424,9 +407,6 @@ milk_df['protein_content'] = milk_df['Protein'] / milk_df['tot_wei'] * 100
 
 milk_df
 ```
-
-</div>
-:::
 
 You can see how this makes the code longer and potentially harder to read. However, it can be useful when the computation of each new column depends on the columns added in the previous steps.
 
@@ -490,9 +470,15 @@ milk_df
 </div>
 :::
 
-#### Selecting Columns
+These examples show the power of modern R and Python for data manipulation! By understanding these functions, we can perform complex data manipulations with just a few lines of code.
 
-Selecting allows us to zoom in on a useful number of columns. In R, we use `select()`, and in Python, we use `loc` or `iloc`.
+### A Real Data Frame
+
+Now that we have the basis of manipulating data frames, before proceeding to the next steps, let's work with a real-world data frame: `mtcars`! This data frame is available in both R (natively) and Python (in `plotnine.data.mtcars`) and contains various car attributes. However, to simulate a real world scenario, we'll see how to import it from a csv file.
+
+#### Importing the Data Frame
+
+First, let's import the `mtcars` data frame. You'll need to download this from Moodle, and save it under your working directory as "mtcars.csv". Remember that we learned how to read from CSV files in week 1! Well, this is the first time we are doing this in a practical sense. 
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -500,8 +486,8 @@ Selecting allows us to zoom in on a useful number of columns. In R, we use `sele
 **R**
 
 ```{r}
-# Selecting only Milk_Type and protein content columns in R
-milk_df |> select(Milk_Type, protein_content)
+# Importing the data frame in R
+mtcars <- read.csv("mtcars.csv")
 ```
 
 </div>
@@ -511,15 +497,103 @@ milk_df |> select(Milk_Type, protein_content)
 **python**
 
 ```{python}
-# Selecting only Milk_Type and protein content columns in Python
-milk_df[['Milk_Type', 'protein_content']]
+# Importing the data frame in Python
+import pandas as pd
+
+mtcars = pd.read_csv("mtcars.csv")
 ```
 
 </div>
 :::
 
+#### Understanding the Data Frames
 
-These examples show the power of modern R and Python for data manipulation! By understanding these functions, we can perform complex data manipulations with just a few lines of code.
+The `mtcars` data frame contains the following columns:
+
+- `mpg`: Miles/(US) gallon
+- `cyl`: Number of cylinders
+- `disp`: Displacement (cu.in.)
+- `hp`: Gross horsepower
+- `drat`: Rear axle ratio
+- `wt`: Weight (1000 lbs)
+- `qsec`: 1/4 mile time
+- `vs`: Engine (0 = V-shaped, 1 = straight)
+- `am`: Transmission (0 = automatic, 1 = manual)
+- `gear`: Number of forward gears
+- `carb`: Number of carburetors
+
+#### Displaying the First Few Values
+
+We can display the first few values of the data frame using the `head()` function in R and Python.
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Displaying the first few values in R
+head(mtcars)
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Displaying the first few values in Python
+mtcars.head()
+```
+
+</div>
+:::
+
+In RStudio, you can also explore the data frame via the `View()` function. This opens the data frame in a spreadsheet-like view, which can be very useful for getting a sense of the data.
+
+#### Factor Variables
+
+In R, a factor is a variable that can take on a limited number of distinct values, such as 'yes' and 'no'. It's used to store categorical data. In Python, we use the `category` data type for similar purposes.
+
+In the `mtcars` data frame, the `vs` and `am` columns are currently integers, but they represent categorical data. Therefore, we should convert them to factors in R or categories in Python.
+
+Here's how we can do this:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Converting to factors in R
+mtcars$vs <- as.factor(mtcars$vs)
+mtcars$am <- as.factor(mtcars$am)
+
+# Checking the conversion
+str(mtcars)
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Converting to categories in Python
+mtcars['vs'] = mtcars['vs'].astype('category')
+mtcars['am'] = mtcars['am'].astype('category')
+
+# Checking the conversion
+mtcars.info()
+```
+
+</div>
+:::
+
+This code converts the `vs` and `am` columns to factors or categories and then checks that the conversion was successful. By correctly representing these columns as categorical variables, we can perform more appropriate statistical analyses and get more meaningful insights from our data.
+
 
 ### Group by and summarise
 
