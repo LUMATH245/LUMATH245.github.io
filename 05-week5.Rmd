@@ -353,7 +353,7 @@ milk_df.describe()
 </div>
 :::
 
-Based on the information above, how would you access the last 5 rows and the last 2 columns of your data frame?
+Based on the information above, how would you access the last 2 rows and the last 2 columns of your data frame?
 
 ### Manipulating Data Frames
 
@@ -485,7 +485,6 @@ In R, we use `arrange()`, and in Python, we use `sort_values()`.
 **R**
 
 ```{r}
-# Arranging rows by decreasing sugar_percent in R
 milk_df <- milk_df |> arrange(desc(sugar_percent))
 milk_df
 ```
@@ -506,7 +505,44 @@ milk_df
 :::
 
 These examples show the power of modern R and Python for data manipulation!
-By understanding these functions, we can perform complex data manipulations with just a few lines of code.
+By these functions we can perform complex data manipulations with just a few lines of code.
+
+Now the coolest thing, is that you can run all the commands above (and more!) in one single statement, through, in R, the power of the pipe (`|>`), and in Python with Pandas by concatenating methods.
+See the two chunks below:
+
+**R**
+
+```{r}
+milk_df |>
+  filter(!is.na(Sugars)) |>
+  mutate(sugar_percent = (Sugars / Carbohydrates) * 100, 
+         tot_wei = Protein + Fiber + Carbohydrates + Fats,
+         protein_content = Protein / tot_wei * 100) |>
+  arrange(desc(protein_content)) |>
+  select(Milk_Type, protein_content)
+```
+
+
+**python**
+
+```{python}
+(
+  milk_df
+    .query('Sugars == Sugars')  # Equivalent to !is.na(Sugars) in R
+    .assign(
+        sugar_percent = lambda df: (df['Sugars'] / df['Carbohydrates']) * 100,
+        tot_wei = lambda df: df['Protein'] + df['Fiber'] + df['Carbohydrates'] + df['Fats'],
+        protein_content = lambda df: df['Protein'] / df['tot_wei'] * 100
+    )
+    .sort_values('protein_content', ascending=False)
+    [['Milk_Type', 'protein_content']]
+)
+```
+
+**NOTE for Python users:** In this Python code, `query('Sugars == Sugars')` is used to filter out rows where ‘Sugars’ is `NaN` (since `NaN != NaN`). Also, for the statement to evaluate correctly, we need the `()` brackets around the whole code chunk. This is because python is reading it as whole line, equivalent to `INPUT_DF.QUERY_OUT.ASSIGN_OUT.SORT_OUT[[INDEXING]]`. 
+
+**NOTE for users learning both:** The difference between these two statements is one of the reasons I personally prefer modern R for data manipulation and plotting. Good news is: you can use Python functions in R in a seamless way. Whilst this will be beyond the scope of this module, if you are curious on how to do so, you should probably read the `reticulate` interface guide. [You will find this here](https://rstudio.github.io/reticulate/). 
+As a testament, this whole module was made possible via reticulate: these notes were written using R and python simultaneously. You can see how in the environment corner R Studio is tracking both the python environment and the R environment side to side in a seamless way.
 
 ### A Real Data Frame
 
@@ -545,9 +581,6 @@ mtcars <- read.csv("mtcars.csv")
 **python**
 
 ```{python}
-# Importing the data frame in Python
-import pandas as pd
-
 mtcars = pd.read_csv("mtcars.csv")
 ```
 
@@ -626,8 +659,10 @@ Here's how we can do this:
 
 ```{r}
 # Converting to factors in R
-mtcars$vs <- as.factor(mtcars$vs)
-mtcars$am <- as.factor(mtcars$am)
+mtcars <- mtcars |> mutate(vs = factor(vs,
+                                       labels = c("V-shaped", "straight")),
+                           am = factor(am,
+                                       labels = c("automatic", "manual")))
 
 # Checking the conversion
 str(mtcars)
@@ -640,22 +675,111 @@ str(mtcars)
 **python**
 
 ```{python}
+# assigning labels as strings
+mtcars = mtcars.assign(
+  vs = list(map(lambda x: "V-Shaped" if x == 0 else "straight",  mtcars['vs'])),
+  am = list(map(lambda x: "automatic" if x == 0 else "manual",  mtcars['am']))
+)
+
 # Converting to categories in Python
 mtcars['vs'] = mtcars['vs'].astype('category')
 mtcars['am'] = mtcars['am'].astype('category')
 
 # Checking the conversion
 mtcars.info()
+mtcars.head()
 ```
 
 </div>
 :::
 
-This code converts the `vs` and `am` columns to factors or categories and then checks that the conversion was successful via the `str` function in R and the `info()` method in python.
+This code converts the `vs` and `am` columns to factors or categories and then checks that the conversion was successful via the `str` function in R and the `info()` method in python. The process in Python is a bit more involved as the `astype` function does not allow automatic assignment of labels to the categories. 
 
 ### Group by and summarise
 
-How to extract information... For doing so we need a real data frame...
+Ok cool, we know how to handle data frames. Great. However, this is the time we make something useful of them, no? Like, for instance, extracting information. You know, starting to see the patterns, connecting the dots. All of that crazy stuff that they do in Social Media companies, like learning your family favorite band’s, the type of food they’re eating, or the dance moves they’re doing every morning. You know, turning things and people into numbers, the favorite statistician's activity.
+We have already saw how to compute the mean, the max and other summary information across the data frame as a whole, but that doesn't help us at all... Well, we showed how we have some variables in data frames that show certain *distinct* characteristics, which are shared across multiple individuals. Like the city you live in, for instance, or the type of engine of a car. Well, the idea, is that, when we take a data frame, in all that chaos of numbers, when we start to split the observations across certain characteristics, suddenly, patterns start to emerge. More formally, we create groups of observations, and we want to summarize and aggregate information within these groups.
+
+A **grouped data frame** is a version of the data frame split into groups based on specified conditions. Each group is a subset of data frame rows that have the same values in specified columns. Grouping is a powerful concept because it allows you to perform operations on subsets of the data frame. This is achieved via `group_by` in R and `groupby` in Python.
+
+Then, the `summarise` function (in R), or `agg` (in Python, for aggregate) applies a transformation to one or more columns within each subgroup of a grouped data frame. This transformation is typically an aggregation operation that reduces each subgroup to a single row, such as computing the mean, sum, or count.
+
+Let's use our `mtcars` data frame to illustrate these functions work. First, we'll compute the average miles per gallon (mpg) and horsepower (hp) across various engine types (vs). In the `mtcars` data frame, the `vs` column represents the engine type: 0 for V-shaped and 1 for straight. We will group by the `vs` column, and we will run a summary, the mean, in this case, for the variables `mpg` and `hp`.
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Group by 'vs' and compute average 'mpg' and 'hp' in R
+mtcars |>
+  group_by(vs) |>
+  summarise(avg_mpg = mean(mpg), avg_hp = mean(hp))
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+(
+  mtcars
+  .groupby('vs', observed=True)
+  .agg({'mpg' : 'mean', 'hp' : 'mean'})
+)
+```
+
+</div>
+:::
+
+The results show that the average mpg are higher for straight engines compared to V-shaped engines. Controversely, on the other hand, the average horse power are lower for straight engines compared to V-shaped engines. This could be due to the design and efficiency differences between the two engine types: usually straight engines are for regular small cars, whilst V-shaped engines tend to be in sports cars. The first will be more efficient and be less powerful compared to the second. 
+See? We have extracted information! 
+
+We can make this example more and more complicated. Let's add a second grouping variable: the type of transmission (am). In the `mtcars` data frame, the `am` column represents the transmission type: 0 for automatic and 1 for manual.
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Group by 'vs' and 'am', and compute average 'mpg' and 'hp' 
+# and min qsec
+mtcars |>
+  group_by(vs, am) |>
+  summarise(avg_mpg = mean(mpg), avg_hp = mean(hp), min_qsec = min(qsec))
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Group by 'vs' and 'am', and compute average 'mpg' and 'hp' 
+# and min qsec
+(
+  mtcars
+  .groupby(['vs', 'am'])
+  .agg({'mpg' : 'mean', 'hp' : 'mean', 'qsec' : 'min'})
+)
+```
+
+</div>
+:::
+
+By adding a second grouping variable, we can explore more complex relationships in our data. 
+We can see now that the automatic transmission consume more in general, and accelerate in more time across both
+the types of engines. Wait, what? If you're an expert with cars, you probably heard that 
+automatic consumes less (and accelerate faster in some sports cars!), so what's going on? 
+Well, remember, this data frame focuses on cars that were from 1973–74. Back in the days the automatic
+transmission was mostly hydraulic, so it was quite inefficient! While more recently we have much better transmissions,
+an expert driver can still be more fuel efficient and accelerate faster.
+In F1, at this day, drivers still choose their gears on their own! 
 
 ## Plotting with ggplot
 

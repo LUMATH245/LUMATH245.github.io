@@ -612,7 +612,7 @@ These will be not explained in detail, but can be useful for a lot of reasons re
 ## max    130.000000  7.000000  2.000000      25.000000  19.000000  4.000</code></pre>
 </div>
 </div>
-<p>Based on the information above, how would you access the last 5 rows and the last 2 columns of your data frame?</p>
+<p>Based on the information above, how would you access the last 2 rows and the last 2 columns of your data frame?</p>
 </div>
 </div>
 <div id="manipulating-data-frames" class="section level3 hasAnchor" number="5.1.2">
@@ -745,9 +745,8 @@ In R, we use <code>arrange()</code>, and in Python, we use <code>sort_values()</
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="df_plt.html#cb679-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arranging rows by decreasing sugar_percent in R</span></span>
-<span id="cb679-2"><a href="df_plt.html#cb679-2" aria-hidden="true" tabindex="-1"></a>milk_df <span class="ot">&lt;-</span> milk_df <span class="sc">|&gt;</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(sugar_percent))</span>
-<span id="cb679-3"><a href="df_plt.html#cb679-3" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
+<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="df_plt.html#cb679-1" aria-hidden="true" tabindex="-1"></a>milk_df <span class="ot">&lt;-</span> milk_df <span class="sc">|&gt;</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(sugar_percent))</span>
+<span id="cb679-2"><a href="df_plt.html#cb679-2" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 10
 ##   Milk_Type Calories Protein Fiber Carbohydrates Sugars
 ##   &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt;
@@ -771,7 +770,40 @@ In R, we use <code>arrange()</code>, and in Python, we use <code>sort_values()</
 </div>
 </div>
 <p>These examples show the power of modern R and Python for data manipulation!
-By understanding these functions, we can perform complex data manipulations with just a few lines of code.</p>
+By these functions we can perform complex data manipulations with just a few lines of code.</p>
+<p>Now the coolest thing, is that you can run all the commands above (and more!) in one single statement, through, in R, the power of the pipe (<code>|&gt;</code>), and in Python with Pandas by concatenating methods.
+See the two chunks below:</p>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb683"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb683-1"><a href="df_plt.html#cb683-1" aria-hidden="true" tabindex="-1"></a>milk_df <span class="sc">|&gt;</span></span>
+<span id="cb683-2"><a href="df_plt.html#cb683-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Sugars)) <span class="sc">|&gt;</span></span>
+<span id="cb683-3"><a href="df_plt.html#cb683-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sugar_percent =</span> (Sugars <span class="sc">/</span> Carbohydrates) <span class="sc">*</span> <span class="dv">100</span>, </span>
+<span id="cb683-4"><a href="df_plt.html#cb683-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">tot_wei =</span> Protein <span class="sc">+</span> Fiber <span class="sc">+</span> Carbohydrates <span class="sc">+</span> Fats,</span>
+<span id="cb683-5"><a href="df_plt.html#cb683-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">protein_content =</span> Protein <span class="sc">/</span> tot_wei <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">|&gt;</span></span>
+<span id="cb683-6"><a href="df_plt.html#cb683-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(protein_content)) <span class="sc">|&gt;</span></span>
+<span id="cb683-7"><a href="df_plt.html#cb683-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Milk_Type, protein_content)</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##   Milk_Type protein_content
+##   &lt;chr&gt;               &lt;dbl&gt;
+## 1 Oat                  11.2
+## 2 Almond                8</code></pre>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb685"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb685-1"><a href="df_plt.html#cb685-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb685-2"><a href="df_plt.html#cb685-2" aria-hidden="true" tabindex="-1"></a>  milk_df</span>
+<span id="cb685-3"><a href="df_plt.html#cb685-3" aria-hidden="true" tabindex="-1"></a>    .query(<span class="st">&#39;Sugars == Sugars&#39;</span>)  <span class="co"># Equivalent to !is.na(Sugars) in R</span></span>
+<span id="cb685-4"><a href="df_plt.html#cb685-4" aria-hidden="true" tabindex="-1"></a>    .assign(</span>
+<span id="cb685-5"><a href="df_plt.html#cb685-5" aria-hidden="true" tabindex="-1"></a>        sugar_percent <span class="op">=</span> <span class="kw">lambda</span> df: (df[<span class="st">&#39;Sugars&#39;</span>] <span class="op">/</span> df[<span class="st">&#39;Carbohydrates&#39;</span>]) <span class="op">*</span> <span class="dv">100</span>,</span>
+<span id="cb685-6"><a href="df_plt.html#cb685-6" aria-hidden="true" tabindex="-1"></a>        tot_wei <span class="op">=</span> <span class="kw">lambda</span> df: df[<span class="st">&#39;Protein&#39;</span>] <span class="op">+</span> df[<span class="st">&#39;Fiber&#39;</span>] <span class="op">+</span> df[<span class="st">&#39;Carbohydrates&#39;</span>] <span class="op">+</span> df[<span class="st">&#39;Fats&#39;</span>],</span>
+<span id="cb685-7"><a href="df_plt.html#cb685-7" aria-hidden="true" tabindex="-1"></a>        protein_content <span class="op">=</span> <span class="kw">lambda</span> df: df[<span class="st">&#39;Protein&#39;</span>] <span class="op">/</span> df[<span class="st">&#39;tot_wei&#39;</span>] <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb685-8"><a href="df_plt.html#cb685-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb685-9"><a href="df_plt.html#cb685-9" aria-hidden="true" tabindex="-1"></a>    .sort_values(<span class="st">&#39;protein_content&#39;</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb685-10"><a href="df_plt.html#cb685-10" aria-hidden="true" tabindex="-1"></a>    [[<span class="st">&#39;Milk_Type&#39;</span>, <span class="st">&#39;protein_content&#39;</span>]]</span>
+<span id="cb685-11"><a href="df_plt.html#cb685-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>##   Milk_Type  protein_content
+## 2       Oat        11.235955
+## 0    Almond         8.000000</code></pre>
+<p><strong>NOTE for Python users:</strong> In this Python code, <code>query('Sugars == Sugars')</code> is used to filter out rows where ‘Sugars’ is <code>NaN</code> (since <code>NaN != NaN</code>). Also, for the statement to evaluate correctly, we need the <code>()</code> brackets around the whole code chunk. This is because python is reading it as whole line, equivalent to <code>INPUT_DF.QUERY_OUT.ASSIGN_OUT.SORT_OUT[[INDEXING]]</code>.</p>
+<p><strong>NOTE for users learning both:</strong> The difference between these two statements is one of the reasons I personally prefer modern R for data manipulation and plotting. Good news is: you can use Python functions in R in a seamless way. Whilst this will be beyond the scope of this module, if you are curious on how to do so, you should probably read the <code>reticulate</code> interface guide. <a href="https://rstudio.github.io/reticulate/">You will find this here</a>.
+As a testament, this whole module was made possible via reticulate: these notes were written using R and python simultaneously. You can see how in the environment corner R Studio is tracking both the python environment and the R environment side to side in a seamless way.</p>
 </div>
 </div>
 <div id="a-real-data-frame" class="section level3 hasAnchor" number="5.1.3">
@@ -788,15 +820,12 @@ Well, this is the first time we are doing this in a practical sense.</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb683"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb683-1"><a href="df_plt.html#cb683-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the data frame in R</span></span>
-<span id="cb683-2"><a href="df_plt.html#cb683-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;mtcars.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb687"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb687-1"><a href="df_plt.html#cb687-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the data frame in R</span></span>
+<span id="cb687-2"><a href="df_plt.html#cb687-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;mtcars.csv&quot;</span>)</span></code></pre></div>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb684"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb684-1"><a href="df_plt.html#cb684-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the data frame in Python</span></span>
-<span id="cb684-2"><a href="df_plt.html#cb684-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb684-3"><a href="df_plt.html#cb684-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb684-4"><a href="df_plt.html#cb684-4" aria-hidden="true" tabindex="-1"></a>mtcars <span class="op">=</span> pd.read_csv(<span class="st">&quot;mtcars.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb688"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb688-1"><a href="df_plt.html#cb688-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="op">=</span> pd.read_csv(<span class="st">&quot;mtcars.csv&quot;</span>)</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -823,8 +852,8 @@ Well, this is the first time we are doing this in a practical sense.</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb685"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb685-1"><a href="df_plt.html#cb685-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Displaying the first few values in R</span></span>
-<span id="cb685-2"><a href="df_plt.html#cb685-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code></pre></div>
+<div class="sourceCode" id="cb689"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb689-1"><a href="df_plt.html#cb689-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Displaying the first few values in R</span></span>
+<span id="cb689-2"><a href="df_plt.html#cb689-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code></pre></div>
 <pre><code>##    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 ## 1 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
 ## 2 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
@@ -835,8 +864,8 @@ Well, this is the first time we are doing this in a practical sense.</p>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb687"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb687-1"><a href="df_plt.html#cb687-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Displaying the first few values in Python</span></span>
-<span id="cb687-2"><a href="df_plt.html#cb687-2" aria-hidden="true" tabindex="-1"></a>mtcars.head()</span></code></pre></div>
+<div class="sourceCode" id="cb691"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb691-1"><a href="df_plt.html#cb691-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Displaying the first few values in Python</span></span>
+<span id="cb691-2"><a href="df_plt.html#cb691-2" aria-hidden="true" tabindex="-1"></a>mtcars.head()</span></code></pre></div>
 <pre><code>##     mpg  cyl   disp   hp  drat     wt   qsec  vs  am  gear  carb
 ## 0  21.0    6  160.0  110  3.90  2.620  16.46   0   1     4     4
 ## 1  21.0    6  160.0  110  3.90  2.875  17.02   0   1     4     4
@@ -865,12 +894,14 @@ This will affect many things when dealing with those variables, like producing s
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb689"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb689-1"><a href="df_plt.html#cb689-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting to factors in R</span></span>
-<span id="cb689-2"><a href="df_plt.html#cb689-2" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>vs <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(mtcars<span class="sc">$</span>vs)</span>
-<span id="cb689-3"><a href="df_plt.html#cb689-3" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>am <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(mtcars<span class="sc">$</span>am)</span>
-<span id="cb689-4"><a href="df_plt.html#cb689-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb689-5"><a href="df_plt.html#cb689-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the conversion</span></span>
-<span id="cb689-6"><a href="df_plt.html#cb689-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars)</span></code></pre></div>
+<div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb693-1"><a href="df_plt.html#cb693-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting to factors in R</span></span>
+<span id="cb693-2"><a href="df_plt.html#cb693-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="ot">&lt;-</span> mtcars <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">vs =</span> <span class="fu">factor</span>(vs,</span>
+<span id="cb693-3"><a href="df_plt.html#cb693-3" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;V-shaped&quot;</span>, <span class="st">&quot;straight&quot;</span>)),</span>
+<span id="cb693-4"><a href="df_plt.html#cb693-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">am =</span> <span class="fu">factor</span>(am,</span>
+<span id="cb693-5"><a href="df_plt.html#cb693-5" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;automatic&quot;</span>, <span class="st">&quot;manual&quot;</span>)))</span>
+<span id="cb693-6"><a href="df_plt.html#cb693-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb693-7"><a href="df_plt.html#cb693-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the conversion</span></span>
+<span id="cb693-8"><a href="df_plt.html#cb693-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    32 obs. of  11 variables:
 ##  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
 ##  $ cyl : int  6 6 4 6 8 6 8 4 4 6 ...
@@ -879,19 +910,25 @@ This will affect many things when dealing with those variables, like producing s
 ##  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
 ##  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
 ##  $ qsec: num  16.5 17 18.6 19.4 17 ...
-##  $ vs  : Factor w/ 2 levels &quot;0&quot;,&quot;1&quot;: 1 1 2 2 1 2 1 2 2 2 ...
-##  $ am  : Factor w/ 2 levels &quot;0&quot;,&quot;1&quot;: 2 2 2 1 1 1 1 1 1 1 ...
+##  $ vs  : Factor w/ 2 levels &quot;V-shaped&quot;,&quot;straight&quot;: 1 1 2 2 1 2 1 2 2 2 ...
+##  $ am  : Factor w/ 2 levels &quot;automatic&quot;,&quot;manual&quot;: 2 2 2 1 1 1 1 1 1 1 ...
 ##  $ gear: int  4 4 4 3 3 3 3 4 4 4 ...
 ##  $ carb: int  4 4 1 1 2 1 4 2 2 4 ...</code></pre>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb691"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb691-1"><a href="df_plt.html#cb691-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting to categories in Python</span></span>
-<span id="cb691-2"><a href="df_plt.html#cb691-2" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="st">&#39;vs&#39;</span>] <span class="op">=</span> mtcars[<span class="st">&#39;vs&#39;</span>].astype(<span class="st">&#39;category&#39;</span>)</span>
-<span id="cb691-3"><a href="df_plt.html#cb691-3" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="st">&#39;am&#39;</span>] <span class="op">=</span> mtcars[<span class="st">&#39;am&#39;</span>].astype(<span class="st">&#39;category&#39;</span>)</span>
-<span id="cb691-4"><a href="df_plt.html#cb691-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb691-5"><a href="df_plt.html#cb691-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the conversion</span></span>
-<span id="cb691-6"><a href="df_plt.html#cb691-6" aria-hidden="true" tabindex="-1"></a>mtcars.info()</span></code></pre></div>
+<div class="sourceCode" id="cb695"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb695-1"><a href="df_plt.html#cb695-1" aria-hidden="true" tabindex="-1"></a><span class="co"># assigning labels as strings</span></span>
+<span id="cb695-2"><a href="df_plt.html#cb695-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="op">=</span> mtcars.assign(</span>
+<span id="cb695-3"><a href="df_plt.html#cb695-3" aria-hidden="true" tabindex="-1"></a>  vs <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x: <span class="st">&quot;V-Shaped&quot;</span> <span class="cf">if</span> x <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">&quot;straight&quot;</span>,  mtcars[<span class="st">&#39;vs&#39;</span>])),</span>
+<span id="cb695-4"><a href="df_plt.html#cb695-4" aria-hidden="true" tabindex="-1"></a>  am <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x: <span class="st">&quot;automatic&quot;</span> <span class="cf">if</span> x <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">&quot;manual&quot;</span>,  mtcars[<span class="st">&#39;am&#39;</span>]))</span>
+<span id="cb695-5"><a href="df_plt.html#cb695-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb695-6"><a href="df_plt.html#cb695-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb695-7"><a href="df_plt.html#cb695-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting to categories in Python</span></span>
+<span id="cb695-8"><a href="df_plt.html#cb695-8" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="st">&#39;vs&#39;</span>] <span class="op">=</span> mtcars[<span class="st">&#39;vs&#39;</span>].astype(<span class="st">&#39;category&#39;</span>)</span>
+<span id="cb695-9"><a href="df_plt.html#cb695-9" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="st">&#39;am&#39;</span>] <span class="op">=</span> mtcars[<span class="st">&#39;am&#39;</span>].astype(<span class="st">&#39;category&#39;</span>)</span>
+<span id="cb695-10"><a href="df_plt.html#cb695-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb695-11"><a href="df_plt.html#cb695-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the conversion</span></span>
+<span id="cb695-12"><a href="df_plt.html#cb695-12" aria-hidden="true" tabindex="-1"></a>mtcars.info()</span></code></pre></div>
 <pre><code>## &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 ## RangeIndex: 32 entries, 0 to 31
 ## Data columns (total 11 columns):
@@ -910,14 +947,100 @@ This will affect many things when dealing with those variables, like producing s
 ##  10  carb    32 non-null     int64   
 ## dtypes: category(2), float64(5), int64(4)
 ## memory usage: 2.7 KB</code></pre>
+<div class="sourceCode" id="cb697"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb697-1"><a href="df_plt.html#cb697-1" aria-hidden="true" tabindex="-1"></a>mtcars.head()</span></code></pre></div>
+<pre><code>##     mpg  cyl   disp   hp  drat     wt   qsec        vs         am  gear  carb
+## 0  21.0    6  160.0  110  3.90  2.620  16.46  V-Shaped     manual     4     4
+## 1  21.0    6  160.0  110  3.90  2.875  17.02  V-Shaped     manual     4     4
+## 2  22.8    4  108.0   93  3.85  2.320  18.61  straight     manual     4     1
+## 3  21.4    6  258.0  110  3.08  3.215  19.44  straight  automatic     3     1
+## 4  18.7    8  360.0  175  3.15  3.440  17.02  V-Shaped  automatic     3     2</code></pre>
 </div>
 </div>
-<p>This code converts the <code>vs</code> and <code>am</code> columns to factors or categories and then checks that the conversion was successful via the <code>str</code> function in R and the <code>info()</code> method in python.</p>
+<p>This code converts the <code>vs</code> and <code>am</code> columns to factors or categories and then checks that the conversion was successful via the <code>str</code> function in R and the <code>info()</code> method in python. The process in Python is a bit more involved as the <code>astype</code> function does not allow automatic assignment of labels to the categories.</p>
 </div>
 </div>
 <div id="group-by-and-summarise" class="section level3 hasAnchor" number="5.1.4">
 <h3><span class="header-section-number">5.1.4</span> Group by and summarise<a href="df_plt.html#group-by-and-summarise" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>How to extract information… For doing so we need a real data frame…</p>
+<p>Ok cool, we know how to handle data frames. Great. However, this is the time we make something useful of them, no? Like, for instance, extracting information. You know, starting to see the patterns, connecting the dots. All of that crazy stuff that they do in Social Media companies, like learning your family favorite band’s, the type of food they’re eating, or the dance moves they’re doing every morning. You know, turning things and people into numbers, the favorite statistician’s activity.
+We have already saw how to compute the mean, the max and other summary information across the data frame as a whole, but that doesn’t help us at all… Well, we showed how we have some variables in data frames that show certain <em>distinct</em> characteristics, which are shared across multiple individuals. Like the city you live in, for instance, or the type of engine of a car. Well, the idea, is that, when we take a data frame, in all that chaos of numbers, when we start to split the observations across certain characteristics, suddenly, patterns start to emerge. More formally, we create groups of observations, and we want to summarize and aggregate information within these groups.</p>
+<p>A <strong>grouped data frame</strong> is a version of the data frame split into groups based on specified conditions. Each group is a subset of data frame rows that have the same values in specified columns. Grouping is a powerful concept because it allows you to perform operations on subsets of the data frame. This is achieved via <code>group_by</code> in R and <code>groupby</code> in Python.</p>
+<p>Then, the <code>summarise</code> function (in R), or <code>agg</code> (in Python, for aggregate) applies a transformation to one or more columns within each subgroup of a grouped data frame. This transformation is typically an aggregation operation that reduces each subgroup to a single row, such as computing the mean, sum, or count.</p>
+<p>Let’s use our <code>mtcars</code> data frame to illustrate these functions work. First, we’ll compute the average miles per gallon (mpg) and horsepower (hp) across various engine types (vs). In the <code>mtcars</code> data frame, the <code>vs</code> column represents the engine type: 0 for V-shaped and 1 for straight. We will group by the <code>vs</code> column, and we will run a summary, the mean, in this case, for the variables <code>mpg</code> and <code>hp</code>.</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb699"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb699-1"><a href="df_plt.html#cb699-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by &#39;vs&#39; and compute average &#39;mpg&#39; and &#39;hp&#39; in R</span></span>
+<span id="cb699-2"><a href="df_plt.html#cb699-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span></span>
+<span id="cb699-3"><a href="df_plt.html#cb699-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(vs) <span class="sc">|&gt;</span></span>
+<span id="cb699-4"><a href="df_plt.html#cb699-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_mpg =</span> <span class="fu">mean</span>(mpg), <span class="at">avg_hp =</span> <span class="fu">mean</span>(hp))</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 3
+##   vs       avg_mpg avg_hp
+##   &lt;fct&gt;      &lt;dbl&gt;  &lt;dbl&gt;
+## 1 V-shaped    16.6  190. 
+## 2 straight    24.6   91.4</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb701"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb701-1"><a href="df_plt.html#cb701-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb701-2"><a href="df_plt.html#cb701-2" aria-hidden="true" tabindex="-1"></a>  mtcars</span>
+<span id="cb701-3"><a href="df_plt.html#cb701-3" aria-hidden="true" tabindex="-1"></a>  .groupby(<span class="st">&#39;vs&#39;</span>, observed<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb701-4"><a href="df_plt.html#cb701-4" aria-hidden="true" tabindex="-1"></a>  .agg({<span class="st">&#39;mpg&#39;</span> : <span class="st">&#39;mean&#39;</span>, <span class="st">&#39;hp&#39;</span> : <span class="st">&#39;mean&#39;</span>})</span>
+<span id="cb701-5"><a href="df_plt.html#cb701-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>##                 mpg          hp
+## vs                             
+## V-Shaped  16.616667  189.722222
+## straight  24.557143   91.357143</code></pre>
+</div>
+</div>
+<p>The results show that the average mpg are higher for straight engines compared to V-shaped engines. Controversely, on the other hand, the average horse power are lower for straight engines compared to V-shaped engines. This could be due to the design and efficiency differences between the two engine types: usually straight engines are for regular small cars, whilst V-shaped engines tend to be in sports cars. The first will be more efficient and be less powerful compared to the second.
+See? We have extracted information!</p>
+<p>We can make this example more and more complicated. Let’s add a second grouping variable: the type of transmission (am). In the <code>mtcars</code> data frame, the <code>am</code> column represents the transmission type: 0 for automatic and 1 for manual.</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb703"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb703-1"><a href="df_plt.html#cb703-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by &#39;vs&#39; and &#39;am&#39;, and compute average &#39;mpg&#39; and &#39;hp&#39; </span></span>
+<span id="cb703-2"><a href="df_plt.html#cb703-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and min qsec</span></span>
+<span id="cb703-3"><a href="df_plt.html#cb703-3" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span></span>
+<span id="cb703-4"><a href="df_plt.html#cb703-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(vs, am) <span class="sc">|&gt;</span></span>
+<span id="cb703-5"><a href="df_plt.html#cb703-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_mpg =</span> <span class="fu">mean</span>(mpg), <span class="at">avg_hp =</span> <span class="fu">mean</span>(hp), <span class="at">min_qsec =</span> <span class="fu">min</span>(qsec))</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;vs&#39;. You can override
+## using the `.groups` argument.</code></pre>
+<pre><code>## # A tibble: 4 × 5
+## # Groups:   vs [2]
+##   vs       am        avg_mpg avg_hp min_qsec
+##   &lt;fct&gt;    &lt;fct&gt;       &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
+## 1 V-shaped automatic    15.0  194.      15.4
+## 2 V-shaped manual       19.8  181.      14.5
+## 3 straight automatic    20.7  102.      18.3
+## 4 straight manual       28.4   80.6     16.9</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb706"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb706-1"><a href="df_plt.html#cb706-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by &#39;vs&#39; and &#39;am&#39;, and compute average &#39;mpg&#39; and &#39;hp&#39; </span></span>
+<span id="cb706-2"><a href="df_plt.html#cb706-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and min qsec</span></span>
+<span id="cb706-3"><a href="df_plt.html#cb706-3" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb706-4"><a href="df_plt.html#cb706-4" aria-hidden="true" tabindex="-1"></a>  mtcars</span>
+<span id="cb706-5"><a href="df_plt.html#cb706-5" aria-hidden="true" tabindex="-1"></a>  .groupby([<span class="st">&#39;vs&#39;</span>, <span class="st">&#39;am&#39;</span>])</span>
+<span id="cb706-6"><a href="df_plt.html#cb706-6" aria-hidden="true" tabindex="-1"></a>  .agg({<span class="st">&#39;mpg&#39;</span> : <span class="st">&#39;mean&#39;</span>, <span class="st">&#39;hp&#39;</span> : <span class="st">&#39;mean&#39;</span>, <span class="st">&#39;qsec&#39;</span> : <span class="st">&#39;min&#39;</span>})</span>
+<span id="cb706-7"><a href="df_plt.html#cb706-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>##                           mpg          hp   qsec
+## vs       am                                     
+## V-Shaped automatic  15.050000  194.166667  15.41
+##          manual     19.750000  180.833333  14.50
+## straight automatic  20.742857  102.142857  18.30
+##          manual     28.371429   80.571429  16.90
+## 
+## &lt;string&gt;:5: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.</code></pre>
+</div>
+</div>
+<p>By adding a second grouping variable, we can explore more complex relationships in our data.
+We can see now that the automatic transmission consume more in general, and accelerate in more time across both
+the types of engines. Wait, what? If you’re an expert with cars, you probably heard that
+automatic consumes less (and accelerate faster in some sports cars!), so what’s going on?
+Well, remember, this data frame focuses on cars that were from 1973–74. Back in the days the automatic
+transmission was mostly hydraulic, so it was quite inefficient! While more recently we have much better transmissions,
+an expert driver can still be more fuel efficient and accelerate faster.
+In F1, at this day, drivers still choose their gears on their own!</p>
 </div>
 </div>
 <div id="plotting-with-ggplot" class="section level2 hasAnchor" number="5.2">
@@ -942,14 +1065,14 @@ The exercise has various levels of completition, from a basic level where we wil
 </ol>
 <p><strong>Medium.</strong> Modify the code above to add the additional function <span class="math inline">\(y=\cos(x)\)</span>.
 You should get something like:</p>
-<p><img src="images/unnamed-chunk-218-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-224-1.png" width="50%" /></p>
 <ul>
 <li><p>The x-axis should range from 0 to 10, with a step size of 0.01.</p></li>
 <li><p>Use different colours for each curve (sine or cosine)</p></li>
 <li><p>How many columns should have your dataframe?</p></li>
 </ul>
 <p><strong>Advanced.</strong> Using <code>ggplot</code>, write a program that generates the plot below:</p>
-<p><img src="images/unnamed-chunk-219-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-225-1.png" width="50%" /></p>
 <p>Each subplot should be comparing sines and cosines with different frequencies.
 The plot should show 6 sinusoidal functions:<span class="math display">\[\sin\left(\frac{x}{2}\right), \sin(x), \sin(2x), \cos\left(\frac{x}{2}\right), \cos(x), \cos(2x)\]</span></p>
 <ul>
