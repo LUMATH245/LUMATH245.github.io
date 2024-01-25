@@ -1106,6 +1106,9 @@ Funny enough, in ggplot, if we want, and they share aeshtetics, we can stack lay
 **R**
 
 ```{r}
+# python users looking at this example: this is one particular 
+# case where ggplot2 in R is better then plotnine. The difference
+# here is that boxplot can accept both an x or y aesthetic in R
 ggplot(mtcars, aes(y=mpg)) +
   geom_boxplot(binwidth=3) +
   geom_density()

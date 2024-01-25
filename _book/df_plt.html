@@ -1315,9 +1315,12 @@ Let’s create a histogram of <code>mpg</code> (miles per gallon).</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb762"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb762-1"><a href="df_plt.html#cb762-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg)) <span class="sc">+</span></span>
-<span id="cb762-2"><a href="df_plt.html#cb762-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">binwidth=</span><span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb762-3"><a href="df_plt.html#cb762-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb762"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb762-1"><a href="df_plt.html#cb762-1" aria-hidden="true" tabindex="-1"></a><span class="co"># python users looking at this example: this is one particular </span></span>
+<span id="cb762-2"><a href="df_plt.html#cb762-2" aria-hidden="true" tabindex="-1"></a><span class="co"># case where ggplot2 in R is better then plotnine. The difference</span></span>
+<span id="cb762-3"><a href="df_plt.html#cb762-3" aria-hidden="true" tabindex="-1"></a><span class="co"># here is that boxplot can accept both an x or y aesthetic in R</span></span>
+<span id="cb762-4"><a href="df_plt.html#cb762-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg)) <span class="sc">+</span></span>
+<span id="cb762-5"><a href="df_plt.html#cb762-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">binwidth=</span><span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb762-6"><a href="df_plt.html#cb762-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
 <pre><code>## Warning in geom_boxplot(binwidth = 3): Ignoring unknown
 ## parameters: `binwidth`</code></pre>
 <p><img src="images/unnamed-chunk-244-3.png" width="50%" /></p>
