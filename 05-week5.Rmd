@@ -1044,6 +1044,9 @@ To solidify the concept of aesthetic mapping, let's see what happens by swapping
 **R**
 
 ```{r}
+# python users looking at this example: this is one particular 
+# case where ggplot2 in R is better then plotnine in python. The difference
+# here is that boxplot can accept both an x or y aesthetic in R
 ggplot(mtcars, aes(y=mpg)) +
   geom_histogram(binwidth=5)
 ```
@@ -1122,9 +1125,8 @@ For instance:
 **R**
 
 ```{r}
-# python users looking at this example: this is one particular 
-# case where ggplot2 in R is better then plotnine. The difference
-# here is that boxplot can accept both an x or y aesthetic in R
+# R users, look at the output of python plot. We can easily make the same plot in R
+# Can you translate the python code to obtain the same?
 ggplot(mtcars, aes(y=mpg)) +
   geom_boxplot(binwidth=3) +
   geom_density()
@@ -1276,6 +1278,8 @@ ggplot(mtcars, aes(y=mpg, color=am, linetype = vs)) +
 
 ### Advanced plots
 
+**This section will not be evaluated on the quizzes, however if you are feeling confident you should read it anyway as it shows how powerful ggplot can get. If you're overwelmed, feel free to skip at the exercise, and complete up to the medium level.**
+
 We have already added a couple of functions to our plots above.
 Well, in ggplot you can change a bunch of graphical characteristics very easily by just adding things.
 For example:
@@ -1289,6 +1293,43 @@ For example:
 3.  **Labels**: You can change the axis labels by adding `labs(x = "X Label Name", y = "Y Label Name")`.
 
 4.  **Limits**: You can set the limits of your axes using `xlim(lower, upper)` and `ylim(lower, upper)`.
+
+
+#### Multiple Plots with Facets
+
+Faceting is a way to create multiple subplots at once based on an extra factor variable. This is a very clean way of representing several variables, as the subplots will share the relevant axes.
+For instance, let's show the relationship between miles per gallon (`mpg`) and horsepower (`hp`), transmission type (`am`) but separated by the highest gear (`gear`):
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+ggplot(mtcars, aes(x=hp, y=mpg, color=am)) +
+  geom_point() + 
+  facet_wrap(~gear)
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+(
+ggplot(mtcars, aes(x='hp', y='mpg', color='am')) +
+  geom_point() + 
+  facet_wrap('~gear')
+)
+```
+
+</div>
+:::
+
+Let's see what happens by adding the argument `nrow=3` to the `facet_wrap`, e.g. `facet_wrap(~gear, nrow=3)`.
+
 
 ### Exercise: ggplots of periodic functions
 

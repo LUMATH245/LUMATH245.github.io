@@ -1273,8 +1273,11 @@ Try to change the binwidth and see what happens.</p></li>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb754"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb754-1"><a href="df_plt.html#cb754-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg)) <span class="sc">+</span></span>
-<span id="cb754-2"><a href="df_plt.html#cb754-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb754"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb754-1"><a href="df_plt.html#cb754-1" aria-hidden="true" tabindex="-1"></a><span class="co"># python users looking at this example: this is one particular </span></span>
+<span id="cb754-2"><a href="df_plt.html#cb754-2" aria-hidden="true" tabindex="-1"></a><span class="co"># case where ggplot2 in R is better then plotnine in python. The difference</span></span>
+<span id="cb754-3"><a href="df_plt.html#cb754-3" aria-hidden="true" tabindex="-1"></a><span class="co"># here is that boxplot can accept both an x or y aesthetic in R</span></span>
+<span id="cb754-4"><a href="df_plt.html#cb754-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg)) <span class="sc">+</span></span>
+<span id="cb754-5"><a href="df_plt.html#cb754-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>)</span></code></pre></div>
 <p><img src="images/unnamed-chunk-240-3.png" width="50%" /></p>
 </div>
 <div>
@@ -1331,12 +1334,11 @@ For instance:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb762"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb762-1"><a href="df_plt.html#cb762-1" aria-hidden="true" tabindex="-1"></a><span class="co"># python users looking at this example: this is one particular </span></span>
-<span id="cb762-2"><a href="df_plt.html#cb762-2" aria-hidden="true" tabindex="-1"></a><span class="co"># case where ggplot2 in R is better then plotnine. The difference</span></span>
-<span id="cb762-3"><a href="df_plt.html#cb762-3" aria-hidden="true" tabindex="-1"></a><span class="co"># here is that boxplot can accept both an x or y aesthetic in R</span></span>
-<span id="cb762-4"><a href="df_plt.html#cb762-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg)) <span class="sc">+</span></span>
-<span id="cb762-5"><a href="df_plt.html#cb762-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">binwidth=</span><span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb762-6"><a href="df_plt.html#cb762-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb762"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb762-1"><a href="df_plt.html#cb762-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R users, look at the output of python plot. We can easily make the same plot in R</span></span>
+<span id="cb762-2"><a href="df_plt.html#cb762-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Can you translate the python code to obtain the same?</span></span>
+<span id="cb762-3"><a href="df_plt.html#cb762-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg)) <span class="sc">+</span></span>
+<span id="cb762-4"><a href="df_plt.html#cb762-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">binwidth=</span><span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb762-5"><a href="df_plt.html#cb762-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
 <pre><code>## Warning in geom_boxplot(binwidth = 3): Ignoring unknown
 ## parameters: `binwidth`</code></pre>
 <p><img src="images/unnamed-chunk-244-3.png" width="50%" /></p>
@@ -1441,6 +1443,7 @@ Let’s color the points in our scatterplot based on the type of transmission (<
 </div>
 <div id="advanced-plots" class="section level3 hasAnchor" number="5.2.2">
 <h3><span class="header-section-number">5.2.2</span> Advanced plots<a href="df_plt.html#advanced-plots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>This section will not be evaluated on the quizzes, however if you are feeling confident you should read it anyway as it shows how powerful ggplot can get. If you’re overwelmed, feel free to skip at the exercise, and complete up to the medium level.</strong></p>
 <p>We have already added a couple of functions to our plots above.
 Well, in ggplot you can change a bunch of graphical characteristics very easily by just adding things.
 For example:</p>
@@ -1452,6 +1455,31 @@ Try <code>theme_bw()</code> for a different one.</p></li>
 <li><p><strong>Labels</strong>: You can change the axis labels by adding <code>labs(x = "X Label Name", y = "Y Label Name")</code>.</p></li>
 <li><p><strong>Limits</strong>: You can set the limits of your axes using <code>xlim(lower, upper)</code> and <code>ylim(lower, upper)</code>.</p></li>
 </ol>
+<div id="multiple-plots-with-facets" class="section level4 hasAnchor" number="5.2.2.1">
+<h4><span class="header-section-number">5.2.2.1</span> Multiple Plots with Facets<a href="df_plt.html#multiple-plots-with-facets" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Faceting is a way to create multiple subplots at once based on an extra factor variable. This is a very clean way of representing several variables, as the subplots will share the relevant axes.
+For instance, let’s show the relationship between miles per gallon (<code>mpg</code>) and horsepower (<code>hp</code>), transmission type (<code>am</code>) but separated by the highest gear (<code>gear</code>):</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb778"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb778-1"><a href="df_plt.html#cb778-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg, <span class="at">color=</span>am)) <span class="sc">+</span></span>
+<span id="cb778-2"><a href="df_plt.html#cb778-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb778-3"><a href="df_plt.html#cb778-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>gear)</span></code></pre></div>
+<p><img src="images/unnamed-chunk-254-3.png" width="50%" /></p>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb779"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb779-1"><a href="df_plt.html#cb779-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb779-2"><a href="df_plt.html#cb779-2" aria-hidden="true" tabindex="-1"></a>ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>, color<span class="op">=</span><span class="st">&#39;am&#39;</span>)) <span class="op">+</span></span>
+<span id="cb779-3"><a href="df_plt.html#cb779-3" aria-hidden="true" tabindex="-1"></a>  geom_point() <span class="op">+</span> </span>
+<span id="cb779-4"><a href="df_plt.html#cb779-4" aria-hidden="true" tabindex="-1"></a>  facet_wrap(<span class="st">&#39;~gear&#39;</span>)</span>
+<span id="cb779-5"><a href="df_plt.html#cb779-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
+<p><img src="images/unnamed-chunk-255-1.png" width="50%" /></p>
+</div>
+</div>
+<p>Let’s see what happens by adding the argument <code>nrow=3</code> to the <code>facet_wrap</code>, e.g. <code>facet_wrap(~gear, nrow=3)</code>.</p>
+</div>
 </div>
 <div id="exercise-ggplots-of-periodic-functions" class="section level3 hasAnchor" number="5.2.3">
 <h3><span class="header-section-number">5.2.3</span> Exercise: ggplots of periodic functions<a href="df_plt.html#exercise-ggplots-of-periodic-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1467,14 +1495,14 @@ The exercise has various levels of completition, from a basic level where we wil
 </ol>
 <p><strong>Medium.</strong> Modify the code above to add the additional function <span class="math inline">\(y=\cos(x)\)</span>.
 You should get something like:</p>
-<p><img src="images/unnamed-chunk-254-3.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-256-3.png" width="50%" /></p>
 <ul>
 <li><p>The x-axis should range from 0 to 10, with a step size of 0.01.</p></li>
 <li><p>Use different colours for each curve (sine or cosine)</p></li>
 <li><p>How many columns should have your dataframe?</p></li>
 </ul>
 <p><strong>Advanced.</strong> Using <code>ggplot</code>, write a program that generates the plot below:</p>
-<p><img src="images/unnamed-chunk-255-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-257-1.png" width="50%" /></p>
 <p>Each subplot should be comparing sines and cosines with different frequencies.
 The plot should show 6 sinusoidal functions:<span class="math display">\[\sin\left(\frac{x}{2}\right), \sin(x), \sin(2x), \cos\left(\frac{x}{2}\right), \cos(x), \cos(2x)\]</span></p>
 <ul>

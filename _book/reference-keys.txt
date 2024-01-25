@@ -88,4 +88,5 @@ basic-plots
 plotting-the-distribution-of-a-variable
 plotting-multiple-dimensions
 advanced-plots
+multiple-plots-with-facets
 exercise-ggplots-of-periodic-functions
