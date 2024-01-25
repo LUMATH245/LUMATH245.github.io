@@ -68,7 +68,6 @@ exercise-implementing-a-linear-model-solver
 an-end-note-to-this-chapter
 df_plt
 a-note-for-r-users.
-the-pipe-operator
 a-note-for-python-users
 data-frames
 constructing-and-accessing-data-frames
