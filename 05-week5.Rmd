@@ -990,7 +990,8 @@ Let's start with some basic plots to hopefully clear things a bit!
 
 ### Basic Plots
 
-**Histogram** A histogram is a representation of *the distribution* of a single variable, hence the `aes()` will only have the `x`. The histogram layer is translated via the function `geom_histogram`.
+#### Plotting the distribution of a variable
+A histogram is a representation of *the distribution* of a single variable, hence the `aes()` will **only have the `x`.** The histogram layer is translated via the function `geom_histogram`.
 Let's create a histogram of `mpg` (miles per gallon).
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
@@ -1009,7 +1010,7 @@ ggplot(mtcars, aes(x=mpg)) +
 
 **python**
 
-```{python}
+```{python plot=FALSE}
 (
   ggplot(mtcars, aes(x='mpg')) +
   geom_histogram(binwidth=5)
@@ -1018,6 +1019,14 @@ ggplot(mtcars, aes(x=mpg)) +
 
 </div>
 :::
+
+Let's break down the syntax:
+-   `ggplot(mtcars, aes(x=mpg))`. initializes a ggplot object. `mtcars` is the data frame we’re using we wish to get the data from, and aes(x=mpg) sets the aesthetic mappings, which define how variables in the data are mapped to visual properties of the plot. In this case, we’re mapping the mpg variable to the x-axis.
+
+-   `+`. The plus operator is used to add layers to the plot. You can add as many layers as you want to a ggplot by chaining them together with `+`.
+
+-   `geom_histogram(binwidth=5)`. This adds a histogram layer to the plot. The binwidth argument sets the width of the bins in the histogram. Geometries can have different options! Try to change the binwidth and see what happens.
+
 
 #### Scatterplot
 

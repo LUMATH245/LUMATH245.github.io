@@ -85,6 +85,7 @@ factor-or-categorical-variables
 group-by-and-summarise
 plotting-with-ggplot-and-plotnine
 basic-plots
+plotting-the-distribution-of-a-variable
 scatterplot
 higher-dimensions
 advanced-plots
