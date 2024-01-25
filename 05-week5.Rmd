@@ -970,7 +970,114 @@ In F1, at this day, drivers still choose their gears on their own!
 
 ## Plotting with ggplot
 
-### More basic plots
+
+The Grammar of Graphics is a framework for describing and building graphs. It was implemented in R through the `ggplot2` package and in Python through the `plotnine` package. The idea is to break up graphs into semantic components such as scales and layers so you can flexibly and systematically create a wide variety of plots.
+
+### Basic Plots
+
+Let's start with some basic plots using the `mtcars` dataset.
+
+#### Histogram
+
+A histogram is a representation of the distribution of a single variable, hence the `aes()` will only have the `x`. Let's create a histogram of `mpg` (miles per gallon).
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+library(ggplot2)
+
+ggplot(mtcars, aes(x=mpg)) +
+  geom_histogram(binwidth=5, fill="#69b3a2", color="#e9ecef", alpha=0.9) +
+  theme_minimal()
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+from plotnine import *
+
+(
+  ggplot(mtcars, aes(x='mpg')) +
+  geom_histogram(binwidth=5, fill="#69b3a2", color="#e9ecef", alpha=0.9) +
+  theme_minimal()
+)
+```
+
+</div>
+:::
+
+#### Scatterplot
+
+A scatterplot uses two dimensions, allowing us to visualize the relationship between two variables. Let's create a scatterplot of `mpg` against `hp` (horsepower).
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+ggplot(mtcars, aes(x=hp, y=mpg)) +
+  geom_point() +
+  theme_minimal()
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+(
+  ggplot(mtcars, aes(x='hp', y='mpg')) +
+  geom_point() +
+  theme_minimal()
+)
+```
+
+</div>
+:::
+
+#### Higher Dimensions
+
+We can introduce higher dimensions by mapping additional variables to other aesthetics like color. Let's color the points in our scatterplot based on the type of transmission (`am`).
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+ggplot(mtcars, aes(x=hp, y=mpg, color=factor(am))) +
+  geom_point() +
+  scale_color_discrete(name="Transmission\n(0=auto, 1=manual)") +
+  theme_minimal()
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+(
+  ggplot(mtcars, aes(x='hp', y='mpg', color='factor(am)')) +
+  geom_point() +
+  scale_color_discrete(name="Transmission\n(0=auto, 1=manual)") +
+  theme_minimal()
+)
+```
+
+</div>
+:::
 
 ### Advanced plots
 

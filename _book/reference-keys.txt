@@ -84,6 +84,9 @@ exploring-your-data-frame
 factor-or-categorical-variables
 group-by-and-summarise
 plotting-with-ggplot
-more-basic-plots
+basic-plots
+histogram
+scatterplot
+higher-dimensions
 advanced-plots
 exercise-ggplots-of-periodic-functions
