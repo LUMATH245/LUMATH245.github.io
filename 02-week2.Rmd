@@ -1637,7 +1637,7 @@ y <- x^2 - x
 ```{python}
 # Create a sequence of numbers 
 # from -5 to 5 with increments of 0.1
-x = np.arange(-5, 5, 0.1)
+x = np.arange(-5, 5.1, 0.1)
 
 # Compute the value of x^2 - x for each
 # element of x and assign it to y
