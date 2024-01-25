@@ -365,6 +365,63 @@ In R, we have `filter()`, `arrange()`, `select()`, and `mutate()`.
 In Python, we have `query`, `sort_values`, `loc` or `iloc`, and `assign`.
 We will now explore each of these functions in detail.
 
+#### Adding New Rows
+
+To add new rows (or collate two data frames together!) we can use functions `bind_rows` (in R) and `concat` (in Python). This is formally referred to *concatenating*, which means to create a new data frame by attaching new rows to a data frame from a different one that shares the same columns. 
+
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Creating a new data frame in R
+extra_milk_df <- tibble(
+  Milk_Type = c("Cashew", "Hazelnut"),
+  Calories = c(80, 130),
+  Protein = c(0.7, 2),
+  Fiber = c(1, 2),
+  Carbohydrates = c(2, 8),
+  Sugars = c(0.5, 3),
+  Fats = c(3, 9)
+)
+
+# attaching new rows to our existing data frame
+milk_df <- milk_df |> bind_rows(extra_milk_df)
+milk_df
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Creating a new data frame in Python
+extra_milk_df = pd.DataFrame({
+  'Milk_Type': ["Cashew", "Hazelnut"],
+  'Calories': [80, 130],
+  'Protein': [0.7, 2],
+  'Fiber': [1, 2],
+  'Carbohydrates': [2, 8],
+  'Sugars': [0.5, 3],
+  'Fats': [3, 9]
+})
+
+# Attaching new rows to our existing data frame
+milk_df = pd.concat([milk_df, extra_milk_df], ignore_index=True)
+milk_df
+```
+
+</div>
+:::
+
+Note that **in R** you can use also the `rbind` function that we have seen in the past week. 
+
+**In Python** you will need to add the `ignore_index` argument, otherwise this will mess up your indexing of the data frame, and could cause unexpected results.
+
 #### Adding New Columns
 
 Adding new columns allows us to easily add new columns that are functions of existing ones.

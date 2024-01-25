@@ -74,6 +74,7 @@ data-frames
 constructing-and-accessing-data-frames
 accessing-information-about-the-data-frame
 manipulating-data-frames
+adding-new-rows
 adding-new-columns
 filtering-rows
 reordering-rows
