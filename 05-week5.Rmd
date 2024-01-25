@@ -1027,11 +1027,116 @@ Let's break down the syntax:
 
 -   `geom_histogram(binwidth=5)`. This adds a histogram layer to the plot. The binwidth argument sets the width of the bins in the histogram. Geometries can have different options! Try to change the binwidth and see what happens.
 
+To solidify the concept of aesthetic mapping, let's see what happens by swapping the `x` for a `y` in our `aes` function:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+ggplot(mtcars, aes(y=mpg)) +
+  geom_histogram(binwidth=5)
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python error=TRUE}
+# this will produce an error in python since
+# geom_histogram only works with the x axis in plotnine.
+# plotnine has still some limitations 
+# compared to ggplot2 in R. Just look at the R output.
+(
+  ggplot(mtcars, aes(y='mpg')) +
+  geom_histogram()
+)
+
+# we can obtain a similar visualization via coord flip
+(
+  ggplot(mtcars, aes(x='mpg')) +
+  geom_histogram() +
+  coord_flip()
+)
+
+```
+
+</div>
+:::
+
+You can see by how changing the axis aesthetic, the histogram was mirrored over the axis. Let's see what happens now, if we swap the `geom_histogram` layer for a `geom_boxplot`:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+ggplot(mtcars, aes(y=mpg)) +
+  geom_boxplot()
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python plot=FALSE}
+(
+  ggplot(mtcars, aes(y='mpg')) +
+  geom_boxplot()
+)
+```
+
+</div>
+:::
+
+This will give us a complete different type of distribution plot, *the boxplot*! A boxplot is a very useful graphical representation of a variable's distribution based on a five-number summary: the minimum, first quartile (Q1), median, third quartile (Q3), and maximum. The box represents the interquartile range (IQR), containing the middle 50% of the data, with a line indicating the median. The whiskers extend from the box to the minimum and maximum values, excluding outliers, which are represented as individual points. Boxplots are useful for understanding data distribution, detecting outliers, and comparing data sets. The boxplot has a common aesthetic with the histogram: in fact, it's just a different way to represent a distribution! All we had to do was change the layer. 
+
+Funny enough, in ggplot, if we want, and they share aeshtetics, we can stack layers on top of each other just by adding more. For instance:
+
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+ggplot(mtcars, aes(y=mpg)) +
+  geom_boxplot(binwidth=3) +
+  geom_density()
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python plot=FALSE}
+# the same plot in plotnine is not possible as 
+# the boxplot and the density plot have different aestethics. 
+# however, we can plot (this should work in R too): 
+(
+  ggplot(mtcars, aes(x="mpg")) +
+    geom_histogram(aes(y = "..density.."), binwidth=3) +
+    geom_density()
+)
+```
+
+</div>
+:::
+
+We have just added an estimate of our density to our boxplot/histogram! 
 
 #### Scatterplot
 
-A scatterplot uses two dimensions, allowing us to visualize the relationship between two variables.
-Let's create a scatterplot of `mpg` against `hp` (horsepower).
+A scatterplot uses two dimensions, allowing us to visualize the relationship between two variables. So, our aestetic, now gets another argument: we have now both the `x` and the `y`!
+Let's create a scatterplot of `mpg` against `hp` (horsepower), to replicate our initial example.
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -1040,8 +1145,7 @@ Let's create a scatterplot of `mpg` against `hp` (horsepower).
 
 ```{r}
 ggplot(mtcars, aes(x=hp, y=mpg)) +
-  geom_point() +
-  theme_minimal()
+  geom_point() # + theme_minimal()
 ```
 
 </div>
@@ -1053,17 +1157,16 @@ ggplot(mtcars, aes(x=hp, y=mpg)) +
 ```{python}
 (
   ggplot(mtcars, aes(x='hp', y='mpg')) +
-  geom_point() +
-  theme_minimal()
+  geom_point() # + theme_minimal()
 )
 ```
 
 </div>
 :::
 
-#### Higher Dimensions
+Uncomment the `theme_minimal` to add an additional theme to our plot, and you will have recreated the plot at the beginning of the section. T
 
-We can introduce higher dimensions by mapping additional variables to other aesthetics like color.
+**Representing higher dimentions**. Now, the cool stuff is that we can introduce higher dimensions by mapping additional variables to other aesthetics like color (or the point shape).
 Let's color the points in our scatterplot based on the type of transmission (`am`).
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
@@ -1072,10 +1175,8 @@ Let's color the points in our scatterplot based on the type of transmission (`am
 **R**
 
 ```{r}
-ggplot(mtcars, aes(x=hp, y=mpg, color=factor(am))) +
-  geom_point() +
-  scale_color_discrete(name="Transmission\n(0=auto, 1=manual)") +
-  theme_minimal()
+ggplot(mtcars, aes(x=hp, y=mpg, color=am)) +
+  geom_point()
 ```
 
 </div>
@@ -1086,10 +1187,8 @@ ggplot(mtcars, aes(x=hp, y=mpg, color=factor(am))) +
 
 ```{python}
 (
-  ggplot(mtcars, aes(x='hp', y='mpg', color='factor(am)')) +
-  geom_point() +
-  scale_color_discrete(name="Transmission\n(0=auto, 1=manual)") +
-  theme_minimal()
+  ggplot(mtcars, aes(x='hp', y='mpg', color='am')) +
+  geom_point()
 )
 ```
 

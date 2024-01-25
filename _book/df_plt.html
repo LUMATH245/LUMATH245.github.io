@@ -1261,54 +1261,122 @@ Let’s create a histogram of <code>mpg</code> (miles per gallon).</p>
 <li><p><code>+</code>. The plus operator is used to add layers to the plot. You can add as many layers as you want to a ggplot by chaining them together with <code>+</code>.</p></li>
 <li><p><code>geom_histogram(binwidth=5)</code>. This adds a histogram layer to the plot. The binwidth argument sets the width of the bins in the histogram. Geometries can have different options! Try to change the binwidth and see what happens.</p></li>
 </ul>
-</div>
-<div id="scatterplot" class="section level4 hasAnchor" number="5.2.1.2">
-<h4><span class="header-section-number">5.2.1.2</span> Scatterplot<a href="df_plt.html#scatterplot" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>A scatterplot uses two dimensions, allowing us to visualize the relationship between two variables.
-Let’s create a scatterplot of <code>mpg</code> against <code>hp</code> (horsepower).</p>
+<p>To solidify the concept of aesthetic mapping, let’s see what happens by swapping the <code>x</code> for a <code>y</code> in our <code>aes</code> function:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb754"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb754-1"><a href="df_plt.html#cb754-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg)) <span class="sc">+</span></span>
-<span id="cb754-2"><a href="df_plt.html#cb754-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb754-3"><a href="df_plt.html#cb754-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb754"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb754-1"><a href="df_plt.html#cb754-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg)) <span class="sc">+</span></span>
+<span id="cb754-2"><a href="df_plt.html#cb754-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>)</span></code></pre></div>
 <p><img src="images/unnamed-chunk-240-3.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb755"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb755-1"><a href="df_plt.html#cb755-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb755-2"><a href="df_plt.html#cb755-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>)) <span class="op">+</span></span>
-<span id="cb755-3"><a href="df_plt.html#cb755-3" aria-hidden="true" tabindex="-1"></a>  geom_point() <span class="op">+</span></span>
-<span id="cb755-4"><a href="df_plt.html#cb755-4" aria-hidden="true" tabindex="-1"></a>  theme_minimal()</span>
-<span id="cb755-5"><a href="df_plt.html#cb755-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
+<div class="sourceCode" id="cb755"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb755-1"><a href="df_plt.html#cb755-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this will produce an error in python since</span></span>
+<span id="cb755-2"><a href="df_plt.html#cb755-2" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_histogram only works with the x axis in plotnine.</span></span>
+<span id="cb755-3"><a href="df_plt.html#cb755-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plotnine has still some limitations </span></span>
+<span id="cb755-4"><a href="df_plt.html#cb755-4" aria-hidden="true" tabindex="-1"></a><span class="co"># compared to ggplot2 in R. Just look at the R output.</span></span>
+<span id="cb755-5"><a href="df_plt.html#cb755-5" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb755-6"><a href="df_plt.html#cb755-6" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>)) <span class="op">+</span></span>
+<span id="cb755-7"><a href="df_plt.html#cb755-7" aria-hidden="true" tabindex="-1"></a>  geom_histogram()</span>
+<span id="cb755-8"><a href="df_plt.html#cb755-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## &#39;stat_bin() must not be used with a y aesthetic.&#39;</code></pre>
+<div class="sourceCode" id="cb757"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb757-1"><a href="df_plt.html#cb757-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can obtain a similar visualization via coord flip</span></span>
+<span id="cb757-2"><a href="df_plt.html#cb757-2" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb757-3"><a href="df_plt.html#cb757-3" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;mpg&#39;</span>)) <span class="op">+</span></span>
+<span id="cb757-4"><a href="df_plt.html#cb757-4" aria-hidden="true" tabindex="-1"></a>  geom_histogram() <span class="op">+</span></span>
+<span id="cb757-5"><a href="df_plt.html#cb757-5" aria-hidden="true" tabindex="-1"></a>  coord_flip()</span>
+<span id="cb757-6"><a href="df_plt.html#cb757-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## &lt;Figure Size: (640 x 480)&gt;
+## 
+## /home/romano/Documents/EpiC/.venv/lib/python3.11/site-packages/plotnine/stats/stat_bin.py:109: PlotnineWarning: &#39;stat_bin()&#39; using &#39;bins = 6&#39;. Pick better value with &#39;binwidth&#39;.</code></pre>
 <p><img src="images/unnamed-chunk-241-1.png" width="50%" /></p>
 </div>
 </div>
-</div>
-<div id="higher-dimensions" class="section level4 hasAnchor" number="5.2.1.3">
-<h4><span class="header-section-number">5.2.1.3</span> Higher Dimensions<a href="df_plt.html#higher-dimensions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>We can introduce higher dimensions by mapping additional variables to other aesthetics like color.
-Let’s color the points in our scatterplot based on the type of transmission (<code>am</code>).</p>
+<p>You can see by how changing the axis aesthetic, the histogram was mirrored over the axis. Let’s see what happens now, if we swap the <code>geom_histogram</code> layer for a <code>geom_boxplot</code>:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb757"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb757-1"><a href="df_plt.html#cb757-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg, <span class="at">color=</span><span class="fu">factor</span>(am))) <span class="sc">+</span></span>
-<span id="cb757-2"><a href="df_plt.html#cb757-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb757-3"><a href="df_plt.html#cb757-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">name=</span><span class="st">&quot;Transmission</span><span class="sc">\n</span><span class="st">(0=auto, 1=manual)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb757-4"><a href="df_plt.html#cb757-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb759"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb759-1"><a href="df_plt.html#cb759-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg)) <span class="sc">+</span></span>
+<span id="cb759-2"><a href="df_plt.html#cb759-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
 <p><img src="images/unnamed-chunk-242-3.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb758"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb758-1"><a href="df_plt.html#cb758-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb758-2"><a href="df_plt.html#cb758-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>, color<span class="op">=</span><span class="st">&#39;factor(am)&#39;</span>)) <span class="op">+</span></span>
-<span id="cb758-3"><a href="df_plt.html#cb758-3" aria-hidden="true" tabindex="-1"></a>  geom_point() <span class="op">+</span></span>
-<span id="cb758-4"><a href="df_plt.html#cb758-4" aria-hidden="true" tabindex="-1"></a>  scale_color_discrete(name<span class="op">=</span><span class="st">&quot;Transmission</span><span class="ch">\n</span><span class="st">(0=auto, 1=manual)&quot;</span>) <span class="op">+</span></span>
-<span id="cb758-5"><a href="df_plt.html#cb758-5" aria-hidden="true" tabindex="-1"></a>  theme_minimal()</span>
-<span id="cb758-6"><a href="df_plt.html#cb758-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb760"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb760-1"><a href="df_plt.html#cb760-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb760-2"><a href="df_plt.html#cb760-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>)) <span class="op">+</span></span>
+<span id="cb760-3"><a href="df_plt.html#cb760-3" aria-hidden="true" tabindex="-1"></a>  geom_boxplot()</span>
+<span id="cb760-4"><a href="df_plt.html#cb760-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
 <p><img src="images/unnamed-chunk-243-1.png" width="50%" /></p>
+</div>
+</div>
+<p>This will give us a complete different type of distribution plot, <em>the boxplot</em>! A boxplot is a very useful graphical representation of a variable’s distribution based on a five-number summary: the minimum, first quartile (Q1), median, third quartile (Q3), and maximum. The box represents the interquartile range (IQR), containing the middle 50% of the data, with a line indicating the median. The whiskers extend from the box to the minimum and maximum values, excluding outliers, which are represented as individual points. Boxplots are useful for understanding data distribution, detecting outliers, and comparing data sets. The boxplot has a common aesthetic with the histogram: in fact, it’s just a different way to represent a distribution! All we had to do was change the layer.</p>
+<p>Funny enough, in ggplot, if we want, and they share aeshtetics, we can stack layers on top of each other just by adding more. For instance:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb762"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb762-1"><a href="df_plt.html#cb762-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg)) <span class="sc">+</span></span>
+<span id="cb762-2"><a href="df_plt.html#cb762-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">binwidth=</span><span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb762-3"><a href="df_plt.html#cb762-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
+<pre><code>## Warning in geom_boxplot(binwidth = 3): Ignoring unknown
+## parameters: `binwidth`</code></pre>
+<p><img src="images/unnamed-chunk-244-3.png" width="50%" /></p>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb764"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb764-1"><a href="df_plt.html#cb764-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the same plot in plotnine is not possible as </span></span>
+<span id="cb764-2"><a href="df_plt.html#cb764-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the boxplot and the density plot have different aestethics. </span></span>
+<span id="cb764-3"><a href="df_plt.html#cb764-3" aria-hidden="true" tabindex="-1"></a><span class="co"># however, we can plot (this should work in R too): </span></span>
+<span id="cb764-4"><a href="df_plt.html#cb764-4" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb764-5"><a href="df_plt.html#cb764-5" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&quot;mpg&quot;</span>)) <span class="op">+</span></span>
+<span id="cb764-6"><a href="df_plt.html#cb764-6" aria-hidden="true" tabindex="-1"></a>    geom_histogram(aes(y <span class="op">=</span> <span class="st">&quot;..density..&quot;</span>), binwidth<span class="op">=</span><span class="dv">3</span>) <span class="op">+</span></span>
+<span id="cb764-7"><a href="df_plt.html#cb764-7" aria-hidden="true" tabindex="-1"></a>    geom_density()</span>
+<span id="cb764-8"><a href="df_plt.html#cb764-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
+<p><img src="images/unnamed-chunk-245-1.png" width="50%" /></p>
+</div>
+</div>
+<p>We have just added an estimate of our density to our boxplot/histogram!</p>
+</div>
+<div id="scatterplot" class="section level4 hasAnchor" number="5.2.1.2">
+<h4><span class="header-section-number">5.2.1.2</span> Scatterplot<a href="df_plt.html#scatterplot" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>A scatterplot uses two dimensions, allowing us to visualize the relationship between two variables. So, our aestetic, now gets another argument: we have now both the <code>x</code> and the <code>y</code>!
+Let’s create a scatterplot of <code>mpg</code> against <code>hp</code> (horsepower), to replicate our initial example.</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb766"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb766-1"><a href="df_plt.html#cb766-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg)) <span class="sc">+</span></span>
+<span id="cb766-2"><a href="df_plt.html#cb766-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="co"># + theme_minimal()</span></span></code></pre></div>
+<p><img src="images/unnamed-chunk-246-3.png" width="50%" /></p>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb767"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb767-1"><a href="df_plt.html#cb767-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb767-2"><a href="df_plt.html#cb767-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>)) <span class="op">+</span></span>
+<span id="cb767-3"><a href="df_plt.html#cb767-3" aria-hidden="true" tabindex="-1"></a>  geom_point() <span class="co"># + theme_minimal()</span></span>
+<span id="cb767-4"><a href="df_plt.html#cb767-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
+<p><img src="images/unnamed-chunk-247-1.png" width="50%" /></p>
+</div>
+</div>
+<p>Uncomment the <code>theme_minimal</code> to add an additional theme to our plot, and you will have recreated the plot at the beginning of the section. T</p>
+<p><strong>Representing higher dimentions</strong>. Now, the cool stuff is that we can introduce higher dimensions by mapping additional variables to other aesthetics like color (or the point shape).
+Let’s color the points in our scatterplot based on the type of transmission (<code>am</code>).</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb769"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb769-1"><a href="df_plt.html#cb769-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg, <span class="at">color=</span>am)) <span class="sc">+</span></span>
+<span id="cb769-2"><a href="df_plt.html#cb769-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="images/unnamed-chunk-248-3.png" width="50%" /></p>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb770"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb770-1"><a href="df_plt.html#cb770-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb770-2"><a href="df_plt.html#cb770-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>, color<span class="op">=</span><span class="st">&#39;am&#39;</span>)) <span class="op">+</span></span>
+<span id="cb770-3"><a href="df_plt.html#cb770-3" aria-hidden="true" tabindex="-1"></a>  geom_point()</span>
+<span id="cb770-4"><a href="df_plt.html#cb770-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
+<p><img src="images/unnamed-chunk-249-1.png" width="50%" /></p>
 </div>
 </div>
 </div>
@@ -1330,14 +1398,14 @@ The exercise has various levels of completition, from a basic level where we wil
 </ol>
 <p><strong>Medium.</strong> Modify the code above to add the additional function <span class="math inline">\(y=\cos(x)\)</span>.
 You should get something like:</p>
-<p><img src="images/unnamed-chunk-244-3.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-250-3.png" width="50%" /></p>
 <ul>
 <li><p>The x-axis should range from 0 to 10, with a step size of 0.01.</p></li>
 <li><p>Use different colours for each curve (sine or cosine)</p></li>
 <li><p>How many columns should have your dataframe?</p></li>
 </ul>
 <p><strong>Advanced.</strong> Using <code>ggplot</code>, write a program that generates the plot below:</p>
-<p><img src="images/unnamed-chunk-245-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-251-1.png" width="50%" /></p>
 <p>Each subplot should be comparing sines and cosines with different frequencies.
 The plot should show 6 sinusoidal functions:<span class="math display">\[\sin\left(\frac{x}{2}\right), \sin(x), \sin(2x), \cos\left(\frac{x}{2}\right), \cos(x), \cos(2x)\]</span></p>
 <ul>
