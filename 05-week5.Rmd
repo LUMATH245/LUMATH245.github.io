@@ -1280,9 +1280,7 @@ ggplot(mtcars, aes(y=mpg, color=am, linetype = vs)) +
 
 **This section will not be evaluated on the quizzes, however if you are feeling confident you should read it anyway as it shows how powerful ggplot can get. If you're overwelmed, feel free to skip at the exercise, and complete up to the medium level.**
 
-We have already added a couple of functions to our plots above.
-Well, in ggplot you can change a bunch of graphical characteristics very easily by just adding things.
-For example:
+In ggplot you can change a bunch of graphical characteristics very easily by just adding things. This is a very functional way of thinking of a plot, where we can *concatenate* (again, function compositions!) multiple graphical elements! Few things you can easily change include:
 
 1.  **Themes**: By adding themes you can use different themes to change the overall appearance of your plot.
     For example, `theme_minimal()` gives a minimal theme with no background grid.
@@ -1292,8 +1290,43 @@ For example:
 
 3.  **Labels**: You can change the axis labels by adding `labs(x = "X Label Name", y = "Y Label Name")`.
 
-4.  **Limits**: You can set the limits of your axes using `xlim(lower, upper)` and `ylim(lower, upper)`.
+4.  **Limits**: You can set the limits of your axes by adding `xlim(lower, upper)` and `ylim(lower, upper)`.
 
+Remember, you can concatenate all these things together one after the other in one single ggplot call:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+ggplot(mtcars, aes(x=hp, y=mpg, color=am)) +
+  geom_point() + 
+  ggtitle("Power Against Consumption") +
+  labs(x="Horse Power", y="Consumption (mpg)") +
+  xlim(0, 250) +
+  theme_bw()
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+(
+  ggplot(mtcars, aes(x='hp', y='mpg', color='am')) +
+  geom_point() +
+  ggtitle("Power Against Consumption") +
+  labs(x="Horse Power", y="Consumption (mpg)") +
+  xlim(0, 250) +
+  theme_bw()
+)
+```
+
+</div>
+:::
 
 #### Multiple Plots with Facets
 
@@ -1328,8 +1361,114 @@ ggplot(mtcars, aes(x='hp', y='mpg', color='am')) +
 </div>
 :::
 
-Let's see what happens by adding the argument `nrow=3` to the `facet_wrap`, e.g. `facet_wrap(~gear, nrow=3)`.
+On your own, try what happens by adding the argument `nrow=3` to the `facet_wrap`, e.g. `facet_wrap(~gear, nrow=3)`.
 
+
+#### Few extra layers
+
+For completion, let's see and explore some extra layers we can have.
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# linegraph
+# great for continuous time variables
+ggplot(mtcars, aes(x=hp, y=disp, color=am)) +
+  geom_line()
+
+# recall we can always filter based on any type of 
+# variable, what we learned over the first half translates equally
+# to the second! And the plot adapts magically.
+ggplot(mtcars |> filter(am == "manual"),
+       aes(x=hp, y=disp)) +
+  geom_line()
+
+
+# barcharts
+# great for categorical variables
+ggplot(mtcars, aes(x=cyl, fill=am)) +
+  geom_bar() +
+  facet_wrap(~vs)
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# linegraph
+# great for continuous time variables
+(
+  ggplot(mtcars, aes(x='hp', y='disp', color='am')) +
+  geom_line()
+)
+
+
+
+# recall we can always filter based on any type of 
+# variable, what we learned over the first half translates equally
+# to the second! And the plot adapts magically.
+(
+  ggplot(mtcars.query("am == 'manual'"),
+  aes(x='hp', y='disp')) +
+  geom_line()
+)
+
+# barcharts
+# great for categorical variables
+(
+  ggplot(mtcars, aes(x='cyl', fill='am')) +
+  geom_bar() +
+  facet_wrap('~vs')
+)
+```
+
+</div>
+:::
+
+
+#### Saving and Exporting Plots
+
+You can save your plots to a file in both R and Python. To do so, you will first need to assign the plot to a variable.
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+g <- ggplot(mtcars, aes(x=mpg, y=hp)) +
+  geom_point() +
+  theme_minimal()
+
+ggsave("plot.png", g)
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+g = (
+  ggplot(mtcars, aes(x='mpg', y='hp')) +
+  geom_point() +
+  theme_minimal()
+)
+
+g.save("plot.png")
+```
+
+</div>
+:::
+
+This will save the scatter plot as a PNG file named "plot.png". You can change the filename to save it as a different type (like .jpg or .pdf) or to a different location as usual!.
 
 ### Exercise: ggplots of periodic functions
 

@@ -89,4 +89,6 @@ plotting-the-distribution-of-a-variable
 plotting-multiple-dimensions
 advanced-plots
 multiple-plots-with-facets
+few-extra-layers
+saving-and-exporting-plots
 exercise-ggplots-of-periodic-functions
