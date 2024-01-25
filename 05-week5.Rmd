@@ -12,16 +12,13 @@ These are crucial concepts in Computational Mathematics that will enable us to h
 #### A note for R users.
 
 Before we start, we will need to import a very important library for writing modern R code: `tidyverse`.
-As mentioned earlier, R has changed a lot over the recent years, including more and more tools
-for functional programming, fast data manipulation, exploration, analysis and plotting.
+As mentioned earlier, R has changed a lot over the recent years, including more and more tools for functional programming, fast data manipulation, exploration, analysis and plotting.
 
-The `tidyverse` includes a wide range of packages that improve R for scientific computing. 
-We have already seen one of those, in the past week: the `purrr` library. However, there's much more, other of the core packages in the `tidyverse` include `ggplot2` for data visualization, `dplyr` for
-data manipulation, and `tidyr` for data cleaning. By using these
-packages together, you can efficiently import, clean, manipulate,
-visualize, and analyze your data in a consistent and reproducible
-manner. This makes the `tidyverse` a powerful tool for modern scientific computing, 
-and for this reason I heavily encourage you to use its functions and packages for the rest of this entire module and for your future analyses.
+The `tidyverse` includes a wide range of packages that improve R for scientific computing.
+We have already seen one of those, in the past week: the `purrr` library.
+However, there's much more, other of the core packages in the `tidyverse` include `ggplot2` for data visualization, `dplyr` for data manipulation, and `tidyr` for data cleaning.
+By using these packages together, you can efficiently import, clean, manipulate, visualize, and analyze your data in a consistent and reproducible manner.
+This makes the `tidyverse` a powerful tool for modern scientific computing, and for this reason I heavily encourage you to use its functions and packages for the rest of this entire module and for your future analyses.
 
 To install the tidyverse (already installed on University Machines), run:
 
@@ -31,33 +28,31 @@ install.packages("tidyverse")
 
 And to load the package:
 
-```{r, eval=FALSE}
+```{r}
 library(tidyverse)
 ```
 
-You only need to install a package once. But you have to load all the
-packages you want to use at the start of every session. As a suggestion, make sure the `library(tidyverse)` command sits at the top of your script from now on.
+You only need to install a package once.
+But you have to load all the packages you want to use at the start of every session.
+As a suggestion, make sure the `library(tidyverse)` command sits at the top of your script from now on.
 
-In the previous chapters, we learned how to truly extract the power of functions. Well, one of the
-things introduced in `purrr`, and that goes really well with the `tidyverse` package,
-is the pipe operator. 
-This operator allows you to pass the output of one function to another function as the
-first argument. **This translates the mathematical function composition** in programming, e.g.  $(f_1 \circ f_2)(x)$. This operator is written as `|>` and is used to express
-a sequence of multiple operations in a more readable and intuitive way. In code, the equivalent of our expression would be `x |> f1 |> f2`.
+In the previous chapters, we learned how to truly extract the power of functions.
+Well, one of the things introduced in `purrr`, and that goes really well with the `tidyverse` package, is the pipe operator.
+This operator allows you to pass the output of one function to another function as the first argument.
+**This translates the mathematical function composition** in programming, e.g. $(f_1 \circ f_2)(x)$.
+This operator is written as `|>` and is used to express a sequence of multiple operations in a more readable and intuitive way.
+In code, the equivalent of our expression would be `x |> f1 |> f2`.
 
-For example, if we want to compute the natural logarithm of the sum of
-the first 10 natural numbers, $\ln(1 + 2+ 3+ ... + 10)$, this is:
+For example, if we want to compute the natural logarithm of the sum of the first 10 natural numbers, $\ln(1 + 2+ 3+ ... + 10)$, this is:
 
 ```{r}
 x <- 1:10 # create a vector with the first 10 integers
 x |> sum() |> log()
 ```
 
-In this example, we start with a vector `x` containing the numbers from
-1 to 10. We then use the pipe operator to pass this vector to the
-`sum()` function, which calculates the sum of all elements in the
-vector. The result of this operation (55) is then passed to the `log()`
-function, which calculates the natural logarithm of the input.
+In this example, we start with a vector `x` containing the numbers from 1 to 10.
+We then use the pipe operator to pass this vector to the `sum()` function, which calculates the sum of all elements in the vector.
+The result of this operation (55) is then passed to the `log()` function, which calculates the natural logarithm of the input.
 
 This code is equivalent to writing:
 
@@ -66,18 +61,12 @@ x <- 1:10
 log(sum(x))
 ```
 
-As you can see, using the pipe operator allows us to express the
-sequence of operations in a more readable and intuitive way. It can be
-particularly useful when working with complex data transformations, as
-it allows you to write code that closely matches the logical sequence of
-operations you have in mind.
+As you can see, using the pipe operator allows us to express the sequence of operations in a more readable and intuitive way.
+It can be particularly useful when working with complex data transformations, as it allows you to write code that closely matches the logical sequence of operations you have in mind.
 
-Remember that the pipe takes the output on its left and passes it **as
-the first argument** to the function on its right. For example, the
-function `log` takes as first argument the number and as second argument
-the base of our logarithm. If we want to compute the base-10 logarithm
-instead of the natural logarithm, we can do this by changing the second
-`base` argument after the piping:
+Remember that the pipe takes the output on its left and passes it **as the first argument** to the function on its right.
+For example, the function `log` takes as first argument the number and as second argument the base of our logarithm.
+If we want to compute the base-10 logarithm instead of the natural logarithm, we can do this by changing the second `base` argument after the piping:
 
 ```{r}
 x <- 1:10
@@ -100,7 +89,10 @@ import pandas as pd
 import numpy as np
 ```
 
-However, we will also introduce a new package: `plotnine`. This package is not included in the standard Python library, so you'll need to install it. You can do this using pip, Python's package installer. To do so, type the following command:
+However, we will also introduce a new package: `plotnine`.
+This package is not included in the standard Python library, so you'll need to install it.
+You can do this using pip, Python's package installer.
+To do so, type the following command:
 
 ```{python eval=FALSE}
 !python -m pip install plotnine
@@ -108,7 +100,9 @@ However, we will also introduce a new package: `plotnine`. This package is not i
 
 You only need to install this package once, and then you will be able to load it as you did with `numpy` or `pandas`.
 
-`plotnine` is an implementation of a grammar of graphics in Python, based on `ggplot2` in R. `ggplot2` is one of the most used libraries for data visualization in R, and `plotnine` brings its powerful data visualization capabilities to Python. It's designed to work seamlessly with `pandas` data frames, making it extremely convenient for creating complex and beautiful statistical plots.
+`plotnine` is an implementation of a grammar of graphics in Python, based on `ggplot2` in R.
+`ggplot2` is one of the most used libraries for data visualization in R, and `plotnine` brings its powerful data visualization capabilities to Python.
+It's designed to work seamlessly with `pandas` data frames, making it extremely convenient for creating complex and beautiful statistical plots.
 
 Once you've installed `plotnine`, you can import it in your Python scripts using the following command:
 
@@ -116,7 +110,9 @@ Once you've installed `plotnine`, you can import it in your Python scripts using
 from plotnine import *
 ```
 
-With `plotnine`, you'll be able to create a wide variety of plots and visualizations, and gain deeper insights from your data. So, let's dive in and start exploring the wonderful world of data visualization in Python! 🚀
+With `plotnine`, you'll be able to create a wide variety of plots and visualizations, and gain deeper insights from your data.
+So, let's dive in and start exploring the wonderful world of data visualization in Python!
+🚀
 
 ## Data Frames
 
@@ -454,8 +450,8 @@ We will now explore each of these functions in detail.
 
 #### Adding New Rows
 
-To add new rows (or collate two data frames together!) we can use functions `bind_rows` (in R) and `concat` (in Python). This is formally referred to *concatenating*, which means to create a new data frame by attaching new rows to a data frame from a different one that shares the same columns. 
-
+To add new rows (or collate two data frames together!) we can use functions `bind_rows` (in R) and `concat` (in Python).
+This is formally referred to *concatenating*, which means to create a new data frame by attaching new rows to a data frame from a different one that shares the same columns.
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -505,7 +501,7 @@ milk_df
 </div>
 :::
 
-Note that **in R** you can use also the `rbind` function that we have seen in the past week. 
+Note that **in R** you can use also the `rbind` function that we have seen in the past week.
 
 **In Python** you will need to add the `ignore_index=True` argument, otherwise this will mess up your indexing of the data frame, and could cause unexpected results.
 
@@ -960,18 +956,42 @@ Back in the days the automatic transmission was mostly hydraulic, so it was quit
 While more recently we have much better transmissions, an expert driver can still be more fuel efficient and accelerate faster.
 In F1, at this day, drivers still choose their gears on their own!
 
-## Plotting with ggplot
+## Plotting with ggplot (and plotnine)
 
+When we talk about plotting with ggplot and plotnine, we're referring to two powerful tools for creating graphics in R and Python, respectively.
+These tools are based on a concept known as the Grammar of Graphics.
 
-The Grammar of Graphics is a framework for describing and building graphs. It was implemented in R through the `ggplot2` package and in Python through the `plotnine` package. The idea is to break up graphs into semantic components such as scales and layers so you can flexibly and systematically create a wide variety of plots.
+So, what is the Grammar of Graphics?
+Well, just like how grammar rules can help us construct sentences in a language, the Grammar of Graphics provides a structured framework for describing and building graphs.
+In other words, it's like a language for creating graphics, where **we translate data in visual elements**.
+
+This grammar was implemented in R through a package called ggplot2 and in Python through a package called plotnine.
+The Grammar of Graphics allows us to create a wide variety of plots by breaking up graphs into semantic components, specifically **scales** and **layers**.
+
+-   **Scales** refer to the rules for mapping *variables* from our data to *aesthetics* (visual elements) like color, size, or position.
+    These are specified via the `aes` function.
+    For example, in a scatter plot of the car horsepower `hp` against miles per gallon `mpg` (from our `mtcars` dataset), the scale determines how the each car horsepower is translated into positions along the x-axis and how miles per gallon are translated into positions along the y-axis.
+    So to plot the `hp` against `mpg`, we will need to write `aes(x=hp, y=mpg)`.
+
+-   **Layers** are the actual data elements that we can see in the plot, like points, lines, or bars.
+    These are specifed in through functions starting with `geom_`.
+    In our scatter plot example, each point representing a car is a layer.
+    Some of the geometries will share the same aesthetics: for example, both the scatter plot and the line plot share the $x$ and the $y$ axis, however one represents data with points, the other with interconnected lines.
+
+![](images/chapter5/ggplot.jpg)
+
+By specifying these components, we can flexibly and systematically create a wide variety of plots.
+For instance, we could easily switch from a scatter plot to a line plot, or change the way data values are mapped to colors.
+This makes ggplot and plotnine extremely powerful for data visualization.
+
+If this sounds complicated, it's really not in practice!
+`ggplot` is one of those things that it's easier done that said.
+Let's start with some basic plots to hopefully clear things a bit!
 
 ### Basic Plots
 
-Let's start with some basic plots using the `mtcars` dataset.
-
-#### Histogram
-
-A histogram is a representation of the distribution of a single variable, hence the `aes()` will only have the `x`. Let's create a histogram of `mpg` (miles per gallon).
+**Histogram** A histogram is a representation of *the distribution* of a single variable, hence the `aes()` will only have the `x`. The histogram layer is translated via the function `geom_histogram`.
+Let's create a histogram of `mpg` (miles per gallon).
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -979,11 +999,8 @@ A histogram is a representation of the distribution of a single variable, hence 
 **R**
 
 ```{r}
-library(ggplot2)
-
 ggplot(mtcars, aes(x=mpg)) +
-  geom_histogram(binwidth=5, fill="#69b3a2", color="#e9ecef", alpha=0.9) +
-  theme_minimal()
+  geom_histogram(binwidth=5)
 ```
 
 </div>
@@ -993,12 +1010,9 @@ ggplot(mtcars, aes(x=mpg)) +
 **python**
 
 ```{python}
-from plotnine import *
-
 (
   ggplot(mtcars, aes(x='mpg')) +
-  geom_histogram(binwidth=5, fill="#69b3a2", color="#e9ecef", alpha=0.9) +
-  theme_minimal()
+  geom_histogram(binwidth=5)
 )
 ```
 
@@ -1007,7 +1021,8 @@ from plotnine import *
 
 #### Scatterplot
 
-A scatterplot uses two dimensions, allowing us to visualize the relationship between two variables. Let's create a scatterplot of `mpg` against `hp` (horsepower).
+A scatterplot uses two dimensions, allowing us to visualize the relationship between two variables.
+Let's create a scatterplot of `mpg` against `hp` (horsepower).
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -1039,7 +1054,8 @@ ggplot(mtcars, aes(x=hp, y=mpg)) +
 
 #### Higher Dimensions
 
-We can introduce higher dimensions by mapping additional variables to other aesthetics like color. Let's color the points in our scatterplot based on the type of transmission (`am`).
+We can introduce higher dimensions by mapping additional variables to other aesthetics like color.
+Let's color the points in our scatterplot based on the type of transmission (`am`).
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>

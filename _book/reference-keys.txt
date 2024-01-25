@@ -83,9 +83,8 @@ understanding-the-data-frames
 exploring-your-data-frame
 factor-or-categorical-variables
 group-by-and-summarise
-plotting-with-ggplot
+plotting-with-ggplot-and-plotnine
 basic-plots
-histogram
 scatterplot
 higher-dimensions
 advanced-plots
