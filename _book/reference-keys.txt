@@ -35,6 +35,7 @@ accessing-vector-elements
 accessing-multiple-elements-at-once
 overwriting-elements-of-vectors
 exercise-vector-fizzbuzz
+some-useful-functions
 func_loop
 functions
 writing-new-functions

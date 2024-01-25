@@ -1593,6 +1593,125 @@ x
 Small hint: You should be careful about the type of output vector in R. You'll notice now it's a character vector. 
 Python does not convert the type of vector automatically, the dtype argument is needed to ensure the vector can contain both integers and strings. Remove the dtype argument from the first line and see what happens.
 
+### Some Useful Functions
+
+We finish this chapter with few useful functions that work with vectors. Those will come in handy in your scientific computing endeavors, in particular towards the second part of the module, as they're all functions that are necessary to extract useful information from our vectors.
+
+Let's start with considering a very simple quadratic function: 
+
+$$
+y = x^2 - x
+$$
+
+```{r echo=FALSE}
+library(ggplot2)
+quad_df <- data.frame(x = seq(-5, 5, by = 0.1)) |>
+  mutate(y = x^2 - x)
+ggplot(quad_df) + aes(x = x, y= y) + geom_line() + theme_minimal()
+```
+
+Now, let's say we want to evaluate this function over a sequence of values between -5 and 5 (those values plotted).  
+To code this, we learned we can do simply some algebra with vector:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Create a sequence of numbers from -5 to 5 with increments of 0.1
+x <- seq(-5, 5, by = 0.1)
+
+# Compute the value of x^2 - x for each element of x and assign it to y
+y <- x^2 - x
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Create a sequence of numbers from -5 to 5 with increments of 0.1
+x = np.arange(-5, 5, 0.1)
+
+# Compute the value of x^2 - x for each element of x and assign it to y
+y = x**2 - x
+```
+
+</div>
+:::
+
+Now that we have our $y$ values, let's see what we can get from it! See if what you see in the output matches what you see in the plot!
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Find the maximum value of y
+max(y)
+
+# Find the minimum value of y
+min(y)
+
+# Find the index of the element in y that has the maximum value
+which.max(y)
+
+# Find the index of the element in y that has the minimum value
+which.min(y)
+
+# Find the minimum value of y (equivalent to above, why?)
+y[which.min(y)]
+
+# Check which elements of y are less than 0 and return a logical vector
+neg_index <- y < 0
+
+# Find the indices of the elements in y that are less than 0
+which(neg_index)
+
+# print the elements in y that are less than 0
+y[which(neg_index)]
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+# Find the maximum value of y
+np.max(y)
+
+# Find the minimum value of y
+np.min(y)
+
+# Find the index of the element in y that has the maximum value
+np.argmax(y)
+
+# Find the index of the element in y that has the minimum value
+np.argmin(y)
+
+# Find the minimum value of y (equivalent to above, why?)
+y[np.argmin(y)]
+
+# Check which elements of y are less than 0 and return a logical vector
+neg_index = y < 0
+
+# Find the indices of the elements in y that are less than 0
+np.where(neg_index)
+
+# print the elements in y that are less than 0
+y[np.where(neg_index)]
+```
+
+</div>
+:::
+
+
 ```{=html}
 <style type="text/css">
 .book .book-body .page-wrapper .page-inner {
