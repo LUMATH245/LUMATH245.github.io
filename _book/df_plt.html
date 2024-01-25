@@ -704,8 +704,7 @@ In contrast, when overwriting columns directly, you would have to create each ne
 ## 1       Soy       100        7    2.0             10     NaN   4.0            NaN     23.0        30.434783
 ## 2       Oat       120        3    1.2             20    19.0   2.5           95.0     26.7        11.235955
 ## 3      Rice       130        1    0.7             25     NaN   2.5            NaN     29.2         3.424658</code></pre>
-<p>You can see how this makes the code longer and potentially harder to read.
-However, it can be useful when the computation of each new column depends on the columns added in the previous steps.</p>
+<p>You can see how this makes the code longer and potentially harder to read, <strong>particularly in R</strong>.</p>
 <p>Note also how, over the rows of soy and rice, the <code>sugar_percent</code> column has missing values, and similarly the <code>protein_content</code> variable has skewed values: this is because the value of the sugar content was missing originally.
 Be careful about missing values!</p>
 </div>
@@ -901,13 +900,14 @@ This will affect many things when dealing with those variables, like producing s
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb721"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb721-1"><a href="df_plt.html#cb721-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting to factors in R</span></span>
-<span id="cb721-2"><a href="df_plt.html#cb721-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="ot">&lt;-</span> mtcars <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">vs =</span> <span class="fu">factor</span>(vs,</span>
-<span id="cb721-3"><a href="df_plt.html#cb721-3" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;V-shaped&quot;</span>, <span class="st">&quot;straight&quot;</span>)),</span>
-<span id="cb721-4"><a href="df_plt.html#cb721-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">am =</span> <span class="fu">factor</span>(am,</span>
-<span id="cb721-5"><a href="df_plt.html#cb721-5" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;automatic&quot;</span>, <span class="st">&quot;manual&quot;</span>)))</span>
-<span id="cb721-6"><a href="df_plt.html#cb721-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb721-7"><a href="df_plt.html#cb721-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the conversion</span></span>
-<span id="cb721-8"><a href="df_plt.html#cb721-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars)</span></code></pre></div>
+<span id="cb721-2"><a href="df_plt.html#cb721-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="ot">&lt;-</span> mtcars <span class="sc">|&gt;</span> </span>
+<span id="cb721-3"><a href="df_plt.html#cb721-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">vs =</span> <span class="fu">factor</span>(vs,</span>
+<span id="cb721-4"><a href="df_plt.html#cb721-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;V-shaped&quot;</span>, <span class="st">&quot;straight&quot;</span>)),</span>
+<span id="cb721-5"><a href="df_plt.html#cb721-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">am =</span> <span class="fu">factor</span>(am,</span>
+<span id="cb721-6"><a href="df_plt.html#cb721-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;automatic&quot;</span>, <span class="st">&quot;manual&quot;</span>)))</span>
+<span id="cb721-7"><a href="df_plt.html#cb721-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb721-8"><a href="df_plt.html#cb721-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the conversion</span></span>
+<span id="cb721-9"><a href="df_plt.html#cb721-9" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    32 obs. of  11 variables:
 ##  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
 ##  $ cyl : int  6 6 4 6 8 6 8 4 4 6 ...
@@ -925,16 +925,18 @@ This will affect many things when dealing with those variables, like producing s
 <p><strong>python</strong></p>
 <div class="sourceCode" id="cb723"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb723-1"><a href="df_plt.html#cb723-1" aria-hidden="true" tabindex="-1"></a><span class="co"># assigning labels as strings</span></span>
 <span id="cb723-2"><a href="df_plt.html#cb723-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="op">=</span> mtcars.assign(</span>
-<span id="cb723-3"><a href="df_plt.html#cb723-3" aria-hidden="true" tabindex="-1"></a>  vs <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x: <span class="st">&quot;V-Shaped&quot;</span> <span class="cf">if</span> x <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">&quot;straight&quot;</span>,  mtcars[<span class="st">&#39;vs&#39;</span>])),</span>
-<span id="cb723-4"><a href="df_plt.html#cb723-4" aria-hidden="true" tabindex="-1"></a>  am <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x: <span class="st">&quot;automatic&quot;</span> <span class="cf">if</span> x <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">&quot;manual&quot;</span>,  mtcars[<span class="st">&#39;am&#39;</span>]))</span>
-<span id="cb723-5"><a href="df_plt.html#cb723-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb723-6"><a href="df_plt.html#cb723-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb723-7"><a href="df_plt.html#cb723-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting to categories in Python</span></span>
-<span id="cb723-8"><a href="df_plt.html#cb723-8" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="st">&#39;vs&#39;</span>] <span class="op">=</span> mtcars[<span class="st">&#39;vs&#39;</span>].astype(<span class="st">&#39;category&#39;</span>)</span>
-<span id="cb723-9"><a href="df_plt.html#cb723-9" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="st">&#39;am&#39;</span>] <span class="op">=</span> mtcars[<span class="st">&#39;am&#39;</span>].astype(<span class="st">&#39;category&#39;</span>)</span>
-<span id="cb723-10"><a href="df_plt.html#cb723-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb723-11"><a href="df_plt.html#cb723-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the conversion</span></span>
-<span id="cb723-12"><a href="df_plt.html#cb723-12" aria-hidden="true" tabindex="-1"></a>mtcars.info()</span></code></pre></div>
+<span id="cb723-3"><a href="df_plt.html#cb723-3" aria-hidden="true" tabindex="-1"></a>  vs <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x:</span>
+<span id="cb723-4"><a href="df_plt.html#cb723-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;V-Shaped&quot;</span> <span class="cf">if</span> x <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">&quot;straight&quot;</span>,  mtcars[<span class="st">&#39;vs&#39;</span>])),</span>
+<span id="cb723-5"><a href="df_plt.html#cb723-5" aria-hidden="true" tabindex="-1"></a>  am <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x:</span>
+<span id="cb723-6"><a href="df_plt.html#cb723-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;automatic&quot;</span> <span class="cf">if</span> x <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">&quot;manual&quot;</span>,  mtcars[<span class="st">&#39;am&#39;</span>]))</span>
+<span id="cb723-7"><a href="df_plt.html#cb723-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb723-8"><a href="df_plt.html#cb723-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb723-9"><a href="df_plt.html#cb723-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting to categories in Python</span></span>
+<span id="cb723-10"><a href="df_plt.html#cb723-10" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="st">&#39;vs&#39;</span>] <span class="op">=</span> mtcars[<span class="st">&#39;vs&#39;</span>].astype(<span class="st">&#39;category&#39;</span>)</span>
+<span id="cb723-11"><a href="df_plt.html#cb723-11" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="st">&#39;am&#39;</span>] <span class="op">=</span> mtcars[<span class="st">&#39;am&#39;</span>].astype(<span class="st">&#39;category&#39;</span>)</span>
+<span id="cb723-12"><a href="df_plt.html#cb723-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb723-13"><a href="df_plt.html#cb723-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the conversion</span></span>
+<span id="cb723-14"><a href="df_plt.html#cb723-14" aria-hidden="true" tabindex="-1"></a>mtcars.info()</span></code></pre></div>
 <pre><code>## &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 ## RangeIndex: 32 entries, 0 to 31
 ## Data columns (total 11 columns):

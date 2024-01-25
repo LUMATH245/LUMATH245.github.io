@@ -437,8 +437,7 @@ milk_df['protein_content'] = milk_df['Protein'] / milk_df['tot_wei'] * 100
 milk_df
 ```
 
-You can see how this makes the code longer and potentially harder to read.
-However, it can be useful when the computation of each new column depends on the columns added in the previous steps.
+You can see how this makes the code longer and potentially harder to read, **particularly in R**.
 
 Note also how, over the rows of soy and rice, the `sugar_percent` column has missing values, and similarly the `protein_content` variable has skewed values: this is because the value of the sugar content was missing originally.
 Be careful about missing values!
@@ -555,7 +554,7 @@ Now that we have the basis of manipulating data frames, before proceeding to the
 This data frame is available in both R (natively) and Python (in `plotnine.data.mtcars`) and contains various car attributes.
 However, to simulate a real world scenario, we'll see how to import it from a csv file.
 
-```{r, include=FALSE}
+```{r, echo=FALSE}
 # saving the mtcars dataset in a hidden code chunk to hide it from the rendered version
 # and make these notes portable
 to_save_mtcars <- mtcars
@@ -664,10 +663,11 @@ Here's how we can do this:
 
 ```{r}
 # Converting to factors in R
-mtcars <- mtcars |> mutate(vs = factor(vs,
-                                       labels = c("V-shaped", "straight")),
-                           am = factor(am,
-                                       labels = c("automatic", "manual")))
+mtcars <- mtcars |> 
+  mutate(vs = factor(vs,
+                     labels = c("V-shaped", "straight")),
+         am = factor(am,
+                     labels = c("automatic", "manual")))
 
 # Checking the conversion
 str(mtcars)
@@ -682,9 +682,11 @@ str(mtcars)
 ```{python}
 # assigning labels as strings
 mtcars = mtcars.assign(
-  vs = list(map(lambda x: "V-Shaped" if x == 0 else "straight",  mtcars['vs'])),
-  am = list(map(lambda x: "automatic" if x == 0 else "manual",  mtcars['am']))
-)
+  vs = list(map(lambda x:
+    "V-Shaped" if x == 0 else "straight",  mtcars['vs'])),
+  am = list(map(lambda x:
+    "automatic" if x == 0 else "manual",  mtcars['am']))
+  )
 
 # Converting to categories in Python
 mtcars['vs'] = mtcars['vs'].astype('category')
