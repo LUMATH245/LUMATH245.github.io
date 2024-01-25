@@ -86,6 +86,6 @@ group-by-and-summarise
 plotting-with-ggplot-and-plotnine
 basic-plots
 plotting-the-distribution-of-a-variable
-scatterplot
+plotting-multiple-dimensions
 advanced-plots
 exercise-ggplots-of-periodic-functions

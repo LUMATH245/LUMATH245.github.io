@@ -991,6 +991,7 @@ Let's start with some basic plots to hopefully clear things a bit!
 ### Basic Plots
 
 #### Plotting the distribution of a variable
+
 A histogram is a representation of *the distribution* of a single variable, hence the `aes()` will **only have the `x`.** The histogram layer is translated via the function `geom_histogram`.
 Let's create a histogram of `mpg` (miles per gallon).
 
@@ -1020,12 +1021,20 @@ ggplot(mtcars, aes(x=mpg)) +
 </div>
 :::
 
-Let's break down the syntax:
--   `ggplot(mtcars, aes(x=mpg))`. initializes a ggplot object. `mtcars` is the data frame we’re using we wish to get the data from, and aes(x=mpg) sets the aesthetic mappings, which define how variables in the data are mapped to visual properties of the plot. In this case, we’re mapping the mpg variable to the x-axis.
+Let's break down the syntax: - `ggplot(mtcars, aes(x=mpg))`.
+initializes a ggplot object.
+`mtcars` is the data frame we're using we wish to get the data from, and aes(x=mpg) sets the aesthetic mappings, which define how variables in the data are mapped to visual properties of the plot.
+In this case, we're mapping the mpg variable to the x-axis.
 
--   `+`. The plus operator is used to add layers to the plot. You can add as many layers as you want to a ggplot by chaining them together with `+`.
+-   `+`.
+    The plus operator is used to add layers to the plot.
+    You can add as many layers as you want to a ggplot by chaining them together with `+`.
 
--   `geom_histogram(binwidth=5)`. This adds a histogram layer to the plot. The binwidth argument sets the width of the bins in the histogram. Geometries can have different options! Try to change the binwidth and see what happens.
+-   `geom_histogram(binwidth=5)`.
+    This adds a histogram layer to the plot.
+    The binwidth argument sets the width of the bins in the histogram.
+    Geometries can have different options!
+    Try to change the binwidth and see what happens.
 
 To solidify the concept of aesthetic mapping, let's see what happens by swapping the `x` for a `y` in our `aes` function:
 
@@ -1067,7 +1076,8 @@ ggplot(mtcars, aes(y=mpg)) +
 </div>
 :::
 
-You can see by how changing the axis aesthetic, the histogram was mirrored over the axis. Let's see what happens now, if we swap the `geom_histogram` layer for a `geom_boxplot`:
+You can see by how changing the axis aesthetic, the histogram was mirrored over the axis.
+Let's see what happens now, if we swap the `geom_histogram` layer for a `geom_boxplot`:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -1095,10 +1105,16 @@ ggplot(mtcars, aes(y=mpg)) +
 </div>
 :::
 
-This will give us a complete different type of distribution plot, *the boxplot*! A boxplot is a very useful graphical representation of a variable's distribution based on a five-number summary: the minimum, first quartile (Q1), median, third quartile (Q3), and maximum. The box represents the interquartile range (IQR), containing the middle 50% of the data, with a line indicating the median. The whiskers extend from the box to the minimum and maximum values, excluding outliers, which are represented as individual points. Boxplots are useful for understanding data distribution, detecting outliers, and comparing data sets. The boxplot has a common aesthetic with the histogram: in fact, it's just a different way to represent a distribution! All we had to do was change the layer. 
+This will give us a complete different type of distribution plot, *the boxplot*!
+A boxplot is a very useful graphical representation of a variable's distribution based on a five-number summary: the minimum, first quartile (Q1), median, third quartile (Q3), and maximum.
+The box represents the interquartile range (IQR), containing the middle 50% of the data, with a line indicating the median.
+The whiskers extend from the box to the minimum and maximum values, excluding outliers, which are represented as individual points.
+Boxplots are useful for understanding data distribution, detecting outliers, and comparing data sets.
+The boxplot has a common aesthetic with the histogram: in fact, it's just a different way to represent a distribution!
+All we had to do was change the layer.
 
-Funny enough, in ggplot, if we want, and they share aeshtetics, we can stack layers on top of each other just by adding more. For instance:
-
+Funny enough, in ggplot, if we want, and they share aeshtetics, we can stack layers on top of each other just by adding more.
+For instance:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -1134,11 +1150,12 @@ ggplot(mtcars, aes(y=mpg)) +
 </div>
 :::
 
-We have just added an estimate of our density to our boxplot/histogram! 
+We have just added an estimate of our density to our boxplot/histogram!
 
-#### Scatterplot
+#### Plotting multiple dimensions
 
-A scatterplot uses two dimensions, allowing us to visualize the relationship between two variables. So, our aestetic, now gets another argument: we have now both the `x` and the `y`!
+A scatterplot uses two dimensions, allowing us to visualize the relationship between two variables.
+So, our aestetic, now gets another argument: we have now both the `x` and the `y`!
 Let's create a scatterplot of `mpg` against `hp` (horsepower), to replicate our initial example.
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
@@ -1167,9 +1184,10 @@ ggplot(mtcars, aes(x=hp, y=mpg)) +
 </div>
 :::
 
-Uncomment the `theme_minimal` to add an additional theme to our plot, and you will have recreated the plot at the beginning of the section. T
+Uncomment the `theme_minimal` to add an additional theme to our plot, and you will have recreated the plot at the beginning of the section.
 
-**Representing higher dimentions**. Now, the cool stuff is that we can introduce higher dimensions by mapping additional variables to other aesthetics like color (or the point shape).
+**Representing higher dimentions**.
+Now, the cool stuff is that we can introduce higher dimensions by mapping additional variables to other aesthetics like color (or the point shape).
 Let's color the points in our scatterplot based on the type of transmission (`am`).
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
@@ -1198,7 +1216,79 @@ ggplot(mtcars, aes(x=hp, y=mpg, color=am)) +
 </div>
 :::
 
+We can see graphically now why the mean consumption in the automatic transmission was higher in the example before! You can see that it's separate. 
+
+Note that we can add as many dimensions as our layer allows it. For instance, to throw the engine type into the mix, I can change the shape of my points:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+ggplot(mtcars, aes(x=hp, y=mpg, color=am, shape= vs)) +
+  geom_point()
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+(
+  ggplot(mtcars, aes(x='hp', y='mpg', color='am', shape='vs')) +
+  geom_point()
+)
+```
+
+</div>
+:::
+
+Or again, maybe we want a different visualization completely! As I can change the shape of my points, I can change the linetype of my boxplots:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+ggplot(mtcars, aes(y=mpg, color=am, linetype = vs)) +
+  geom_boxplot()
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python}
+(
+  ggplot(mtcars, aes(y='mpg', color='am', linetype='vs')) +
+  geom_boxplot()
+)
+```
+
+</div>
+:::
+
 ### Advanced plots
+
+We have already added a couple of functions to our plots above.
+Well, in ggplot you can change a bunch of graphical characteristics very easily by just adding things.
+For example:
+
+1.  **Themes**: By adding themes you can use different themes to change the overall appearance of your plot.
+    For example, `theme_minimal()` gives a minimal theme with no background grid.
+    Try `theme_bw()` for a different one.
+
+2.  **Title**: You can add or change the title of your plot by adding `ggtitle("Your Title")`.
+
+3.  **Labels**: You can change the axis labels by adding `labs(x = "X Label Name", y = "Y Label Name")`.
+
+4.  **Limits**: You can set the limits of your axes using `xlim(lower, upper)` and `ylim(lower, upper)`.
 
 ### Exercise: ggplots of periodic functions
 
