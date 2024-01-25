@@ -522,7 +522,6 @@ x <- 10
 if (x > 0) {
   print("x is positive")
 }
-# x is positive
 ```
 
 </div>
@@ -537,9 +536,9 @@ x = 10
 
 # Using an if statement
 if x > 0:
-  print("x is positive")
+  print("x is positive") # add a new line below without indentation
 
-# x is positive
+
 ```
 
 </div>
