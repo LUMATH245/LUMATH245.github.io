@@ -1619,10 +1619,12 @@ To code this, we learned we can do simply some algebra with vector:
 **R**
 
 ```{r}
-# Create a sequence of numbers from -5 to 5 with increments of 0.1
+# Create a sequence of numbers 
+# from -5 to 5 with increments of 0.1
 x <- seq(-5, 5, by = 0.1)
 
-# Compute the value of x^2 - x for each element of x and assign it to y
+# Compute the value of x^2 - x for each
+# element of x and assign it to y
 y <- x^2 - x
 ```
 
@@ -1633,10 +1635,12 @@ y <- x^2 - x
 **python**
 
 ```{python}
-# Create a sequence of numbers from -5 to 5 with increments of 0.1
+# Create a sequence of numbers 
+# from -5 to 5 with increments of 0.1
 x = np.arange(-5, 5, 0.1)
 
-# Compute the value of x^2 - x for each element of x and assign it to y
+# Compute the value of x^2 - x for each
+# element of x and assign it to y
 y = x**2 - x
 ```
 
@@ -1657,19 +1661,24 @@ max(y)
 # Find the minimum value of y
 min(y)
 
-# Find the index of the element in y that has the maximum value
+# Find the index of the element
+# in y that has the maximum value
 which.max(y)
 
-# Find the index of the element in y that has the minimum value
+# Find the index of the element
+# in y that has the minimum value
 which.min(y)
 
-# Find the minimum value of y (equivalent to above, why?)
+# Find the minimum value of y
+# (equivalent to above, why?)
 y[which.min(y)]
 
-# Check which elements of y are less than 0 and return a logical vector
+# Check which elements of y are 
+# less than 0 and return a logical vector
 neg_index <- y < 0
 
-# Find the indices of the elements in y that are less than 0
+# Find the indices of the elements
+# in y that are less than 0
 which(neg_index)
 
 # print the elements in y that are less than 0
@@ -1689,19 +1698,24 @@ np.max(y)
 # Find the minimum value of y
 np.min(y)
 
-# Find the index of the element in y that has the maximum value
+# Find the index of the element 
+# in y that has the maximum value
 np.argmax(y)
 
-# Find the index of the element in y that has the minimum value
+# Find the index of the element
+# in y that has the minimum value
 np.argmin(y)
 
-# Find the minimum value of y (equivalent to above, why?)
+# Find the minimum value of y
+# (equivalent to above, why?)
 y[np.argmin(y)]
 
-# Check which elements of y are less than 0 and return a logical vector
+# Check which elements of y are
+# less than 0 and return a logical vector
 neg_index = y < 0
 
-# Find the indices of the elements in y that are less than 0
+# Find the indices of the elements
+# in y that are less than 0
 np.where(neg_index)
 
 # print the elements in y that are less than 0

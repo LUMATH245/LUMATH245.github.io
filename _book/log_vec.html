@@ -1486,19 +1486,23 @@ To code this, we learned we can do simply some algebra with vector:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="log_vec.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a sequence of numbers from -5 to 5 with increments of 0.1</span></span>
-<span id="cb372-2"><a href="log_vec.html#cb372-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span>
-<span id="cb372-3"><a href="log_vec.html#cb372-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb372-4"><a href="log_vec.html#cb372-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the value of x^2 - x for each element of x and assign it to y</span></span>
-<span id="cb372-5"><a href="log_vec.html#cb372-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> x</span></code></pre></div>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="log_vec.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a sequence of numbers </span></span>
+<span id="cb372-2"><a href="log_vec.html#cb372-2" aria-hidden="true" tabindex="-1"></a><span class="co"># from -5 to 5 with increments of 0.1</span></span>
+<span id="cb372-3"><a href="log_vec.html#cb372-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span>
+<span id="cb372-4"><a href="log_vec.html#cb372-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb372-5"><a href="log_vec.html#cb372-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the value of x^2 - x for each</span></span>
+<span id="cb372-6"><a href="log_vec.html#cb372-6" aria-hidden="true" tabindex="-1"></a><span class="co"># element of x and assign it to y</span></span>
+<span id="cb372-7"><a href="log_vec.html#cb372-7" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> x</span></code></pre></div>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb373"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb373-1"><a href="log_vec.html#cb373-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a sequence of numbers from -5 to 5 with increments of 0.1</span></span>
-<span id="cb373-2"><a href="log_vec.html#cb373-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="fl">0.1</span>)</span>
-<span id="cb373-3"><a href="log_vec.html#cb373-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb373-4"><a href="log_vec.html#cb373-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the value of x^2 - x for each element of x and assign it to y</span></span>
-<span id="cb373-5"><a href="log_vec.html#cb373-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span> <span class="op">-</span> x</span></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb373-1"><a href="log_vec.html#cb373-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a sequence of numbers </span></span>
+<span id="cb373-2"><a href="log_vec.html#cb373-2" aria-hidden="true" tabindex="-1"></a><span class="co"># from -5 to 5 with increments of 0.1</span></span>
+<span id="cb373-3"><a href="log_vec.html#cb373-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="fl">0.1</span>)</span>
+<span id="cb373-4"><a href="log_vec.html#cb373-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb373-5"><a href="log_vec.html#cb373-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the value of x^2 - x for each</span></span>
+<span id="cb373-6"><a href="log_vec.html#cb373-6" aria-hidden="true" tabindex="-1"></a><span class="co"># element of x and assign it to y</span></span>
+<span id="cb373-7"><a href="log_vec.html#cb373-7" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span> <span class="op">-</span> x</span></code></pre></div>
 </div>
 </div>
 <p>Now that we have our <span class="math inline">\(y\)</span> values, let’s see what we can get from it! See if what you see in the output matches what you see in the plot!</p>
@@ -1511,20 +1515,25 @@ To code this, we learned we can do simply some algebra with vector:</p>
 <div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="log_vec.html#cb376-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the minimum value of y</span></span>
 <span id="cb376-2"><a href="log_vec.html#cb376-2" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(y)</span></code></pre></div>
 <pre><code>## [1] -0.25</code></pre>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="log_vec.html#cb378-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the index of the element in y that has the maximum value</span></span>
-<span id="cb378-2"><a href="log_vec.html#cb378-2" aria-hidden="true" tabindex="-1"></a><span class="fu">which.max</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="log_vec.html#cb378-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the index of the element</span></span>
+<span id="cb378-2"><a href="log_vec.html#cb378-2" aria-hidden="true" tabindex="-1"></a><span class="co"># in y that has the maximum value</span></span>
+<span id="cb378-3"><a href="log_vec.html#cb378-3" aria-hidden="true" tabindex="-1"></a><span class="fu">which.max</span>(y)</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="log_vec.html#cb380-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the index of the element in y that has the minimum value</span></span>
-<span id="cb380-2"><a href="log_vec.html#cb380-2" aria-hidden="true" tabindex="-1"></a><span class="fu">which.min</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="log_vec.html#cb380-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the index of the element</span></span>
+<span id="cb380-2"><a href="log_vec.html#cb380-2" aria-hidden="true" tabindex="-1"></a><span class="co"># in y that has the minimum value</span></span>
+<span id="cb380-3"><a href="log_vec.html#cb380-3" aria-hidden="true" tabindex="-1"></a><span class="fu">which.min</span>(y)</span></code></pre></div>
 <pre><code>## [1] 56</code></pre>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="log_vec.html#cb382-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the minimum value of y (equivalent to above, why?)</span></span>
-<span id="cb382-2"><a href="log_vec.html#cb382-2" aria-hidden="true" tabindex="-1"></a>y[<span class="fu">which.min</span>(y)]</span></code></pre></div>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="log_vec.html#cb382-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the minimum value of y</span></span>
+<span id="cb382-2"><a href="log_vec.html#cb382-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (equivalent to above, why?)</span></span>
+<span id="cb382-3"><a href="log_vec.html#cb382-3" aria-hidden="true" tabindex="-1"></a>y[<span class="fu">which.min</span>(y)]</span></code></pre></div>
 <pre><code>## [1] -0.25</code></pre>
-<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="log_vec.html#cb384-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check which elements of y are less than 0 and return a logical vector</span></span>
-<span id="cb384-2"><a href="log_vec.html#cb384-2" aria-hidden="true" tabindex="-1"></a>neg_index <span class="ot">&lt;-</span> y <span class="sc">&lt;</span> <span class="dv">0</span></span>
-<span id="cb384-3"><a href="log_vec.html#cb384-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb384-4"><a href="log_vec.html#cb384-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the indices of the elements in y that are less than 0</span></span>
-<span id="cb384-5"><a href="log_vec.html#cb384-5" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(neg_index)</span></code></pre></div>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="log_vec.html#cb384-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check which elements of y are </span></span>
+<span id="cb384-2"><a href="log_vec.html#cb384-2" aria-hidden="true" tabindex="-1"></a><span class="co"># less than 0 and return a logical vector</span></span>
+<span id="cb384-3"><a href="log_vec.html#cb384-3" aria-hidden="true" tabindex="-1"></a>neg_index <span class="ot">&lt;-</span> y <span class="sc">&lt;</span> <span class="dv">0</span></span>
+<span id="cb384-4"><a href="log_vec.html#cb384-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb384-5"><a href="log_vec.html#cb384-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the indices of the elements</span></span>
+<span id="cb384-6"><a href="log_vec.html#cb384-6" aria-hidden="true" tabindex="-1"></a><span class="co"># in y that are less than 0</span></span>
+<span id="cb384-7"><a href="log_vec.html#cb384-7" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(neg_index)</span></code></pre></div>
 <pre><code>## [1] 52 53 54 55 56 57 58 59 60</code></pre>
 <div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="log_vec.html#cb386-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print the elements in y that are less than 0</span></span>
 <span id="cb386-2"><a href="log_vec.html#cb386-2" aria-hidden="true" tabindex="-1"></a>y[<span class="fu">which</span>(neg_index)]</span></code></pre></div>
@@ -1538,20 +1547,25 @@ To code this, we learned we can do simply some algebra with vector:</p>
 <div class="sourceCode" id="cb390"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb390-1"><a href="log_vec.html#cb390-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the minimum value of y</span></span>
 <span id="cb390-2"><a href="log_vec.html#cb390-2" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">min</span>(y)</span></code></pre></div>
 <pre><code>## -0.25</code></pre>
-<div class="sourceCode" id="cb392"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb392-1"><a href="log_vec.html#cb392-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the index of the element in y that has the maximum value</span></span>
-<span id="cb392-2"><a href="log_vec.html#cb392-2" aria-hidden="true" tabindex="-1"></a>np.argmax(y)</span></code></pre></div>
+<div class="sourceCode" id="cb392"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb392-1"><a href="log_vec.html#cb392-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the index of the element </span></span>
+<span id="cb392-2"><a href="log_vec.html#cb392-2" aria-hidden="true" tabindex="-1"></a><span class="co"># in y that has the maximum value</span></span>
+<span id="cb392-3"><a href="log_vec.html#cb392-3" aria-hidden="true" tabindex="-1"></a>np.argmax(y)</span></code></pre></div>
 <pre><code>## 0</code></pre>
-<div class="sourceCode" id="cb394"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb394-1"><a href="log_vec.html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the index of the element in y that has the minimum value</span></span>
-<span id="cb394-2"><a href="log_vec.html#cb394-2" aria-hidden="true" tabindex="-1"></a>np.argmin(y)</span></code></pre></div>
+<div class="sourceCode" id="cb394"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb394-1"><a href="log_vec.html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the index of the element</span></span>
+<span id="cb394-2"><a href="log_vec.html#cb394-2" aria-hidden="true" tabindex="-1"></a><span class="co"># in y that has the minimum value</span></span>
+<span id="cb394-3"><a href="log_vec.html#cb394-3" aria-hidden="true" tabindex="-1"></a>np.argmin(y)</span></code></pre></div>
 <pre><code>## 55</code></pre>
-<div class="sourceCode" id="cb396"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb396-1"><a href="log_vec.html#cb396-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the minimum value of y (equivalent to above, why?)</span></span>
-<span id="cb396-2"><a href="log_vec.html#cb396-2" aria-hidden="true" tabindex="-1"></a>y[np.argmin(y)]</span></code></pre></div>
+<div class="sourceCode" id="cb396"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb396-1"><a href="log_vec.html#cb396-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the minimum value of y</span></span>
+<span id="cb396-2"><a href="log_vec.html#cb396-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (equivalent to above, why?)</span></span>
+<span id="cb396-3"><a href="log_vec.html#cb396-3" aria-hidden="true" tabindex="-1"></a>y[np.argmin(y)]</span></code></pre></div>
 <pre><code>## -0.25</code></pre>
-<div class="sourceCode" id="cb398"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb398-1"><a href="log_vec.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check which elements of y are less than 0 and return a logical vector</span></span>
-<span id="cb398-2"><a href="log_vec.html#cb398-2" aria-hidden="true" tabindex="-1"></a>neg_index <span class="op">=</span> y <span class="op">&lt;</span> <span class="dv">0</span></span>
-<span id="cb398-3"><a href="log_vec.html#cb398-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb398-4"><a href="log_vec.html#cb398-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the indices of the elements in y that are less than 0</span></span>
-<span id="cb398-5"><a href="log_vec.html#cb398-5" aria-hidden="true" tabindex="-1"></a>np.where(neg_index)</span></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb398-1"><a href="log_vec.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check which elements of y are</span></span>
+<span id="cb398-2"><a href="log_vec.html#cb398-2" aria-hidden="true" tabindex="-1"></a><span class="co"># less than 0 and return a logical vector</span></span>
+<span id="cb398-3"><a href="log_vec.html#cb398-3" aria-hidden="true" tabindex="-1"></a>neg_index <span class="op">=</span> y <span class="op">&lt;</span> <span class="dv">0</span></span>
+<span id="cb398-4"><a href="log_vec.html#cb398-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb398-5"><a href="log_vec.html#cb398-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the indices of the elements</span></span>
+<span id="cb398-6"><a href="log_vec.html#cb398-6" aria-hidden="true" tabindex="-1"></a><span class="co"># in y that are less than 0</span></span>
+<span id="cb398-7"><a href="log_vec.html#cb398-7" aria-hidden="true" tabindex="-1"></a>np.where(neg_index)</span></code></pre></div>
 <pre><code>## (array([51, 52, 53, 54, 55, 56, 57, 58, 59, 60]),)</code></pre>
 <div class="sourceCode" id="cb400"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb400-1"><a href="log_vec.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print the elements in y that are less than 0</span></span>
 <span id="cb400-2"><a href="log_vec.html#cb400-2" aria-hidden="true" tabindex="-1"></a>y[np.where(neg_index)]</span></code></pre></div>
