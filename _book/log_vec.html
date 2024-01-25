@@ -632,7 +632,8 @@ message if a variable is positive, as shown below:</p>
 <span id="cb191-5"><a href="log_vec.html#cb191-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
 <span id="cb191-6"><a href="log_vec.html#cb191-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;x is positive&quot;</span>)</span></code></pre></div>
 <pre><code>## x is positive</code></pre>
-<div class="sourceCode" id="cb193"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb193-1"><a href="log_vec.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x is positive</span></span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb193-1"><a href="log_vec.html#cb193-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb193-2"><a href="log_vec.html#cb193-2" aria-hidden="true" tabindex="-1"></a><span class="co"># x is positive</span></span></code></pre></div>
 </div>
 </div>
 <p>Concerning syntax, e.g. the way we write the code:</p>
@@ -655,7 +656,11 @@ the if condition needs to be within these brackets</p></li>
 <li><p>Python, uses indentation to delimit the block of execution. All
 code that needs to execute needs to be indented at the same
 level. Indentation in Python is achieved either with a tab
-(recommended), or with 4 spaces.</p></li>
+(recommended), or with 4 spaces. NOTE: An additional empty line without identation
+(e.g. a simple white space) is needed below the if- block,
+otherwise Python won’t be able to understand that the block has ended.
+Generally, for this reason, it’s a good habit to save your Python scripts
+always with an empty line at the end</p></li>
 </ul></li>
 </ul>
 <p>The if statement only executes the block of code if the

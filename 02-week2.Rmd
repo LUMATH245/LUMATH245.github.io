@@ -538,6 +538,7 @@ x = 10
 # Using an if statement
 if x > 0:
   print("x is positive")
+
 # x is positive
 ```
 
@@ -566,7 +567,11 @@ Concerning syntax, e.g. the way we write the code:
     -   Python, uses indentation to delimit the block of execution. All
         code that needs to execute needs to be indented at the same
         level. Indentation in Python is achieved either with a tab
-        (recommended), or with 4 spaces.
+        (recommended), or with 4 spaces. NOTE: An additional empty line without identation 
+        (e.g. a simple white space) is needed below the if- block, 
+        otherwise Python won't be able to understand that the block has ended. 
+        Generally, for this reason, it's a good habit to save your Python scripts
+        always with an empty line at the end
 
 The if statement only executes the block of code if the
 condition is true, and does nothing otherwise. This means, that if the
