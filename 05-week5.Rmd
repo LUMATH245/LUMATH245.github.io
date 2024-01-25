@@ -11,20 +11,12 @@ These are crucial concepts in Computational Mathematics that will enable us to h
 
 #### A note for R users.
 
-Before we start, we will need to import a very important library for writing modern R code.
+Before we start, we will need to import a very important library for writing modern R code: `tidyverse`.
+As mentioned earlier, R has changed a lot over the recent years, including more and more tools
+for functional programming, fast data manipulation, exploration, analysis and plotting.
 
-R developers have created functions and packages for almost every
-laborious task that stands between us and good quantitative scientific
-analysis. Data input, manipulation, and output is easy in R. It is just
-a matter of breaking down what needs to be done into small achievable
-tasks, and knowing the right functions.
-And R has changed a lot over the recent years, including more and more tools
-for functional programming, fast data manipulation, exploration, analysis and plotting. In
-particular, we will be working a lot with the `tidyverse` packages.
-
-The `tidyverse` includes a wide range of packages. We have already seen one of those, 
-in the past week the `purrr` library. In addition to that, other of the core packages in
-the `tidyverse` include `ggplot2` for data visualization, `dplyr` for
+The `tidyverse` includes a wide range of packages that improve R for scientific computing. 
+We have already seen one of those, in the past week: the `purrr` library. However, there's much more, other of the core packages in the `tidyverse` include `ggplot2` for data visualization, `dplyr` for
 data manipulation, and `tidyr` for data cleaning. By using these
 packages together, you can efficiently import, clean, manipulate,
 visualize, and analyze your data in a consistent and reproducible
