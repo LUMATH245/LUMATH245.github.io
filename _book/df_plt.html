@@ -1275,7 +1275,7 @@ Try to change the binwidth and see what happens.</p></li>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb754"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb754-1"><a href="df_plt.html#cb754-1" aria-hidden="true" tabindex="-1"></a><span class="co"># python users looking at this example: this is one particular </span></span>
 <span id="cb754-2"><a href="df_plt.html#cb754-2" aria-hidden="true" tabindex="-1"></a><span class="co"># case where ggplot2 in R is better then plotnine in python. The difference</span></span>
-<span id="cb754-3"><a href="df_plt.html#cb754-3" aria-hidden="true" tabindex="-1"></a><span class="co"># here is that boxplot can accept both an x or y aesthetic in R</span></span>
+<span id="cb754-3"><a href="df_plt.html#cb754-3" aria-hidden="true" tabindex="-1"></a><span class="co"># here is that, in R, boxplot can accept both an x or y aesthetic</span></span>
 <span id="cb754-4"><a href="df_plt.html#cb754-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg)) <span class="sc">+</span></span>
 <span id="cb754-5"><a href="df_plt.html#cb754-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>)</span></code></pre></div>
 <p><img src="images/unnamed-chunk-240-3.png" width="50%" /></p>
@@ -1284,7 +1284,7 @@ Try to change the binwidth and see what happens.</p></li>
 <p><strong>python</strong></p>
 <div class="sourceCode" id="cb755"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb755-1"><a href="df_plt.html#cb755-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this will produce an error in python since</span></span>
 <span id="cb755-2"><a href="df_plt.html#cb755-2" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_histogram only works with the x axis in plotnine.</span></span>
-<span id="cb755-3"><a href="df_plt.html#cb755-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plotnine has still some limitations </span></span>
+<span id="cb755-3"><a href="df_plt.html#cb755-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plotnine has still minor limitations </span></span>
 <span id="cb755-4"><a href="df_plt.html#cb755-4" aria-hidden="true" tabindex="-1"></a><span class="co"># compared to ggplot2 in R. Just look at the R output.</span></span>
 <span id="cb755-5"><a href="df_plt.html#cb755-5" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb755-6"><a href="df_plt.html#cb755-6" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>)) <span class="op">+</span></span>
@@ -1337,22 +1337,20 @@ For instance:</p>
 <div class="sourceCode" id="cb762"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb762-1"><a href="df_plt.html#cb762-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R users, look at the output of python plot. We can easily make the same plot in R</span></span>
 <span id="cb762-2"><a href="df_plt.html#cb762-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Can you translate the python code to obtain the same?</span></span>
 <span id="cb762-3"><a href="df_plt.html#cb762-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg)) <span class="sc">+</span></span>
-<span id="cb762-4"><a href="df_plt.html#cb762-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">binwidth=</span><span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb762-4"><a href="df_plt.html#cb762-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
 <span id="cb762-5"><a href="df_plt.html#cb762-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
-<pre><code>## Warning in geom_boxplot(binwidth = 3): Ignoring unknown
-## parameters: `binwidth`</code></pre>
 <p><img src="images/unnamed-chunk-244-3.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb764"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb764-1"><a href="df_plt.html#cb764-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the same plot in plotnine is not possible as </span></span>
-<span id="cb764-2"><a href="df_plt.html#cb764-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the boxplot and the density plot have different aestethics. </span></span>
-<span id="cb764-3"><a href="df_plt.html#cb764-3" aria-hidden="true" tabindex="-1"></a><span class="co"># however, we can plot (this should work in R too): </span></span>
-<span id="cb764-4"><a href="df_plt.html#cb764-4" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb764-5"><a href="df_plt.html#cb764-5" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&quot;mpg&quot;</span>)) <span class="op">+</span></span>
-<span id="cb764-6"><a href="df_plt.html#cb764-6" aria-hidden="true" tabindex="-1"></a>    geom_histogram(aes(y <span class="op">=</span> <span class="st">&quot;..density..&quot;</span>), binwidth<span class="op">=</span><span class="dv">3</span>) <span class="op">+</span></span>
-<span id="cb764-7"><a href="df_plt.html#cb764-7" aria-hidden="true" tabindex="-1"></a>    geom_density()</span>
-<span id="cb764-8"><a href="df_plt.html#cb764-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb763"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb763-1"><a href="df_plt.html#cb763-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the same plot in plotnine is not possible as </span></span>
+<span id="cb763-2"><a href="df_plt.html#cb763-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the boxplot and the density plot have different aestethics. </span></span>
+<span id="cb763-3"><a href="df_plt.html#cb763-3" aria-hidden="true" tabindex="-1"></a><span class="co"># however, we can plot (this should work in R too): </span></span>
+<span id="cb763-4"><a href="df_plt.html#cb763-4" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb763-5"><a href="df_plt.html#cb763-5" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&quot;mpg&quot;</span>)) <span class="op">+</span></span>
+<span id="cb763-6"><a href="df_plt.html#cb763-6" aria-hidden="true" tabindex="-1"></a>    geom_histogram(aes(y <span class="op">=</span> <span class="st">&quot;..density..&quot;</span>), binwidth<span class="op">=</span><span class="dv">3</span>) <span class="op">+</span></span>
+<span id="cb763-7"><a href="df_plt.html#cb763-7" aria-hidden="true" tabindex="-1"></a>    geom_density()</span>
+<span id="cb763-8"><a href="df_plt.html#cb763-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
 <p><img src="images/unnamed-chunk-245-1.png" width="50%" /></p>
 </div>
@@ -1367,16 +1365,16 @@ Let’s create a scatterplot of <code>mpg</code> against <code>hp</code> (horsep
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb766"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb766-1"><a href="df_plt.html#cb766-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg)) <span class="sc">+</span></span>
-<span id="cb766-2"><a href="df_plt.html#cb766-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="co"># + theme_minimal()</span></span></code></pre></div>
+<div class="sourceCode" id="cb765"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb765-1"><a href="df_plt.html#cb765-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg)) <span class="sc">+</span></span>
+<span id="cb765-2"><a href="df_plt.html#cb765-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="co"># + theme_minimal()</span></span></code></pre></div>
 <p><img src="images/unnamed-chunk-246-3.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb767"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb767-1"><a href="df_plt.html#cb767-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb767-2"><a href="df_plt.html#cb767-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>)) <span class="op">+</span></span>
-<span id="cb767-3"><a href="df_plt.html#cb767-3" aria-hidden="true" tabindex="-1"></a>  geom_point() <span class="co"># + theme_minimal()</span></span>
-<span id="cb767-4"><a href="df_plt.html#cb767-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb766"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb766-1"><a href="df_plt.html#cb766-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb766-2"><a href="df_plt.html#cb766-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>)) <span class="op">+</span></span>
+<span id="cb766-3"><a href="df_plt.html#cb766-3" aria-hidden="true" tabindex="-1"></a>  geom_point() <span class="co"># + theme_minimal()</span></span>
+<span id="cb766-4"><a href="df_plt.html#cb766-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
 <p><img src="images/unnamed-chunk-247-1.png" width="50%" /></p>
 </div>
@@ -1388,16 +1386,16 @@ Let’s color the points in our scatterplot based on the type of transmission (<
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb769"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb769-1"><a href="df_plt.html#cb769-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg, <span class="at">color=</span>am)) <span class="sc">+</span></span>
-<span id="cb769-2"><a href="df_plt.html#cb769-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb768"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb768-1"><a href="df_plt.html#cb768-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg, <span class="at">color=</span>am)) <span class="sc">+</span></span>
+<span id="cb768-2"><a href="df_plt.html#cb768-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="images/unnamed-chunk-248-3.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb770"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb770-1"><a href="df_plt.html#cb770-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb770-2"><a href="df_plt.html#cb770-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>, color<span class="op">=</span><span class="st">&#39;am&#39;</span>)) <span class="op">+</span></span>
-<span id="cb770-3"><a href="df_plt.html#cb770-3" aria-hidden="true" tabindex="-1"></a>  geom_point()</span>
-<span id="cb770-4"><a href="df_plt.html#cb770-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb769"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb769-1"><a href="df_plt.html#cb769-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb769-2"><a href="df_plt.html#cb769-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>, color<span class="op">=</span><span class="st">&#39;am&#39;</span>)) <span class="op">+</span></span>
+<span id="cb769-3"><a href="df_plt.html#cb769-3" aria-hidden="true" tabindex="-1"></a>  geom_point()</span>
+<span id="cb769-4"><a href="df_plt.html#cb769-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
 <p><img src="images/unnamed-chunk-249-1.png" width="50%" /></p>
 </div>
@@ -1407,16 +1405,16 @@ Let’s color the points in our scatterplot based on the type of transmission (<
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb772"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb772-1"><a href="df_plt.html#cb772-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg, <span class="at">color=</span>am, <span class="at">shape=</span> vs)) <span class="sc">+</span></span>
-<span id="cb772-2"><a href="df_plt.html#cb772-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb771"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb771-1"><a href="df_plt.html#cb771-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg, <span class="at">color=</span>am, <span class="at">shape=</span> vs)) <span class="sc">+</span></span>
+<span id="cb771-2"><a href="df_plt.html#cb771-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="images/unnamed-chunk-250-3.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb773"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb773-1"><a href="df_plt.html#cb773-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb773-2"><a href="df_plt.html#cb773-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>, color<span class="op">=</span><span class="st">&#39;am&#39;</span>, shape<span class="op">=</span><span class="st">&#39;vs&#39;</span>)) <span class="op">+</span></span>
-<span id="cb773-3"><a href="df_plt.html#cb773-3" aria-hidden="true" tabindex="-1"></a>  geom_point()</span>
-<span id="cb773-4"><a href="df_plt.html#cb773-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb772"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb772-1"><a href="df_plt.html#cb772-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb772-2"><a href="df_plt.html#cb772-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>, color<span class="op">=</span><span class="st">&#39;am&#39;</span>, shape<span class="op">=</span><span class="st">&#39;vs&#39;</span>)) <span class="op">+</span></span>
+<span id="cb772-3"><a href="df_plt.html#cb772-3" aria-hidden="true" tabindex="-1"></a>  geom_point()</span>
+<span id="cb772-4"><a href="df_plt.html#cb772-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
 <p><img src="images/unnamed-chunk-251-1.png" width="50%" /></p>
 </div>
@@ -1425,16 +1423,16 @@ Let’s color the points in our scatterplot based on the type of transmission (<
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb775"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb775-1"><a href="df_plt.html#cb775-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg, <span class="at">color=</span>am, <span class="at">linetype =</span> vs)) <span class="sc">+</span></span>
-<span id="cb775-2"><a href="df_plt.html#cb775-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb774"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb774-1"><a href="df_plt.html#cb774-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg, <span class="at">color=</span>am, <span class="at">linetype =</span> vs)) <span class="sc">+</span></span>
+<span id="cb774-2"><a href="df_plt.html#cb774-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
 <p><img src="images/unnamed-chunk-252-3.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb776"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb776-1"><a href="df_plt.html#cb776-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb776-2"><a href="df_plt.html#cb776-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>, color<span class="op">=</span><span class="st">&#39;am&#39;</span>, linetype<span class="op">=</span><span class="st">&#39;vs&#39;</span>)) <span class="op">+</span></span>
-<span id="cb776-3"><a href="df_plt.html#cb776-3" aria-hidden="true" tabindex="-1"></a>  geom_boxplot()</span>
-<span id="cb776-4"><a href="df_plt.html#cb776-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb775"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb775-1"><a href="df_plt.html#cb775-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb775-2"><a href="df_plt.html#cb775-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>, color<span class="op">=</span><span class="st">&#39;am&#39;</span>, linetype<span class="op">=</span><span class="st">&#39;vs&#39;</span>)) <span class="op">+</span></span>
+<span id="cb775-3"><a href="df_plt.html#cb775-3" aria-hidden="true" tabindex="-1"></a>  geom_boxplot()</span>
+<span id="cb775-4"><a href="df_plt.html#cb775-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
 <p><img src="images/unnamed-chunk-253-1.png" width="50%" /></p>
 </div>
@@ -1462,18 +1460,18 @@ For instance, let’s show the relationship between miles per gallon (<code>mpg<
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb778"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb778-1"><a href="df_plt.html#cb778-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg, <span class="at">color=</span>am)) <span class="sc">+</span></span>
-<span id="cb778-2"><a href="df_plt.html#cb778-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb778-3"><a href="df_plt.html#cb778-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>gear)</span></code></pre></div>
+<div class="sourceCode" id="cb777"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb777-1"><a href="df_plt.html#cb777-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg, <span class="at">color=</span>am)) <span class="sc">+</span></span>
+<span id="cb777-2"><a href="df_plt.html#cb777-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb777-3"><a href="df_plt.html#cb777-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>gear)</span></code></pre></div>
 <p><img src="images/unnamed-chunk-254-3.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb779"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb779-1"><a href="df_plt.html#cb779-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb779-2"><a href="df_plt.html#cb779-2" aria-hidden="true" tabindex="-1"></a>ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>, color<span class="op">=</span><span class="st">&#39;am&#39;</span>)) <span class="op">+</span></span>
-<span id="cb779-3"><a href="df_plt.html#cb779-3" aria-hidden="true" tabindex="-1"></a>  geom_point() <span class="op">+</span> </span>
-<span id="cb779-4"><a href="df_plt.html#cb779-4" aria-hidden="true" tabindex="-1"></a>  facet_wrap(<span class="st">&#39;~gear&#39;</span>)</span>
-<span id="cb779-5"><a href="df_plt.html#cb779-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb778"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb778-1"><a href="df_plt.html#cb778-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb778-2"><a href="df_plt.html#cb778-2" aria-hidden="true" tabindex="-1"></a>ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>, color<span class="op">=</span><span class="st">&#39;am&#39;</span>)) <span class="op">+</span></span>
+<span id="cb778-3"><a href="df_plt.html#cb778-3" aria-hidden="true" tabindex="-1"></a>  geom_point() <span class="op">+</span> </span>
+<span id="cb778-4"><a href="df_plt.html#cb778-4" aria-hidden="true" tabindex="-1"></a>  facet_wrap(<span class="st">&#39;~gear&#39;</span>)</span>
+<span id="cb778-5"><a href="df_plt.html#cb778-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
 <p><img src="images/unnamed-chunk-255-1.png" width="50%" /></p>
 </div>

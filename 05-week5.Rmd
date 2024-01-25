@@ -1046,7 +1046,7 @@ To solidify the concept of aesthetic mapping, let's see what happens by swapping
 ```{r}
 # python users looking at this example: this is one particular 
 # case where ggplot2 in R is better then plotnine in python. The difference
-# here is that boxplot can accept both an x or y aesthetic in R
+# here is that, in R, boxplot can accept both an x or y aesthetic
 ggplot(mtcars, aes(y=mpg)) +
   geom_histogram(binwidth=5)
 ```
@@ -1060,7 +1060,7 @@ ggplot(mtcars, aes(y=mpg)) +
 ```{python error=TRUE}
 # this will produce an error in python since
 # geom_histogram only works with the x axis in plotnine.
-# plotnine has still some limitations 
+# plotnine has still minor limitations 
 # compared to ggplot2 in R. Just look at the R output.
 (
   ggplot(mtcars, aes(y='mpg')) +
@@ -1128,7 +1128,7 @@ For instance:
 # R users, look at the output of python plot. We can easily make the same plot in R
 # Can you translate the python code to obtain the same?
 ggplot(mtcars, aes(y=mpg)) +
-  geom_boxplot(binwidth=3) +
+  geom_boxplot() +
   geom_density()
 ```
 
