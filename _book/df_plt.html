@@ -1334,11 +1334,12 @@ For instance:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb762"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb762-1"><a href="df_plt.html#cb762-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R users, look at the output of python plot. We can easily make the same plot in R</span></span>
-<span id="cb762-2"><a href="df_plt.html#cb762-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Can you translate the python code to obtain the same?</span></span>
-<span id="cb762-3"><a href="df_plt.html#cb762-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg)) <span class="sc">+</span></span>
-<span id="cb762-4"><a href="df_plt.html#cb762-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb762-5"><a href="df_plt.html#cb762-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb762"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb762-1"><a href="df_plt.html#cb762-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R users, look at the output of python plot.</span></span>
+<span id="cb762-2"><a href="df_plt.html#cb762-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We can make the same plot in R!</span></span>
+<span id="cb762-3"><a href="df_plt.html#cb762-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Can you translate the python code to ggplot2?</span></span>
+<span id="cb762-4"><a href="df_plt.html#cb762-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg)) <span class="sc">+</span></span>
+<span id="cb762-5"><a href="df_plt.html#cb762-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb762-6"><a href="df_plt.html#cb762-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
 <p><img src="images/unnamed-chunk-244-3.png" width="50%" /></p>
 </div>
 <div>
@@ -1527,39 +1528,51 @@ For instance, let’s show the relationship between miles per gallon (<code>mpg<
 <div class="sourceCode" id="cb786"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb786-1"><a href="df_plt.html#cb786-1" aria-hidden="true" tabindex="-1"></a><span class="co"># barcharts</span></span>
 <span id="cb786-2"><a href="df_plt.html#cb786-2" aria-hidden="true" tabindex="-1"></a><span class="co"># great for categorical variables</span></span>
 <span id="cb786-3"><a href="df_plt.html#cb786-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>cyl, <span class="at">fill=</span>am)) <span class="sc">+</span></span>
-<span id="cb786-4"><a href="df_plt.html#cb786-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb786-5"><a href="df_plt.html#cb786-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>vs)</span></code></pre></div>
+<span id="cb786-4"><a href="df_plt.html#cb786-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
 <p><img src="images/unnamed-chunk-258-5.png" width="50%" /></p>
+<div class="sourceCode" id="cb787"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb787-1"><a href="df_plt.html#cb787-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can store the plot in a variable and add more layers if </span></span>
+<span id="cb787-2"><a href="df_plt.html#cb787-2" aria-hidden="true" tabindex="-1"></a><span class="co"># needed </span></span>
+<span id="cb787-3"><a href="df_plt.html#cb787-3" aria-hidden="true" tabindex="-1"></a>pt <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>cyl, <span class="at">fill=</span>am)) <span class="sc">+</span></span>
+<span id="cb787-4"><a href="df_plt.html#cb787-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span>
+<span id="cb787-5"><a href="df_plt.html#cb787-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb787-6"><a href="df_plt.html#cb787-6" aria-hidden="true" tabindex="-1"></a>pt <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>vs)</span></code></pre></div>
+<p><img src="images/unnamed-chunk-258-6.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb787"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb787-1"><a href="df_plt.html#cb787-1" aria-hidden="true" tabindex="-1"></a><span class="co"># linegraph</span></span>
-<span id="cb787-2"><a href="df_plt.html#cb787-2" aria-hidden="true" tabindex="-1"></a><span class="co"># great for continuous time variables</span></span>
-<span id="cb787-3"><a href="df_plt.html#cb787-3" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb787-4"><a href="df_plt.html#cb787-4" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;disp&#39;</span>, color<span class="op">=</span><span class="st">&#39;am&#39;</span>)) <span class="op">+</span></span>
-<span id="cb787-5"><a href="df_plt.html#cb787-5" aria-hidden="true" tabindex="-1"></a>  geom_line()</span>
-<span id="cb787-6"><a href="df_plt.html#cb787-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb788"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb788-1"><a href="df_plt.html#cb788-1" aria-hidden="true" tabindex="-1"></a><span class="co"># linegraph</span></span>
+<span id="cb788-2"><a href="df_plt.html#cb788-2" aria-hidden="true" tabindex="-1"></a><span class="co"># great for continuous time variables</span></span>
+<span id="cb788-3"><a href="df_plt.html#cb788-3" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb788-4"><a href="df_plt.html#cb788-4" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;disp&#39;</span>, color<span class="op">=</span><span class="st">&#39;am&#39;</span>)) <span class="op">+</span></span>
+<span id="cb788-5"><a href="df_plt.html#cb788-5" aria-hidden="true" tabindex="-1"></a>  geom_line()</span>
+<span id="cb788-6"><a href="df_plt.html#cb788-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
 <p><img src="images/unnamed-chunk-259-1.png" width="50%" /></p>
-<div class="sourceCode" id="cb789"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb789-1"><a href="df_plt.html#cb789-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recall we can always filter based on any type of </span></span>
-<span id="cb789-2"><a href="df_plt.html#cb789-2" aria-hidden="true" tabindex="-1"></a><span class="co"># variable, what we learned over the first half translates equally</span></span>
-<span id="cb789-3"><a href="df_plt.html#cb789-3" aria-hidden="true" tabindex="-1"></a><span class="co"># to the second! And the plot adapts magically.</span></span>
-<span id="cb789-4"><a href="df_plt.html#cb789-4" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb789-5"><a href="df_plt.html#cb789-5" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars.query(<span class="st">&quot;am == &#39;manual&#39;&quot;</span>),</span>
-<span id="cb789-6"><a href="df_plt.html#cb789-6" aria-hidden="true" tabindex="-1"></a>  aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;disp&#39;</span>)) <span class="op">+</span></span>
-<span id="cb789-7"><a href="df_plt.html#cb789-7" aria-hidden="true" tabindex="-1"></a>  geom_line()</span>
-<span id="cb789-8"><a href="df_plt.html#cb789-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb790"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb790-1"><a href="df_plt.html#cb790-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recall we can always filter based on any type of </span></span>
+<span id="cb790-2"><a href="df_plt.html#cb790-2" aria-hidden="true" tabindex="-1"></a><span class="co"># variable, what we learned over the first half translates equally</span></span>
+<span id="cb790-3"><a href="df_plt.html#cb790-3" aria-hidden="true" tabindex="-1"></a><span class="co"># to the second! And the plot adapts magically.</span></span>
+<span id="cb790-4"><a href="df_plt.html#cb790-4" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb790-5"><a href="df_plt.html#cb790-5" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars.query(<span class="st">&quot;am == &#39;manual&#39;&quot;</span>),</span>
+<span id="cb790-6"><a href="df_plt.html#cb790-6" aria-hidden="true" tabindex="-1"></a>  aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;disp&#39;</span>)) <span class="op">+</span></span>
+<span id="cb790-7"><a href="df_plt.html#cb790-7" aria-hidden="true" tabindex="-1"></a>  geom_line()</span>
+<span id="cb790-8"><a href="df_plt.html#cb790-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
 <p><img src="images/unnamed-chunk-259-2.png" width="50%" /></p>
-<div class="sourceCode" id="cb791"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb791-1"><a href="df_plt.html#cb791-1" aria-hidden="true" tabindex="-1"></a><span class="co"># barcharts</span></span>
-<span id="cb791-2"><a href="df_plt.html#cb791-2" aria-hidden="true" tabindex="-1"></a><span class="co"># great for categorical variables</span></span>
-<span id="cb791-3"><a href="df_plt.html#cb791-3" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb791-4"><a href="df_plt.html#cb791-4" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;cyl&#39;</span>, fill<span class="op">=</span><span class="st">&#39;am&#39;</span>)) <span class="op">+</span></span>
-<span id="cb791-5"><a href="df_plt.html#cb791-5" aria-hidden="true" tabindex="-1"></a>  geom_bar() <span class="op">+</span></span>
-<span id="cb791-6"><a href="df_plt.html#cb791-6" aria-hidden="true" tabindex="-1"></a>  facet_wrap(<span class="st">&#39;~vs&#39;</span>)</span>
-<span id="cb791-7"><a href="df_plt.html#cb791-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb792"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb792-1"><a href="df_plt.html#cb792-1" aria-hidden="true" tabindex="-1"></a><span class="co"># barcharts</span></span>
+<span id="cb792-2"><a href="df_plt.html#cb792-2" aria-hidden="true" tabindex="-1"></a><span class="co"># great for categorical variables</span></span>
+<span id="cb792-3"><a href="df_plt.html#cb792-3" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb792-4"><a href="df_plt.html#cb792-4" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;cyl&#39;</span>, fill<span class="op">=</span><span class="st">&#39;am&#39;</span>)) <span class="op">+</span></span>
+<span id="cb792-5"><a href="df_plt.html#cb792-5" aria-hidden="true" tabindex="-1"></a>  geom_bar()</span>
+<span id="cb792-6"><a href="df_plt.html#cb792-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
 <p><img src="images/unnamed-chunk-259-3.png" width="50%" /></p>
+<div class="sourceCode" id="cb794"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb794-1"><a href="df_plt.html#cb794-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can store the plot in a variable and add more layers if </span></span>
+<span id="cb794-2"><a href="df_plt.html#cb794-2" aria-hidden="true" tabindex="-1"></a><span class="co"># needed </span></span>
+<span id="cb794-3"><a href="df_plt.html#cb794-3" aria-hidden="true" tabindex="-1"></a>pt <span class="op">=</span> (ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;cyl&#39;</span>, fill<span class="op">=</span><span class="st">&#39;am&#39;</span>)) <span class="op">+</span></span>
+<span id="cb794-4"><a href="df_plt.html#cb794-4" aria-hidden="true" tabindex="-1"></a>  geom_bar())</span>
+<span id="cb794-5"><a href="df_plt.html#cb794-5" aria-hidden="true" tabindex="-1"></a>pt <span class="op">+</span> facet_wrap(<span class="st">&#39;~vs&#39;</span>)</span></code></pre></div>
+<pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
+<p><img src="images/unnamed-chunk-259-4.png" width="50%" /></p>
 </div>
 </div>
 </div>
@@ -1569,24 +1582,23 @@ For instance, let’s show the relationship between miles per gallon (<code>mpg<
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb793"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb793-1"><a href="df_plt.html#cb793-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>mpg, <span class="at">y=</span>hp)) <span class="sc">+</span></span>
-<span id="cb793-2"><a href="df_plt.html#cb793-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb793-3"><a href="df_plt.html#cb793-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb793-4"><a href="df_plt.html#cb793-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb793-5"><a href="df_plt.html#cb793-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;plot.png&quot;</span>, g)</span></code></pre></div>
-<pre><code>## Saving 7 x 5 in image</code></pre>
+<div class="sourceCode" id="cb796"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb796-1"><a href="df_plt.html#cb796-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>mpg, <span class="at">y=</span>hp)) <span class="sc">+</span></span>
+<span id="cb796-2"><a href="df_plt.html#cb796-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb796-3"><a href="df_plt.html#cb796-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb796-4"><a href="df_plt.html#cb796-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb796-5"><a href="df_plt.html#cb796-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;my_plot.png&quot;</span>, g, <span class="at">width=</span><span class="dv">6</span>, <span class="at">height=</span><span class="dv">4</span>)</span></code></pre></div>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb795"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb795-1"><a href="df_plt.html#cb795-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> (</span>
-<span id="cb795-2"><a href="df_plt.html#cb795-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;mpg&#39;</span>, y<span class="op">=</span><span class="st">&#39;hp&#39;</span>)) <span class="op">+</span></span>
-<span id="cb795-3"><a href="df_plt.html#cb795-3" aria-hidden="true" tabindex="-1"></a>  geom_point() <span class="op">+</span></span>
-<span id="cb795-4"><a href="df_plt.html#cb795-4" aria-hidden="true" tabindex="-1"></a>  theme_minimal()</span>
-<span id="cb795-5"><a href="df_plt.html#cb795-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb795-6"><a href="df_plt.html#cb795-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb795-7"><a href="df_plt.html#cb795-7" aria-hidden="true" tabindex="-1"></a>g.save(<span class="st">&quot;plot.png&quot;</span>)</span></code></pre></div>
-<pre><code>## /home/romano/Documents/EpiC/.venv/lib/python3.11/site-packages/plotnine/ggplot.py:587: PlotnineWarning: Saving 6.4 x 4.8 in image.
-## /home/romano/Documents/EpiC/.venv/lib/python3.11/site-packages/plotnine/ggplot.py:588: PlotnineWarning: Filename: plot.png</code></pre>
+<div class="sourceCode" id="cb797"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb797-1"><a href="df_plt.html#cb797-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> (</span>
+<span id="cb797-2"><a href="df_plt.html#cb797-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;mpg&#39;</span>, y<span class="op">=</span><span class="st">&#39;hp&#39;</span>)) <span class="op">+</span></span>
+<span id="cb797-3"><a href="df_plt.html#cb797-3" aria-hidden="true" tabindex="-1"></a>  geom_point() <span class="op">+</span></span>
+<span id="cb797-4"><a href="df_plt.html#cb797-4" aria-hidden="true" tabindex="-1"></a>  theme_minimal()</span>
+<span id="cb797-5"><a href="df_plt.html#cb797-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb797-6"><a href="df_plt.html#cb797-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb797-7"><a href="df_plt.html#cb797-7" aria-hidden="true" tabindex="-1"></a>g.save(<span class="st">&quot;my_plot.png&quot;</span>, width<span class="op">=</span><span class="dv">6</span>, height<span class="op">=</span><span class="dv">4</span>)</span></code></pre></div>
+<pre><code>## /home/romano/Documents/EpiC/.venv/lib/python3.11/site-packages/plotnine/ggplot.py:587: PlotnineWarning: Saving 6 x 4 in image.
+## /home/romano/Documents/EpiC/.venv/lib/python3.11/site-packages/plotnine/ggplot.py:588: PlotnineWarning: Filename: my_plot.png</code></pre>
 </div>
 </div>
 <p>This will save the scatter plot as a PNG file named “plot.png”. You can change the filename to save it as a different type (like .jpg or .pdf) or to a different location as usual!.</p>

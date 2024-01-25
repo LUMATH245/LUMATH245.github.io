@@ -1125,8 +1125,9 @@ For instance:
 **R**
 
 ```{r}
-# R users, look at the output of python plot. We can easily make the same plot in R
-# Can you translate the python code to obtain the same?
+# R users, look at the output of python plot.
+# We can make the same plot in R!
+# Can you translate the python code to ggplot2?
 ggplot(mtcars, aes(y=mpg)) +
   geom_boxplot() +
   geom_density()
@@ -1390,8 +1391,14 @@ ggplot(mtcars |> filter(am == "manual"),
 # barcharts
 # great for categorical variables
 ggplot(mtcars, aes(x=cyl, fill=am)) +
-  geom_bar() +
-  facet_wrap(~vs)
+  geom_bar()
+
+# we can store the plot in a variable and add more layers if 
+# needed 
+pt <- ggplot(mtcars, aes(x=cyl, fill=am)) +
+  geom_bar()
+
+pt + facet_wrap(~vs)
 ```
 
 </div>
@@ -1423,9 +1430,14 @@ ggplot(mtcars, aes(x=cyl, fill=am)) +
 # great for categorical variables
 (
   ggplot(mtcars, aes(x='cyl', fill='am')) +
-  geom_bar() +
-  facet_wrap('~vs')
+  geom_bar()
 )
+
+# we can store the plot in a variable and add more layers if 
+# needed 
+pt = (ggplot(mtcars, aes(x='cyl', fill='am')) +
+  geom_bar())
+pt + facet_wrap('~vs')
 ```
 
 </div>
@@ -1446,7 +1458,7 @@ g <- ggplot(mtcars, aes(x=mpg, y=hp)) +
   geom_point() +
   theme_minimal()
 
-ggsave("plot.png", g)
+ggsave("my_plot.png", g, width=6, height=4)
 ```
 
 </div>
@@ -1462,7 +1474,7 @@ g = (
   theme_minimal()
 )
 
-g.save("plot.png")
+g.save("my_plot.png", width=6, height=4)
 ```
 
 </div>
