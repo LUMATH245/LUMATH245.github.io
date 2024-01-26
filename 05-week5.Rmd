@@ -111,8 +111,6 @@ from plotnine import *
 ```
 
 With `plotnine`, you'll be able to create a wide variety of plots and visualizations, and gain deeper insights from your data.
-So, let's dive in and start exploring the wonderful world of data visualization in Python!
-🚀
 
 ## Data Frames
 
