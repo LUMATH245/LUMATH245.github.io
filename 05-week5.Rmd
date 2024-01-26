@@ -525,7 +525,7 @@ In R, we use `mutate()`, and in Python, we use `assign`.
 
 **R**
 
-```{r}
+```{r R.options = list(width = 100)}
 # Compute percentage of sugars over carbohydrates in R
 # Then, adding the total weight of the components and computing the 
 # protein content
@@ -938,7 +938,9 @@ In the `mtcars` data frame, the `am` column represents the transmission type: 0 
 # and min qsec
 mtcars |>
   group_by(vs, am) |>
-  summarise(avg_mpg = mean(mpg), avg_hp = mean(hp), min_qsec = min(qsec))
+  summarise(avg_mpg = mean(mpg),
+            avg_hp = mean(hp),
+            min_qsec = min(qsec))
 ```
 
 </div>
@@ -953,7 +955,9 @@ mtcars |>
 (
   mtcars
   .groupby(['vs', 'am'])
-  .agg({'mpg' : 'mean', 'hp' : 'mean', 'qsec' : 'min'})
+  .agg({'mpg' : 'mean',
+        'hp' : 'mean',
+        'qsec' : 'min'})
 )
 ```
 

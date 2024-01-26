@@ -772,16 +772,14 @@ In R, we use <code>mutate()</code>, and in Python, we use <code>assign</code>.</
 <span id="cb714-6"><a href="df_plt.html#cb714-6" aria-hidden="true" tabindex="-1"></a>                              <span class="at">protein_content =</span> Protein <span class="sc">/</span> tot_wei <span class="sc">*</span> <span class="dv">100</span>)</span>
 <span id="cb714-7"><a href="df_plt.html#cb714-7" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 10
-##   Milk_Type Calories Protein Fiber Carbohydrates Sugars
-##   &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt;
-## 1 Almond          60     1     1               8    7  
-## 2 Soy            100     7     2              10   NA  
-## 3 Oat            120     3     1.2            20   19  
-## 4 Rice           130     1     0.7            25   NA  
-## 5 Cashew          80     0.7   1               2    0.5
-## 6 Hazelnut       130     2     2               8    3  
-## # ℹ 4 more variables: Fats &lt;dbl&gt;, sugar_percent &lt;dbl&gt;,
-## #   tot_wei &lt;dbl&gt;, protein_content &lt;dbl&gt;</code></pre>
+##   Milk_Type Calories Protein Fiber Carbohydrates Sugars  Fats sugar_percent tot_wei protein_content
+##   &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;   &lt;dbl&gt;           &lt;dbl&gt;
+## 1 Almond          60     1     1               8    7     2.5          87.5    12.5            8   
+## 2 Soy            100     7     2              10   NA     4            NA      23             30.4 
+## 3 Oat            120     3     1.2            20   19     2.5          95      26.7           11.2 
+## 4 Rice           130     1     0.7            25   NA     2.5          NA      29.2            3.42
+## 5 Cashew          80     0.7   1               2    0.5   3            25       6.7           10.4 
+## 6 Hazelnut       130     2     2               8    3     9            37.5    21              9.52</code></pre>
 <p><strong>python</strong></p>
 <div class="sourceCode" id="cb716"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb716-1"><a href="df_plt.html#cb716-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute percentage of sugars over carbohydrates in Python</span></span>
 <span id="cb716-2"><a href="df_plt.html#cb716-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, adding the total weight of the components and computing the </span></span>
@@ -1191,7 +1189,9 @@ In the <code>mtcars</code> data frame, the <code>am</code> column represents the
 <span id="cb750-2"><a href="df_plt.html#cb750-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and min qsec</span></span>
 <span id="cb750-3"><a href="df_plt.html#cb750-3" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span></span>
 <span id="cb750-4"><a href="df_plt.html#cb750-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(vs, am) <span class="sc">|&gt;</span></span>
-<span id="cb750-5"><a href="df_plt.html#cb750-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_mpg =</span> <span class="fu">mean</span>(mpg), <span class="at">avg_hp =</span> <span class="fu">mean</span>(hp), <span class="at">min_qsec =</span> <span class="fu">min</span>(qsec))</span></code></pre></div>
+<span id="cb750-5"><a href="df_plt.html#cb750-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_mpg =</span> <span class="fu">mean</span>(mpg),</span>
+<span id="cb750-6"><a href="df_plt.html#cb750-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">avg_hp =</span> <span class="fu">mean</span>(hp),</span>
+<span id="cb750-7"><a href="df_plt.html#cb750-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_qsec =</span> <span class="fu">min</span>(qsec))</span></code></pre></div>
 <pre><code>## `summarise()` has grouped output by &#39;vs&#39;. You can override
 ## using the `.groups` argument.</code></pre>
 <pre><code>## # A tibble: 4 × 5
@@ -1210,8 +1210,10 @@ In the <code>mtcars</code> data frame, the <code>am</code> column represents the
 <span id="cb753-3"><a href="df_plt.html#cb753-3" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb753-4"><a href="df_plt.html#cb753-4" aria-hidden="true" tabindex="-1"></a>  mtcars</span>
 <span id="cb753-5"><a href="df_plt.html#cb753-5" aria-hidden="true" tabindex="-1"></a>  .groupby([<span class="st">&#39;vs&#39;</span>, <span class="st">&#39;am&#39;</span>])</span>
-<span id="cb753-6"><a href="df_plt.html#cb753-6" aria-hidden="true" tabindex="-1"></a>  .agg({<span class="st">&#39;mpg&#39;</span> : <span class="st">&#39;mean&#39;</span>, <span class="st">&#39;hp&#39;</span> : <span class="st">&#39;mean&#39;</span>, <span class="st">&#39;qsec&#39;</span> : <span class="st">&#39;min&#39;</span>})</span>
-<span id="cb753-7"><a href="df_plt.html#cb753-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb753-6"><a href="df_plt.html#cb753-6" aria-hidden="true" tabindex="-1"></a>  .agg({<span class="st">&#39;mpg&#39;</span> : <span class="st">&#39;mean&#39;</span>,</span>
+<span id="cb753-7"><a href="df_plt.html#cb753-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;hp&#39;</span> : <span class="st">&#39;mean&#39;</span>,</span>
+<span id="cb753-8"><a href="df_plt.html#cb753-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;qsec&#39;</span> : <span class="st">&#39;min&#39;</span>})</span>
+<span id="cb753-9"><a href="df_plt.html#cb753-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>##                           mpg          hp   qsec
 ## vs       am                                     
 ## V-Shaped automatic  15.050000  194.166667  15.41
