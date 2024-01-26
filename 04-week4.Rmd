@@ -383,8 +383,8 @@ sums
 
 In this example, the list comprehension statement relies on the `zip` function. `zip` is used to pair up the elements from `numbers1` and `numbers2`. Try to run `zip(numbers1, numbers2)` alone to see the output! I personally find that the `map` function is more readable, however you should be familiar with both ways as you will be encountering both if you keep programming with Python. One other advantage is that the `map` function is inherently flexible and can take as many arguments as necessary. This is because it's designed to apply a function to multiple iterables in parallel. If you pass more than one iterable to `map`, it will pass corresponding elements from each iterable to the function. This allows you to easily apply a function to multiple arguments.
 
-**Note for R Users** `map2` is limited to two arguments, however in `purr`, we do have a `map` function that can take as many arguments as necessary: the `pmap` function. The `pmap` function has a slightly different notation, as it takes a list of vectors (or a list of lists) and a function as input, and returns a list. Each element of the output list is the result of applying the input function with the corresponding elements of the input vectors as arguments.
-Here's an example:
+**Note for R Users** `map2` is limited to two arguments, however in `purr`, we do have a `map` function that can take as many arguments as necessary: the `pmap` function. The `pmap` function has a slightly different notation, as it takes a list of vectors (or a list of lists) and a function as input, and returns a list. Each element of the output list is the result of applying the input function with the corresponding elements of the input vectors as arguments. Here's an example:
+
 ```{r}
 # Define a function that adds two numbers
 add <- \(x, y) x + y
@@ -397,8 +397,8 @@ sums <- pmap_dbl(numbers, add)
 
 sums
 ```
-It's important to note that all vectors in the list passed to `pmap` should be the same length, as `pmap` will recycle shorter vectors to match the length of the longest vector, which can lead to unexpected results. If the vectors are not the same length, you should adjust them to be the same length before using `pmap`.
 
+It's important to note that all vectors in the list passed to `pmap` should be the same length, as `pmap` will recycle shorter vectors to match the length of the longest vector, which can lead to unexpected results. If the vectors are not the same length, you should adjust them to be the same length before using `pmap`.
 
 ### Reduce Operation
 
@@ -931,7 +931,6 @@ np.linalg.eig(B)
 
 **In Python**, the `np.linalg.eig()` function returns a tuple containing the eigenvalues and eigenvectors. This result can be interpreted as an object of type `EigResult`. An object in Python is an instance of a class, which can have attributes (data associated with the object) and methods (functions associated with the object). You can access the attributes of an object using the `.` operator. For example, if `result` is the output of `np.linalg.eig(B)`, e.g. `result <- eigen(B)`, you can access the eigenvalues with `result.eigenvalues` and the eigenvectors with `result.eigenvectors`. Surprisingly enough, you used methods already all this time without knowing! Think about the many occasions you used a `.`: you were accessing a method in an object.
 
-
 ### Exercise: Implementing a Linear Model Solver
 
 In this exercise, we will implement a linear model solver from scratch. This will help you understand the underlying mathematics of linear regression and how it can be implemented in code.
@@ -942,10 +941,14 @@ The general form of this model is:
 
 $$y = X\beta + \epsilon$$
 
-where: 
--   $y$ is the output variable. 
--   $X$ is the input variable. 
--   $\beta$ is the vector of coefficients. 
+where:
+
+-   $y$ is the output variable.
+
+-   $X$ is the input variable.
+
+-   $\beta$ is the vector of coefficients.
+
 -   $\epsilon$ is the error term.
 
 The coefficients of the linear model can be estimated using the formula for $\hat{\beta}$:

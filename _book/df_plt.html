@@ -933,7 +933,7 @@ See the two chunks below:</p>
 <p><strong>NOTE for Python users:</strong> In this Python code, <code>query('Sugars == Sugars')</code> is used to filter out rows where ‘Sugars’ is <code>NaN</code> (since <code>NaN != NaN</code>).
 Also, for the statement to evaluate correctly, we need the <code>()</code> brackets around the whole code chunk.
 This is because python is reading it as whole line, equivalent to <code>INPUT_DF.QUERY_OUT.ASSIGN_OUT.SORT_OUT[[INDEXING]]</code>.</p>
-<p><strong>NOTE for users learning both:</strong> The difference between these two statements is one of the reasons I personally prefer modern R for data manipulation and plotting.
+<p><strong>NOTE for users learning both:</strong> The difference between these two statements is one of the reasons I personally prefer modern R <em>for data manipulation and plotting</em>.
 Good news is: you can use Python functions in R in a seamless way.
 Whilst this will be beyond the scope of this module, if you are curious on how to do so, you should probably read the <code>reticulate</code> interface guide.
 <a href="https://rstudio.github.io/reticulate/">You will find this here</a>.
@@ -1200,17 +1200,19 @@ In the <code>mtcars</code> data frame, the <code>am</code> column represents the
 </div>
 <p>By adding a second grouping variable, we can explore more complex relationships in our data.
 Looking at the mtcars analysis, we see that cars with automatic transmissions from the 1973-74 era generally consumed more fuel and took longer to accelerate, regardless of the engine type.
-Hold up, isn't that contrary to what we know about cars today?
+Hold up, isn’t that contrary to what we know about cars today?
 Well, remember, this data is from the early 70s when automatic transmissions were mostly hydraulic and not as efficient as they are now.</p>
-<p>Fast forward to today, and you'll find that automatic transmissions can be just as, if not more, fuel-efficient than manual ones.
+<p>Fast forward to today, and you’ll find that automatic transmissions can be just as, if not more, fuel-efficient than manual ones.
 They can even outpace manual transmissions in terms of acceleration in certain vehicles!</p>
-<p>Just think about F1: while it's true that drivers have control over gear changes, it's not entirely manual.
+<p>Just think about F1: while it’s true that drivers have control over gear changes, it’s not entirely manual.
 They use a semi-automatic transmission system where they initiate gear changes using paddles on the steering wheel, but the actual gear change is performed by an onboard computer.
 So, while our analysis holds true for the cars of yesteryears, the automotive world has come a long way since then!</p>
 </div>
 <div id="exercise-an-mtcars-analysis" class="section level3 hasAnchor" number="5.1.5">
 <h3><span class="header-section-number">5.1.5</span> Exercise: an mtcars analysis<a href="df_plt.html#exercise-an-mtcars-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>In this exercise, we will further explore the <code>mtcars</code> dataset. The goal is to create a new variable, efficiency, and summarise the data to produce meaningful statistics. You should:</p>
+<p>In this exercise, we will further explore the <code>mtcars</code> dataset.
+The goal is to create a new variable, efficiency, and summarise the data to produce meaningful statistics.
+You should:</p>
 <ol style="list-style-type: decimal">
 <li><p>Create a new column “efficiency” which is the ratio of miles per gallon to horsepower.</p></li>
 <li><p>Filter the data to only include cars with the straight engine.</p></li>

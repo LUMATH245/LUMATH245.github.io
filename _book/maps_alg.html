@@ -476,8 +476,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb549-3"><a href="maps_alg.html#cb549-3" aria-hidden="true" tabindex="-1"></a>sums</span></code></pre></div>
 <pre><code>## [11, 13, 15]</code></pre>
 <p>In this example, the list comprehension statement relies on the <code>zip</code> function. <code>zip</code> is used to pair up the elements from <code>numbers1</code> and <code>numbers2</code>. Try to run <code>zip(numbers1, numbers2)</code> alone to see the output! I personally find that the <code>map</code> function is more readable, however you should be familiar with both ways as you will be encountering both if you keep programming with Python. One other advantage is that the <code>map</code> function is inherently flexible and can take as many arguments as necessary. This is because it’s designed to apply a function to multiple iterables in parallel. If you pass more than one iterable to <code>map</code>, it will pass corresponding elements from each iterable to the function. This allows you to easily apply a function to multiple arguments.</p>
-<p><strong>Note for R Users</strong> <code>map2</code> is limited to two arguments, however in <code>purr</code>, we do have a <code>map</code> function that can take as many arguments as necessary: the <code>pmap</code> function. The <code>pmap</code> function has a slightly different notation, as it takes a list of vectors (or a list of lists) and a function as input, and returns a list. Each element of the output list is the result of applying the input function with the corresponding elements of the input vectors as arguments.
-Here’s an example:</p>
+<p><strong>Note for R Users</strong> <code>map2</code> is limited to two arguments, however in <code>purr</code>, we do have a <code>map</code> function that can take as many arguments as necessary: the <code>pmap</code> function. The <code>pmap</code> function has a slightly different notation, as it takes a list of vectors (or a list of lists) and a function as input, and returns a list. Each element of the output list is the result of applying the input function with the corresponding elements of the input vectors as arguments. Here’s an example:</p>
 <div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="maps_alg.html#cb551-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function that adds two numbers</span></span>
 <span id="cb551-2"><a href="maps_alg.html#cb551-2" aria-hidden="true" tabindex="-1"></a>add <span class="ot">&lt;-</span> \(x, y) x <span class="sc">+</span> y</span>
 <span id="cb551-3"><a href="maps_alg.html#cb551-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -959,11 +958,13 @@ Here’s an example:</p>
 <p>A linear model is a mathematical model that assumes a linear relationship between the input variables (<span class="math inline">\(X\)</span>) and the single output variable (<span class="math inline">\(y\)</span>). More specifically, that y can be calculated from a linear combination of the input variables (<span class="math inline">\(X\)</span>). When there is a single input variable, the method is referred to as simple linear regression.</p>
 <p>The general form of this model is:</p>
 <p><span class="math display">\[y = X\beta + \epsilon\]</span></p>
-<p>where:
-- <span class="math inline">\(y\)</span> is the output variable.
-- <span class="math inline">\(X\)</span> is the input variable.
-- <span class="math inline">\(\beta\)</span> is the vector of coefficients.
-- <span class="math inline">\(\epsilon\)</span> is the error term.</p>
+<p>where:</p>
+<ul>
+<li><p><span class="math inline">\(y\)</span> is the output variable.</p></li>
+<li><p><span class="math inline">\(X\)</span> is the input variable.</p></li>
+<li><p><span class="math inline">\(\beta\)</span> is the vector of coefficients.</p></li>
+<li><p><span class="math inline">\(\epsilon\)</span> is the error term.</p></li>
+</ul>
 <p>The coefficients of the linear model can be estimated using the formula for <span class="math inline">\(\hat{\beta}\)</span>:</p>
 <p><span class="math display">\[\hat{\beta} = (X^T X)^{-1} X^T y\]</span></p>
 <ol style="list-style-type: decimal">

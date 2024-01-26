@@ -679,7 +679,7 @@ milk_df |>
 Also, for the statement to evaluate correctly, we need the `()` brackets around the whole code chunk.
 This is because python is reading it as whole line, equivalent to `INPUT_DF.QUERY_OUT.ASSIGN_OUT.SORT_OUT[[INDEXING]]`.
 
-**NOTE for users learning both:** The difference between these two statements is one of the reasons I personally prefer modern R for data manipulation and plotting.
+**NOTE for users learning both:** The difference between these two statements is one of the reasons I personally prefer modern R *for data manipulation and plotting*.
 Good news is: you can use Python functions in R in a seamless way.
 Whilst this will be beyond the scope of this module, if you are curious on how to do so, you should probably read the `reticulate` interface guide.
 [You will find this here](https://rstudio.github.io/reticulate/).
@@ -947,29 +947,31 @@ mtcars |>
 
 By adding a second grouping variable, we can explore more complex relationships in our data.
 Looking at the mtcars analysis, we see that cars with automatic transmissions from the 1973-74 era generally consumed more fuel and took longer to accelerate, regardless of the engine type.
-Hold up, isn\'t that contrary to what we know about cars today?
+Hold up, isn't that contrary to what we know about cars today?
 Well, remember, this data is from the early 70s when automatic transmissions were mostly hydraulic and not as efficient as they are now.
 
-Fast forward to today, and you\'ll find that automatic transmissions can be just as, if not more, fuel-efficient than manual ones.
+Fast forward to today, and you'll find that automatic transmissions can be just as, if not more, fuel-efficient than manual ones.
 They can even outpace manual transmissions in terms of acceleration in certain vehicles!
 
-Just think about F1: while it\'s true that drivers have control over gear changes, it\'s not entirely manual.
+Just think about F1: while it's true that drivers have control over gear changes, it's not entirely manual.
 They use a semi-automatic transmission system where they initiate gear changes using paddles on the steering wheel, but the actual gear change is performed by an onboard computer.
 So, while our analysis holds true for the cars of yesteryears, the automotive world has come a long way since then!
 
 ### Exercise: an mtcars analysis
 
-In this exercise, we will further explore the `mtcars` dataset. The goal is to create a new variable, efficiency, and summarise the data to produce meaningful statistics. You should:
+In this exercise, we will further explore the `mtcars` dataset.
+The goal is to create a new variable, efficiency, and summarise the data to produce meaningful statistics.
+You should:
 
-1.    Create a new column "efficiency" which is the ratio of miles per gallon to horsepower.
+1.  Create a new column "efficiency" which is the ratio of miles per gallon to horsepower.
 
-2.    Filter the data to only include cars with the straight engine.
+2.  Filter the data to only include cars with the straight engine.
 
-3.    Arrange these cars in descending order of efficiency and print the head of our d
+3.  Arrange these cars in descending order of efficiency and print the head of our d
 
-4.    Group the original data by type of transmission and number of cylinders.
+4.  Group the original data by type of transmission and number of cylinders.
 
-5.    Calculate the average efficiency for each group.
+5.  Calculate the average efficiency for each group.
 
 Do our finding reflect what we mentioned above?
 
