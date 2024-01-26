@@ -197,6 +197,11 @@ print(milk_df)
 
 ```{r}
 # Accessing the 'Calories' column in R
+
+# way 1
+milk_df["Calories"]
+
+# way 2
 milk_df$Calories
 ```
 
@@ -208,15 +213,20 @@ milk_df$Calories
 
 ```{python}
 # Accessing the 'Calories' column in Python
+
+# way 1
 milk_df['Calories']
+
+# way 2
+milk_df.Calories
 ```
 
 </div>
 :::
 
-This will return the relative column, which, note, in R is returned *as a vector*, while in python as a column of a data frame.
+This will return the relative column.
 
-**NOTE for R users.** In R, we use the `select()` function from the `tidyverse` package to select columns.
+**NOTE for R users.** In R, we have two different behaviours if we use `df["COLNAME"]` compared to `df$COLNAME`. In the first case, a subset of our data frame is returned (and the class is mantained), in the second case, we return the column as a vector (without the column title!). Additionally, we can use the `select()` function from the `tidyverse` package to select columns.
 
 ```{r}
 # Using the select() function in R
@@ -225,10 +235,11 @@ milk_df |> select(Calories)
 
 Recall that the pipe operator (`|>`) is used to chain operations together, so it will take whatever we have at the left, and use it as a first argument to the function to the right.
 The above R code is equivalent to `select(milk_df, Calories)`.
-Note, `select` will return the column as a vector of a data frame.
+Note, `select` will return the column as a subset of a data frame, and is equivalent to the `[""]` notation.
 Sometimes this can be better, as you might not want to change the type of your objects *inadvertently during execution*.
 
-To access multiple variables at the same time, we can pass a vector of variable names:
+
+**Accessing multiple columns.** To access multiple variables at the same time, we can pass a vector of variable names:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -239,6 +250,10 @@ To access multiple variables at the same time, we can pass a vector of variable 
 # Accessing the 'Calories' and 'Protein' columns in R and storing it 
 # in a new variable
 calories_protein <- milk_df |> select(Calories, Protein)
+
+# alternative
+# calories_protein <- milk_df[c("Calories", "Protein")]
+
 calories_protein
 ```
 
@@ -258,7 +273,7 @@ calories_protein
 </div>
 :::
 
-Note that once we access (and store, as in this second example) a subset of a data frame, we get out another data frame.
+Note that once we access (and store, as in this second example) a subset of a data frame, we get out another data frame. Note also that the `$` (in R) and `.` (in Python) cannot access multiple columns.
 
 **Accessing rows.** To access individual rows in the data frames, we can use indexing.
 Similarly to vectors, to access multiple rows at the same time, we can pass a vector of row indices:
@@ -442,8 +457,8 @@ When working with data in R or Python, most of the time we need to perform some 
 This could involve modifying our data frame, accessing specific parts of it that are of interest, or creating new variables based on existing ones.
 Fortunately, both R and Python provide a set of powerful functions for these tasks.
 
-In R, we have `filter()`, `arrange()`, `select()`, and `mutate()`.
-In Python, we have `query`, `sort_values`, `loc` or `iloc`, and `assign`.
+In R, we have `bind_rows`, `filter`, `arrange`, and `mutate`.
+In Python, we have `concat`, `query`, `sort_values`, and `assign`.
 We will now explore each of these functions in detail.
 
 #### Adding New Rows
@@ -527,9 +542,9 @@ milk_df
 # Then, adding the total weight of the components and computing the 
 # protein content
 milk_df = milk_df.assign(
-    sugar_percent = lambda df: (df['Sugars'] / df['Carbohydrates']) * 100,
-    tot_wei = lambda df: df['Protein'] + df['Fiber'] + df['Carbohydrates'] + df['Fats'],
-    protein_content = lambda df: df['Protein'] / df['tot_wei'] * 100
+    sugar_percent = lambda df: (df.Sugars / df.Carbohydrates) * 100,
+    tot_wei = lambda df: df.Protein + df.Fiber + df.Carbohydrates + df.Fats,
+    protein_content = lambda df: df.Protein / df.tot_wei * 100
 )
 
 milk_df
@@ -666,9 +681,9 @@ milk_df |>
   milk_df
     .query('Sugars == Sugars')  # Equivalent to !is.na(Sugars) in R
     .assign(
-        sugar_percent = lambda df: (df['Sugars'] / df['Carbohydrates']) * 100,
-        tot_wei = lambda df: df['Protein'] + df['Fiber'] + df['Carbohydrates'] + df['Fats'],
-        protein_content = lambda df: df['Protein'] / df['tot_wei'] * 100
+        sugar_percent = lambda df: (df.Sugars / df.Carbohydrates) * 100,
+        tot_wei = lambda df: df.Protein + df.Fiber + df.Carbohydrates + df.Fats,
+        protein_content = lambda df: df.Protein / df.tot_wei * 100
     )
     .sort_values('protein_content', ascending=False)
     [['Milk_Type', 'protein_content']]
