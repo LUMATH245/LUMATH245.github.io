@@ -4,13 +4,15 @@
 
 ### Generic FizzBuzz
 
-Imagine R as the 'Ugly Duckling' of programming languages. Initially, it's often misunderstood and overlooked by coding newbies who see it as clunky or uncool. But, thanks to the magic of the `tidyverse`, R has been going through a major glow-up. It's evolving into one of the most elegant and powerful languages out there 🦢. What if I tell you that you can code the above `generic_fizzbuzz` of the exercise in Section \@ref(generic-fizzbuzz) in a very compact way?
+Imagine R as the 'Ugly Duckling' of programming languages. Initially, it's often misunderstood and overlooked by coding newbies who see it as clunky or uncool. But, thanks to the magic of the `tidyverse`, R has been going through a major glow-up. It's evolving into one of the most elegant and powerful languages out there 🦢. To see this, what if I tell you that you can code the above `generic_fizzbuzz` of the exercise in Section \@ref(generic-fizzbuzz) in a very elegant, compact way?
 
 More formally, rewrite `generic_fizzbuzz` respecting the following conditions:
 
 -   Your `generic_fizzbuzz` code should be under 4 statements (lines) and human readable
 
 -   You should not use any brackets `{}`
+
+-   You should avoid for cycles
 
 -   You will probably need the pipe operator `|>` (See intro in Chapter \@ref(data-frames)), and another couple of `purrr` functions (see the cheatsheet, [which you can find here](https://rstudio.github.io/cheatsheets/html/purrr.html)).
 
