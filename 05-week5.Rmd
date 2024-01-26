@@ -777,7 +777,7 @@ In RStudio, you can also explore the data frame visually via the `View()` functi
 This opens the data frame in a spreadsheet-like view, which can be very useful for getting a sense of the data.
 A shortcut for this is via the "spreadsheet" button on your environment pane, highlighted in yellow in the figure below:\
 \
-![](images/chapter5/view_button.png)
+![](images/chapter5/view_button.png){width="468"}
 
 Try to click it!
 
@@ -946,13 +946,32 @@ mtcars |>
 :::
 
 By adding a second grouping variable, we can explore more complex relationships in our data.
-We can see now that the automatic transmission consume more in general, and accelerate in more time across both the types of engines.
-Wait, what?
-If you're an expert with cars, you probably heard that automatic consumes less (and accelerate faster in some sports cars!), so what's going on?
-Well, remember, this data frame focuses on cars that were from 1973--74.
-Back in the days the automatic transmission was mostly hydraulic, so it was quite inefficient!
-While more recently we have much better transmissions, an expert driver can still be more fuel efficient and accelerate faster.
-In F1, at this day, drivers still choose their gears on their own!
+Looking at the mtcars analysis, we see that cars with automatic transmissions from the 1973-74 era generally consumed more fuel and took longer to accelerate, regardless of the engine type.
+Hold up, isn\'t that contrary to what we know about cars today?
+Well, remember, this data is from the early 70s when automatic transmissions were mostly hydraulic and not as efficient as they are now.
+
+Fast forward to today, and you\'ll find that automatic transmissions can be just as, if not more, fuel-efficient than manual ones.
+They can even outpace manual transmissions in terms of acceleration in certain vehicles!
+
+Just think about F1: while it\'s true that drivers have control over gear changes, it\'s not entirely manual.
+They use a semi-automatic transmission system where they initiate gear changes using paddles on the steering wheel, but the actual gear change is performed by an onboard computer.
+So, while our analysis holds true for the cars of yesteryears, the automotive world has come a long way since then!
+
+### Exercise: an mtcars analysis
+
+In this exercise, we will further explore the `mtcars` dataset. The goal is to create a new variable, efficiency, and summarise the data to produce meaningful statistics. You should:
+
+1.    Create a new column "efficiency" which is the ratio of miles per gallon to horsepower.
+
+2.    Filter the data to only include cars with the straight engine.
+
+3.    Arrange these cars in descending order of efficiency and print the head of our d
+
+4.    Group the original data by type of transmission and number of cylinders.
+
+5.    Calculate the average efficiency for each group.
+
+Do our finding reflect what we mentioned above?
 
 ## Plotting with ggplot (and plotnine)
 
@@ -1217,9 +1236,11 @@ ggplot(mtcars, aes(x=hp, y=mpg, color=am)) +
 </div>
 :::
 
-We can see graphically now why the mean consumption in the automatic transmission was higher in the example before! You can see that it's separate. 
+We can see graphically now why the mean consumption in the automatic transmission was higher in the example before!
+You can see that it's separate.
 
-Note that we can add as many dimensions as our layer allows it. For instance, to throw the engine type into the mix, I can change the shape of my points:
+Note that we can add as many dimensions as our layer allows it.
+For instance, to throw the engine type into the mix, I can change the shape of my points:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -1247,7 +1268,8 @@ ggplot(mtcars, aes(x=hp, y=mpg, color=am, shape= vs)) +
 </div>
 :::
 
-Or again, maybe we want a different visualization completely! As I can change the shape of my points, I can change the linetype of my boxplots:
+Or again, maybe we want a different visualization completely!
+As I can change the shape of my points, I can change the linetype of my boxplots:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -1279,7 +1301,9 @@ ggplot(mtcars, aes(y=mpg, color=am, linetype = vs)) +
 
 **This section will not be evaluated on the quizzes, however if you are feeling confident you should read it anyway as it shows how powerful ggplot can get. If you're overwelmed, feel free to skip at the exercise, and complete up to the medium level.**
 
-In ggplot you can change a bunch of graphical characteristics very easily by just adding things. This is a very functional way of thinking of a plot, where we can *concatenate* (again, function compositions!) multiple graphical elements! Few things you can easily change include:
+In ggplot you can change a bunch of graphical characteristics very easily by just adding things.
+This is a very functional way of thinking of a plot, where we can *concatenate* (again, function compositions!) multiple graphical elements!
+Few things you can easily change include:
 
 1.  **Themes**: By adding themes you can use different themes to change the overall appearance of your plot.
     For example, `theme_minimal()` gives a minimal theme with no background grid.
@@ -1329,7 +1353,8 @@ ggplot(mtcars, aes(x=hp, y=mpg, color=am)) +
 
 #### Multiple Plots with Facets
 
-Faceting is a way to create multiple subplots at once based on an extra factor variable. This is a very clean way of representing several variables, as the subplots will share the relevant axes.
+Faceting is a way to create multiple subplots at once based on an extra factor variable.
+This is a very clean way of representing several variables, as the subplots will share the relevant axes.
 For instance, let's show the relationship between miles per gallon (`mpg`) and horsepower (`hp`), transmission type (`am`) but separated by the highest gear (`gear`):
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
@@ -1361,7 +1386,6 @@ ggplot(mtcars, aes(x='hp', y='mpg', color='am')) +
 :::
 
 On your own, try what happens by adding the argument `nrow=3` to the `facet_wrap`, e.g. `facet_wrap(~gear, nrow=3)`.
-
 
 #### Few extra layers
 
@@ -1441,10 +1465,10 @@ pt + facet_wrap('~vs')
 </div>
 :::
 
-
 #### Saving and Exporting Plots
 
-You can save your plots to a file in both R and Python. To do so, you will first need to assign the plot to a variable.
+You can save your plots to a file in both R and Python.
+To do so, you will first need to assign the plot to a variable.
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -1478,7 +1502,8 @@ g.save("my_plot.png", width=6, height=4)
 </div>
 :::
 
-This will save the scatter plot as a PNG file named "plot.png". You can change the filename to save it as a different type (like .jpg or .pdf) or to a different location as usual!.
+This will save the scatter plot as a PNG file named "plot.png".
+You can change the filename to save it as a different type (like .jpg or .pdf) or to a different location as usual!.
 
 ### Exercise: ggplots of periodic functions
 

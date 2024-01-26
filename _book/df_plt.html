@@ -1013,7 +1013,7 @@ Well, this is the first time we are doing this in a practical sense.</p>
 This opens the data frame in a spreadsheet-like view, which can be very useful for getting a sense of the data.
 A shortcut for this is via the “spreadsheet” button on your environment pane, highlighted in yellow in the figure below:<br />
 <br />
-<img src="images/chapter5/view_button.png" /></p>
+<img src="images/chapter5/view_button.png" width="468" /></p>
 <p>Try to click it!</p>
 </div>
 <div id="factor-or-categorical-variables" class="section level4 hasAnchor" number="5.1.3.4">
@@ -1199,13 +1199,26 @@ In the <code>mtcars</code> data frame, the <code>am</code> column represents the
 </div>
 </div>
 <p>By adding a second grouping variable, we can explore more complex relationships in our data.
-We can see now that the automatic transmission consume more in general, and accelerate in more time across both the types of engines.
-Wait, what?
-If you’re an expert with cars, you probably heard that automatic consumes less (and accelerate faster in some sports cars!), so what’s going on?
-Well, remember, this data frame focuses on cars that were from 1973–74.
-Back in the days the automatic transmission was mostly hydraulic, so it was quite inefficient!
-While more recently we have much better transmissions, an expert driver can still be more fuel efficient and accelerate faster.
-In F1, at this day, drivers still choose their gears on their own!</p>
+Looking at the mtcars analysis, we see that cars with automatic transmissions from the 1973-74 era generally consumed more fuel and took longer to accelerate, regardless of the engine type.
+Hold up, isn't that contrary to what we know about cars today?
+Well, remember, this data is from the early 70s when automatic transmissions were mostly hydraulic and not as efficient as they are now.</p>
+<p>Fast forward to today, and you'll find that automatic transmissions can be just as, if not more, fuel-efficient than manual ones.
+They can even outpace manual transmissions in terms of acceleration in certain vehicles!</p>
+<p>Just think about F1: while it's true that drivers have control over gear changes, it's not entirely manual.
+They use a semi-automatic transmission system where they initiate gear changes using paddles on the steering wheel, but the actual gear change is performed by an onboard computer.
+So, while our analysis holds true for the cars of yesteryears, the automotive world has come a long way since then!</p>
+</div>
+<div id="exercise-an-mtcars-analysis" class="section level3 hasAnchor" number="5.1.5">
+<h3><span class="header-section-number">5.1.5</span> Exercise: an mtcars analysis<a href="df_plt.html#exercise-an-mtcars-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In this exercise, we will further explore the <code>mtcars</code> dataset. The goal is to create a new variable, efficiency, and summarise the data to produce meaningful statistics. You should:</p>
+<ol style="list-style-type: decimal">
+<li><p>Create a new column “efficiency” which is the ratio of miles per gallon to horsepower.</p></li>
+<li><p>Filter the data to only include cars with the straight engine.</p></li>
+<li><p>Arrange these cars in descending order of efficiency and print the head of our d</p></li>
+<li><p>Group the original data by type of transmission and number of cylinders.</p></li>
+<li><p>Calculate the average efficiency for each group.</p></li>
+</ol>
+<p>Do our finding reflect what we mentioned above?</p>
 </div>
 </div>
 <div id="plotting-with-ggplot-and-plotnine" class="section level2 hasAnchor" number="5.2">
@@ -1403,8 +1416,10 @@ Let’s color the points in our scatterplot based on the type of transmission (<
 <p><img src="images/unnamed-chunk-249-1.png" width="50%" /></p>
 </div>
 </div>
-<p>We can see graphically now why the mean consumption in the automatic transmission was higher in the example before! You can see that it’s separate.</p>
-<p>Note that we can add as many dimensions as our layer allows it. For instance, to throw the engine type into the mix, I can change the shape of my points:</p>
+<p>We can see graphically now why the mean consumption in the automatic transmission was higher in the example before!
+You can see that it’s separate.</p>
+<p>Note that we can add as many dimensions as our layer allows it.
+For instance, to throw the engine type into the mix, I can change the shape of my points:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
@@ -1422,7 +1437,8 @@ Let’s color the points in our scatterplot based on the type of transmission (<
 <p><img src="images/unnamed-chunk-251-1.png" width="50%" /></p>
 </div>
 </div>
-<p>Or again, maybe we want a different visualization completely! As I can change the shape of my points, I can change the linetype of my boxplots:</p>
+<p>Or again, maybe we want a different visualization completely!
+As I can change the shape of my points, I can change the linetype of my boxplots:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
@@ -1445,7 +1461,9 @@ Let’s color the points in our scatterplot based on the type of transmission (<
 <div id="advanced-plots" class="section level3 hasAnchor" number="5.2.2">
 <h3><span class="header-section-number">5.2.2</span> Advanced plots<a href="df_plt.html#advanced-plots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>This section will not be evaluated on the quizzes, however if you are feeling confident you should read it anyway as it shows how powerful ggplot can get. If you’re overwelmed, feel free to skip at the exercise, and complete up to the medium level.</strong></p>
-<p>In ggplot you can change a bunch of graphical characteristics very easily by just adding things. This is a very functional way of thinking of a plot, where we can <em>concatenate</em> (again, function compositions!) multiple graphical elements! Few things you can easily change include:</p>
+<p>In ggplot you can change a bunch of graphical characteristics very easily by just adding things.
+This is a very functional way of thinking of a plot, where we can <em>concatenate</em> (again, function compositions!) multiple graphical elements!
+Few things you can easily change include:</p>
 <ol style="list-style-type: decimal">
 <li><p><strong>Themes</strong>: By adding themes you can use different themes to change the overall appearance of your plot.
 For example, <code>theme_minimal()</code> gives a minimal theme with no background grid.
@@ -1486,7 +1504,8 @@ Try <code>theme_bw()</code> for a different one.</p></li>
 </div>
 <div id="multiple-plots-with-facets" class="section level4 hasAnchor" number="5.2.2.1">
 <h4><span class="header-section-number">5.2.2.1</span> Multiple Plots with Facets<a href="df_plt.html#multiple-plots-with-facets" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Faceting is a way to create multiple subplots at once based on an extra factor variable. This is a very clean way of representing several variables, as the subplots will share the relevant axes.
+<p>Faceting is a way to create multiple subplots at once based on an extra factor variable.
+This is a very clean way of representing several variables, as the subplots will share the relevant axes.
 For instance, let’s show the relationship between miles per gallon (<code>mpg</code>) and horsepower (<code>hp</code>), transmission type (<code>am</code>) but separated by the highest gear (<code>gear</code>):</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
@@ -1580,7 +1599,8 @@ For instance, let’s show the relationship between miles per gallon (<code>mpg<
 </div>
 <div id="saving-and-exporting-plots" class="section level4 hasAnchor" number="5.2.2.3">
 <h4><span class="header-section-number">5.2.2.3</span> Saving and Exporting Plots<a href="df_plt.html#saving-and-exporting-plots" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>You can save your plots to a file in both R and Python. To do so, you will first need to assign the plot to a variable.</p>
+<p>You can save your plots to a file in both R and Python.
+To do so, you will first need to assign the plot to a variable.</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
@@ -1603,7 +1623,8 @@ For instance, let’s show the relationship between miles per gallon (<code>mpg<
 ## /home/romano/Documents/EpiC/.venv/lib/python3.11/site-packages/plotnine/ggplot.py:588: PlotnineWarning: Filename: my_plot.png</code></pre>
 </div>
 </div>
-<p>This will save the scatter plot as a PNG file named “plot.png”. You can change the filename to save it as a different type (like .jpg or .pdf) or to a different location as usual!.</p>
+<p>This will save the scatter plot as a PNG file named “plot.png”.
+You can change the filename to save it as a different type (like .jpg or .pdf) or to a different location as usual!.</p>
 </div>
 </div>
 <div id="exercise-ggplots-of-periodic-functions" class="section level3 hasAnchor" number="5.2.3">

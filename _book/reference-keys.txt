@@ -83,6 +83,7 @@ understanding-the-data-frames
 exploring-your-data-frame
 factor-or-categorical-variables
 group-by-and-summarise
+exercise-an-mtcars-analysis
 plotting-with-ggplot-and-plotnine
 basic-plots
 plotting-the-distribution-of-a-variable
