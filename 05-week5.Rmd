@@ -1526,7 +1526,7 @@ ggplot(db) + aes(x=x, y=y, col=func) + geom_line()
 x = seq(0, 10, by=0.01)
 names = c("sin", "cos") |> rep(3)
 funcs = c(sin, cos) |> rep(3)
-freqs = c(.5, 1, 2) |> rep(2)
+freqs = c(.5, 1, 2) |> rep(each = 2)
 db <- pmap(list(names, funcs, freqs), df_gen) |> reduce(bind_rows)
 ggplot(db) + aes(x=x, y=y, col=func) + geom_line() + facet_grid(freq~.)
 ```

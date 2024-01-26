@@ -458,7 +458,7 @@ In the above examples, we've used the `map2`/`map` operation to multiply the com
 
 **Note for Python Users**: The `reduce` operation in Python is part of the `functools` module, so you need to import it with `from functools import reduce`.
 
-### Exercise: Implement a Generic FizzBuzz Function
+### Exercise: Implement a Generic FizzBuzz Function {#gen-fizzbuzz}
 
 Ok, this is going to be great. The ultimate FizzBuzz. The final boss. You are a mathematician, and mathematicians generalize things. In this exercise, you are asked to generalize FizzBuzz. Solve it all. You should write a function that takes three arguments: a vector of numbers, and a vector of primes, and a vector of phrases. The vectors of primes and phrases should be of the same length, not necessarily the same length of the vector of numbers. The function should return a vector of the same length as the input vector of numbers. Each element of the output vector should be obtained by replacing each number in the input vector with the corresponding phrase if the number is divisible by the corresponding prime. If a number is divisible by more than one prime, the complete phrase should be formed by concatenating the phrases. If a number is not divisible by any of the primes, the number itself should be returned as a string.
 
@@ -525,7 +525,7 @@ or in Python:
 generic_fizzbuzz(range(1, 16), [2, 3, 5, 7], ["Skibbidi", "Fizz", "Buzz", "Yo"])
 ```
 
-**NOTE for R users** Bored? This module is too easy? Well, R, in the recent years, has been undergoing one of the most beautiful transformations of the languages. In general, inexperienced R users tend to drift away from the language as it's seen as inelegant, ugly, or "hacky". Well, that was prior to the `ggplot2`, `purrr` and, more in general, `tidyverse` revolution. What if I tell you that you can code the above `generic_fizzbuzz` in under 4 statements (lines) without using any brackets `{}`? You will need the pipe operator `|>` (which we'll be seeing next week), and another couple of functions. You can learn about these functions quickly via the `purrr` cheatsheet, [which you can find here](https://rstudio.github.io/cheatsheets/html/purrr.html).
+**NOTE for R users** Bored? This module is too easy? Please check the Challenges chapter!
 
 ### State in Functional Programming
 

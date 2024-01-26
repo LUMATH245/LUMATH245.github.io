@@ -1,0 +1,33 @@
+# Additional Programming Challenges {#challenge}
+
+## Part 1: Scientific Computing
+
+### Generic FizzBuzz
+
+We explained how R, in the recent years, has been undergoing one of the most beautiful transformations of the languages. In general, inexperienced R users tend to drift away from the language as it's seen as inelegant, ugly, or "hacky". Well, that was prior to the `tidyverse` revolution. What if I tell you that you can code the above `generic_fizzbuzz` of the exercise in Section \@ref(generic-fizzbuzz) in a very compact way?
+
+More formally, rewrite `generic_fizzbuzz` respecting the following conditions:
+
+-   Your `generic_fizzbuzz` code should be under 4 statements (lines) and human readable
+
+-   You should not use any brackets `{}`
+
+-   You will probably need the pipe operator `|>` (See intro in Chapter \@ref(data-frames)), and another couple of `purrr` functions (see the cheatsheet, [which you can find here](https://rstudio.github.io/cheatsheets/html/purrr.html)).
+
+```{r, include=FALSE}
+library(purrr)
+generic_fizzbuzz <- \(x, primes, phrases)
+  map2(primes, phrases, \(pr, ph) ifelse(x %% pr == 0, ph, "")) |>
+    reduce(paste0) |>
+    map2_chr(x, \(r, x) if(nchar(r) == 0) as.character(x) else r)
+
+generic_fizzbuzz(c(1:15, 2 * 3 * 5 * 7), c(2, 3, 5, 7),  c("Skibbidi", "Fizz", "Buzz", "Yo"))
+```
+
+```{=html}
+<style type="text/css">
+.book .book-body .page-wrapper .page-inner {
+  max-width: 1200px !important;
+}
+</style>
+```

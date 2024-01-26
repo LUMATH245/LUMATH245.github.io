@@ -58,7 +58,7 @@ the-map-operation
 exercise-4
 map-2
 reduce-operation
-exercise-implement-a-generic-fizzbuzz-function
+gen-fizzbuzz
 state-in-functional-programming
 doing-linear-algebra
 building-matrices
@@ -92,3 +92,6 @@ multiple-plots-with-facets
 few-extra-layers
 saving-and-exporting-plots
 exercise-ggplots-of-periodic-functions
+challenge
+part-1-scientific-computing
+generic-fizzbuzz
