@@ -170,10 +170,15 @@ conversion rate each time we want to convert pounds to grams!
 
 The name of the function `lbs_to_grams` and its argument `lbs` are just
 names that I chose. There are a few guidelines that could be useful when
-naming functions: - Names should be lowercase. - Use an underscore, \_,
-to separate words within a name. - Strive for names that are concise and
-meaningful (this is not easy!). - Avoid existing function names in R and
-python, such as `length()` or `len()`.
+naming functions: 
+
+-   Names should be lowercase. 
+
+-   Use an underscore, \_, to separate words within a name.
+
+-   Strive for names that are concise and meaningful (this is not easy!).
+
+-   Avoid existing function names in R and python, such as `length()` or `len()`.
 
 Also, you might have noticed we made a variable within the function
 code, `grams`. But what does it mean to have variables within functions?
