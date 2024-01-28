@@ -181,7 +181,7 @@ What on earth is going on? Well, let's try to break it down:
     -   We we then call `f` with `remainder_printer` as the argument, this will return a lambda that, as described above, will concatenate the fizz and buzz strings. The first step is done with `f(remainder_printer)`. This new **unnassigned** function is then immediately called with `x` via `f(remainder_printer)(x)`.
     -   If the result of this operation is an empty string, we return `x` instead. The condition on the length of the string is checked with `nchar` in R and `len` in Python.
 
-This could have been shortened of at least a couple of statements (try it yourself!). In the next exercise, we are going to use some of these concepts to build *the ultimate FizzBuzz program* (not underselling).
+This could have been shortened of at least a couple of statements (try it yourself!). But this should have showcased how many things we can do with functions. In the next exercise, we are going to use some of these concepts to build *the ultimate FizzBuzz program* (not underselling).
 
 Before doing that, however, we need to introduce the `map` and `reduce` operations.
 
@@ -586,7 +586,46 @@ list(map(fibonacci, range(10)))
 
 In the above examples, we've defined a recursive function `fibonacci` that computes the Fibonacci series. We then used this function compute Fibonacci series: recall that the `fibonacci` function only returns the $n^{th}$ element of the series, so to get the first 10 numbers we need a map statement.
 
-However, it's important to note that while recursion is a powerful concept, it can be impractical in practice due to its high computational complexity and the risk of running out of memory for large inputs. Most of the tasks in functional programming are either solved via `map` and `reduce` operations or, eventually, through for loops. These methods are generally more efficient and can handle larger inputs. **For this reason, my friends, this is the last time we will be seeing recursions in this module**. Brief but intense.
+However, it's important to note that while recursion is a powerful concept, it can be impractical in practice due to its high computational complexity and the risk of running out of memory for large inputs. Most of the tasks in functional programming are either solved via `map` and `reduce` operations or, eventually, through for loops.
+
+The equivalent reduce statement would be (note that this avoid the map statement, why?):
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# Define the function to be used in reduce
+fibonacci_func <- function(prev, current) {
+  n <- length(prev)
+  c(prev, sum(prev[(n-1):n]))
+}
+
+# Generate the first 10 numbers of the Fibonacci series
+reduce(rep(1, 8), fibonacci_func, .init = c(0, 1))
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# Define the function to be used in reduce
+def fibonacci_func(prev, current):
+    n = len(prev)
+    return prev + [sum(prev[(n-2):n])]
+
+# Generate the first 10 numbers of the Fibonacci series
+reduce(fibonacci_func, [1]*8, [0, 1])
+```
+
+</div>
+:::
+
+`map` and `reduce` are generally more efficient, safer, and can handle larger inputs. **For this reason, my friends, this is the last time we will be seeing recursions in this module**. Brief but intense.
 
 ## Doing Linear Algebra
 

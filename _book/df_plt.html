@@ -201,9 +201,9 @@ However, there’s much more, other of the core packages in the <code>tidyverse<
 By using these packages together, you can efficiently import, clean, manipulate, visualize, and analyze your data in a consistent and reproducible manner.
 This makes the <code>tidyverse</code> a powerful tool for modern scientific computing, and for this reason I heavily encourage you to use its functions and packages for the rest of this entire module and for your future analyses.</p>
 <p>To install the tidyverse (already installed on University Machines), run:</p>
-<div class="sourceCode" id="cb639"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb639-1"><a href="df_plt.html#cb639-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb643"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb643-1"><a href="df_plt.html#cb643-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
 <p>And to load the package:</p>
-<div class="sourceCode" id="cb640"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb640-1"><a href="df_plt.html#cb640-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb644"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb644-1"><a href="df_plt.html#cb644-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <p>You only need to install a package once.
 But you have to load all the packages you want to use at the start of every session.
 As a suggestion, make sure the <code>library(tidyverse)</code> command sits at the top of your script from now on.</p>
@@ -214,45 +214,45 @@ This operator allows you to pass the output of one function to another function 
 This operator is written as <code>|&gt;</code> and is used to express a sequence of multiple operations in a more readable and intuitive way.
 In code, the equivalent of our expression would be <code>x |&gt; f1 |&gt; f2</code>.</p>
 <p>For example, if we want to compute the natural logarithm of the sum of the first 10 natural numbers, <span class="math inline">\(\ln(1 + 2+ 3+ ... + 10)\)</span>, this is:</p>
-<div class="sourceCode" id="cb641"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb641-1"><a href="df_plt.html#cb641-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="co"># create a vector with the first 10 integers</span></span>
-<span id="cb641-2"><a href="df_plt.html#cb641-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">|&gt;</span> <span class="fu">sum</span>() <span class="sc">|&gt;</span> <span class="fu">log</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb645"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb645-1"><a href="df_plt.html#cb645-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="co"># create a vector with the first 10 integers</span></span>
+<span id="cb645-2"><a href="df_plt.html#cb645-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">|&gt;</span> <span class="fu">sum</span>() <span class="sc">|&gt;</span> <span class="fu">log</span>()</span></code></pre></div>
 <pre><code>## [1] 4.007333</code></pre>
 <p>In this example, we start with a vector <code>x</code> containing the numbers from 1 to 10.
 We then use the pipe operator to pass this vector to the <code>sum()</code> function, which calculates the sum of all elements in the vector.
 The result of this operation (55) is then passed to the <code>log()</code> function, which calculates the natural logarithm of the input.</p>
 <p>This code is equivalent to writing:</p>
-<div class="sourceCode" id="cb643"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb643-1"><a href="df_plt.html#cb643-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb643-2"><a href="df_plt.html#cb643-2" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="fu">sum</span>(x))</span></code></pre></div>
+<div class="sourceCode" id="cb647"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb647-1"><a href="df_plt.html#cb647-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb647-2"><a href="df_plt.html#cb647-2" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="fu">sum</span>(x))</span></code></pre></div>
 <pre><code>## [1] 4.007333</code></pre>
 <p>As you can see, using the pipe operator allows us to express the sequence of operations in a more readable and intuitive way.
 It can be particularly useful when working with complex data transformations, as it allows you to write code that closely matches the logical sequence of operations you have in mind.</p>
 <p>Remember that the pipe takes the output on its left and passes it <strong>as the first argument</strong> to the function on its right.
 For example, the function <code>log</code> takes as first argument the number and as second argument the base of our logarithm.
 If we want to compute the base-10 logarithm instead of the natural logarithm, we can do this by changing the second <code>base</code> argument after the piping:</p>
-<div class="sourceCode" id="cb645"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb645-1"><a href="df_plt.html#cb645-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb645-2"><a href="df_plt.html#cb645-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">|&gt;</span> <span class="fu">sum</span>() <span class="sc">|&gt;</span> <span class="fu">log</span>(<span class="at">base =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb649"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb649-1"><a href="df_plt.html#cb649-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb649-2"><a href="df_plt.html#cb649-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">|&gt;</span> <span class="fu">sum</span>() <span class="sc">|&gt;</span> <span class="fu">log</span>(<span class="at">base =</span> <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## [1] 1.740363</code></pre>
 <p>This code is equivalent to writing:</p>
-<div class="sourceCode" id="cb647"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb647-1"><a href="df_plt.html#cb647-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb647-2"><a href="df_plt.html#cb647-2" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="fu">sum</span>(x), <span class="at">base =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb651"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb651-1"><a href="df_plt.html#cb651-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb651-2"><a href="df_plt.html#cb651-2" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="fu">sum</span>(x), <span class="at">base =</span> <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## [1] 1.740363</code></pre>
 </div>
 <div id="a-note-for-python-users" class="section level4 hasAnchor" number="5.0.0.2">
 <h4><span class="header-section-number">5.0.0.2</span> A note for Python users<a href="df_plt.html#a-note-for-python-users" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>For this week, we will continue to use the <code>pandas</code> and <code>numpy</code> packages, which, as we learned, are fundamental tools for data manipulation and numerical computations in Python.</p>
-<div class="sourceCode" id="cb649"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb649-1"><a href="df_plt.html#cb649-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb649-2"><a href="df_plt.html#cb649-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div>
+<div class="sourceCode" id="cb653"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb653-1"><a href="df_plt.html#cb653-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb653-2"><a href="df_plt.html#cb653-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div>
 <p>However, we will also introduce a new package: <code>plotnine</code>.
 This package is not included in the standard Python library, so you’ll need to install it.
 You can do this using pip, Python’s package installer.
 To do so, type the following command:</p>
-<div class="sourceCode" id="cb650"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb650-1"><a href="df_plt.html#cb650-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python <span class="op">-</span>m pip install plotnine</span></code></pre></div>
+<div class="sourceCode" id="cb654"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb654-1"><a href="df_plt.html#cb654-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python <span class="op">-</span>m pip install plotnine</span></code></pre></div>
 <p>You only need to install this package once, and then you will be able to load it as you did with <code>numpy</code> or <code>pandas</code>.</p>
 <p><code>plotnine</code> is an implementation of a grammar of graphics in Python, based on <code>ggplot2</code> in R.
 <code>ggplot2</code> is one of the most used libraries for data visualization in R, and <code>plotnine</code> brings its powerful data visualization capabilities to Python.
 It’s designed to work seamlessly with <code>pandas</code> data frames, making it extremely convenient for creating complex and beautiful statistical plots.</p>
 <p>Once you’ve installed <code>plotnine</code>, you can import it in your Python scripts using the following command:</p>
-<div class="sourceCode" id="cb651"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb651-1"><a href="df_plt.html#cb651-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span></code></pre></div>
+<div class="sourceCode" id="cb655"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb655-1"><a href="df_plt.html#cb655-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span></code></pre></div>
 <p>With <code>plotnine</code>, you’ll be able to create a wide variety of plots and visualizations, and gain deeper insights from your data.</p>
 </div>
 <div id="data-frames" class="section level2 hasAnchor" number="5.1">
@@ -338,17 +338,17 @@ In this case, R and python will just tell us that we have a “Not Applicable (N
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb652"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb652-1"><a href="df_plt.html#cb652-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a data frame in R</span></span>
-<span id="cb652-2"><a href="df_plt.html#cb652-2" aria-hidden="true" tabindex="-1"></a>milk_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb652-3"><a href="df_plt.html#cb652-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Milk_Type =</span> <span class="fu">c</span>(<span class="st">&quot;Almond&quot;</span>, <span class="st">&quot;Soy&quot;</span>, <span class="st">&quot;Oat&quot;</span>, <span class="st">&quot;Rice&quot;</span>),</span>
-<span id="cb652-4"><a href="df_plt.html#cb652-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Calories =</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="dv">100</span>, <span class="dv">120</span>, <span class="dv">130</span>),</span>
-<span id="cb652-5"><a href="df_plt.html#cb652-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Protein =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">1</span>),</span>
-<span id="cb652-6"><a href="df_plt.html#cb652-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Fiber =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="cn">NA</span>),</span>
-<span id="cb652-7"><a href="df_plt.html#cb652-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Carbohydrates =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">25</span>),</span>
-<span id="cb652-8"><a href="df_plt.html#cb652-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Sugars =</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="cn">NA</span>, <span class="dv">19</span>, <span class="cn">NA</span>),</span>
-<span id="cb652-9"><a href="df_plt.html#cb652-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">Fats =</span> <span class="fu">c</span>(<span class="fl">2.5</span>, <span class="dv">4</span>, <span class="fl">2.5</span>, <span class="fl">2.5</span>)</span>
-<span id="cb652-10"><a href="df_plt.html#cb652-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb652-11"><a href="df_plt.html#cb652-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(milk_df)</span></code></pre></div>
+<div class="sourceCode" id="cb656"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb656-1"><a href="df_plt.html#cb656-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a data frame in R</span></span>
+<span id="cb656-2"><a href="df_plt.html#cb656-2" aria-hidden="true" tabindex="-1"></a>milk_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb656-3"><a href="df_plt.html#cb656-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Milk_Type =</span> <span class="fu">c</span>(<span class="st">&quot;Almond&quot;</span>, <span class="st">&quot;Soy&quot;</span>, <span class="st">&quot;Oat&quot;</span>, <span class="st">&quot;Rice&quot;</span>),</span>
+<span id="cb656-4"><a href="df_plt.html#cb656-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Calories =</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="dv">100</span>, <span class="dv">120</span>, <span class="dv">130</span>),</span>
+<span id="cb656-5"><a href="df_plt.html#cb656-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Protein =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">1</span>),</span>
+<span id="cb656-6"><a href="df_plt.html#cb656-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Fiber =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="cn">NA</span>),</span>
+<span id="cb656-7"><a href="df_plt.html#cb656-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Carbohydrates =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">25</span>),</span>
+<span id="cb656-8"><a href="df_plt.html#cb656-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Sugars =</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="cn">NA</span>, <span class="dv">19</span>, <span class="cn">NA</span>),</span>
+<span id="cb656-9"><a href="df_plt.html#cb656-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">Fats =</span> <span class="fu">c</span>(<span class="fl">2.5</span>, <span class="dv">4</span>, <span class="fl">2.5</span>, <span class="fl">2.5</span>)</span>
+<span id="cb656-10"><a href="df_plt.html#cb656-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb656-11"><a href="df_plt.html#cb656-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(milk_df)</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 7
 ##   Milk_Type Calories Protein Fiber Carbohydrates Sugars
 ##   &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt;
@@ -360,19 +360,19 @@ In this case, R and python will just tell us that we have a “Not Applicable (N
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb654"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb654-1"><a href="df_plt.html#cb654-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a data frame in Python</span></span>
-<span id="cb654-2"><a href="df_plt.html#cb654-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
-<span id="cb654-3"><a href="df_plt.html#cb654-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Milk_Type&#39;</span>: [<span class="st">&#39;Almond&#39;</span>, <span class="st">&#39;Soy&#39;</span>, <span class="st">&#39;Oat&#39;</span>, <span class="st">&#39;Rice&#39;</span>],</span>
-<span id="cb654-4"><a href="df_plt.html#cb654-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Calories&#39;</span>: [<span class="dv">60</span>, <span class="dv">100</span>, <span class="dv">120</span>, <span class="dv">130</span>],</span>
-<span id="cb654-5"><a href="df_plt.html#cb654-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Protein&#39;</span>: [<span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">1</span>],</span>
-<span id="cb654-6"><a href="df_plt.html#cb654-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Fiber&#39;</span>: [<span class="dv">1</span>, <span class="dv">2</span>, np.nan, np.nan],</span>
-<span id="cb654-7"><a href="df_plt.html#cb654-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Carbohydrates&#39;</span>: [<span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">25</span>],</span>
-<span id="cb654-8"><a href="df_plt.html#cb654-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Sugars&#39;</span>: [<span class="dv">7</span>, np.nan, <span class="dv">19</span>, np.nan],</span>
-<span id="cb654-9"><a href="df_plt.html#cb654-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Fats&#39;</span>: [<span class="fl">2.5</span>, <span class="dv">4</span>, <span class="fl">2.5</span>, <span class="fl">2.5</span>]</span>
-<span id="cb654-10"><a href="df_plt.html#cb654-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb654-11"><a href="df_plt.html#cb654-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb654-12"><a href="df_plt.html#cb654-12" aria-hidden="true" tabindex="-1"></a>milk_df <span class="op">=</span> pd.DataFrame(data)</span>
-<span id="cb654-13"><a href="df_plt.html#cb654-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(milk_df)</span></code></pre></div>
+<div class="sourceCode" id="cb658"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb658-1"><a href="df_plt.html#cb658-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a data frame in Python</span></span>
+<span id="cb658-2"><a href="df_plt.html#cb658-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
+<span id="cb658-3"><a href="df_plt.html#cb658-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Milk_Type&#39;</span>: [<span class="st">&#39;Almond&#39;</span>, <span class="st">&#39;Soy&#39;</span>, <span class="st">&#39;Oat&#39;</span>, <span class="st">&#39;Rice&#39;</span>],</span>
+<span id="cb658-4"><a href="df_plt.html#cb658-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Calories&#39;</span>: [<span class="dv">60</span>, <span class="dv">100</span>, <span class="dv">120</span>, <span class="dv">130</span>],</span>
+<span id="cb658-5"><a href="df_plt.html#cb658-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Protein&#39;</span>: [<span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">1</span>],</span>
+<span id="cb658-6"><a href="df_plt.html#cb658-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Fiber&#39;</span>: [<span class="dv">1</span>, <span class="dv">2</span>, np.nan, np.nan],</span>
+<span id="cb658-7"><a href="df_plt.html#cb658-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Carbohydrates&#39;</span>: [<span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">25</span>],</span>
+<span id="cb658-8"><a href="df_plt.html#cb658-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Sugars&#39;</span>: [<span class="dv">7</span>, np.nan, <span class="dv">19</span>, np.nan],</span>
+<span id="cb658-9"><a href="df_plt.html#cb658-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Fats&#39;</span>: [<span class="fl">2.5</span>, <span class="dv">4</span>, <span class="fl">2.5</span>, <span class="fl">2.5</span>]</span>
+<span id="cb658-10"><a href="df_plt.html#cb658-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb658-11"><a href="df_plt.html#cb658-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb658-12"><a href="df_plt.html#cb658-12" aria-hidden="true" tabindex="-1"></a>milk_df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb658-13"><a href="df_plt.html#cb658-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(milk_df)</span></code></pre></div>
 <pre><code>##   Milk_Type  Calories  Protein  Fiber  Carbohydrates  Sugars  Fats
 ## 0    Almond        60        1    1.0              8     7.0   2.5
 ## 1       Soy       100        7    2.0             10     NaN   4.0
@@ -384,10 +384,10 @@ In this case, R and python will just tell us that we have a “Not Applicable (N
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb656"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb656-1"><a href="df_plt.html#cb656-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the &#39;Calories&#39; column in R</span></span>
-<span id="cb656-2"><a href="df_plt.html#cb656-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb656-3"><a href="df_plt.html#cb656-3" aria-hidden="true" tabindex="-1"></a><span class="co"># way 1</span></span>
-<span id="cb656-4"><a href="df_plt.html#cb656-4" aria-hidden="true" tabindex="-1"></a>milk_df[<span class="st">&quot;Calories&quot;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb660"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb660-1"><a href="df_plt.html#cb660-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the &#39;Calories&#39; column in R</span></span>
+<span id="cb660-2"><a href="df_plt.html#cb660-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb660-3"><a href="df_plt.html#cb660-3" aria-hidden="true" tabindex="-1"></a><span class="co"># way 1</span></span>
+<span id="cb660-4"><a href="df_plt.html#cb660-4" aria-hidden="true" tabindex="-1"></a>milk_df[<span class="st">&quot;Calories&quot;</span>]</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 1
 ##   Calories
 ##      &lt;dbl&gt;
@@ -395,23 +395,23 @@ In this case, R and python will just tell us that we have a “Not Applicable (N
 ## 2      100
 ## 3      120
 ## 4      130</code></pre>
-<div class="sourceCode" id="cb658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb658-1"><a href="df_plt.html#cb658-1" aria-hidden="true" tabindex="-1"></a><span class="co"># way 2</span></span>
-<span id="cb658-2"><a href="df_plt.html#cb658-2" aria-hidden="true" tabindex="-1"></a>milk_df<span class="sc">$</span>Calories</span></code></pre></div>
+<div class="sourceCode" id="cb662"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb662-1"><a href="df_plt.html#cb662-1" aria-hidden="true" tabindex="-1"></a><span class="co"># way 2</span></span>
+<span id="cb662-2"><a href="df_plt.html#cb662-2" aria-hidden="true" tabindex="-1"></a>milk_df<span class="sc">$</span>Calories</span></code></pre></div>
 <pre><code>## [1]  60 100 120 130</code></pre>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb660"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb660-1"><a href="df_plt.html#cb660-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the &#39;Calories&#39; column in Python</span></span>
-<span id="cb660-2"><a href="df_plt.html#cb660-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb660-3"><a href="df_plt.html#cb660-3" aria-hidden="true" tabindex="-1"></a><span class="co"># way 1</span></span>
-<span id="cb660-4"><a href="df_plt.html#cb660-4" aria-hidden="true" tabindex="-1"></a>milk_df[<span class="st">&#39;Calories&#39;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb664"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb664-1"><a href="df_plt.html#cb664-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the &#39;Calories&#39; column in Python</span></span>
+<span id="cb664-2"><a href="df_plt.html#cb664-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb664-3"><a href="df_plt.html#cb664-3" aria-hidden="true" tabindex="-1"></a><span class="co"># way 1</span></span>
+<span id="cb664-4"><a href="df_plt.html#cb664-4" aria-hidden="true" tabindex="-1"></a>milk_df[<span class="st">&#39;Calories&#39;</span>]</span></code></pre></div>
 <pre><code>## 0     60
 ## 1    100
 ## 2    120
 ## 3    130
 ## Name: Calories, dtype: int64</code></pre>
-<div class="sourceCode" id="cb662"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb662-1"><a href="df_plt.html#cb662-1" aria-hidden="true" tabindex="-1"></a><span class="co"># way 2</span></span>
-<span id="cb662-2"><a href="df_plt.html#cb662-2" aria-hidden="true" tabindex="-1"></a>milk_df.Calories</span></code></pre></div>
+<div class="sourceCode" id="cb666"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb666-1"><a href="df_plt.html#cb666-1" aria-hidden="true" tabindex="-1"></a><span class="co"># way 2</span></span>
+<span id="cb666-2"><a href="df_plt.html#cb666-2" aria-hidden="true" tabindex="-1"></a>milk_df.Calories</span></code></pre></div>
 <pre><code>## 0     60
 ## 1    100
 ## 2    120
@@ -421,8 +421,8 @@ In this case, R and python will just tell us that we have a “Not Applicable (N
 </div>
 <p>This will return the relative column.</p>
 <p><strong>NOTE for R users.</strong> In R, we have two different behaviours if we use <code>df["COLNAME"]</code> compared to <code>df$COLNAME</code>. In the first case, a subset of our data frame is returned (and the class is mantained), in the second case, we return the column as a vector (without the column title!). Additionally, we can use the <code>select()</code> function from the <code>tidyverse</code> package to select columns.</p>
-<div class="sourceCode" id="cb664"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb664-1"><a href="df_plt.html#cb664-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the select() function in R</span></span>
-<span id="cb664-2"><a href="df_plt.html#cb664-2" aria-hidden="true" tabindex="-1"></a>milk_df <span class="sc">|&gt;</span> <span class="fu">select</span>(Calories)</span></code></pre></div>
+<div class="sourceCode" id="cb668"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb668-1"><a href="df_plt.html#cb668-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the select() function in R</span></span>
+<span id="cb668-2"><a href="df_plt.html#cb668-2" aria-hidden="true" tabindex="-1"></a>milk_df <span class="sc">|&gt;</span> <span class="fu">select</span>(Calories)</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 1
 ##   Calories
 ##      &lt;dbl&gt;
@@ -438,14 +438,14 @@ Sometimes this can be better, as you might not want to change the type of your o
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb666"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb666-1"><a href="df_plt.html#cb666-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the &#39;Calories&#39; and &#39;Protein&#39; columns in R and storing it </span></span>
-<span id="cb666-2"><a href="df_plt.html#cb666-2" aria-hidden="true" tabindex="-1"></a><span class="co"># in a new variable</span></span>
-<span id="cb666-3"><a href="df_plt.html#cb666-3" aria-hidden="true" tabindex="-1"></a>calories_protein <span class="ot">&lt;-</span> milk_df <span class="sc">|&gt;</span> <span class="fu">select</span>(Calories, Protein)</span>
-<span id="cb666-4"><a href="df_plt.html#cb666-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb666-5"><a href="df_plt.html#cb666-5" aria-hidden="true" tabindex="-1"></a><span class="co"># alternative</span></span>
-<span id="cb666-6"><a href="df_plt.html#cb666-6" aria-hidden="true" tabindex="-1"></a><span class="co"># calories_protein &lt;- milk_df[c(&quot;Calories&quot;, &quot;Protein&quot;)]</span></span>
-<span id="cb666-7"><a href="df_plt.html#cb666-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb666-8"><a href="df_plt.html#cb666-8" aria-hidden="true" tabindex="-1"></a>calories_protein</span></code></pre></div>
+<div class="sourceCode" id="cb670"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb670-1"><a href="df_plt.html#cb670-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the &#39;Calories&#39; and &#39;Protein&#39; columns in R and storing it </span></span>
+<span id="cb670-2"><a href="df_plt.html#cb670-2" aria-hidden="true" tabindex="-1"></a><span class="co"># in a new variable</span></span>
+<span id="cb670-3"><a href="df_plt.html#cb670-3" aria-hidden="true" tabindex="-1"></a>calories_protein <span class="ot">&lt;-</span> milk_df <span class="sc">|&gt;</span> <span class="fu">select</span>(Calories, Protein)</span>
+<span id="cb670-4"><a href="df_plt.html#cb670-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb670-5"><a href="df_plt.html#cb670-5" aria-hidden="true" tabindex="-1"></a><span class="co"># alternative</span></span>
+<span id="cb670-6"><a href="df_plt.html#cb670-6" aria-hidden="true" tabindex="-1"></a><span class="co"># calories_protein &lt;- milk_df[c(&quot;Calories&quot;, &quot;Protein&quot;)]</span></span>
+<span id="cb670-7"><a href="df_plt.html#cb670-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb670-8"><a href="df_plt.html#cb670-8" aria-hidden="true" tabindex="-1"></a>calories_protein</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 2
 ##   Calories Protein
 ##      &lt;dbl&gt;   &lt;dbl&gt;
@@ -456,10 +456,10 @@ Sometimes this can be better, as you might not want to change the type of your o
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb668"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb668-1"><a href="df_plt.html#cb668-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the &#39;Calories&#39; and &#39;Protein&#39; columns in Python and storing it </span></span>
-<span id="cb668-2"><a href="df_plt.html#cb668-2" aria-hidden="true" tabindex="-1"></a><span class="co"># in a new variable</span></span>
-<span id="cb668-3"><a href="df_plt.html#cb668-3" aria-hidden="true" tabindex="-1"></a>calories_protein <span class="op">=</span> milk_df[[<span class="st">&#39;Calories&#39;</span>, <span class="st">&#39;Protein&#39;</span>]]</span>
-<span id="cb668-4"><a href="df_plt.html#cb668-4" aria-hidden="true" tabindex="-1"></a>calories_protein</span></code></pre></div>
+<div class="sourceCode" id="cb672"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb672-1"><a href="df_plt.html#cb672-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the &#39;Calories&#39; and &#39;Protein&#39; columns in Python and storing it </span></span>
+<span id="cb672-2"><a href="df_plt.html#cb672-2" aria-hidden="true" tabindex="-1"></a><span class="co"># in a new variable</span></span>
+<span id="cb672-3"><a href="df_plt.html#cb672-3" aria-hidden="true" tabindex="-1"></a>calories_protein <span class="op">=</span> milk_df[[<span class="st">&#39;Calories&#39;</span>, <span class="st">&#39;Protein&#39;</span>]]</span>
+<span id="cb672-4"><a href="df_plt.html#cb672-4" aria-hidden="true" tabindex="-1"></a>calories_protein</span></code></pre></div>
 <pre><code>##    Calories  Protein
 ## 0        60        1
 ## 1       100        7
@@ -473,15 +473,15 @@ Similarly to vectors, to access multiple rows at the same time, we can pass a ve
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb670"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb670-1"><a href="df_plt.html#cb670-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the first row in R</span></span>
-<span id="cb670-2"><a href="df_plt.html#cb670-2" aria-hidden="true" tabindex="-1"></a>milk_df[<span class="dv">1</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb674"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb674-1"><a href="df_plt.html#cb674-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the first row in R</span></span>
+<span id="cb674-2"><a href="df_plt.html#cb674-2" aria-hidden="true" tabindex="-1"></a>milk_df[<span class="dv">1</span>, ]</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 7
 ##   Milk_Type Calories Protein Fiber Carbohydrates Sugars
 ##   &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt;
 ## 1 Almond          60       1     1             8      7
 ## # ℹ 1 more variable: Fats &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb672"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb672-1"><a href="df_plt.html#cb672-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the first and second rows in R</span></span>
-<span id="cb672-2"><a href="df_plt.html#cb672-2" aria-hidden="true" tabindex="-1"></a>milk_df[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb676"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb676-1"><a href="df_plt.html#cb676-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the first and second rows in R</span></span>
+<span id="cb676-2"><a href="df_plt.html#cb676-2" aria-hidden="true" tabindex="-1"></a>milk_df[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, ]</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 7
 ##   Milk_Type Calories Protein Fiber Carbohydrates Sugars
 ##   &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt;
@@ -491,8 +491,8 @@ Similarly to vectors, to access multiple rows at the same time, we can pass a ve
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb674"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb674-1"><a href="df_plt.html#cb674-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the first row in Python</span></span>
-<span id="cb674-2"><a href="df_plt.html#cb674-2" aria-hidden="true" tabindex="-1"></a>milk_df.iloc[<span class="dv">0</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb678"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb678-1"><a href="df_plt.html#cb678-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the first row in Python</span></span>
+<span id="cb678-2"><a href="df_plt.html#cb678-2" aria-hidden="true" tabindex="-1"></a>milk_df.iloc[<span class="dv">0</span>]</span></code></pre></div>
 <pre><code>## Milk_Type        Almond
 ## Calories             60
 ## Protein               1
@@ -501,8 +501,8 @@ Similarly to vectors, to access multiple rows at the same time, we can pass a ve
 ## Sugars              7.0
 ## Fats                2.5
 ## Name: 0, dtype: object</code></pre>
-<div class="sourceCode" id="cb676"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb676-1"><a href="df_plt.html#cb676-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the first and second rows in Python</span></span>
-<span id="cb676-2"><a href="df_plt.html#cb676-2" aria-hidden="true" tabindex="-1"></a>milk_df.iloc[<span class="dv">0</span>:<span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb680"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb680-1"><a href="df_plt.html#cb680-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the first and second rows in Python</span></span>
+<span id="cb680-2"><a href="df_plt.html#cb680-2" aria-hidden="true" tabindex="-1"></a>milk_df.iloc[<span class="dv">0</span>:<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>##   Milk_Type  Calories  Protein  Fiber  Carbohydrates  Sugars  Fats
 ## 0    Almond        60        1    1.0              8     7.0   2.5
 ## 1       Soy       100        7    2.0             10     NaN   4.0</code></pre>
@@ -521,12 +521,12 @@ Note also that when accessing only one row, in python, the returned element will
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb678"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb678-1"><a href="df_plt.html#cb678-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing a subset of the data frame in R</span></span>
-<span id="cb678-2"><a href="df_plt.html#cb678-2" aria-hidden="true" tabindex="-1"></a>subset_df <span class="ot">&lt;-</span> milk_df[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="st">&quot;Milk_Type&quot;</span>, <span class="st">&quot;Calories&quot;</span>, <span class="st">&quot;Protein&quot;</span>)]</span>
-<span id="cb678-3"><a href="df_plt.html#cb678-3" aria-hidden="true" tabindex="-1"></a><span class="co"># alternatively </span></span>
-<span id="cb678-4"><a href="df_plt.html#cb678-4" aria-hidden="true" tabindex="-1"></a><span class="co"># subset_df &lt;- milk_df[1:2, 1:3]</span></span>
-<span id="cb678-5"><a href="df_plt.html#cb678-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb678-6"><a href="df_plt.html#cb678-6" aria-hidden="true" tabindex="-1"></a>subset_df</span></code></pre></div>
+<div class="sourceCode" id="cb682"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb682-1"><a href="df_plt.html#cb682-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing a subset of the data frame in R</span></span>
+<span id="cb682-2"><a href="df_plt.html#cb682-2" aria-hidden="true" tabindex="-1"></a>subset_df <span class="ot">&lt;-</span> milk_df[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="st">&quot;Milk_Type&quot;</span>, <span class="st">&quot;Calories&quot;</span>, <span class="st">&quot;Protein&quot;</span>)]</span>
+<span id="cb682-3"><a href="df_plt.html#cb682-3" aria-hidden="true" tabindex="-1"></a><span class="co"># alternatively </span></span>
+<span id="cb682-4"><a href="df_plt.html#cb682-4" aria-hidden="true" tabindex="-1"></a><span class="co"># subset_df &lt;- milk_df[1:2, 1:3]</span></span>
+<span id="cb682-5"><a href="df_plt.html#cb682-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb682-6"><a href="df_plt.html#cb682-6" aria-hidden="true" tabindex="-1"></a>subset_df</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 3
 ##   Milk_Type Calories Protein
 ##   &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt;
@@ -535,12 +535,12 @@ Note also that when accessing only one row, in python, the returned element will
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb680"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb680-1"><a href="df_plt.html#cb680-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing a subset of the data frame in Python</span></span>
-<span id="cb680-2"><a href="df_plt.html#cb680-2" aria-hidden="true" tabindex="-1"></a>subset_df <span class="op">=</span> milk_df.loc[<span class="dv">0</span>:<span class="dv">2</span>, [<span class="st">&quot;Milk_Type&quot;</span>, <span class="st">&quot;Calories&quot;</span>, <span class="st">&quot;Protein&quot;</span>]]</span>
-<span id="cb680-3"><a href="df_plt.html#cb680-3" aria-hidden="true" tabindex="-1"></a><span class="co"># alternatively </span></span>
-<span id="cb680-4"><a href="df_plt.html#cb680-4" aria-hidden="true" tabindex="-1"></a><span class="co"># subset_df = milk_df.iloc[0:2, [0, 1, 2]]</span></span>
-<span id="cb680-5"><a href="df_plt.html#cb680-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb680-6"><a href="df_plt.html#cb680-6" aria-hidden="true" tabindex="-1"></a>subset_df</span></code></pre></div>
+<div class="sourceCode" id="cb684"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb684-1"><a href="df_plt.html#cb684-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing a subset of the data frame in Python</span></span>
+<span id="cb684-2"><a href="df_plt.html#cb684-2" aria-hidden="true" tabindex="-1"></a>subset_df <span class="op">=</span> milk_df.loc[<span class="dv">0</span>:<span class="dv">2</span>, [<span class="st">&quot;Milk_Type&quot;</span>, <span class="st">&quot;Calories&quot;</span>, <span class="st">&quot;Protein&quot;</span>]]</span>
+<span id="cb684-3"><a href="df_plt.html#cb684-3" aria-hidden="true" tabindex="-1"></a><span class="co"># alternatively </span></span>
+<span id="cb684-4"><a href="df_plt.html#cb684-4" aria-hidden="true" tabindex="-1"></a><span class="co"># subset_df = milk_df.iloc[0:2, [0, 1, 2]]</span></span>
+<span id="cb684-5"><a href="df_plt.html#cb684-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb684-6"><a href="df_plt.html#cb684-6" aria-hidden="true" tabindex="-1"></a>subset_df</span></code></pre></div>
 <pre><code>##   Milk_Type  Calories  Protein
 ## 0    Almond        60        1
 ## 1       Soy       100        7
@@ -558,10 +558,10 @@ For instance, the simplest thing we could do at the moment, is to fill in the mi
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb682"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb682-1"><a href="df_plt.html#cb682-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Imputing missing values in R</span></span>
-<span id="cb682-2"><a href="df_plt.html#cb682-2" aria-hidden="true" tabindex="-1"></a><span class="co"># overwriting the original dataset</span></span>
-<span id="cb682-3"><a href="df_plt.html#cb682-3" aria-hidden="true" tabindex="-1"></a>milk_df<span class="sc">$</span>Fiber[<span class="fu">is.na</span>(milk_df<span class="sc">$</span>Fiber)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.2</span>, <span class="fl">0.7</span>)</span>
-<span id="cb682-4"><a href="df_plt.html#cb682-4" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
+<div class="sourceCode" id="cb686"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb686-1"><a href="df_plt.html#cb686-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Imputing missing values in R</span></span>
+<span id="cb686-2"><a href="df_plt.html#cb686-2" aria-hidden="true" tabindex="-1"></a><span class="co"># overwriting the original dataset</span></span>
+<span id="cb686-3"><a href="df_plt.html#cb686-3" aria-hidden="true" tabindex="-1"></a>milk_df<span class="sc">$</span>Fiber[<span class="fu">is.na</span>(milk_df<span class="sc">$</span>Fiber)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.2</span>, <span class="fl">0.7</span>)</span>
+<span id="cb686-4"><a href="df_plt.html#cb686-4" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 7
 ##   Milk_Type Calories Protein Fiber Carbohydrates Sugars
 ##   &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt;
@@ -573,10 +573,10 @@ For instance, the simplest thing we could do at the moment, is to fill in the mi
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb684"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb684-1"><a href="df_plt.html#cb684-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Imputing missing values in Python</span></span>
-<span id="cb684-2"><a href="df_plt.html#cb684-2" aria-hidden="true" tabindex="-1"></a><span class="co"># overwriting the original dataset</span></span>
-<span id="cb684-3"><a href="df_plt.html#cb684-3" aria-hidden="true" tabindex="-1"></a>milk_df.loc[np.isnan(milk_df[<span class="st">&#39;Fiber&#39;</span>]), <span class="st">&#39;Fiber&#39;</span>] <span class="op">=</span>  [<span class="fl">1.2</span>, <span class="fl">0.7</span>]</span>
-<span id="cb684-4"><a href="df_plt.html#cb684-4" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
+<div class="sourceCode" id="cb688"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb688-1"><a href="df_plt.html#cb688-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Imputing missing values in Python</span></span>
+<span id="cb688-2"><a href="df_plt.html#cb688-2" aria-hidden="true" tabindex="-1"></a><span class="co"># overwriting the original dataset</span></span>
+<span id="cb688-3"><a href="df_plt.html#cb688-3" aria-hidden="true" tabindex="-1"></a>milk_df.loc[np.isnan(milk_df[<span class="st">&#39;Fiber&#39;</span>]), <span class="st">&#39;Fiber&#39;</span>] <span class="op">=</span>  [<span class="fl">1.2</span>, <span class="fl">0.7</span>]</span>
+<span id="cb688-4"><a href="df_plt.html#cb688-4" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
 <pre><code>##   Milk_Type  Calories  Protein  Fiber  Carbohydrates  Sugars  Fats
 ## 0    Almond        60        1    1.0              8     7.0   2.5
 ## 1       Soy       100        7    2.0             10     NaN   4.0
@@ -592,22 +592,22 @@ These will be not explained in detail, but can be useful for a lot of reasons re
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb686"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb686-1"><a href="df_plt.html#cb686-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing information about the data frame in R</span></span>
-<span id="cb686-2"><a href="df_plt.html#cb686-2" aria-hidden="true" tabindex="-1"></a><span class="co"># dimensions </span></span>
-<span id="cb686-3"><a href="df_plt.html#cb686-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(milk_df)</span></code></pre></div>
+<div class="sourceCode" id="cb690"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb690-1"><a href="df_plt.html#cb690-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing information about the data frame in R</span></span>
+<span id="cb690-2"><a href="df_plt.html#cb690-2" aria-hidden="true" tabindex="-1"></a><span class="co"># dimensions </span></span>
+<span id="cb690-3"><a href="df_plt.html#cb690-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(milk_df)</span></code></pre></div>
 <pre><code>## [1] 4 7</code></pre>
-<div class="sourceCode" id="cb688"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb688-1"><a href="df_plt.html#cb688-1" aria-hidden="true" tabindex="-1"></a><span class="co"># number of rows and columns</span></span>
-<span id="cb688-2"><a href="df_plt.html#cb688-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(milk_df)</span></code></pre></div>
+<div class="sourceCode" id="cb692"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb692-1"><a href="df_plt.html#cb692-1" aria-hidden="true" tabindex="-1"></a><span class="co"># number of rows and columns</span></span>
+<span id="cb692-2"><a href="df_plt.html#cb692-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(milk_df)</span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
-<div class="sourceCode" id="cb690"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb690-1"><a href="df_plt.html#cb690-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(milk_df)</span></code></pre></div>
+<div class="sourceCode" id="cb694"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb694-1"><a href="df_plt.html#cb694-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(milk_df)</span></code></pre></div>
 <pre><code>## [1] 7</code></pre>
-<div class="sourceCode" id="cb692"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb692-1"><a href="df_plt.html#cb692-1" aria-hidden="true" tabindex="-1"></a><span class="co"># variable names</span></span>
-<span id="cb692-2"><a href="df_plt.html#cb692-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(milk_df)</span></code></pre></div>
+<div class="sourceCode" id="cb696"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb696-1"><a href="df_plt.html#cb696-1" aria-hidden="true" tabindex="-1"></a><span class="co"># variable names</span></span>
+<span id="cb696-2"><a href="df_plt.html#cb696-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(milk_df)</span></code></pre></div>
 <pre><code>## [1] &quot;Milk_Type&quot;     &quot;Calories&quot;      &quot;Protein&quot;      
 ## [4] &quot;Fiber&quot;         &quot;Carbohydrates&quot; &quot;Sugars&quot;       
 ## [7] &quot;Fats&quot;</code></pre>
-<div class="sourceCode" id="cb694"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb694-1"><a href="df_plt.html#cb694-1" aria-hidden="true" tabindex="-1"></a><span class="co">#variable names and types</span></span>
-<span id="cb694-2"><a href="df_plt.html#cb694-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(milk_df)</span></code></pre></div>
+<div class="sourceCode" id="cb698"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb698-1"><a href="df_plt.html#cb698-1" aria-hidden="true" tabindex="-1"></a><span class="co">#variable names and types</span></span>
+<span id="cb698-2"><a href="df_plt.html#cb698-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(milk_df)</span></code></pre></div>
 <pre><code>## tibble [4 × 7] (S3: tbl_df/tbl/data.frame)
 ##  $ Milk_Type    : chr [1:4] &quot;Almond&quot; &quot;Soy&quot; &quot;Oat&quot; &quot;Rice&quot;
 ##  $ Calories     : num [1:4] 60 100 120 130
@@ -616,8 +616,8 @@ These will be not explained in detail, but can be useful for a lot of reasons re
 ##  $ Carbohydrates: num [1:4] 8 10 20 25
 ##  $ Sugars       : num [1:4] 7 NA 19 NA
 ##  $ Fats         : num [1:4] 2.5 4 2.5 2.5</code></pre>
-<div class="sourceCode" id="cb696"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb696-1"><a href="df_plt.html#cb696-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary statistics</span></span>
-<span id="cb696-2"><a href="df_plt.html#cb696-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(milk_df)</span></code></pre></div>
+<div class="sourceCode" id="cb700"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb700-1"><a href="df_plt.html#cb700-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary statistics</span></span>
+<span id="cb700-2"><a href="df_plt.html#cb700-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(milk_df)</span></code></pre></div>
 <pre><code>##   Milk_Type            Calories        Protein 
 ##  Length:4           Min.   : 60.0   Min.   :1  
 ##  Class :character   1st Qu.: 90.0   1st Qu.:1  
@@ -645,22 +645,22 @@ These will be not explained in detail, but can be useful for a lot of reasons re
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb698"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb698-1"><a href="df_plt.html#cb698-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing information about the data frame in Python</span></span>
-<span id="cb698-2"><a href="df_plt.html#cb698-2" aria-hidden="true" tabindex="-1"></a><span class="co"># dimensions </span></span>
-<span id="cb698-3"><a href="df_plt.html#cb698-3" aria-hidden="true" tabindex="-1"></a>milk_df.shape</span></code></pre></div>
+<div class="sourceCode" id="cb702"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb702-1"><a href="df_plt.html#cb702-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing information about the data frame in Python</span></span>
+<span id="cb702-2"><a href="df_plt.html#cb702-2" aria-hidden="true" tabindex="-1"></a><span class="co"># dimensions </span></span>
+<span id="cb702-3"><a href="df_plt.html#cb702-3" aria-hidden="true" tabindex="-1"></a>milk_df.shape</span></code></pre></div>
 <pre><code>## (4, 7)</code></pre>
-<div class="sourceCode" id="cb700"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb700-1"><a href="df_plt.html#cb700-1" aria-hidden="true" tabindex="-1"></a><span class="co"># number of rows and columns</span></span>
-<span id="cb700-2"><a href="df_plt.html#cb700-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(milk_df)</span></code></pre></div>
+<div class="sourceCode" id="cb704"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb704-1"><a href="df_plt.html#cb704-1" aria-hidden="true" tabindex="-1"></a><span class="co"># number of rows and columns</span></span>
+<span id="cb704-2"><a href="df_plt.html#cb704-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(milk_df)</span></code></pre></div>
 <pre><code>## 4</code></pre>
-<div class="sourceCode" id="cb702"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb702-1"><a href="df_plt.html#cb702-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(milk_df.columns) <span class="co"># or milk_df.shape[1]</span></span></code></pre></div>
+<div class="sourceCode" id="cb706"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb706-1"><a href="df_plt.html#cb706-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(milk_df.columns) <span class="co"># or milk_df.shape[1]</span></span></code></pre></div>
 <pre><code>## 7</code></pre>
-<div class="sourceCode" id="cb704"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb704-1"><a href="df_plt.html#cb704-1" aria-hidden="true" tabindex="-1"></a><span class="co"># variable names</span></span>
-<span id="cb704-2"><a href="df_plt.html#cb704-2" aria-hidden="true" tabindex="-1"></a>milk_df.columns</span></code></pre></div>
+<div class="sourceCode" id="cb708"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb708-1"><a href="df_plt.html#cb708-1" aria-hidden="true" tabindex="-1"></a><span class="co"># variable names</span></span>
+<span id="cb708-2"><a href="df_plt.html#cb708-2" aria-hidden="true" tabindex="-1"></a>milk_df.columns</span></code></pre></div>
 <pre><code>## Index([&#39;Milk_Type&#39;, &#39;Calories&#39;, &#39;Protein&#39;, &#39;Fiber&#39;, &#39;Carbohydrates&#39;, &#39;Sugars&#39;,
 ##        &#39;Fats&#39;],
 ##       dtype=&#39;object&#39;)</code></pre>
-<div class="sourceCode" id="cb706"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb706-1"><a href="df_plt.html#cb706-1" aria-hidden="true" tabindex="-1"></a><span class="co"># variable names and types</span></span>
-<span id="cb706-2"><a href="df_plt.html#cb706-2" aria-hidden="true" tabindex="-1"></a>milk_df.info()</span></code></pre></div>
+<div class="sourceCode" id="cb710"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb710-1"><a href="df_plt.html#cb710-1" aria-hidden="true" tabindex="-1"></a><span class="co"># variable names and types</span></span>
+<span id="cb710-2"><a href="df_plt.html#cb710-2" aria-hidden="true" tabindex="-1"></a>milk_df.info()</span></code></pre></div>
 <pre><code>## &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 ## RangeIndex: 4 entries, 0 to 3
 ## Data columns (total 7 columns):
@@ -675,8 +675,8 @@ These will be not explained in detail, but can be useful for a lot of reasons re
 ##  6   Fats           4 non-null      float64
 ## dtypes: float64(3), int64(3), object(1)
 ## memory usage: 356.0+ bytes</code></pre>
-<div class="sourceCode" id="cb708"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb708-1"><a href="df_plt.html#cb708-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary statistics</span></span>
-<span id="cb708-2"><a href="df_plt.html#cb708-2" aria-hidden="true" tabindex="-1"></a>milk_df.describe()</span></code></pre></div>
+<div class="sourceCode" id="cb712"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb712-1"><a href="df_plt.html#cb712-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary statistics</span></span>
+<span id="cb712-2"><a href="df_plt.html#cb712-2" aria-hidden="true" tabindex="-1"></a>milk_df.describe()</span></code></pre></div>
 <pre><code>##          Calories   Protein     Fiber  Carbohydrates     Sugars   Fats
 ## count    4.000000  4.000000  4.000000       4.000000   2.000000  4.000
 ## mean   102.500000  3.000000  1.225000      15.750000  13.000000  2.875
@@ -706,20 +706,20 @@ This is formally referred to <em>concatenating</em>, which means to create a new
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb710"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb710-1"><a href="df_plt.html#cb710-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a new data frame in R</span></span>
-<span id="cb710-2"><a href="df_plt.html#cb710-2" aria-hidden="true" tabindex="-1"></a>extra_milk_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb710-3"><a href="df_plt.html#cb710-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Milk_Type =</span> <span class="fu">c</span>(<span class="st">&quot;Cashew&quot;</span>, <span class="st">&quot;Hazelnut&quot;</span>),</span>
-<span id="cb710-4"><a href="df_plt.html#cb710-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Calories =</span> <span class="fu">c</span>(<span class="dv">80</span>, <span class="dv">130</span>),</span>
-<span id="cb710-5"><a href="df_plt.html#cb710-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Protein =</span> <span class="fu">c</span>(<span class="fl">0.7</span>, <span class="dv">2</span>),</span>
-<span id="cb710-6"><a href="df_plt.html#cb710-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Fiber =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),</span>
-<span id="cb710-7"><a href="df_plt.html#cb710-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Carbohydrates =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">8</span>),</span>
-<span id="cb710-8"><a href="df_plt.html#cb710-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Sugars =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="dv">3</span>),</span>
-<span id="cb710-9"><a href="df_plt.html#cb710-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">Fats =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">9</span>)</span>
-<span id="cb710-10"><a href="df_plt.html#cb710-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb710-11"><a href="df_plt.html#cb710-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb710-12"><a href="df_plt.html#cb710-12" aria-hidden="true" tabindex="-1"></a><span class="co"># attaching new rows to our existing data frame</span></span>
-<span id="cb710-13"><a href="df_plt.html#cb710-13" aria-hidden="true" tabindex="-1"></a>milk_df <span class="ot">&lt;-</span> milk_df <span class="sc">|&gt;</span> <span class="fu">bind_rows</span>(extra_milk_df)</span>
-<span id="cb710-14"><a href="df_plt.html#cb710-14" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
+<div class="sourceCode" id="cb714"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb714-1"><a href="df_plt.html#cb714-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a new data frame in R</span></span>
+<span id="cb714-2"><a href="df_plt.html#cb714-2" aria-hidden="true" tabindex="-1"></a>extra_milk_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb714-3"><a href="df_plt.html#cb714-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Milk_Type =</span> <span class="fu">c</span>(<span class="st">&quot;Cashew&quot;</span>, <span class="st">&quot;Hazelnut&quot;</span>),</span>
+<span id="cb714-4"><a href="df_plt.html#cb714-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Calories =</span> <span class="fu">c</span>(<span class="dv">80</span>, <span class="dv">130</span>),</span>
+<span id="cb714-5"><a href="df_plt.html#cb714-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Protein =</span> <span class="fu">c</span>(<span class="fl">0.7</span>, <span class="dv">2</span>),</span>
+<span id="cb714-6"><a href="df_plt.html#cb714-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Fiber =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb714-7"><a href="df_plt.html#cb714-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Carbohydrates =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">8</span>),</span>
+<span id="cb714-8"><a href="df_plt.html#cb714-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Sugars =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="dv">3</span>),</span>
+<span id="cb714-9"><a href="df_plt.html#cb714-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">Fats =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">9</span>)</span>
+<span id="cb714-10"><a href="df_plt.html#cb714-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb714-11"><a href="df_plt.html#cb714-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb714-12"><a href="df_plt.html#cb714-12" aria-hidden="true" tabindex="-1"></a><span class="co"># attaching new rows to our existing data frame</span></span>
+<span id="cb714-13"><a href="df_plt.html#cb714-13" aria-hidden="true" tabindex="-1"></a>milk_df <span class="ot">&lt;-</span> milk_df <span class="sc">|&gt;</span> <span class="fu">bind_rows</span>(extra_milk_df)</span>
+<span id="cb714-14"><a href="df_plt.html#cb714-14" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 7
 ##   Milk_Type Calories Protein Fiber Carbohydrates Sugars
 ##   &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt;
@@ -733,20 +733,20 @@ This is formally referred to <em>concatenating</em>, which means to create a new
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb712"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb712-1"><a href="df_plt.html#cb712-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a new data frame in Python</span></span>
-<span id="cb712-2"><a href="df_plt.html#cb712-2" aria-hidden="true" tabindex="-1"></a>extra_milk_df <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb712-3"><a href="df_plt.html#cb712-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;Milk_Type&#39;</span>: [<span class="st">&quot;Cashew&quot;</span>, <span class="st">&quot;Hazelnut&quot;</span>],</span>
-<span id="cb712-4"><a href="df_plt.html#cb712-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;Calories&#39;</span>: [<span class="dv">80</span>, <span class="dv">130</span>],</span>
-<span id="cb712-5"><a href="df_plt.html#cb712-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;Protein&#39;</span>: [<span class="fl">0.7</span>, <span class="dv">2</span>],</span>
-<span id="cb712-6"><a href="df_plt.html#cb712-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;Fiber&#39;</span>: [<span class="dv">1</span>, <span class="dv">2</span>],</span>
-<span id="cb712-7"><a href="df_plt.html#cb712-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;Carbohydrates&#39;</span>: [<span class="dv">2</span>, <span class="dv">8</span>],</span>
-<span id="cb712-8"><a href="df_plt.html#cb712-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;Sugars&#39;</span>: [<span class="fl">0.5</span>, <span class="dv">3</span>],</span>
-<span id="cb712-9"><a href="df_plt.html#cb712-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;Fats&#39;</span>: [<span class="dv">3</span>, <span class="dv">9</span>]</span>
-<span id="cb712-10"><a href="df_plt.html#cb712-10" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb712-11"><a href="df_plt.html#cb712-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb712-12"><a href="df_plt.html#cb712-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Attaching new rows to our existing data frame</span></span>
-<span id="cb712-13"><a href="df_plt.html#cb712-13" aria-hidden="true" tabindex="-1"></a>milk_df <span class="op">=</span> pd.concat([milk_df, extra_milk_df], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb712-14"><a href="df_plt.html#cb712-14" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
+<div class="sourceCode" id="cb716"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb716-1"><a href="df_plt.html#cb716-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a new data frame in Python</span></span>
+<span id="cb716-2"><a href="df_plt.html#cb716-2" aria-hidden="true" tabindex="-1"></a>extra_milk_df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb716-3"><a href="df_plt.html#cb716-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;Milk_Type&#39;</span>: [<span class="st">&quot;Cashew&quot;</span>, <span class="st">&quot;Hazelnut&quot;</span>],</span>
+<span id="cb716-4"><a href="df_plt.html#cb716-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;Calories&#39;</span>: [<span class="dv">80</span>, <span class="dv">130</span>],</span>
+<span id="cb716-5"><a href="df_plt.html#cb716-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;Protein&#39;</span>: [<span class="fl">0.7</span>, <span class="dv">2</span>],</span>
+<span id="cb716-6"><a href="df_plt.html#cb716-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;Fiber&#39;</span>: [<span class="dv">1</span>, <span class="dv">2</span>],</span>
+<span id="cb716-7"><a href="df_plt.html#cb716-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;Carbohydrates&#39;</span>: [<span class="dv">2</span>, <span class="dv">8</span>],</span>
+<span id="cb716-8"><a href="df_plt.html#cb716-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;Sugars&#39;</span>: [<span class="fl">0.5</span>, <span class="dv">3</span>],</span>
+<span id="cb716-9"><a href="df_plt.html#cb716-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;Fats&#39;</span>: [<span class="dv">3</span>, <span class="dv">9</span>]</span>
+<span id="cb716-10"><a href="df_plt.html#cb716-10" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb716-11"><a href="df_plt.html#cb716-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb716-12"><a href="df_plt.html#cb716-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Attaching new rows to our existing data frame</span></span>
+<span id="cb716-13"><a href="df_plt.html#cb716-13" aria-hidden="true" tabindex="-1"></a>milk_df <span class="op">=</span> pd.concat([milk_df, extra_milk_df], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb716-14"><a href="df_plt.html#cb716-14" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
 <pre><code>##   Milk_Type  Calories  Protein  Fiber  Carbohydrates  Sugars  Fats
 ## 0    Almond        60      1.0    1.0              8     7.0   2.5
 ## 1       Soy       100      7.0    2.0             10     NaN   4.0
@@ -764,13 +764,13 @@ This is formally referred to <em>concatenating</em>, which means to create a new
 <p>Adding new columns allows us to easily add new columns that are functions of existing ones.
 In R, we use <code>mutate()</code>, and in Python, we use <code>assign</code>.</p>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb714"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb714-1"><a href="df_plt.html#cb714-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute percentage of sugars over carbohydrates in R</span></span>
-<span id="cb714-2"><a href="df_plt.html#cb714-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, adding the total weight of the components and computing the </span></span>
-<span id="cb714-3"><a href="df_plt.html#cb714-3" aria-hidden="true" tabindex="-1"></a><span class="co"># protein content</span></span>
-<span id="cb714-4"><a href="df_plt.html#cb714-4" aria-hidden="true" tabindex="-1"></a>milk_df <span class="ot">&lt;-</span> milk_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">sugar_percent =</span> (Sugars <span class="sc">/</span> Carbohydrates) <span class="sc">*</span> <span class="dv">100</span>, </span>
-<span id="cb714-5"><a href="df_plt.html#cb714-5" aria-hidden="true" tabindex="-1"></a>                              <span class="at">tot_wei =</span> Protein <span class="sc">+</span> Fiber <span class="sc">+</span> Carbohydrates <span class="sc">+</span> Fats,</span>
-<span id="cb714-6"><a href="df_plt.html#cb714-6" aria-hidden="true" tabindex="-1"></a>                              <span class="at">protein_content =</span> Protein <span class="sc">/</span> tot_wei <span class="sc">*</span> <span class="dv">100</span>)</span>
-<span id="cb714-7"><a href="df_plt.html#cb714-7" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
+<div class="sourceCode" id="cb718"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb718-1"><a href="df_plt.html#cb718-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute percentage of sugars over carbohydrates in R</span></span>
+<span id="cb718-2"><a href="df_plt.html#cb718-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, adding the total weight of the components and computing the </span></span>
+<span id="cb718-3"><a href="df_plt.html#cb718-3" aria-hidden="true" tabindex="-1"></a><span class="co"># protein content</span></span>
+<span id="cb718-4"><a href="df_plt.html#cb718-4" aria-hidden="true" tabindex="-1"></a>milk_df <span class="ot">&lt;-</span> milk_df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">sugar_percent =</span> (Sugars <span class="sc">/</span> Carbohydrates) <span class="sc">*</span> <span class="dv">100</span>, </span>
+<span id="cb718-5"><a href="df_plt.html#cb718-5" aria-hidden="true" tabindex="-1"></a>                              <span class="at">tot_wei =</span> Protein <span class="sc">+</span> Fiber <span class="sc">+</span> Carbohydrates <span class="sc">+</span> Fats,</span>
+<span id="cb718-6"><a href="df_plt.html#cb718-6" aria-hidden="true" tabindex="-1"></a>                              <span class="at">protein_content =</span> Protein <span class="sc">/</span> tot_wei <span class="sc">*</span> <span class="dv">100</span>)</span>
+<span id="cb718-7"><a href="df_plt.html#cb718-7" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 10
 ##   Milk_Type Calories Protein Fiber Carbohydrates Sugars  Fats sugar_percent tot_wei protein_content
 ##   &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;   &lt;dbl&gt;           &lt;dbl&gt;
@@ -781,16 +781,16 @@ In R, we use <code>mutate()</code>, and in Python, we use <code>assign</code>.</
 ## 5 Cashew          80     0.7   1               2    0.5   3            25       6.7           10.4 
 ## 6 Hazelnut       130     2     2               8    3     9            37.5    21              9.52</code></pre>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb716"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb716-1"><a href="df_plt.html#cb716-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute percentage of sugars over carbohydrates in Python</span></span>
-<span id="cb716-2"><a href="df_plt.html#cb716-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, adding the total weight of the components and computing the </span></span>
-<span id="cb716-3"><a href="df_plt.html#cb716-3" aria-hidden="true" tabindex="-1"></a><span class="co"># protein content</span></span>
-<span id="cb716-4"><a href="df_plt.html#cb716-4" aria-hidden="true" tabindex="-1"></a>milk_df <span class="op">=</span> milk_df.assign(</span>
-<span id="cb716-5"><a href="df_plt.html#cb716-5" aria-hidden="true" tabindex="-1"></a>    sugar_percent <span class="op">=</span> <span class="kw">lambda</span> df: (df.Sugars <span class="op">/</span> df.Carbohydrates) <span class="op">*</span> <span class="dv">100</span>,</span>
-<span id="cb716-6"><a href="df_plt.html#cb716-6" aria-hidden="true" tabindex="-1"></a>    tot_wei <span class="op">=</span> <span class="kw">lambda</span> df: df.Protein <span class="op">+</span> df.Fiber <span class="op">+</span> df.Carbohydrates <span class="op">+</span> df.Fats,</span>
-<span id="cb716-7"><a href="df_plt.html#cb716-7" aria-hidden="true" tabindex="-1"></a>    protein_content <span class="op">=</span> <span class="kw">lambda</span> df: df.Protein <span class="op">/</span> df.tot_wei <span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb716-8"><a href="df_plt.html#cb716-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb716-9"><a href="df_plt.html#cb716-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb716-10"><a href="df_plt.html#cb716-10" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
+<div class="sourceCode" id="cb720"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb720-1"><a href="df_plt.html#cb720-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute percentage of sugars over carbohydrates in Python</span></span>
+<span id="cb720-2"><a href="df_plt.html#cb720-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, adding the total weight of the components and computing the </span></span>
+<span id="cb720-3"><a href="df_plt.html#cb720-3" aria-hidden="true" tabindex="-1"></a><span class="co"># protein content</span></span>
+<span id="cb720-4"><a href="df_plt.html#cb720-4" aria-hidden="true" tabindex="-1"></a>milk_df <span class="op">=</span> milk_df.assign(</span>
+<span id="cb720-5"><a href="df_plt.html#cb720-5" aria-hidden="true" tabindex="-1"></a>    sugar_percent <span class="op">=</span> <span class="kw">lambda</span> df: (df.Sugars <span class="op">/</span> df.Carbohydrates) <span class="op">*</span> <span class="dv">100</span>,</span>
+<span id="cb720-6"><a href="df_plt.html#cb720-6" aria-hidden="true" tabindex="-1"></a>    tot_wei <span class="op">=</span> <span class="kw">lambda</span> df: df.Protein <span class="op">+</span> df.Fiber <span class="op">+</span> df.Carbohydrates <span class="op">+</span> df.Fats,</span>
+<span id="cb720-7"><a href="df_plt.html#cb720-7" aria-hidden="true" tabindex="-1"></a>    protein_content <span class="op">=</span> <span class="kw">lambda</span> df: df.Protein <span class="op">/</span> df.tot_wei <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb720-8"><a href="df_plt.html#cb720-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb720-9"><a href="df_plt.html#cb720-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb720-10"><a href="df_plt.html#cb720-10" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
 <pre><code>##   Milk_Type  Calories  Protein  Fiber  Carbohydrates  Sugars  Fats  sugar_percent  tot_wei  protein_content
 ## 0    Almond        60      1.0    1.0              8     7.0   2.5           87.5     12.5         8.000000
 ## 1       Soy       100      7.0    2.0             10     NaN   4.0            NaN     23.0        30.434783
@@ -803,18 +803,18 @@ This makes it possible to create multiple interdependent columns in one go.
 In contrast, when overwriting columns directly, you would have to create each new column one at a time, which could be less efficient and harder to read.</p>
 <p>If we had to do the same code manually, each one at a time, this would have looked like the following:</p>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb718"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb718-1"><a href="df_plt.html#cb718-1" aria-hidden="true" tabindex="-1"></a><span class="do">### equivalent to above statement</span></span>
-<span id="cb718-2"><a href="df_plt.html#cb718-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb718-3"><a href="df_plt.html#cb718-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute percentage of sugars over carbohydrates in R</span></span>
-<span id="cb718-4"><a href="df_plt.html#cb718-4" aria-hidden="true" tabindex="-1"></a>milk_df<span class="sc">$</span>sugar_percent <span class="ot">&lt;-</span> (milk_df<span class="sc">$</span>Sugars <span class="sc">/</span> milk_df<span class="sc">$</span>Carbohydrates) <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb718-5"><a href="df_plt.html#cb718-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb718-6"><a href="df_plt.html#cb718-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, adding the total weight of the components</span></span>
-<span id="cb718-7"><a href="df_plt.html#cb718-7" aria-hidden="true" tabindex="-1"></a>milk_df<span class="sc">$</span>tot_wei <span class="ot">&lt;-</span> milk_df<span class="sc">$</span>Protein <span class="sc">+</span> milk_df<span class="sc">$</span>Fiber <span class="sc">+</span> milk_df<span class="sc">$</span>Carbohydrates <span class="sc">+</span> milk_df<span class="sc">$</span>Fats</span>
-<span id="cb718-8"><a href="df_plt.html#cb718-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb718-9"><a href="df_plt.html#cb718-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Finally, computing the protein content</span></span>
-<span id="cb718-10"><a href="df_plt.html#cb718-10" aria-hidden="true" tabindex="-1"></a>milk_df<span class="sc">$</span>protein_content <span class="ot">=</span> milk_df<span class="sc">$</span>Protein <span class="sc">/</span> milk_df<span class="sc">$</span>tot_wei <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb718-11"><a href="df_plt.html#cb718-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb718-12"><a href="df_plt.html#cb718-12" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
+<div class="sourceCode" id="cb722"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb722-1"><a href="df_plt.html#cb722-1" aria-hidden="true" tabindex="-1"></a><span class="do">### equivalent to above statement</span></span>
+<span id="cb722-2"><a href="df_plt.html#cb722-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb722-3"><a href="df_plt.html#cb722-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute percentage of sugars over carbohydrates in R</span></span>
+<span id="cb722-4"><a href="df_plt.html#cb722-4" aria-hidden="true" tabindex="-1"></a>milk_df<span class="sc">$</span>sugar_percent <span class="ot">&lt;-</span> (milk_df<span class="sc">$</span>Sugars <span class="sc">/</span> milk_df<span class="sc">$</span>Carbohydrates) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb722-5"><a href="df_plt.html#cb722-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb722-6"><a href="df_plt.html#cb722-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, adding the total weight of the components</span></span>
+<span id="cb722-7"><a href="df_plt.html#cb722-7" aria-hidden="true" tabindex="-1"></a>milk_df<span class="sc">$</span>tot_wei <span class="ot">&lt;-</span> milk_df<span class="sc">$</span>Protein <span class="sc">+</span> milk_df<span class="sc">$</span>Fiber <span class="sc">+</span> milk_df<span class="sc">$</span>Carbohydrates <span class="sc">+</span> milk_df<span class="sc">$</span>Fats</span>
+<span id="cb722-8"><a href="df_plt.html#cb722-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb722-9"><a href="df_plt.html#cb722-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Finally, computing the protein content</span></span>
+<span id="cb722-10"><a href="df_plt.html#cb722-10" aria-hidden="true" tabindex="-1"></a>milk_df<span class="sc">$</span>protein_content <span class="ot">=</span> milk_df<span class="sc">$</span>Protein <span class="sc">/</span> milk_df<span class="sc">$</span>tot_wei <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb722-11"><a href="df_plt.html#cb722-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb722-12"><a href="df_plt.html#cb722-12" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 10
 ##   Milk_Type Calories Protein Fiber Carbohydrates Sugars
 ##   &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt;
@@ -827,18 +827,18 @@ In contrast, when overwriting columns directly, you would have to create each ne
 ## # ℹ 4 more variables: Fats &lt;dbl&gt;, sugar_percent &lt;dbl&gt;,
 ## #   tot_wei &lt;dbl&gt;, protein_content &lt;dbl&gt;</code></pre>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb720"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb720-1"><a href="df_plt.html#cb720-1" aria-hidden="true" tabindex="-1"></a><span class="co">### equivalent to above statement</span></span>
-<span id="cb720-2"><a href="df_plt.html#cb720-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb720-3"><a href="df_plt.html#cb720-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute percentage of sugars over carbohydrates in Python</span></span>
-<span id="cb720-4"><a href="df_plt.html#cb720-4" aria-hidden="true" tabindex="-1"></a>milk_df[<span class="st">&#39;sugar_percent&#39;</span>] <span class="op">=</span> (milk_df[<span class="st">&#39;Sugars&#39;</span>] <span class="op">/</span> milk_df[<span class="st">&#39;Carbohydrates&#39;</span>]) <span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb720-5"><a href="df_plt.html#cb720-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb720-6"><a href="df_plt.html#cb720-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, adding the total weight of the components</span></span>
-<span id="cb720-7"><a href="df_plt.html#cb720-7" aria-hidden="true" tabindex="-1"></a>milk_df[<span class="st">&#39;tot_wei&#39;</span>] <span class="op">=</span> milk_df[<span class="st">&#39;Protein&#39;</span>] <span class="op">+</span> milk_df[<span class="st">&#39;Fiber&#39;</span>] <span class="op">+</span> milk_df[<span class="st">&#39;Carbohydrates&#39;</span>] <span class="op">+</span> milk_df[<span class="st">&#39;Fats&#39;</span>]</span>
-<span id="cb720-8"><a href="df_plt.html#cb720-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb720-9"><a href="df_plt.html#cb720-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Finally, computing the protein content</span></span>
-<span id="cb720-10"><a href="df_plt.html#cb720-10" aria-hidden="true" tabindex="-1"></a>milk_df[<span class="st">&#39;protein_content&#39;</span>] <span class="op">=</span> milk_df[<span class="st">&#39;Protein&#39;</span>] <span class="op">/</span> milk_df[<span class="st">&#39;tot_wei&#39;</span>] <span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb720-11"><a href="df_plt.html#cb720-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb720-12"><a href="df_plt.html#cb720-12" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
+<div class="sourceCode" id="cb724"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb724-1"><a href="df_plt.html#cb724-1" aria-hidden="true" tabindex="-1"></a><span class="co">### equivalent to above statement</span></span>
+<span id="cb724-2"><a href="df_plt.html#cb724-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb724-3"><a href="df_plt.html#cb724-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute percentage of sugars over carbohydrates in Python</span></span>
+<span id="cb724-4"><a href="df_plt.html#cb724-4" aria-hidden="true" tabindex="-1"></a>milk_df[<span class="st">&#39;sugar_percent&#39;</span>] <span class="op">=</span> (milk_df[<span class="st">&#39;Sugars&#39;</span>] <span class="op">/</span> milk_df[<span class="st">&#39;Carbohydrates&#39;</span>]) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb724-5"><a href="df_plt.html#cb724-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb724-6"><a href="df_plt.html#cb724-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, adding the total weight of the components</span></span>
+<span id="cb724-7"><a href="df_plt.html#cb724-7" aria-hidden="true" tabindex="-1"></a>milk_df[<span class="st">&#39;tot_wei&#39;</span>] <span class="op">=</span> milk_df[<span class="st">&#39;Protein&#39;</span>] <span class="op">+</span> milk_df[<span class="st">&#39;Fiber&#39;</span>] <span class="op">+</span> milk_df[<span class="st">&#39;Carbohydrates&#39;</span>] <span class="op">+</span> milk_df[<span class="st">&#39;Fats&#39;</span>]</span>
+<span id="cb724-8"><a href="df_plt.html#cb724-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb724-9"><a href="df_plt.html#cb724-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Finally, computing the protein content</span></span>
+<span id="cb724-10"><a href="df_plt.html#cb724-10" aria-hidden="true" tabindex="-1"></a>milk_df[<span class="st">&#39;protein_content&#39;</span>] <span class="op">=</span> milk_df[<span class="st">&#39;Protein&#39;</span>] <span class="op">/</span> milk_df[<span class="st">&#39;tot_wei&#39;</span>] <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb724-11"><a href="df_plt.html#cb724-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb724-12"><a href="df_plt.html#cb724-12" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
 <pre><code>##   Milk_Type  Calories  Protein  Fiber  Carbohydrates  Sugars  Fats  sugar_percent  tot_wei  protein_content
 ## 0    Almond        60      1.0    1.0              8     7.0   2.5           87.5     12.5         8.000000
 ## 1       Soy       100      7.0    2.0             10     NaN   4.0            NaN     23.0        30.434783
@@ -859,8 +859,8 @@ In R, we use <code>filter()</code>, and in Python, we use <code>query()</code>.<
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb722"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb722-1"><a href="df_plt.html#cb722-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering rows where Calories is greater than 100 in R</span></span>
-<span id="cb722-2"><a href="df_plt.html#cb722-2" aria-hidden="true" tabindex="-1"></a>milk_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Calories <span class="sc">&gt;</span> <span class="dv">100</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb726"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb726-1"><a href="df_plt.html#cb726-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering rows where Calories is greater than 100 in R</span></span>
+<span id="cb726-2"><a href="df_plt.html#cb726-2" aria-hidden="true" tabindex="-1"></a>milk_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(Calories <span class="sc">&gt;</span> <span class="dv">100</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 10
 ##   Milk_Type Calories Protein Fiber Carbohydrates Sugars
 ##   &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt;
@@ -872,8 +872,8 @@ In R, we use <code>filter()</code>, and in Python, we use <code>query()</code>.<
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb724"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb724-1"><a href="df_plt.html#cb724-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering rows where Calories is greater than 100 in Python</span></span>
-<span id="cb724-2"><a href="df_plt.html#cb724-2" aria-hidden="true" tabindex="-1"></a>milk_df.query(<span class="st">&#39;Calories &gt; 100&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb728"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb728-1"><a href="df_plt.html#cb728-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering rows where Calories is greater than 100 in Python</span></span>
+<span id="cb728-2"><a href="df_plt.html#cb728-2" aria-hidden="true" tabindex="-1"></a>milk_df.query(<span class="st">&#39;Calories &gt; 100&#39;</span>)</span></code></pre></div>
 <pre><code>##   Milk_Type  Calories  Protein  Fiber  Carbohydrates  Sugars  Fats  sugar_percent  tot_wei  protein_content
 ## 2       Oat       120      3.0    1.2             20    19.0   2.5           95.0     26.7        11.235955
 ## 3      Rice       130      1.0    0.7             25     NaN   2.5            NaN     29.2         3.424658
@@ -888,8 +888,8 @@ In R, we use <code>arrange()</code>, and in Python, we use <code>sort_values()</
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb726"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb726-1"><a href="df_plt.html#cb726-1" aria-hidden="true" tabindex="-1"></a>milk_df <span class="ot">&lt;-</span> milk_df <span class="sc">|&gt;</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(sugar_percent))</span>
-<span id="cb726-2"><a href="df_plt.html#cb726-2" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
+<div class="sourceCode" id="cb730"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb730-1"><a href="df_plt.html#cb730-1" aria-hidden="true" tabindex="-1"></a>milk_df <span class="ot">&lt;-</span> milk_df <span class="sc">|&gt;</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(sugar_percent))</span>
+<span id="cb730-2"><a href="df_plt.html#cb730-2" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 10
 ##   Milk_Type Calories Protein Fiber Carbohydrates Sugars
 ##   &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt;
@@ -904,9 +904,9 @@ In R, we use <code>arrange()</code>, and in Python, we use <code>sort_values()</
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb728"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb728-1"><a href="df_plt.html#cb728-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arranging rows by decreasing sugar_percent in Python</span></span>
-<span id="cb728-2"><a href="df_plt.html#cb728-2" aria-hidden="true" tabindex="-1"></a>milk_df <span class="op">=</span> milk_df.sort_values(<span class="st">&#39;sugar_percent&#39;</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb728-3"><a href="df_plt.html#cb728-3" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
+<div class="sourceCode" id="cb732"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb732-1"><a href="df_plt.html#cb732-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arranging rows by decreasing sugar_percent in Python</span></span>
+<span id="cb732-2"><a href="df_plt.html#cb732-2" aria-hidden="true" tabindex="-1"></a>milk_df <span class="op">=</span> milk_df.sort_values(<span class="st">&#39;sugar_percent&#39;</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb732-3"><a href="df_plt.html#cb732-3" aria-hidden="true" tabindex="-1"></a>milk_df</span></code></pre></div>
 <pre><code>##   Milk_Type  Calories  Protein  Fiber  Carbohydrates  Sugars  Fats  sugar_percent  tot_wei  protein_content
 ## 2       Oat       120      3.0    1.2             20    19.0   2.5           95.0     26.7        11.235955
 ## 0    Almond        60      1.0    1.0              8     7.0   2.5           87.5     12.5         8.000000
@@ -921,13 +921,13 @@ By these functions we can perform complex data manipulations with just a few lin
 <p>Now the coolest thing, is that you can run all the commands above (and more!) in one single statement, through, in R, the power of the pipe (<code>|&gt;</code>), and in Python with Pandas by concatenating methods.
 See the two chunks below:</p>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb730"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb730-1"><a href="df_plt.html#cb730-1" aria-hidden="true" tabindex="-1"></a>milk_df <span class="sc">|&gt;</span></span>
-<span id="cb730-2"><a href="df_plt.html#cb730-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Sugars)) <span class="sc">|&gt;</span></span>
-<span id="cb730-3"><a href="df_plt.html#cb730-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sugar_percent =</span> (Sugars <span class="sc">/</span> Carbohydrates) <span class="sc">*</span> <span class="dv">100</span>, </span>
-<span id="cb730-4"><a href="df_plt.html#cb730-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">tot_wei =</span> Protein <span class="sc">+</span> Fiber <span class="sc">+</span> Carbohydrates <span class="sc">+</span> Fats,</span>
-<span id="cb730-5"><a href="df_plt.html#cb730-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">protein_content =</span> Protein <span class="sc">/</span> tot_wei <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">|&gt;</span></span>
-<span id="cb730-6"><a href="df_plt.html#cb730-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(protein_content)) <span class="sc">|&gt;</span></span>
-<span id="cb730-7"><a href="df_plt.html#cb730-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Milk_Type, protein_content)</span></code></pre></div>
+<div class="sourceCode" id="cb734"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb734-1"><a href="df_plt.html#cb734-1" aria-hidden="true" tabindex="-1"></a>milk_df <span class="sc">|&gt;</span></span>
+<span id="cb734-2"><a href="df_plt.html#cb734-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Sugars)) <span class="sc">|&gt;</span></span>
+<span id="cb734-3"><a href="df_plt.html#cb734-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sugar_percent =</span> (Sugars <span class="sc">/</span> Carbohydrates) <span class="sc">*</span> <span class="dv">100</span>, </span>
+<span id="cb734-4"><a href="df_plt.html#cb734-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">tot_wei =</span> Protein <span class="sc">+</span> Fiber <span class="sc">+</span> Carbohydrates <span class="sc">+</span> Fats,</span>
+<span id="cb734-5"><a href="df_plt.html#cb734-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">protein_content =</span> Protein <span class="sc">/</span> tot_wei <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">|&gt;</span></span>
+<span id="cb734-6"><a href="df_plt.html#cb734-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(protein_content)) <span class="sc">|&gt;</span></span>
+<span id="cb734-7"><a href="df_plt.html#cb734-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Milk_Type, protein_content)</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 2
 ##   Milk_Type protein_content
 ##   &lt;chr&gt;               &lt;dbl&gt;
@@ -936,17 +936,17 @@ See the two chunks below:</p>
 ## 3 Hazelnut             9.52
 ## 4 Almond               8</code></pre>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb732"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb732-1"><a href="df_plt.html#cb732-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb732-2"><a href="df_plt.html#cb732-2" aria-hidden="true" tabindex="-1"></a>  milk_df</span>
-<span id="cb732-3"><a href="df_plt.html#cb732-3" aria-hidden="true" tabindex="-1"></a>    .query(<span class="st">&#39;Sugars == Sugars&#39;</span>)  <span class="co"># Equivalent to !is.na(Sugars) in R</span></span>
-<span id="cb732-4"><a href="df_plt.html#cb732-4" aria-hidden="true" tabindex="-1"></a>    .assign(</span>
-<span id="cb732-5"><a href="df_plt.html#cb732-5" aria-hidden="true" tabindex="-1"></a>        sugar_percent <span class="op">=</span> <span class="kw">lambda</span> df: (df.Sugars <span class="op">/</span> df.Carbohydrates) <span class="op">*</span> <span class="dv">100</span>,</span>
-<span id="cb732-6"><a href="df_plt.html#cb732-6" aria-hidden="true" tabindex="-1"></a>        tot_wei <span class="op">=</span> <span class="kw">lambda</span> df: df.Protein <span class="op">+</span> df.Fiber <span class="op">+</span> df.Carbohydrates <span class="op">+</span> df.Fats,</span>
-<span id="cb732-7"><a href="df_plt.html#cb732-7" aria-hidden="true" tabindex="-1"></a>        protein_content <span class="op">=</span> <span class="kw">lambda</span> df: df.Protein <span class="op">/</span> df.tot_wei <span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb732-8"><a href="df_plt.html#cb732-8" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb732-9"><a href="df_plt.html#cb732-9" aria-hidden="true" tabindex="-1"></a>    .sort_values(<span class="st">&#39;protein_content&#39;</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb732-10"><a href="df_plt.html#cb732-10" aria-hidden="true" tabindex="-1"></a>    [[<span class="st">&#39;Milk_Type&#39;</span>, <span class="st">&#39;protein_content&#39;</span>]]</span>
-<span id="cb732-11"><a href="df_plt.html#cb732-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb736"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb736-1"><a href="df_plt.html#cb736-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb736-2"><a href="df_plt.html#cb736-2" aria-hidden="true" tabindex="-1"></a>  milk_df</span>
+<span id="cb736-3"><a href="df_plt.html#cb736-3" aria-hidden="true" tabindex="-1"></a>    .query(<span class="st">&#39;Sugars == Sugars&#39;</span>)  <span class="co"># Equivalent to !is.na(Sugars) in R</span></span>
+<span id="cb736-4"><a href="df_plt.html#cb736-4" aria-hidden="true" tabindex="-1"></a>    .assign(</span>
+<span id="cb736-5"><a href="df_plt.html#cb736-5" aria-hidden="true" tabindex="-1"></a>        sugar_percent <span class="op">=</span> <span class="kw">lambda</span> df: (df.Sugars <span class="op">/</span> df.Carbohydrates) <span class="op">*</span> <span class="dv">100</span>,</span>
+<span id="cb736-6"><a href="df_plt.html#cb736-6" aria-hidden="true" tabindex="-1"></a>        tot_wei <span class="op">=</span> <span class="kw">lambda</span> df: df.Protein <span class="op">+</span> df.Fiber <span class="op">+</span> df.Carbohydrates <span class="op">+</span> df.Fats,</span>
+<span id="cb736-7"><a href="df_plt.html#cb736-7" aria-hidden="true" tabindex="-1"></a>        protein_content <span class="op">=</span> <span class="kw">lambda</span> df: df.Protein <span class="op">/</span> df.tot_wei <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb736-8"><a href="df_plt.html#cb736-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb736-9"><a href="df_plt.html#cb736-9" aria-hidden="true" tabindex="-1"></a>    .sort_values(<span class="st">&#39;protein_content&#39;</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb736-10"><a href="df_plt.html#cb736-10" aria-hidden="true" tabindex="-1"></a>    [[<span class="st">&#39;Milk_Type&#39;</span>, <span class="st">&#39;protein_content&#39;</span>]]</span>
+<span id="cb736-11"><a href="df_plt.html#cb736-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>##   Milk_Type  protein_content
 ## 2       Oat        11.235955
 ## 4    Cashew        10.447761
@@ -977,12 +977,12 @@ Well, this is the first time we are doing this in a practical sense.</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb734"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb734-1"><a href="df_plt.html#cb734-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the data frame in R</span></span>
-<span id="cb734-2"><a href="df_plt.html#cb734-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;mtcars.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb738"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb738-1"><a href="df_plt.html#cb738-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the data frame in R</span></span>
+<span id="cb738-2"><a href="df_plt.html#cb738-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;mtcars.csv&quot;</span>)</span></code></pre></div>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb735"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb735-1"><a href="df_plt.html#cb735-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="op">=</span> pd.read_csv(<span class="st">&quot;mtcars.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb739"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb739-1"><a href="df_plt.html#cb739-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="op">=</span> pd.read_csv(<span class="st">&quot;mtcars.csv&quot;</span>)</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -1009,8 +1009,8 @@ Well, this is the first time we are doing this in a practical sense.</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb736"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb736-1"><a href="df_plt.html#cb736-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Displaying the first few values in R</span></span>
-<span id="cb736-2"><a href="df_plt.html#cb736-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code></pre></div>
+<div class="sourceCode" id="cb740"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb740-1"><a href="df_plt.html#cb740-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Displaying the first few values in R</span></span>
+<span id="cb740-2"><a href="df_plt.html#cb740-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code></pre></div>
 <pre><code>##    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 ## 1 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
 ## 2 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
@@ -1021,8 +1021,8 @@ Well, this is the first time we are doing this in a practical sense.</p>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb738"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb738-1"><a href="df_plt.html#cb738-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Displaying the first few values in Python</span></span>
-<span id="cb738-2"><a href="df_plt.html#cb738-2" aria-hidden="true" tabindex="-1"></a>mtcars.head()</span></code></pre></div>
+<div class="sourceCode" id="cb742"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb742-1"><a href="df_plt.html#cb742-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Displaying the first few values in Python</span></span>
+<span id="cb742-2"><a href="df_plt.html#cb742-2" aria-hidden="true" tabindex="-1"></a>mtcars.head()</span></code></pre></div>
 <pre><code>##     mpg  cyl   disp   hp  drat     wt   qsec  vs  am  gear  carb
 ## 0  21.0    6  160.0  110  3.90  2.620  16.46   0   1     4     4
 ## 1  21.0    6  160.0  110  3.90  2.875  17.02   0   1     4     4
@@ -1051,15 +1051,15 @@ This will affect many things when dealing with those variables, like producing s
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb740"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb740-1"><a href="df_plt.html#cb740-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting to factors in R</span></span>
-<span id="cb740-2"><a href="df_plt.html#cb740-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="ot">&lt;-</span> mtcars <span class="sc">|&gt;</span> </span>
-<span id="cb740-3"><a href="df_plt.html#cb740-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">vs =</span> <span class="fu">factor</span>(vs,</span>
-<span id="cb740-4"><a href="df_plt.html#cb740-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;V-shaped&quot;</span>, <span class="st">&quot;straight&quot;</span>)),</span>
-<span id="cb740-5"><a href="df_plt.html#cb740-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">am =</span> <span class="fu">factor</span>(am,</span>
-<span id="cb740-6"><a href="df_plt.html#cb740-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;automatic&quot;</span>, <span class="st">&quot;manual&quot;</span>)))</span>
-<span id="cb740-7"><a href="df_plt.html#cb740-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb740-8"><a href="df_plt.html#cb740-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the conversion</span></span>
-<span id="cb740-9"><a href="df_plt.html#cb740-9" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars)</span></code></pre></div>
+<div class="sourceCode" id="cb744"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb744-1"><a href="df_plt.html#cb744-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting to factors in R</span></span>
+<span id="cb744-2"><a href="df_plt.html#cb744-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="ot">&lt;-</span> mtcars <span class="sc">|&gt;</span> </span>
+<span id="cb744-3"><a href="df_plt.html#cb744-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">vs =</span> <span class="fu">factor</span>(vs,</span>
+<span id="cb744-4"><a href="df_plt.html#cb744-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;V-shaped&quot;</span>, <span class="st">&quot;straight&quot;</span>)),</span>
+<span id="cb744-5"><a href="df_plt.html#cb744-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">am =</span> <span class="fu">factor</span>(am,</span>
+<span id="cb744-6"><a href="df_plt.html#cb744-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;automatic&quot;</span>, <span class="st">&quot;manual&quot;</span>)))</span>
+<span id="cb744-7"><a href="df_plt.html#cb744-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb744-8"><a href="df_plt.html#cb744-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the conversion</span></span>
+<span id="cb744-9"><a href="df_plt.html#cb744-9" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    32 obs. of  11 variables:
 ##  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
 ##  $ cyl : int  6 6 4 6 8 6 8 4 4 6 ...
@@ -1075,20 +1075,20 @@ This will affect many things when dealing with those variables, like producing s
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb742"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb742-1"><a href="df_plt.html#cb742-1" aria-hidden="true" tabindex="-1"></a><span class="co"># assigning labels as strings</span></span>
-<span id="cb742-2"><a href="df_plt.html#cb742-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="op">=</span> mtcars.assign(</span>
-<span id="cb742-3"><a href="df_plt.html#cb742-3" aria-hidden="true" tabindex="-1"></a>  vs <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x:</span>
-<span id="cb742-4"><a href="df_plt.html#cb742-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;V-Shaped&quot;</span> <span class="cf">if</span> x <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">&quot;straight&quot;</span>,  mtcars[<span class="st">&#39;vs&#39;</span>])),</span>
-<span id="cb742-5"><a href="df_plt.html#cb742-5" aria-hidden="true" tabindex="-1"></a>  am <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x:</span>
-<span id="cb742-6"><a href="df_plt.html#cb742-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;automatic&quot;</span> <span class="cf">if</span> x <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">&quot;manual&quot;</span>,  mtcars[<span class="st">&#39;am&#39;</span>]))</span>
-<span id="cb742-7"><a href="df_plt.html#cb742-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb742-8"><a href="df_plt.html#cb742-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb742-9"><a href="df_plt.html#cb742-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting to categories in Python</span></span>
-<span id="cb742-10"><a href="df_plt.html#cb742-10" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="st">&#39;vs&#39;</span>] <span class="op">=</span> mtcars[<span class="st">&#39;vs&#39;</span>].astype(<span class="st">&#39;category&#39;</span>)</span>
-<span id="cb742-11"><a href="df_plt.html#cb742-11" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="st">&#39;am&#39;</span>] <span class="op">=</span> mtcars[<span class="st">&#39;am&#39;</span>].astype(<span class="st">&#39;category&#39;</span>)</span>
-<span id="cb742-12"><a href="df_plt.html#cb742-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb742-13"><a href="df_plt.html#cb742-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the conversion</span></span>
-<span id="cb742-14"><a href="df_plt.html#cb742-14" aria-hidden="true" tabindex="-1"></a>mtcars.info()</span></code></pre></div>
+<div class="sourceCode" id="cb746"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb746-1"><a href="df_plt.html#cb746-1" aria-hidden="true" tabindex="-1"></a><span class="co"># assigning labels as strings</span></span>
+<span id="cb746-2"><a href="df_plt.html#cb746-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="op">=</span> mtcars.assign(</span>
+<span id="cb746-3"><a href="df_plt.html#cb746-3" aria-hidden="true" tabindex="-1"></a>  vs <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x:</span>
+<span id="cb746-4"><a href="df_plt.html#cb746-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;V-Shaped&quot;</span> <span class="cf">if</span> x <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">&quot;straight&quot;</span>,  mtcars[<span class="st">&#39;vs&#39;</span>])),</span>
+<span id="cb746-5"><a href="df_plt.html#cb746-5" aria-hidden="true" tabindex="-1"></a>  am <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x:</span>
+<span id="cb746-6"><a href="df_plt.html#cb746-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;automatic&quot;</span> <span class="cf">if</span> x <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">&quot;manual&quot;</span>,  mtcars[<span class="st">&#39;am&#39;</span>]))</span>
+<span id="cb746-7"><a href="df_plt.html#cb746-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb746-8"><a href="df_plt.html#cb746-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb746-9"><a href="df_plt.html#cb746-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting to categories in Python</span></span>
+<span id="cb746-10"><a href="df_plt.html#cb746-10" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="st">&#39;vs&#39;</span>] <span class="op">=</span> mtcars[<span class="st">&#39;vs&#39;</span>].astype(<span class="st">&#39;category&#39;</span>)</span>
+<span id="cb746-11"><a href="df_plt.html#cb746-11" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="st">&#39;am&#39;</span>] <span class="op">=</span> mtcars[<span class="st">&#39;am&#39;</span>].astype(<span class="st">&#39;category&#39;</span>)</span>
+<span id="cb746-12"><a href="df_plt.html#cb746-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb746-13"><a href="df_plt.html#cb746-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the conversion</span></span>
+<span id="cb746-14"><a href="df_plt.html#cb746-14" aria-hidden="true" tabindex="-1"></a>mtcars.info()</span></code></pre></div>
 <pre><code>## &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 ## RangeIndex: 32 entries, 0 to 31
 ## Data columns (total 11 columns):
@@ -1107,7 +1107,7 @@ This will affect many things when dealing with those variables, like producing s
 ##  10  carb    32 non-null     int64   
 ## dtypes: category(2), float64(5), int64(4)
 ## memory usage: 2.7 KB</code></pre>
-<div class="sourceCode" id="cb744"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb744-1"><a href="df_plt.html#cb744-1" aria-hidden="true" tabindex="-1"></a>mtcars.head()</span></code></pre></div>
+<div class="sourceCode" id="cb748"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb748-1"><a href="df_plt.html#cb748-1" aria-hidden="true" tabindex="-1"></a>mtcars.head()</span></code></pre></div>
 <pre><code>##     mpg  cyl   disp   hp  drat     wt   qsec        vs         am  gear  carb
 ## 0  21.0    6  160.0  110  3.90  2.620  16.46  V-Shaped     manual     4     4
 ## 1  21.0    6  160.0  110  3.90  2.875  17.02  V-Shaped     manual     4     4
@@ -1150,10 +1150,10 @@ In our graph <code>mean(mpg)</code> would be <span class="math inline">\(f_1(V1)
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb746"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb746-1"><a href="df_plt.html#cb746-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by &#39;vs&#39; and compute average &#39;mpg&#39; and &#39;hp&#39; in R</span></span>
-<span id="cb746-2"><a href="df_plt.html#cb746-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span></span>
-<span id="cb746-3"><a href="df_plt.html#cb746-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(vs) <span class="sc">|&gt;</span></span>
-<span id="cb746-4"><a href="df_plt.html#cb746-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_mpg =</span> <span class="fu">mean</span>(mpg), <span class="at">avg_hp =</span> <span class="fu">mean</span>(hp))</span></code></pre></div>
+<div class="sourceCode" id="cb750"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb750-1"><a href="df_plt.html#cb750-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by &#39;vs&#39; and compute average &#39;mpg&#39; and &#39;hp&#39; in R</span></span>
+<span id="cb750-2"><a href="df_plt.html#cb750-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span></span>
+<span id="cb750-3"><a href="df_plt.html#cb750-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(vs) <span class="sc">|&gt;</span></span>
+<span id="cb750-4"><a href="df_plt.html#cb750-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_mpg =</span> <span class="fu">mean</span>(mpg), <span class="at">avg_hp =</span> <span class="fu">mean</span>(hp))</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 3
 ##   vs       avg_mpg avg_hp
 ##   &lt;fct&gt;      &lt;dbl&gt;  &lt;dbl&gt;
@@ -1162,11 +1162,11 @@ In our graph <code>mean(mpg)</code> would be <span class="math inline">\(f_1(V1)
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb748"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb748-1"><a href="df_plt.html#cb748-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb748-2"><a href="df_plt.html#cb748-2" aria-hidden="true" tabindex="-1"></a>  mtcars</span>
-<span id="cb748-3"><a href="df_plt.html#cb748-3" aria-hidden="true" tabindex="-1"></a>  .groupby(<span class="st">&#39;vs&#39;</span>, observed<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb748-4"><a href="df_plt.html#cb748-4" aria-hidden="true" tabindex="-1"></a>  .agg({<span class="st">&#39;mpg&#39;</span> : <span class="st">&#39;mean&#39;</span>, <span class="st">&#39;hp&#39;</span> : <span class="st">&#39;mean&#39;</span>})</span>
-<span id="cb748-5"><a href="df_plt.html#cb748-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb752"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb752-1"><a href="df_plt.html#cb752-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb752-2"><a href="df_plt.html#cb752-2" aria-hidden="true" tabindex="-1"></a>  mtcars</span>
+<span id="cb752-3"><a href="df_plt.html#cb752-3" aria-hidden="true" tabindex="-1"></a>  .groupby(<span class="st">&#39;vs&#39;</span>, observed<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb752-4"><a href="df_plt.html#cb752-4" aria-hidden="true" tabindex="-1"></a>  .agg({<span class="st">&#39;mpg&#39;</span> : <span class="st">&#39;mean&#39;</span>, <span class="st">&#39;hp&#39;</span> : <span class="st">&#39;mean&#39;</span>})</span>
+<span id="cb752-5"><a href="df_plt.html#cb752-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>##                 mpg          hp
 ## vs                             
 ## V-Shaped  16.616667  189.722222
@@ -1185,13 +1185,13 @@ In the <code>mtcars</code> data frame, the <code>am</code> column represents the
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb750"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb750-1"><a href="df_plt.html#cb750-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by &#39;vs&#39; and &#39;am&#39;, and compute average &#39;mpg&#39; and &#39;hp&#39; </span></span>
-<span id="cb750-2"><a href="df_plt.html#cb750-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and min qsec</span></span>
-<span id="cb750-3"><a href="df_plt.html#cb750-3" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span></span>
-<span id="cb750-4"><a href="df_plt.html#cb750-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(vs, am) <span class="sc">|&gt;</span></span>
-<span id="cb750-5"><a href="df_plt.html#cb750-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_mpg =</span> <span class="fu">mean</span>(mpg),</span>
-<span id="cb750-6"><a href="df_plt.html#cb750-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">avg_hp =</span> <span class="fu">mean</span>(hp),</span>
-<span id="cb750-7"><a href="df_plt.html#cb750-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_qsec =</span> <span class="fu">min</span>(qsec))</span></code></pre></div>
+<div class="sourceCode" id="cb754"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb754-1"><a href="df_plt.html#cb754-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by &#39;vs&#39; and &#39;am&#39;, and compute average &#39;mpg&#39; and &#39;hp&#39; </span></span>
+<span id="cb754-2"><a href="df_plt.html#cb754-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and min qsec</span></span>
+<span id="cb754-3"><a href="df_plt.html#cb754-3" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span></span>
+<span id="cb754-4"><a href="df_plt.html#cb754-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(vs, am) <span class="sc">|&gt;</span></span>
+<span id="cb754-5"><a href="df_plt.html#cb754-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_mpg =</span> <span class="fu">mean</span>(mpg),</span>
+<span id="cb754-6"><a href="df_plt.html#cb754-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">avg_hp =</span> <span class="fu">mean</span>(hp),</span>
+<span id="cb754-7"><a href="df_plt.html#cb754-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_qsec =</span> <span class="fu">min</span>(qsec))</span></code></pre></div>
 <pre><code>## `summarise()` has grouped output by &#39;vs&#39;. You can override
 ## using the `.groups` argument.</code></pre>
 <pre><code>## # A tibble: 4 × 5
@@ -1205,15 +1205,15 @@ In the <code>mtcars</code> data frame, the <code>am</code> column represents the
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb753"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb753-1"><a href="df_plt.html#cb753-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by &#39;vs&#39; and &#39;am&#39;, and compute average &#39;mpg&#39; and &#39;hp&#39; </span></span>
-<span id="cb753-2"><a href="df_plt.html#cb753-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and min qsec</span></span>
-<span id="cb753-3"><a href="df_plt.html#cb753-3" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb753-4"><a href="df_plt.html#cb753-4" aria-hidden="true" tabindex="-1"></a>  mtcars</span>
-<span id="cb753-5"><a href="df_plt.html#cb753-5" aria-hidden="true" tabindex="-1"></a>  .groupby([<span class="st">&#39;vs&#39;</span>, <span class="st">&#39;am&#39;</span>])</span>
-<span id="cb753-6"><a href="df_plt.html#cb753-6" aria-hidden="true" tabindex="-1"></a>  .agg({<span class="st">&#39;mpg&#39;</span> : <span class="st">&#39;mean&#39;</span>,</span>
-<span id="cb753-7"><a href="df_plt.html#cb753-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;hp&#39;</span> : <span class="st">&#39;mean&#39;</span>,</span>
-<span id="cb753-8"><a href="df_plt.html#cb753-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;qsec&#39;</span> : <span class="st">&#39;min&#39;</span>})</span>
-<span id="cb753-9"><a href="df_plt.html#cb753-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb757"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb757-1"><a href="df_plt.html#cb757-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by &#39;vs&#39; and &#39;am&#39;, and compute average &#39;mpg&#39; and &#39;hp&#39; </span></span>
+<span id="cb757-2"><a href="df_plt.html#cb757-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and min qsec</span></span>
+<span id="cb757-3"><a href="df_plt.html#cb757-3" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb757-4"><a href="df_plt.html#cb757-4" aria-hidden="true" tabindex="-1"></a>  mtcars</span>
+<span id="cb757-5"><a href="df_plt.html#cb757-5" aria-hidden="true" tabindex="-1"></a>  .groupby([<span class="st">&#39;vs&#39;</span>, <span class="st">&#39;am&#39;</span>])</span>
+<span id="cb757-6"><a href="df_plt.html#cb757-6" aria-hidden="true" tabindex="-1"></a>  .agg({<span class="st">&#39;mpg&#39;</span> : <span class="st">&#39;mean&#39;</span>,</span>
+<span id="cb757-7"><a href="df_plt.html#cb757-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;hp&#39;</span> : <span class="st">&#39;mean&#39;</span>,</span>
+<span id="cb757-8"><a href="df_plt.html#cb757-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;qsec&#39;</span> : <span class="st">&#39;min&#39;</span>})</span>
+<span id="cb757-9"><a href="df_plt.html#cb757-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>##                           mpg          hp   qsec
 ## vs       am                                     
 ## V-Shaped automatic  15.050000  194.166667  15.41
@@ -1284,18 +1284,18 @@ Let’s create a histogram of <code>mpg</code> (miles per gallon).</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb755"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb755-1"><a href="df_plt.html#cb755-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>mpg)) <span class="sc">+</span></span>
-<span id="cb755-2"><a href="df_plt.html#cb755-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>)</span></code></pre></div>
-<p><img src="images/unnamed-chunk-238-1.png" width="50%" /></p>
+<div class="sourceCode" id="cb759"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb759-1"><a href="df_plt.html#cb759-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>mpg)) <span class="sc">+</span></span>
+<span id="cb759-2"><a href="df_plt.html#cb759-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>)</span></code></pre></div>
+<p><img src="images/unnamed-chunk-240-1.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb756"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb756-1"><a href="df_plt.html#cb756-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb756-2"><a href="df_plt.html#cb756-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;mpg&#39;</span>)) <span class="op">+</span></span>
-<span id="cb756-3"><a href="df_plt.html#cb756-3" aria-hidden="true" tabindex="-1"></a>  geom_histogram(binwidth<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb756-4"><a href="df_plt.html#cb756-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb760"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb760-1"><a href="df_plt.html#cb760-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb760-2"><a href="df_plt.html#cb760-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;mpg&#39;</span>)) <span class="op">+</span></span>
+<span id="cb760-3"><a href="df_plt.html#cb760-3" aria-hidden="true" tabindex="-1"></a>  geom_histogram(binwidth<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb760-4"><a href="df_plt.html#cb760-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
-<p><img src="images/unnamed-chunk-239-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-241-1.png" width="50%" /></p>
 </div>
 </div>
 <p>Let’s break down the syntax: - <code>ggplot(mtcars, aes(x=mpg))</code>.
@@ -1316,34 +1316,34 @@ Try to change the binwidth and see what happens.</p></li>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb758"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb758-1"><a href="df_plt.html#cb758-1" aria-hidden="true" tabindex="-1"></a><span class="co"># python users looking at this example: this is one particular </span></span>
-<span id="cb758-2"><a href="df_plt.html#cb758-2" aria-hidden="true" tabindex="-1"></a><span class="co"># case where ggplot2 in R is better then plotnine in python. The difference</span></span>
-<span id="cb758-3"><a href="df_plt.html#cb758-3" aria-hidden="true" tabindex="-1"></a><span class="co"># here is that, in R, boxplot can accept both an x or y aesthetic</span></span>
-<span id="cb758-4"><a href="df_plt.html#cb758-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg)) <span class="sc">+</span></span>
-<span id="cb758-5"><a href="df_plt.html#cb758-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>)</span></code></pre></div>
-<p><img src="images/unnamed-chunk-240-3.png" width="50%" /></p>
+<div class="sourceCode" id="cb762"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb762-1"><a href="df_plt.html#cb762-1" aria-hidden="true" tabindex="-1"></a><span class="co"># python users looking at this example: this is one particular </span></span>
+<span id="cb762-2"><a href="df_plt.html#cb762-2" aria-hidden="true" tabindex="-1"></a><span class="co"># case where ggplot2 in R is better then plotnine in python. The difference</span></span>
+<span id="cb762-3"><a href="df_plt.html#cb762-3" aria-hidden="true" tabindex="-1"></a><span class="co"># here is that, in R, boxplot can accept both an x or y aesthetic</span></span>
+<span id="cb762-4"><a href="df_plt.html#cb762-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg)) <span class="sc">+</span></span>
+<span id="cb762-5"><a href="df_plt.html#cb762-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>)</span></code></pre></div>
+<p><img src="images/unnamed-chunk-242-3.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb759"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb759-1"><a href="df_plt.html#cb759-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this will produce an error in python since</span></span>
-<span id="cb759-2"><a href="df_plt.html#cb759-2" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_histogram only works with the x axis in plotnine.</span></span>
-<span id="cb759-3"><a href="df_plt.html#cb759-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plotnine has still minor limitations </span></span>
-<span id="cb759-4"><a href="df_plt.html#cb759-4" aria-hidden="true" tabindex="-1"></a><span class="co"># compared to ggplot2 in R. Just look at the R output.</span></span>
-<span id="cb759-5"><a href="df_plt.html#cb759-5" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb759-6"><a href="df_plt.html#cb759-6" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>)) <span class="op">+</span></span>
-<span id="cb759-7"><a href="df_plt.html#cb759-7" aria-hidden="true" tabindex="-1"></a>  geom_histogram()</span>
-<span id="cb759-8"><a href="df_plt.html#cb759-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb763"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb763-1"><a href="df_plt.html#cb763-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this will produce an error in python since</span></span>
+<span id="cb763-2"><a href="df_plt.html#cb763-2" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_histogram only works with the x axis in plotnine.</span></span>
+<span id="cb763-3"><a href="df_plt.html#cb763-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plotnine has still minor limitations </span></span>
+<span id="cb763-4"><a href="df_plt.html#cb763-4" aria-hidden="true" tabindex="-1"></a><span class="co"># compared to ggplot2 in R. Just look at the R output.</span></span>
+<span id="cb763-5"><a href="df_plt.html#cb763-5" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb763-6"><a href="df_plt.html#cb763-6" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>)) <span class="op">+</span></span>
+<span id="cb763-7"><a href="df_plt.html#cb763-7" aria-hidden="true" tabindex="-1"></a>  geom_histogram()</span>
+<span id="cb763-8"><a href="df_plt.html#cb763-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &#39;stat_bin() must not be used with a y aesthetic.&#39;</code></pre>
-<div class="sourceCode" id="cb761"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb761-1"><a href="df_plt.html#cb761-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can obtain a similar visualization via coord flip</span></span>
-<span id="cb761-2"><a href="df_plt.html#cb761-2" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb761-3"><a href="df_plt.html#cb761-3" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;mpg&#39;</span>)) <span class="op">+</span></span>
-<span id="cb761-4"><a href="df_plt.html#cb761-4" aria-hidden="true" tabindex="-1"></a>  geom_histogram() <span class="op">+</span></span>
-<span id="cb761-5"><a href="df_plt.html#cb761-5" aria-hidden="true" tabindex="-1"></a>  coord_flip()</span>
-<span id="cb761-6"><a href="df_plt.html#cb761-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb765"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb765-1"><a href="df_plt.html#cb765-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can obtain a similar visualization via coord flip</span></span>
+<span id="cb765-2"><a href="df_plt.html#cb765-2" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb765-3"><a href="df_plt.html#cb765-3" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;mpg&#39;</span>)) <span class="op">+</span></span>
+<span id="cb765-4"><a href="df_plt.html#cb765-4" aria-hidden="true" tabindex="-1"></a>  geom_histogram() <span class="op">+</span></span>
+<span id="cb765-5"><a href="df_plt.html#cb765-5" aria-hidden="true" tabindex="-1"></a>  coord_flip()</span>
+<span id="cb765-6"><a href="df_plt.html#cb765-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;
 ## 
 ## /home/romano/Documents/EpiC/.venv/lib/python3.11/site-packages/plotnine/stats/stat_bin.py:109: PlotnineWarning: &#39;stat_bin()&#39; using &#39;bins = 6&#39;. Pick better value with &#39;binwidth&#39;.</code></pre>
-<p><img src="images/unnamed-chunk-241-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-243-1.png" width="50%" /></p>
 </div>
 </div>
 <p>You can see by how changing the axis aesthetic, the histogram was mirrored over the axis.
@@ -1351,18 +1351,18 @@ Let’s see what happens now, if we swap the <code>geom_histogram</code> layer f
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb763"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb763-1"><a href="df_plt.html#cb763-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg)) <span class="sc">+</span></span>
-<span id="cb763-2"><a href="df_plt.html#cb763-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
-<p><img src="images/unnamed-chunk-242-3.png" width="50%" /></p>
+<div class="sourceCode" id="cb767"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb767-1"><a href="df_plt.html#cb767-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg)) <span class="sc">+</span></span>
+<span id="cb767-2"><a href="df_plt.html#cb767-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="images/unnamed-chunk-244-3.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb764"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb764-1"><a href="df_plt.html#cb764-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb764-2"><a href="df_plt.html#cb764-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>)) <span class="op">+</span></span>
-<span id="cb764-3"><a href="df_plt.html#cb764-3" aria-hidden="true" tabindex="-1"></a>  geom_boxplot()</span>
-<span id="cb764-4"><a href="df_plt.html#cb764-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb768"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb768-1"><a href="df_plt.html#cb768-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb768-2"><a href="df_plt.html#cb768-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>)) <span class="op">+</span></span>
+<span id="cb768-3"><a href="df_plt.html#cb768-3" aria-hidden="true" tabindex="-1"></a>  geom_boxplot()</span>
+<span id="cb768-4"><a href="df_plt.html#cb768-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
-<p><img src="images/unnamed-chunk-243-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-245-1.png" width="50%" /></p>
 </div>
 </div>
 <p>This will give us a complete different type of distribution plot, <em>the boxplot</em>!
@@ -1377,26 +1377,26 @@ For instance:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb766"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb766-1"><a href="df_plt.html#cb766-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R users, look at the output of python plot.</span></span>
-<span id="cb766-2"><a href="df_plt.html#cb766-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We can make the same plot in R!</span></span>
-<span id="cb766-3"><a href="df_plt.html#cb766-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Can you translate the python code to ggplot2?</span></span>
-<span id="cb766-4"><a href="df_plt.html#cb766-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg)) <span class="sc">+</span></span>
-<span id="cb766-5"><a href="df_plt.html#cb766-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb766-6"><a href="df_plt.html#cb766-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
-<p><img src="images/unnamed-chunk-244-3.png" width="50%" /></p>
+<div class="sourceCode" id="cb770"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb770-1"><a href="df_plt.html#cb770-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R users, look at the output of python plot.</span></span>
+<span id="cb770-2"><a href="df_plt.html#cb770-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We can make the same plot in R!</span></span>
+<span id="cb770-3"><a href="df_plt.html#cb770-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Can you translate the python code to ggplot2?</span></span>
+<span id="cb770-4"><a href="df_plt.html#cb770-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg)) <span class="sc">+</span></span>
+<span id="cb770-5"><a href="df_plt.html#cb770-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb770-6"><a href="df_plt.html#cb770-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
+<p><img src="images/unnamed-chunk-246-3.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb767"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb767-1"><a href="df_plt.html#cb767-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the same plot in plotnine is not possible as </span></span>
-<span id="cb767-2"><a href="df_plt.html#cb767-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the boxplot and the density plot have different aestethics. </span></span>
-<span id="cb767-3"><a href="df_plt.html#cb767-3" aria-hidden="true" tabindex="-1"></a><span class="co"># however, we can plot (this should work in R too): </span></span>
-<span id="cb767-4"><a href="df_plt.html#cb767-4" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb767-5"><a href="df_plt.html#cb767-5" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&quot;mpg&quot;</span>)) <span class="op">+</span></span>
-<span id="cb767-6"><a href="df_plt.html#cb767-6" aria-hidden="true" tabindex="-1"></a>    geom_histogram(aes(y <span class="op">=</span> <span class="st">&quot;..density..&quot;</span>), binwidth<span class="op">=</span><span class="dv">3</span>) <span class="op">+</span></span>
-<span id="cb767-7"><a href="df_plt.html#cb767-7" aria-hidden="true" tabindex="-1"></a>    geom_density()</span>
-<span id="cb767-8"><a href="df_plt.html#cb767-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb771"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb771-1"><a href="df_plt.html#cb771-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the same plot in plotnine is not possible as </span></span>
+<span id="cb771-2"><a href="df_plt.html#cb771-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the boxplot and the density plot have different aestethics. </span></span>
+<span id="cb771-3"><a href="df_plt.html#cb771-3" aria-hidden="true" tabindex="-1"></a><span class="co"># however, we can plot (this should work in R too): </span></span>
+<span id="cb771-4"><a href="df_plt.html#cb771-4" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb771-5"><a href="df_plt.html#cb771-5" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&quot;mpg&quot;</span>)) <span class="op">+</span></span>
+<span id="cb771-6"><a href="df_plt.html#cb771-6" aria-hidden="true" tabindex="-1"></a>    geom_histogram(aes(y <span class="op">=</span> <span class="st">&quot;..density..&quot;</span>), binwidth<span class="op">=</span><span class="dv">3</span>) <span class="op">+</span></span>
+<span id="cb771-7"><a href="df_plt.html#cb771-7" aria-hidden="true" tabindex="-1"></a>    geom_density()</span>
+<span id="cb771-8"><a href="df_plt.html#cb771-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
-<p><img src="images/unnamed-chunk-245-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-247-1.png" width="50%" /></p>
 </div>
 </div>
 <p>We have just added an estimate of our density to our boxplot/histogram!</p>
@@ -1409,18 +1409,18 @@ Let’s create a scatterplot of <code>mpg</code> against <code>hp</code> (horsep
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb769"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb769-1"><a href="df_plt.html#cb769-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg)) <span class="sc">+</span></span>
-<span id="cb769-2"><a href="df_plt.html#cb769-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="co"># + theme_minimal()</span></span></code></pre></div>
-<p><img src="images/unnamed-chunk-246-3.png" width="50%" /></p>
+<div class="sourceCode" id="cb773"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb773-1"><a href="df_plt.html#cb773-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg)) <span class="sc">+</span></span>
+<span id="cb773-2"><a href="df_plt.html#cb773-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="co"># + theme_minimal()</span></span></code></pre></div>
+<p><img src="images/unnamed-chunk-248-3.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb770"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb770-1"><a href="df_plt.html#cb770-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb770-2"><a href="df_plt.html#cb770-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>)) <span class="op">+</span></span>
-<span id="cb770-3"><a href="df_plt.html#cb770-3" aria-hidden="true" tabindex="-1"></a>  geom_point() <span class="co"># + theme_minimal()</span></span>
-<span id="cb770-4"><a href="df_plt.html#cb770-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb774"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb774-1"><a href="df_plt.html#cb774-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb774-2"><a href="df_plt.html#cb774-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>)) <span class="op">+</span></span>
+<span id="cb774-3"><a href="df_plt.html#cb774-3" aria-hidden="true" tabindex="-1"></a>  geom_point() <span class="co"># + theme_minimal()</span></span>
+<span id="cb774-4"><a href="df_plt.html#cb774-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
-<p><img src="images/unnamed-chunk-247-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-249-1.png" width="50%" /></p>
 </div>
 </div>
 <p>Uncomment the <code>theme_minimal</code> to add an additional theme to our plot, and you will have recreated the plot at the beginning of the section.</p>
@@ -1430,18 +1430,18 @@ Let’s color the points in our scatterplot based on the type of transmission (<
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb772"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb772-1"><a href="df_plt.html#cb772-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg, <span class="at">color=</span>am)) <span class="sc">+</span></span>
-<span id="cb772-2"><a href="df_plt.html#cb772-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="images/unnamed-chunk-248-3.png" width="50%" /></p>
+<div class="sourceCode" id="cb776"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb776-1"><a href="df_plt.html#cb776-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg, <span class="at">color=</span>am)) <span class="sc">+</span></span>
+<span id="cb776-2"><a href="df_plt.html#cb776-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="images/unnamed-chunk-250-3.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb773"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb773-1"><a href="df_plt.html#cb773-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb773-2"><a href="df_plt.html#cb773-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>, color<span class="op">=</span><span class="st">&#39;am&#39;</span>)) <span class="op">+</span></span>
-<span id="cb773-3"><a href="df_plt.html#cb773-3" aria-hidden="true" tabindex="-1"></a>  geom_point()</span>
-<span id="cb773-4"><a href="df_plt.html#cb773-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb777"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb777-1"><a href="df_plt.html#cb777-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb777-2"><a href="df_plt.html#cb777-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>, color<span class="op">=</span><span class="st">&#39;am&#39;</span>)) <span class="op">+</span></span>
+<span id="cb777-3"><a href="df_plt.html#cb777-3" aria-hidden="true" tabindex="-1"></a>  geom_point()</span>
+<span id="cb777-4"><a href="df_plt.html#cb777-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
-<p><img src="images/unnamed-chunk-249-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-251-1.png" width="50%" /></p>
 </div>
 </div>
 <p>We can see graphically now why the mean consumption in the automatic transmission was higher in the example before!
@@ -1451,18 +1451,18 @@ For instance, to throw the engine type into the mix, I can change the shape of m
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb775"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb775-1"><a href="df_plt.html#cb775-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg, <span class="at">color=</span>am, <span class="at">shape=</span> vs)) <span class="sc">+</span></span>
-<span id="cb775-2"><a href="df_plt.html#cb775-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="images/unnamed-chunk-250-3.png" width="50%" /></p>
+<div class="sourceCode" id="cb779"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb779-1"><a href="df_plt.html#cb779-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg, <span class="at">color=</span>am, <span class="at">shape=</span> vs)) <span class="sc">+</span></span>
+<span id="cb779-2"><a href="df_plt.html#cb779-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="images/unnamed-chunk-252-3.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb776"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb776-1"><a href="df_plt.html#cb776-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb776-2"><a href="df_plt.html#cb776-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>, color<span class="op">=</span><span class="st">&#39;am&#39;</span>, shape<span class="op">=</span><span class="st">&#39;vs&#39;</span>)) <span class="op">+</span></span>
-<span id="cb776-3"><a href="df_plt.html#cb776-3" aria-hidden="true" tabindex="-1"></a>  geom_point()</span>
-<span id="cb776-4"><a href="df_plt.html#cb776-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb780"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb780-1"><a href="df_plt.html#cb780-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb780-2"><a href="df_plt.html#cb780-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>, color<span class="op">=</span><span class="st">&#39;am&#39;</span>, shape<span class="op">=</span><span class="st">&#39;vs&#39;</span>)) <span class="op">+</span></span>
+<span id="cb780-3"><a href="df_plt.html#cb780-3" aria-hidden="true" tabindex="-1"></a>  geom_point()</span>
+<span id="cb780-4"><a href="df_plt.html#cb780-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
-<p><img src="images/unnamed-chunk-251-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-253-1.png" width="50%" /></p>
 </div>
 </div>
 <p>Or again, maybe we want a different visualization completely!
@@ -1470,18 +1470,18 @@ As I can change the shape of my points, I can change the linetype of my boxplots
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb778"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb778-1"><a href="df_plt.html#cb778-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg, <span class="at">color=</span>am, <span class="at">linetype =</span> vs)) <span class="sc">+</span></span>
-<span id="cb778-2"><a href="df_plt.html#cb778-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
-<p><img src="images/unnamed-chunk-252-3.png" width="50%" /></p>
+<div class="sourceCode" id="cb782"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb782-1"><a href="df_plt.html#cb782-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg, <span class="at">color=</span>am, <span class="at">linetype =</span> vs)) <span class="sc">+</span></span>
+<span id="cb782-2"><a href="df_plt.html#cb782-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="images/unnamed-chunk-254-3.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb779"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb779-1"><a href="df_plt.html#cb779-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb779-2"><a href="df_plt.html#cb779-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>, color<span class="op">=</span><span class="st">&#39;am&#39;</span>, linetype<span class="op">=</span><span class="st">&#39;vs&#39;</span>)) <span class="op">+</span></span>
-<span id="cb779-3"><a href="df_plt.html#cb779-3" aria-hidden="true" tabindex="-1"></a>  geom_boxplot()</span>
-<span id="cb779-4"><a href="df_plt.html#cb779-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb783"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb783-1"><a href="df_plt.html#cb783-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb783-2"><a href="df_plt.html#cb783-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>, color<span class="op">=</span><span class="st">&#39;am&#39;</span>, linetype<span class="op">=</span><span class="st">&#39;vs&#39;</span>)) <span class="op">+</span></span>
+<span id="cb783-3"><a href="df_plt.html#cb783-3" aria-hidden="true" tabindex="-1"></a>  geom_boxplot()</span>
+<span id="cb783-4"><a href="df_plt.html#cb783-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
-<p><img src="images/unnamed-chunk-253-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-255-1.png" width="50%" /></p>
 </div>
 </div>
 </div>
@@ -1504,30 +1504,30 @@ Try <code>theme_bw()</code> for a different one.</p></li>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb781"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb781-1"><a href="df_plt.html#cb781-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg, <span class="at">color=</span>am)) <span class="sc">+</span></span>
-<span id="cb781-2"><a href="df_plt.html#cb781-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb781-3"><a href="df_plt.html#cb781-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Power Against Consumption&quot;</span>) <span class="sc">+</span></span>
-<span id="cb781-4"><a href="df_plt.html#cb781-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;Horse Power&quot;</span>, <span class="at">y=</span><span class="st">&quot;Consumption (mpg)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb781-5"><a href="df_plt.html#cb781-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">250</span>) <span class="sc">+</span></span>
-<span id="cb781-6"><a href="df_plt.html#cb781-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb785"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb785-1"><a href="df_plt.html#cb785-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg, <span class="at">color=</span>am)) <span class="sc">+</span></span>
+<span id="cb785-2"><a href="df_plt.html#cb785-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb785-3"><a href="df_plt.html#cb785-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Power Against Consumption&quot;</span>) <span class="sc">+</span></span>
+<span id="cb785-4"><a href="df_plt.html#cb785-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;Horse Power&quot;</span>, <span class="at">y=</span><span class="st">&quot;Consumption (mpg)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb785-5"><a href="df_plt.html#cb785-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">250</span>) <span class="sc">+</span></span>
+<span id="cb785-6"><a href="df_plt.html#cb785-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
 <pre><code>## Warning: Removed 2 rows containing missing values
 ## (`geom_point()`).</code></pre>
-<p><img src="images/unnamed-chunk-254-3.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-256-3.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb783"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb783-1"><a href="df_plt.html#cb783-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb783-2"><a href="df_plt.html#cb783-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>, color<span class="op">=</span><span class="st">&#39;am&#39;</span>)) <span class="op">+</span></span>
-<span id="cb783-3"><a href="df_plt.html#cb783-3" aria-hidden="true" tabindex="-1"></a>  geom_point() <span class="op">+</span></span>
-<span id="cb783-4"><a href="df_plt.html#cb783-4" aria-hidden="true" tabindex="-1"></a>  ggtitle(<span class="st">&quot;Power Against Consumption&quot;</span>) <span class="op">+</span></span>
-<span id="cb783-5"><a href="df_plt.html#cb783-5" aria-hidden="true" tabindex="-1"></a>  labs(x<span class="op">=</span><span class="st">&quot;Horse Power&quot;</span>, y<span class="op">=</span><span class="st">&quot;Consumption (mpg)&quot;</span>) <span class="op">+</span></span>
-<span id="cb783-6"><a href="df_plt.html#cb783-6" aria-hidden="true" tabindex="-1"></a>  xlim(<span class="dv">0</span>, <span class="dv">250</span>) <span class="op">+</span></span>
-<span id="cb783-7"><a href="df_plt.html#cb783-7" aria-hidden="true" tabindex="-1"></a>  theme_bw()</span>
-<span id="cb783-8"><a href="df_plt.html#cb783-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb787"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb787-1"><a href="df_plt.html#cb787-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb787-2"><a href="df_plt.html#cb787-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>, color<span class="op">=</span><span class="st">&#39;am&#39;</span>)) <span class="op">+</span></span>
+<span id="cb787-3"><a href="df_plt.html#cb787-3" aria-hidden="true" tabindex="-1"></a>  geom_point() <span class="op">+</span></span>
+<span id="cb787-4"><a href="df_plt.html#cb787-4" aria-hidden="true" tabindex="-1"></a>  ggtitle(<span class="st">&quot;Power Against Consumption&quot;</span>) <span class="op">+</span></span>
+<span id="cb787-5"><a href="df_plt.html#cb787-5" aria-hidden="true" tabindex="-1"></a>  labs(x<span class="op">=</span><span class="st">&quot;Horse Power&quot;</span>, y<span class="op">=</span><span class="st">&quot;Consumption (mpg)&quot;</span>) <span class="op">+</span></span>
+<span id="cb787-6"><a href="df_plt.html#cb787-6" aria-hidden="true" tabindex="-1"></a>  xlim(<span class="dv">0</span>, <span class="dv">250</span>) <span class="op">+</span></span>
+<span id="cb787-7"><a href="df_plt.html#cb787-7" aria-hidden="true" tabindex="-1"></a>  theme_bw()</span>
+<span id="cb787-8"><a href="df_plt.html#cb787-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;
 ## 
 ## /home/romano/Documents/EpiC/.venv/lib/python3.11/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.</code></pre>
-<p><img src="images/unnamed-chunk-255-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-257-1.png" width="50%" /></p>
 </div>
 </div>
 <div id="multiple-plots-with-facets" class="section level4 hasAnchor" number="5.2.2.1">
@@ -1538,20 +1538,20 @@ For instance, let’s show the relationship between miles per gallon (<code>mpg<
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb785"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb785-1"><a href="df_plt.html#cb785-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg, <span class="at">color=</span>am)) <span class="sc">+</span></span>
-<span id="cb785-2"><a href="df_plt.html#cb785-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb785-3"><a href="df_plt.html#cb785-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>gear)</span></code></pre></div>
-<p><img src="images/unnamed-chunk-256-3.png" width="50%" /></p>
+<div class="sourceCode" id="cb789"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb789-1"><a href="df_plt.html#cb789-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg, <span class="at">color=</span>am)) <span class="sc">+</span></span>
+<span id="cb789-2"><a href="df_plt.html#cb789-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb789-3"><a href="df_plt.html#cb789-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>gear)</span></code></pre></div>
+<p><img src="images/unnamed-chunk-258-3.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb786"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb786-1"><a href="df_plt.html#cb786-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb786-2"><a href="df_plt.html#cb786-2" aria-hidden="true" tabindex="-1"></a>ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>, color<span class="op">=</span><span class="st">&#39;am&#39;</span>)) <span class="op">+</span></span>
-<span id="cb786-3"><a href="df_plt.html#cb786-3" aria-hidden="true" tabindex="-1"></a>  geom_point() <span class="op">+</span> </span>
-<span id="cb786-4"><a href="df_plt.html#cb786-4" aria-hidden="true" tabindex="-1"></a>  facet_wrap(<span class="st">&#39;~gear&#39;</span>)</span>
-<span id="cb786-5"><a href="df_plt.html#cb786-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb790"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb790-1"><a href="df_plt.html#cb790-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb790-2"><a href="df_plt.html#cb790-2" aria-hidden="true" tabindex="-1"></a>ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;mpg&#39;</span>, color<span class="op">=</span><span class="st">&#39;am&#39;</span>)) <span class="op">+</span></span>
+<span id="cb790-3"><a href="df_plt.html#cb790-3" aria-hidden="true" tabindex="-1"></a>  geom_point() <span class="op">+</span> </span>
+<span id="cb790-4"><a href="df_plt.html#cb790-4" aria-hidden="true" tabindex="-1"></a>  facet_wrap(<span class="st">&#39;~gear&#39;</span>)</span>
+<span id="cb790-5"><a href="df_plt.html#cb790-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
-<p><img src="images/unnamed-chunk-257-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-259-1.png" width="50%" /></p>
 </div>
 </div>
 <p>On your own, try what happens by adding the argument <code>nrow=3</code> to the <code>facet_wrap</code>, e.g. <code>facet_wrap(~gear, nrow=3)</code>.</p>
@@ -1562,66 +1562,66 @@ For instance, let’s show the relationship between miles per gallon (<code>mpg<
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb788"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb788-1"><a href="df_plt.html#cb788-1" aria-hidden="true" tabindex="-1"></a><span class="co"># linegraph</span></span>
-<span id="cb788-2"><a href="df_plt.html#cb788-2" aria-hidden="true" tabindex="-1"></a><span class="co"># great for continuous time variables</span></span>
-<span id="cb788-3"><a href="df_plt.html#cb788-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>disp, <span class="at">color=</span>am)) <span class="sc">+</span></span>
-<span id="cb788-4"><a href="df_plt.html#cb788-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
-<p><img src="images/unnamed-chunk-258-3.png" width="50%" /></p>
-<div class="sourceCode" id="cb789"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb789-1"><a href="df_plt.html#cb789-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recall we can always filter based on any type of </span></span>
-<span id="cb789-2"><a href="df_plt.html#cb789-2" aria-hidden="true" tabindex="-1"></a><span class="co"># variable, what we learned over the first half translates equally</span></span>
-<span id="cb789-3"><a href="df_plt.html#cb789-3" aria-hidden="true" tabindex="-1"></a><span class="co"># to the second! And the plot adapts magically.</span></span>
-<span id="cb789-4"><a href="df_plt.html#cb789-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars <span class="sc">|&gt;</span> <span class="fu">filter</span>(am <span class="sc">==</span> <span class="st">&quot;manual&quot;</span>),</span>
-<span id="cb789-5"><a href="df_plt.html#cb789-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>disp)) <span class="sc">+</span></span>
-<span id="cb789-6"><a href="df_plt.html#cb789-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
-<p><img src="images/unnamed-chunk-258-4.png" width="50%" /></p>
-<div class="sourceCode" id="cb790"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb790-1"><a href="df_plt.html#cb790-1" aria-hidden="true" tabindex="-1"></a><span class="co"># barcharts</span></span>
-<span id="cb790-2"><a href="df_plt.html#cb790-2" aria-hidden="true" tabindex="-1"></a><span class="co"># great for categorical variables</span></span>
-<span id="cb790-3"><a href="df_plt.html#cb790-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>cyl, <span class="at">fill=</span>am)) <span class="sc">+</span></span>
-<span id="cb790-4"><a href="df_plt.html#cb790-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
-<p><img src="images/unnamed-chunk-258-5.png" width="50%" /></p>
-<div class="sourceCode" id="cb791"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb791-1"><a href="df_plt.html#cb791-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can store the plot in a variable and add more layers if </span></span>
-<span id="cb791-2"><a href="df_plt.html#cb791-2" aria-hidden="true" tabindex="-1"></a><span class="co"># needed </span></span>
-<span id="cb791-3"><a href="df_plt.html#cb791-3" aria-hidden="true" tabindex="-1"></a>pt <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>cyl, <span class="at">fill=</span>am)) <span class="sc">+</span></span>
-<span id="cb791-4"><a href="df_plt.html#cb791-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span>
-<span id="cb791-5"><a href="df_plt.html#cb791-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb791-6"><a href="df_plt.html#cb791-6" aria-hidden="true" tabindex="-1"></a>pt <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>vs)</span></code></pre></div>
-<p><img src="images/unnamed-chunk-258-6.png" width="50%" /></p>
+<div class="sourceCode" id="cb792"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb792-1"><a href="df_plt.html#cb792-1" aria-hidden="true" tabindex="-1"></a><span class="co"># linegraph</span></span>
+<span id="cb792-2"><a href="df_plt.html#cb792-2" aria-hidden="true" tabindex="-1"></a><span class="co"># great for continuous time variables</span></span>
+<span id="cb792-3"><a href="df_plt.html#cb792-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>disp, <span class="at">color=</span>am)) <span class="sc">+</span></span>
+<span id="cb792-4"><a href="df_plt.html#cb792-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img src="images/unnamed-chunk-260-3.png" width="50%" /></p>
+<div class="sourceCode" id="cb793"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb793-1"><a href="df_plt.html#cb793-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recall we can always filter based on any type of </span></span>
+<span id="cb793-2"><a href="df_plt.html#cb793-2" aria-hidden="true" tabindex="-1"></a><span class="co"># variable, what we learned over the first half translates equally</span></span>
+<span id="cb793-3"><a href="df_plt.html#cb793-3" aria-hidden="true" tabindex="-1"></a><span class="co"># to the second! And the plot adapts magically.</span></span>
+<span id="cb793-4"><a href="df_plt.html#cb793-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars <span class="sc">|&gt;</span> <span class="fu">filter</span>(am <span class="sc">==</span> <span class="st">&quot;manual&quot;</span>),</span>
+<span id="cb793-5"><a href="df_plt.html#cb793-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>disp)) <span class="sc">+</span></span>
+<span id="cb793-6"><a href="df_plt.html#cb793-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img src="images/unnamed-chunk-260-4.png" width="50%" /></p>
+<div class="sourceCode" id="cb794"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb794-1"><a href="df_plt.html#cb794-1" aria-hidden="true" tabindex="-1"></a><span class="co"># barcharts</span></span>
+<span id="cb794-2"><a href="df_plt.html#cb794-2" aria-hidden="true" tabindex="-1"></a><span class="co"># great for categorical variables</span></span>
+<span id="cb794-3"><a href="df_plt.html#cb794-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>cyl, <span class="at">fill=</span>am)) <span class="sc">+</span></span>
+<span id="cb794-4"><a href="df_plt.html#cb794-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="images/unnamed-chunk-260-5.png" width="50%" /></p>
+<div class="sourceCode" id="cb795"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb795-1"><a href="df_plt.html#cb795-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can store the plot in a variable and add more layers if </span></span>
+<span id="cb795-2"><a href="df_plt.html#cb795-2" aria-hidden="true" tabindex="-1"></a><span class="co"># needed </span></span>
+<span id="cb795-3"><a href="df_plt.html#cb795-3" aria-hidden="true" tabindex="-1"></a>pt <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>cyl, <span class="at">fill=</span>am)) <span class="sc">+</span></span>
+<span id="cb795-4"><a href="df_plt.html#cb795-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span>
+<span id="cb795-5"><a href="df_plt.html#cb795-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb795-6"><a href="df_plt.html#cb795-6" aria-hidden="true" tabindex="-1"></a>pt <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>vs)</span></code></pre></div>
+<p><img src="images/unnamed-chunk-260-6.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb792"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb792-1"><a href="df_plt.html#cb792-1" aria-hidden="true" tabindex="-1"></a><span class="co"># linegraph</span></span>
-<span id="cb792-2"><a href="df_plt.html#cb792-2" aria-hidden="true" tabindex="-1"></a><span class="co"># great for continuous time variables</span></span>
-<span id="cb792-3"><a href="df_plt.html#cb792-3" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb792-4"><a href="df_plt.html#cb792-4" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;disp&#39;</span>, color<span class="op">=</span><span class="st">&#39;am&#39;</span>)) <span class="op">+</span></span>
-<span id="cb792-5"><a href="df_plt.html#cb792-5" aria-hidden="true" tabindex="-1"></a>  geom_line()</span>
-<span id="cb792-6"><a href="df_plt.html#cb792-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
-<p><img src="images/unnamed-chunk-259-1.png" width="50%" /></p>
-<div class="sourceCode" id="cb794"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb794-1"><a href="df_plt.html#cb794-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recall we can always filter based on any type of </span></span>
-<span id="cb794-2"><a href="df_plt.html#cb794-2" aria-hidden="true" tabindex="-1"></a><span class="co"># variable, what we learned over the first half translates equally</span></span>
-<span id="cb794-3"><a href="df_plt.html#cb794-3" aria-hidden="true" tabindex="-1"></a><span class="co"># to the second! And the plot adapts magically.</span></span>
-<span id="cb794-4"><a href="df_plt.html#cb794-4" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb794-5"><a href="df_plt.html#cb794-5" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars.query(<span class="st">&quot;am == &#39;manual&#39;&quot;</span>),</span>
-<span id="cb794-6"><a href="df_plt.html#cb794-6" aria-hidden="true" tabindex="-1"></a>  aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;disp&#39;</span>)) <span class="op">+</span></span>
-<span id="cb794-7"><a href="df_plt.html#cb794-7" aria-hidden="true" tabindex="-1"></a>  geom_line()</span>
-<span id="cb794-8"><a href="df_plt.html#cb794-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
-<p><img src="images/unnamed-chunk-259-2.png" width="50%" /></p>
-<div class="sourceCode" id="cb796"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb796-1"><a href="df_plt.html#cb796-1" aria-hidden="true" tabindex="-1"></a><span class="co"># barcharts</span></span>
-<span id="cb796-2"><a href="df_plt.html#cb796-2" aria-hidden="true" tabindex="-1"></a><span class="co"># great for categorical variables</span></span>
+<div class="sourceCode" id="cb796"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb796-1"><a href="df_plt.html#cb796-1" aria-hidden="true" tabindex="-1"></a><span class="co"># linegraph</span></span>
+<span id="cb796-2"><a href="df_plt.html#cb796-2" aria-hidden="true" tabindex="-1"></a><span class="co"># great for continuous time variables</span></span>
 <span id="cb796-3"><a href="df_plt.html#cb796-3" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb796-4"><a href="df_plt.html#cb796-4" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;cyl&#39;</span>, fill<span class="op">=</span><span class="st">&#39;am&#39;</span>)) <span class="op">+</span></span>
-<span id="cb796-5"><a href="df_plt.html#cb796-5" aria-hidden="true" tabindex="-1"></a>  geom_bar()</span>
+<span id="cb796-4"><a href="df_plt.html#cb796-4" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;disp&#39;</span>, color<span class="op">=</span><span class="st">&#39;am&#39;</span>)) <span class="op">+</span></span>
+<span id="cb796-5"><a href="df_plt.html#cb796-5" aria-hidden="true" tabindex="-1"></a>  geom_line()</span>
 <span id="cb796-6"><a href="df_plt.html#cb796-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
-<p><img src="images/unnamed-chunk-259-3.png" width="50%" /></p>
-<div class="sourceCode" id="cb798"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb798-1"><a href="df_plt.html#cb798-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can store the plot in a variable and add more layers if </span></span>
-<span id="cb798-2"><a href="df_plt.html#cb798-2" aria-hidden="true" tabindex="-1"></a><span class="co"># needed </span></span>
-<span id="cb798-3"><a href="df_plt.html#cb798-3" aria-hidden="true" tabindex="-1"></a>pt <span class="op">=</span> (ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;cyl&#39;</span>, fill<span class="op">=</span><span class="st">&#39;am&#39;</span>)) <span class="op">+</span></span>
-<span id="cb798-4"><a href="df_plt.html#cb798-4" aria-hidden="true" tabindex="-1"></a>  geom_bar())</span>
-<span id="cb798-5"><a href="df_plt.html#cb798-5" aria-hidden="true" tabindex="-1"></a>pt <span class="op">+</span> facet_wrap(<span class="st">&#39;~vs&#39;</span>)</span></code></pre></div>
+<p><img src="images/unnamed-chunk-261-1.png" width="50%" /></p>
+<div class="sourceCode" id="cb798"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb798-1"><a href="df_plt.html#cb798-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recall we can always filter based on any type of </span></span>
+<span id="cb798-2"><a href="df_plt.html#cb798-2" aria-hidden="true" tabindex="-1"></a><span class="co"># variable, what we learned over the first half translates equally</span></span>
+<span id="cb798-3"><a href="df_plt.html#cb798-3" aria-hidden="true" tabindex="-1"></a><span class="co"># to the second! And the plot adapts magically.</span></span>
+<span id="cb798-4"><a href="df_plt.html#cb798-4" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb798-5"><a href="df_plt.html#cb798-5" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars.query(<span class="st">&quot;am == &#39;manual&#39;&quot;</span>),</span>
+<span id="cb798-6"><a href="df_plt.html#cb798-6" aria-hidden="true" tabindex="-1"></a>  aes(x<span class="op">=</span><span class="st">&#39;hp&#39;</span>, y<span class="op">=</span><span class="st">&#39;disp&#39;</span>)) <span class="op">+</span></span>
+<span id="cb798-7"><a href="df_plt.html#cb798-7" aria-hidden="true" tabindex="-1"></a>  geom_line()</span>
+<span id="cb798-8"><a href="df_plt.html#cb798-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
-<p><img src="images/unnamed-chunk-259-4.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-261-2.png" width="50%" /></p>
+<div class="sourceCode" id="cb800"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb800-1"><a href="df_plt.html#cb800-1" aria-hidden="true" tabindex="-1"></a><span class="co"># barcharts</span></span>
+<span id="cb800-2"><a href="df_plt.html#cb800-2" aria-hidden="true" tabindex="-1"></a><span class="co"># great for categorical variables</span></span>
+<span id="cb800-3"><a href="df_plt.html#cb800-3" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb800-4"><a href="df_plt.html#cb800-4" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;cyl&#39;</span>, fill<span class="op">=</span><span class="st">&#39;am&#39;</span>)) <span class="op">+</span></span>
+<span id="cb800-5"><a href="df_plt.html#cb800-5" aria-hidden="true" tabindex="-1"></a>  geom_bar()</span>
+<span id="cb800-6"><a href="df_plt.html#cb800-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
+<p><img src="images/unnamed-chunk-261-3.png" width="50%" /></p>
+<div class="sourceCode" id="cb802"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb802-1"><a href="df_plt.html#cb802-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can store the plot in a variable and add more layers if </span></span>
+<span id="cb802-2"><a href="df_plt.html#cb802-2" aria-hidden="true" tabindex="-1"></a><span class="co"># needed </span></span>
+<span id="cb802-3"><a href="df_plt.html#cb802-3" aria-hidden="true" tabindex="-1"></a>pt <span class="op">=</span> (ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;cyl&#39;</span>, fill<span class="op">=</span><span class="st">&#39;am&#39;</span>)) <span class="op">+</span></span>
+<span id="cb802-4"><a href="df_plt.html#cb802-4" aria-hidden="true" tabindex="-1"></a>  geom_bar())</span>
+<span id="cb802-5"><a href="df_plt.html#cb802-5" aria-hidden="true" tabindex="-1"></a>pt <span class="op">+</span> facet_wrap(<span class="st">&#39;~vs&#39;</span>)</span></code></pre></div>
+<pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
+<p><img src="images/unnamed-chunk-261-4.png" width="50%" /></p>
 </div>
 </div>
 </div>
@@ -1632,21 +1632,21 @@ To do so, you will first need to assign the plot to a variable.</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb800"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb800-1"><a href="df_plt.html#cb800-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>mpg, <span class="at">y=</span>hp)) <span class="sc">+</span></span>
-<span id="cb800-2"><a href="df_plt.html#cb800-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb800-3"><a href="df_plt.html#cb800-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb800-4"><a href="df_plt.html#cb800-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb800-5"><a href="df_plt.html#cb800-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;my_plot.png&quot;</span>, g, <span class="at">width=</span><span class="dv">6</span>, <span class="at">height=</span><span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb804"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb804-1"><a href="df_plt.html#cb804-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>mpg, <span class="at">y=</span>hp)) <span class="sc">+</span></span>
+<span id="cb804-2"><a href="df_plt.html#cb804-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb804-3"><a href="df_plt.html#cb804-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb804-4"><a href="df_plt.html#cb804-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb804-5"><a href="df_plt.html#cb804-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;my_plot.png&quot;</span>, g, <span class="at">width=</span><span class="dv">6</span>, <span class="at">height=</span><span class="dv">4</span>)</span></code></pre></div>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb801"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb801-1"><a href="df_plt.html#cb801-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> (</span>
-<span id="cb801-2"><a href="df_plt.html#cb801-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;mpg&#39;</span>, y<span class="op">=</span><span class="st">&#39;hp&#39;</span>)) <span class="op">+</span></span>
-<span id="cb801-3"><a href="df_plt.html#cb801-3" aria-hidden="true" tabindex="-1"></a>  geom_point() <span class="op">+</span></span>
-<span id="cb801-4"><a href="df_plt.html#cb801-4" aria-hidden="true" tabindex="-1"></a>  theme_minimal()</span>
-<span id="cb801-5"><a href="df_plt.html#cb801-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb801-6"><a href="df_plt.html#cb801-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb801-7"><a href="df_plt.html#cb801-7" aria-hidden="true" tabindex="-1"></a>g.save(<span class="st">&quot;my_plot.png&quot;</span>, width<span class="op">=</span><span class="dv">6</span>, height<span class="op">=</span><span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb805"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb805-1"><a href="df_plt.html#cb805-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> (</span>
+<span id="cb805-2"><a href="df_plt.html#cb805-2" aria-hidden="true" tabindex="-1"></a>  ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;mpg&#39;</span>, y<span class="op">=</span><span class="st">&#39;hp&#39;</span>)) <span class="op">+</span></span>
+<span id="cb805-3"><a href="df_plt.html#cb805-3" aria-hidden="true" tabindex="-1"></a>  geom_point() <span class="op">+</span></span>
+<span id="cb805-4"><a href="df_plt.html#cb805-4" aria-hidden="true" tabindex="-1"></a>  theme_minimal()</span>
+<span id="cb805-5"><a href="df_plt.html#cb805-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb805-6"><a href="df_plt.html#cb805-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb805-7"><a href="df_plt.html#cb805-7" aria-hidden="true" tabindex="-1"></a>g.save(<span class="st">&quot;my_plot.png&quot;</span>, width<span class="op">=</span><span class="dv">6</span>, height<span class="op">=</span><span class="dv">4</span>)</span></code></pre></div>
 <pre><code>## /home/romano/Documents/EpiC/.venv/lib/python3.11/site-packages/plotnine/ggplot.py:587: PlotnineWarning: Saving 6 x 4 in image.
 ## /home/romano/Documents/EpiC/.venv/lib/python3.11/site-packages/plotnine/ggplot.py:588: PlotnineWarning: Filename: my_plot.png</code></pre>
 </div>
@@ -1669,14 +1669,14 @@ The exercise has various levels of completition, from a basic level where we wil
 </ol>
 <p><strong>Medium.</strong> Modify the code above to add the additional function <span class="math inline">\(y=\cos(x)\)</span>.
 You should get something like:</p>
-<p><img src="images/unnamed-chunk-262-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-264-1.png" width="50%" /></p>
 <ul>
 <li><p>The x-axis should range from 0 to 10, with a step size of 0.01.</p></li>
 <li><p>Use different colours for each curve (sine or cosine)</p></li>
 <li><p>How many columns should have your dataframe?</p></li>
 </ul>
 <p><strong>Advanced.</strong> Using <code>ggplot</code>, write a program that generates the plot below:</p>
-<p><img src="images/unnamed-chunk-263-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-265-1.png" width="50%" /></p>
 <p>Each subplot should be comparing sines and cosines with different frequencies.
 The plot should show 6 sinusoidal functions:<span class="math display">\[\sin\left(\frac{x}{2}\right), \sin(x), \sin(2x), \cos\left(\frac{x}{2}\right), \cos(x), \cos(2x)\]</span></p>
 <ul>
