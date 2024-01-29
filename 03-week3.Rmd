@@ -366,6 +366,12 @@ lbs_to_grams(42)
 </div>
 :::
 
+For those who are newer to programming, don’t worry if the idea of dealing with bugs and errors seems daunting. One of the most effective ways to understand what’s happening in your code is to use `print` statements. If you were confused by this section, try to add those `print` statements to display the value of variables `lbs` and `grams` within the functions above!
+In fact, by strategically placing print statements in your code, you can see the values of variables at different points in your program’s execution. This can help you understand how your code is working and where potential issues might be. As you gain more experience and confidence, you’ll naturally start to develop more advanced strategies for managing and resolving bugs in your code. Remember, everyone was a beginner once, and every expert has made plenty of mistakes along the way. So don’t be discouraged by bugs in your code - they’re just opportunities to learn and improve!
+
+**NOTE for the more experienced users.** It’s worth noting that debugging tools can be incredibly helpful for identifying and resolving issues in your code. A debugger is a program that helps you inspect what’s happening in your program while it’s running. It allows you to pause your program, inspect the values of variables in a given environment at any point in time, and step through your code line by line. This can be particularly useful for identifying issues like the one we’ve discussed above. RStudio includes a built-in debugger that can be a great help in these situations. You can learn more about debugging in RStudio [in this guide](https://support.posit.co/hc/en-us/articles/205612627-Debugging-with-the-RStudio-IDE).
+
+
 #### Multiple arguments
 
 Say we want now to convert pounds to milliliters. To convert from mass
@@ -471,15 +477,7 @@ they are relative to using water. Then, to be more efficient, rather
 than continuously having to give the mass of water, we could set the
 arguments to have these as default values.
 
-This is where default arguments in functions come into play. They are
-incredibly useful for several reasons:
-
--   They allow us to make certain parameters optional, which can make
-    the function easier to use.
--   They can provide sensible defaults for a function, allowing it to be
-    used without requiring the user to specify every single parameter.
--   They can make the code more readable by clearly stating what the
-    default behavior of the function is.
+This is where default arguments in functions come into play. They are incredibly useful as they allow us (and any potential future user) to make certain parameters optional. This makes the function easier to use and the the code more readable in general!
 
 Here's how we can do this in both R and Python:
 

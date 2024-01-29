@@ -476,6 +476,9 @@ risky and prone to bugs</strong>.</p>
 <pre><code>## 19050.8808</code></pre>
 </div>
 </div>
+<p>For those who are newer to programming, don’t worry if the idea of dealing with bugs and errors seems daunting. One of the most effective ways to understand what’s happening in your code is to use <code>print</code> statements. If you were confused by this section, try to add those <code>print</code> statements to display the value of variables <code>lbs</code> and <code>grams</code> within the functions above!
+In fact, by strategically placing print statements in your code, you can see the values of variables at different points in your program’s execution. This can help you understand how your code is working and where potential issues might be. As you gain more experience and confidence, you’ll naturally start to develop more advanced strategies for managing and resolving bugs in your code. Remember, everyone was a beginner once, and every expert has made plenty of mistakes along the way. So don’t be discouraged by bugs in your code - they’re just opportunities to learn and improve!</p>
+<p><strong>NOTE for the more experienced users.</strong> It’s worth noting that debugging tools can be incredibly helpful for identifying and resolving issues in your code. A debugger is a program that helps you inspect what’s happening in your program while it’s running. It allows you to pause your program, inspect the values of variables in a given environment at any point in time, and step through your code line by line. This can be particularly useful for identifying issues like the one we’ve discussed above. RStudio includes a built-in debugger that can be a great help in these situations. You can learn more about debugging in RStudio <a href="https://support.posit.co/hc/en-us/articles/205612627-Debugging-with-the-RStudio-IDE">in this guide</a>.</p>
 </div>
 <div id="multiple-arguments" class="section level4 hasAnchor" number="3.1.1.2">
 <h4><span class="header-section-number">3.1.1.2</span> Multiple arguments<a href="func_loop.html#multiple-arguments" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -560,16 +563,7 @@ using the <code>specific_mass</code>, we’ll convert grams to liters.</p>
 they are relative to using water. Then, to be more efficient, rather
 than continuously having to give the mass of water, we could set the
 arguments to have these as default values.</p>
-<p>This is where default arguments in functions come into play. They are
-incredibly useful for several reasons:</p>
-<ul>
-<li>They allow us to make certain parameters optional, which can make
-the function easier to use.</li>
-<li>They can provide sensible defaults for a function, allowing it to be
-used without requiring the user to specify every single parameter.</li>
-<li>They can make the code more readable by clearly stating what the
-default behavior of the function is.</li>
-</ul>
+<p>This is where default arguments in functions come into play. They are incredibly useful as they allow us (and any potential future user) to make certain parameters optional. This makes the function easier to use and the the code more readable in general!</p>
 <p>Here’s how we can do this in both R and Python:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
