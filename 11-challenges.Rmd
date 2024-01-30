@@ -26,7 +26,7 @@ It turns out that there is an optimal strategy, that will end the game with **a 
 
 #### Checking the Optimal Strategy{#hatters_week3}
 
-**Recommended at the end of Chapter 3**
+**Recommended after reading Chapter 3**
 
 1.  Write a function that implements the optimal strategy for one game. The function takes as input a vector of `0` and `1`s, the hat colours of the hats of the players, where `0` represent a white hat, and `1` a black hat:\
     \
@@ -137,7 +137,7 @@ hatter(s,\ a) =  \begin{cases}
 \end{cases}
 $$
 
-where $p = (s+a_1)\mod 2$ is the value that each player says aloud. If the magnitude of $a$ is less than or equal to 0, we return $s \mod 2$. Otherwise, we recursively call the `hatter` function with the new state $s + shout$ and the sub-vector $a_{-1}$ (we drop the first element).
+where $p = (s+a_1)\mod 2$ is the value that each player says aloud. If the magnitude of $a$ is less than or equal to 0, we return $s \mod 2$. Otherwise, we recursively call the `hatter` function with the new state $s + p$ and the sub-vector $a_{-1}$ (we drop the first element).
 
 Your task is to:
 

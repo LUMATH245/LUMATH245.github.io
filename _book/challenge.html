@@ -206,7 +206,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>You are free to guess the solution to this game on your own</strong> or even with your friends over a couple of drinks. However, as this is a programming exercise, I highly recommend you read <a href="https://mathspp.com/blog/problems/hats-in-a-line">this amazing article from mathspp.com</a>.</p>
 <div id="hatters_week3" class="section level4 hasAnchor" number="6.1.1.1">
 <h4><span class="header-section-number">6.1.1.1</span> Checking the Optimal Strategy<a href="challenge.html#hatters_week3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><strong>Recommended at the end of Chapter 3</strong></p>
+<p><strong>Recommended after reading Chapter 3</strong></p>
 <ol style="list-style-type: decimal">
 <li>Write a function that implements the optimal strategy for one game. The function takes as input a vector of <code>0</code> and <code>1</code>s, the hat colours of the hats of the players, where <code>0</code> represent a white hat, and <code>1</code> a black hat:<br />
 <br />
@@ -255,7 +255,7 @@ hatter(s,\ a) =  \begin{cases}
     hatter(s + p,\ a_{-1}),              &amp; \text{otherwise}
 \end{cases}
 \]</span></p>
-<p>where <span class="math inline">\(p = (s+a_1)\mod 2\)</span> is the value that each player says aloud. If the magnitude of <span class="math inline">\(a\)</span> is less than or equal to 0, we return <span class="math inline">\(s \mod 2\)</span>. Otherwise, we recursively call the <code>hatter</code> function with the new state <span class="math inline">\(s + shout\)</span> and the sub-vector <span class="math inline">\(a_{-1}\)</span> (we drop the first element).</p>
+<p>where <span class="math inline">\(p = (s+a_1)\mod 2\)</span> is the value that each player says aloud. If the magnitude of <span class="math inline">\(a\)</span> is less than or equal to 0, we return <span class="math inline">\(s \mod 2\)</span>. Otherwise, we recursively call the <code>hatter</code> function with the new state <span class="math inline">\(s + p\)</span> and the sub-vector <span class="math inline">\(a_{-1}\)</span> (we drop the first element).</p>
 <p>Your task is to:</p>
 <ol style="list-style-type: decimal">
 <li><p>Code the recursive solution to the hatter problem. You can test it on the same vector above. Every time you compute the <span class="math inline">\(p\)</span> value, you should print this. Try to run the recursive solution on the previous game.</p></li>
