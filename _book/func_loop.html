@@ -1040,7 +1040,7 @@ For example, if you wanted to change the calculation logic or use it in a differ
 </div>
 </div>
 <p>This solution is better on a lot of ways. The calculation logic of the Fibonacci sequence is encapsulated within its own function, <code>update_fibonacci</code>. Now, suppose you found a better method to deal with that, you’d only need to change that part (spoiler: you can, ask a GPT model if it has ways to improve on <code>update_fibonacci</code>).</p>
-<p>Also, the computation of the full Fibonacci sequence is encapsulated in its own function, <code>compute_fibonacci</code>! This makes the code more organized and easier to understand, and less prone to errors due to variables defined elsewhere <strong>as it does not touch global state</strong>.</p>
+<p>Also, the computation of the full Fibonacci sequence is encapsulated in its own function, <code>compute_fibonacci</code>! This makes the code more organized and less prone to errors due to variables defined elsewhere <strong>as it does not touch global variables</strong>.</p>
 <p>For this reason, you can easily <strong>reuse</strong> the <code>compute_fibonacci</code> function in other parts of your code or even in different programs! For instance, this function might turn out to be useful in the next exercise, where you’ll have to call it with <code>n=10</code>.</p>
 </div>
 </div>
