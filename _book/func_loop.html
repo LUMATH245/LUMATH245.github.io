@@ -917,7 +917,9 @@ the loop, we will be adding more and more elements to the vector.</p>
 <span id="cb484-4"><a href="func_loop.html#cb484-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate the next 18 numbers in the sequence</span></span>
 <span id="cb484-5"><a href="func_loop.html#cb484-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">20</span>) {</span>
 <span id="cb484-6"><a href="func_loop.html#cb484-6" aria-hidden="true" tabindex="-1"></a>  fibonacci[i] <span class="ot">&lt;-</span> fibonacci[i <span class="sc">-</span> <span class="dv">1</span>] <span class="sc">+</span> fibonacci[i <span class="sc">-</span> <span class="dv">2</span>]</span>
-<span id="cb484-7"><a href="func_loop.html#cb484-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<span id="cb484-7"><a href="func_loop.html#cb484-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># alternatively</span></span>
+<span id="cb484-8"><a href="func_loop.html#cb484-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fibonacci &lt;- c(fibonacci, fibonacci[i - 1] + fibonacci[i - 2])</span></span>
+<span id="cb484-9"><a href="func_loop.html#cb484-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div>
 <p><strong>Python</strong></p>
@@ -927,10 +929,13 @@ the loop, we will be adding more and more elements to the vector.</p>
 <span id="cb485-4"><a href="func_loop.html#cb485-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate the next 18 numbers in the sequence</span></span>
 <span id="cb485-5"><a href="func_loop.html#cb485-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">20</span>):</span>
 <span id="cb485-6"><a href="func_loop.html#cb485-6" aria-hidden="true" tabindex="-1"></a>  fibonacci.append(fibonacci[i <span class="op">-</span> <span class="dv">1</span>] <span class="op">+</span> fibonacci[i <span class="op">-</span> <span class="dv">2</span>])</span>
-<span id="cb485-7"><a href="func_loop.html#cb485-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb485-8"><a href="func_loop.html#cb485-8" aria-hidden="true" tabindex="-1"></a><span class="co"># converting the list into a numpy array </span></span>
-<span id="cb485-9"><a href="func_loop.html#cb485-9" aria-hidden="true" tabindex="-1"></a><span class="co"># (useful if we want to use vectorised operations later!)</span></span>
-<span id="cb485-10"><a href="func_loop.html#cb485-10" aria-hidden="true" tabindex="-1"></a>fibonacci <span class="op">=</span> np.array(fibonacci)</span></code></pre></div>
+<span id="cb485-7"><a href="func_loop.html#cb485-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># alternatively</span></span>
+<span id="cb485-8"><a href="func_loop.html#cb485-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">#fibonacci = fibonacci + [fibonacci[i - 1] + fibonacci[i - 2]]</span></span>
+<span id="cb485-9"><a href="func_loop.html#cb485-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb485-10"><a href="func_loop.html#cb485-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb485-11"><a href="func_loop.html#cb485-11" aria-hidden="true" tabindex="-1"></a><span class="co"># converting the list into a numpy array </span></span>
+<span id="cb485-12"><a href="func_loop.html#cb485-12" aria-hidden="true" tabindex="-1"></a><span class="co"># (useful if we want to use vectorised operations later!)</span></span>
+<span id="cb485-13"><a href="func_loop.html#cb485-13" aria-hidden="true" tabindex="-1"></a>fibonacci <span class="op">=</span> np.array(fibonacci)</span></code></pre></div>
 </div>
 </div>
 <p>In the R code:</p>
@@ -942,9 +947,10 @@ goes from 3 to 20. This is the sequence we want to iterate over.</li>
 <li><code>fibonacci[i] &lt;- fibonacci[i - 1] + fibonacci[i - 2]</code> is the code
 chunk that we want to repeat. It calculates the <code>i</code>th number in the
 Fibonacci sequence as the sum of the two preceding numbers and
-appends it to the <code>fibonacci</code> vector. Given that at iteration <code>i</code> we
+<strong>appends it</strong> to the <code>fibonacci</code> vector. Given that at iteration <code>i</code> we
 have no element <code>i</code> in the vector yet (this is still <code>i-1</code> long), R
-will automatically extend the vector of one extra element.</li>
+will automatically extend the vector of one extra element. Alternatively,
+you can use the <code>c(fibonacci, fibonacci[i - 1] + fibonacci[i - 2])</code> to concatenate an extra vector (with one element) to the existing vector.</li>
 </ul>
 <p>In the Python code:</p>
 <ul>
@@ -955,9 +961,10 @@ Fibonacci sequence.</li>
 <li><code>fibonacci.append(fibonacci[i - 1] + fibonacci[i - 2])</code> is the code
 chunk that we want to repeat. It calculates the <code>i</code>th number in the
 Fibonacci sequence as the sum of the two preceding numbers and
-appends it to the <code>fibonacci</code> list using the <code>append()</code> method. The
+<strong>appends it</strong> to the <code>fibonacci</code> list using the <code>append()</code> method. The
 append method extends our vector, adding a new element at the end of
-the existing one.</li>
+the existing one. Alternatively, you can use the <code>fibonacci + [fibonacci[i - 1] + fibonacci[i - 2]]</code>
+to concatenate an extra vector (with one element) to the existing vector.</li>
 </ul>
 <p>Our vectors, where we stored our results at every iteration, should be
 20 elements long, containing the sequence.</p>

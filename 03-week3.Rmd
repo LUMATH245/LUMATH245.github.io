@@ -803,6 +803,8 @@ fibonacci <- c(0, 1)
 # Generate the next 18 numbers in the sequence
 for (i in 3:20) {
   fibonacci[i] <- fibonacci[i - 1] + fibonacci[i - 2]
+  # alternatively
+  # fibonacci <- c(fibonacci, fibonacci[i - 1] + fibonacci[i - 2])
 }
 ```
 
@@ -819,6 +821,9 @@ fibonacci = [0, 1]
 # Generate the next 18 numbers in the sequence
 for i in range(2, 20):
   fibonacci.append(fibonacci[i - 1] + fibonacci[i - 2])
+  # alternatively
+  #fibonacci = fibonacci + [fibonacci[i - 1] + fibonacci[i - 2]]
+
 
 # converting the list into a numpy array 
 # (useful if we want to use vectorised operations later!)
@@ -837,9 +842,10 @@ In the R code:
 -   `fibonacci[i] <- fibonacci[i - 1] + fibonacci[i - 2]` is the code
     chunk that we want to repeat. It calculates the `i`th number in the
     Fibonacci sequence as the sum of the two preceding numbers and
-    appends it to the `fibonacci` vector. Given that at iteration `i` we
+    **appends it** to the `fibonacci` vector. Given that at iteration `i` we
     have no element `i` in the vector yet (this is still `i-1` long), R
-    will automatically extend the vector of one extra element.
+    will automatically extend the vector of one extra element. Alternatively,
+    you can use the `c(fibonacci, fibonacci[i - 1] + fibonacci[i - 2])` to concatenate an extra vector (with one element) to the existing vector.
 
 In the Python code:
 
@@ -850,9 +856,10 @@ In the Python code:
 -   `fibonacci.append(fibonacci[i - 1] + fibonacci[i - 2])` is the code
     chunk that we want to repeat. It calculates the `i`th number in the
     Fibonacci sequence as the sum of the two preceding numbers and
-    appends it to the `fibonacci` list using the `append()` method. The
+    **appends it** to the `fibonacci` list using the `append()` method. The
     append method extends our vector, adding a new element at the end of
-    the existing one.
+    the existing one. Alternatively, you can use the `fibonacci + [fibonacci[i - 1] + fibonacci[i - 2]]`
+    to concatenate an extra vector (with one element) to the existing vector.
 
 Our vectors, where we stored our results at every iteration, should be
 20 elements long, containing the sequence. 
