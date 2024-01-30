@@ -2,6 +2,218 @@
 
 ## Part 1: Scientific Computing
 
+---
+title: "hats in a line"
+author: "Gaetano Romano"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### The Hats in a Line game
+
+We are going to code and demonstrate that the optimal solution to one of the most famous combinatorics games, that of the hats in a line, works with on average 1 error half of the time.
+
+The game goes like this. You are one of $n$ players who will be put on a set of stairs, standing in a line, and each of you will be wearing a hat that is either black or white at random. Given that you're on some stairs, you can only see the hats of the players in front of you, but not your own or the ones behind you.
+
+You can devise a strategy with the other players before the game starts, however you are not allowed to communicate with the other players after the hats are placed **if not by stating the color of your hat out loud**. Starting from the top of the stairs, e.g. the back of the line, each player has to guess their own hat colour out loud. Note that:
+
+-   Each person gets a single attempt.
+-   The goal is to minimize the number of wrong guesses.
+-   Everyone can hear the other players guess. This is the only allowed information that can be communicated.
+
+It turns out that there is an optimal strategy, that will end the game with **a single error, only 50% of the times** the game is played.
+
+**You are free to guess the solution to this game on your own** or even with your friends over a couple of drinks. However, as this is a programming exercise, I highly recommend you read [this amazing article from mathspp.com](https://mathspp.com/blog/problems/hats-in-a-line).
+
+#### Week 3 Programming Challenge
+
+1.  Write a function that implements the optimal strategy for one game. The function takes as input a vector of `0` and `1`s, the hat colours of the hats of the players, where `0` represent a white hat, and `1` a black hat:\
+    \
+    This function should return another vector with the guesses of the players **obtained through the optimal strategy**, in sequential order.\
+    \
+    Here's the function signature and call to get you started:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r include=TRUE, eval=FALSE}
+hatter <- function(hats) {
+  # Your code here
+}
+
+test_game <- c(1, 1, 0, 1, 0, 0, 1, 0, 0, 1)
+hatter(test_game)
+```
+
+</div>
+
+<div>
+
+**python**
+
+```{python include=TRUE, eval=FALSE}
+def hatter(hats):
+    # Your code here
+
+test_game = [1, 1, 0, 1, 0, 0, 1, 0, 0, 1]
+hatter(test_game)
+```
+
+</div>
+:::
+
+2.  Show by conjecture that this optimal strategy works with 1 error around 50% of the times. Simulate 1000 games. To do so:
+
+    i.  Assume that for each game you will have 10 players
+
+    ii. Create 1000 binary vectors of hats $h^{(k)}_{1:n}$, where $n=10$, and $k = 1, \dots, 1000$. You can do so by sampling from a binomial distribution with trial parameter 1, and with success probability 0.3, e.g. $h^k_i \sim \text{Bin}(1, 0.3)$ . You can sample from a binomial distribution with `rbinom` in R and `np.random.binomial` in Python.
+
+    iii. Get the amount of errors of each game by computing $\epsilon_k = ||h^{(k)}_{1:n} - hatter(h^{(k)}_{1:n})||$ for $k = 1, \dots, 1000$.
+
+    iv. Check that $\frac{\sum_{i = 1}^{1000} \epsilon_i}{1000} \approx 0.5$.
+
+```{r, echo=FALSE, eval=FALSE}
+library(purrr)
+### WEEK 3 PROGRAMMING CHALLENGE
+
+## POINT 1
+
+# for cycle hatter
+hatter <- function(hats) {
+  
+  n <- length(hats)
+  
+  # computing the number of hats ahead
+  ahead <- c(rev(cumsum(rev(hats[-1]))), 0)
+  
+  # initializing previous sums
+  S <- ahead[1] %% 2
+  
+  # initializing response vector
+  resp <- S
+  
+  for (i in ahead[2:n]) {
+      
+    shout <- (S + i) %% 2
+    resp <- c(resp, shout)
+    S <- S + shout
+      
+  }
+  
+  return(resp)
+  
+}
+
+
+# trying one game
+test_game <- c(1, 1, 0, 1, 0, 0, 1, 0, 0, 1)
+hatter(test_game) # the first one is wrong, and that's ok!
+
+
+## POINT 2
+games <- 1:1000 |> map(\(.) rbinom(10, 1, .3))
+results <- games |> map(hatter)
+errors <- map2_vec(games, results, \(g, r) sum(g != r)) # using l0 norm
+mean(errors)
+```
+
+#### Week 4 Programming Challenge
+
+In Chapter 4, we learned that state in functional programming can be handled using recursion. It's not surprising that we can express the optimal solution for the hatter problem in a recursive function.
+
+Let's denote the vector of hats as $h_{1:n} = [h_1, h_2, ..., h_n]$. We define $a_{1:n} = [a_1 = \sum_{i = 2}^n h_i, a_2 = \sum_{i = 3}^n h_i, \dots, a_{n-1} = h_n, a_n = 0]$ as the vector representing the number of hats seen ahead by each player. The magnitude of this vector, represented as $|a|$, is the number of elements in it. We also define $a_{-1}$ as the sub-vector of $a$ that excludes the first element (e.g. we drop the first element from $a$).
+
+The recursive solution to the hatter function can then be expressed as:
+
+$$
+hatter(s,\ a) =  \begin{cases}
+    s \mod 2,& \text{if } |a| \leq 0\\
+    hatter(s + p,\ a_{-1}),              & \text{otherwise}
+\end{cases}
+$$
+
+where $p = (s+a_1)\mod 2$ is the value that each player says aloud. If the magnitude of $a$ is less than or equal to 0, we return $s \mod 2$. Otherwise, we recursively call the `hatter` function with the new state $s + shout$ and the sub-vector $a_{-1}$ (we drop the first element).
+
+Your task is to:
+
+1.  Code the recursive solution to the hatter problem. You can test it on the same vector above. Every time you compute the $p$ value, you should print this. Try to run the recursive solution on the previous game.
+
+2.  We can improve on the recursive solution with a `reduce` statement however! In this way we will be able to run the recursion directly on the $a$ vector, without removing or dropping any element.
+
+    **Hint:** $f(f(s_{t-1}, a_{t-1}), a_t) \rightarrow s_t$. Go and have a look at the diagram in Chapter 4. Also, you will need to accumulate the results if you want to have a vector returned. In this way you will avoid the printing. This can be done with either `accumulate` in R or `itertools.accumulate` in Python.
+
+3.  Compare the timing of the for loop solution with the timing of the reduce solution. Which one is faster?
+
+    i.   Search the internet or ask GPT on how to effectively time in both R and Python.
+
+    ii. Try to run the hatter function on a vector with $100\,000$ hats. You should see a significant difference.
+
+```{r, echo=FALSE, eval=FALSE}
+hatter <- function(S, ahead) {
+  
+  if (length(ahead) == 0) 
+    return(S %% 2)
+  
+  # this is what we shout 
+  shout <- (S + ahead[1]) %% 2
+  
+  print(shout)
+  
+  # we pass our history + the shout, and the rest of the look ahead
+  return(hatter(S + shout, ahead[-1]))
+}
+
+test_game = rbinom(10, 1, .3)
+n <- length(test_game)
+
+resp <- NULL
+
+# look ahead list
+a <- c(rev(cumsum(rev(test_game[-1]))), 0)
+
+hatter(S = 0, ahead = a)
+
+test_game
+
+
+### POINT 2
+
+library(purrr)
+
+# Define the function to be used in reduce
+hatter_func <- function(info, ahead) {
+  S <- info$S
+  shout <- (S + ahead) %% 2
+  return(list(S = S + shout, res = shout))
+}
+
+x = rbinom(10, 1, .3)
+
+# Look ahead list
+ahead_vec <- c(rev(cumsum(rev(x[-1]))), 0)
+
+# Use reduce to replace the recursion
+
+# this time, we apply the hatter to the ahead vector, 
+# passing down one element at a time, e.g.:
+# f(f(S_{t-1}, ahead_{t-1}), ahead_t) -> S_t
+
+# NOTE: accumulate is reduce, but it saves the result of every iteration
+# hence we pass down a list to store what people shout (first one is meaningless)
+out <- accumulate(ahead_vec, hatter_func, .init = list(S=0, res=NA))
+
+# extracting and printing res
+cbind(x, map_dbl(out, "res")[-1])
+
+```
+
+
 ### Generic FizzBuzz
 
 Imagine R as the 'Ugly Duckling' of programming languages. Initially, it's often misunderstood and overlooked by coding newbies who see it as clunky or uncool. But, thanks to the magic of the `tidyverse`, R has been going through a major glow-up. It's evolving into one of the most elegant and powerful languages out there 🦢. To see this, what if I tell you that you can code the above `generic_fizzbuzz` of the exercise in Section 4.1.4 in a very elegant, compact way?

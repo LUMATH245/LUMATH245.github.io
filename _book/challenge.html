@@ -4,25 +4,26 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6 Additional Programming Challenges | Lancaster University MATH245 Computational Mathematics</title>
-  <meta name="description" content="6 Additional Programming Challenges | Lancaster University MATH245 Computational Mathematics" />
+  <title>6 Additional Programming Challenges | hats in a line</title>
+  <meta name="description" content="6 Additional Programming Challenges | hats in a line" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6 Additional Programming Challenges | Lancaster University MATH245 Computational Mathematics" />
+  <meta property="og:title" content="6 Additional Programming Challenges | hats in a line" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6 Additional Programming Challenges | Lancaster University MATH245 Computational Mathematics" />
+  <meta name="twitter:title" content="6 Additional Programming Challenges | hats in a line" />
   
   
   
 
-<meta name="author" content="Lecturers: Dr Eduard Campillo-Funollet and Dr Gaetano Romano" />
+<meta name="author" content="Gaetano Romano" />
 
 
+<meta name="date" content="2024-01-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -179,7 +180,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lancaster University MATH245 Computational Mathematics</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">hats in a line</a>
           </h1>
         </div>
 
@@ -191,8 +192,83 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">6</span> Additional Programming Challenges<a href="challenge.html#challenge" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="part-1-scientific-computing" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> Part 1: Scientific Computing<a href="challenge.html#part-1-scientific-computing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="generic-fizzbuzz" class="section level3 hasAnchor" number="6.1.1">
-<h3><span class="header-section-number">6.1.1</span> Generic FizzBuzz<a href="challenge.html#generic-fizzbuzz" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="the-hats-in-a-line-game" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> The Hats in a Line game<a href="challenge.html#the-hats-in-a-line-game" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We are going to code and demonstrate that the optimal solution to one of the most famous combinatorics games, that of the hats in a line, works with on average 1 error half of the time.</p>
+<p>The game goes like this. You are one of <span class="math inline">\(n\)</span> players who will be put on a set of stairs, standing in a line, and each of you will be wearing a hat that is either black or white at random. Given that you’re on some stairs, you can only see the hats of the players in front of you, but not your own or the ones behind you.</p>
+<p>You can devise a strategy with the other players before the game starts, however you are not allowed to communicate with the other players after the hats are placed <strong>if not by stating the color of your hat out loud</strong>. Starting from the top of the stairs, e.g. the back of the line, each player has to guess their own hat colour out loud. Note that:</p>
+<ul>
+<li>Each person gets a single attempt.</li>
+<li>The goal is to minimize the number of wrong guesses.</li>
+<li>Everyone can hear the other players guess. This is the only allowed information that can be communicated.</li>
+</ul>
+<p>It turns out that there is an optimal strategy, that will end the game with <strong>a single error, only 50% of the times</strong> the game is played.</p>
+<p><strong>You are free to guess the solution to this game on your own</strong> or even with your friends over a couple of drinks. However, as this is a programming exercise, I highly recommend you read <a href="https://mathspp.com/blog/problems/hats-in-a-line">this amazing article from mathspp.com</a>.</p>
+<div id="week-3-programming-challenge" class="section level4 hasAnchor" number="6.1.1.1">
+<h4><span class="header-section-number">6.1.1.1</span> Week 3 Programming Challenge<a href="challenge.html#week-3-programming-challenge" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ol style="list-style-type: decimal">
+<li>Write a function that implements the optimal strategy for one game. The function takes as input a vector of <code>0</code> and <code>1</code>s, the hat colours of the hats of the players, where <code>0</code> represent a white hat, and <code>1</code> a black hat:<br />
+<br />
+This function should return another vector with the guesses of the players <strong>obtained through the optimal strategy</strong>, in sequential order.<br />
+<br />
+Here’s the function signature and call to get you started:</li>
+</ol>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb809"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb809-1"><a href="challenge.html#cb809-1" aria-hidden="true" tabindex="-1"></a>hatter <span class="ot">&lt;-</span> <span class="cf">function</span>(hats) {</span>
+<span id="cb809-2"><a href="challenge.html#cb809-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Your code here</span></span>
+<span id="cb809-3"><a href="challenge.html#cb809-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb809-4"><a href="challenge.html#cb809-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb809-5"><a href="challenge.html#cb809-5" aria-hidden="true" tabindex="-1"></a>test_game <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb809-6"><a href="challenge.html#cb809-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hatter</span>(test_game)</span></code></pre></div>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb810"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb810-1"><a href="challenge.html#cb810-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hatter(hats):</span>
+<span id="cb810-2"><a href="challenge.html#cb810-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Your code here</span></span>
+<span id="cb810-3"><a href="challenge.html#cb810-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb810-4"><a href="challenge.html#cb810-4" aria-hidden="true" tabindex="-1"></a>test_game <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>]</span>
+<span id="cb810-5"><a href="challenge.html#cb810-5" aria-hidden="true" tabindex="-1"></a>hatter(test_game)</span></code></pre></div>
+</div>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Show by conjecture that this optimal strategy works with 1 error around 50% of the times. Simulate 1000 games. To do so:</p>
+<ol style="list-style-type: lower-roman">
+<li><p>Assume that for each game you will have 10 players</p></li>
+<li><p>Create 1000 binary vectors of hats <span class="math inline">\(h^{(k)}_{1:n}\)</span>, where <span class="math inline">\(n=10\)</span>, and <span class="math inline">\(k = 1, \dots, 1000\)</span>. You can do so by sampling from a binomial distribution with trial parameter 1, and with success probability 0.3, e.g. <span class="math inline">\(h^k_i \sim \text{Bin}(1, 0.3)\)</span> . You can sample from a binomial distribution with <code>rbinom</code> in R and <code>np.random.binomial</code> in Python.</p></li>
+<li><p>Get the amount of errors of each game by computing <span class="math inline">\(\epsilon_k = ||h^{(k)}_{1:n} - hatter(h^{(k)}_{1:n})||\)</span> for <span class="math inline">\(k = 1, \dots, 1000\)</span>.</p></li>
+<li><p>Check that <span class="math inline">\(\frac{\sum_{i = 1}^{1000} \epsilon_i}{1000} \approx 0.5\)</span>.</p></li>
+</ol></li>
+</ol>
+</div>
+<div id="week-4-programming-challenge" class="section level4 hasAnchor" number="6.1.1.2">
+<h4><span class="header-section-number">6.1.1.2</span> Week 4 Programming Challenge<a href="challenge.html#week-4-programming-challenge" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>In Chapter 4, we learned that state in functional programming can be handled using recursion. It’s not surprising that we can express the optimal solution for the hatter problem in a recursive function.</p>
+<p>Let’s denote the vector of hats as <span class="math inline">\(h_{1:n} = [h_1, h_2, ..., h_n]\)</span>. We define <span class="math inline">\(a_{1:n} = [a_1 = \sum_{i = 2}^n h_i, a_2 = \sum_{i = 3}^n h_i, \dots, a_{n-1} = h_n, a_n = 0]\)</span> as the vector representing the number of hats seen ahead by each player. The magnitude of this vector, represented as <span class="math inline">\(|a|\)</span>, is the number of elements in it. We also define <span class="math inline">\(a_{-1}\)</span> as the sub-vector of <span class="math inline">\(a\)</span> that excludes the first element (e.g. we drop the first element from <span class="math inline">\(a\)</span>).</p>
+<p>The recursive solution to the hatter function can then be expressed as:</p>
+<p><span class="math display">\[
+hatter(s,\ a) =  \begin{cases}
+    s \mod 2,&amp; \text{if } |a| \leq 0\\
+    hatter(s + p,\ a_{-1}),              &amp; \text{otherwise}
+\end{cases}
+\]</span></p>
+<p>where <span class="math inline">\(p = (s+a_1)\mod 2\)</span> is the value that each player says aloud. If the magnitude of <span class="math inline">\(a\)</span> is less than or equal to 0, we return <span class="math inline">\(s \mod 2\)</span>. Otherwise, we recursively call the <code>hatter</code> function with the new state <span class="math inline">\(s + shout\)</span> and the sub-vector <span class="math inline">\(a_{-1}\)</span> (we drop the first element).</p>
+<p>Your task is to:</p>
+<ol style="list-style-type: decimal">
+<li><p>Code the recursive solution to the hatter problem. You can test it on the same vector above. Every time you compute the <span class="math inline">\(p\)</span> value, you should print this. Try to run the recursive solution on the previous game.</p></li>
+<li><p>We can improve on the recursive solution with a <code>reduce</code> statement however! In this way we will be able to run the recursion directly on the <span class="math inline">\(a\)</span> vector, without removing or dropping any element.</p>
+<p><strong>Hint:</strong> <span class="math inline">\(f(f(s_{t-1}, a_{t-1}), a_t) \rightarrow s_t\)</span>. Go and have a look at the diagram in Chapter 4. Also, you will need to accumulate the results if you want to have a vector returned. In this way you will avoid the printing. This can be done with either <code>accumulate</code> in R or <code>itertools.accumulate</code> in Python.</p></li>
+<li><p>Compare the timing of the for loop solution with the timing of the reduce solution. Which one is faster?</p>
+<ol style="list-style-type: lower-roman">
+<li><p>Search the internet or ask GPT on how to effectively time in both R and Python.</p></li>
+<li><p>Try to run the hatter function on a vector with <span class="math inline">\(100\,000\)</span> hats. You should see a significant difference.</p></li>
+</ol></li>
+</ol>
+</div>
+</div>
+<div id="generic-fizzbuzz" class="section level3 hasAnchor" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Generic FizzBuzz<a href="challenge.html#generic-fizzbuzz" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Imagine R as the ‘Ugly Duckling’ of programming languages. Initially, it’s often misunderstood and overlooked by coding newbies who see it as clunky or uncool. But, thanks to the magic of the <code>tidyverse</code>, R has been going through a major glow-up. It’s evolving into one of the most elegant and powerful languages out there 🦢. To see this, what if I tell you that you can code the above <code>generic_fizzbuzz</code> of the exercise in Section 4.1.4 in a very elegant, compact way?</p>
 <p>Rewrite <code>generic_fizzbuzz</code> respecting the following conditions:</p>
 <ul>
