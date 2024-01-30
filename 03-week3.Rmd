@@ -890,6 +890,79 @@ happening at every iteration, e.g. try to add: `print(i)`,
 computation, or `print(fibonacci)` after the computation has been done.
 `print` statements are extremely useful for debugging for cycles!
 
+#### Safer for loops
+The for loop above is straightforward and works fine for the specific task of computing the Fibonacci sequence alone. 
+However, it could potentially lead to issues if you wanted to modify or extend the code.
+For example, if you wanted to change the calculation logic or use it in a different context, you would need to modify the loop itself. This could introduce errors and make the code harder to maintain.
+
+However, there is an approach that is generally safer and more robust: that of working with **functions within your loops**.
+
+Have a look at the code below:
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+
+<div>
+
+**R**
+```{r}
+# define a function to update the Fibonacci sequence
+update_fibonacci <- function(R) {
+  n <- length(R)
+  r_t <- R[n] + R[n - 1]
+  return(c(R, r_t))
+}
+
+# define a function to compute the Fibonacci sequence
+compute_fibonacci <- function(n) {
+  # Initialize the first two numbers in the sequence
+  fibonacci <- c(0, 1)
+  
+  # Generate the next 10 numbers in the sequence
+  for (i in 3:n) 
+    fibonacci <- update_fibonacci(fibonacci)
+  
+  return(fibonacci)
+}
+
+compute_fibonacci(10)
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# Define a function to update the Fibonacci sequence
+def update_fibonacci(R):
+    n = len(R)
+    r_t = R[n - 1] + R[n - 2]
+    return R + [r_t]
+
+# Define a function to compute the Fibonacci sequence
+def compute_fibonacci(n):
+    # Initialize the first two numbers in the sequence
+    fibonacci = [0, 1]
+    
+    # Generate the next n-2 numbers in the sequence
+    for i in range(3, n + 1):
+        fibonacci = update_fibonacci(fibonacci)
+    
+    return fibonacci
+
+compute_fibonacci(10)
+```
+
+</div>
+
+:::
+
+This solution is better on a lot of ways. The calculation logic of the Fibonacci sequence is encapsulated within its own function, `update_fibonacci`. Now, suppose you found a better method to deal with that, you’d only need to change that part (spoiler: you can, ask a GPT model if it has ways to improve on `update_fibonacci`). 
+
+Also, the computation of the full Fibonacci sequence is encapsulated in its own function, `compute_fibonacci`! This makes the code more organized and easier to understand, and less prone to errors due to variables defined elsewhere **as it does not touch global state**. 
+
+For this reason, you can easily **reuse** the `compute_fibonacci` function in other parts of your code or even in different programs! For instance, this function might turn out to be useful in the next exercise. 
 
 ### Exercise 
 

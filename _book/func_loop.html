@@ -983,6 +983,65 @@ happening at every iteration, e.g. try to add: <code>print(i)</code>,
 <code>print(fibonacci[i])</code> and <code>print(fibonacci[i-1])</code> before the
 computation, or <code>print(fibonacci)</code> after the computation has been done.
 <code>print</code> statements are extremely useful for debugging for cycles!</p>
+<div id="safer-for-loops" class="section level4 hasAnchor" number="3.2.2.1">
+<h4><span class="header-section-number">3.2.2.1</span> Safer for loops<a href="func_loop.html#safer-for-loops" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The for loop above is straightforward and works fine for the specific task of computing the Fibonacci sequence alone.
+However, it could potentially lead to issues if you wanted to modify or extend the code.
+For example, if you wanted to change the calculation logic or use it in a different context, you would need to modify the loop itself. This could introduce errors and make the code harder to maintain.</p>
+<p>However, there is an approach that is generally safer and more robust: that of working with <strong>functions within your loops</strong>.</p>
+<p>Have a look at the code below:</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="func_loop.html#cb490-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define a function to update the Fibonacci sequence</span></span>
+<span id="cb490-2"><a href="func_loop.html#cb490-2" aria-hidden="true" tabindex="-1"></a>update_fibonacci <span class="ot">&lt;-</span> <span class="cf">function</span>(R) {</span>
+<span id="cb490-3"><a href="func_loop.html#cb490-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(R)</span>
+<span id="cb490-4"><a href="func_loop.html#cb490-4" aria-hidden="true" tabindex="-1"></a>  r_t <span class="ot">&lt;-</span> R[n] <span class="sc">+</span> R[n <span class="sc">-</span> <span class="dv">1</span>]</span>
+<span id="cb490-5"><a href="func_loop.html#cb490-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">c</span>(R, r_t))</span>
+<span id="cb490-6"><a href="func_loop.html#cb490-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb490-7"><a href="func_loop.html#cb490-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb490-8"><a href="func_loop.html#cb490-8" aria-hidden="true" tabindex="-1"></a><span class="co"># define a function to compute the Fibonacci sequence</span></span>
+<span id="cb490-9"><a href="func_loop.html#cb490-9" aria-hidden="true" tabindex="-1"></a>compute_fibonacci <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb490-10"><a href="func_loop.html#cb490-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Initialize the first two numbers in the sequence</span></span>
+<span id="cb490-11"><a href="func_loop.html#cb490-11" aria-hidden="true" tabindex="-1"></a>  fibonacci <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb490-12"><a href="func_loop.html#cb490-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb490-13"><a href="func_loop.html#cb490-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Generate the next 10 numbers in the sequence</span></span>
+<span id="cb490-14"><a href="func_loop.html#cb490-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">3</span><span class="sc">:</span>n) </span>
+<span id="cb490-15"><a href="func_loop.html#cb490-15" aria-hidden="true" tabindex="-1"></a>    fibonacci <span class="ot">&lt;-</span> <span class="fu">update_fibonacci</span>(fibonacci)</span>
+<span id="cb490-16"><a href="func_loop.html#cb490-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb490-17"><a href="func_loop.html#cb490-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(fibonacci)</span>
+<span id="cb490-18"><a href="func_loop.html#cb490-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb490-19"><a href="func_loop.html#cb490-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb490-20"><a href="func_loop.html#cb490-20" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_fibonacci</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##  [1]  0  1  1  2  3  5  8 13 21 34</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb492"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb492-1"><a href="func_loop.html#cb492-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function to update the Fibonacci sequence</span></span>
+<span id="cb492-2"><a href="func_loop.html#cb492-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update_fibonacci(R):</span>
+<span id="cb492-3"><a href="func_loop.html#cb492-3" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(R)</span>
+<span id="cb492-4"><a href="func_loop.html#cb492-4" aria-hidden="true" tabindex="-1"></a>    r_t <span class="op">=</span> R[n <span class="op">-</span> <span class="dv">1</span>] <span class="op">+</span> R[n <span class="op">-</span> <span class="dv">2</span>]</span>
+<span id="cb492-5"><a href="func_loop.html#cb492-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> R <span class="op">+</span> [r_t]</span>
+<span id="cb492-6"><a href="func_loop.html#cb492-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb492-7"><a href="func_loop.html#cb492-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function to compute the Fibonacci sequence</span></span>
+<span id="cb492-8"><a href="func_loop.html#cb492-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_fibonacci(n):</span>
+<span id="cb492-9"><a href="func_loop.html#cb492-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialize the first two numbers in the sequence</span></span>
+<span id="cb492-10"><a href="func_loop.html#cb492-10" aria-hidden="true" tabindex="-1"></a>    fibonacci <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>]</span>
+<span id="cb492-11"><a href="func_loop.html#cb492-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb492-12"><a href="func_loop.html#cb492-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate the next n-2 numbers in the sequence</span></span>
+<span id="cb492-13"><a href="func_loop.html#cb492-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>, n <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb492-14"><a href="func_loop.html#cb492-14" aria-hidden="true" tabindex="-1"></a>        fibonacci <span class="op">=</span> update_fibonacci(fibonacci)</span>
+<span id="cb492-15"><a href="func_loop.html#cb492-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb492-16"><a href="func_loop.html#cb492-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> fibonacci</span>
+<span id="cb492-17"><a href="func_loop.html#cb492-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb492-18"><a href="func_loop.html#cb492-18" aria-hidden="true" tabindex="-1"></a>compute_fibonacci(<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]</code></pre>
+</div>
+</div>
+<p>This solution is better on a lot of ways. The calculation logic of the Fibonacci sequence is encapsulated within its own function, <code>update_fibonacci</code>. Now, suppose you found a better method to deal with that, you’d only need to change that part (spoiler: you can, ask a GPT model if it has ways to improve on <code>update_fibonacci</code>).</p>
+<p>Also, the computation of the full Fibonacci sequence is encapsulated in its own function, <code>compute_fibonacci</code>! This makes the code more organized and easier to understand, and less prone to errors due to variables defined elsewhere <strong>as it does not touch global state</strong>.</p>
+<p>For this reason, you can easily <strong>reuse</strong> the <code>compute_fibonacci</code> function in other parts of your code or even in different programs! For instance, this function might turn out to be useful in the next exercise.</p>
+</div>
 </div>
 <div id="exercise-3" class="section level3 hasAnchor" number="3.2.3">
 <h3><span class="header-section-number">3.2.3</span> Exercise<a href="func_loop.html#exercise-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1022,11 +1081,11 @@ multiplication table from 1 to 4.</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="func_loop.html#cb490-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
-<span id="cb490-2"><a href="func_loop.html#cb490-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
-<span id="cb490-3"><a href="func_loop.html#cb490-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">&quot;x&quot;</span>, j, <span class="st">&quot;=&quot;</span>, i<span class="sc">*</span>j))</span>
-<span id="cb490-4"><a href="func_loop.html#cb490-4" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb490-5"><a href="func_loop.html#cb490-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="func_loop.html#cb494-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
+<span id="cb494-2"><a href="func_loop.html#cb494-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
+<span id="cb494-3"><a href="func_loop.html#cb494-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">&quot;x&quot;</span>, j, <span class="st">&quot;=&quot;</span>, i<span class="sc">*</span>j))</span>
+<span id="cb494-4"><a href="func_loop.html#cb494-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb494-5"><a href="func_loop.html#cb494-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;1 x 1 = 1&quot;
 ## [1] &quot;1 x 2 = 2&quot;
 ## [1] &quot;1 x 3 = 3&quot;
@@ -1046,9 +1105,9 @@ multiplication table from 1 to 4.</p>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb492"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb492-1"><a href="func_loop.html#cb492-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">5</span>):</span>
-<span id="cb492-2"><a href="func_loop.html#cb492-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">5</span>):</span>
-<span id="cb492-3"><a href="func_loop.html#cb492-3" aria-hidden="true" tabindex="-1"></a>      <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss"> x </span><span class="sc">{</span>j<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span>i<span class="op">*</span>j<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb496"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb496-1"><a href="func_loop.html#cb496-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">5</span>):</span>
+<span id="cb496-2"><a href="func_loop.html#cb496-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">5</span>):</span>
+<span id="cb496-3"><a href="func_loop.html#cb496-3" aria-hidden="true" tabindex="-1"></a>      <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss"> x </span><span class="sc">{</span>j<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span>i<span class="op">*</span>j<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
 <pre><code>## 1 x 1 = 1
 ## 1 x 2 = 2
 ## 1 x 3 = 3
@@ -1081,11 +1140,11 @@ until a certain threshold is reached.</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="func_loop.html#cb494-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb494-2"><a href="func_loop.html#cb494-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&lt;=</span> <span class="dv">10</span>) {</span>
-<span id="cb494-3"><a href="func_loop.html#cb494-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
-<span id="cb494-4"><a href="func_loop.html#cb494-4" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb494-5"><a href="func_loop.html#cb494-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="func_loop.html#cb498-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb498-2"><a href="func_loop.html#cb498-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&lt;=</span> <span class="dv">10</span>) {</span>
+<span id="cb498-3"><a href="func_loop.html#cb498-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb498-4"><a href="func_loop.html#cb498-4" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb498-5"><a href="func_loop.html#cb498-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 2
 ## [1] 3
@@ -1099,10 +1158,10 @@ until a certain threshold is reached.</p>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb496"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb496-1"><a href="func_loop.html#cb496-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb496-2"><a href="func_loop.html#cb496-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> i <span class="op">&lt;=</span> <span class="dv">10</span>:</span>
-<span id="cb496-3"><a href="func_loop.html#cb496-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(i)</span>
-<span id="cb496-4"><a href="func_loop.html#cb496-4" aria-hidden="true" tabindex="-1"></a>  i <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb500"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb500-1"><a href="func_loop.html#cb500-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb500-2"><a href="func_loop.html#cb500-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> i <span class="op">&lt;=</span> <span class="dv">10</span>:</span>
+<span id="cb500-3"><a href="func_loop.html#cb500-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(i)</span>
+<span id="cb500-4"><a href="func_loop.html#cb500-4" aria-hidden="true" tabindex="-1"></a>  i <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div>
 <pre><code>## 1
 ## 2
 ## 3
@@ -1142,16 +1201,16 @@ is met or skip an iteration if a certain condition is met.</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="func_loop.html#cb498-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
-<span id="cb498-2"><a href="func_loop.html#cb498-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">5</span>) {</span>
-<span id="cb498-3"><a href="func_loop.html#cb498-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">next</span>  <span class="co"># Skip the rest of the iteration </span></span>
-<span id="cb498-4"><a href="func_loop.html#cb498-4" aria-hidden="true" tabindex="-1"></a>          <span class="co"># and continue with the next iteration</span></span>
-<span id="cb498-5"><a href="func_loop.html#cb498-5" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb498-6"><a href="func_loop.html#cb498-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">&gt;</span> <span class="dv">8</span>) {</span>
-<span id="cb498-7"><a href="func_loop.html#cb498-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span>  <span class="co"># Immediately terminate the loop</span></span>
-<span id="cb498-8"><a href="func_loop.html#cb498-8" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb498-9"><a href="func_loop.html#cb498-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)  <span class="co"># Print the current value of i</span></span>
-<span id="cb498-10"><a href="func_loop.html#cb498-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="func_loop.html#cb502-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb502-2"><a href="func_loop.html#cb502-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">5</span>) {</span>
+<span id="cb502-3"><a href="func_loop.html#cb502-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">next</span>  <span class="co"># Skip the rest of the iteration </span></span>
+<span id="cb502-4"><a href="func_loop.html#cb502-4" aria-hidden="true" tabindex="-1"></a>          <span class="co"># and continue with the next iteration</span></span>
+<span id="cb502-5"><a href="func_loop.html#cb502-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb502-6"><a href="func_loop.html#cb502-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">&gt;</span> <span class="dv">8</span>) {</span>
+<span id="cb502-7"><a href="func_loop.html#cb502-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span>  <span class="co"># Immediately terminate the loop</span></span>
+<span id="cb502-8"><a href="func_loop.html#cb502-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb502-9"><a href="func_loop.html#cb502-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)  <span class="co"># Print the current value of i</span></span>
+<span id="cb502-10"><a href="func_loop.html#cb502-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 2
 ## [1] 3
@@ -1162,13 +1221,13 @@ is met or skip an iteration if a certain condition is met.</p>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb500"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb500-1"><a href="func_loop.html#cb500-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>):</span>
-<span id="cb500-2"><a href="func_loop.html#cb500-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> i <span class="op">==</span> <span class="dv">5</span>:</span>
-<span id="cb500-3"><a href="func_loop.html#cb500-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">continue</span>  <span class="co"># Skip the rest of the iteration </span></span>
-<span id="cb500-4"><a href="func_loop.html#cb500-4" aria-hidden="true" tabindex="-1"></a>              <span class="co"># and continue with the next iteration</span></span>
-<span id="cb500-5"><a href="func_loop.html#cb500-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> i <span class="op">&gt;</span> <span class="dv">8</span>:</span>
-<span id="cb500-6"><a href="func_loop.html#cb500-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span>  <span class="co"># Immediately terminate the loop</span></span>
-<span id="cb500-7"><a href="func_loop.html#cb500-7" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(i)  <span class="co"># Print the current value of i</span></span></code></pre></div>
+<div class="sourceCode" id="cb504"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb504-1"><a href="func_loop.html#cb504-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>):</span>
+<span id="cb504-2"><a href="func_loop.html#cb504-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> i <span class="op">==</span> <span class="dv">5</span>:</span>
+<span id="cb504-3"><a href="func_loop.html#cb504-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">continue</span>  <span class="co"># Skip the rest of the iteration </span></span>
+<span id="cb504-4"><a href="func_loop.html#cb504-4" aria-hidden="true" tabindex="-1"></a>              <span class="co"># and continue with the next iteration</span></span>
+<span id="cb504-5"><a href="func_loop.html#cb504-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> i <span class="op">&gt;</span> <span class="dv">8</span>:</span>
+<span id="cb504-6"><a href="func_loop.html#cb504-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span>  <span class="co"># Immediately terminate the loop</span></span>
+<span id="cb504-7"><a href="func_loop.html#cb504-7" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(i)  <span class="co"># Print the current value of i</span></span></code></pre></div>
 <pre><code>## 1
 ## 2
 ## 3
@@ -1195,24 +1254,24 @@ stopping condition to a while loop.</li>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="func_loop.html#cb502-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">30</span>)</span>
-<span id="cb502-2"><a href="func_loop.html#cb502-2" aria-hidden="true" tabindex="-1"></a>divisor <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb502-3"><a href="func_loop.html#cb502-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (num <span class="cf">in</span> numbers) {</span>
-<span id="cb502-4"><a href="func_loop.html#cb502-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (num <span class="sc">%%</span> divisor <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb502-5"><a href="func_loop.html#cb502-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(num, <span class="st">&quot;is the first number divisible by&quot;</span>, divisor))</span>
-<span id="cb502-6"><a href="func_loop.html#cb502-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
-<span id="cb502-7"><a href="func_loop.html#cb502-7" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb502-8"><a href="func_loop.html#cb502-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="func_loop.html#cb506-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">30</span>)</span>
+<span id="cb506-2"><a href="func_loop.html#cb506-2" aria-hidden="true" tabindex="-1"></a>divisor <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb506-3"><a href="func_loop.html#cb506-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (num <span class="cf">in</span> numbers) {</span>
+<span id="cb506-4"><a href="func_loop.html#cb506-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (num <span class="sc">%%</span> divisor <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb506-5"><a href="func_loop.html#cb506-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(num, <span class="st">&quot;is the first number divisible by&quot;</span>, divisor))</span>
+<span id="cb506-6"><a href="func_loop.html#cb506-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb506-7"><a href="func_loop.html#cb506-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb506-8"><a href="func_loop.html#cb506-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;24 is the first number divisible by 4&quot;</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb504"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb504-1"><a href="func_loop.html#cb504-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">30</span>]</span>
-<span id="cb504-2"><a href="func_loop.html#cb504-2" aria-hidden="true" tabindex="-1"></a>divisor <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb504-3"><a href="func_loop.html#cb504-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> num <span class="kw">in</span> numbers:</span>
-<span id="cb504-4"><a href="func_loop.html#cb504-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> num <span class="op">%</span> divisor <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb504-5"><a href="func_loop.html#cb504-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>num<span class="sc">}</span><span class="ss"> is the first number divisible by </span><span class="sc">{</span>divisor<span class="sc">}</span><span class="ss">&quot;</span>)</span>
-<span id="cb504-6"><a href="func_loop.html#cb504-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span></code></pre></div>
+<div class="sourceCode" id="cb508"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb508-1"><a href="func_loop.html#cb508-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">30</span>]</span>
+<span id="cb508-2"><a href="func_loop.html#cb508-2" aria-hidden="true" tabindex="-1"></a>divisor <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb508-3"><a href="func_loop.html#cb508-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> num <span class="kw">in</span> numbers:</span>
+<span id="cb508-4"><a href="func_loop.html#cb508-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> num <span class="op">%</span> divisor <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb508-5"><a href="func_loop.html#cb508-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>num<span class="sc">}</span><span class="ss"> is the first number divisible by </span><span class="sc">{</span>divisor<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb508-6"><a href="func_loop.html#cb508-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span></code></pre></div>
 <pre><code>## 24 is the first number divisible by 4</code></pre>
 </div>
 </div>
@@ -1220,30 +1279,30 @@ stopping condition to a while loop.</li>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="func_loop.html#cb506-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">30</span>)</span>
-<span id="cb506-2"><a href="func_loop.html#cb506-2" aria-hidden="true" tabindex="-1"></a>divisor <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb506-3"><a href="func_loop.html#cb506-3" aria-hidden="true" tabindex="-1"></a>found <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
-<span id="cb506-4"><a href="func_loop.html#cb506-4" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb506-5"><a href="func_loop.html#cb506-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (<span class="sc">!</span>found <span class="sc">&amp;&amp;</span> i <span class="sc">&lt;=</span> <span class="fu">length</span>(numbers)) {</span>
-<span id="cb506-6"><a href="func_loop.html#cb506-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (numbers[i] <span class="sc">%%</span> divisor <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb506-7"><a href="func_loop.html#cb506-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(numbers[i], <span class="st">&quot;is the first number divisible by&quot;</span>, divisor))</span>
-<span id="cb506-8"><a href="func_loop.html#cb506-8" aria-hidden="true" tabindex="-1"></a>    found <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
-<span id="cb506-9"><a href="func_loop.html#cb506-9" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb506-10"><a href="func_loop.html#cb506-10" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb506-11"><a href="func_loop.html#cb506-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="func_loop.html#cb510-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">30</span>)</span>
+<span id="cb510-2"><a href="func_loop.html#cb510-2" aria-hidden="true" tabindex="-1"></a>divisor <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb510-3"><a href="func_loop.html#cb510-3" aria-hidden="true" tabindex="-1"></a>found <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb510-4"><a href="func_loop.html#cb510-4" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb510-5"><a href="func_loop.html#cb510-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (<span class="sc">!</span>found <span class="sc">&amp;&amp;</span> i <span class="sc">&lt;=</span> <span class="fu">length</span>(numbers)) {</span>
+<span id="cb510-6"><a href="func_loop.html#cb510-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (numbers[i] <span class="sc">%%</span> divisor <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb510-7"><a href="func_loop.html#cb510-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(numbers[i], <span class="st">&quot;is the first number divisible by&quot;</span>, divisor))</span>
+<span id="cb510-8"><a href="func_loop.html#cb510-8" aria-hidden="true" tabindex="-1"></a>    found <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb510-9"><a href="func_loop.html#cb510-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb510-10"><a href="func_loop.html#cb510-10" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb510-11"><a href="func_loop.html#cb510-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;24 is the first number divisible by 4&quot;</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb508"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb508-1"><a href="func_loop.html#cb508-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">30</span>]</span>
-<span id="cb508-2"><a href="func_loop.html#cb508-2" aria-hidden="true" tabindex="-1"></a>divisor <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb508-3"><a href="func_loop.html#cb508-3" aria-hidden="true" tabindex="-1"></a>found <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb508-4"><a href="func_loop.html#cb508-4" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb508-5"><a href="func_loop.html#cb508-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="kw">not</span> found <span class="kw">and</span> i <span class="op">&lt;</span> <span class="bu">len</span>(numbers):</span>
-<span id="cb508-6"><a href="func_loop.html#cb508-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> numbers[i] <span class="op">%</span> divisor <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb508-7"><a href="func_loop.html#cb508-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>numbers[i]<span class="sc">}</span><span class="ss"> is the first number divisible by </span><span class="sc">{</span>divisor<span class="sc">}</span><span class="ss">&quot;</span>)</span>
-<span id="cb508-8"><a href="func_loop.html#cb508-8" aria-hidden="true" tabindex="-1"></a>    found <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb508-9"><a href="func_loop.html#cb508-9" aria-hidden="true" tabindex="-1"></a>  i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb512"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb512-1"><a href="func_loop.html#cb512-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">30</span>]</span>
+<span id="cb512-2"><a href="func_loop.html#cb512-2" aria-hidden="true" tabindex="-1"></a>divisor <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb512-3"><a href="func_loop.html#cb512-3" aria-hidden="true" tabindex="-1"></a>found <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb512-4"><a href="func_loop.html#cb512-4" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb512-5"><a href="func_loop.html#cb512-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="kw">not</span> found <span class="kw">and</span> i <span class="op">&lt;</span> <span class="bu">len</span>(numbers):</span>
+<span id="cb512-6"><a href="func_loop.html#cb512-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> numbers[i] <span class="op">%</span> divisor <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb512-7"><a href="func_loop.html#cb512-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>numbers[i]<span class="sc">}</span><span class="ss"> is the first number divisible by </span><span class="sc">{</span>divisor<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb512-8"><a href="func_loop.html#cb512-8" aria-hidden="true" tabindex="-1"></a>    found <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb512-9"><a href="func_loop.html#cb512-9" aria-hidden="true" tabindex="-1"></a>  i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span></span></code></pre></div>
 <pre><code>## 24 is the first number divisible by 4</code></pre>
 </div>
 </div>

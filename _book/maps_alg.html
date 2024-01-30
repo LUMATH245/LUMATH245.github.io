@@ -221,22 +221,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="maps_alg.html#cb510-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a lambda function in R</span></span>
-<span id="cb510-2"><a href="maps_alg.html#cb510-2" aria-hidden="true" tabindex="-1"></a>add_two_numbers <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) x <span class="sc">+</span> y</span>
-<span id="cb510-3"><a href="maps_alg.html#cb510-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb510-4"><a href="maps_alg.html#cb510-4" aria-hidden="true" tabindex="-1"></a><span class="co"># equivalently, from R 4.1.0</span></span>
-<span id="cb510-5"><a href="maps_alg.html#cb510-5" aria-hidden="true" tabindex="-1"></a>add_two_numbers <span class="ot">&lt;-</span> \(x, y) x <span class="sc">+</span> y</span>
-<span id="cb510-6"><a href="maps_alg.html#cb510-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb510-7"><a href="maps_alg.html#cb510-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the lambda function</span></span>
-<span id="cb510-8"><a href="maps_alg.html#cb510-8" aria-hidden="true" tabindex="-1"></a><span class="fu">add_two_numbers</span>(<span class="dv">1</span>, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="maps_alg.html#cb514-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a lambda function in R</span></span>
+<span id="cb514-2"><a href="maps_alg.html#cb514-2" aria-hidden="true" tabindex="-1"></a>add_two_numbers <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) x <span class="sc">+</span> y</span>
+<span id="cb514-3"><a href="maps_alg.html#cb514-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb514-4"><a href="maps_alg.html#cb514-4" aria-hidden="true" tabindex="-1"></a><span class="co"># equivalently, from R 4.1.0</span></span>
+<span id="cb514-5"><a href="maps_alg.html#cb514-5" aria-hidden="true" tabindex="-1"></a>add_two_numbers <span class="ot">&lt;-</span> \(x, y) x <span class="sc">+</span> y</span>
+<span id="cb514-6"><a href="maps_alg.html#cb514-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb514-7"><a href="maps_alg.html#cb514-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the lambda function</span></span>
+<span id="cb514-8"><a href="maps_alg.html#cb514-8" aria-hidden="true" tabindex="-1"></a><span class="fu">add_two_numbers</span>(<span class="dv">1</span>, <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb512"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb512-1"><a href="maps_alg.html#cb512-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a lambda function in Python</span></span>
-<span id="cb512-2"><a href="maps_alg.html#cb512-2" aria-hidden="true" tabindex="-1"></a>add_two_numbers <span class="op">=</span> <span class="kw">lambda</span> x, y: x <span class="op">+</span> y</span>
-<span id="cb512-3"><a href="maps_alg.html#cb512-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the lambda function</span></span>
-<span id="cb512-4"><a href="maps_alg.html#cb512-4" aria-hidden="true" tabindex="-1"></a>add_two_numbers(<span class="dv">1</span>, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb516"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb516-1"><a href="maps_alg.html#cb516-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a lambda function in Python</span></span>
+<span id="cb516-2"><a href="maps_alg.html#cb516-2" aria-hidden="true" tabindex="-1"></a>add_two_numbers <span class="op">=</span> <span class="kw">lambda</span> x, y: x <span class="op">+</span> y</span>
+<span id="cb516-3"><a href="maps_alg.html#cb516-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the lambda function</span></span>
+<span id="cb516-4"><a href="maps_alg.html#cb516-4" aria-hidden="true" tabindex="-1"></a>add_two_numbers(<span class="dv">1</span>, <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## 3</code></pre>
 </div>
 </div>
@@ -246,33 +246,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="maps_alg.html#cb514-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function factory in R</span></span>
-<span id="cb514-2"><a href="maps_alg.html#cb514-2" aria-hidden="true" tabindex="-1"></a>make_power <span class="ot">&lt;-</span> <span class="cf">function</span>(exponent) {</span>
-<span id="cb514-3"><a href="maps_alg.html#cb514-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lambda here</span></span>
-<span id="cb514-4"><a href="maps_alg.html#cb514-4" aria-hidden="true" tabindex="-1"></a>  pow <span class="ot">&lt;-</span> \(x) x<span class="sc">^</span>exponent</span>
-<span id="cb514-5"><a href="maps_alg.html#cb514-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(pow)</span>
-<span id="cb514-6"><a href="maps_alg.html#cb514-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb514-7"><a href="maps_alg.html#cb514-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the function factory</span></span>
-<span id="cb514-8"><a href="maps_alg.html#cb514-8" aria-hidden="true" tabindex="-1"></a>cube <span class="ot">&lt;-</span> <span class="fu">make_power</span>(<span class="dv">3</span>)</span>
-<span id="cb514-9"><a href="maps_alg.html#cb514-9" aria-hidden="true" tabindex="-1"></a><span class="fu">cube</span>(<span class="dv">2</span>)  <span class="co"># Outputs 8</span></span></code></pre></div>
+<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="maps_alg.html#cb518-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function factory in R</span></span>
+<span id="cb518-2"><a href="maps_alg.html#cb518-2" aria-hidden="true" tabindex="-1"></a>make_power <span class="ot">&lt;-</span> <span class="cf">function</span>(exponent) {</span>
+<span id="cb518-3"><a href="maps_alg.html#cb518-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lambda here</span></span>
+<span id="cb518-4"><a href="maps_alg.html#cb518-4" aria-hidden="true" tabindex="-1"></a>  pow <span class="ot">&lt;-</span> \(x) x<span class="sc">^</span>exponent</span>
+<span id="cb518-5"><a href="maps_alg.html#cb518-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(pow)</span>
+<span id="cb518-6"><a href="maps_alg.html#cb518-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb518-7"><a href="maps_alg.html#cb518-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the function factory</span></span>
+<span id="cb518-8"><a href="maps_alg.html#cb518-8" aria-hidden="true" tabindex="-1"></a>cube <span class="ot">&lt;-</span> <span class="fu">make_power</span>(<span class="dv">3</span>)</span>
+<span id="cb518-9"><a href="maps_alg.html#cb518-9" aria-hidden="true" tabindex="-1"></a><span class="fu">cube</span>(<span class="dv">2</span>)  <span class="co"># Outputs 8</span></span></code></pre></div>
 <pre><code>## [1] 8</code></pre>
-<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="maps_alg.html#cb516-1" aria-hidden="true" tabindex="-1"></a>to_the_tenth <span class="ot">&lt;-</span> <span class="fu">make_power</span>(<span class="dv">10</span>)</span>
-<span id="cb516-2"><a href="maps_alg.html#cb516-2" aria-hidden="true" tabindex="-1"></a><span class="fu">to_the_tenth</span>(<span class="dv">2</span>) <span class="co"># Outputs 1024</span></span></code></pre></div>
+<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="maps_alg.html#cb520-1" aria-hidden="true" tabindex="-1"></a>to_the_tenth <span class="ot">&lt;-</span> <span class="fu">make_power</span>(<span class="dv">10</span>)</span>
+<span id="cb520-2"><a href="maps_alg.html#cb520-2" aria-hidden="true" tabindex="-1"></a><span class="fu">to_the_tenth</span>(<span class="dv">2</span>) <span class="co"># Outputs 1024</span></span></code></pre></div>
 <pre><code>## [1] 1024</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb518"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb518-1"><a href="maps_alg.html#cb518-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function factory in Python</span></span>
-<span id="cb518-2"><a href="maps_alg.html#cb518-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_power(exponent):</span>
-<span id="cb518-3"><a href="maps_alg.html#cb518-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lambda here</span></span>
-<span id="cb518-4"><a href="maps_alg.html#cb518-4" aria-hidden="true" tabindex="-1"></a>  <span class="bu">pow</span> <span class="op">=</span> <span class="kw">lambda</span> x: x <span class="op">**</span> exponent</span>
-<span id="cb518-5"><a href="maps_alg.html#cb518-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="bu">pow</span></span>
-<span id="cb518-6"><a href="maps_alg.html#cb518-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the function factory</span></span>
-<span id="cb518-7"><a href="maps_alg.html#cb518-7" aria-hidden="true" tabindex="-1"></a>cube <span class="op">=</span> make_power(<span class="dv">3</span>)</span>
-<span id="cb518-8"><a href="maps_alg.html#cb518-8" aria-hidden="true" tabindex="-1"></a>cube(<span class="dv">2</span>)  <span class="co"># Outputs 8</span></span></code></pre></div>
+<div class="sourceCode" id="cb522"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb522-1"><a href="maps_alg.html#cb522-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function factory in Python</span></span>
+<span id="cb522-2"><a href="maps_alg.html#cb522-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_power(exponent):</span>
+<span id="cb522-3"><a href="maps_alg.html#cb522-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lambda here</span></span>
+<span id="cb522-4"><a href="maps_alg.html#cb522-4" aria-hidden="true" tabindex="-1"></a>  <span class="bu">pow</span> <span class="op">=</span> <span class="kw">lambda</span> x: x <span class="op">**</span> exponent</span>
+<span id="cb522-5"><a href="maps_alg.html#cb522-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="bu">pow</span></span>
+<span id="cb522-6"><a href="maps_alg.html#cb522-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the function factory</span></span>
+<span id="cb522-7"><a href="maps_alg.html#cb522-7" aria-hidden="true" tabindex="-1"></a>cube <span class="op">=</span> make_power(<span class="dv">3</span>)</span>
+<span id="cb522-8"><a href="maps_alg.html#cb522-8" aria-hidden="true" tabindex="-1"></a>cube(<span class="dv">2</span>)  <span class="co"># Outputs 8</span></span></code></pre></div>
 <pre><code>## 8</code></pre>
-<div class="sourceCode" id="cb520"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb520-1"><a href="maps_alg.html#cb520-1" aria-hidden="true" tabindex="-1"></a>to_the_tenth <span class="op">=</span> make_power(<span class="dv">10</span>)</span>
-<span id="cb520-2"><a href="maps_alg.html#cb520-2" aria-hidden="true" tabindex="-1"></a>to_the_tenth(<span class="dv">2</span>) <span class="co"># Outputs 1024</span></span></code></pre></div>
+<div class="sourceCode" id="cb524"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb524-1"><a href="maps_alg.html#cb524-1" aria-hidden="true" tabindex="-1"></a>to_the_tenth <span class="op">=</span> make_power(<span class="dv">10</span>)</span>
+<span id="cb524-2"><a href="maps_alg.html#cb524-2" aria-hidden="true" tabindex="-1"></a>to_the_tenth(<span class="dv">2</span>) <span class="co"># Outputs 1024</span></span></code></pre></div>
 <pre><code>## 1024</code></pre>
 </div>
 </div>
@@ -283,46 +283,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="maps_alg.html#cb522-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A lambda that prints a message </span></span>
-<span id="cb522-2"><a href="maps_alg.html#cb522-2" aria-hidden="true" tabindex="-1"></a><span class="co"># given a remainder</span></span>
-<span id="cb522-3"><a href="maps_alg.html#cb522-3" aria-hidden="true" tabindex="-1"></a>remainder_printer <span class="ot">&lt;-</span> \(p, q, message)</span>
-<span id="cb522-4"><a href="maps_alg.html#cb522-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (p <span class="sc">%%</span> q <span class="sc">==</span> <span class="dv">0</span>) message <span class="cf">else</span> <span class="st">&quot;&quot;</span></span>
-<span id="cb522-5"><a href="maps_alg.html#cb522-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb522-6"><a href="maps_alg.html#cb522-6" aria-hidden="true" tabindex="-1"></a>fizzbuzz_v10299384 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb522-7"><a href="maps_alg.html#cb522-7" aria-hidden="true" tabindex="-1"></a>  f <span class="ot">&lt;-</span> \(printer)</span>
-<span id="cb522-8"><a href="maps_alg.html#cb522-8" aria-hidden="true" tabindex="-1"></a>    \(x) <span class="fu">paste0</span>(<span class="fu">printer</span>(x, <span class="dv">3</span>, <span class="st">&quot;fizz&quot;</span>), <span class="fu">printer</span>(x, <span class="dv">5</span>, <span class="st">&quot;buzz&quot;</span>))</span>
-<span id="cb522-9"><a href="maps_alg.html#cb522-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb522-10"><a href="maps_alg.html#cb522-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># creating a new function and calling it directly!</span></span>
-<span id="cb522-11"><a href="maps_alg.html#cb522-11" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">f</span>(remainder_printer)(x)</span>
-<span id="cb522-12"><a href="maps_alg.html#cb522-12" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb522-13"><a href="maps_alg.html#cb522-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">nchar</span>(out) <span class="sc">==</span> <span class="dv">0</span>)</span>
-<span id="cb522-14"><a href="maps_alg.html#cb522-14" aria-hidden="true" tabindex="-1"></a>    out <span class="ot">&lt;-</span> x </span>
-<span id="cb522-15"><a href="maps_alg.html#cb522-15" aria-hidden="true" tabindex="-1"></a>  out</span>
-<span id="cb522-16"><a href="maps_alg.html#cb522-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb522-17"><a href="maps_alg.html#cb522-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb522-18"><a href="maps_alg.html#cb522-18" aria-hidden="true" tabindex="-1"></a><span class="fu">fizzbuzz_v10299384</span>(<span class="dv">15</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="maps_alg.html#cb526-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A lambda that prints a message </span></span>
+<span id="cb526-2"><a href="maps_alg.html#cb526-2" aria-hidden="true" tabindex="-1"></a><span class="co"># given a remainder</span></span>
+<span id="cb526-3"><a href="maps_alg.html#cb526-3" aria-hidden="true" tabindex="-1"></a>remainder_printer <span class="ot">&lt;-</span> \(p, q, message)</span>
+<span id="cb526-4"><a href="maps_alg.html#cb526-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (p <span class="sc">%%</span> q <span class="sc">==</span> <span class="dv">0</span>) message <span class="cf">else</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb526-5"><a href="maps_alg.html#cb526-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb526-6"><a href="maps_alg.html#cb526-6" aria-hidden="true" tabindex="-1"></a>fizzbuzz_v10299384 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb526-7"><a href="maps_alg.html#cb526-7" aria-hidden="true" tabindex="-1"></a>  f <span class="ot">&lt;-</span> \(printer)</span>
+<span id="cb526-8"><a href="maps_alg.html#cb526-8" aria-hidden="true" tabindex="-1"></a>    \(x) <span class="fu">paste0</span>(<span class="fu">printer</span>(x, <span class="dv">3</span>, <span class="st">&quot;fizz&quot;</span>), <span class="fu">printer</span>(x, <span class="dv">5</span>, <span class="st">&quot;buzz&quot;</span>))</span>
+<span id="cb526-9"><a href="maps_alg.html#cb526-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb526-10"><a href="maps_alg.html#cb526-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># creating a new function and calling it directly!</span></span>
+<span id="cb526-11"><a href="maps_alg.html#cb526-11" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">f</span>(remainder_printer)(x)</span>
+<span id="cb526-12"><a href="maps_alg.html#cb526-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb526-13"><a href="maps_alg.html#cb526-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">nchar</span>(out) <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb526-14"><a href="maps_alg.html#cb526-14" aria-hidden="true" tabindex="-1"></a>    out <span class="ot">&lt;-</span> x </span>
+<span id="cb526-15"><a href="maps_alg.html#cb526-15" aria-hidden="true" tabindex="-1"></a>  out</span>
+<span id="cb526-16"><a href="maps_alg.html#cb526-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb526-17"><a href="maps_alg.html#cb526-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb526-18"><a href="maps_alg.html#cb526-18" aria-hidden="true" tabindex="-1"></a><span class="fu">fizzbuzz_v10299384</span>(<span class="dv">15</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;fizzbuzz&quot;</code></pre>
-<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="maps_alg.html#cb524-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fizzbuzz_v10299384</span>(<span class="dv">7</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb528-1"><a href="maps_alg.html#cb528-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fizzbuzz_v10299384</span>(<span class="dv">7</span>)</span></code></pre></div>
 <pre><code>## [1] 7</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb526"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb526-1"><a href="maps_alg.html#cb526-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A lambda that prints a message given a remainder</span></span>
-<span id="cb526-2"><a href="maps_alg.html#cb526-2" aria-hidden="true" tabindex="-1"></a>remainder_printer <span class="op">=</span> <span class="kw">lambda</span> p, q, message: message <span class="cf">if</span> p <span class="op">%</span> q <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">&quot;&quot;</span></span>
-<span id="cb526-3"><a href="maps_alg.html#cb526-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb526-4"><a href="maps_alg.html#cb526-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fizzbuzz_v10299384(x):</span>
-<span id="cb526-5"><a href="maps_alg.html#cb526-5" aria-hidden="true" tabindex="-1"></a>    f <span class="op">=</span> <span class="kw">lambda</span> printer: <span class="kw">lambda</span> x: printer(x, <span class="dv">3</span>, <span class="st">&quot;fizz&quot;</span>) <span class="op">+</span> printer(x, <span class="dv">5</span>, <span class="st">&quot;buzz&quot;</span>)</span>
-<span id="cb526-6"><a href="maps_alg.html#cb526-6" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb526-7"><a href="maps_alg.html#cb526-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># creating a new function and calling it directly!</span></span>
-<span id="cb526-8"><a href="maps_alg.html#cb526-8" aria-hidden="true" tabindex="-1"></a>    out <span class="op">=</span> f(remainder_printer)(x)</span>
-<span id="cb526-9"><a href="maps_alg.html#cb526-9" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb526-10"><a href="maps_alg.html#cb526-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(out) <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb526-11"><a href="maps_alg.html#cb526-11" aria-hidden="true" tabindex="-1"></a>        out <span class="op">=</span> <span class="bu">str</span>(x)</span>
-<span id="cb526-12"><a href="maps_alg.html#cb526-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> out</span>
-<span id="cb526-13"><a href="maps_alg.html#cb526-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb526-14"><a href="maps_alg.html#cb526-14" aria-hidden="true" tabindex="-1"></a>fizzbuzz_v10299384(<span class="dv">15</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb530"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb530-1"><a href="maps_alg.html#cb530-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A lambda that prints a message given a remainder</span></span>
+<span id="cb530-2"><a href="maps_alg.html#cb530-2" aria-hidden="true" tabindex="-1"></a>remainder_printer <span class="op">=</span> <span class="kw">lambda</span> p, q, message: message <span class="cf">if</span> p <span class="op">%</span> q <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb530-3"><a href="maps_alg.html#cb530-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb530-4"><a href="maps_alg.html#cb530-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fizzbuzz_v10299384(x):</span>
+<span id="cb530-5"><a href="maps_alg.html#cb530-5" aria-hidden="true" tabindex="-1"></a>    f <span class="op">=</span> <span class="kw">lambda</span> printer: <span class="kw">lambda</span> x: printer(x, <span class="dv">3</span>, <span class="st">&quot;fizz&quot;</span>) <span class="op">+</span> printer(x, <span class="dv">5</span>, <span class="st">&quot;buzz&quot;</span>)</span>
+<span id="cb530-6"><a href="maps_alg.html#cb530-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb530-7"><a href="maps_alg.html#cb530-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># creating a new function and calling it directly!</span></span>
+<span id="cb530-8"><a href="maps_alg.html#cb530-8" aria-hidden="true" tabindex="-1"></a>    out <span class="op">=</span> f(remainder_printer)(x)</span>
+<span id="cb530-9"><a href="maps_alg.html#cb530-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb530-10"><a href="maps_alg.html#cb530-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(out) <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb530-11"><a href="maps_alg.html#cb530-11" aria-hidden="true" tabindex="-1"></a>        out <span class="op">=</span> <span class="bu">str</span>(x)</span>
+<span id="cb530-12"><a href="maps_alg.html#cb530-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> out</span>
+<span id="cb530-13"><a href="maps_alg.html#cb530-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb530-14"><a href="maps_alg.html#cb530-14" aria-hidden="true" tabindex="-1"></a>fizzbuzz_v10299384(<span class="dv">15</span>)</span></code></pre></div>
 <pre><code>## &#39;fizzbuzz&#39;</code></pre>
-<div class="sourceCode" id="cb528"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb528-1"><a href="maps_alg.html#cb528-1" aria-hidden="true" tabindex="-1"></a>fizzbuzz_v10299384(<span class="dv">7</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb532"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb532-1"><a href="maps_alg.html#cb532-1" aria-hidden="true" tabindex="-1"></a>fizzbuzz_v10299384(<span class="dv">7</span>)</span></code></pre></div>
 <pre><code>## &#39;7&#39;</code></pre>
 </div>
 </div>
@@ -350,46 +350,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="maps_alg.html#cb530-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import the purrr library</span></span>
-<span id="cb530-2"><a href="maps_alg.html#cb530-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb530-3"><a href="maps_alg.html#cb530-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this is how we import libraries in R!</span></span>
-<span id="cb530-4"><a href="maps_alg.html#cb530-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb530-5"><a href="maps_alg.html#cb530-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function that squares a number using the factory above</span></span>
-<span id="cb530-6"><a href="maps_alg.html#cb530-6" aria-hidden="true" tabindex="-1"></a>square <span class="ot">&lt;-</span> <span class="fu">make_power</span>(<span class="dv">2</span>)</span>
-<span id="cb530-7"><a href="maps_alg.html#cb530-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb530-8"><a href="maps_alg.html#cb530-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a vector of numbers</span></span>
-<span id="cb530-9"><a href="maps_alg.html#cb530-9" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb530-10"><a href="maps_alg.html#cb530-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb530-11"><a href="maps_alg.html#cb530-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the map function to apply the square function to the vector</span></span>
-<span id="cb530-12"><a href="maps_alg.html#cb530-12" aria-hidden="true" tabindex="-1"></a>squares <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(numbers, square)</span>
-<span id="cb530-13"><a href="maps_alg.html#cb530-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb530-14"><a href="maps_alg.html#cb530-14" aria-hidden="true" tabindex="-1"></a>squares</span></code></pre></div>
+<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="maps_alg.html#cb534-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import the purrr library</span></span>
+<span id="cb534-2"><a href="maps_alg.html#cb534-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb534-3"><a href="maps_alg.html#cb534-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this is how we import libraries in R!</span></span>
+<span id="cb534-4"><a href="maps_alg.html#cb534-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb534-5"><a href="maps_alg.html#cb534-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function that squares a number using the factory above</span></span>
+<span id="cb534-6"><a href="maps_alg.html#cb534-6" aria-hidden="true" tabindex="-1"></a>square <span class="ot">&lt;-</span> <span class="fu">make_power</span>(<span class="dv">2</span>)</span>
+<span id="cb534-7"><a href="maps_alg.html#cb534-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb534-8"><a href="maps_alg.html#cb534-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a vector of numbers</span></span>
+<span id="cb534-9"><a href="maps_alg.html#cb534-9" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb534-10"><a href="maps_alg.html#cb534-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb534-11"><a href="maps_alg.html#cb534-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the map function to apply the square function to the vector</span></span>
+<span id="cb534-12"><a href="maps_alg.html#cb534-12" aria-hidden="true" tabindex="-1"></a>squares <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(numbers, square)</span>
+<span id="cb534-13"><a href="maps_alg.html#cb534-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb534-14"><a href="maps_alg.html#cb534-14" aria-hidden="true" tabindex="-1"></a>squares</span></code></pre></div>
 <pre><code>## [1]  1  4  9 16 25</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb532"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb532-1"><a href="maps_alg.html#cb532-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function that squares a number</span></span>
-<span id="cb532-2"><a href="maps_alg.html#cb532-2" aria-hidden="true" tabindex="-1"></a>square <span class="op">=</span> make_power(<span class="dv">2</span>)</span>
-<span id="cb532-3"><a href="maps_alg.html#cb532-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb532-4"><a href="maps_alg.html#cb532-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a list of numbers</span></span>
-<span id="cb532-5"><a href="maps_alg.html#cb532-5" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">6</span>)</span>
-<span id="cb532-6"><a href="maps_alg.html#cb532-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb532-7"><a href="maps_alg.html#cb532-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the map function to apply the square function to the list</span></span>
-<span id="cb532-8"><a href="maps_alg.html#cb532-8" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(square, numbers))</span>
-<span id="cb532-9"><a href="maps_alg.html#cb532-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb532-10"><a href="maps_alg.html#cb532-10" aria-hidden="true" tabindex="-1"></a>squares</span></code></pre></div>
+<div class="sourceCode" id="cb536"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb536-1"><a href="maps_alg.html#cb536-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function that squares a number</span></span>
+<span id="cb536-2"><a href="maps_alg.html#cb536-2" aria-hidden="true" tabindex="-1"></a>square <span class="op">=</span> make_power(<span class="dv">2</span>)</span>
+<span id="cb536-3"><a href="maps_alg.html#cb536-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb536-4"><a href="maps_alg.html#cb536-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a list of numbers</span></span>
+<span id="cb536-5"><a href="maps_alg.html#cb536-5" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">6</span>)</span>
+<span id="cb536-6"><a href="maps_alg.html#cb536-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb536-7"><a href="maps_alg.html#cb536-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the map function to apply the square function to the list</span></span>
+<span id="cb536-8"><a href="maps_alg.html#cb536-8" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(square, numbers))</span>
+<span id="cb536-9"><a href="maps_alg.html#cb536-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb536-10"><a href="maps_alg.html#cb536-10" aria-hidden="true" tabindex="-1"></a>squares</span></code></pre></div>
 <pre><code>## [1, 4, 9, 16, 25]</code></pre>
 </div>
 </div>
 <p>In the above examples, we’ve defined a function <code>square</code> that squares its input using the <code>make_power</code> function. We then created a vector (or list in Python) <code>numbers</code> with the numbers from <code>1</code> to <code>5</code>. We used the <code>map</code> function to apply <code>square</code> to each element of <code>numbers</code>, resulting in a new vector <code>squares</code> that contains the squares of the numbers.</p>
 <p><strong>NOTE: For R Users</strong>: The <code>map</code> function is part of the <code>purrr</code> package, so you need to import it with <code>library(purrr)</code>; you can have this code at the start of the script. The <code>map</code> function in R takes as argument the vector first, and then the function. The <code>map</code> function in R returns a list by default. A list in R is similar to a vector, but unlike a vector, a list can contain elements of different types. This means a list can be a collection of numbers, vectors, matrices, characters, functions, potatoes, onions, parupzluplups and so on. The <code>map</code> function defaults to a list, as, <em>a priori</em>, does not know what the output of a function could be. If you want a vector as output, you should use the type-specific <code>map</code> functions like <code>map_lgl</code>, <code>map_int</code>, <code>map_dbl</code>, and <code>map_chr</code>. For this reason, above, we used the <code>map_dbl</code>, as we wanted a vector of double precision numbers. Try to swap the function <code>map_dbl</code> for <code>map_chr</code> and see what happens. Also, note that <code>map</code> is implemented natively in R using the <code>apply</code> family of functions, see <code>help(apply)</code> for more details. The code above would have been:</p>
-<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="maps_alg.html#cb534-1" aria-hidden="true" tabindex="-1"></a>squares <span class="ot">=</span> <span class="fu">sapply</span>(numbers, square)</span></code></pre></div>
+<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="maps_alg.html#cb538-1" aria-hidden="true" tabindex="-1"></a>squares <span class="ot">=</span> <span class="fu">sapply</span>(numbers, square)</span></code></pre></div>
 <p>Where now the function and the vector are swapped in the argument. Also, we are using <code>sapply</code> as this returns a vector, whilst the simple <code>apply</code> function returns a list.</p>
 <p><strong>NOTE: For Python Users</strong>: The <code>map</code> function in Python takes as argument the function first, and then the vector. In Python, the map function returns a map object, which is an iterator that yields results on demand. This means that the map function doesn’t actually compute the results until you iterate over the map object. This can be very efficient for large inputs, as it allows the computation to be spread out over time. However, if you want to see all the results at once, you need to convert the map object to a list, which is what the list function does. So when you see <code>list(map(...))</code> in Python, it means “apply this function to each element of this iterable, and give me a list of the results right away”. The <code>map</code> operation in Python can also be achieved with list comprehensions, which provide a more “Pythonic” way to create lists based on existing lists. Here’s how you can rewrite the previous example using a list comprehension:</p>
-<div class="sourceCode" id="cb535"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb535-1"><a href="maps_alg.html#cb535-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a list comprehension to apply the square function to the list</span></span>
-<span id="cb535-2"><a href="maps_alg.html#cb535-2" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> [square(x) <span class="cf">for</span> x <span class="kw">in</span> numbers]</span>
-<span id="cb535-3"><a href="maps_alg.html#cb535-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb535-4"><a href="maps_alg.html#cb535-4" aria-hidden="true" tabindex="-1"></a>squares</span></code></pre></div>
+<div class="sourceCode" id="cb539"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb539-1"><a href="maps_alg.html#cb539-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a list comprehension to apply the square function to the list</span></span>
+<span id="cb539-2"><a href="maps_alg.html#cb539-2" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> [square(x) <span class="cf">for</span> x <span class="kw">in</span> numbers]</span>
+<span id="cb539-3"><a href="maps_alg.html#cb539-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb539-4"><a href="maps_alg.html#cb539-4" aria-hidden="true" tabindex="-1"></a>squares</span></code></pre></div>
 <pre><code>## [1, 4, 9, 16, 25]</code></pre>
 <p>In this example, <code>square(x) for x in numbers</code> is a list comprehension that applies <code>square</code> to each element of <code>numbers</code>. You can read it as: “Run square of x for every x in numbers”, which is very similar to writing in maths <span class="math inline">\(x^2 \ \text{for} \ x \in N\)</span>. The result is a new list <code>squares</code> that contains the squares of the numbers.</p>
 <p><strong>Equivalent Shorter Statements</strong></p>
@@ -397,14 +397,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb537-1"><a href="maps_alg.html#cb537-1" aria-hidden="true" tabindex="-1"></a>squares <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="fu">make_power</span>(<span class="dv">2</span>))</span>
-<span id="cb537-2"><a href="maps_alg.html#cb537-2" aria-hidden="true" tabindex="-1"></a>squares</span></code></pre></div>
+<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="maps_alg.html#cb541-1" aria-hidden="true" tabindex="-1"></a>squares <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="fu">make_power</span>(<span class="dv">2</span>))</span>
+<span id="cb541-2"><a href="maps_alg.html#cb541-2" aria-hidden="true" tabindex="-1"></a>squares</span></code></pre></div>
 <pre><code>## [1]  1  4  9 16 25</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb539"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb539-1"><a href="maps_alg.html#cb539-1" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(make_power(<span class="dv">2</span>), np.arange(<span class="dv">1</span>, <span class="dv">6</span>)))</span>
-<span id="cb539-2"><a href="maps_alg.html#cb539-2" aria-hidden="true" tabindex="-1"></a>squares</span></code></pre></div>
+<div class="sourceCode" id="cb543"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb543-1"><a href="maps_alg.html#cb543-1" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(make_power(<span class="dv">2</span>), np.arange(<span class="dv">1</span>, <span class="dv">6</span>)))</span>
+<span id="cb543-2"><a href="maps_alg.html#cb543-2" aria-hidden="true" tabindex="-1"></a>squares</span></code></pre></div>
 <pre><code>## [1, 4, 9, 16, 25]</code></pre>
 </div>
 </div>
@@ -425,32 +425,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="maps_alg.html#cb541-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a lambda that adds two numbers</span></span>
-<span id="cb541-2"><a href="maps_alg.html#cb541-2" aria-hidden="true" tabindex="-1"></a>add <span class="ot">&lt;-</span> \(x, y) x <span class="sc">+</span> y</span>
-<span id="cb541-3"><a href="maps_alg.html#cb541-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb541-4"><a href="maps_alg.html#cb541-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create two vectors of numbers</span></span>
-<span id="cb541-5"><a href="maps_alg.html#cb541-5" aria-hidden="true" tabindex="-1"></a>numbers1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb541-6"><a href="maps_alg.html#cb541-6" aria-hidden="true" tabindex="-1"></a>numbers2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>)</span>
-<span id="cb541-7"><a href="maps_alg.html#cb541-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb541-8"><a href="maps_alg.html#cb541-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the map2 function to apply the add function to the vectors</span></span>
-<span id="cb541-9"><a href="maps_alg.html#cb541-9" aria-hidden="true" tabindex="-1"></a>sums <span class="ot">&lt;-</span> <span class="fu">map2_dbl</span>(numbers1, numbers2, add)</span>
-<span id="cb541-10"><a href="maps_alg.html#cb541-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb541-11"><a href="maps_alg.html#cb541-11" aria-hidden="true" tabindex="-1"></a>sums</span></code></pre></div>
+<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="maps_alg.html#cb545-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a lambda that adds two numbers</span></span>
+<span id="cb545-2"><a href="maps_alg.html#cb545-2" aria-hidden="true" tabindex="-1"></a>add <span class="ot">&lt;-</span> \(x, y) x <span class="sc">+</span> y</span>
+<span id="cb545-3"><a href="maps_alg.html#cb545-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb545-4"><a href="maps_alg.html#cb545-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create two vectors of numbers</span></span>
+<span id="cb545-5"><a href="maps_alg.html#cb545-5" aria-hidden="true" tabindex="-1"></a>numbers1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb545-6"><a href="maps_alg.html#cb545-6" aria-hidden="true" tabindex="-1"></a>numbers2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>)</span>
+<span id="cb545-7"><a href="maps_alg.html#cb545-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb545-8"><a href="maps_alg.html#cb545-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the map2 function to apply the add function to the vectors</span></span>
+<span id="cb545-9"><a href="maps_alg.html#cb545-9" aria-hidden="true" tabindex="-1"></a>sums <span class="ot">&lt;-</span> <span class="fu">map2_dbl</span>(numbers1, numbers2, add)</span>
+<span id="cb545-10"><a href="maps_alg.html#cb545-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb545-11"><a href="maps_alg.html#cb545-11" aria-hidden="true" tabindex="-1"></a>sums</span></code></pre></div>
 <pre><code>## [1] 11 13 15</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb543"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb543-1"><a href="maps_alg.html#cb543-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a lambda that adds two numbers</span></span>
-<span id="cb543-2"><a href="maps_alg.html#cb543-2" aria-hidden="true" tabindex="-1"></a>add <span class="op">=</span> <span class="kw">lambda</span> x, y: x <span class="op">+</span> y</span>
-<span id="cb543-3"><a href="maps_alg.html#cb543-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb543-4"><a href="maps_alg.html#cb543-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create two lists of numbers</span></span>
-<span id="cb543-5"><a href="maps_alg.html#cb543-5" aria-hidden="true" tabindex="-1"></a>numbers1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
-<span id="cb543-6"><a href="maps_alg.html#cb543-6" aria-hidden="true" tabindex="-1"></a>numbers2 <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]</span>
-<span id="cb543-7"><a href="maps_alg.html#cb543-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb543-8"><a href="maps_alg.html#cb543-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the map function to apply the add function to the lists</span></span>
-<span id="cb543-9"><a href="maps_alg.html#cb543-9" aria-hidden="true" tabindex="-1"></a>sums <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(add, numbers1, numbers2))</span>
-<span id="cb543-10"><a href="maps_alg.html#cb543-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb543-11"><a href="maps_alg.html#cb543-11" aria-hidden="true" tabindex="-1"></a>sums</span></code></pre></div>
+<div class="sourceCode" id="cb547"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb547-1"><a href="maps_alg.html#cb547-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a lambda that adds two numbers</span></span>
+<span id="cb547-2"><a href="maps_alg.html#cb547-2" aria-hidden="true" tabindex="-1"></a>add <span class="op">=</span> <span class="kw">lambda</span> x, y: x <span class="op">+</span> y</span>
+<span id="cb547-3"><a href="maps_alg.html#cb547-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb547-4"><a href="maps_alg.html#cb547-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create two lists of numbers</span></span>
+<span id="cb547-5"><a href="maps_alg.html#cb547-5" aria-hidden="true" tabindex="-1"></a>numbers1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb547-6"><a href="maps_alg.html#cb547-6" aria-hidden="true" tabindex="-1"></a>numbers2 <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]</span>
+<span id="cb547-7"><a href="maps_alg.html#cb547-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb547-8"><a href="maps_alg.html#cb547-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the map function to apply the add function to the lists</span></span>
+<span id="cb547-9"><a href="maps_alg.html#cb547-9" aria-hidden="true" tabindex="-1"></a>sums <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(add, numbers1, numbers2))</span>
+<span id="cb547-10"><a href="maps_alg.html#cb547-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb547-11"><a href="maps_alg.html#cb547-11" aria-hidden="true" tabindex="-1"></a>sums</span></code></pre></div>
 <pre><code>## [11, 13, 15]</code></pre>
 </div>
 </div>
@@ -459,34 +459,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="maps_alg.html#cb545-1" aria-hidden="true" tabindex="-1"></a>sums <span class="ot">&lt;-</span> <span class="fu">map2_dbl</span>( <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),  <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>), \(x, y) x<span class="sc">+</span>y)</span>
-<span id="cb545-2"><a href="maps_alg.html#cb545-2" aria-hidden="true" tabindex="-1"></a>sums</span></code></pre></div>
+<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="maps_alg.html#cb549-1" aria-hidden="true" tabindex="-1"></a>sums <span class="ot">&lt;-</span> <span class="fu">map2_dbl</span>( <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),  <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>), \(x, y) x<span class="sc">+</span>y)</span>
+<span id="cb549-2"><a href="maps_alg.html#cb549-2" aria-hidden="true" tabindex="-1"></a>sums</span></code></pre></div>
 <pre><code>## [1] 11 13 15</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb547"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb547-1"><a href="maps_alg.html#cb547-1" aria-hidden="true" tabindex="-1"></a>sums <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x, y: x <span class="op">+</span> y, [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]))</span>
-<span id="cb547-2"><a href="maps_alg.html#cb547-2" aria-hidden="true" tabindex="-1"></a>sums</span></code></pre></div>
+<div class="sourceCode" id="cb551"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb551-1"><a href="maps_alg.html#cb551-1" aria-hidden="true" tabindex="-1"></a>sums <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x, y: x <span class="op">+</span> y, [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]))</span>
+<span id="cb551-2"><a href="maps_alg.html#cb551-2" aria-hidden="true" tabindex="-1"></a>sums</span></code></pre></div>
 <pre><code>## [11, 13, 15]</code></pre>
 </div>
 </div>
 <p><strong>Note for Python Users</strong>: The <code>map</code> operation with two arguments can also be achieved in a more “Pythonic way” with list comprehensions. Here’s how you can rewrite the previous example:</p>
-<div class="sourceCode" id="cb549"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb549-1"><a href="maps_alg.html#cb549-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a list comprehension to apply the add function to the lists</span></span>
-<span id="cb549-2"><a href="maps_alg.html#cb549-2" aria-hidden="true" tabindex="-1"></a>sums <span class="op">=</span> [add(x, y) <span class="cf">for</span> x, y <span class="kw">in</span> <span class="bu">zip</span>(numbers1, numbers2)]</span>
-<span id="cb549-3"><a href="maps_alg.html#cb549-3" aria-hidden="true" tabindex="-1"></a>sums</span></code></pre></div>
+<div class="sourceCode" id="cb553"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb553-1"><a href="maps_alg.html#cb553-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a list comprehension to apply the add function to the lists</span></span>
+<span id="cb553-2"><a href="maps_alg.html#cb553-2" aria-hidden="true" tabindex="-1"></a>sums <span class="op">=</span> [add(x, y) <span class="cf">for</span> x, y <span class="kw">in</span> <span class="bu">zip</span>(numbers1, numbers2)]</span>
+<span id="cb553-3"><a href="maps_alg.html#cb553-3" aria-hidden="true" tabindex="-1"></a>sums</span></code></pre></div>
 <pre><code>## [11, 13, 15]</code></pre>
 <p>In this example, the list comprehension statement relies on the <code>zip</code> function. <code>zip</code> is used to pair up the elements from <code>numbers1</code> and <code>numbers2</code>. Try to run <code>zip(numbers1, numbers2)</code> alone to see the output! I personally find that the <code>map</code> function is more readable, however you should be familiar with both ways as you will be encountering both if you keep programming with Python. One other advantage is that the <code>map</code> function is inherently flexible and can take as many arguments as necessary. This is because it’s designed to apply a function to multiple iterables in parallel. If you pass more than one iterable to <code>map</code>, it will pass corresponding elements from each iterable to the function. This allows you to easily apply a function to multiple arguments.</p>
 <p><strong>Note for R Users</strong> <code>map2</code> is limited to two arguments, however in <code>purr</code>, we do have a <code>map</code> function that can take as many arguments as necessary: the <code>pmap</code> function. The <code>pmap</code> function has a slightly different notation, as it takes a list of vectors (or a list of lists) and a function as input, and returns a list. Each element of the output list is the result of applying the input function with the corresponding elements of the input vectors as arguments. Here’s an example:</p>
-<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="maps_alg.html#cb551-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function that adds two numbers</span></span>
-<span id="cb551-2"><a href="maps_alg.html#cb551-2" aria-hidden="true" tabindex="-1"></a>add <span class="ot">&lt;-</span> \(x, y) x <span class="sc">+</span> y</span>
-<span id="cb551-3"><a href="maps_alg.html#cb551-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb551-4"><a href="maps_alg.html#cb551-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a list of two vectors of numbers</span></span>
-<span id="cb551-5"><a href="maps_alg.html#cb551-5" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>))</span>
-<span id="cb551-6"><a href="maps_alg.html#cb551-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb551-7"><a href="maps_alg.html#cb551-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the pmap function to apply the add function to the vectors</span></span>
-<span id="cb551-8"><a href="maps_alg.html#cb551-8" aria-hidden="true" tabindex="-1"></a>sums <span class="ot">&lt;-</span> <span class="fu">pmap_dbl</span>(numbers, add)</span>
-<span id="cb551-9"><a href="maps_alg.html#cb551-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb551-10"><a href="maps_alg.html#cb551-10" aria-hidden="true" tabindex="-1"></a>sums</span></code></pre></div>
+<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="maps_alg.html#cb555-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function that adds two numbers</span></span>
+<span id="cb555-2"><a href="maps_alg.html#cb555-2" aria-hidden="true" tabindex="-1"></a>add <span class="ot">&lt;-</span> \(x, y) x <span class="sc">+</span> y</span>
+<span id="cb555-3"><a href="maps_alg.html#cb555-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb555-4"><a href="maps_alg.html#cb555-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a list of two vectors of numbers</span></span>
+<span id="cb555-5"><a href="maps_alg.html#cb555-5" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>))</span>
+<span id="cb555-6"><a href="maps_alg.html#cb555-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb555-7"><a href="maps_alg.html#cb555-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the pmap function to apply the add function to the vectors</span></span>
+<span id="cb555-8"><a href="maps_alg.html#cb555-8" aria-hidden="true" tabindex="-1"></a>sums <span class="ot">&lt;-</span> <span class="fu">pmap_dbl</span>(numbers, add)</span>
+<span id="cb555-9"><a href="maps_alg.html#cb555-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb555-10"><a href="maps_alg.html#cb555-10" aria-hidden="true" tabindex="-1"></a>sums</span></code></pre></div>
 <pre><code>## [1] 11 13 15</code></pre>
 <p>It’s important to note that all vectors in the list passed to <code>pmap</code> should be the same length, as <code>pmap</code> will recycle shorter vectors to match the length of the longest vector, which can lead to unexpected results. If the vectors are not the same length, you should adjust them to be the same length before using <code>pmap</code>.</p>
 </div>
@@ -500,34 +500,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="maps_alg.html#cb553-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define two vectors</span></span>
-<span id="cb553-2"><a href="maps_alg.html#cb553-2" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb553-3"><a href="maps_alg.html#cb553-3" aria-hidden="true" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>)</span>
-<span id="cb553-4"><a href="maps_alg.html#cb553-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb553-5"><a href="maps_alg.html#cb553-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the map2 function to multiply the components of the vectors</span></span>
-<span id="cb553-6"><a href="maps_alg.html#cb553-6" aria-hidden="true" tabindex="-1"></a>products <span class="ot">&lt;-</span> <span class="fu">map2_dbl</span>(v1, v2, <span class="st">`</span><span class="at">*</span><span class="st">`</span>)</span>
-<span id="cb553-7"><a href="maps_alg.html#cb553-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb553-8"><a href="maps_alg.html#cb553-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the reduce function to sum the products</span></span>
-<span id="cb553-9"><a href="maps_alg.html#cb553-9" aria-hidden="true" tabindex="-1"></a>dot_product <span class="ot">&lt;-</span> <span class="fu">reduce</span>(products, <span class="st">`</span><span class="at">+</span><span class="st">`</span>)</span>
-<span id="cb553-10"><a href="maps_alg.html#cb553-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb553-11"><a href="maps_alg.html#cb553-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dot_product)</span></code></pre></div>
+<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="maps_alg.html#cb557-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define two vectors</span></span>
+<span id="cb557-2"><a href="maps_alg.html#cb557-2" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb557-3"><a href="maps_alg.html#cb557-3" aria-hidden="true" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>)</span>
+<span id="cb557-4"><a href="maps_alg.html#cb557-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb557-5"><a href="maps_alg.html#cb557-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the map2 function to multiply the components of the vectors</span></span>
+<span id="cb557-6"><a href="maps_alg.html#cb557-6" aria-hidden="true" tabindex="-1"></a>products <span class="ot">&lt;-</span> <span class="fu">map2_dbl</span>(v1, v2, <span class="st">`</span><span class="at">*</span><span class="st">`</span>)</span>
+<span id="cb557-7"><a href="maps_alg.html#cb557-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb557-8"><a href="maps_alg.html#cb557-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the reduce function to sum the products</span></span>
+<span id="cb557-9"><a href="maps_alg.html#cb557-9" aria-hidden="true" tabindex="-1"></a>dot_product <span class="ot">&lt;-</span> <span class="fu">reduce</span>(products, <span class="st">`</span><span class="at">+</span><span class="st">`</span>)</span>
+<span id="cb557-10"><a href="maps_alg.html#cb557-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb557-11"><a href="maps_alg.html#cb557-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dot_product)</span></code></pre></div>
 <pre><code>## [1] 68</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb555"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb555-1"><a href="maps_alg.html#cb555-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> functools <span class="im">import</span> <span class="bu">reduce</span></span>
-<span id="cb555-2"><a href="maps_alg.html#cb555-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb555-3"><a href="maps_alg.html#cb555-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define two lists</span></span>
-<span id="cb555-4"><a href="maps_alg.html#cb555-4" aria-hidden="true" tabindex="-1"></a>v1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
-<span id="cb555-5"><a href="maps_alg.html#cb555-5" aria-hidden="true" tabindex="-1"></a>v2 <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]</span>
-<span id="cb555-6"><a href="maps_alg.html#cb555-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb555-7"><a href="maps_alg.html#cb555-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the map function to multiply the components of the lists</span></span>
-<span id="cb555-8"><a href="maps_alg.html#cb555-8" aria-hidden="true" tabindex="-1"></a>products <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x, y: x <span class="op">*</span> y, v1, v2))</span>
-<span id="cb555-9"><a href="maps_alg.html#cb555-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb555-10"><a href="maps_alg.html#cb555-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the reduce function to sum the products</span></span>
-<span id="cb555-11"><a href="maps_alg.html#cb555-11" aria-hidden="true" tabindex="-1"></a>dot_product <span class="op">=</span> <span class="bu">reduce</span>(<span class="kw">lambda</span> x, y: x <span class="op">+</span> y, products)</span>
-<span id="cb555-12"><a href="maps_alg.html#cb555-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb555-13"><a href="maps_alg.html#cb555-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dot_product)</span></code></pre></div>
+<div class="sourceCode" id="cb559"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb559-1"><a href="maps_alg.html#cb559-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> functools <span class="im">import</span> <span class="bu">reduce</span></span>
+<span id="cb559-2"><a href="maps_alg.html#cb559-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb559-3"><a href="maps_alg.html#cb559-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define two lists</span></span>
+<span id="cb559-4"><a href="maps_alg.html#cb559-4" aria-hidden="true" tabindex="-1"></a>v1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb559-5"><a href="maps_alg.html#cb559-5" aria-hidden="true" tabindex="-1"></a>v2 <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>]</span>
+<span id="cb559-6"><a href="maps_alg.html#cb559-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb559-7"><a href="maps_alg.html#cb559-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the map function to multiply the components of the lists</span></span>
+<span id="cb559-8"><a href="maps_alg.html#cb559-8" aria-hidden="true" tabindex="-1"></a>products <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x, y: x <span class="op">*</span> y, v1, v2))</span>
+<span id="cb559-9"><a href="maps_alg.html#cb559-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb559-10"><a href="maps_alg.html#cb559-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the reduce function to sum the products</span></span>
+<span id="cb559-11"><a href="maps_alg.html#cb559-11" aria-hidden="true" tabindex="-1"></a>dot_product <span class="op">=</span> <span class="bu">reduce</span>(<span class="kw">lambda</span> x, y: x <span class="op">+</span> y, products)</span>
+<span id="cb559-12"><a href="maps_alg.html#cb559-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb559-13"><a href="maps_alg.html#cb559-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dot_product)</span></code></pre></div>
 <pre><code>## 68</code></pre>
 </div>
 </div>
@@ -541,31 +541,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="maps_alg.html#cb557-1" aria-hidden="true" tabindex="-1"></a><span class="fu">generic_fizzbuzz</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>, <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>),  <span class="fu">c</span>(<span class="st">&quot;Fizz&quot;</span>, <span class="st">&quot;Buzz&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="maps_alg.html#cb561-1" aria-hidden="true" tabindex="-1"></a><span class="fu">generic_fizzbuzz</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>, <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>),  <span class="fu">c</span>(<span class="st">&quot;Fizz&quot;</span>, <span class="st">&quot;Buzz&quot;</span>))</span></code></pre></div>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb558"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb558-1"><a href="maps_alg.html#cb558-1" aria-hidden="true" tabindex="-1"></a>generic_fizzbuzz(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">16</span>), [<span class="dv">3</span>, <span class="dv">5</span>], [<span class="st">&quot;Fizz&quot;</span>, <span class="st">&quot;Buzz&quot;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb562"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb562-1"><a href="maps_alg.html#cb562-1" aria-hidden="true" tabindex="-1"></a>generic_fizzbuzz(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">16</span>), [<span class="dv">3</span>, <span class="dv">5</span>], [<span class="st">&quot;Fizz&quot;</span>, <span class="st">&quot;Buzz&quot;</span>])</span></code></pre></div>
 </div>
 </div>
 <p>Here’s the function signature in R to get you started:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="maps_alg.html#cb559-1" aria-hidden="true" tabindex="-1"></a>generic_fizzbuzz <span class="ot">&lt;-</span> <span class="cf">function</span>(x, primes, phrases) {</span>
-<span id="cb559-2"><a href="maps_alg.html#cb559-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Your code here</span></span>
-<span id="cb559-3"><a href="maps_alg.html#cb559-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="maps_alg.html#cb563-1" aria-hidden="true" tabindex="-1"></a>generic_fizzbuzz <span class="ot">&lt;-</span> <span class="cf">function</span>(x, primes, phrases) {</span>
+<span id="cb563-2"><a href="maps_alg.html#cb563-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Your code here</span></span>
+<span id="cb563-3"><a href="maps_alg.html#cb563-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb560"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb560-1"><a href="maps_alg.html#cb560-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generic_fizzbuzz(x, primes, phrases):</span>
-<span id="cb560-2"><a href="maps_alg.html#cb560-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Your code here</span></span></code></pre></div>
+<div class="sourceCode" id="cb564"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb564-1"><a href="maps_alg.html#cb564-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generic_fizzbuzz(x, primes, phrases):</span>
+<span id="cb564-2"><a href="maps_alg.html#cb564-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Your code here</span></span></code></pre></div>
 </div>
 </div>
 <p>As a test case, consider the following call to your function:</p>
-<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="maps_alg.html#cb561-1" aria-hidden="true" tabindex="-1"></a><span class="fu">generic_fizzbuzz</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>),  <span class="fu">c</span>(<span class="st">&quot;Skibbidi&quot;</span>, <span class="st">&quot;Fizz&quot;</span>, <span class="st">&quot;Buzz&quot;</span>, <span class="st">&quot;Yo&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="maps_alg.html#cb565-1" aria-hidden="true" tabindex="-1"></a><span class="fu">generic_fizzbuzz</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>),  <span class="fu">c</span>(<span class="st">&quot;Skibbidi&quot;</span>, <span class="st">&quot;Fizz&quot;</span>, <span class="st">&quot;Buzz&quot;</span>, <span class="st">&quot;Yo&quot;</span>))</span></code></pre></div>
 <p>or in Python:</p>
-<div class="sourceCode" id="cb562"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb562-1"><a href="maps_alg.html#cb562-1" aria-hidden="true" tabindex="-1"></a>generic_fizzbuzz(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">16</span>), [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>], [<span class="st">&quot;Skibbidi&quot;</span>, <span class="st">&quot;Fizz&quot;</span>, <span class="st">&quot;Buzz&quot;</span>, <span class="st">&quot;Yo&quot;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb566"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb566-1"><a href="maps_alg.html#cb566-1" aria-hidden="true" tabindex="-1"></a>generic_fizzbuzz(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">16</span>), [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>], [<span class="st">&quot;Skibbidi&quot;</span>, <span class="st">&quot;Fizz&quot;</span>, <span class="st">&quot;Buzz&quot;</span>, <span class="st">&quot;Yo&quot;</span>])</span></code></pre></div>
 <p><strong>NOTE for R users</strong> Bored? This module is too easy? Please check the Challenges chapter!</p>
 </div>
 <div id="state-in-functional-programming" class="section level3 hasAnchor" number="4.1.5">
@@ -584,29 +584,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="maps_alg.html#cb563-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a recursive function to compute the Fibonacci series</span></span>
-<span id="cb563-2"><a href="maps_alg.html#cb563-2" aria-hidden="true" tabindex="-1"></a>fibonacci <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
-<span id="cb563-3"><a href="maps_alg.html#cb563-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (n <span class="sc">&lt;=</span> <span class="dv">1</span>) </span>
-<span id="cb563-4"><a href="maps_alg.html#cb563-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(n)</span>
-<span id="cb563-5"><a href="maps_alg.html#cb563-5" aria-hidden="true" tabindex="-1"></a>   <span class="cf">else</span> </span>
-<span id="cb563-6"><a href="maps_alg.html#cb563-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">fibonacci</span>(n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">fibonacci</span>(n <span class="sc">-</span> <span class="dv">2</span>))</span>
-<span id="cb563-7"><a href="maps_alg.html#cb563-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb563-8"><a href="maps_alg.html#cb563-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb563-9"><a href="maps_alg.html#cb563-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first 10 numbers of the Fibonacci series</span></span>
-<span id="cb563-10"><a href="maps_alg.html#cb563-10" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dbl</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">9</span>, fibonacci)</span></code></pre></div>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="maps_alg.html#cb567-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a recursive function to compute the Fibonacci series</span></span>
+<span id="cb567-2"><a href="maps_alg.html#cb567-2" aria-hidden="true" tabindex="-1"></a>fibonacci <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb567-3"><a href="maps_alg.html#cb567-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (n <span class="sc">&lt;=</span> <span class="dv">1</span>) </span>
+<span id="cb567-4"><a href="maps_alg.html#cb567-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(n)</span>
+<span id="cb567-5"><a href="maps_alg.html#cb567-5" aria-hidden="true" tabindex="-1"></a>   <span class="cf">else</span> </span>
+<span id="cb567-6"><a href="maps_alg.html#cb567-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">fibonacci</span>(n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">fibonacci</span>(n <span class="sc">-</span> <span class="dv">2</span>))</span>
+<span id="cb567-7"><a href="maps_alg.html#cb567-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb567-8"><a href="maps_alg.html#cb567-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb567-9"><a href="maps_alg.html#cb567-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first 10 numbers of the Fibonacci series</span></span>
+<span id="cb567-10"><a href="maps_alg.html#cb567-10" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dbl</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">9</span>, fibonacci)</span></code></pre></div>
 <pre><code>##  [1]  0  1  1  2  3  5  8 13 21 34</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb565"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb565-1"><a href="maps_alg.html#cb565-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a recursive function to compute the Fibonacci series</span></span>
-<span id="cb565-2"><a href="maps_alg.html#cb565-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fibonacci(n):</span>
-<span id="cb565-3"><a href="maps_alg.html#cb565-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
-<span id="cb565-4"><a href="maps_alg.html#cb565-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> n</span>
-<span id="cb565-5"><a href="maps_alg.html#cb565-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb565-6"><a href="maps_alg.html#cb565-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span>(fibonacci(n <span class="op">-</span> <span class="dv">1</span>) <span class="op">+</span> fibonacci(n <span class="op">-</span> <span class="dv">2</span>))</span>
-<span id="cb565-7"><a href="maps_alg.html#cb565-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb565-8"><a href="maps_alg.html#cb565-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first 10 numbers of the Fibonacci series</span></span>
-<span id="cb565-9"><a href="maps_alg.html#cb565-9" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">map</span>(fibonacci, <span class="bu">range</span>(<span class="dv">10</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb569"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb569-1"><a href="maps_alg.html#cb569-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a recursive function to compute the Fibonacci series</span></span>
+<span id="cb569-2"><a href="maps_alg.html#cb569-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fibonacci(n):</span>
+<span id="cb569-3"><a href="maps_alg.html#cb569-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
+<span id="cb569-4"><a href="maps_alg.html#cb569-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> n</span>
+<span id="cb569-5"><a href="maps_alg.html#cb569-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb569-6"><a href="maps_alg.html#cb569-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span>(fibonacci(n <span class="op">-</span> <span class="dv">1</span>) <span class="op">+</span> fibonacci(n <span class="op">-</span> <span class="dv">2</span>))</span>
+<span id="cb569-7"><a href="maps_alg.html#cb569-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb569-8"><a href="maps_alg.html#cb569-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first 10 numbers of the Fibonacci series</span></span>
+<span id="cb569-9"><a href="maps_alg.html#cb569-9" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">map</span>(fibonacci, <span class="bu">range</span>(<span class="dv">10</span>)))</span></code></pre></div>
 <pre><code>## [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]</code></pre>
 </div>
 </div>
@@ -619,32 +619,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In your journey, you’ll definitely cross paths with these models if you haven’t already. They’re cool, they’re trendy, everyone is talking about them, and they’re putting at risk half of the desk-job market. <strong>But remember, they’re not flawless.</strong></p>
 <p>To show you what I mean, I challenged GPT-4 to code the Fibonacci sequence using a reduce statement. Check out the R and Python solution it came up with below. I copied the scripts without modifications:</p>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="maps_alg.html#cb567-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb567-2"><a href="maps_alg.html#cb567-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb567-3"><a href="maps_alg.html#cb567-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function to compute the next number in the Fibonacci series</span></span>
-<span id="cb567-4"><a href="maps_alg.html#cb567-4" aria-hidden="true" tabindex="-1"></a>next_number <span class="ot">&lt;-</span> <span class="cf">function</span>(prev_numbers) {</span>
-<span id="cb567-5"><a href="maps_alg.html#cb567-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(<span class="fu">tail</span>(prev_numbers, <span class="dv">2</span>))</span>
-<span id="cb567-6"><a href="maps_alg.html#cb567-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb567-7"><a href="maps_alg.html#cb567-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb567-8"><a href="maps_alg.html#cb567-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the Fibonacci series up to a given length</span></span>
-<span id="cb567-9"><a href="maps_alg.html#cb567-9" aria-hidden="true" tabindex="-1"></a>fibonacci_series <span class="ot">&lt;-</span> <span class="cf">function</span>(length) {</span>
-<span id="cb567-10"><a href="maps_alg.html#cb567-10" aria-hidden="true" tabindex="-1"></a>  initial <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span>
-<span id="cb567-11"><a href="maps_alg.html#cb567-11" aria-hidden="true" tabindex="-1"></a>  fib_sequence <span class="ot">&lt;-</span> <span class="fu">reduce</span>(<span class="fu">rep</span>(<span class="dv">0</span>, length <span class="sc">-</span> <span class="dv">2</span>), <span class="at">.init =</span> initial, <span class="at">.f =</span> next_number)</span>
-<span id="cb567-12"><a href="maps_alg.html#cb567-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(fib_sequence)</span>
-<span id="cb567-13"><a href="maps_alg.html#cb567-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb567-14"><a href="maps_alg.html#cb567-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb567-15"><a href="maps_alg.html#cb567-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first 10 numbers of the Fibonacci series</span></span>
-<span id="cb567-16"><a href="maps_alg.html#cb567-16" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">fibonacci_series</span>(<span class="dv">10</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="maps_alg.html#cb571-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb571-2"><a href="maps_alg.html#cb571-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb571-3"><a href="maps_alg.html#cb571-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function to compute the next number in the Fibonacci series</span></span>
+<span id="cb571-4"><a href="maps_alg.html#cb571-4" aria-hidden="true" tabindex="-1"></a>next_number <span class="ot">&lt;-</span> <span class="cf">function</span>(prev_numbers) {</span>
+<span id="cb571-5"><a href="maps_alg.html#cb571-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(<span class="fu">tail</span>(prev_numbers, <span class="dv">2</span>))</span>
+<span id="cb571-6"><a href="maps_alg.html#cb571-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb571-7"><a href="maps_alg.html#cb571-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb571-8"><a href="maps_alg.html#cb571-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the Fibonacci series up to a given length</span></span>
+<span id="cb571-9"><a href="maps_alg.html#cb571-9" aria-hidden="true" tabindex="-1"></a>fibonacci_series <span class="ot">&lt;-</span> <span class="cf">function</span>(length) {</span>
+<span id="cb571-10"><a href="maps_alg.html#cb571-10" aria-hidden="true" tabindex="-1"></a>  initial <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb571-11"><a href="maps_alg.html#cb571-11" aria-hidden="true" tabindex="-1"></a>  fib_sequence <span class="ot">&lt;-</span> <span class="fu">reduce</span>(<span class="fu">rep</span>(<span class="dv">0</span>, length <span class="sc">-</span> <span class="dv">2</span>), <span class="at">.init =</span> initial, <span class="at">.f =</span> next_number)</span>
+<span id="cb571-12"><a href="maps_alg.html#cb571-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(fib_sequence)</span>
+<span id="cb571-13"><a href="maps_alg.html#cb571-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb571-14"><a href="maps_alg.html#cb571-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb571-15"><a href="maps_alg.html#cb571-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first 10 numbers of the Fibonacci series</span></span>
+<span id="cb571-16"><a href="maps_alg.html#cb571-16" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">fibonacci_series</span>(<span class="dv">10</span>))</span></code></pre></div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb568"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb568-1"><a href="maps_alg.html#cb568-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> functools <span class="im">import</span> <span class="bu">reduce</span></span>
-<span id="cb568-2"><a href="maps_alg.html#cb568-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb568-3"><a href="maps_alg.html#cb568-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fibonacci_series(length):</span>
-<span id="cb568-4"><a href="maps_alg.html#cb568-4" aria-hidden="true" tabindex="-1"></a>    initial <span class="op">=</span> ([<span class="dv">0</span>, <span class="dv">1</span>] <span class="op">+</span> [<span class="dv">0</span>] <span class="op">*</span> (length <span class="op">-</span> <span class="dv">2</span>))</span>
-<span id="cb568-5"><a href="maps_alg.html#cb568-5" aria-hidden="true" tabindex="-1"></a>    fib_sequence <span class="op">=</span> <span class="bu">reduce</span>(<span class="kw">lambda</span> prev, _: prev <span class="op">+</span> [prev[<span class="op">-</span><span class="dv">2</span>] <span class="op">+</span> prev[<span class="op">-</span><span class="dv">1</span>]], <span class="bu">range</span>(length <span class="op">-</span> <span class="dv">2</span>), initial)</span>
-<span id="cb568-6"><a href="maps_alg.html#cb568-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> fib_sequence</span>
-<span id="cb568-7"><a href="maps_alg.html#cb568-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb568-8"><a href="maps_alg.html#cb568-8" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> <span class="dv">10</span>  <span class="co"># Change this to the length you want</span></span>
-<span id="cb568-9"><a href="maps_alg.html#cb568-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fibonacci_series(length))</span></code></pre></div>
+<div class="sourceCode" id="cb572"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb572-1"><a href="maps_alg.html#cb572-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> functools <span class="im">import</span> <span class="bu">reduce</span></span>
+<span id="cb572-2"><a href="maps_alg.html#cb572-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb572-3"><a href="maps_alg.html#cb572-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fibonacci_series(length):</span>
+<span id="cb572-4"><a href="maps_alg.html#cb572-4" aria-hidden="true" tabindex="-1"></a>    initial <span class="op">=</span> ([<span class="dv">0</span>, <span class="dv">1</span>] <span class="op">+</span> [<span class="dv">0</span>] <span class="op">*</span> (length <span class="op">-</span> <span class="dv">2</span>))</span>
+<span id="cb572-5"><a href="maps_alg.html#cb572-5" aria-hidden="true" tabindex="-1"></a>    fib_sequence <span class="op">=</span> <span class="bu">reduce</span>(<span class="kw">lambda</span> prev, _: prev <span class="op">+</span> [prev[<span class="op">-</span><span class="dv">2</span>] <span class="op">+</span> prev[<span class="op">-</span><span class="dv">1</span>]], <span class="bu">range</span>(length <span class="op">-</span> <span class="dv">2</span>), initial)</span>
+<span id="cb572-6"><a href="maps_alg.html#cb572-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> fib_sequence</span>
+<span id="cb572-7"><a href="maps_alg.html#cb572-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb572-8"><a href="maps_alg.html#cb572-8" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> <span class="dv">10</span>  <span class="co"># Change this to the length you want</span></span>
+<span id="cb572-9"><a href="maps_alg.html#cb572-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fibonacci_series(length))</span></code></pre></div>
 <p><strong>You can see it is clearly broken</strong>. Imagine you’re now in the hot seat, interviewing for a top-tier IT company. They slide this code across the table and ask you to either debug the AI’s solution or come up with a better one. Could you rise to the challenge and secure the job?</p>
 </div>
 </div>
@@ -659,9 +659,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="maps_alg.html#cb569-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 4x4 matrix in R</span></span>
-<span id="cb569-2"><a href="maps_alg.html#cb569-2" aria-hidden="true" tabindex="-1"></a>matrix_by_row <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">16</span>, <span class="at">nrow=</span><span class="dv">4</span>, <span class="at">ncol=</span><span class="dv">4</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb569-3"><a href="maps_alg.html#cb569-3" aria-hidden="true" tabindex="-1"></a>matrix_by_row</span></code></pre></div>
+<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="maps_alg.html#cb573-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 4x4 matrix in R</span></span>
+<span id="cb573-2"><a href="maps_alg.html#cb573-2" aria-hidden="true" tabindex="-1"></a>matrix_by_row <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">16</span>, <span class="at">nrow=</span><span class="dv">4</span>, <span class="at">ncol=</span><span class="dv">4</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb573-3"><a href="maps_alg.html#cb573-3" aria-hidden="true" tabindex="-1"></a>matrix_by_row</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    2    3    4
 ## [2,]    5    6    7    8
@@ -670,19 +670,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb571"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb571-1"><a href="maps_alg.html#cb571-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 4x4 matrix in Python</span></span>
-<span id="cb571-2"><a href="maps_alg.html#cb571-2" aria-hidden="true" tabindex="-1"></a>matrix_by_row <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">17</span>).reshape(<span class="dv">4</span>, <span class="dv">4</span>)</span>
-<span id="cb571-3"><a href="maps_alg.html#cb571-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb571-4"><a href="maps_alg.html#cb571-4" aria-hidden="true" tabindex="-1"></a><span class="co"># alternatively, you can write it by hand as a list of lists</span></span>
-<span id="cb571-5"><a href="maps_alg.html#cb571-5" aria-hidden="true" tabindex="-1"></a>matrix_by_row <span class="op">=</span> np.array([</span>
-<span id="cb571-6"><a href="maps_alg.html#cb571-6" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>],</span>
-<span id="cb571-7"><a href="maps_alg.html#cb571-7" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>],</span>
-<span id="cb571-8"><a href="maps_alg.html#cb571-8" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>],</span>
-<span id="cb571-9"><a href="maps_alg.html#cb571-9" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">16</span>]</span>
-<span id="cb571-10"><a href="maps_alg.html#cb571-10" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb571-11"><a href="maps_alg.html#cb571-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb571-12"><a href="maps_alg.html#cb571-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb571-13"><a href="maps_alg.html#cb571-13" aria-hidden="true" tabindex="-1"></a>matrix_by_row</span></code></pre></div>
+<div class="sourceCode" id="cb575"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb575-1"><a href="maps_alg.html#cb575-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 4x4 matrix in Python</span></span>
+<span id="cb575-2"><a href="maps_alg.html#cb575-2" aria-hidden="true" tabindex="-1"></a>matrix_by_row <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">17</span>).reshape(<span class="dv">4</span>, <span class="dv">4</span>)</span>
+<span id="cb575-3"><a href="maps_alg.html#cb575-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb575-4"><a href="maps_alg.html#cb575-4" aria-hidden="true" tabindex="-1"></a><span class="co"># alternatively, you can write it by hand as a list of lists</span></span>
+<span id="cb575-5"><a href="maps_alg.html#cb575-5" aria-hidden="true" tabindex="-1"></a>matrix_by_row <span class="op">=</span> np.array([</span>
+<span id="cb575-6"><a href="maps_alg.html#cb575-6" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>],</span>
+<span id="cb575-7"><a href="maps_alg.html#cb575-7" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>],</span>
+<span id="cb575-8"><a href="maps_alg.html#cb575-8" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>],</span>
+<span id="cb575-9"><a href="maps_alg.html#cb575-9" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">16</span>]</span>
+<span id="cb575-10"><a href="maps_alg.html#cb575-10" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb575-11"><a href="maps_alg.html#cb575-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb575-12"><a href="maps_alg.html#cb575-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb575-13"><a href="maps_alg.html#cb575-13" aria-hidden="true" tabindex="-1"></a>matrix_by_row</span></code></pre></div>
 <pre><code>## array([[ 1,  2,  3,  4],
 ##        [ 5,  6,  7,  8],
 ##        [ 9, 10, 11, 12],
@@ -694,15 +694,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="maps_alg.html#cb573-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a matrix by binding vectors in R</span></span>
-<span id="cb573-2"><a href="maps_alg.html#cb573-2" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb573-3"><a href="maps_alg.html#cb573-3" aria-hidden="true" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>)</span>
-<span id="cb573-4"><a href="maps_alg.html#cb573-4" aria-hidden="true" tabindex="-1"></a>v3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>)</span>
-<span id="cb573-5"><a href="maps_alg.html#cb573-5" aria-hidden="true" tabindex="-1"></a>v4 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">16</span>)</span>
-<span id="cb573-6"><a href="maps_alg.html#cb573-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb573-7"><a href="maps_alg.html#cb573-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Bind vectors as columns</span></span>
-<span id="cb573-8"><a href="maps_alg.html#cb573-8" aria-hidden="true" tabindex="-1"></a>matrix_by_col <span class="ot">&lt;-</span> <span class="fu">cbind</span>(v1, v2, v3, v4)</span>
-<span id="cb573-9"><a href="maps_alg.html#cb573-9" aria-hidden="true" tabindex="-1"></a>matrix_by_col</span></code></pre></div>
+<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="maps_alg.html#cb577-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a matrix by binding vectors in R</span></span>
+<span id="cb577-2"><a href="maps_alg.html#cb577-2" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb577-3"><a href="maps_alg.html#cb577-3" aria-hidden="true" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>)</span>
+<span id="cb577-4"><a href="maps_alg.html#cb577-4" aria-hidden="true" tabindex="-1"></a>v3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>)</span>
+<span id="cb577-5"><a href="maps_alg.html#cb577-5" aria-hidden="true" tabindex="-1"></a>v4 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">16</span>)</span>
+<span id="cb577-6"><a href="maps_alg.html#cb577-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb577-7"><a href="maps_alg.html#cb577-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Bind vectors as columns</span></span>
+<span id="cb577-8"><a href="maps_alg.html#cb577-8" aria-hidden="true" tabindex="-1"></a>matrix_by_col <span class="ot">&lt;-</span> <span class="fu">cbind</span>(v1, v2, v3, v4)</span>
+<span id="cb577-9"><a href="maps_alg.html#cb577-9" aria-hidden="true" tabindex="-1"></a>matrix_by_col</span></code></pre></div>
 <pre><code>##      v1 v2 v3 v4
 ## [1,]  1  5  9 13
 ## [2,]  2  6 10 14
@@ -711,15 +711,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb575"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb575-1"><a href="maps_alg.html#cb575-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a matrix by binding vectors in Python</span></span>
-<span id="cb575-2"><a href="maps_alg.html#cb575-2" aria-hidden="true" tabindex="-1"></a>v1 <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span>
-<span id="cb575-3"><a href="maps_alg.html#cb575-3" aria-hidden="true" tabindex="-1"></a>v2 <span class="op">=</span> np.array([<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>])</span>
-<span id="cb575-4"><a href="maps_alg.html#cb575-4" aria-hidden="true" tabindex="-1"></a>v3 <span class="op">=</span> np.array([<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>])</span>
-<span id="cb575-5"><a href="maps_alg.html#cb575-5" aria-hidden="true" tabindex="-1"></a>v4 <span class="op">=</span> np.array([<span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">16</span>])</span>
-<span id="cb575-6"><a href="maps_alg.html#cb575-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb575-7"><a href="maps_alg.html#cb575-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Bind vectors as columns</span></span>
-<span id="cb575-8"><a href="maps_alg.html#cb575-8" aria-hidden="true" tabindex="-1"></a>matrix_by_col <span class="op">=</span> np.column_stack((v1, v2, v3, v4))</span>
-<span id="cb575-9"><a href="maps_alg.html#cb575-9" aria-hidden="true" tabindex="-1"></a>matrix_by_col</span></code></pre></div>
+<div class="sourceCode" id="cb579"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb579-1"><a href="maps_alg.html#cb579-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a matrix by binding vectors in Python</span></span>
+<span id="cb579-2"><a href="maps_alg.html#cb579-2" aria-hidden="true" tabindex="-1"></a>v1 <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span>
+<span id="cb579-3"><a href="maps_alg.html#cb579-3" aria-hidden="true" tabindex="-1"></a>v2 <span class="op">=</span> np.array([<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>])</span>
+<span id="cb579-4"><a href="maps_alg.html#cb579-4" aria-hidden="true" tabindex="-1"></a>v3 <span class="op">=</span> np.array([<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>])</span>
+<span id="cb579-5"><a href="maps_alg.html#cb579-5" aria-hidden="true" tabindex="-1"></a>v4 <span class="op">=</span> np.array([<span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">16</span>])</span>
+<span id="cb579-6"><a href="maps_alg.html#cb579-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb579-7"><a href="maps_alg.html#cb579-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Bind vectors as columns</span></span>
+<span id="cb579-8"><a href="maps_alg.html#cb579-8" aria-hidden="true" tabindex="-1"></a>matrix_by_col <span class="op">=</span> np.column_stack((v1, v2, v3, v4))</span>
+<span id="cb579-9"><a href="maps_alg.html#cb579-9" aria-hidden="true" tabindex="-1"></a>matrix_by_col</span></code></pre></div>
 <pre><code>## array([[ 1,  5,  9, 13],
 ##        [ 2,  6, 10, 14],
 ##        [ 3,  7, 11, 15],
@@ -732,16 +732,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="maps_alg.html#cb577-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transpose the matrix in R</span></span>
-<span id="cb577-2"><a href="maps_alg.html#cb577-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(matrix_by_row)</span></code></pre></div>
+<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="maps_alg.html#cb581-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transpose the matrix in R</span></span>
+<span id="cb581-2"><a href="maps_alg.html#cb581-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(matrix_by_row)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    5    9   13
 ## [2,]    2    6   10   14
 ## [3,]    3    7   11   15
 ## [4,]    4    8   12   16</code></pre>
-<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="maps_alg.html#cb579-1" aria-hidden="true" tabindex="-1"></a><span class="co"># comparing the elements of the transposed</span></span>
-<span id="cb579-2"><a href="maps_alg.html#cb579-2" aria-hidden="true" tabindex="-1"></a><span class="co"># matrix by row with that filled by columns</span></span>
-<span id="cb579-3"><a href="maps_alg.html#cb579-3" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(matrix_by_row) <span class="sc">==</span> matrix_by_col</span></code></pre></div>
+<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="maps_alg.html#cb583-1" aria-hidden="true" tabindex="-1"></a><span class="co"># comparing the elements of the transposed</span></span>
+<span id="cb583-2"><a href="maps_alg.html#cb583-2" aria-hidden="true" tabindex="-1"></a><span class="co"># matrix by row with that filled by columns</span></span>
+<span id="cb583-3"><a href="maps_alg.html#cb583-3" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(matrix_by_row) <span class="sc">==</span> matrix_by_col</span></code></pre></div>
 <pre><code>##        v1   v2   v3   v4
 ## [1,] TRUE TRUE TRUE TRUE
 ## [2,] TRUE TRUE TRUE TRUE
@@ -750,15 +750,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb581"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb581-1"><a href="maps_alg.html#cb581-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transpose the matrix in Python</span></span>
-<span id="cb581-2"><a href="maps_alg.html#cb581-2" aria-hidden="true" tabindex="-1"></a>matrix_by_row.T</span></code></pre></div>
+<div class="sourceCode" id="cb585"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb585-1"><a href="maps_alg.html#cb585-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transpose the matrix in Python</span></span>
+<span id="cb585-2"><a href="maps_alg.html#cb585-2" aria-hidden="true" tabindex="-1"></a>matrix_by_row.T</span></code></pre></div>
 <pre><code>## array([[ 1,  5,  9, 13],
 ##        [ 2,  6, 10, 14],
 ##        [ 3,  7, 11, 15],
 ##        [ 4,  8, 12, 16]])</code></pre>
-<div class="sourceCode" id="cb583"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb583-1"><a href="maps_alg.html#cb583-1" aria-hidden="true" tabindex="-1"></a><span class="co"># comparing the elements of the transposed</span></span>
-<span id="cb583-2"><a href="maps_alg.html#cb583-2" aria-hidden="true" tabindex="-1"></a><span class="co"># matrix by row with that filled by columns</span></span>
-<span id="cb583-3"><a href="maps_alg.html#cb583-3" aria-hidden="true" tabindex="-1"></a>matrix_by_row.T <span class="op">==</span> matrix_by_col</span></code></pre></div>
+<div class="sourceCode" id="cb587"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb587-1"><a href="maps_alg.html#cb587-1" aria-hidden="true" tabindex="-1"></a><span class="co"># comparing the elements of the transposed</span></span>
+<span id="cb587-2"><a href="maps_alg.html#cb587-2" aria-hidden="true" tabindex="-1"></a><span class="co"># matrix by row with that filled by columns</span></span>
+<span id="cb587-3"><a href="maps_alg.html#cb587-3" aria-hidden="true" tabindex="-1"></a>matrix_by_row.T <span class="op">==</span> matrix_by_col</span></code></pre></div>
 <pre><code>## array([[ True,  True,  True,  True],
 ##        [ True,  True,  True,  True],
 ##        [ True,  True,  True,  True],
@@ -773,19 +773,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="maps_alg.html#cb585-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a 3x3 matrix in R</span></span>
-<span id="cb585-2"><a href="maps_alg.html#cb585-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>), <span class="at">nrow=</span><span class="dv">3</span>, <span class="at">ncol=</span><span class="dv">3</span>)</span>
-<span id="cb585-3"><a href="maps_alg.html#cb585-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb585-4"><a href="maps_alg.html#cb585-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a 3x1 vector in R</span></span>
-<span id="cb585-5"><a href="maps_alg.html#cb585-5" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="maps_alg.html#cb589-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a 3x3 matrix in R</span></span>
+<span id="cb589-2"><a href="maps_alg.html#cb589-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>), <span class="at">nrow=</span><span class="dv">3</span>, <span class="at">ncol=</span><span class="dv">3</span>)</span>
+<span id="cb589-3"><a href="maps_alg.html#cb589-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb589-4"><a href="maps_alg.html#cb589-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a 3x1 vector in R</span></span>
+<span id="cb589-5"><a href="maps_alg.html#cb589-5" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span></code></pre></div>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb586"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb586-1"><a href="maps_alg.html#cb586-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a 3x3 matrix in Python</span></span>
-<span id="cb586-2"><a href="maps_alg.html#cb586-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.arange(<span class="dv">1</span>,<span class="dv">10</span>).reshape(<span class="dv">3</span>,<span class="dv">3</span>)</span>
-<span id="cb586-3"><a href="maps_alg.html#cb586-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb586-4"><a href="maps_alg.html#cb586-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a 3x1 vector in Python</span></span>
-<span id="cb586-5"><a href="maps_alg.html#cb586-5" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb590"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb590-1"><a href="maps_alg.html#cb590-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a 3x3 matrix in Python</span></span>
+<span id="cb590-2"><a href="maps_alg.html#cb590-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.arange(<span class="dv">1</span>,<span class="dv">10</span>).reshape(<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb590-3"><a href="maps_alg.html#cb590-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb590-4"><a href="maps_alg.html#cb590-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a 3x1 vector in Python</span></span>
+<span id="cb590-5"><a href="maps_alg.html#cb590-5" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span></code></pre></div>
 </div>
 </div>
 <p>Now, as in chapter two, R and Python (assuming you’re using numpy) will be able to handle both:</p>
@@ -797,32 +797,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb587"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb587-1"><a href="maps_alg.html#cb587-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrix addition</span></span>
-<span id="cb587-2"><a href="maps_alg.html#cb587-2" aria-hidden="true" tabindex="-1"></a>A <span class="sc">+</span> A</span></code></pre></div>
+<div class="sourceCode" id="cb591"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb591-1"><a href="maps_alg.html#cb591-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrix addition</span></span>
+<span id="cb591-2"><a href="maps_alg.html#cb591-2" aria-hidden="true" tabindex="-1"></a>A <span class="sc">+</span> A</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    2    8   14
 ## [2,]    4   10   16
 ## [3,]    6   12   18</code></pre>
-<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="maps_alg.html#cb589-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Element-wise multiplication</span></span>
-<span id="cb589-2"><a href="maps_alg.html#cb589-2" aria-hidden="true" tabindex="-1"></a>A <span class="sc">*</span> A</span></code></pre></div>
+<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb593-1"><a href="maps_alg.html#cb593-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Element-wise multiplication</span></span>
+<span id="cb593-2"><a href="maps_alg.html#cb593-2" aria-hidden="true" tabindex="-1"></a>A <span class="sc">*</span> A</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1   16   49
 ## [2,]    4   25   64
 ## [3,]    9   36   81</code></pre>
-<div class="sourceCode" id="cb591"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb591-1"><a href="maps_alg.html#cb591-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Squaring all elements (equivalent to above)</span></span>
-<span id="cb591-2"><a href="maps_alg.html#cb591-2" aria-hidden="true" tabindex="-1"></a>A<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb595"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb595-1"><a href="maps_alg.html#cb595-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Squaring all elements (equivalent to above)</span></span>
+<span id="cb595-2"><a href="maps_alg.html#cb595-2" aria-hidden="true" tabindex="-1"></a>A<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1   16   49
 ## [2,]    4   25   64
 ## [3,]    9   36   81</code></pre>
-<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb593-1"><a href="maps_alg.html#cb593-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrix multiplication</span></span>
-<span id="cb593-2"><a href="maps_alg.html#cb593-2" aria-hidden="true" tabindex="-1"></a>A <span class="sc">%*%</span> A</span></code></pre></div>
+<div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb597-1"><a href="maps_alg.html#cb597-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrix multiplication</span></span>
+<span id="cb597-2"><a href="maps_alg.html#cb597-2" aria-hidden="true" tabindex="-1"></a>A <span class="sc">%*%</span> A</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]   30   66  102
 ## [2,]   36   81  126
 ## [3,]   42   96  150</code></pre>
-<div class="sourceCode" id="cb595"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb595-1"><a href="maps_alg.html#cb595-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrix-vector multiplication</span></span>
-<span id="cb595-2"><a href="maps_alg.html#cb595-2" aria-hidden="true" tabindex="-1"></a>A <span class="sc">%*%</span> v</span></code></pre></div>
+<div class="sourceCode" id="cb599"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb599-1"><a href="maps_alg.html#cb599-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrix-vector multiplication</span></span>
+<span id="cb599-2"><a href="maps_alg.html#cb599-2" aria-hidden="true" tabindex="-1"></a>A <span class="sc">%*%</span> v</span></code></pre></div>
 <pre><code>##      [,1]
 ## [1,]   30
 ## [2,]   36
@@ -830,30 +830,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb597"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb597-1"><a href="maps_alg.html#cb597-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrix addition</span></span>
-<span id="cb597-2"><a href="maps_alg.html#cb597-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">+</span> A</span></code></pre></div>
+<div class="sourceCode" id="cb601"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb601-1"><a href="maps_alg.html#cb601-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrix addition</span></span>
+<span id="cb601-2"><a href="maps_alg.html#cb601-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">+</span> A</span></code></pre></div>
 <pre><code>## array([[ 2,  4,  6],
 ##        [ 8, 10, 12],
 ##        [14, 16, 18]])</code></pre>
-<div class="sourceCode" id="cb599"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb599-1"><a href="maps_alg.html#cb599-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Element-wise multiplication</span></span>
-<span id="cb599-2"><a href="maps_alg.html#cb599-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">*</span> A</span></code></pre></div>
+<div class="sourceCode" id="cb603"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb603-1"><a href="maps_alg.html#cb603-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Element-wise multiplication</span></span>
+<span id="cb603-2"><a href="maps_alg.html#cb603-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">*</span> A</span></code></pre></div>
 <pre><code>## array([[ 1,  4,  9],
 ##        [16, 25, 36],
 ##        [49, 64, 81]])</code></pre>
-<div class="sourceCode" id="cb601"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb601-1"><a href="maps_alg.html#cb601-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Squaring all elements (equivalent to above)</span></span>
-<span id="cb601-2"><a href="maps_alg.html#cb601-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">**</span> <span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb605"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb605-1"><a href="maps_alg.html#cb605-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Squaring all elements (equivalent to above)</span></span>
+<span id="cb605-2"><a href="maps_alg.html#cb605-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">**</span> <span class="dv">2</span></span></code></pre></div>
 <pre><code>## array([[ 1,  4,  9],
 ##        [16, 25, 36],
 ##        [49, 64, 81]])</code></pre>
-<div class="sourceCode" id="cb603"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb603-1"><a href="maps_alg.html#cb603-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrix multiplication</span></span>
-<span id="cb603-2"><a href="maps_alg.html#cb603-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">@</span> A</span></code></pre></div>
+<div class="sourceCode" id="cb607"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb607-1"><a href="maps_alg.html#cb607-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrix multiplication</span></span>
+<span id="cb607-2"><a href="maps_alg.html#cb607-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">@</span> A</span></code></pre></div>
 <pre><code>## array([[ 30,  36,  42],
 ##        [ 66,  81,  96],
 ##        [102, 126, 150]])</code></pre>
-<div class="sourceCode" id="cb605"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb605-1"><a href="maps_alg.html#cb605-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrix-vector multiplication</span></span>
-<span id="cb605-2"><a href="maps_alg.html#cb605-2" aria-hidden="true" tabindex="-1"></a>np.dot(A, v) <span class="co"># as we saw in week 2</span></span></code></pre></div>
+<div class="sourceCode" id="cb609"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb609-1"><a href="maps_alg.html#cb609-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrix-vector multiplication</span></span>
+<span id="cb609-2"><a href="maps_alg.html#cb609-2" aria-hidden="true" tabindex="-1"></a>np.dot(A, v) <span class="co"># as we saw in week 2</span></span></code></pre></div>
 <pre><code>## array([14, 32, 50])</code></pre>
-<div class="sourceCode" id="cb607"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb607-1"><a href="maps_alg.html#cb607-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">@</span> v</span></code></pre></div>
+<div class="sourceCode" id="cb611"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb611-1"><a href="maps_alg.html#cb611-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">@</span> v</span></code></pre></div>
 <pre><code>## array([14, 32, 50])</code></pre>
 </div>
 </div>
@@ -863,9 +863,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb609-1"><a href="maps_alg.html#cb609-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a full rank matrix</span></span>
-<span id="cb609-2"><a href="maps_alg.html#cb609-2" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">3</span>), <span class="at">nrow=</span><span class="dv">3</span>, <span class="at">byrow=</span>T)</span>
-<span id="cb609-3"><a href="maps_alg.html#cb609-3" aria-hidden="true" tabindex="-1"></a>B</span></code></pre></div>
+<div class="sourceCode" id="cb613"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb613-1"><a href="maps_alg.html#cb613-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a full rank matrix</span></span>
+<span id="cb613-2"><a href="maps_alg.html#cb613-2" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">3</span>), <span class="at">nrow=</span><span class="dv">3</span>, <span class="at">byrow=</span>T)</span>
+<span id="cb613-3"><a href="maps_alg.html#cb613-3" aria-hidden="true" tabindex="-1"></a>B</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    2    3
 ## [2,]    4    5    6
@@ -873,9 +873,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb611"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb611-1"><a href="maps_alg.html#cb611-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a full rank matrix</span></span>
-<span id="cb611-2"><a href="maps_alg.html#cb611-2" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">3</span>]])</span>
-<span id="cb611-3"><a href="maps_alg.html#cb611-3" aria-hidden="true" tabindex="-1"></a>B</span></code></pre></div>
+<div class="sourceCode" id="cb615"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb615-1"><a href="maps_alg.html#cb615-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a full rank matrix</span></span>
+<span id="cb615-2"><a href="maps_alg.html#cb615-2" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">3</span>]])</span>
+<span id="cb615-3"><a href="maps_alg.html#cb615-3" aria-hidden="true" tabindex="-1"></a>B</span></code></pre></div>
 <pre><code>## array([[1, 2, 3],
 ##        [4, 5, 6],
 ##        [1, 4, 3]])</code></pre>
@@ -885,18 +885,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb613"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb613-1"><a href="maps_alg.html#cb613-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the determinant of A and B</span></span>
-<span id="cb613-2"><a href="maps_alg.html#cb613-2" aria-hidden="true" tabindex="-1"></a><span class="fu">det</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb617"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb617-1"><a href="maps_alg.html#cb617-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the determinant of A and B</span></span>
+<span id="cb617-2"><a href="maps_alg.html#cb617-2" aria-hidden="true" tabindex="-1"></a><span class="fu">det</span>(A)</span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
-<div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb615-1"><a href="maps_alg.html#cb615-1" aria-hidden="true" tabindex="-1"></a><span class="fu">det</span>(B)</span></code></pre></div>
+<div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb619-1"><a href="maps_alg.html#cb619-1" aria-hidden="true" tabindex="-1"></a><span class="fu">det</span>(B)</span></code></pre></div>
 <pre><code>## [1] 12</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb617"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb617-1"><a href="maps_alg.html#cb617-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the determinant of A and B</span></span>
-<span id="cb617-2"><a href="maps_alg.html#cb617-2" aria-hidden="true" tabindex="-1"></a>np.linalg.det(A)</span></code></pre></div>
+<div class="sourceCode" id="cb621"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb621-1"><a href="maps_alg.html#cb621-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the determinant of A and B</span></span>
+<span id="cb621-2"><a href="maps_alg.html#cb621-2" aria-hidden="true" tabindex="-1"></a>np.linalg.det(A)</span></code></pre></div>
 <pre><code>## 0.0</code></pre>
-<div class="sourceCode" id="cb619"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb619-1"><a href="maps_alg.html#cb619-1" aria-hidden="true" tabindex="-1"></a>np.linalg.det(B)</span></code></pre></div>
+<div class="sourceCode" id="cb623"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb623-1"><a href="maps_alg.html#cb623-1" aria-hidden="true" tabindex="-1"></a>np.linalg.det(B)</span></code></pre></div>
 <pre><code>## 12.0</code></pre>
 </div>
 </div>
@@ -905,16 +905,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb621-1"><a href="maps_alg.html#cb621-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the inverse of A</span></span>
-<span id="cb621-2"><a href="maps_alg.html#cb621-2" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb625"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb625-1"><a href="maps_alg.html#cb625-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the inverse of A</span></span>
+<span id="cb625-2"><a href="maps_alg.html#cb625-2" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(A)</span></code></pre></div>
 <pre><code>## Error in solve.default(A): Lapack routine dgesv: system is exactly singular: U[3,3] = 0</code></pre>
-<div class="sourceCode" id="cb623"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb623-1"><a href="maps_alg.html#cb623-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the inverse of B</span></span>
-<span id="cb623-2"><a href="maps_alg.html#cb623-2" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(B)</span></code></pre></div>
+<div class="sourceCode" id="cb627"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb627-1"><a href="maps_alg.html#cb627-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the inverse of B</span></span>
+<span id="cb627-2"><a href="maps_alg.html#cb627-2" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(B)</span></code></pre></div>
 <pre><code>##            [,1]       [,2]  [,3]
 ## [1,] -0.7500000  0.5000000 -0.25
 ## [2,] -0.5000000  0.0000000  0.50
 ## [3,]  0.9166667 -0.1666667 -0.25</code></pre>
-<div class="sourceCode" id="cb625"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb625-1"><a href="maps_alg.html#cb625-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(B) <span class="sc">%*%</span> B</span></code></pre></div>
+<div class="sourceCode" id="cb629"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb629-1"><a href="maps_alg.html#cb629-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(B) <span class="sc">%*%</span> B</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    0    0
 ## [2,]    0    1    0
@@ -922,14 +922,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb627"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb627-1"><a href="maps_alg.html#cb627-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the inverse of A in Python</span></span>
-<span id="cb627-2"><a href="maps_alg.html#cb627-2" aria-hidden="true" tabindex="-1"></a>np.linalg.inv(A)</span></code></pre></div>
+<div class="sourceCode" id="cb631"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb631-1"><a href="maps_alg.html#cb631-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the inverse of A in Python</span></span>
+<span id="cb631-2"><a href="maps_alg.html#cb631-2" aria-hidden="true" tabindex="-1"></a>np.linalg.inv(A)</span></code></pre></div>
 <pre><code>## Singular matrix</code></pre>
-<div class="sourceCode" id="cb629"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb629-1"><a href="maps_alg.html#cb629-1" aria-hidden="true" tabindex="-1"></a>np.linalg.inv(B)</span></code></pre></div>
+<div class="sourceCode" id="cb633"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb633-1"><a href="maps_alg.html#cb633-1" aria-hidden="true" tabindex="-1"></a>np.linalg.inv(B)</span></code></pre></div>
 <pre><code>## array([[-0.75      ,  0.5       , -0.25      ],
 ##        [-0.5       ,  0.        ,  0.5       ],
 ##        [ 0.91666667, -0.16666667, -0.25      ]])</code></pre>
-<div class="sourceCode" id="cb631"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb631-1"><a href="maps_alg.html#cb631-1" aria-hidden="true" tabindex="-1"></a>np.dot(np.linalg.inv(B), B)</span></code></pre></div>
+<div class="sourceCode" id="cb635"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb635-1"><a href="maps_alg.html#cb635-1" aria-hidden="true" tabindex="-1"></a>np.dot(np.linalg.inv(B), B)</span></code></pre></div>
 <pre><code>## array([[1., 0., 0.],
 ##        [0., 1., 0.],
 ##        [0., 0., 1.]])</code></pre>
@@ -939,8 +939,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb633"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb633-1"><a href="maps_alg.html#cb633-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the eigenvalues and eigenvectors of A and B in R</span></span>
-<span id="cb633-2"><a href="maps_alg.html#cb633-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb637"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb637-1"><a href="maps_alg.html#cb637-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the eigenvalues and eigenvectors of A and B in R</span></span>
+<span id="cb637-2"><a href="maps_alg.html#cb637-2" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen</span>(A)</span></code></pre></div>
 <pre><code>## eigen() decomposition
 ## $values
 ## [1]  1.611684e+01 -1.116844e+00 -5.700691e-16
@@ -950,7 +950,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [1,] -0.4645473 -0.8829060  0.4082483
 ## [2,] -0.5707955 -0.2395204 -0.8164966
 ## [3,] -0.6770438  0.4038651  0.4082483</code></pre>
-<div class="sourceCode" id="cb635"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb635-1"><a href="maps_alg.html#cb635-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen</span>(B)</span></code></pre></div>
+<div class="sourceCode" id="cb639"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb639-1"><a href="maps_alg.html#cb639-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eigen</span>(B)</span></code></pre></div>
 <pre><code>## eigen() decomposition
 ## $values
 ## [1] 10.2807637+0.0000000i -0.6403818+0.8701377i
@@ -968,12 +968,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb637"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb637-1"><a href="maps_alg.html#cb637-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the eigenvalues and eigenvectors of A and B in Python</span></span>
-<span id="cb637-2"><a href="maps_alg.html#cb637-2" aria-hidden="true" tabindex="-1"></a>np.linalg.eig(A)</span></code></pre></div>
+<div class="sourceCode" id="cb641"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb641-1"><a href="maps_alg.html#cb641-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the eigenvalues and eigenvectors of A and B in Python</span></span>
+<span id="cb641-2"><a href="maps_alg.html#cb641-2" aria-hidden="true" tabindex="-1"></a>np.linalg.eig(A)</span></code></pre></div>
 <pre><code>## EigResult(eigenvalues=array([ 1.61168440e+01, -1.11684397e+00, -1.30367773e-15]), eigenvectors=array([[-0.23197069, -0.78583024,  0.40824829],
 ##        [-0.52532209, -0.08675134, -0.81649658],
 ##        [-0.8186735 ,  0.61232756,  0.40824829]]))</code></pre>
-<div class="sourceCode" id="cb639"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb639-1"><a href="maps_alg.html#cb639-1" aria-hidden="true" tabindex="-1"></a>np.linalg.eig(B)</span></code></pre></div>
+<div class="sourceCode" id="cb643"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb643-1"><a href="maps_alg.html#cb643-1" aria-hidden="true" tabindex="-1"></a>np.linalg.eig(B)</span></code></pre></div>
 <pre><code>## EigResult(eigenvalues=array([10.28076366+0.j        , -0.64038183+0.87013768j,
 ##        -0.64038183-0.87013768j]), eigenvectors=array([[ 0.33187527+0.j        , -0.29375539-0.46264397j,
 ##         -0.29375539+0.46264397j],

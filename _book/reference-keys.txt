@@ -45,6 +45,7 @@ exercise-cups-to-grams-converter
 looping
 the-syntax
 coding-the-fibonacci-sequence
+safer-for-loops
 exercise-3
 more-about-looping
 nested-loops
