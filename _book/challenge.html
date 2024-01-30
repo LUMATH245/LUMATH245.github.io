@@ -195,7 +195,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="hatters_challenge" class="section level3 hasAnchor" number="6.1.1">
 <h3><span class="header-section-number">6.1.1</span> The Hats in a Line game<a href="challenge.html#hatters_challenge" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We are going to code and demonstrate that the optimal solution to one of the most famous combinatorics games, that of the hats in a line, works with on average 1 error half of the time.</p>
-<p>The game goes like this. You are one of <span class="math inline">\(n\)</span> players who will be put on a set of stairs, standing in a line, and each of you will be wearing a hat that is either black or white at random. Given that you’re on some stairs, you can only see the hats of the players in front of you, but not your own or the ones behind you.</p>
+<p>The game goes like this. You are one of <span class="math inline">\(n\)</span> players who will be put on a set of stairs, standing in a line, and each of you will be wearing a hat that is either black or white at random (with probability 0.5). Given that you’re on some stairs, you can only see the hats of the players in front of you, but not your own or the ones behind you.</p>
 <p>You can devise a strategy with the other players before the game starts, however you are not allowed to communicate with the other players after the hats are placed <strong>if not by stating the color of your hat out loud</strong>. Starting from the top of the stairs, e.g. the back of the line, each player has to guess their own hat colour out loud. Note that:</p>
 <ul>
 <li>Each person gets a single attempt.</li>
@@ -237,7 +237,7 @@ Here’s the function signature and call to get you started:</li>
 <li><p>Show by conjecture that this optimal strategy works with 1 error around 50% of the times. Simulate 1000 games. To do so:</p>
 <ol style="list-style-type: lower-roman">
 <li><p>Assume that for each game you will have 10 players</p></li>
-<li><p>Create 1000 binary vectors of hats <span class="math inline">\(h^{(k)}_{1:n}\)</span>, where <span class="math inline">\(n=10\)</span>, and <span class="math inline">\(k = 1, \dots, 1000\)</span>. You can do so by sampling from a binomial distribution with trial parameter 1, and with success probability 0.3, e.g. <span class="math inline">\(h^k_i \sim \text{Bin}(1, 0.3)\)</span> . You can sample from a binomial distribution with <code>rbinom</code> in R and <code>np.random.binomial</code> in Python.</p></li>
+<li><p>Create 1000 binary vectors of hats <span class="math inline">\(h^{(k)}_{1:n}\)</span>, where <span class="math inline">\(n=10\)</span>, and <span class="math inline">\(k = 1, \dots, 1000\)</span>. You can do so by sampling from a binomial distribution with trial parameter 1, and with success probability 0.5, e.g. <span class="math inline">\(h^k_i \sim \text{Bin}(1, 0.3)\)</span> . You can sample from a binomial distribution with <code>rbinom</code> in R and <code>np.random.binomial</code> in Python.</p></li>
 <li><p>Get the amount of errors of each game by computing <span class="math inline">\(\epsilon_k = ||h^{(k)}_{1:n} - hatter(h^{(k)}_{1:n})||\)</span> for <span class="math inline">\(k = 1, \dots, 1000\)</span>.</p></li>
 <li><p>Check that <span class="math inline">\(\frac{\sum_{i = 1}^{1000} \epsilon_i}{1000} \approx 0.5\)</span>.</p></li>
 </ol></li>
