@@ -92,8 +92,7 @@ code is run. This is incredibly useful for tasks we need to perform
 multiple times. Let's build for example a simple function that converts
 pounds (lbs) to grams (g).
 
-Mathematically, this is simply done by the formula:
-$$
+Mathematically, this is simply done by the formula: $$
 g = 453.5924 * lbs
 $$
 
@@ -170,15 +169,17 @@ conversion rate each time we want to convert pounds to grams!
 
 The name of the function `lbs_to_grams` and its argument `lbs` are just
 names that I chose. There are a few guidelines that could be useful when
-naming functions: 
+naming functions:
 
--   Names should be lowercase. 
+-   Names should be lowercase.
 
 -   Use an underscore, \_, to separate words within a name.
 
--   Strive for names that are concise and meaningful (this is not easy!).
+-   Strive for names that are concise and meaningful (this is not
+    easy!).
 
--   Avoid existing function names in R and python, such as `length()` or `len()`.
+-   Avoid existing function names in R and python, such as `length()` or
+    `len()`.
 
 Also, you might have noticed we made a variable within the function
 code, `grams`. But what does it mean to have variables within functions?
@@ -366,11 +367,32 @@ lbs_to_grams(42)
 </div>
 :::
 
-For those who are newer to programming, don’t worry if the idea of dealing with bugs and errors seems daunting. One of the most effective ways to understand what’s happening in your code is to use `print` statements. If you were confused by this section, try to add those `print` statements to display the value of variables `lbs` and `grams` within the functions above!
-In fact, by strategically placing print statements in your code, you can see the values of variables at different points in your program’s execution. This can help you understand how your code is working and where potential issues might be. As you gain more experience and confidence, you’ll naturally start to develop more advanced strategies for managing and resolving bugs in your code. Remember, everyone was a beginner once, and every expert has made plenty of mistakes along the way. So don’t be discouraged by bugs in your code - they’re just opportunities to learn and improve!
+For those who are newer to programming, don't worry if the idea of
+dealing with bugs and errors seems daunting. One of the most effective
+ways to understand what's happening in your code is to use `print`
+statements. If you were confused by this section, try to add those
+`print` statements to display the value of variables `lbs` and `grams`
+within the functions above! In fact, by strategically placing print
+statements in your code, you can see the values of variables at
+different points in your program's execution. This can help you
+understand how your code is working and where potential issues might be.
+As you gain more experience and confidence, you'll naturally start to
+develop more advanced strategies for managing and resolving bugs in your
+code. Remember, everyone was a beginner once, and every expert has made
+plenty of mistakes along the way. So don't be discouraged by bugs in
+your code - they're just opportunities to learn and improve!
 
-**NOTE for the more experienced users.** It’s worth noting that debugging tools can be incredibly helpful for identifying and resolving issues in your code. A debugger is a program that helps you inspect what’s happening in your program while it’s running. It allows you to pause your program, inspect the values of variables in a given environment at any point in time, and step through your code line by line. This can be particularly useful for identifying issues like the one we’ve discussed above. RStudio includes a built-in debugger that can be a great help in these situations. You can learn more about debugging in RStudio [in this guide](https://support.posit.co/hc/en-us/articles/205612627-Debugging-with-the-RStudio-IDE).
-
+**NOTE for the more experienced users.** It's worth noting that
+debugging tools can be incredibly helpful for identifying and resolving
+issues in your code. A debugger is a program that helps you inspect
+what's happening in your program while it's running. It allows you to
+pause your program, inspect the values of variables in a given
+environment at any point in time, and step through your code line by
+line. This can be particularly useful for identifying issues like the
+one we've discussed above. RStudio includes a built-in debugger that can
+be a great help in these situations. You can learn more about debugging
+in RStudio [in this
+guide](https://support.posit.co/hc/en-us/articles/205612627-Debugging-with-the-RStudio-IDE).
 
 #### Multiple arguments
 
@@ -477,7 +499,10 @@ they are relative to using water. Then, to be more efficient, rather
 than continuously having to give the mass of water, we could set the
 arguments to have these as default values.
 
-This is where default arguments in functions come into play. They are incredibly useful as they allow us (and any potential future user) to make certain parameters optional. This makes the function easier to use and the the code more readable in general!
+This is where default arguments in functions come into play. They are
+incredibly useful as they allow us (and any potential future user) to
+make certain parameters optional. This makes the function easier to use
+and the the code more readable in general!
 
 Here's how we can do this in both R and Python:
 
@@ -730,8 +755,10 @@ In this case, `fruit` is the iterator that gets updated at each step
 over the sequence with the current element of the sequence. The for loop
 ends when it has exhausted the sequence.
 
-Try to edit both code chunks above, by adding a new variable called `iter_counts`. Initialize this variable at 0, e.g. `iter_counts <- 0`, and update it in the cycle with `iter_counts <- iter_counts + 1`. Print it at the end: what's the value for the first cycle? And for the second?
-
+Try to edit both code chunks above, by adding a new variable called
+`iter_counts`. Initialize this variable at 0, e.g. `iter_counts <- 0`,
+and update it in the cycle with `iter_counts <- iter_counts + 1`. Print
+it at the end: what's the value for the first cycle? And for the second?
 
 **In Python:**
 
@@ -780,16 +807,21 @@ In this Python code:
 -   The for loop ends when it has exhausted the sequence, i.e., when
     `fruit` has taken all values in the numpy array `arr`.
 
-Try to edit both code chunks above, by adding a new variable called `iter_counts`. Initialize this variable at 0, e.g. `iter_counts = 0`, and update it in the cycle with `iter_counts = iter_counts + 1`. Print it at the end: what's the value for the first cycle? And for the second?
+Try to edit both code chunks above, by adding a new variable called
+`iter_counts`. Initialize this variable at 0, e.g. `iter_counts = 0`,
+and update it in the cycle with `iter_counts = iter_counts + 1`. Print
+it at the end: what's the value for the first cycle? And for the second?
 
 ### Coding The Fibonacci sequence
 
 Having covered how to write a for cycle, we come back to our Fibonacci
-example. Differently from the loop above, in order to implement our algorithm, 
-we will need to **update a variable** within our loop. In our case, this variable, 
-is going to be a vector storing our Fibonacci sequence, called `fibonacci`. At iteration 1, the vector
-will be 2 elements long (the first two number of the sequence), but as we go through
-the loop, we will be adding more and more elements to the vector. 
+example. Differently from the loop above, in order to implement our
+algorithm, we will need to **update a variable** within our loop. In our
+case, this variable, is going to be a vector storing our Fibonacci
+sequence, called `fibonacci`. At iteration 1, the vector will be 2
+elements long (the first two number of the sequence), but as we go
+through the loop, we will be adding more and more elements to the
+vector.
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -842,10 +874,12 @@ In the R code:
 -   `fibonacci[i] <- fibonacci[i - 1] + fibonacci[i - 2]` is the code
     chunk that we want to repeat. It calculates the `i`th number in the
     Fibonacci sequence as the sum of the two preceding numbers and
-    **appends it** to the `fibonacci` vector. Given that at iteration `i` we
-    have no element `i` in the vector yet (this is still `i-1` long), R
-    will automatically extend the vector of one extra element. Alternatively,
-    you can use the `c(fibonacci, fibonacci[i - 1] + fibonacci[i - 2])` to concatenate an extra vector (with one element) to the existing vector.
+    **appends it** to the `fibonacci` vector. Given that at iteration
+    `i` we have no element `i` in the vector yet (this is still `i-1`
+    long), R will automatically extend the vector of one extra element.
+    Alternatively, you can use the
+    `c(fibonacci, fibonacci[i - 1] + fibonacci[i - 2])` to concatenate
+    an extra vector (with one element) to the existing vector.
 
 In the Python code:
 
@@ -856,16 +890,16 @@ In the Python code:
 -   `fibonacci.append(fibonacci[i - 1] + fibonacci[i - 2])` is the code
     chunk that we want to repeat. It calculates the `i`th number in the
     Fibonacci sequence as the sum of the two preceding numbers and
-    **appends it** to the `fibonacci` list using the `append()` method. The
-    append method extends our vector, adding a new element at the end of
-    the existing one. Alternatively, you can use the `fibonacci + [fibonacci[i - 1] + fibonacci[i - 2]]`
-    to concatenate an extra vector (with one element) to the existing vector.
+    **appends it** to the `fibonacci` list using the `append()` method.
+    The append method extends our vector, adding a new element at the
+    end of the existing one. Alternatively, you can use the
+    `fibonacci + [fibonacci[i - 1] + fibonacci[i - 2]]` to concatenate
+    an extra vector (with one element) to the existing vector.
 
 Our vectors, where we stored our results at every iteration, should be
-20 elements long, containing the sequence. 
+20 elements long, containing the sequence.
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
-
 <div>
 
 **R**
@@ -887,7 +921,6 @@ fibonacci
 ```
 
 </div>
-
 :::
 
 **Before you proceed** make sure you understand what's going on inside
@@ -898,19 +931,24 @@ computation, or `print(fibonacci)` after the computation has been done.
 `print` statements are extremely useful for debugging for cycles!
 
 #### Safer for loops
-The for loop above is straightforward and works fine for the specific task of computing the Fibonacci sequence alone. 
-However, it could potentially lead to issues if you wanted to modify or extend the code.
-For example, if you wanted to change the calculation logic or use it in a different context, you would need to modify the loop itself. This could introduce errors and make the code harder to maintain.
 
-However, there is an approach that is generally safer and more robust: that of working with **functions within your loops**.
+The for loop above is straightforward and works fine for the specific
+task of computing the Fibonacci sequence alone. However, it could
+potentially lead to issues if you wanted to modify or extend the code.
+For example, if you wanted to change the calculation logic or use it in
+a different context, you would need to modify the loop itself. This
+could introduce errors and make the code harder to maintain.
+
+However, there is an approach that is generally safer and more robust:
+that of working with **functions within your loops**.
 
 Have a look at the code below:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
-
 <div>
 
 **R**
+
 ```{r}
 # define a function to update the Fibonacci sequence
 update_fibonacci <- function(R) {
@@ -962,18 +1000,29 @@ compute_fibonacci(20)
 ```
 
 </div>
-
 :::
 
-This solution is better on a lot of ways. The calculation logic of the Fibonacci sequence is encapsulated within its own function, `update_fibonacci`. Now, suppose you found a better method to deal with that, you’d only need to change that part (spoiler: you can, ask a GPT model if it has ways to improve on `update_fibonacci`). 
+This solution is better on a lot of ways. The calculation logic of the
+Fibonacci sequence is encapsulated within its own function,
+`update_fibonacci`. Now, suppose you found a better method to deal with
+that, you'd only need to change that part (spoiler: you can, ask a GPT
+model if it has ways to improve on `update_fibonacci`).
 
-Also, the computation of the full Fibonacci sequence is encapsulated in its own function, `compute_fibonacci`! This makes the code more organized and less prone to errors due to variables defined elsewhere **as it does not touch global variables**. 
+Also, the computation of the full Fibonacci sequence is encapsulated in
+its own function, `compute_fibonacci`! This makes the code more
+organized and less prone to errors due to variables defined elsewhere
+**as it does not touch global variables**.
 
-For this reason, you can easily **reuse** the `compute_fibonacci` function in other parts of your code or even in different programs! For instance, this function might turn out to be useful in the next exercise, where you'll have to call it with `n=10`. 
+For this reason, you can easily **reuse** the `compute_fibonacci`
+function in other parts of your code or even in different programs! For
+instance, this function might turn out to be useful in the next
+exercise, where you'll have to call it with `n=10`.
 
-### Exercise 
+### Exercise
 
-Write now a new function `my_cusum` to compute the cumulative sum of a list of numbers, using a for loop. Use the function to calculate the cumulative sum of the first 10 elements of the Fibonacci sequence.
+Write now a new function `my_cusum` to compute the cumulative sum of a
+list of numbers, using a for loop. Use the function to calculate the
+cumulative sum of the first 10 elements of the Fibonacci sequence.
 
 The function should:
 
@@ -995,8 +1044,8 @@ The function should:
 -   Run the function `my_cusum(fibonacci)` to obtain the cumulative sum
     of the first then numbers of the Fibonacci sequence.
 
--   Compare the output of `my_cusum` with the built in function `cumsum` (in R) or numpy's `np.cumsum` (in Python).
-
+-   Compare the output of `my_cusum` with the built in function `cumsum`
+    (in R) or numpy's `np.cumsum` (in Python).
 
 ## More about looping
 
@@ -1042,10 +1091,20 @@ for i in range(1, 5):
 </div>
 :::
 
-**NOTE for Python users** In the print statement `print(f"{i} x {j} = {i*j}")` we used **f-string formatting**, which was introduced in Python 3.6 (the code above will break on previous versions). It's a way to embed expressions (like `i*j`) inside strings, using curly braces `{}`. The expressions will be replaced with their values when the string is created. The letter `f` at the beginning of the string tells Python to allow these embedded expressions.
+**NOTE for Python users** In the print statement
+`print(f"{i} x {j} = {i*j}")` we used **f-string formatting**, which was
+introduced in Python 3.6 (the code above will break on previous
+versions). It's a way to embed expressions (like `i*j`) inside strings,
+using curly braces `{}`. The expressions will be replaced with their
+values when the string is created. The letter `f` at the beginning of
+the string tells Python to allow these embedded expressions.
 
-In our example `{i}` and `{j}` will be replaced by the values of the variables `i` and `j`, and `{i*j}` will be replaced by the result of the expression `i*j`. So if `i` is 2 and `j` is 3, the string would become `"2 x 3 = 6"`.
-F-string formatting can be very useful for debugging because it allows you to easily insert the values of variables into strings, which you can then print to see what's happening in your loops!
+In our example `{i}` and `{j}` will be replaced by the values of the
+variables `i` and `j`, and `{i*j}` will be replaced by the result of the
+expression `i*j`. So if `i` is 2 and `j` is 3, the string would become
+`"2 x 3 = 6"`. F-string formatting can be very useful for debugging
+because it allows you to easily insert the values of variables into
+strings, which you can then print to see what's happening in your loops!
 
 ### While loops
 
@@ -1100,14 +1159,14 @@ In these codes:
 -   The while loop ends when the condition `i <= 10` is no longer met,
     i.e., when `i` is greater than 10.
 
-
 We are missing one last ingredient to looping! Break and next.
 
 ### Break and next/continue
 
 Break and next/continue are control flow statements that can be used to
-alter the flow of a loop. They can be used when we want to stop a loop if a certain condition
-is met or skip an iteration if a certain condition is met.
+alter the flow of a loop. They can be used when we want to stop a loop
+if a certain condition is met or skip an iteration if a certain
+condition is met.
 
 To see how they work, we write a loop that prints the numbers from 1 to
 10, but skips the number 5 and stops after the number 8.
@@ -1151,9 +1210,9 @@ for i in range(1, 11):
 
 Let's break it down:
 
--   `if (i == 5) { next }` (R) and `if i == 5: continue` (python) are the
-    next/continue statements. If `i` is equal to 5, they skip the rest
-    of the loop and continue with the next iteration. 5 won't be
+-   `if (i == 5) { next }` (R) and `if i == 5: continue` (python) are
+    the next/continue statements. If `i` is equal to 5, they skip the
+    rest of the loop and continue with the next iteration. 5 won't be
     printed!
 -   `if (i > 8) { break }` and `if i > 8: break` are the break
     statements. If `i` is greater than 8, they immediately terminate the
@@ -1161,9 +1220,15 @@ Let's break it down:
     and don't continue to up to 10. `break` could be an alternative
     stopping condition to a while loop.
 
-Using `break` and `next` (or `continue` in Python) statements in loops can sometimes make the code harder to understand and debug, because they can lead to unexpected jumps in the control flow. This is especially true in more complex loops where it's not immediately clear when or if the loop will be prematurely terminated or skipped.
+Using `break` and `next` (or `continue` in Python) statements in loops
+can sometimes make the code harder to understand and debug, because they
+can lead to unexpected jumps in the control flow. This is especially
+true in more complex loops where it's not immediately clear when or if
+the loop will be prematurely terminated or skipped.
 
-Usually, there's always alternatives to `breaks`. Let's consider a simple example where we want to find the first number in a list that is divisible by a certain number. Using `break`:
+Usually, there's always alternatives to `breaks`. Let's consider a
+simple example where we want to find the first number in a list that is
+divisible by a certain number. Using `break`:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -1199,7 +1264,10 @@ for num in numbers:
 </div>
 :::
 
-In this case, as soon as we find a number that meets our condition, we `break` out of the loop. However, if we want to avoid using `break`, we could rewrite the loop with a while to use a boolean flag that indicates whether we've found a suitable number:
+In this case, as soon as we find a number that meets our condition, we
+`break` out of the loop. However, if we want to avoid using `break`, we
+could rewrite the loop with a while to use a boolean flag that indicates
+whether we've found a suitable number:
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -1241,16 +1309,24 @@ while not found and i < len(numbers):
 </div>
 :::
 
-In this version, instead of breaking out of the loop, we use the `found` variable to keep track of whether we've found a number that meets our condition. If we have, we skip the rest of the loop iterations without explicitly using a `break` statement.
+In this version, instead of breaking out of the loop, we use the `found`
+variable to keep track of whether we've found a number that meets our
+condition. If we have, we skip the rest of the loop iterations without
+explicitly using a `break` statement.
 
----
+------------------------------------------------------------------------
 
 **Craving More Complexity?**
 
 **Finding MATH245 a Walk in the Park?**
 
-**Dive into our Extra Coding Challenges!** You've mastered the basics, now it's time to test your mettle. Venture into the final Chapter \@ref(challenge) where a nasty bunch of medium to hard coding exercises awaits. These brain-teasers are designed to stretch your coding skills to their limits. Participation is optional, but if you're up for a challenge and keen to level up your skills, I highly recommend giving them a go.
-Start over Chapter \@ref{hatters_challenge}.
+**Dive into our Extra Coding Challenges!** You've mastered the basics,
+now it's time to test your mettle. Venture into the final Chapter
+\@ref(challenge) where a nasty bunch of medium to hard coding exercises
+awaits. These brain-teasers are designed to stretch your coding skills
+to their limits. Participation is optional, but if you're up for a
+challenge and keen to level up your skills, I highly recommend giving
+them a go. Start with the Hats in a Line Challenge.
 
 ```{=html}
 <style type="text/css">

@@ -82,7 +82,7 @@ Zenodo. http://doi.org/10.5281/zenodo.3266823
 
 **Acknowledgments**
 
-The authors would like to thank Estevão Batista do Prado, Giovanna de Lauri, Katie Howgate, Lydia Kakampakou, Rebecca Killick, David Leslie, Florian Pein, Ophélie Schaller, and Chris Sherlock. Their invaluable contributions, encompassing insightful suggestions, diligent error-checking, and thoughtful exercise design, have significantly enriched this module. The authors are deeply grateful for their unwavering commitment and expertise.
+The authors would like to thank Estevão Batista do Prado, Giovanna de Lauri, Katie Howgate, Lydia Kakampakou, Rebecca Killick, David Leslie, Florian Pein, Ophélie Schaller, and Chris Sherlock. Their invaluable contributions, encompassing insightful suggestions, diligent error-checking, and thoughtful exercise design, have significantly enriched this module.
 
 ```{r include=FALSE}
 knitr::opts_chunk$set(fig.path = "images/", out.width = "50%")

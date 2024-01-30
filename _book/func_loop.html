@@ -254,8 +254,7 @@ wrap our code in a function, and every time the function is called, this
 code is run. This is incredibly useful for tasks we need to perform
 multiple times. Let’s build for example a simple function that converts
 pounds (lbs) to grams (g).</p>
-<p>Mathematically, this is simply done by the formula:
-<span class="math display">\[
+<p>Mathematically, this is simply done by the formula: <span class="math display">\[
 g = 453.5924 * lbs
 \]</span></p>
 <p>In <strong>R</strong>, we define a function using the <code>function()</code> command. The
@@ -315,8 +314,10 @@ naming functions:</p>
 <ul>
 <li><p>Names should be lowercase.</p></li>
 <li><p>Use an underscore, _, to separate words within a name.</p></li>
-<li><p>Strive for names that are concise and meaningful (this is not easy!).</p></li>
-<li><p>Avoid existing function names in R and python, such as <code>length()</code> or <code>len()</code>.</p></li>
+<li><p>Strive for names that are concise and meaningful (this is not
+easy!).</p></li>
+<li><p>Avoid existing function names in R and python, such as <code>length()</code> or
+<code>len()</code>.</p></li>
 </ul>
 <p>Also, you might have noticed we made a variable within the function
 code, <code>grams</code>. But what does it mean to have variables within functions?
@@ -476,9 +477,31 @@ risky and prone to bugs</strong>.</p>
 <pre><code>## 19050.8808</code></pre>
 </div>
 </div>
-<p>For those who are newer to programming, don’t worry if the idea of dealing with bugs and errors seems daunting. One of the most effective ways to understand what’s happening in your code is to use <code>print</code> statements. If you were confused by this section, try to add those <code>print</code> statements to display the value of variables <code>lbs</code> and <code>grams</code> within the functions above!
-In fact, by strategically placing print statements in your code, you can see the values of variables at different points in your program’s execution. This can help you understand how your code is working and where potential issues might be. As you gain more experience and confidence, you’ll naturally start to develop more advanced strategies for managing and resolving bugs in your code. Remember, everyone was a beginner once, and every expert has made plenty of mistakes along the way. So don’t be discouraged by bugs in your code - they’re just opportunities to learn and improve!</p>
-<p><strong>NOTE for the more experienced users.</strong> It’s worth noting that debugging tools can be incredibly helpful for identifying and resolving issues in your code. A debugger is a program that helps you inspect what’s happening in your program while it’s running. It allows you to pause your program, inspect the values of variables in a given environment at any point in time, and step through your code line by line. This can be particularly useful for identifying issues like the one we’ve discussed above. RStudio includes a built-in debugger that can be a great help in these situations. You can learn more about debugging in RStudio <a href="https://support.posit.co/hc/en-us/articles/205612627-Debugging-with-the-RStudio-IDE">in this guide</a>.</p>
+<p>For those who are newer to programming, don’t worry if the idea of
+dealing with bugs and errors seems daunting. One of the most effective
+ways to understand what’s happening in your code is to use <code>print</code>
+statements. If you were confused by this section, try to add those
+<code>print</code> statements to display the value of variables <code>lbs</code> and <code>grams</code>
+within the functions above! In fact, by strategically placing print
+statements in your code, you can see the values of variables at
+different points in your program’s execution. This can help you
+understand how your code is working and where potential issues might be.
+As you gain more experience and confidence, you’ll naturally start to
+develop more advanced strategies for managing and resolving bugs in your
+code. Remember, everyone was a beginner once, and every expert has made
+plenty of mistakes along the way. So don’t be discouraged by bugs in
+your code - they’re just opportunities to learn and improve!</p>
+<p><strong>NOTE for the more experienced users.</strong> It’s worth noting that
+debugging tools can be incredibly helpful for identifying and resolving
+issues in your code. A debugger is a program that helps you inspect
+what’s happening in your program while it’s running. It allows you to
+pause your program, inspect the values of variables in a given
+environment at any point in time, and step through your code line by
+line. This can be particularly useful for identifying issues like the
+one we’ve discussed above. RStudio includes a built-in debugger that can
+be a great help in these situations. You can learn more about debugging
+in RStudio <a href="https://support.posit.co/hc/en-us/articles/205612627-Debugging-with-the-RStudio-IDE">in this
+guide</a>.</p>
 </div>
 <div id="multiple-arguments" class="section level4 hasAnchor" number="3.1.1.2">
 <h4><span class="header-section-number">3.1.1.2</span> Multiple arguments<a href="func_loop.html#multiple-arguments" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -563,7 +586,10 @@ using the <code>specific_mass</code>, we’ll convert grams to liters.</p>
 they are relative to using water. Then, to be more efficient, rather
 than continuously having to give the mass of water, we could set the
 arguments to have these as default values.</p>
-<p>This is where default arguments in functions come into play. They are incredibly useful as they allow us (and any potential future user) to make certain parameters optional. This makes the function easier to use and the the code more readable in general!</p>
+<p>This is where default arguments in functions come into play. They are
+incredibly useful as they allow us (and any potential future user) to
+make certain parameters optional. This makes the function easier to use
+and the the code more readable in general!</p>
 <p>Here’s how we can do this in both R and Python:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
@@ -846,7 +872,10 @@ the elements of a vector:</p>
 <p>In this case, <code>fruit</code> is the iterator that gets updated at each step
 over the sequence with the current element of the sequence. The for loop
 ends when it has exhausted the sequence.</p>
-<p>Try to edit both code chunks above, by adding a new variable called <code>iter_counts</code>. Initialize this variable at 0, e.g. <code>iter_counts &lt;- 0</code>, and update it in the cycle with <code>iter_counts &lt;- iter_counts + 1</code>. Print it at the end: what’s the value for the first cycle? And for the second?</p>
+<p>Try to edit both code chunks above, by adding a new variable called
+<code>iter_counts</code>. Initialize this variable at 0, e.g. <code>iter_counts &lt;- 0</code>,
+and update it in the cycle with <code>iter_counts &lt;- iter_counts + 1</code>. Print
+it at the end: what’s the value for the first cycle? And for the second?</p>
 <p><strong>In Python:</strong></p>
 <p>In Python, we can print the numbers from 1 to 10 using a for loop as
 follows:</p>
@@ -898,16 +927,21 @@ It gets updated at each step over the sequence.</li>
 <li>The for loop ends when it has exhausted the sequence, i.e., when
 <code>fruit</code> has taken all values in the numpy array <code>arr</code>.</li>
 </ul>
-<p>Try to edit both code chunks above, by adding a new variable called <code>iter_counts</code>. Initialize this variable at 0, e.g. <code>iter_counts = 0</code>, and update it in the cycle with <code>iter_counts = iter_counts + 1</code>. Print it at the end: what’s the value for the first cycle? And for the second?</p>
+<p>Try to edit both code chunks above, by adding a new variable called
+<code>iter_counts</code>. Initialize this variable at 0, e.g. <code>iter_counts = 0</code>,
+and update it in the cycle with <code>iter_counts = iter_counts + 1</code>. Print
+it at the end: what’s the value for the first cycle? And for the second?</p>
 </div>
 <div id="coding-the-fibonacci-sequence" class="section level3 hasAnchor" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> Coding The Fibonacci sequence<a href="func_loop.html#coding-the-fibonacci-sequence" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Having covered how to write a for cycle, we come back to our Fibonacci
-example. Differently from the loop above, in order to implement our algorithm,
-we will need to <strong>update a variable</strong> within our loop. In our case, this variable,
-is going to be a vector storing our Fibonacci sequence, called <code>fibonacci</code>. At iteration 1, the vector
-will be 2 elements long (the first two number of the sequence), but as we go through
-the loop, we will be adding more and more elements to the vector.</p>
+example. Differently from the loop above, in order to implement our
+algorithm, we will need to <strong>update a variable</strong> within our loop. In our
+case, this variable, is going to be a vector storing our Fibonacci
+sequence, called <code>fibonacci</code>. At iteration 1, the vector will be 2
+elements long (the first two number of the sequence), but as we go
+through the loop, we will be adding more and more elements to the
+vector.</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
@@ -947,10 +981,12 @@ goes from 3 to 20. This is the sequence we want to iterate over.</li>
 <li><code>fibonacci[i] &lt;- fibonacci[i - 1] + fibonacci[i - 2]</code> is the code
 chunk that we want to repeat. It calculates the <code>i</code>th number in the
 Fibonacci sequence as the sum of the two preceding numbers and
-<strong>appends it</strong> to the <code>fibonacci</code> vector. Given that at iteration <code>i</code> we
-have no element <code>i</code> in the vector yet (this is still <code>i-1</code> long), R
-will automatically extend the vector of one extra element. Alternatively,
-you can use the <code>c(fibonacci, fibonacci[i - 1] + fibonacci[i - 2])</code> to concatenate an extra vector (with one element) to the existing vector.</li>
+<strong>appends it</strong> to the <code>fibonacci</code> vector. Given that at iteration
+<code>i</code> we have no element <code>i</code> in the vector yet (this is still <code>i-1</code>
+long), R will automatically extend the vector of one extra element.
+Alternatively, you can use the
+<code>c(fibonacci, fibonacci[i - 1] + fibonacci[i - 2])</code> to concatenate
+an extra vector (with one element) to the existing vector.</li>
 </ul>
 <p>In the Python code:</p>
 <ul>
@@ -961,10 +997,11 @@ Fibonacci sequence.</li>
 <li><code>fibonacci.append(fibonacci[i - 1] + fibonacci[i - 2])</code> is the code
 chunk that we want to repeat. It calculates the <code>i</code>th number in the
 Fibonacci sequence as the sum of the two preceding numbers and
-<strong>appends it</strong> to the <code>fibonacci</code> list using the <code>append()</code> method. The
-append method extends our vector, adding a new element at the end of
-the existing one. Alternatively, you can use the <code>fibonacci + [fibonacci[i - 1] + fibonacci[i - 2]]</code>
-to concatenate an extra vector (with one element) to the existing vector.</li>
+<strong>appends it</strong> to the <code>fibonacci</code> list using the <code>append()</code> method.
+The append method extends our vector, adding a new element at the
+end of the existing one. Alternatively, you can use the
+<code>fibonacci + [fibonacci[i - 1] + fibonacci[i - 2]]</code> to concatenate
+an extra vector (with one element) to the existing vector.</li>
 </ul>
 <p>Our vectors, where we stored our results at every iteration, should be
 20 elements long, containing the sequence.</p>
@@ -992,10 +1029,14 @@ computation, or <code>print(fibonacci)</code> after the computation has been don
 <code>print</code> statements are extremely useful for debugging for cycles!</p>
 <div id="safer-for-loops" class="section level4 hasAnchor" number="3.2.2.1">
 <h4><span class="header-section-number">3.2.2.1</span> Safer for loops<a href="func_loop.html#safer-for-loops" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The for loop above is straightforward and works fine for the specific task of computing the Fibonacci sequence alone.
-However, it could potentially lead to issues if you wanted to modify or extend the code.
-For example, if you wanted to change the calculation logic or use it in a different context, you would need to modify the loop itself. This could introduce errors and make the code harder to maintain.</p>
-<p>However, there is an approach that is generally safer and more robust: that of working with <strong>functions within your loops</strong>.</p>
+<p>The for loop above is straightforward and works fine for the specific
+task of computing the Fibonacci sequence alone. However, it could
+potentially lead to issues if you wanted to modify or extend the code.
+For example, if you wanted to change the calculation logic or use it in
+a different context, you would need to modify the loop itself. This
+could introduce errors and make the code harder to maintain.</p>
+<p>However, there is an approach that is generally safer and more robust:
+that of working with <strong>functions within your loops</strong>.</p>
 <p>Have a look at the code below:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
@@ -1046,14 +1087,26 @@ For example, if you wanted to change the calculation logic or use it in a differ
 <pre><code>## [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181]</code></pre>
 </div>
 </div>
-<p>This solution is better on a lot of ways. The calculation logic of the Fibonacci sequence is encapsulated within its own function, <code>update_fibonacci</code>. Now, suppose you found a better method to deal with that, you’d only need to change that part (spoiler: you can, ask a GPT model if it has ways to improve on <code>update_fibonacci</code>).</p>
-<p>Also, the computation of the full Fibonacci sequence is encapsulated in its own function, <code>compute_fibonacci</code>! This makes the code more organized and less prone to errors due to variables defined elsewhere <strong>as it does not touch global variables</strong>.</p>
-<p>For this reason, you can easily <strong>reuse</strong> the <code>compute_fibonacci</code> function in other parts of your code or even in different programs! For instance, this function might turn out to be useful in the next exercise, where you’ll have to call it with <code>n=10</code>.</p>
+<p>This solution is better on a lot of ways. The calculation logic of the
+Fibonacci sequence is encapsulated within its own function,
+<code>update_fibonacci</code>. Now, suppose you found a better method to deal with
+that, you’d only need to change that part (spoiler: you can, ask a GPT
+model if it has ways to improve on <code>update_fibonacci</code>).</p>
+<p>Also, the computation of the full Fibonacci sequence is encapsulated in
+its own function, <code>compute_fibonacci</code>! This makes the code more
+organized and less prone to errors due to variables defined elsewhere
+<strong>as it does not touch global variables</strong>.</p>
+<p>For this reason, you can easily <strong>reuse</strong> the <code>compute_fibonacci</code>
+function in other parts of your code or even in different programs! For
+instance, this function might turn out to be useful in the next
+exercise, where you’ll have to call it with <code>n=10</code>.</p>
 </div>
 </div>
 <div id="exercise-3" class="section level3 hasAnchor" number="3.2.3">
 <h3><span class="header-section-number">3.2.3</span> Exercise<a href="func_loop.html#exercise-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Write now a new function <code>my_cusum</code> to compute the cumulative sum of a list of numbers, using a for loop. Use the function to calculate the cumulative sum of the first 10 elements of the Fibonacci sequence.</p>
+<p>Write now a new function <code>my_cusum</code> to compute the cumulative sum of a
+list of numbers, using a for loop. Use the function to calculate the
+cumulative sum of the first 10 elements of the Fibonacci sequence.</p>
 <p>The function should:</p>
 <ul>
 <li><p>Take as input a vector</p></li>
@@ -1069,7 +1122,8 @@ element of the input vector</p></li>
 <li><p>Using the code above, generate a Fibonacci sequence of 10 numbers</p></li>
 <li><p>Run the function <code>my_cusum(fibonacci)</code> to obtain the cumulative sum
 of the first then numbers of the Fibonacci sequence.</p></li>
-<li><p>Compare the output of <code>my_cusum</code> with the built in function <code>cumsum</code> (in R) or numpy’s <code>np.cumsum</code> (in Python).</p></li>
+<li><p>Compare the output of <code>my_cusum</code> with the built in function <code>cumsum</code>
+(in R) or numpy’s <code>np.cumsum</code> (in Python).</p></li>
 </ul>
 </div>
 </div>
@@ -1134,9 +1188,19 @@ multiplication table from 1 to 4.</p>
 ## 4 x 4 = 16</code></pre>
 </div>
 </div>
-<p><strong>NOTE for Python users</strong> In the print statement <code>print(f"{i} x {j} = {i*j}")</code> we used <strong>f-string formatting</strong>, which was introduced in Python 3.6 (the code above will break on previous versions). It’s a way to embed expressions (like <code>i*j</code>) inside strings, using curly braces <code>{}</code>. The expressions will be replaced with their values when the string is created. The letter <code>f</code> at the beginning of the string tells Python to allow these embedded expressions.</p>
-<p>In our example <code>{i}</code> and <code>{j}</code> will be replaced by the values of the variables <code>i</code> and <code>j</code>, and <code>{i*j}</code> will be replaced by the result of the expression <code>i*j</code>. So if <code>i</code> is 2 and <code>j</code> is 3, the string would become <code>"2 x 3 = 6"</code>.
-F-string formatting can be very useful for debugging because it allows you to easily insert the values of variables into strings, which you can then print to see what’s happening in your loops!</p>
+<p><strong>NOTE for Python users</strong> In the print statement
+<code>print(f"{i} x {j} = {i*j}")</code> we used <strong>f-string formatting</strong>, which was
+introduced in Python 3.6 (the code above will break on previous
+versions). It’s a way to embed expressions (like <code>i*j</code>) inside strings,
+using curly braces <code>{}</code>. The expressions will be replaced with their
+values when the string is created. The letter <code>f</code> at the beginning of
+the string tells Python to allow these embedded expressions.</p>
+<p>In our example <code>{i}</code> and <code>{j}</code> will be replaced by the values of the
+variables <code>i</code> and <code>j</code>, and <code>{i*j}</code> will be replaced by the result of the
+expression <code>i*j</code>. So if <code>i</code> is 2 and <code>j</code> is 3, the string would become
+<code>"2 x 3 = 6"</code>. F-string formatting can be very useful for debugging
+because it allows you to easily insert the values of variables into
+strings, which you can then print to see what’s happening in your loops!</p>
 </div>
 <div id="while-loops" class="section level3 hasAnchor" number="3.3.2">
 <h3><span class="header-section-number">3.3.2</span> While loops<a href="func_loop.html#while-loops" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1202,8 +1266,9 @@ i.e., when <code>i</code> is greater than 10.</li>
 <div id="break-and-nextcontinue" class="section level3 hasAnchor" number="3.3.3">
 <h3><span class="header-section-number">3.3.3</span> Break and next/continue<a href="func_loop.html#break-and-nextcontinue" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Break and next/continue are control flow statements that can be used to
-alter the flow of a loop. They can be used when we want to stop a loop if a certain condition
-is met or skip an iteration if a certain condition is met.</p>
+alter the flow of a loop. They can be used when we want to stop a loop
+if a certain condition is met or skip an iteration if a certain
+condition is met.</p>
 <p>To see how they work, we write a loop that prints the numbers from 1 to
 10, but skips the number 5 and stops after the number 8.</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
@@ -1247,9 +1312,9 @@ is met or skip an iteration if a certain condition is met.</p>
 </div>
 <p>Let’s break it down:</p>
 <ul>
-<li><code>if (i == 5) { next }</code> (R) and <code>if i == 5: continue</code> (python) are the
-next/continue statements. If <code>i</code> is equal to 5, they skip the rest
-of the loop and continue with the next iteration. 5 won’t be
+<li><code>if (i == 5) { next }</code> (R) and <code>if i == 5: continue</code> (python) are
+the next/continue statements. If <code>i</code> is equal to 5, they skip the
+rest of the loop and continue with the next iteration. 5 won’t be
 printed!</li>
 <li><code>if (i &gt; 8) { break }</code> and <code>if i &gt; 8: break</code> are the break
 statements. If <code>i</code> is greater than 8, they immediately terminate the
@@ -1257,8 +1322,14 @@ loop, regardless of the loop condition. As a result, we stop at 8,
 and don’t continue to up to 10. <code>break</code> could be an alternative
 stopping condition to a while loop.</li>
 </ul>
-<p>Using <code>break</code> and <code>next</code> (or <code>continue</code> in Python) statements in loops can sometimes make the code harder to understand and debug, because they can lead to unexpected jumps in the control flow. This is especially true in more complex loops where it’s not immediately clear when or if the loop will be prematurely terminated or skipped.</p>
-<p>Usually, there’s always alternatives to <code>breaks</code>. Let’s consider a simple example where we want to find the first number in a list that is divisible by a certain number. Using <code>break</code>:</p>
+<p>Using <code>break</code> and <code>next</code> (or <code>continue</code> in Python) statements in loops
+can sometimes make the code harder to understand and debug, because they
+can lead to unexpected jumps in the control flow. This is especially
+true in more complex loops where it’s not immediately clear when or if
+the loop will be prematurely terminated or skipped.</p>
+<p>Usually, there’s always alternatives to <code>breaks</code>. Let’s consider a
+simple example where we want to find the first number in a list that is
+divisible by a certain number. Using <code>break</code>:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
@@ -1283,7 +1354,10 @@ stopping condition to a while loop.</li>
 <pre><code>## 24 is the first number divisible by 4</code></pre>
 </div>
 </div>
-<p>In this case, as soon as we find a number that meets our condition, we <code>break</code> out of the loop. However, if we want to avoid using <code>break</code>, we could rewrite the loop with a while to use a boolean flag that indicates whether we’ve found a suitable number:</p>
+<p>In this case, as soon as we find a number that meets our condition, we
+<code>break</code> out of the loop. However, if we want to avoid using <code>break</code>, we
+could rewrite the loop with a while to use a boolean flag that indicates
+whether we’ve found a suitable number:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
@@ -1314,12 +1388,20 @@ stopping condition to a while loop.</li>
 <pre><code>## 24 is the first number divisible by 4</code></pre>
 </div>
 </div>
-<p>In this version, instead of breaking out of the loop, we use the <code>found</code> variable to keep track of whether we’ve found a number that meets our condition. If we have, we skip the rest of the loop iterations without explicitly using a <code>break</code> statement.</p>
+<p>In this version, instead of breaking out of the loop, we use the <code>found</code>
+variable to keep track of whether we’ve found a number that meets our
+condition. If we have, we skip the rest of the loop iterations without
+explicitly using a <code>break</code> statement.</p>
 <hr />
 <p><strong>Craving More Complexity?</strong></p>
 <p><strong>Finding MATH245 a Walk in the Park?</strong></p>
-<p><strong>Dive into our Extra Coding Challenges!</strong> You’ve mastered the basics, now it’s time to test your mettle. Venture into the final Chapter <a href="challenge.html#challenge">6</a> where a nasty bunch of medium to hard coding exercises awaits. These brain-teasers are designed to stretch your coding skills to their limits. Participation is optional, but if you’re up for a challenge and keen to level up your skills, I highly recommend giving them a go.
-Start over Chapter @ref{hatters_challenge}.</p>
+<p><strong>Dive into our Extra Coding Challenges!</strong> You’ve mastered the basics,
+now it’s time to test your mettle. Venture into the final Chapter
+<a href="challenge.html#challenge">6</a> where a nasty bunch of medium to hard coding exercises
+awaits. These brain-teasers are designed to stretch your coding skills
+to their limits. Participation is optional, but if you’re up for a
+challenge and keen to level up your skills, I highly recommend giving
+them a go. Start with the Hats in a Line Challenge.</p>
 <style type="text/css">
 .book .book-body .page-wrapper .page-inner {
   max-width: 1200px !important;
