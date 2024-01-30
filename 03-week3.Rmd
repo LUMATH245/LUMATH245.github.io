@@ -1249,8 +1249,8 @@ In this version, instead of breaking out of the loop, we use the `found` variabl
 
 **Finding MATH245 a Walk in the Park?**
 
-**Dive into our Extra Coding Challenges!** You've mastered the basics, now it's time to test your mettle. Venture into the final chapter \@{challenge} where a nasty bunch of medium to hard coding exercises awaits. These brain-teasers are designed to stretch your coding skills to their limits. Participation is optional, but if you're up for a challenge and keen to level up your skills, we highly recommend giving them a go.
-Start over Section \@{hatters_challenge}.
+**Dive into our Extra Coding Challenges!** You've mastered the basics, now it's time to test your mettle. Venture into the final Chapter \@ref(challenge) where a nasty bunch of medium to hard coding exercises awaits. These brain-teasers are designed to stretch your coding skills to their limits. Participation is optional, but if you're up for a challenge and keen to level up your skills, we highly recommend giving them a go.
+Start over Section \@ref{hatters_challenge}.
 
 ```{=html}
 <style type="text/css">
