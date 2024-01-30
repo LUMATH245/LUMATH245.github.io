@@ -150,7 +150,7 @@ Your task is to:
 
 3.  Compare the timing of the for loop solution with the timing of the reduce solution. Which one is faster?
 
-    i.   Search the internet or ask GPT on how to effectively time in both R and Python.
+    i.   Search the internet or ask GPT on how to effectively time functions execution in both R and Python.
 
     ii. Try to run the hatter function on a vector with $100\,000$ hats. You should see a significant difference.
 
