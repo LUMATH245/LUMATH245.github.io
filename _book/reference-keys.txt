@@ -60,6 +60,7 @@ map-2
 reduce-operation
 gen-fizzbuzz
 state-in-functional-programming
+exercise-fixing-gpt-shenanigans
 doing-linear-algebra
 building-matrices
 matrix-operations

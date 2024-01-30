@@ -588,44 +588,50 @@ In the above examples, we've defined a recursive function `fibonacci` that compu
 
 However, it's important to note that while recursion is a powerful concept, it can be impractical in practice due to its high computational complexity and the risk of running out of memory for large inputs. Most of the tasks in functional programming are either solved via `map` and `reduce` operations or, eventually, through for loops.
 
-The equivalent reduce statement would be (note that this avoid the map statement, why?):
+`map` and `reduce` are generally more efficient, safer, and can handle larger inputs. **For this reason, my friends, this is the last time we will be seeing recursions in this module**. Brief but intense.
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
-<div>
+#### Exercise: Fixing GPT Shenanigans
+
+Welcome to the future! As of January 2023, the most advanced Generative Pre-trained Transformer (like GPT-4) is about as skilled as a newbie coder.
+
+In your journey, you’ll definitely cross paths with these models if you haven't already. They’re cool, they’re trendy, everyone is talking about them, and they're putting at risk half of the desk-job market. **But remember, they’re not flawless.**
+
+To show you what I mean, I challenged GPT-4 to code the Fibonacci sequence using a reduce statement. Check out the R and Python solution it came up with below. I copied the scripts without modifications:
 
 **R**
+```{r eval=FALSE}
+library(purrr)
 
-```{r}
-# Define the function to be used in reduce
-fibonacci_func <- function(prev, current) {
-  n <- length(prev)
-  c(prev, sum(prev[(n-1):n]))
+# Define a function to compute the next number in the Fibonacci series
+next_number <- function(prev_numbers) {
+  sum(tail(prev_numbers, 2))
 }
 
-# Generate the first 10 numbers of the Fibonacci series
-reduce(rep(1, 8), fibonacci_func, .init = c(0, 1))
+# Compute the Fibonacci series up to a given length
+fibonacci_series <- function(length) {
+  initial <- c(0, 1)
+  fib_sequence <- reduce(rep(0, length - 2), .init = initial, .f = next_number)
+  return(fib_sequence)
+}
+
+# Print the first 10 numbers of the Fibonacci series
+print(fibonacci_series(10))
 ```
-
-</div>
-
-<div>
-
 **Python**
+```{python eval=FALSE}
+from functools import reduce
 
-```{python}
-# Define the function to be used in reduce
-def fibonacci_func(prev, current):
-    n = len(prev)
-    return prev + [sum(prev[(n-2):n])]
+def fibonacci_series(length):
+    initial = ([0, 1] + [0] * (length - 2))
+    fib_sequence = reduce(lambda prev, _: prev + [prev[-2] + prev[-1]], range(length - 2), initial)
+    return fib_sequence
 
-# Generate the first 10 numbers of the Fibonacci series
-reduce(fibonacci_func, [1]*8, [0, 1])
+length = 10  # Change this to the length you want
+print(fibonacci_series(length))
 ```
 
-</div>
-:::
 
-`map` and `reduce` are generally more efficient, safer, and can handle larger inputs. **For this reason, my friends, this is the last time we will be seeing recursions in this module**. Brief but intense.
+**You can see it is clearly broken**. Imagine you’re now in the hot seat, interviewing for a top-tier IT company. They slide this code across the table and ask you to either debug the AI’s solution or come up with a better one. Could you rise to the challenge and secure the job?
 
 ## Doing Linear Algebra
 
