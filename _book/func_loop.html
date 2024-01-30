@@ -1012,8 +1012,9 @@ For example, if you wanted to change the calculation logic or use it in a differ
 <span id="cb490-17"><a href="func_loop.html#cb490-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(fibonacci)</span>
 <span id="cb490-18"><a href="func_loop.html#cb490-18" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb490-19"><a href="func_loop.html#cb490-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb490-20"><a href="func_loop.html#cb490-20" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_fibonacci</span>(<span class="dv">10</span>)</span></code></pre></div>
-<pre><code>##  [1]  0  1  1  2  3  5  8 13 21 34</code></pre>
+<span id="cb490-20"><a href="func_loop.html#cb490-20" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_fibonacci</span>(<span class="dv">20</span>)</span></code></pre></div>
+<pre><code>##  [1]    0    1    1    2    3    5    8   13   21   34   55
+## [12]   89  144  233  377  610  987 1597 2584 4181</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
@@ -1034,13 +1035,13 @@ For example, if you wanted to change the calculation logic or use it in a differ
 <span id="cb492-15"><a href="func_loop.html#cb492-15" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb492-16"><a href="func_loop.html#cb492-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> fibonacci</span>
 <span id="cb492-17"><a href="func_loop.html#cb492-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb492-18"><a href="func_loop.html#cb492-18" aria-hidden="true" tabindex="-1"></a>compute_fibonacci(<span class="dv">10</span>)</span></code></pre></div>
-<pre><code>## [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]</code></pre>
+<span id="cb492-18"><a href="func_loop.html#cb492-18" aria-hidden="true" tabindex="-1"></a>compute_fibonacci(<span class="dv">20</span>)</span></code></pre></div>
+<pre><code>## [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181]</code></pre>
 </div>
 </div>
 <p>This solution is better on a lot of ways. The calculation logic of the Fibonacci sequence is encapsulated within its own function, <code>update_fibonacci</code>. Now, suppose you found a better method to deal with that, you’d only need to change that part (spoiler: you can, ask a GPT model if it has ways to improve on <code>update_fibonacci</code>).</p>
 <p>Also, the computation of the full Fibonacci sequence is encapsulated in its own function, <code>compute_fibonacci</code>! This makes the code more organized and easier to understand, and less prone to errors due to variables defined elsewhere <strong>as it does not touch global state</strong>.</p>
-<p>For this reason, you can easily <strong>reuse</strong> the <code>compute_fibonacci</code> function in other parts of your code or even in different programs! For instance, this function might turn out to be useful in the next exercise.</p>
+<p>For this reason, you can easily <strong>reuse</strong> the <code>compute_fibonacci</code> function in other parts of your code or even in different programs! For instance, this function might turn out to be useful in the next exercise, where you’ll have to call it with <code>n=10</code>.</p>
 </div>
 </div>
 <div id="exercise-3" class="section level3 hasAnchor" number="3.2.3">

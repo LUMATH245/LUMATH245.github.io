@@ -924,7 +924,7 @@ compute_fibonacci <- function(n) {
   return(fibonacci)
 }
 
-compute_fibonacci(10)
+compute_fibonacci(20)
 ```
 
 </div>
@@ -951,7 +951,7 @@ def compute_fibonacci(n):
     
     return fibonacci
 
-compute_fibonacci(10)
+compute_fibonacci(20)
 ```
 
 </div>
@@ -962,7 +962,7 @@ This solution is better on a lot of ways. The calculation logic of the Fibonacci
 
 Also, the computation of the full Fibonacci sequence is encapsulated in its own function, `compute_fibonacci`! This makes the code more organized and easier to understand, and less prone to errors due to variables defined elsewhere **as it does not touch global state**. 
 
-For this reason, you can easily **reuse** the `compute_fibonacci` function in other parts of your code or even in different programs! For instance, this function might turn out to be useful in the next exercise. 
+For this reason, you can easily **reuse** the `compute_fibonacci` function in other parts of your code or even in different programs! For instance, this function might turn out to be useful in the next exercise, where you'll have to call it with `n=10`. 
 
 ### Exercise 
 
