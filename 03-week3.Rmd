@@ -924,7 +924,7 @@ compute_fibonacci <- function(n) {
   # Initialize the first two numbers in the sequence
   fibonacci <- c(0, 1)
   
-  # Generate the next 10 numbers in the sequence
+  # Generate the next n-2 numbers in the sequence
   for (i in 3:n) 
     fibonacci <- update_fibonacci(fibonacci)
   
