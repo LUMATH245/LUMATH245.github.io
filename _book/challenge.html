@@ -189,10 +189,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="challenge" class="section level1 hasAnchor" number="6">
 <h1><span class="header-section-number">6</span> Additional Programming Challenges<a href="challenge.html#challenge" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Please note, solutions will not be provided for these challenges. However, if you’re really stumped or just want to discuss your approach, feel free to drop us, your friendly lecturers, an email.</p>
 <div id="part-1-scientific-computing" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> Part 1: Scientific Computing<a href="challenge.html#part-1-scientific-computing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="the-hats-in-a-line-game" class="section level3 hasAnchor" number="6.1.1">
-<h3><span class="header-section-number">6.1.1</span> The Hats in a Line game<a href="challenge.html#the-hats-in-a-line-game" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="hatters_challenge" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> The Hats in a Line game<a href="challenge.html#hatters_challenge" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We are going to code and demonstrate that the optimal solution to one of the most famous combinatorics games, that of the hats in a line, works with on average 1 error half of the time.</p>
 <p>The game goes like this. You are one of <span class="math inline">\(n\)</span> players who will be put on a set of stairs, standing in a line, and each of you will be wearing a hat that is either black or white at random. Given that you’re on some stairs, you can only see the hats of the players in front of you, but not your own or the ones behind you.</p>
 <p>You can devise a strategy with the other players before the game starts, however you are not allowed to communicate with the other players after the hats are placed <strong>if not by stating the color of your hat out loud</strong>. Starting from the top of the stairs, e.g. the back of the line, each player has to guess their own hat colour out loud. Note that:</p>
@@ -203,8 +204,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>It turns out that there is an optimal strategy, that will end the game with <strong>a single error, only 50% of the times</strong> the game is played.</p>
 <p><strong>You are free to guess the solution to this game on your own</strong> or even with your friends over a couple of drinks. However, as this is a programming exercise, I highly recommend you read <a href="https://mathspp.com/blog/problems/hats-in-a-line">this amazing article from mathspp.com</a>.</p>
-<div id="week-3-programming-challenge" class="section level4 hasAnchor" number="6.1.1.1">
-<h4><span class="header-section-number">6.1.1.1</span> Week 3 Programming Challenge<a href="challenge.html#week-3-programming-challenge" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="hatters_week3" class="section level4 hasAnchor" number="6.1.1.1">
+<h4><span class="header-section-number">6.1.1.1</span> Checking the Optimal Strategy<a href="challenge.html#hatters_week3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>Recommended at the end of Chapter 3</strong></p>
 <ol style="list-style-type: decimal">
 <li>Write a function that implements the optimal strategy for one game. The function takes as input a vector of <code>0</code> and <code>1</code>s, the hat colours of the hats of the players, where <code>0</code> represent a white hat, and <code>1</code> a black hat:<br />
 <br />
@@ -241,8 +243,9 @@ Here’s the function signature and call to get you started:</li>
 </ol></li>
 </ol>
 </div>
-<div id="week-4-programming-challenge" class="section level4 hasAnchor" number="6.1.1.2">
-<h4><span class="header-section-number">6.1.1.2</span> Week 4 Programming Challenge<a href="challenge.html#week-4-programming-challenge" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="a-functional-programming-solution" class="section level4 hasAnchor" number="6.1.1.2">
+<h4><span class="header-section-number">6.1.1.2</span> A Functional Programming Solution<a href="challenge.html#a-functional-programming-solution" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>Recommended over Chapter 4</strong></p>
 <p>In Chapter 4, we learned that state in functional programming can be handled using recursion. It’s not surprising that we can express the optimal solution for the hatter problem in a recursive function.</p>
 <p>Let’s denote the vector of hats as <span class="math inline">\(h_{1:n} = [h_1, h_2, ..., h_n]\)</span>. We define <span class="math inline">\(a_{1:n} = [a_1 = \sum_{i = 2}^n h_i, a_2 = \sum_{i = 3}^n h_i, \dots, a_{n-1} = h_n, a_n = 0]\)</span> as the vector representing the number of hats seen ahead by each player. The magnitude of this vector, represented as <span class="math inline">\(|a|\)</span>, is the number of elements in it. We also define <span class="math inline">\(a_{-1}\)</span> as the sub-vector of <span class="math inline">\(a\)</span> that excludes the first element (e.g. we drop the first element from <span class="math inline">\(a\)</span>).</p>
 <p>The recursive solution to the hatter function can then be expressed as:</p>
@@ -266,8 +269,9 @@ hatter(s,\ a) =  \begin{cases}
 </ol>
 </div>
 </div>
-<div id="generic-fizzbuzz" class="section level3 hasAnchor" number="6.1.2">
-<h3><span class="header-section-number">6.1.2</span> Generic FizzBuzz<a href="challenge.html#generic-fizzbuzz" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="gen_fizzbuzz_short" class="section level3 hasAnchor" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Generic FizzBuzz<a href="challenge.html#gen_fizzbuzz_short" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Recommended over Chapter 4</strong></p>
 <p>Imagine R as the ‘Ugly Duckling’ of programming languages. Initially, it’s often misunderstood and overlooked by coding newbies who see it as clunky or uncool. But, thanks to the magic of the <code>tidyverse</code>, R has been going through a major glow-up. It’s evolving into one of the most elegant and powerful languages out there 🦢. To see this, what if I tell you that you can code the above <code>generic_fizzbuzz</code> of the exercise in Section 4.1.4 in a very elegant, compact way?</p>
 <p>Rewrite <code>generic_fizzbuzz</code> respecting the following conditions:</p>
 <ul>

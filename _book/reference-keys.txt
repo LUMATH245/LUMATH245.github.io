@@ -97,7 +97,7 @@ saving-and-exporting-plots
 exercise-ggplots-of-periodic-functions
 challenge
 part-1-scientific-computing
-the-hats-in-a-line-game
-week-3-programming-challenge
-week-4-programming-challenge
-generic-fizzbuzz
+hatters_challenge
+hatters_week3
+a-functional-programming-solution
+gen_fizzbuzz_short

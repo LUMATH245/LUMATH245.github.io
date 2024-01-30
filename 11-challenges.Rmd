@@ -1,12 +1,14 @@
 # Additional Programming Challenges {#challenge}
 
+Please note, solutions will not be provided for these challenges. However, if you're really stumped or just want to discuss your approach, feel free to drop us, your friendly lecturers, an email.
+
 ## Part 1: Scientific Computing
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-### The Hats in a Line game
+### The Hats in a Line game {#hatters_challenge}
 
 We are going to code and demonstrate that the optimal solution to one of the most famous combinatorics games, that of the hats in a line, works with on average 1 error half of the time.
 
@@ -22,7 +24,9 @@ It turns out that there is an optimal strategy, that will end the game with **a 
 
 **You are free to guess the solution to this game on your own** or even with your friends over a couple of drinks. However, as this is a programming exercise, I highly recommend you read [this amazing article from mathspp.com](https://mathspp.com/blog/problems/hats-in-a-line).
 
-#### Week 3 Programming Challenge
+#### Checking the Optimal Strategy{#hatters_week3}
+
+**Recommended at the end of Chapter 3**
 
 1.  Write a function that implements the optimal strategy for one game. The function takes as input a vector of `0` and `1`s, the hat colours of the hats of the players, where `0` represent a white hat, and `1` a black hat:\
     \
@@ -116,7 +120,9 @@ errors <- map2_vec(games, results, \(g, r) sum(g != r)) # using l0 norm
 mean(errors)
 ```
 
-#### Week 4 Programming Challenge
+#### A Functional Programming Solution
+
+**Recommended over Chapter 4**
 
 In Chapter 4, we learned that state in functional programming can be handled using recursion. It's not surprising that we can express the optimal solution for the hatter problem in a recursive function.
 
@@ -207,7 +213,9 @@ cbind(x, map_dbl(out, "res")[-1])
 ```
 
 
-### Generic FizzBuzz
+### Generic FizzBuzz{#gen_fizzbuzz_short}
+
+**Recommended over Chapter 4**
 
 Imagine R as the 'Ugly Duckling' of programming languages. Initially, it's often misunderstood and overlooked by coding newbies who see it as clunky or uncool. But, thanks to the magic of the `tidyverse`, R has been going through a major glow-up. It's evolving into one of the most elegant and powerful languages out there 🦢. To see this, what if I tell you that you can code the above `generic_fizzbuzz` of the exercise in Section 4.1.4 in a very elegant, compact way?
 

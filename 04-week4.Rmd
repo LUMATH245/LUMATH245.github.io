@@ -525,7 +525,7 @@ or in Python:
 generic_fizzbuzz(range(1, 16), [2, 3, 5, 7], ["Skibbidi", "Fizz", "Buzz", "Yo"])
 ```
 
-**NOTE for R users** Bored? This module is too easy? Please check the Challenges chapter!
+**NOTE for R users** Please check the Challenges chapter, for a last fizzbuzz challenge in Section \@{gen_fizzbuzz_short}!
 
 ### State in Functional Programming
 
