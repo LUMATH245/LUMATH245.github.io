@@ -582,7 +582,7 @@ As we did with the functions we created before, you should:
     inverse: $$
     g = ml * \rho,
     $$ where $\rho$ is the specific weight.
-3.  Create a last function called `cups_to_ml`. This function should:
+3.  Create a last function called `cups_to_grams`. This function should:
     i.  Take as input two arguments: the number of cups, and a string
         that specifies an ingredient, e.g. `"flour"` or `"water"`.
         Default this second argument to `water`.

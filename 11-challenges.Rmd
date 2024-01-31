@@ -168,7 +168,7 @@ hatter <- function(S, ahead) {
   return(hatter(S + shout, ahead[-1]))
 }
 
-test_game = rbinom(10, 1, .3)
+test_game = rbinom(10, 1, .5)
 n <- length(test_game)
 
 resp <- NULL
@@ -192,24 +192,17 @@ hatter_func <- function(info, ahead) {
   return(list(S = S + shout, res = shout))
 }
 
-x = rbinom(10, 1, .3)
+hatter <- function(hats) {
+  a <- c(rev(cumsum(rev(hats[-1]))), 0)
+  
+  # Use reduce to replace the recursion
+  out <- accumulate(a, hatter_func, .init = list(S=0, res=NA))
+  map_dbl(out, "res")[-1]
+}
 
-# Look ahead list
-ahead_vec <- c(rev(cumsum(rev(x[-1]))), 0)
 
-# Use reduce to replace the recursion
 
-# this time, we apply the hatter to the ahead vector, 
-# passing down one element at a time, e.g.:
-# f(f(S_{t-1}, ahead_{t-1}), ahead_t) -> S_t
-
-# NOTE: accumulate is reduce, but it saves the result of every iteration
-# hence we pass down a list to store what people shout (first one is meaningless)
-out <- accumulate(ahead_vec, hatter_func, .init = list(S=0, res=NA))
-
-# extracting and printing res
-cbind(x, map_dbl(out, "res")[-1])
-
+hatter(test_game)
 ```
 
 
