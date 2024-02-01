@@ -194,10 +194,10 @@ max(y)
 ```{python}
 import numpy as np
 
-# overloading the arguments of seq to return 
+# overloading the arguments of linspace to return 
 # a lambda that takes an upper argument
-def grid_factory(len):
-    make_grid = lambda up: np.linspace(0, up, len)
+def grid_factory(length):
+    make_grid = lambda up: np.linspace(0, up, length)
     return make_grid
 
 # our function
@@ -229,6 +229,8 @@ y.max()
 
 </div>
 :::
+
+Note that `len` is a built-in function in Python, so we use a different name for the variable.
 
 In this example, we define a `grid_factory` function that takes a single argument `len` and returns a lambda function that takes an upper argument up. The lambda function generates a sequence of numbers between 0 and up with a specified length `len`.
 
@@ -651,7 +653,7 @@ generic_fizzbuzz(range(1, 16), [2, 3, 5, 7], ["Skibbidi", "Fizz", "Buzz", "Yo"])
 
 ### State in Functional Programming
 
-The `reduce` operation is a way of performing a *recursion* operation in functional programming. It applies a binary function to the first two elements of a list, then applies the function to the result and the next element, and so on, until it has processed all the elements of the list. This is essentially a function concatenation on the result of a previous iteration. Go and have a better look at Figure \@ref(fig:reduce-scheme)!
+The `reduce` operation is a way of performing a *recursion* operation in functional programming. It applies a binary function to the first two elements of a list, then applies the function to the result and the next element, and so on, until it has processed all the elements of the list. This is essentially a function concatenation on the result of a previous iteration. Go and have a better look at Figure \@ref(fig:reduce_scheme)!
 
 This brings us to the concept of recursion, which is a method where the solution to a problem depends on solutions to smaller instances of the same problem. In functional programming, recursion is often used as a way to deal with **state**.
 
