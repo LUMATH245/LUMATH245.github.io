@@ -335,7 +335,7 @@ Furthemore, the “Fiber” and “Sugars” columns for Soy, Oat and Rice milk 
 This is often the case in real data, where usually information will not be available to us in the best way as possible.
 In this case, R and python will just tell us that we have a “Not Applicable (NA)” or “Not a Number (NaN)” unknown value.</p>
 <p>Now, let’s see how we can create this data frame in R and Python:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb674"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb674-1"><a href="df_plt.html#cb674-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a data frame in R</span></span>
@@ -381,7 +381,7 @@ In this case, R and python will just tell us that we have a “Not Applicable (N
 </div>
 </div>
 <p><strong>Accessing Variables</strong> To access individual variables (columns) of the data frame, we can use the <code>$</code> operator in R and the <code>[]</code> operator in Python:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb678"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb678-1"><a href="df_plt.html#cb678-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the &#39;Calories&#39; column in R</span></span>
@@ -435,7 +435,7 @@ The above R code is equivalent to <code>select(milk_df, Calories)</code>.
 Note, <code>select</code> will return the column as a subset of a data frame, and is equivalent to the <code>[""]</code> notation.
 Sometimes this can be better, as you might not want to change the type of your objects <em>inadvertently during execution</em>.</p>
 <p><strong>Accessing multiple columns.</strong> To access multiple variables at the same time, we can pass a vector of variable names:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb688"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb688-1"><a href="df_plt.html#cb688-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the &#39;Calories&#39; and &#39;Protein&#39; columns in R and storing it </span></span>
@@ -470,7 +470,7 @@ Sometimes this can be better, as you might not want to change the type of your o
 <p>Note that once we access (and store, as in this second example) a subset of a data frame, we get out another data frame. Note also that the <code>$</code> (in R) and <code>.</code> (in Python) cannot access multiple columns.</p>
 <p><strong>Accessing rows.</strong> To access individual rows in the data frames, we can use indexing.
 Similarly to vectors, to access multiple rows at the same time, we can pass a vector of row indices:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb692"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb692-1"><a href="df_plt.html#cb692-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the first row in R</span></span>
@@ -518,7 +518,7 @@ So, <code>.iloc[0:2]</code> will select the first two rows and all columns of th
 This is different from selecting elements from a vector because a list is a one-dimensional object, and we only need to specify the indices of the elements we want to select.
 Note also that when accessing only one row, in python, the returned element will be reshaped into a column vector.</p>
 <p>Having said that, we can also access a subset of the data frame by specifying both rows and columns <strong>simultaneously</strong>:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb700"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb700-1"><a href="df_plt.html#cb700-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing a subset of the data frame in R</span></span>
@@ -555,7 +555,7 @@ This means that you’re referring to the row or column by its position in the D
 In summary, use loc when you want to refer to items by their label and iloc when you want to refer to them by their integer position.</p>
 <p><strong>Overwriting Elements</strong> We can, of course, overwrite and change elements of our data frames.
 For instance, the simplest thing we could do at the moment, is to fill in the missing values of our data frame for our column “Fibers”.</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb704"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb704-1"><a href="df_plt.html#cb704-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Imputing missing values in R</span></span>
@@ -589,7 +589,7 @@ For instance, the simplest thing we could do at the moment, is to fill in the mi
 <h4><span class="header-section-number">5.1.1.1</span> Accessing Information about the Data Frame<a href="df_plt.html#accessing-information-about-the-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>We can access various information about the data frame, such as its dimensions, number of rows, number of columns, column names, and a summary of its contents, with a lot of different functions.
 These will be not explained in detail, but can be useful for a lot of reasons related to exploratory analysis.</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb708"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb708-1"><a href="df_plt.html#cb708-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing information about the data frame in R</span></span>
@@ -703,7 +703,7 @@ We will now explore each of these functions in detail.</p>
 <h4><span class="header-section-number">5.1.2.1</span> Adding New Rows<a href="df_plt.html#adding-new-rows" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>To add new rows (or collate two data frames together!) we can use functions <code>bind_rows</code> (in R) and <code>concat</code> (in Python).
 This is formally referred to <em>concatenating</em>, which means to create a new data frame by attaching new rows to a data frame from a different one that shares the same columns.</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb732"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb732-1"><a href="df_plt.html#cb732-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a new data frame in R</span></span>
@@ -856,7 +856,7 @@ Be careful about missing values!</p>
 This is based on the result of a vectorised logic expression.
 In a way, we have already seen this in the past when selecting subsets of vectors!
 In R, we use <code>filter()</code>, and in Python, we use <code>query()</code>.</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb744"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb744-1"><a href="df_plt.html#cb744-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering rows where Calories is greater than 100 in R</span></span>
@@ -885,7 +885,7 @@ In R, we use <code>filter()</code>, and in Python, we use <code>query()</code>.<
 <h4><span class="header-section-number">5.1.2.4</span> Reordering Rows<a href="df_plt.html#reordering-rows" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Reordering allows us to arrange the rows in the data frame in a specific order.
 In R, we use <code>arrange()</code>, and in Python, we use <code>sort_values()</code>.</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb748"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb748-1"><a href="df_plt.html#cb748-1" aria-hidden="true" tabindex="-1"></a>milk_df <span class="ot">&lt;-</span> milk_df <span class="sc">|&gt;</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(sugar_percent))</span>
@@ -974,7 +974,7 @@ However, to simulate a real world scenario, we’ll see how to import it from a 
 You’ll need to download this from Moodle, and save it under your working directory as “mtcars.csv”.
 Remember that we learned how to read from CSV files in week 1!
 Well, this is the first time we are doing this in a practical sense.</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb756"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb756-1"><a href="df_plt.html#cb756-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the data frame in R</span></span>
@@ -1006,7 +1006,7 @@ Well, this is the first time we are doing this in a practical sense.</p>
 <div id="exploring-your-data-frame" class="section level4 hasAnchor" number="5.1.3.3">
 <h4><span class="header-section-number">5.1.3.3</span> Exploring your data frame<a href="df_plt.html#exploring-your-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>We can display the first few values of the data frame using the <code>head()</code> function in R and Python.</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb758"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb758-1"><a href="df_plt.html#cb758-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Displaying the first few values in R</span></span>
@@ -1048,7 +1048,7 @@ In fact, one represent the engine type of the car, and the other the type of tra
 Therefore, to specifically tell our programming languages this, we should convert them to factors (in R) or categories (in Python).
 This will affect many things when dealing with those variables, like producing summaries or displaying those in plots.</p>
 <p>Here’s how we can do this:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb762"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb762-1"><a href="df_plt.html#cb762-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting to factors in R</span></span>
@@ -1146,7 +1146,7 @@ In the <code>mtcars</code> data frame, the <code>vs</code> column represents the
 In our graph above one would be the circle, the other the square.<br />
 We will group by the <code>vs</code> column, and we will run a summary, the mean, in this case, for the variables <code>mpg</code> and <code>hp</code> .
 In our graph <code>mean(mpg)</code> would be <span class="math inline">\(f_1(V1)\)</span>, and <code>mean(hp)</code> would be corresponding to <span class="math inline">\(f_2(V2)\)</span>.</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb768"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb768-1"><a href="df_plt.html#cb768-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by &#39;vs&#39; and compute average &#39;mpg&#39; and &#39;hp&#39; in R</span></span>
@@ -1181,7 +1181,7 @@ We have extracted information!</p>
 <p>We can make this example more and more complicated.
 Let’s add a second grouping variable: the type of transmission (am).
 In the <code>mtcars</code> data frame, the <code>am</code> column represents the transmission type: 0 for automatic and 1 for manual.</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb772"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb772-1"><a href="df_plt.html#cb772-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by &#39;vs&#39; and &#39;am&#39;, and compute average &#39;mpg&#39; and &#39;hp&#39; </span></span>
@@ -1280,7 +1280,7 @@ Let’s start with some basic plots to hopefully clear things a bit!</p>
 <h4><span class="header-section-number">5.2.1.1</span> Plotting the distribution of a variable<a href="df_plt.html#plotting-the-distribution-of-a-variable" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>A histogram is a representation of <em>the distribution</em> of a single variable, hence the <code>aes()</code> will <strong>only have the <code>x</code>.</strong> The histogram layer is translated via the function <code>geom_histogram</code>.
 Let’s create a histogram of <code>mpg</code> (miles per gallon).</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb777"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb777-1"><a href="df_plt.html#cb777-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>mpg)) <span class="sc">+</span></span>
@@ -1312,7 +1312,7 @@ Geometries can have different options!
 Try to change the binwidth and see what happens.</p></li>
 </ul>
 <p>To solidify the concept of aesthetic mapping, let’s see what happens by swapping the <code>x</code> for a <code>y</code> in our <code>aes</code> function:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb780"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb780-1"><a href="df_plt.html#cb780-1" aria-hidden="true" tabindex="-1"></a><span class="co"># python users looking at this example: this is one particular </span></span>
@@ -1347,7 +1347,7 @@ Try to change the binwidth and see what happens.</p></li>
 </div>
 <p>You can see by how changing the axis aesthetic, the histogram was mirrored over the axis.
 Let’s see what happens now, if we swap the <code>geom_histogram</code> layer for a <code>geom_boxplot</code>:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb785"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb785-1"><a href="df_plt.html#cb785-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg)) <span class="sc">+</span></span>
@@ -1373,7 +1373,7 @@ The boxplot has a common aesthetic with the histogram: in fact, it’s just a di
 All we had to do was change the layer.</p>
 <p>Funny enough, in ggplot, if we want, and they share aeshtetics, we can stack layers on top of each other just by adding more.
 For instance:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb788"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb788-1"><a href="df_plt.html#cb788-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R users, look at the output of python plot.</span></span>
@@ -1405,7 +1405,7 @@ For instance:</p>
 <p>A scatterplot uses two dimensions, allowing us to visualize the relationship between two variables.
 So, our aestetic, now gets another argument: we have now both the <code>x</code> and the <code>y</code>!
 Let’s create a scatterplot of <code>mpg</code> against <code>hp</code> (horsepower), to replicate our initial example.</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb791"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb791-1"><a href="df_plt.html#cb791-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg)) <span class="sc">+</span></span>
@@ -1426,7 +1426,7 @@ Let’s create a scatterplot of <code>mpg</code> against <code>hp</code> (horsep
 <p><strong>Representing higher dimentions</strong>.
 Now, the cool stuff is that we can introduce higher dimensions by mapping additional variables to other aesthetics like color (or the point shape).
 Let’s color the points in our scatterplot based on the type of transmission (<code>am</code>).</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb794"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb794-1"><a href="df_plt.html#cb794-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg, <span class="at">color=</span>am)) <span class="sc">+</span></span>
@@ -1447,7 +1447,7 @@ Let’s color the points in our scatterplot based on the type of transmission (<
 You can see that it’s separate.</p>
 <p>Note that we can add as many dimensions as our layer allows it.
 For instance, to throw the engine type into the mix, I can change the shape of my points:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb797"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb797-1"><a href="df_plt.html#cb797-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg, <span class="at">color=</span>am, <span class="at">shape=</span> vs)) <span class="sc">+</span></span>
@@ -1466,7 +1466,7 @@ For instance, to throw the engine type into the mix, I can change the shape of m
 </div>
 <p>Or again, maybe we want a different visualization completely!
 As I can change the shape of my points, I can change the linetype of my boxplots:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb800"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb800-1"><a href="df_plt.html#cb800-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg, <span class="at">color=</span>am, <span class="at">linetype =</span> vs)) <span class="sc">+</span></span>
@@ -1500,7 +1500,7 @@ Try <code>theme_bw()</code> for a different one.</p></li>
 <li><p><strong>Limits</strong>: You can set the limits of your axes by adding <code>xlim(lower, upper)</code> and <code>ylim(lower, upper)</code>.</p></li>
 </ol>
 <p>Remember, you can concatenate all these things together one after the other in one single ggplot call:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb803"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb803-1"><a href="df_plt.html#cb803-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg, <span class="at">color=</span>am)) <span class="sc">+</span></span>
@@ -1534,7 +1534,7 @@ Try <code>theme_bw()</code> for a different one.</p></li>
 <p>Faceting is a way to create multiple subplots at once based on an extra factor variable.
 This is a very clean way of representing several variables, as the subplots will share the relevant axes.
 For instance, let’s show the relationship between miles per gallon (<code>mpg</code>) and horsepower (<code>hp</code>), transmission type (<code>am</code>) but separated by the highest gear (<code>gear</code>):</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb807"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb807-1"><a href="df_plt.html#cb807-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg, <span class="at">color=</span>am)) <span class="sc">+</span></span>
@@ -1558,7 +1558,7 @@ For instance, let’s show the relationship between miles per gallon (<code>mpg<
 <div id="few-extra-layers" class="section level4 hasAnchor" number="5.2.2.2">
 <h4><span class="header-section-number">5.2.2.2</span> Few extra layers<a href="df_plt.html#few-extra-layers" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>For completion, let’s see and explore some extra layers we can have.</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb810"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb810-1"><a href="df_plt.html#cb810-1" aria-hidden="true" tabindex="-1"></a><span class="co"># linegraph</span></span>
@@ -1628,7 +1628,7 @@ For instance, let’s show the relationship between miles per gallon (<code>mpg<
 <h4><span class="header-section-number">5.2.2.3</span> Saving and Exporting Plots<a href="df_plt.html#saving-and-exporting-plots" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>You can save your plots to a file in both R and Python.
 To do so, you will first need to assign the plot to a variable.</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb822"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb822-1"><a href="df_plt.html#cb822-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>mpg, <span class="at">y=</span>hp)) <span class="sc">+</span></span>

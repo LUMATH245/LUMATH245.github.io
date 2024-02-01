@@ -227,7 +227,7 @@ it…</p>
 <p>Another incredibly useful function is the <code>help()</code> function, available
 in both R and Python. This function takes a <strong>function</strong> as an input,
 and provides us with information said function as output! For example:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="func_loop.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(sqrt)</span></code></pre></div>
@@ -281,7 +281,7 @@ returns the equivalent weight in grams: following the <code>def</code> keyword w
 need both the function name, followed by the argument. The <code>return</code>
 statement is used to specify the result that the function should output.</p>
 <p>Now, once we have made the new function, we can call it with:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="func_loop.html#cb404-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_grams</span>(<span class="at">lbs=</span><span class="dv">2</span>)</span></code></pre></div>
@@ -345,7 +345,7 @@ within the function call and cease to exist once the function call
 is over.</p></li>
 </ul>
 <p>Let’s consider the <code>lbs_to_grams</code> function we made:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="func_loop.html#cb416-1" aria-hidden="true" tabindex="-1"></a>lbs_to_grams <span class="ot">&lt;-</span> <span class="cf">function</span>(lbs) {</span>
@@ -394,7 +394,7 @@ does its job without interfering with the rest of our script! However,
 it can be prone to errors too. Say for instance, I make a typo in the
 argument name of my function above, and, for whatever reason I created a
 lbs variable in the global… Like for instance:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="func_loop.html#cb424-1" aria-hidden="true" tabindex="-1"></a><span class="co"># I specified in the global lbs at some point </span></span>
@@ -449,7 +449,7 @@ happens if I do name a local variable and global variable in the same
 way? Well, in this case, the function will use the local <code>lbs</code> variable,
 and the global will use the global <code>lbs</code> variable <strong>but this is still
 risky and prone to bugs</strong>.</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="func_loop.html#cb436-1" aria-hidden="true" tabindex="-1"></a><span class="co"># global lbs</span></span>
@@ -518,7 +518,7 @@ function will take a second argument: <code>specific_mass</code>. We’ll use th
 function <strong>we created earlier</strong> to convert pounds to grams, and then,
 using the <code>specific_mass</code>, we’ll convert grams to liters.</p>
 <p>Here’s how we can do this in both R and Python:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="func_loop.html#cb448-1" aria-hidden="true" tabindex="-1"></a>lbs_to_ml <span class="ot">&lt;-</span> <span class="cf">function</span>(lbs, specific_mass) {</span>
@@ -556,7 +556,7 @@ using the <code>specific_mass</code>, we’ll convert grams to liters.</p>
 </div>
 </div>
 <p>To run the functions we just made:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="func_loop.html#cb456-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specific mass of water and oil</span></span>
@@ -591,7 +591,7 @@ incredibly useful as they allow us (and any potential future user) to
 make certain parameters optional. This makes the function easier to use
 and the the code more readable in general!</p>
 <p>Here’s how we can do this in both R and Python:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="func_loop.html#cb464-1" aria-hidden="true" tabindex="-1"></a>lbs_to_ml <span class="ot">&lt;-</span> <span class="cf">function</span>(lbs, <span class="at">specific_weight =</span> <span class="dv">1</span>) {</span>
@@ -712,7 +712,7 @@ works for most of the times. For instance, let’s say we have a vector
 called <code>measurements</code> in lbs and we want to convert all these
 measurements to grams. Then, we can simply take our function
 <code>lbs_to_grams</code> we made above, and run it on the <code>measurements</code> vector:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="func_loop.html#cb472-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a vector of measurements in lbs</span></span>
@@ -942,7 +942,7 @@ sequence, called <code>fibonacci</code>. At iteration 1, the vector will be 2
 elements long (the first two number of the sequence), but as we go
 through the loop, we will be adding more and more elements to the
 vector.</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="func_loop.html#cb484-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the first two numbers in the sequence</span></span>
@@ -1005,7 +1005,7 @@ an extra vector (with one element) to the existing vector.</li>
 </ul>
 <p>Our vectors, where we stored our results at every iteration, should be
 20 elements long, containing the sequence.</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="func_loop.html#cb486-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the Fibonacci sequence</span></span>
@@ -1038,7 +1038,7 @@ could introduce errors and make the code harder to maintain.</p>
 <p>However, there is an approach that is generally safer and more robust:
 that of working with <strong>functions within your loops</strong>.</p>
 <p>Have a look at the code below:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="func_loop.html#cb490-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define a function to update the Fibonacci sequence</span></span>
@@ -1140,7 +1140,7 @@ incredibly useful in many situations, such as when we want to perform an
 operation for each pair of elements in two lists or vectors.</p>
 <p>A simple example, for instance, could be a nested loop that prints the
 multiplication table from 1 to 4.</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="func_loop.html#cb494-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
@@ -1209,7 +1209,7 @@ a block of code until a certain condition is met. This can be incredibly
 useful in many situations, such as when we want to perform an operation
 until a certain threshold is reached.</p>
 <p>We can see how a while loop works below:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="func_loop.html#cb498-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
@@ -1271,7 +1271,7 @@ if a certain condition is met or skip an iteration if a certain
 condition is met.</p>
 <p>To see how they work, we write a loop that prints the numbers from 1 to
 10, but skips the number 5 and stops after the number 8.</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="func_loop.html#cb502-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
@@ -1330,7 +1330,7 @@ the loop will be prematurely terminated or skipped.</p>
 <p>Usually, there’s always alternatives to <code>breaks</code>. Let’s consider a
 simple example where we want to find the first number in a list that is
 divisible by a certain number. Using <code>break</code>:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="func_loop.html#cb506-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">30</span>)</span>
@@ -1358,7 +1358,7 @@ divisible by a certain number. Using <code>break</code>:</p>
 <code>break</code> out of the loop. However, if we want to avoid using <code>break</code>, we
 could rewrite the loop with a while to use a boolean flag that indicates
 whether we’ve found a suitable number:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="func_loop.html#cb510-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">30</span>)</span>

@@ -144,7 +144,7 @@ In this case, R and python will just tell us that we have a "Not Applicable (NA)
 
 Now, let's see how we can create this data frame in R and Python:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -190,7 +190,7 @@ print(milk_df)
 
 **Accessing Variables** To access individual variables (columns) of the data frame, we can use the `$` operator in R and the `[]` operator in Python:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -241,7 +241,7 @@ Sometimes this can be better, as you might not want to change the type of your o
 
 **Accessing multiple columns.** To access multiple variables at the same time, we can pass a vector of variable names:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -278,7 +278,7 @@ Note that once we access (and store, as in this second example) a subset of a da
 **Accessing rows.** To access individual rows in the data frames, we can use indexing.
 Similarly to vectors, to access multiple rows at the same time, we can pass a vector of row indices:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -321,7 +321,7 @@ Note also that when accessing only one row, in python, the returned element will
 
 Having said that, we can also access a subset of the data frame by specifying both rows and columns **simultaneously**:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -364,7 +364,7 @@ In summary, use loc when you want to refer to items by their label and iloc when
 **Overwriting Elements** We can, of course, overwrite and change elements of our data frames.
 For instance, the simplest thing we could do at the moment, is to fill in the missing values of our data frame for our column "Fibers".
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -399,7 +399,7 @@ Note that, to impute the missing values, we can also use the `replace_na()` func
 We can access various information about the data frame, such as its dimensions, number of rows, number of columns, column names, and a summary of its contents, with a lot of different functions.
 These will be not explained in detail, but can be useful for a lot of reasons related to exploratory analysis.
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -466,7 +466,7 @@ We will now explore each of these functions in detail.
 To add new rows (or collate two data frames together!) we can use functions `bind_rows` (in R) and `concat` (in Python).
 This is formally referred to *concatenating*, which means to create a new data frame by attaching new rows to a data frame from a different one that shares the same columns.
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -602,7 +602,7 @@ This is based on the result of a vectorised logic expression.
 In a way, we have already seen this in the past when selecting subsets of vectors!
 In R, we use `filter()`, and in Python, we use `query()`.
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -631,7 +631,7 @@ milk_df.query('Calories > 100')
 Reordering allows us to arrange the rows in the data frame in a specific order.
 In R, we use `arrange()`, and in Python, we use `sort_values()`.
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -721,7 +721,7 @@ You'll need to download this from Moodle, and save it under your working directo
 Remember that we learned how to read from CSV files in week 1!
 Well, this is the first time we are doing this in a practical sense.
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -764,7 +764,7 @@ The `mtcars` data frame contains the following columns:
 
 We can display the first few values of the data frame using the `head()` function in R and Python.
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -809,7 +809,7 @@ This will affect many things when dealing with those variables, like producing s
 
 Here's how we can do this:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -891,7 +891,7 @@ In our graph above one would be the circle, the other the square.\
 We will group by the `vs` column, and we will run a summary, the mean, in this case, for the variables `mpg` and `hp` .
 In our graph `mean(mpg)` would be $f_1(V1)$, and `mean(hp)` would be corresponding to $f_2(V2)$.
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -931,7 +931,7 @@ We can make this example more and more complicated.
 Let's add a second grouping variable: the type of transmission (am).
 In the `mtcars` data frame, the `am` column represents the transmission type: 0 for automatic and 1 for manual.
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -1036,7 +1036,7 @@ Let's start with some basic plots to hopefully clear things a bit!
 A histogram is a representation of *the distribution* of a single variable, hence the `aes()` will **only have the `x`.** The histogram layer is translated via the function `geom_histogram`.
 Let's create a histogram of `mpg` (miles per gallon).
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -1079,7 +1079,7 @@ In this case, we're mapping the mpg variable to the x-axis.
 
 To solidify the concept of aesthetic mapping, let's see what happens by swapping the `x` for a `y` in our `aes` function:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -1123,7 +1123,7 @@ ggplot(mtcars, aes(y=mpg)) +
 You can see by how changing the axis aesthetic, the histogram was mirrored over the axis.
 Let's see what happens now, if we swap the `geom_histogram` layer for a `geom_boxplot`:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -1160,7 +1160,7 @@ All we had to do was change the layer.
 Funny enough, in ggplot, if we want, and they share aeshtetics, we can stack layers on top of each other just by adding more.
 For instance:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -1202,7 +1202,7 @@ A scatterplot uses two dimensions, allowing us to visualize the relationship bet
 So, our aestetic, now gets another argument: we have now both the `x` and the `y`!
 Let's create a scatterplot of `mpg` against `hp` (horsepower), to replicate our initial example.
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -1234,7 +1234,7 @@ Uncomment the `theme_minimal` to add an additional theme to our plot, and you wi
 Now, the cool stuff is that we can introduce higher dimensions by mapping additional variables to other aesthetics like color (or the point shape).
 Let's color the points in our scatterplot based on the type of transmission (`am`).
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -1266,7 +1266,7 @@ You can see that it's separate.
 Note that we can add as many dimensions as our layer allows it.
 For instance, to throw the engine type into the mix, I can change the shape of my points:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -1295,7 +1295,7 @@ ggplot(mtcars, aes(x=hp, y=mpg, color=am, shape= vs)) +
 Or again, maybe we want a different visualization completely!
 As I can change the shape of my points, I can change the linetype of my boxplots:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -1341,7 +1341,7 @@ Few things you can easily change include:
 
 Remember, you can concatenate all these things together one after the other in one single ggplot call:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -1381,7 +1381,7 @@ Faceting is a way to create multiple subplots at once based on an extra factor v
 This is a very clean way of representing several variables, as the subplots will share the relevant axes.
 For instance, let's show the relationship between miles per gallon (`mpg`) and horsepower (`hp`), transmission type (`am`) but separated by the highest gear (`gear`):
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -1415,7 +1415,7 @@ On your own, try what happens by adding the argument `nrow=3` to the `facet_wrap
 
 For completion, let's see and explore some extra layers we can have.
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -1494,7 +1494,7 @@ pt + facet_wrap('~vs')
 You can save your plots to a file in both R and Python.
 To do so, you will first need to assign the plot to a variable.
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**

@@ -135,14 +135,14 @@ curve_plot <- ggplot(data.frame(x = seq(0, 5, length.out = 1000)) |> mutate(y = 
 curve_plot
 ```
 
-Say we want to study numerically its local maxima, and to do so we want to evaluate the function on two grids of different resolutions: This is a task that you will find yourself doing a lot of times when designing numerical simulations. For example, a grid with 10 values (in red), and another grid with 100 values (in black): 
+Say we want to study numerically its local maxima, and to do so we want to evaluate the function on two grids of different resolutions: for example, a grid with 10 values (in red), and another grid with 100 values (in black):  
 ```{r, echo=FALSE}
 curve_plot + 
   geom_point(data = data.frame(x = seq(0, 5, length.out = 100)) |> mutate(y = f(x)), aes(x=x, y=y), alpha = .7)+ 
   geom_point(data = data.frame(x = seq(0, 5, length.out = 10)) |> mutate(y = f(x)), aes(x=x, y=y), col = "red") 
 ```
 
-With currying, we can do so in a neat and elegant fashion: 
+This is a task that you will find yourself doing a lot of times when designing numerical simulations. With currying, we can code multiple grids in a neat and elegant fashion:
 
 ::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>

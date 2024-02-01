@@ -51,7 +51,7 @@ Another incredibly useful function is the `help()` function, available
 in both R and Python. This function takes a **function** as an input,
 and provides us with information said function as output! For example:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -131,7 +131,7 @@ statement is used to specify the result that the function should output.
 
 Now, once we have made the new function, we can call it with:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -211,7 +211,7 @@ There are two types of environments: global and local.
 
 Let's consider the `lbs_to_grams` function we made:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -271,7 +271,7 @@ it can be prone to errors too. Say for instance, I make a typo in the
 argument name of my function above, and, for whatever reason I created a
 lbs variable in the global... Like for instance:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -333,7 +333,7 @@ way? Well, in this case, the function will use the local `lbs` variable,
 and the global will use the global `lbs` variable **but this is still
 risky and prone to bugs**.
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -413,7 +413,7 @@ using the `specific_mass`, we'll convert grams to liters.
 
 Here's how we can do this in both R and Python:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -460,7 +460,7 @@ lbs_to_ml(2, oil_mass)
 
 To run the functions we just made:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -506,7 +506,7 @@ and the the code more readable in general!
 
 Here's how we can do this in both R and Python:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -619,7 +619,7 @@ called `measurements` in lbs and we want to convert all these
 measurements to grams. Then, we can simply take our function
 `lbs_to_grams` we made above, and run it on the `measurements` vector:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -823,7 +823,7 @@ elements long (the first two number of the sequence), but as we go
 through the loop, we will be adding more and more elements to the
 vector.
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -899,7 +899,7 @@ In the Python code:
 Our vectors, where we stored our results at every iteration, should be
 20 elements long, containing the sequence.
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -944,7 +944,7 @@ that of working with **functions within your loops**.
 
 Have a look at the code below:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -1063,7 +1063,7 @@ operation for each pair of elements in two lists or vectors.
 A simple example, for instance, could be a nested loop that prints the
 multiplication table from 1 to 4.
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -1115,7 +1115,7 @@ until a certain threshold is reached.
 
 We can see how a while loop works below:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -1171,7 +1171,7 @@ condition is met.
 To see how they work, we write a loop that prints the numbers from 1 to
 10, but skips the number 5 and stops after the number 8.
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -1230,7 +1230,7 @@ Usually, there's always alternatives to `breaks`. Let's consider a
 simple example where we want to find the first number in a list that is
 divisible by a certain number. Using `break`:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -1269,7 +1269,7 @@ In this case, as soon as we find a number that meets our condition, we
 could rewrite the loop with a while to use a boolean flag that indicates
 whether we've found a suitable number:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
