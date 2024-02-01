@@ -590,7 +590,7 @@ As we did with the functions we created before, you should:
     ii. Convert the amount of cups in milliliters using the function
         `cups_to_ml`.
 
-    iii. With an if-if else-else statement, it should check the argument
+    iii. With an if-else if-else statement, it should check the argument
          `ingredient`, and set a `specific_weight` variable based on the
          ingredient. You can find the values in the table below:
 

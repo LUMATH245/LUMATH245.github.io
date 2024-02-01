@@ -112,7 +112,116 @@ to_the_tenth(2) # Outputs 1024
 </div>
 :::
 
-In the above examples, we've defined a function factory `make_power` in both R and Python that takes a number `exponent` as input (the exponent of our exponentiation function we want to built) and returns a function `pow` that raises its input `x` to the power of `exponent`. When we call this function factory with the argument `3`, it returns a function `cube` that cubes its input. When we call this `cube` function with the argument `2`, it returns `8`. Similarly, we create a function `to_the_tent` that returns a function capable of doing the power of 10 of an input number.
+In the above examples, we've defined a function factory `make_power` in both R and Python that takes a number `exponent` as input (the exponent of our exponentiation function we want to built) and returns a function `pow` that raises its input `x` to the power of `exponent`. When we call this function factory with the argument `3`, it returns a function `cube` that cubes its input. When we call this `cube` function with the argument `2`, it returns `8`. Similarly, we create a function `to_the_tenth` that returns a function capable of doing the power of 10 of an input number.
+
+This technique, sometimes referred as *currying*, is often used in functional programming to transform a function that takes multiple arguments into a series of functions that each take a single argument. It works with existing functions as well, and can be extremely useful in many situations, in particular when you have many arguments and you're only interested in changing one. Let's give a longer example.
+
+Let's have a look at this weird function:
+
+$$
+f(x) = x^2 + x *  \sin(x + 1.5 x^2)
+$$
+
+```{r echo = F}
+library(ggplot2)
+x <- seq(0, 5, length.out = 1000)
+y <- x^2 + x *  sin(x - 1.5 * x^2)
+
+ggplot(data.frame(x = x, y = y), aes(x=x, y=y)) + 
+  geom_line() + 
+  theme_minimal() +
+  ylab("f(x)")
+```
+
+Say we want to study numerically its local maxima. With currying, this can be done in a neat and elegant fashion: 
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# overloading the arguments of seq to return 
+# a lambda that takes an upper argument
+grid_factory <- function(len) {
+  make_grid <- \(up) seq(from=0, to=up, length.out = len)
+  return(make_grid)
+} 
+
+# our function
+f <- \(x) x^2 + x *  sin(x - 1.5 * x^2)
+
+### low resolution grid maker
+g1 <- grid_factory(10)
+
+# max up to 2.5 (low res)
+y <- f(g1(2.5))
+max(y)
+
+# max up to 3.5 (low res)
+y <- f(g1(3.5))
+max(y)
+
+### high resolution grid maker
+g2 <- grid_factory(1000)
+
+# max up to 2.5 (high res)
+y <- f(g2(2.5))
+max(y)
+
+# max up to 3.5 (high res)
+y <- f(g2(3.5))
+max(y)
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+import numpy as np
+
+def grid_factory(len):
+    make_grid = lambda up: np.linspace(0, up, len)
+    return make_grid
+
+# our function
+def f(x):
+    return x**2 + x * np.sin(x - 1.5 * x**2)
+
+### low resolution grid maker
+g1 = grid_factory(10)
+
+# max up to 2.5 (low res)
+y = f(g1(2.5))
+y.max()
+
+# max up to 3.5 (low res)
+y = f(g1(3.5))
+y.max()
+
+### high resolution grid maker
+g2 = grid_factory(1000)
+
+# max up to 2.5 (high res)
+y = f(g2(2.5))
+y.max()
+
+# max up to 3.5 (high res)
+y = f(g2(3.5))
+y.max()
+```
+
+</div>
+:::
+
+In this example, we define a `grid_factory` function that takes a single argument `len` and returns a lambda function that takes an upper argument up. The lambda function generates a sequence of numbers between 0 and up with a specified length `len`.
+
+We then define our function `f` to evaluate our expression $x^2 + x * sin(x - 1.5 * x^2)$.
+
+We use the `grid_factory` function to create two functions to compute grids of different resolutions, `g1` and `g2`, and use these grids to compute the maximum value of `f(x)` for different values of `x`.
 
 #### Fizzbuzz v10299384
 

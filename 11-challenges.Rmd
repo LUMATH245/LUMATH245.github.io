@@ -34,7 +34,7 @@ It turns out that there is an optimal strategy, that will end the game with **a 
     \
     Here's the function signature and call to get you started:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(1000px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
