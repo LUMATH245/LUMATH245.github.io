@@ -243,7 +243,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In the above examples, we’ve defined a lambda function <code>add_two_numbers</code> in both R and Python that takes two arguments <code>x</code> and <code>y</code>, and returns their sum. When we call this function with <code>1</code> and <code>2</code>, as we would expect from any regular function, it returns <code>3</code>.</p>
 <p>Now the cool stuff, as mentioned above, is that you can have a function that takes a number (or vector) as an input and return a function as output. This is often referred to as a <strong>function factory</strong>. To do so, we have to define functions inside functions, and then return those newly defined functions. Well, lambda functions, being compact, are the perfect candidate for this task.</p>
 <p>Here is an example:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="maps_alg.html#cb518-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function factory in R</span></span>
@@ -286,7 +286,7 @@ f(x) = x^2 + x *  \sin(x + 1.5 x^2)
 <p>Say we want to study numerically its local maxima, and to do so we want to evaluate the function on two grids of different resolutions: This is a task that you will find yourself doing a lot of times when designing numerical simulations. For example, a grid with 10 values (in red), and another grid with 100 values (in black):
 <img src="images/unnamed-chunk-152-1.png" width="50%" /></p>
 <p>With currying, we can do so in a neat and elegant fashion:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="maps_alg.html#cb526-1" aria-hidden="true" tabindex="-1"></a><span class="co"># overloading the arguments of seq to return </span></span>
@@ -366,7 +366,7 @@ f(x) = x^2 + x *  \sin(x + 1.5 x^2)
 <div id="fizzbuzz-v10299384" class="section level4 hasAnchor" number="4.1.1.1">
 <h4><span class="header-section-number">4.1.1.1</span> Fizzbuzz v10299384<a href="maps_alg.html#fizzbuzz-v10299384" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>We’re about to create a weird overly-engineered version of FizzBuzz: <code>fizzbuzz_v10299384</code> (the vector solution we had in Chapter 2 was pretty elegant already, so use that in coding interviews). What will follow is an example <em>for you to break</em> to illustrate the possibilities of functional programming.</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="maps_alg.html#cb542-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A lambda that prints a message </span></span>
@@ -433,7 +433,7 @@ f(x) = x^2 + x *  \sin(x + 1.5 x^2)
 <p><img src="images/chapter4/map.png" /></p>
 <p>This allows us to apply a function to each element of a vector without having to write a loop. We have already done this when running a function on a vector, however, as we are going to see in a moment, map is a much more general statement. In fact, there are many functions in R and python that are not <em>vectorized</em>, meaning they don’t naturally handle vector inputs. If you try to apply a non-vectorized function directly to a vector, you might get a bug or unexpected results.</p>
 <p>Let’s consider a simple function that squares a number. We will apply this function to a vector of numbers using the <code>map</code> operation in both R and Python:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="maps_alg.html#cb550-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import the purrr library</span></span>
@@ -480,7 +480,7 @@ f(x) = x^2 + x *  \sin(x + 1.5 x^2)
 <p>In this example, <code>square(x) for x in numbers</code> is a list comprehension that applies <code>square</code> to each element of <code>numbers</code>. You can read it as: “Run square of x for every x in numbers”, which is very similar to writing in maths <span class="math inline">\(x^2 \ \text{for} \ x \in N\)</span>. The result is a new list <code>squares</code> that contains the squares of the numbers.</p>
 <p><strong>Equivalent Shorter Statements</strong></p>
 <p>Of course, the advantage is that you can write very compact code with maps, lambdas and function factories! So far, I have been expanding lines upon lines, to make sure that everything is clear, however you could have done the above tasks with a one liner:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="maps_alg.html#cb557-1" aria-hidden="true" tabindex="-1"></a>squares <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="fu">make_power</span>(<span class="dv">2</span>))</span>
@@ -508,7 +508,7 @@ f(x) = x^2 + x *  \sin(x + 1.5 x^2)
 <p>There’s a lot of examples in cinema where the sequel is arguably better then the first one, like Shrek 2, Cars 2, Jaws 2, The second Star Wars trilogy, The Hangover 2, Bee Movie 2, Karate Kid 2… the list is endless!</p>
 <p>Well, even in programming <code>map2</code> is better then <code>map</code>. You might be in fact wondering: what’s the point of having <code>map</code> when we already have vectorised functions? Well, <code>map2</code> is the answer. The <code>map2</code> operation is a function that takes two vectors and a function as input, and returns a vector. Each element of the output vector is the result of applying the input function to the corresponding elements of the input vectors. In a vectorized function, on the other hand, there’s no straightforward way of passing two arguments to a function.</p>
 <p>Let’s consider a simple function that adds two numbers. We will apply this function to two vectors using the <code>map2</code> operation (in R) and the <code>map</code> operation (in Python it can take as many arguments as necessary by default):</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="maps_alg.html#cb561-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a lambda that adds two numbers</span></span>
@@ -542,7 +542,7 @@ f(x) = x^2 + x *  \sin(x + 1.5 x^2)
 </div>
 <p>In the above examples, we’ve defined a function <code>add</code> that adds its two inputs. We then created two vectors (or lists in Python) <code>numbers1</code> and <code>numbers2</code>. We used the <code>map2</code>/<code>map</code> function to apply <code>add</code> to each pair of elements from <code>numbers1</code> and <code>numbers2</code>, resulting in a new vector <code>sums</code> that contains the sums of the numbers.</p>
 <p><strong>Shorter statements</strong>. We can write the map2 statements above in a very compact way again:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="maps_alg.html#cb565-1" aria-hidden="true" tabindex="-1"></a>sums <span class="ot">&lt;-</span> <span class="fu">map2_dbl</span>( <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),  <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>), \(x, y) x<span class="sc">+</span>y)</span>
@@ -583,7 +583,7 @@ f(x) = x^2 + x *  \sin(x + 1.5 x^2)
 <p>This operation is called <code>reduce</code> because it reduces a list of values down to a single value. It’s also known as <code>fold</code>, <code>accumulate</code>, <code>compress</code>, or <code>inject</code> in other programming languages.</p>
 <p><a href="reduce_scheme"><img src="images/chapter4/reduce.png" width="265" /></a></p>
 <p>To give an example, let’s use the <code>reduce</code> operation to compute the dot product of two vectors. We have seen this already in Chapter <a href="log_vec.html#vectors">2.4</a>, however, this time, we will implement the function ourselves! We can compute this using the <code>map2</code> operation to multiply the components and the <code>reduce</code> operation to sum the results:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="maps_alg.html#cb573-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define two vectors</span></span>
@@ -624,7 +624,7 @@ f(x) = x^2 + x *  \sin(x + 1.5 x^2)
 <h3><span class="header-section-number">4.1.4</span> Exercise: Implement a Generic FizzBuzz Function<a href="maps_alg.html#gen-fizzbuzz" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Ok, this is going to be great. The ultimate FizzBuzz. The final boss. You are a mathematician, and mathematicians generalize things. In this exercise, you are asked to generalize FizzBuzz. Solve it all. You should write a function that takes three arguments: a vector of numbers, and a vector of primes, and a vector of phrases. The vectors of primes and phrases should be of the same length, not necessarily the same length of the vector of numbers. The function should return a vector of the same length as the input vector of numbers. Each element of the output vector should be obtained by replacing each number in the input vector with the corresponding phrase if the number is divisible by the corresponding prime. If a number is divisible by more than one prime, the complete phrase should be formed by concatenating the phrases. If a number is not divisible by any of the primes, the number itself should be returned as a string.</p>
 <p>For example, the simple FizzBuzz, should be, then, obtained via:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="maps_alg.html#cb577-1" aria-hidden="true" tabindex="-1"></a><span class="fu">generic_fizzbuzz</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>, <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>),  <span class="fu">c</span>(<span class="st">&quot;Fizz&quot;</span>, <span class="st">&quot;Buzz&quot;</span>))</span></code></pre></div>
@@ -635,7 +635,7 @@ f(x) = x^2 + x *  \sin(x + 1.5 x^2)
 </div>
 </div>
 <p>Here’s the function signature in R to get you started:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="maps_alg.html#cb579-1" aria-hidden="true" tabindex="-1"></a>generic_fizzbuzz <span class="ot">&lt;-</span> <span class="cf">function</span>(x, primes, phrases) {</span>
@@ -667,7 +667,7 @@ f(x) = x^2 + x *  \sin(x + 1.5 x^2)
 \end{cases}
 \]</span> This function, for a given <span class="math inline">\(n\)</span>, will return the corresponding <span class="math inline">\(r_n\)</span> value of the Fibonacci sequence (see past week).</p>
 <p>Now, the cool thing is: it is possible to write this exact statement as a program too! Have a look at the code below:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="maps_alg.html#cb583-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a recursive function to compute the Fibonacci series</span></span>
@@ -742,7 +742,7 @@ f(x) = x^2 + x *  \sin(x + 1.5 x^2)
 <p>In the previous chapters, we have covered some basics on how to perform operations on one-dimensional vectors, and the dot product. Now, we are going to extend our understanding to two dimensions with <strong>matrices</strong>.</p>
 <p>A <strong>matrix</strong> is a mathematical term for a two-dimensional array of numbers, while a vector is a one-dimensional array. In other words, you can think of a matrix as a homogeneous vector of vectors of doubles, both in R and Python.</p>
 <p>Let’s see how to create a 4x4 matrix in R and Python:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="maps_alg.html#cb589-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 4x4 matrix in R</span></span>
@@ -777,7 +777,7 @@ f(x) = x^2 + x *  \sin(x + 1.5 x^2)
 </div>
 <p>In the above examples, we’ve created a 4x4 matrix filled by rows. You can also fill the matrix by columns by setting <code>byrow = FALSE</code> in R, or by reshaping a range in Python (<code>reshape</code> will fill automatically by row).</p>
 <p>Additionally, you can create a matrix by binding vectors together. In R, you can use <code>cbind()</code> to bind vectors as columns or <code>rbind()</code> to bind vectors as rows, whilist in python you can use <code>np.column_stack()</code> as columns and <code>np.row_stack()</code> as rows:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb593-1"><a href="maps_alg.html#cb593-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a matrix by binding vectors in R</span></span>
@@ -815,7 +815,7 @@ f(x) = x^2 + x *  \sin(x + 1.5 x^2)
 <p>In the above examples, we’ve created a 4x4 matrix by binding four vectors as columns. You can also bind vectors as rows by using <code>rbind()</code> in R, or <code>np.vstack()</code> in Python.</p>
 <p>Now, let’s illustrate the transpose operation. Recall that the transpose of a matrix is obtained by flipping it over its diagonal. This switches the row and column indices of each element. In R, you can use the <code>t()</code> function to transpose a matrix, while in Python, you can use the <code>T</code> attribute or the <code>transpose()</code> function.</p>
 <p>Let’s compare the matrices created above with their transposes:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb597-1"><a href="maps_alg.html#cb597-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transpose the matrix in R</span></span>
@@ -856,7 +856,7 @@ f(x) = x^2 + x *  \sin(x + 1.5 x^2)
 <div id="matrix-operations" class="section level3 hasAnchor" number="4.2.2">
 <h3><span class="header-section-number">4.2.2</span> Matrix Operations<a href="maps_alg.html#matrix-operations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>As with vectors, we can do operations with matrices. We’ll start by creating a simple 3x3 matrix, and a 3x1 vector.</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb605-1"><a href="maps_alg.html#cb605-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a 3x3 matrix in R</span></span>
@@ -880,7 +880,7 @@ f(x) = x^2 + x *  \sin(x + 1.5 x^2)
 <li><p><strong>Matrix Multiplication</strong>: Remember, the dimensions of the matrices must be compatible for these operations to be valid: when we multiply two matrices, the number of columns in the first matrix should be equal to the number of rows in the second matrix. If they’re not, you’ll get an error. The resulting matrix has each element as the dot product of the corresponding row and column from the input matrices.</p></li>
 </ol>
 <p>Let’s see these operations in action:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb607-1"><a href="maps_alg.html#cb607-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrix addition</span></span>
@@ -946,7 +946,7 @@ f(x) = x^2 + x *  \sin(x + 1.5 x^2)
 <div id="inversion-eigenvalues-and-eigenvectors" class="section level4 hasAnchor" number="4.2.2.1">
 <h4><span class="header-section-number">4.2.2.1</span> Inversion, Eigenvalues and Eigenvectors<a href="maps_alg.html#inversion-eigenvalues-and-eigenvectors" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>For this section, we’ll reuse the matrix <code>A</code> from the previous examples. The rank of A, is, however, 2, as the third column is the sum of the first and second columns. This is going to be cool as it’s going to show us what happens on a computer when a matrix that does not have a unique inverse. Of course, as a counter example, we need to introduce a new full rank matrix <code>B</code> which will have a unique inverse:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb629"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb629-1"><a href="maps_alg.html#cb629-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a full rank matrix</span></span>
@@ -968,7 +968,7 @@ f(x) = x^2 + x *  \sin(x + 1.5 x^2)
 </div>
 </div>
 <p>Now, let’s compute the determinant of our matrices <code>A</code> and <code>B</code>:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb633"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb633-1"><a href="maps_alg.html#cb633-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the determinant of A and B</span></span>
@@ -988,7 +988,7 @@ f(x) = x^2 + x *  \sin(x + 1.5 x^2)
 </div>
 <p>As you can see, the determinant of a full-rank matrix is non-zero, while the determinant of a non-full rank matrix is zero.</p>
 <p>Next, let’s compute the inverse of our matrices. Remember, only full-rank matrices have an inverse:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb641"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb641-1"><a href="maps_alg.html#cb641-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the inverse of A</span></span>
@@ -1022,7 +1022,7 @@ f(x) = x^2 + x *  \sin(x + 1.5 x^2)
 </div>
 </div>
 <p>Finally, let’s compute the eigenvalues and eigenvectors of our matrices <code>A</code> and <code>B</code>. The eigenvalues and eigenvectors provide important insights into the properties of the matrix:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb653"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb653-1"><a href="maps_alg.html#cb653-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the eigenvalues and eigenvectors of A and B in R</span></span>
