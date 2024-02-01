@@ -238,11 +238,13 @@ generic_fizzbuzz(c(1:15, 2 * 3 * 5 * 7), c(2, 3, 5, 7),  c("Skibbidi", "Fizz", "
   max-width: 1200px !important;
 }
 
-  /* change the grid layout to one column when the width is less than 1000px */
+/* change the grid layout to one column when the width is less than 1000px */
+@media (max-width: 1000px) {
   .grid-container {
     display: grid;
     grid-template-columns: 1fr;
     grid-column-gap: 10px;
   }
+}
 </style>
 ```
