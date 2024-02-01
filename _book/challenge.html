@@ -214,7 +214,7 @@ This function should return another vector with the guesses of the players <stro
 <br />
 Here’s the function signature and call to get you started:</li>
 </ol>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(1000px, 1fr)); grid-column-gap: 10px;">
+<div class="grid-container" style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb825"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb825-1"><a href="challenge.html#cb825-1" aria-hidden="true" tabindex="-1"></a>hatter <span class="ot">&lt;-</span> <span class="cf">function</span>(hats) {</span>
@@ -284,6 +284,13 @@ hatter(s,\ a) =  \begin{cases}
 .book .book-body .page-wrapper .page-inner {
   max-width: 1200px !important;
 }
+
+  /* change the grid layout to one column when the width is less than 1000px */
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column-gap: 10px;
+  }
 </style>
 
 </div>

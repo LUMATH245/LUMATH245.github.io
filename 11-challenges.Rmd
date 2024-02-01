@@ -34,7 +34,7 @@ It turns out that there is an optimal strategy, that will end the game with **a 
     \
     Here's the function signature and call to get you started:
 
-::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(1000px, 1fr)); grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;" class="grid-container"}
 <div>
 
 **R**
@@ -237,5 +237,12 @@ generic_fizzbuzz(c(1:15, 2 * 3 * 5 * 7), c(2, 3, 5, 7),  c("Skibbidi", "Fizz", "
 .book .book-body .page-wrapper .page-inner {
   max-width: 1200px !important;
 }
+
+  /* change the grid layout to one column when the width is less than 1000px */
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column-gap: 10px;
+  }
 </style>
 ```
