@@ -6,7 +6,7 @@ We have seen so far two concepts from past week on how to run functions over col
 
 -   Functional languages have *first class functions*. This means that functions are the primary building blocks. In this style, you can do a lot with functions. For example, you can treat functions just like vectors: you can assign them to variables, store them in lists, pass them as arguments to other functions, create them inside functions, and even return them as the result of a function.
 
--   In functional languages functions are *pure*. This means that there two properties to follow:
+-   In functional languages functions are *pure*. This means that they satisfy the following two properties:
 
     1.  The output of a function depends only on its inputs. This means if you call a function with the same inputs, you'll always get the same output.
 
@@ -20,7 +20,7 @@ Funny enough, he quotes Stroustroup, the father of C++:
 
 ![The father of c++](https://i.redd.it/x00fit1u9ol11.png){width="472"}
 
-In a way you have already written in a functional programming way from the beginning of this module, with the exception of the loops in the past chapter. However, in this chapter, we will be introducing a couple of more concepts that should get rid of for cycles for most of the times!
+In a way you have already written in a functional programming way from the beginning of this module, with the exception of the loops in the past chapter. However, in this chapter, we will be introducing a couple of more concepts that should get rid of for cycles most of the times!
 
 ### Lambda Functions and Function Factories
 
@@ -101,8 +101,8 @@ to_the_tenth(2) # Outputs 1024
 # Define a function factory in Python
 def make_power(exponent):
   # lambda here
-  pow = lambda x: x ** exponent
-  return pow
+  power = lambda x: x ** exponent
+  return power
 # Use the function factory
 cube = make_power(3)
 cube(2)  # Outputs 8
@@ -112,6 +112,8 @@ to_the_tenth(2) # Outputs 1024
 
 </div>
 :::
+
+Note that in the Python version, we used `power` as the variable name, as `pow` is actually a built-in function in Python.
 
 In the above examples, we've defined a function factory `make_power` in both R and Python that takes a number `exponent` as input (the exponent of our exponentiation function we want to built) and returns a function `pow` that raises its input `x` to the power of `exponent`. When we call this function factory with the argument `3`, it returns a function `cube` that cubes its input. When we call this `cube` function with the argument `2`, it returns `8`. Similarly, we create a function `to_the_tenth` that returns a function capable of doing the power of 10 of an input number.
 
