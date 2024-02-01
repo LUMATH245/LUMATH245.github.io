@@ -266,7 +266,7 @@ Also, computers will have different architectures, such as x86, ARM, or RISC-V, 
 <p>Wait, they’re basically the same? Well, yes, that’s the point, and the reason why we teach them both simultaneously. Despite the current culture war in Statistics and Data Science, we believe that there’s no such thing as a best programming language: <strong>for each task the expert worker should use the most appropriate of the available tools</strong>. Right now, Python and R are almost equivalent for scientific computing; and, given recent developments <strong>they can be used together, in tandem</strong>. Now that you are learning, pick one, based off your future modules. Don’t worry, for your project you will have to pick either one, or the other so it’s not a requirement to learn both R and Python. But if you feel confident enough, feel to learn both, you’re more than welcome.</p>
 <p>As a matter of fact, for all the these notes, we will always try to display code in both languages side by side.<br />
 <strong>On the left you will always an R code chunk, and on the right you will find the Python equivalent:</strong></p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="intro_prog.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;R chunk on the left.&quot;</span>)</span></code></pre></div>
@@ -283,7 +283,7 @@ Also, computers will have different architectures, such as x86, ARM, or RISC-V, 
 <h3><span class="header-section-number">1.2.1</span> A glorified calculator<a href="intro_prog.html#a-glorified-calculator" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>That’s it, the CPU is a glorified calculator, end of the Section. Nothing more to it, even if sometimes you might have heard complex codes and names like i7, i5, A4, Pentium 5, Neural Pre-processor, Snapdragon, Qbits, SmartBpprop, Bombastic, Mr fantastic, etc. Anyway, let us not worry about this now, but open up a new script, either an R or Python script. Copy and paste the following code snippets into it. Then, placing your cursor next to each snippet, press <code>ctrl + enter</code> on your keyboard, you will see the result popping up in the console. What’s going to happen under the hood once you are sending a command to R or Python, is that process I mentioned earlier. The interpreter, will convert your command into machine code, and pass it down to the processor. The processor is going to crunch the numbers, and send back an output, that will then be displayed on your screen.</p>
 <p>This is how we do additions:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="intro_prog.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="sc">+</span> <span class="dv">5</span></span></code></pre></div>
@@ -296,7 +296,7 @@ Also, computers will have different architectures, such as x86, ARM, or RISC-V, 
 </div>
 </div>
 <p>The result is automatically printed back to the user. Now, this is how we do subtractions:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="intro_prog.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="sc">-</span> <span class="dv">5</span></span></code></pre></div>
@@ -309,7 +309,7 @@ Also, computers will have different architectures, such as x86, ARM, or RISC-V, 
 </div>
 </div>
 <p>And this is how we do additions and subtractions, and multiplications, and algebra in general:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="intro_prog.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="sc">+</span> <span class="dv">5</span> <span class="sc">*</span> <span class="dv">2</span></span></code></pre></div>
@@ -404,7 +404,7 @@ Also, computers will have different architectures, such as x86, ARM, or RISC-V, 
 <div id="putting-an-order-to-operations" class="section level4 hasAnchor" number="1.2.1.2">
 <h4><span class="header-section-number">1.2.1.2</span> Putting an order to operations<a href="intro_prog.html#putting-an-order-to-operations" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Once you’re happy, try stringing some of these calculations all into one command, for example:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="intro_prog.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="sc">+</span> <span class="dv">7</span> <span class="sc">*</span> <span class="dv">5</span> <span class="sc">/</span> <span class="dv">3</span> <span class="sc">-</span> <span class="dv">2</span></span></code></pre></div>
@@ -425,7 +425,7 @@ Also, computers will have different architectures, such as x86, ARM, or RISC-V, 
 <p>This can be overridden by using putting the calculations we want to perform first in brackets. For instance, there’s this formula that has been really bothering me. It popped up this morning at 4am, and kept me awake. What is the square root of three fourth, over a third minus 2 divided by pi squared? A hunted seagull of chalk flying around the vast sea of obsidian that is the blackboard of my mind, over and over and over again: <span class="math display">\[
 \frac{\sqrt{3/4}}{\frac{1}{3} - \frac{2}{\pi^2}}.
 \]</span> Here you go, be free, little bird:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="intro_prog.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">3</span> <span class="sc">/</span> <span class="dv">4</span>) <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">/</span> <span class="dv">3</span> <span class="sc">-</span> <span class="dv">2</span> <span class="sc">/</span> pi<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
@@ -445,7 +445,7 @@ Also, computers will have different architectures, such as x86, ARM, or RISC-V, 
 <p>Now, the Ministerium, to access the spells and the thoughts in the bottles, has a bunch of Evil Magicians, that walk in the archive, and that can claim these bottles by putting labels onto them. Those magicians are, in the computer, our programs. Putting a label on an area of memory is called <em>creating a variable.</em></p>
 <p>Here’s the thing: when a magician grabs a bottle, they can either look at which thought or spell is in it, or put a new thought into it. An existing thought in a bottle cannot be modified. If they wish to keep the same bottle with the same label, but change the content, they open it, get rid of the old content, and simply put a new one.</p>
 <p>To give an example, Prof. Sinsinius Snap, to kill that guy that kinda of looks like Gandalf, needs to store two spells. In one he needs to store the formula of the spell that causes the victim to feel a lot of pain (this was in a children’s book, by the way), and in the other, the formula that makes the victim’s heart stop. To do so, it creates two labels, <em>spell_to_torture</em> and <em>spell_to_kill,</em> so it won’t loose the bottles in the archive,and in each it puts the evil spell:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="intro_prog.html#cb34-1" aria-hidden="true" tabindex="-1"></a>spell_to_torture <span class="ot">&lt;-</span> <span class="st">&quot;porcosus&quot;</span></span>
@@ -460,7 +460,7 @@ Also, computers will have different architectures, such as x86, ARM, or RISC-V, 
 <p>What did we do? We assigned two strings (sequences of text), <code>"porcosus"</code> and <code>"avada kebaba"</code>, indicative of our spells, in two variables, called <code>spell_to_torture</code> and <code>spell_to_kill</code> (the labels). You can read the code above as <em>assign “porcosus” to spell_to_torture, and assign “avada kebaba” to spell_to_kill</em>. This can be done with the <code>&lt;-</code> sign in R and with the <code>=</code> sign in Python. What we did reserved an area of memory where now our two strings are stored and are accessible to our program.</p>
 <p><strong>Note for R users</strong> It is worth pointing out that you can use the <code>=</code> for assignment in R just like with Python. Try to change above in R <code>spell_to_torture = "porcosus"</code>: the result won’t change. However, the <code>&lt;-</code>, meaning “gets”, and is a more intuitive symbol in my opinion when referring to assignment. So we’ll be using this where we can in R. Feel free to use whichever you prefer.</p>
 <p>Our dear Prof. Sinsinius Snap, to access the spells again, all he needs to do, is to recall the labels he used, e.g. the variable names, and the archive will remind him of the content of the bottles:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="intro_prog.html#cb36-1" aria-hidden="true" tabindex="-1"></a>spell_to_torture</span></code></pre></div>
@@ -477,7 +477,7 @@ Also, computers will have different architectures, such as x86, ARM, or RISC-V, 
 </div>
 </div>
 <p>Ouch! He realizes he putted the wrong spell in the <code>spell_to_torture</code> bottle. Well, no problem, as mentioned above, he can re-bottle the correct one. To do so, he simply reassigns the correct spell <code>"cruccio"</code> to the bottle labelled <code>spell_to_torture</code>:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="intro_prog.html#cb44-1" aria-hidden="true" tabindex="-1"></a>spell_to_torture <span class="ot">&lt;-</span> <span class="st">&quot;cruccio&quot;</span></span></code></pre></div>
@@ -488,7 +488,7 @@ Also, computers will have different architectures, such as x86, ARM, or RISC-V, 
 </div>
 </div>
 <p>Note that now, the old spell <code>"porcosus"</code> is lost. In fact, when he looks at the <code>spell_to_torture</code> bottle, he sees:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="intro_prog.html#cb46-1" aria-hidden="true" tabindex="-1"></a>spell_to_torture</span></code></pre></div>
@@ -505,7 +505,7 @@ Also, computers will have different architectures, such as x86, ARM, or RISC-V, 
 <h4><span class="header-section-number">1.2.2.1</span> Doing maths with variables<a href="intro_prog.html#doing-maths-with-variables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Now of course, this is a university, not a school of magic and divination, so we ultimately need to do some maths. In programming, we often need to store the results of our calculations for later use. This is where variables come in handy. We mentioned you can think of a variable as a bottle where you can store a value. You can give this bottle a label (a name), and use this label to refer to the bottled value later on.</p>
 <p>For example, let’s say we want to perform some calculations:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="intro_prog.html#cb50-1" aria-hidden="true" tabindex="-1"></a>x  <span class="ot">&lt;-</span> <span class="dv">20</span> <span class="sc">-</span> <span class="dv">16</span></span>
@@ -523,7 +523,7 @@ Also, computers will have different architectures, such as x86, ARM, or RISC-V, 
 </div>
 <p>Here, <code>x</code> and <code>y</code> are variables. We’ve assigned them the results of some calculations. Now, whenever we refer to <code>x</code> or <code>y</code>, we’re actually referring to the results of these calculations.</p>
 <p>We can check the values stored in <code>x</code> and <code>y</code> by simply typing their names:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="intro_prog.html#cb54-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
@@ -540,7 +540,7 @@ Also, computers will have different architectures, such as x86, ARM, or RISC-V, 
 </div>
 </div>
 <p>Remember, R and Python are case-sensitive, so <code>x</code> is different from <code>X</code>. If you try to access <code>X</code>, you’ll get an error because we haven’t assigned anything to <code>X</code>:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="intro_prog.html#cb62-1" aria-hidden="true" tabindex="-1"></a>X</span></code></pre></div>
@@ -553,7 +553,7 @@ Also, computers will have different architectures, such as x86, ARM, or RISC-V, 
 </div>
 </div>
 <p>Also, if you assign a new value to a variable, the old value will be overwritten without any warning:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="intro_prog.html#cb66-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">100</span></span>
@@ -568,7 +568,7 @@ Also, computers will have different architectures, such as x86, ARM, or RISC-V, 
 </div>
 </div>
 <p>Now, here’s something cool. In maths, an equation like <span class="math inline">\(x = x + 1\)</span> doesn’t make much sense. But in programming, it’s perfectly valid. It means “take the current value of <code>x</code>, add 1 to it, and store the result back in <code>x</code>”. This is a common way to increment a variable:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="intro_prog.html#cb70-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span></span>
@@ -583,7 +583,7 @@ Also, computers will have different architectures, such as x86, ARM, or RISC-V, 
 </div>
 </div>
 <p>In fact, you can use all mathematical operations in this way. You should use variables as much as you can to keep the code as clean and readable as possible. Let’s revisit the example above:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="intro_prog.html#cb74-1" aria-hidden="true" tabindex="-1"></a>numerator <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">3</span> <span class="sc">/</span> <span class="dv">4</span>)</span>
@@ -609,7 +609,7 @@ Also, computers will have different architectures, such as x86, ARM, or RISC-V, 
 <p>When you’re working with a programming language like R or Python, any variables you create are stored in your computer’s memory (the RAM). This is a type of storage that’s fast and easy for your computer to access, which is why it’s used for tasks that are currently running. However, memory is volatile, which means that once the power is turned off or your program finishes running, any data stored in memory is lost.</p>
 <p>Sometimes, you might want your program to produce something tangible that doesn’t get lost when the power is turned off or your program stops running. This could be a report, a graph, or even just a set of numbers. To do this, you can write this data to a file on your hard drive. Unlike memory, data stored on your hard drive remains there until it’s deleted, so you can access it again later.</p>
 <p>Let’s look at how you can write data to a file in R and Python.</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="intro_prog.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create some data</span></span>
@@ -643,7 +643,7 @@ Also, computers will have different architectures, such as x86, ARM, or RISC-V, 
 <div id="reading-back-your-data" class="section level4 hasAnchor" number="1.2.3.1">
 <h4><span class="header-section-number">1.2.3.1</span> Reading back your data<a href="intro_prog.html#reading-back-your-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Now, let’s say we want to access this data at a later time. We can do this by reading the file back into our program. Here’s how you can do it in R and Python:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="intro_prog.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the data from the file</span></span>
@@ -692,7 +692,7 @@ Try to run the <code>getwd()</code> or <code>os.getcwd()</code> command in your 
 <p>You can also specify files in directories below the working directory in your file path. For example, <code>"subdirectory/data.csv"</code> would refer to a file in a folder named “subdirectory” within the current working directory. This is like saying, “the report in the top drawer of my desk.”</p>
 <p>To go up to a parent directory, you can use <code>".."</code>. So <code>"../data.csv"</code> would refer to a file in the parent directory of the current working directory. This is like saying, “the report on my colleague’s desk next to mine.”</p>
 <p>Let’s see how this works in R and Python:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="intro_prog.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write data to a file in a subdirectory</span></span>

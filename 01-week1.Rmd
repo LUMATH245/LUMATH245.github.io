@@ -119,7 +119,7 @@ Wait, they're basically the same? Well, yes, that's the point, and the reason wh
 As a matter of fact, for all the these notes, we will always try to display code in both languages side by side.\
 **On the left you will always an R code chunk, and on the right you will find the Python equivalent:**
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -149,7 +149,7 @@ That's it, the CPU is a glorified calculator, end of the Section. Nothing more t
 
 This is how we do additions:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -173,7 +173,7 @@ This is how we do additions:
 
 The result is automatically printed back to the user. Now, this is how we do subtractions:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -197,7 +197,7 @@ The result is automatically printed back to the user. Now, this is how we do sub
 
 And this is how we do additions and subtractions, and multiplications, and algebra in general:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -254,7 +254,7 @@ Using numbers of your own, try the other basic mathematical operations listed be
 
 Once you're happy, try stringing some of these calculations all into one command, for example:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -286,7 +286,7 @@ This can be overridden by using putting the calculations we want to perform firs
 \frac{\sqrt{3/4}}{\frac{1}{3} - \frac{2}{\pi^2}}.
 $$ Here you go, be free, little bird:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -318,7 +318,7 @@ Here's the thing: when a magician grabs a bottle, they can either look at which 
 
 To give an example, Prof. Sinsinius Snap, to kill that guy that kinda of looks like Gandalf, needs to store two spells. In one he needs to store the formula of the spell that causes the victim to feel a lot of pain (this was in a children's book, by the way), and in the other, the formula that makes the victim's heart stop. To do so, it creates two labels, *spell_to_torture* and *spell_to_kill,* so it won't loose the bottles in the archive,and in each it puts the evil spell:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -348,7 +348,7 @@ What did we do? We assigned two strings (sequences of text), `"porcosus"` and `"
 
 Our dear Prof. Sinsinius Snap, to access the spells again, all he needs to do, is to recall the labels he used, e.g. the variable names, and the archive will remind him of the content of the bottles:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -374,7 +374,7 @@ spell_to_kill
 
 Ouch! He realizes he putted the wrong spell in the `spell_to_torture` bottle. Well, no problem, as mentioned above, he can re-bottle the correct one. To do so, he simply reassigns the correct spell `"cruccio"` to the bottle labelled `spell_to_torture`:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -398,7 +398,7 @@ spell_to_torture = "cruccio"
 
 Note that now, the old spell `"porcosus"` is lost. In fact, when he looks at the `spell_to_torture` bottle, he sees:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -428,7 +428,7 @@ Now of course, this is a university, not a school of magic and divination, so we
 
 For example, let's say we want to perform some calculations:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -458,7 +458,7 @@ Here, `x` and `y` are variables. We've assigned them the results of some calcula
 
 We can check the values stored in `x` and `y` by simply typing their names:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -484,7 +484,7 @@ y
 
 Remember, R and Python are case-sensitive, so `x` is different from `X`. If you try to access `X`, you'll get an error because we haven't assigned anything to `X`:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -508,7 +508,7 @@ X
 
 Also, if you assign a new value to a variable, the old value will be overwritten without any warning:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -534,7 +534,7 @@ x
 
 Now, here's something cool. In maths, an equation like $x = x + 1$ doesn't make much sense. But in programming, it's perfectly valid. It means "take the current value of `x`, add 1 to it, and store the result back in `x`". This is a common way to increment a variable:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -560,7 +560,7 @@ x
 
 In fact, you can use all mathematical operations in this way. You should use variables as much as you can to keep the code as clean and readable as possible. Let's revisit the example above:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -598,7 +598,7 @@ Sometimes, you might want your program to produce something tangible that doesn'
 
 Let's look at how you can write data to a file in R and Python.
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -652,7 +652,7 @@ Remember, storing data on your hard drive is a great way to preserve your data f
 
 Now, let's say we want to access this data at a later time. We can do this by reading the file back into our program. Here's how you can do it in R and Python:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -707,7 +707,7 @@ To go up to a parent directory, you can use `".."`. So `"../data.csv"` would ref
 
 Let's see how this works in R and Python:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**

@@ -229,7 +229,7 @@ will see, R uses uppercase letters for <code>TRUE</code> and <code>FALSE</code>,
 Python starts with a capital letter and uses lower case for the remaining letters, e.g. <code>True</code> and <code>False</code>.</p>
 <p>For example, we can compare two strings, two integers, or two doubles,
 as shown below:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="log_vec.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing two strings</span></span>
@@ -288,7 +288,7 @@ programs. The precision of a floating-point number is determined by the number o
 two objects or values are not exactly the same in every aspect. To check
 for inequality, we use the operator <code>!=</code>, which returns <code>TRUE</code> if the
 objects or values are not equal, and <code>FALSE</code> if they are. As earlier:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="log_vec.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing two strings</span></span>
@@ -331,7 +331,7 @@ learned last week, a variable is a name that refers to a value or an
 object that is stored in the memory, so by comparing variables we
 compare the value they refer to. For example, we can assign the string
 <code>"Hello"</code> to the variable <code>x</code> in both languages, as shown below:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="log_vec.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a string to a variable</span></span>
@@ -346,7 +346,7 @@ compare the value they refer to. For example, we can assign the string
 <p>And we can then use the same operators as before, <code>==</code> for equality and
 <code>!=</code> for inequality. For example, we can compare the variable <code>x</code> with
 another string, another variable, or itself, as shown below:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="log_vec.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing a variable with a string</span></span>
@@ -437,7 +437,7 @@ values, <code>TRUE</code> and <code>FALSE</code>, which are <em>logic operands</
 </ul>
 <p>We can use the <code>AND</code> and <code>OR</code> operators to combine two logical values,
 such as <code>TRUE</code> and <code>FALSE</code>, as shown below:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="log_vec.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the AND operator</span></span>
@@ -614,7 +614,7 @@ of a variable, the input of the user, or the outcome of a calculation.</p>
 statement checks a single condition, and executes a block of code if the
 condition is true. For example, we can use an if statement to print a
 message if a variable is positive, as shown below:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="log_vec.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
@@ -676,7 +676,7 @@ corresponds to a true condition. If none of the conditions are true, the
 else block of code is executed. For example, we can use an if - else
 if - else statement to print a message based on the sign of a variable,
 as shown below:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="log_vec.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
@@ -720,7 +720,7 @@ using an if - else if - else statement, as each if statement is
 evaluated separately, and more than one block of code can be executed.
 For example, we can use two if statements to print a message based on
 the divisibility of a variable by 2 and 3, as shown below:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="log_vec.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
@@ -769,7 +769,7 @@ inside another if statement. A nested if statement can have multiple
 levels of nesting, and can also include else if and else blocks. For
 example, we can use a nested if statement to print a message based on
 the value and the sign of a variable, as shown below:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="log_vec.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
@@ -831,7 +831,7 @@ number 10, print “Buzz”, and given the number 7, print 7.</p>
 <p>To play FizzBuzz in R or Python, we can use a variable to store the
 number, and then use an if - else if - else statement to check the
 conditions and print the output, as shown below:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="log_vec.html#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
@@ -885,7 +885,7 @@ given the number 12, print “SkibbidiFizz”, given the number 20, print
 the number 8, print “Skibbidi”.</p>
 <p><strong>HINT</strong> To write a quick solution, you will need to collate strings. This means that if we have the strings <code>"a"</code>, <code>"b"</code>, collated those will be <code>"ab"</code>, and if we have <code>"a"</code>, <code>"b"</code>, <code>"b"</code>, <code>"a"</code>, collated they will read <code>"abba"</code> (mammamia).</p>
 <p>To collate strings in R and python:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="log_vec.html#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="co"># collate strings</span></span>
@@ -971,7 +971,7 @@ We can create an array that contains the numbers 1, 2, and 3, as shown below:</p
 <p>One of the common ways to create vectors or arrays is to use sequences. Sequences are ordered collections of values that follow a certain pattern or rule. Sequences can be useful for generating data, plotting, or creating loops, as we will see later on.
 As you will see, here the syntax is going to be a bit different in each language, as R uses functions such <code>:</code> or <code>seq</code> and Python uses <code>np.arange</code> or <code>np.linspace</code> to create and initialize vectors. We will see how to create sequences of integers, any sequence of equally spaced numbers, and finally, how to initialize an empty vectors with all same values.</p>
 <p><strong>To create a sequence of integers in R</strong>, we can use the colon operator <code>:</code>, in Python, we can use the <code>arange</code> function from <code>numpy</code>. Both take two integers as arguments, and returns a vector or an array that contains all the integers from the first argument to the second argument, with a step size of 1. For example, we can create a sequence of integers from -5 to 10, as shown below:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="log_vec.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a sequence of integers from -5 to 10</span></span>
@@ -989,7 +989,7 @@ As you will see, here the syntax is going to be a bit different in each language
 </div>
 <p>Differently from R, <code>arange</code> requires the second argument to be one step more than the desired end point of the sequence, so if we want to go up to 10, we need to have the second argument to be 11.</p>
 <p><strong>To create any sequence</strong>, we can use the <code>seq</code> function in R, and the <code>arange</code> or <code>linspace</code> functions in Python. For example, we can create a sequence of numbers from 0 to 1, with a step size of 0.1, or with a length of 11, as shown below:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <p>The <code>seq</code> function in R can take named arguments, such as <code>from</code>, <code>to</code>, <code>by</code>, or <code>length.out</code>, to specify the parameters of the sequence.</p>
@@ -1016,7 +1016,7 @@ As you will see, here the syntax is going to be a bit different in each language
 </div>
 </div>
 <p><strong>Empty vectors.</strong> Lastly, there might be some cases where we have to create an empty vector or array in R and Python. An empty vector or array can be useful for initializing a vector or array that will be filled with values later, as we will see in the next chapters. For this, we can use the <code>vector</code> or <code>array</code> function, respectively, and specify the type and the length of the vector or array. An empty vector or array is a vector or array that contains no values, but has a predefined type and length. For example, we can create an empty vector or array of type numeric and length 5, as shown below:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="log_vec.html#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating an empty vector of type numeric and length 5</span></span>
@@ -1039,7 +1039,7 @@ As you will see, here the syntax is going to be a bit different in each language
 <h3><span class="header-section-number">2.4.2</span> Modifying vectors<a href="log_vec.html#modifying-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>One of the main advantages of using vectors or arrays is that we can perform elementwise operations on them. Elementwise operations are operations that are applied to each element of the vector or the array individually, and return a new vector or array that contains the results. Elementwise operations preserve the shape and the length of the vector or the array, meaning that the resulting vector or array has the same number of elements as the original vector or array.</p>
 <p>For example, we can add, subtract, multiply, or divide a vector or an array by a scalar (which is a single value):</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="log_vec.html#cb249-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
@@ -1085,7 +1085,7 @@ As you will see, here the syntax is going to be a bit different in each language
 <div id="vec-func" class="section level4 hasAnchor" number="2.4.2.1">
 <h4><span class="header-section-number">2.4.2.1</span> Functions and algebra with vectors<a href="log_vec.html#vec-func" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>But we can do more! One of the benefits of using vectors or arrays is that we can apply a whole function, such as <code>sin(.)</code> or <code>log(.)</code>, on the entire vector elementwise. This means that the function is applied to each element of the vector individually, and returns a new vector that contains the results. For example, let’s apply the <code>sin(.)</code> function, which calculates the sine of an angle in radians, on a vector that contains the angles <span class="math inline">\(0\)</span>, <span class="math inline">\(\pi/2\)</span>, <span class="math inline">\(\pi\)</span>, and <span class="math inline">\(3 \pi/2\)</span>:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="log_vec.html#cb269-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a vector of angles in radians</span></span>
@@ -1110,7 +1110,7 @@ As you will see, here the syntax is going to be a bit different in each language
 <p>The function is applied to each element of the vector or the array individually, and returns a new vector or array that contains the results. Note also that by default the results are in scientific notation.</p>
 <p>We can also apply many other functions! Go back to last week introduction and see how many of the functions we introduced already, such as <code>log()</code>, run elementwise on vectors.</p>
 <p>And as we can sum two scalars, another benefit of using vectors or arrays is that we can do elementwise product and sum of two vectors. If two vectors or arrays are the same length, this will return a new vector or array that contains the elementwise results of your desired operation:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="log_vec.html#cb277-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating two vectors of the same length</span></span>
@@ -1207,7 +1207,7 @@ As you will see, here the syntax is going to be a bit different in each language
 <h3><span class="header-section-number">2.5.2</span> Accessing Vector Elements<a href="log_vec.html#accessing-vector-elements" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We can access the elements of the vector or the array by using indexing. Indexing is a way of referring to a specific element or a subset of elements of a vector or an array by using their position or location. Every element of a vector, in fact, has an index, that is a number that indicates its order in the vector.</p>
 <p>Indexing the elements of a vector or an array in R and Python has <strong>a fundamental difference</strong> that you need to be extremely careful about. R uses what is called <em>one-based</em> indexing, while Python uses <em>zero-based</em> indexing. This means that R starts counting the elements of a vector or an array from 1, e.g. the first element starts at one, while Python starts counting the elements of a vector or an array from 0. This difference can cause confusion and errors if you are not aware of it, so you need to pay attention to the indexing system of each language:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="log_vec.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The index will be</span></span>
@@ -1264,7 +1264,7 @@ Differently from R, in Python, however we can access the arrays from the back, u
 <ul>
 <li>To access any sequence of elements of a vector or an array, we can use sequences of integers as indices. This means we can use the colon operator <code>:</code> to create sequences of integers in R and Python, as we saw in the previous section, and use these to access and splice the first three elements, the last three elements, or even the <em>even-indexed</em> elements of a vector or an array (pun not intended).</li>
 </ul>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="log_vec.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a vector of the first 6 integers</span></span>
@@ -1302,7 +1302,7 @@ Differently from R, in Python, however we can access the arrays from the back, u
 <ul>
 <li>Similarly, we can use vectors or arrays of integers as indices to access multiple elements <em>at every location</em>. To do so, we will first create some vectors, and then use those vectors to access the elements of other vectors respectively. For example, we can access three elements at random of a vector or an array, as shown below:</li>
 </ul>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="log_vec.html#cb334-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing element 2, 5 and 6 of the vector</span></span>
@@ -1323,7 +1323,7 @@ Differently from R, in Python, however we can access the arrays from the back, u
 </div>
 </div>
 <p>To access multiple elements at random of a vector or an array, we can also use vectors or arrays of booleans as indices. Vectors or arrays of booleans are collections of logical values, as introduced above, e.g. either <code>TRUE</code> or <code>FALSE</code>. In this case, it is important that the vectors or arrays of booleans have the same length as the vector or the array, and that only the elements that correspond to <code>TRUE</code> (in R) or <code>True</code> (in Python) values are selected.</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="log_vec.html#cb342-1" aria-hidden="true" tabindex="-1"></a><span class="co"># boolean index vector:</span></span>
@@ -1346,7 +1346,7 @@ Differently from R, in Python, however we can access the arrays from the back, u
 </div>
 </div>
 <p>Why is this useful? Well, with this trick, we can use logical operators obtained by logical arithmetic to create vectors or arrays of booleans in R and Python. For example, we can access the elements that are greater than 3 of a vector or an array, as shown below:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="log_vec.html#cb346-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a vector of numbers</span></span>
@@ -1418,7 +1418,7 @@ As mentioned, we can select and replace multiple elements simultaneously in a si
 <h4><span class="header-section-number">2.5.2.3</span> Exercise: vector fizzbuzz<a href="log_vec.html#exercise-vector-fizzbuzz" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>You are ready to see your first complex program. Can you tell what it does?
 Break down, comment and describe the following code, and adapt it do perform Skibbidifizzbuzz.</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="log_vec.html#cb366-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span></span>
@@ -1489,7 +1489,7 @@ y = x^2 - x
 <p><img src="images/unnamed-chunk-102-1.png" width="50%" /></p>
 <p>Now, let’s say we want to evaluate this function over a sequence of values between -5 and 5 (those values plotted).<br />
 To code this, we learned we can do simply some algebra with vector:</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="log_vec.html#cb370-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a sequence of numbers </span></span>
@@ -1512,7 +1512,7 @@ To code this, we learned we can do simply some algebra with vector:</p>
 </div>
 </div>
 <p>Now that we have our <span class="math inline">\(y\)</span> values, let’s see what we can get from it! See if what you see in the output matches what you see in the plot!</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="log_vec.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the maximum value of y</span></span>
