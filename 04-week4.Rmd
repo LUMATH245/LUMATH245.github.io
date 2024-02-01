@@ -33,7 +33,8 @@ In both languages **we can avoid the return statement**, which makes them very e
 
 For example:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
+
 <div>
 
 **R**
