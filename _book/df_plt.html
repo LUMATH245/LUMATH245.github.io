@@ -1285,7 +1285,7 @@ Let’s create a histogram of <code>mpg</code> (miles per gallon).</p>
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb777"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb777-1"><a href="df_plt.html#cb777-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>mpg)) <span class="sc">+</span></span>
 <span id="cb777-2"><a href="df_plt.html#cb777-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>)</span></code></pre></div>
-<p><img src="images/unnamed-chunk-245-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-246-1.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
@@ -1294,7 +1294,7 @@ Let’s create a histogram of <code>mpg</code> (miles per gallon).</p>
 <span id="cb778-3"><a href="df_plt.html#cb778-3" aria-hidden="true" tabindex="-1"></a>  geom_histogram(binwidth<span class="op">=</span><span class="dv">5</span>)</span>
 <span id="cb778-4"><a href="df_plt.html#cb778-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
-<p><img src="images/unnamed-chunk-246-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-247-1.png" width="50%" /></p>
 </div>
 </div>
 <p>Let’s break down the syntax: - <code>ggplot(mtcars, aes(x=mpg))</code>.
@@ -1320,7 +1320,7 @@ Try to change the binwidth and see what happens.</p></li>
 <span id="cb780-3"><a href="df_plt.html#cb780-3" aria-hidden="true" tabindex="-1"></a><span class="co"># here is that, in R, boxplot can accept both an x or y aesthetic</span></span>
 <span id="cb780-4"><a href="df_plt.html#cb780-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg)) <span class="sc">+</span></span>
 <span id="cb780-5"><a href="df_plt.html#cb780-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>)</span></code></pre></div>
-<p><img src="images/unnamed-chunk-247-3.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-248-3.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
@@ -1342,7 +1342,7 @@ Try to change the binwidth and see what happens.</p></li>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;
 ## 
 ## /home/romano/Documents/EpiC/.venv/lib/python3.11/site-packages/plotnine/stats/stat_bin.py:109: PlotnineWarning: &#39;stat_bin()&#39; using &#39;bins = 6&#39;. Pick better value with &#39;binwidth&#39;.</code></pre>
-<p><img src="images/unnamed-chunk-248-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-249-1.png" width="50%" /></p>
 </div>
 </div>
 <p>You can see by how changing the axis aesthetic, the histogram was mirrored over the axis.
@@ -1352,7 +1352,7 @@ Let’s see what happens now, if we swap the <code>geom_histogram</code> layer f
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb785"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb785-1"><a href="df_plt.html#cb785-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg)) <span class="sc">+</span></span>
 <span id="cb785-2"><a href="df_plt.html#cb785-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
-<p><img src="images/unnamed-chunk-249-3.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-250-3.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
@@ -1361,7 +1361,7 @@ Let’s see what happens now, if we swap the <code>geom_histogram</code> layer f
 <span id="cb786-3"><a href="df_plt.html#cb786-3" aria-hidden="true" tabindex="-1"></a>  geom_boxplot()</span>
 <span id="cb786-4"><a href="df_plt.html#cb786-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
-<p><img src="images/unnamed-chunk-250-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-251-1.png" width="50%" /></p>
 </div>
 </div>
 <p>This will give us a complete different type of distribution plot, <em>the boxplot</em>!
@@ -1382,7 +1382,7 @@ For instance:</p>
 <span id="cb788-4"><a href="df_plt.html#cb788-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg)) <span class="sc">+</span></span>
 <span id="cb788-5"><a href="df_plt.html#cb788-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
 <span id="cb788-6"><a href="df_plt.html#cb788-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
-<p><img src="images/unnamed-chunk-251-3.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-252-3.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
@@ -1395,7 +1395,7 @@ For instance:</p>
 <span id="cb789-7"><a href="df_plt.html#cb789-7" aria-hidden="true" tabindex="-1"></a>    geom_density()</span>
 <span id="cb789-8"><a href="df_plt.html#cb789-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
-<p><img src="images/unnamed-chunk-252-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-253-1.png" width="50%" /></p>
 </div>
 </div>
 <p>We have just added an estimate of our density to our boxplot/histogram!</p>
@@ -1410,7 +1410,7 @@ Let’s create a scatterplot of <code>mpg</code> against <code>hp</code> (horsep
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb791"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb791-1"><a href="df_plt.html#cb791-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg)) <span class="sc">+</span></span>
 <span id="cb791-2"><a href="df_plt.html#cb791-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="co"># + theme_minimal()</span></span></code></pre></div>
-<p><img src="images/unnamed-chunk-253-3.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-254-3.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
@@ -1419,7 +1419,7 @@ Let’s create a scatterplot of <code>mpg</code> against <code>hp</code> (horsep
 <span id="cb792-3"><a href="df_plt.html#cb792-3" aria-hidden="true" tabindex="-1"></a>  geom_point() <span class="co"># + theme_minimal()</span></span>
 <span id="cb792-4"><a href="df_plt.html#cb792-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
-<p><img src="images/unnamed-chunk-254-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-255-1.png" width="50%" /></p>
 </div>
 </div>
 <p>Uncomment the <code>theme_minimal</code> to add an additional theme to our plot, and you will have recreated the plot at the beginning of the section.</p>
@@ -1431,7 +1431,7 @@ Let’s color the points in our scatterplot based on the type of transmission (<
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb794"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb794-1"><a href="df_plt.html#cb794-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg, <span class="at">color=</span>am)) <span class="sc">+</span></span>
 <span id="cb794-2"><a href="df_plt.html#cb794-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="images/unnamed-chunk-255-3.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-256-3.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
@@ -1440,7 +1440,7 @@ Let’s color the points in our scatterplot based on the type of transmission (<
 <span id="cb795-3"><a href="df_plt.html#cb795-3" aria-hidden="true" tabindex="-1"></a>  geom_point()</span>
 <span id="cb795-4"><a href="df_plt.html#cb795-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
-<p><img src="images/unnamed-chunk-256-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-257-1.png" width="50%" /></p>
 </div>
 </div>
 <p>We can see graphically now why the mean consumption in the automatic transmission was higher in the example before!
@@ -1452,7 +1452,7 @@ For instance, to throw the engine type into the mix, I can change the shape of m
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb797"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb797-1"><a href="df_plt.html#cb797-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg, <span class="at">color=</span>am, <span class="at">shape=</span> vs)) <span class="sc">+</span></span>
 <span id="cb797-2"><a href="df_plt.html#cb797-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="images/unnamed-chunk-257-3.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-258-3.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
@@ -1461,7 +1461,7 @@ For instance, to throw the engine type into the mix, I can change the shape of m
 <span id="cb798-3"><a href="df_plt.html#cb798-3" aria-hidden="true" tabindex="-1"></a>  geom_point()</span>
 <span id="cb798-4"><a href="df_plt.html#cb798-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
-<p><img src="images/unnamed-chunk-258-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-259-1.png" width="50%" /></p>
 </div>
 </div>
 <p>Or again, maybe we want a different visualization completely!
@@ -1471,7 +1471,7 @@ As I can change the shape of my points, I can change the linetype of my boxplots
 <p><strong>R</strong></p>
 <div class="sourceCode" id="cb800"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb800-1"><a href="df_plt.html#cb800-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">y=</span>mpg, <span class="at">color=</span>am, <span class="at">linetype =</span> vs)) <span class="sc">+</span></span>
 <span id="cb800-2"><a href="df_plt.html#cb800-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
-<p><img src="images/unnamed-chunk-259-3.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-260-3.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
@@ -1480,7 +1480,7 @@ As I can change the shape of my points, I can change the linetype of my boxplots
 <span id="cb801-3"><a href="df_plt.html#cb801-3" aria-hidden="true" tabindex="-1"></a>  geom_boxplot()</span>
 <span id="cb801-4"><a href="df_plt.html#cb801-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
-<p><img src="images/unnamed-chunk-260-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-261-1.png" width="50%" /></p>
 </div>
 </div>
 </div>
@@ -1511,7 +1511,7 @@ Try <code>theme_bw()</code> for a different one.</p></li>
 <span id="cb803-6"><a href="df_plt.html#cb803-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
 <pre><code>## Warning: Removed 2 rows containing missing values
 ## (`geom_point()`).</code></pre>
-<p><img src="images/unnamed-chunk-261-3.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-262-3.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
@@ -1526,7 +1526,7 @@ Try <code>theme_bw()</code> for a different one.</p></li>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;
 ## 
 ## /home/romano/Documents/EpiC/.venv/lib/python3.11/site-packages/plotnine/layer.py:364: PlotnineWarning: geom_point : Removed 2 rows containing missing values.</code></pre>
-<p><img src="images/unnamed-chunk-262-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-263-1.png" width="50%" /></p>
 </div>
 </div>
 <div id="multiple-plots-with-facets" class="section level4 hasAnchor" number="5.2.2.1">
@@ -1540,7 +1540,7 @@ For instance, let’s show the relationship between miles per gallon (<code>mpg<
 <div class="sourceCode" id="cb807"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb807-1"><a href="df_plt.html#cb807-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>mpg, <span class="at">color=</span>am)) <span class="sc">+</span></span>
 <span id="cb807-2"><a href="df_plt.html#cb807-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb807-3"><a href="df_plt.html#cb807-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>gear)</span></code></pre></div>
-<p><img src="images/unnamed-chunk-263-3.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-264-3.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
@@ -1550,7 +1550,7 @@ For instance, let’s show the relationship between miles per gallon (<code>mpg<
 <span id="cb808-4"><a href="df_plt.html#cb808-4" aria-hidden="true" tabindex="-1"></a>  facet_wrap(<span class="st">&#39;~gear&#39;</span>)</span>
 <span id="cb808-5"><a href="df_plt.html#cb808-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
-<p><img src="images/unnamed-chunk-264-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-265-1.png" width="50%" /></p>
 </div>
 </div>
 <p>On your own, try what happens by adding the argument <code>nrow=3</code> to the <code>facet_wrap</code>, e.g. <code>facet_wrap(~gear, nrow=3)</code>.</p>
@@ -1565,26 +1565,26 @@ For instance, let’s show the relationship between miles per gallon (<code>mpg<
 <span id="cb810-2"><a href="df_plt.html#cb810-2" aria-hidden="true" tabindex="-1"></a><span class="co"># great for continuous time variables</span></span>
 <span id="cb810-3"><a href="df_plt.html#cb810-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>disp, <span class="at">color=</span>am)) <span class="sc">+</span></span>
 <span id="cb810-4"><a href="df_plt.html#cb810-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
-<p><img src="images/unnamed-chunk-265-3.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-266-3.png" width="50%" /></p>
 <div class="sourceCode" id="cb811"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb811-1"><a href="df_plt.html#cb811-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recall we can always filter based on any type of </span></span>
 <span id="cb811-2"><a href="df_plt.html#cb811-2" aria-hidden="true" tabindex="-1"></a><span class="co"># variable, what we learned over the first half translates equally</span></span>
 <span id="cb811-3"><a href="df_plt.html#cb811-3" aria-hidden="true" tabindex="-1"></a><span class="co"># to the second! And the plot adapts magically.</span></span>
 <span id="cb811-4"><a href="df_plt.html#cb811-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars <span class="sc">|&gt;</span> <span class="fu">filter</span>(am <span class="sc">==</span> <span class="st">&quot;manual&quot;</span>),</span>
 <span id="cb811-5"><a href="df_plt.html#cb811-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>hp, <span class="at">y=</span>disp)) <span class="sc">+</span></span>
 <span id="cb811-6"><a href="df_plt.html#cb811-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
-<p><img src="images/unnamed-chunk-265-4.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-266-4.png" width="50%" /></p>
 <div class="sourceCode" id="cb812"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb812-1"><a href="df_plt.html#cb812-1" aria-hidden="true" tabindex="-1"></a><span class="co"># barcharts</span></span>
 <span id="cb812-2"><a href="df_plt.html#cb812-2" aria-hidden="true" tabindex="-1"></a><span class="co"># great for categorical variables</span></span>
 <span id="cb812-3"><a href="df_plt.html#cb812-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>cyl, <span class="at">fill=</span>am)) <span class="sc">+</span></span>
 <span id="cb812-4"><a href="df_plt.html#cb812-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
-<p><img src="images/unnamed-chunk-265-5.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-266-5.png" width="50%" /></p>
 <div class="sourceCode" id="cb813"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb813-1"><a href="df_plt.html#cb813-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can store the plot in a variable and add more layers if </span></span>
 <span id="cb813-2"><a href="df_plt.html#cb813-2" aria-hidden="true" tabindex="-1"></a><span class="co"># needed </span></span>
 <span id="cb813-3"><a href="df_plt.html#cb813-3" aria-hidden="true" tabindex="-1"></a>pt <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>cyl, <span class="at">fill=</span>am)) <span class="sc">+</span></span>
 <span id="cb813-4"><a href="df_plt.html#cb813-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span>
 <span id="cb813-5"><a href="df_plt.html#cb813-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb813-6"><a href="df_plt.html#cb813-6" aria-hidden="true" tabindex="-1"></a>pt <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>vs)</span></code></pre></div>
-<p><img src="images/unnamed-chunk-265-6.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-266-6.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>python</strong></p>
@@ -1595,7 +1595,7 @@ For instance, let’s show the relationship between miles per gallon (<code>mpg<
 <span id="cb814-5"><a href="df_plt.html#cb814-5" aria-hidden="true" tabindex="-1"></a>  geom_line()</span>
 <span id="cb814-6"><a href="df_plt.html#cb814-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
-<p><img src="images/unnamed-chunk-266-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-267-1.png" width="50%" /></p>
 <div class="sourceCode" id="cb816"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb816-1"><a href="df_plt.html#cb816-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recall we can always filter based on any type of </span></span>
 <span id="cb816-2"><a href="df_plt.html#cb816-2" aria-hidden="true" tabindex="-1"></a><span class="co"># variable, what we learned over the first half translates equally</span></span>
 <span id="cb816-3"><a href="df_plt.html#cb816-3" aria-hidden="true" tabindex="-1"></a><span class="co"># to the second! And the plot adapts magically.</span></span>
@@ -1605,7 +1605,7 @@ For instance, let’s show the relationship between miles per gallon (<code>mpg<
 <span id="cb816-7"><a href="df_plt.html#cb816-7" aria-hidden="true" tabindex="-1"></a>  geom_line()</span>
 <span id="cb816-8"><a href="df_plt.html#cb816-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
-<p><img src="images/unnamed-chunk-266-2.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-267-2.png" width="50%" /></p>
 <div class="sourceCode" id="cb818"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb818-1"><a href="df_plt.html#cb818-1" aria-hidden="true" tabindex="-1"></a><span class="co"># barcharts</span></span>
 <span id="cb818-2"><a href="df_plt.html#cb818-2" aria-hidden="true" tabindex="-1"></a><span class="co"># great for categorical variables</span></span>
 <span id="cb818-3"><a href="df_plt.html#cb818-3" aria-hidden="true" tabindex="-1"></a>(</span>
@@ -1613,14 +1613,14 @@ For instance, let’s show the relationship between miles per gallon (<code>mpg<
 <span id="cb818-5"><a href="df_plt.html#cb818-5" aria-hidden="true" tabindex="-1"></a>  geom_bar()</span>
 <span id="cb818-6"><a href="df_plt.html#cb818-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
-<p><img src="images/unnamed-chunk-266-3.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-267-3.png" width="50%" /></p>
 <div class="sourceCode" id="cb820"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb820-1"><a href="df_plt.html#cb820-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can store the plot in a variable and add more layers if </span></span>
 <span id="cb820-2"><a href="df_plt.html#cb820-2" aria-hidden="true" tabindex="-1"></a><span class="co"># needed </span></span>
 <span id="cb820-3"><a href="df_plt.html#cb820-3" aria-hidden="true" tabindex="-1"></a>pt <span class="op">=</span> (ggplot(mtcars, aes(x<span class="op">=</span><span class="st">&#39;cyl&#39;</span>, fill<span class="op">=</span><span class="st">&#39;am&#39;</span>)) <span class="op">+</span></span>
 <span id="cb820-4"><a href="df_plt.html#cb820-4" aria-hidden="true" tabindex="-1"></a>  geom_bar())</span>
 <span id="cb820-5"><a href="df_plt.html#cb820-5" aria-hidden="true" tabindex="-1"></a>pt <span class="op">+</span> facet_wrap(<span class="st">&#39;~vs&#39;</span>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
-<p><img src="images/unnamed-chunk-266-4.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-267-4.png" width="50%" /></p>
 </div>
 </div>
 </div>
@@ -1668,14 +1668,14 @@ The exercise has various levels of completition, from a basic level where we wil
 </ol>
 <p><strong>Medium.</strong> Modify the code above to add the additional function <span class="math inline">\(y=\cos(x)\)</span>.
 You should get something like:</p>
-<p><img src="images/unnamed-chunk-269-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-270-1.png" width="50%" /></p>
 <ul>
 <li><p>The x-axis should range from 0 to 10, with a step size of 0.01.</p></li>
 <li><p>Use different colours for each curve (sine or cosine)</p></li>
 <li><p>How many columns should have your dataframe?</p></li>
 </ul>
 <p><strong>Advanced.</strong> Using <code>ggplot</code>, write a program that generates the plot below:</p>
-<p><img src="images/unnamed-chunk-270-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-271-1.png" width="50%" /></p>
 <p>Each subplot should be comparing sines and cosines with different frequencies.
 The plot should show 6 sinusoidal functions:<span class="math display">\[\sin\left(\frac{x}{2}\right), \sin(x), \sin(2x), \cos\left(\frac{x}{2}\right), \cos(x), \cos(2x)\]</span></p>
 <ul>
@@ -1691,6 +1691,16 @@ Use lambda functions where necessary.</p></li>
 }
 </style>
 
+<style type="text/css">
+/* change the grid layout to one column when the width is less than 1000px */
+@media (max-width: 1000px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column-gap: 10px;
+  }
+}
+</style>
 </div>
 </div>
 </div>

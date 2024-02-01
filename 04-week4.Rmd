@@ -123,17 +123,25 @@ f(x) = x^2 + x *  \sin(x + 1.5 x^2)
 $$
 
 ```{r echo = F}
-library(ggplot2)
-x <- seq(0, 5, length.out = 1000)
-y <- x^2 + x *  sin(x - 1.5 * x^2)
+library(tidyverse)
+f <- \(x) x^2 + x *  sin(x - 1.5 * x^2)
 
-ggplot(data.frame(x = x, y = y), aes(x=x, y=y)) + 
+curve_plot <- ggplot(data.frame(x = seq(0, 5, length.out = 1000)) |> mutate(y = f(x)), aes(x=x, y=y)) + 
   geom_line() + 
   theme_minimal() +
   ylab("f(x)")
+
+curve_plot
 ```
 
-Say we want to study numerically its local maxima. With currying, this can be done in a neat and elegant fashion: 
+Say we want to study numerically its local maxima, and to do so we want to evaluate the function on two grids of different resolutions: This is a task that you will find yourself doing a lot of times when designing numerical simulations. For example, a grid with 10 values (in red), and another grid with 100 values (in black): 
+```{r, echo=FALSE}
+curve_plot + 
+  geom_point(data = data.frame(x = seq(0, 5, length.out = 100)) |> mutate(y = f(x)), aes(x=x, y=y), alpha = .7)+ 
+  geom_point(data = data.frame(x = seq(0, 5, length.out = 10)) |> mutate(y = f(x)), aes(x=x, y=y), col = "red") 
+```
+
+With currying, we can do so in a neat and elegant fashion: 
 
 ::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 <div>
@@ -158,19 +166,19 @@ g1 <- grid_factory(10)
 y <- f(g1(2.5))
 max(y)
 
-# max up to 3.5 (low res)
-y <- f(g1(3.5))
+# max up to 4 (low res)
+y <- f(g1(4))
 max(y)
 
 ### high resolution grid maker
-g2 <- grid_factory(1000)
+g2 <- grid_factory(100)
 
 # max up to 2.5 (high res)
 y <- f(g2(2.5))
 max(y)
 
-# max up to 3.5 (high res)
-y <- f(g2(3.5))
+# max up to 4 (high res)
+y <- f(g2(4))
 max(y)
 ```
 
@@ -200,19 +208,19 @@ g1 = grid_factory(10)
 y = f(g1(2.5))
 y.max()
 
-# max up to 3.5 (low res)
-y = f(g1(3.5))
+# max up to 4 (low res)
+y = f(g1(4))
 y.max()
 
 ### high resolution grid maker
-g2 = grid_factory(1000)
+g2 = grid_factory(100)
 
 # max up to 2.5 (high res)
 y = f(g2(2.5))
 y.max()
 
-# max up to 3.5 (high res)
-y = f(g2(3.5))
+# max up to 4 (high res)
+y = f(g2(4))
 y.max()
 ```
 
