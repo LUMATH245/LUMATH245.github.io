@@ -72,7 +72,7 @@ Now the cool stuff, as mentioned above, is that you can have a function that tak
 
 Here is an example:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -144,7 +144,7 @@ curve_plot +
 
 With currying, we can do so in a neat and elegant fashion: 
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -238,7 +238,7 @@ We use the `grid_factory` function to create two functions to compute grids of d
 
 We're about to create a weird overly-engineered version of FizzBuzz: `fizzbuzz_v10299384` (the vector solution we had in Chapter 2 was pretty elegant already, so use that in coding interviews). What will follow is an example *for you to break* to illustrate the possibilities of functional programming.
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -315,7 +315,7 @@ This allows us to apply a function to each element of a vector without having to
 
 Let's consider a simple function that squares a number. We will apply this function to a vector of numbers using the `map` operation in both R and Python:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -384,7 +384,7 @@ In this example, `square(x) for x in numbers` is a list comprehension that appli
 
 Of course, the advantage is that you can write very compact code with maps, lambdas and function factories! So far, I have been expanding lines upon lines, to make sure that everything is clear, however you could have done the above tasks with a one liner:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -423,7 +423,7 @@ Well, even in programming `map2` is better then `map`. You might be in fact wond
 
 Let's consider a simple function that adds two numbers. We will apply this function to two vectors using the `map2` operation (in R) and the `map` operation (in Python it can take as many arguments as necessary by default):
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -469,7 +469,7 @@ In the above examples, we've defined a function `add` that adds its two inputs. 
 
 **Shorter statements**. We can write the map2 statements above in a very compact way again:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -530,7 +530,7 @@ This operation is called `reduce` because it reduces a list of values down to a 
 
 To give an example, let's use the `reduce` operation to compute the dot product of two vectors. We have seen this already in Chapter \@ref(vectors), however, this time, we will implement the function ourselves! We can compute this using the `map2` operation to multiply the components and the `reduce` operation to sum the results:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -584,7 +584,7 @@ Ok, this is going to be great. The ultimate FizzBuzz. The final boss. You are a 
 
 For example, the simple FizzBuzz, should be, then, obtained via:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -608,7 +608,7 @@ generic_fizzbuzz(range(1, 16), [3, 5], ["Fizz", "Buzz"])
 
 Here's the function signature in R to get you started:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -665,7 +665,7 @@ $$ This function, for a given $n$, will return the corresponding $r_n$ value of 
 
 Now, the cool thing is: it is possible to write this exact statement as a program too! Have a look at the code below:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -763,7 +763,7 @@ A **matrix** is a mathematical term for a two-dimensional array of numbers, whil
 
 Let's see how to create a 4x4 matrix in R and Python:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -803,7 +803,7 @@ In the above examples, we've created a 4x4 matrix filled by rows. You can also f
 
 Additionally, you can create a matrix by binding vectors together. In R, you can use `cbind()` to bind vectors as columns or `rbind()` to bind vectors as rows, whilist in python you can use `np.column_stack()` as columns and `np.row_stack()` as rows:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -847,7 +847,7 @@ Now, let's illustrate the transpose operation. Recall that the transpose of a ma
 
 Let's compare the matrices created above with their transposes:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -885,7 +885,7 @@ As you can see, unsurprisingly, the transpose of the filled by row has all eleme
 
 As with vectors, we can do operations with matrices. We'll start by creating a simple 3x3 matrix, and a 3x1 vector.
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -923,7 +923,7 @@ Now, as in chapter two, R and Python (assuming you're using numpy) will be able 
 
 Let's see these operations in action:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -976,7 +976,7 @@ A @ v
 
 For this section, we'll reuse the matrix `A` from the previous examples. The rank of A, is, however, 2, as the third column is the sum of the first and second columns. This is going to be cool as it's going to show us what happens on a computer when a matrix that does not have a unique inverse. Of course, as a counter example, we need to introduce a new full rank matrix `B` which will have a unique inverse:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -1004,7 +1004,7 @@ B
 
 Now, let's compute the determinant of our matrices `A` and `B`:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -1034,7 +1034,7 @@ As you can see, the determinant of a full-rank matrix is non-zero, while the det
 
 Next, let's compute the inverse of our matrices. Remember, only full-rank matrices have an inverse:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
@@ -1066,7 +1066,7 @@ np.dot(np.linalg.inv(B), B)
 
 Finally, let's compute the eigenvalues and eigenvectors of our matrices `A` and `B`. The eigenvalues and eigenvectors provide important insights into the properties of the matrix:
 
-::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
 
 **R**
