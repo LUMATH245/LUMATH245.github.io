@@ -238,6 +238,73 @@ We then define our function `f` to evaluate our expression $x^2 + x * sin(x - 1.
 
 We use the `grid_factory` function to create two functions to compute grids of different resolutions, `g1` and `g2`, and use these grids to compute the maximum value of `f(x)` for different values of `x`.
 
+#### Functions as arguments
+
+Recall you can pass down functions as arguments too. To do so, you will need to pass down just the function name, e.g. `f`, rather then the function evaluated, `f(...)`.
+Say that we want to generalise the previous code to work with multiple different functions, then, it would make sense to write another function that takes said functions as input, and applies the grid evaluation:
+
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
+<div>
+
+**R**
+
+```{r}
+# this function will take a function and 
+# a grid function to evaluate some values 
+# up to one given point
+max_over_grid <- function(f, grid, up) {
+ y <- f(grid(up))
+ max(y)
+} 
+
+# our old function
+f_1 <- \(x) x^2 + x *  sin(x - 1.5 * x^2)
+
+# a couple of other functions
+f_2 <- \(x) x^3 - x *  cos(x - 1.5 * x^2)
+f_3 <- \(x) log((x+0.1)^2) + x *  sin(x - 1.5 * x^2)
+
+# run the functions on the grid
+# recall what g1 was?
+max_over_grid(f_1, g1, 4)
+max_over_grid(f_2, g1, 4)
+max_over_grid(f_3, g1, 4)
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+# this function will take a function and 
+# a grid function to evaluate some values 
+# up to one given point
+def max_over_grid(f, grid, up):
+  y = f(grid(up))
+  return max(y)
+
+# our old function
+f_1 = lambda x: x**2 + x * np.sin(x - 1.5 * x**2)
+
+# a couple of other functions
+f_2 = lambda x: x**3 - x * np.cos(x - 1.5 * x**2)
+f_3 = lambda x: np.log((x+0.1)**2) + x * np.sin(x - 1.5 * x**2)
+
+
+# run the functions on the grid
+# recall what g1 was?
+max_over_grid(f_1, g1, 4)
+max_over_grid(f_2, g1, 4)
+max_over_grid(f_3, g1, 4)
+```
+
+</div>
+:::
+
+Try swapping `g1` for `g2` and see what happens!
+
 #### Fizzbuzz v10299384
 
 We're about to create a weird overly-engineered version of FizzBuzz: `fizzbuzz_v10299384` (the vector solution we had in Chapter 2 was pretty elegant already, so use that in coding interviews). What will follow is an example *for you to break* to illustrate the possibilities of functional programming.

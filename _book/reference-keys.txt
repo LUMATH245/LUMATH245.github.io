@@ -54,6 +54,7 @@ break-and-nextcontinue
 maps_alg
 Maps
 lambda-functions-and-function-factories
+functions-as-arguments
 fizzbuzz-v10299384
 the-map-operation
 exercise-4
