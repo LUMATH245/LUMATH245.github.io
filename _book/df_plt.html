@@ -210,7 +210,7 @@ As a suggestion, make sure the <code>library(tidyverse)</code> command sits at t
 <p>In the previous chapters, we learned how to truly extract the power of functions.
 Well, one of the things introduced in <code>purrr</code>, and that goes really well with the <code>tidyverse</code> package, is the pipe operator.
 This operator allows you to pass the output of one function to another function as the first argument.
-<strong>This translates the mathematical function composition</strong> in programming, e.g. <span class="math inline">\((f_1 \circ f_2)(x)\)</span>.
+<strong>This translates the mathematical function composition</strong> in programming, e.g. <span class="math inline">\((f_2 \circ f_1)(x)\)</span>.
 This operator is written as <code>|&gt;</code> and is used to express a sequence of multiple operations in a more readable and intuitive way.
 In code, the equivalent of our expression would be <code>x |&gt; f1 |&gt; f2</code>.</p>
 <p>For example, if we want to compute the natural logarithm of the sum of the first 10 natural numbers, <span class="math inline">\(\ln(1 + 2+ 3+ ... + 10)\)</span>, this is:</p>

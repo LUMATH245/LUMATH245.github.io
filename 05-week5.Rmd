@@ -39,7 +39,7 @@ As a suggestion, make sure the `library(tidyverse)` command sits at the top of y
 In the previous chapters, we learned how to truly extract the power of functions.
 Well, one of the things introduced in `purrr`, and that goes really well with the `tidyverse` package, is the pipe operator.
 This operator allows you to pass the output of one function to another function as the first argument.
-**This translates the mathematical function composition** in programming, e.g. $(f_1 \circ f_2)(x)$.
+**This translates the mathematical function composition** in programming, e.g. $(f_2 \circ f_1)(x)$.
 This operator is written as `|>` and is used to express a sequence of multiple operations in a more readable and intuitive way.
 In code, the equivalent of our expression would be `x |> f1 |> f2`.
 
