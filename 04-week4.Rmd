@@ -136,7 +136,7 @@ curve_plot <- ggplot(data.frame(x = seq(0, 5, length.out = 1000)) |> mutate(y = 
 
 curve_plot
 ```
-Hello
+
 Say we want to study numerically its local maxima, and to do so we want to evaluate the function on two grids of different resolutions: for example, a grid with 10 values (in red), and another grid with 100 values (in black):  
 ```{r, echo=FALSE}
 curve_plot + 
