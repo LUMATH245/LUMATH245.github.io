@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3 Functions and Loops | Lancaster University MATH245 Computational Mathematics</title>
   <meta name="description" content="3 Functions and Loops | Lancaster University MATH245 Computational Mathematics" />
-  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3 Functions and Loops | Lancaster University MATH245 Computational Mathematics" />
   <meta property="og:type" content="book" />
@@ -54,27 +54,25 @@
 
 
 <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -83,15 +81,15 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
+code span.bu { } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -104,7 +102,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.im { } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -136,39 +134,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <ul class="summary">
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="1" data-path="intro_prog.html"><a href="intro_prog.html"><i class="fa fa-check"></i><b>1</b> Introduction to Computational Mathematics</a>
-<ul>
+<li class="chapter" data-level="1" data-path="intro_prog.html"><a href="intro_prog.html"><i class="fa fa-check"></i><b>1</b> Introduction to Computational Mathematics</a><ul>
 <li class="chapter" data-level="1.1" data-path="intro_prog.html"><a href="intro_prog.html#what-is-a-computer"><i class="fa fa-check"></i><b>1.1</b> What is a Computer?</a></li>
 <li class="chapter" data-level="1.2" data-path="intro_prog.html"><a href="intro_prog.html#computing-accessing-memory-and-storing"><i class="fa fa-check"></i><b>1.2</b> Computing, Accessing Memory and Storing</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="log_vec.html"><a href="log_vec.html"><i class="fa fa-check"></i><b>2</b> Logic and Vectors</a>
-<ul>
+<li class="chapter" data-level="2" data-path="log_vec.html"><a href="log_vec.html"><i class="fa fa-check"></i><b>2</b> Logic and Vectors</a><ul>
 <li class="chapter" data-level="2.1" data-path="log_vec.html"><a href="log_vec.html#comparisons"><i class="fa fa-check"></i><b>2.1</b> Comparisons</a></li>
 <li class="chapter" data-level="2.2" data-path="log_vec.html"><a href="log_vec.html#logical-arithmetic"><i class="fa fa-check"></i><b>2.2</b> Logical Arithmetic</a></li>
 <li class="chapter" data-level="2.3" data-path="log_vec.html"><a href="log_vec.html#flow"><i class="fa fa-check"></i><b>2.3</b> Flow</a></li>
 <li class="chapter" data-level="2.4" data-path="log_vec.html"><a href="log_vec.html#vectors"><i class="fa fa-check"></i><b>2.4</b> Vectors</a></li>
 <li class="chapter" data-level="2.5" data-path="log_vec.html"><a href="log_vec.html#accessing-vectors"><i class="fa fa-check"></i><b>2.5</b> Accessing vectors</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="func_loop.html"><a href="func_loop.html"><i class="fa fa-check"></i><b>3</b> Functions and Loops</a>
-<ul>
+<li class="chapter" data-level="3" data-path="func_loop.html"><a href="func_loop.html"><i class="fa fa-check"></i><b>3</b> Functions and Loops</a><ul>
 <li class="chapter" data-level="3.1" data-path="func_loop.html"><a href="func_loop.html#functions"><i class="fa fa-check"></i><b>3.1</b> Functions</a></li>
 <li class="chapter" data-level="3.2" data-path="func_loop.html"><a href="func_loop.html#looping"><i class="fa fa-check"></i><b>3.2</b> State and For Loop</a></li>
 <li class="chapter" data-level="3.3" data-path="func_loop.html"><a href="func_loop.html#more-about-looping"><i class="fa fa-check"></i><b>3.3</b> More about looping</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="maps_alg.html"><a href="maps_alg.html"><i class="fa fa-check"></i><b>4</b> Functional Programming and Linear Algebra</a>
-<ul>
+<li class="chapter" data-level="4" data-path="maps_alg.html"><a href="maps_alg.html"><i class="fa fa-check"></i><b>4</b> Functional Programming and Linear Algebra</a><ul>
 <li class="chapter" data-level="4.1" data-path="maps_alg.html"><a href="maps_alg.html#Maps"><i class="fa fa-check"></i><b>4.1</b> An intro to Functional Programming</a></li>
 <li class="chapter" data-level="4.2" data-path="maps_alg.html"><a href="maps_alg.html#doing-linear-algebra"><i class="fa fa-check"></i><b>4.2</b> Doing Linear Algebra</a></li>
 <li class="chapter" data-level="4.3" data-path="maps_alg.html"><a href="maps_alg.html#an-end-note-to-this-chapter"><i class="fa fa-check"></i><b>4.3</b> An end note to this chapter</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="df_plt.html"><a href="df_plt.html"><i class="fa fa-check"></i><b>5</b> Data Frames and Plotting</a>
-<ul>
+<li class="chapter" data-level="5" data-path="df_plt.html"><a href="df_plt.html"><i class="fa fa-check"></i><b>5</b> Data Frames and Plotting</a><ul>
 <li class="chapter" data-level="5.1" data-path="df_plt.html"><a href="df_plt.html#data-frames"><i class="fa fa-check"></i><b>5.1</b> Data Frames</a></li>
 <li class="chapter" data-level="5.2" data-path="df_plt.html"><a href="df_plt.html#plotting-with-ggplot-and-plotnine"><i class="fa fa-check"></i><b>5.2</b> Plotting with ggplot (and plotnine)</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="challenge.html"><a href="challenge.html"><i class="fa fa-check"></i><b>6</b> Additional Programming Challenges</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="challenge.html"><a href="challenge.html#part-1-scientific-computing"><i class="fa fa-check"></i><b>6.1</b> Part 1: Scientific Computing</a></li>
+<li class="chapter" data-level="6" data-path="fixed.html"><a href="fixed.html"><i class="fa fa-check"></i><b>6</b> Fixed point iteration</a><ul>
+<li class="chapter" data-level="6.1" data-path="fixed.html"><a href="fixed.html#fixed-points"><i class="fa fa-check"></i><b>6.1</b> Fixed points</a></li>
+<li class="chapter" data-level="6.2" data-path="fixed.html"><a href="fixed.html#convergence"><i class="fa fa-check"></i><b>6.2</b> Convergence</a></li>
+<li class="chapter" data-level="6.3" data-path="fixed.html"><a href="fixed.html#fixed-point-theorems"><i class="fa fa-check"></i><b>6.3</b> Fixed point theorems</a></li>
+<li class="chapter" data-level="6.4" data-path="fixed.html"><a href="fixed.html#exercises"><i class="fa fa-check"></i><b>6.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="challenge.html"><a href="challenge.html"><i class="fa fa-check"></i><b>7</b> Additional Programming Challenges</a><ul>
+<li class="chapter" data-level="7.1" data-path="challenge.html"><a href="challenge.html#part-1-scientific-computing"><i class="fa fa-check"></i><b>7.1</b> Part 1: Scientific Computing</a></li>
 </ul></li>
 </ul>
 
@@ -187,9 +185,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="func_loop" class="section level1 hasAnchor" number="3">
+<div id="func_loop" class="section level1 hasAnchor">
 <h1><span class="header-section-number">3</span> Functions and Loops<a href="func_loop.html#func_loop" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="functions" class="section level2 hasAnchor" number="3.1">
+<div id="functions" class="section level2 hasAnchor">
 <h2><span class="header-section-number">3.1</span> Functions<a href="func_loop.html#functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Functions in mathematics, is an assignment of an element from a set to a
 different set. Here we give a more “practical” definition.</p>
@@ -230,11 +228,11 @@ and provides us with information said function as output! For example:</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="func_loop.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(sqrt)</span></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb400-1" title="1"><span class="kw">help</span>(sqrt)</a></code></pre></div>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb401"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb401-1"><a href="func_loop.html#cb401-1" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(math.sqrt)</span></code></pre></div>
+<div class="sourceCode" id="cb401"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb401-1" title="1"><span class="bu">help</span>(math.sqrt)</a></code></pre></div>
 </div>
 </div>
 <p>Whenever you will meet a <strong>built-in</strong> function, or a function from a
@@ -244,7 +242,7 @@ libraries, so pretty much all the functions you will meet are
 documented! Unfortunately this is not the case for Python, where
 documenting functions is not a requirement, so not always the <code>help</code>
 will return something.</p>
-<div id="writing-new-functions" class="section level3 hasAnchor" number="3.1.1">
+<div id="writing-new-functions" class="section level3 hasAnchor">
 <h3><span class="header-section-number">3.1.1</span> Writing new functions<a href="func_loop.html#writing-new-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The real power of functions comes when we start creating our own. We can
 write new functions that perform specific tasks, tailored to our needs.
@@ -260,10 +258,10 @@ g = 453.5924 * lbs
 <p>In <strong>R</strong>, we define a function using the <code>function()</code> command. The
 arguments of the function are placed within the parentheses. Here’s how
 we can create a function in R:</p>
-<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="func_loop.html#cb402-1" aria-hidden="true" tabindex="-1"></a>lbs_to_grams <span class="ot">&lt;-</span> <span class="cf">function</span>(lbs) {</span>
-<span id="cb402-2"><a href="func_loop.html#cb402-2" aria-hidden="true" tabindex="-1"></a>  grams <span class="ot">&lt;-</span> <span class="fl">453.5924</span> <span class="sc">*</span> lbs</span>
-<span id="cb402-3"><a href="func_loop.html#cb402-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(grams)</span>
-<span id="cb402-4"><a href="func_loop.html#cb402-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb402-1" title="1">lbs_to_grams &lt;-<span class="st"> </span><span class="cf">function</span>(lbs) {</a>
+<a class="sourceLine" id="cb402-2" title="2">  grams &lt;-<span class="st"> </span><span class="fl">453.5924</span> <span class="op">*</span><span class="st"> </span>lbs</a>
+<a class="sourceLine" id="cb402-3" title="3">  <span class="kw">return</span>(grams)</a>
+<a class="sourceLine" id="cb402-4" title="4">}</a></code></pre></div>
 <p>In this function, <code>lbs</code> is the input (or argument), and the function
 returns the equivalent weight in grams. In R, we create a new function
 with the <code>function</code> statement, and then we assign it to a variable,
@@ -273,9 +271,9 @@ is used to specify the result that the function should output.</p>
 arguments of the function are placed within the parentheses. Again we
 need to use indentation: this is crucial in Python as it determines the
 code blocks. Here’s how we can create a function in Python:</p>
-<div class="sourceCode" id="cb403"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb403-1"><a href="func_loop.html#cb403-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lbs_to_grams(lbs):</span>
-<span id="cb403-2"><a href="func_loop.html#cb403-2" aria-hidden="true" tabindex="-1"></a>  grams <span class="op">=</span> <span class="fl">453.5924</span> <span class="op">*</span> lbs</span>
-<span id="cb403-3"><a href="func_loop.html#cb403-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> grams</span></code></pre></div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb403-1" title="1"><span class="kw">def</span> lbs_to_grams(lbs):</a>
+<a class="sourceLine" id="cb403-2" title="2">  grams <span class="op">=</span> <span class="fl">453.5924</span> <span class="op">*</span> lbs</a>
+<a class="sourceLine" id="cb403-3" title="3">  <span class="cf">return</span> grams</a></code></pre></div>
 <p>In this function, <code>lbs</code> is the input (or argument), and the function
 returns the equivalent weight in grams: following the <code>def</code> keyword we
 need both the function name, followed by the argument. The <code>return</code>
@@ -284,24 +282,24 @@ statement is used to specify the result that the function should output.</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="func_loop.html#cb404-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_grams</span>(<span class="at">lbs=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb404-1" title="1"><span class="kw">lbs_to_grams</span>(<span class="dt">lbs=</span><span class="dv">2</span>)</a></code></pre></div>
 <pre><code>## [1] 907.1848</code></pre>
-<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="func_loop.html#cb406-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_grams</span>(<span class="at">lbs=</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb406-1" title="1"><span class="kw">lbs_to_grams</span>(<span class="dt">lbs=</span><span class="dv">3</span>)</a></code></pre></div>
 <pre><code>## [1] 1360.777</code></pre>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="func_loop.html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="co"># when calling we can also omit </span></span>
-<span id="cb408-2"><a href="func_loop.html#cb408-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the argument name for brevity</span></span>
-<span id="cb408-3"><a href="func_loop.html#cb408-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_grams</span>(<span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb408-1" title="1"><span class="co"># when calling we can also omit </span></a>
+<a class="sourceLine" id="cb408-2" title="2"><span class="co"># the argument name for brevity</span></a>
+<a class="sourceLine" id="cb408-3" title="3"><span class="kw">lbs_to_grams</span>(<span class="dv">3</span>)</a></code></pre></div>
 <pre><code>## [1] 1360.777</code></pre>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb410"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb410-1"><a href="func_loop.html#cb410-1" aria-hidden="true" tabindex="-1"></a>lbs_to_grams(lbs<span class="op">=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb410"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb410-1" title="1">lbs_to_grams(lbs<span class="op">=</span><span class="dv">2</span>)</a></code></pre></div>
 <pre><code>## 907.1848</code></pre>
-<div class="sourceCode" id="cb412"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb412-1"><a href="func_loop.html#cb412-1" aria-hidden="true" tabindex="-1"></a>lbs_to_grams(lbs<span class="op">=</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb412"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb412-1" title="1">lbs_to_grams(lbs<span class="op">=</span><span class="dv">3</span>)</a></code></pre></div>
 <pre><code>## 1360.7772</code></pre>
-<div class="sourceCode" id="cb414"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb414-1"><a href="func_loop.html#cb414-1" aria-hidden="true" tabindex="-1"></a><span class="co"># when calling we can also omit </span></span>
-<span id="cb414-2"><a href="func_loop.html#cb414-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the argument name for brevity</span></span>
-<span id="cb414-3"><a href="func_loop.html#cb414-3" aria-hidden="true" tabindex="-1"></a>lbs_to_grams(<span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb414"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb414-1" title="1"><span class="co"># when calling we can also omit </span></a>
+<a class="sourceLine" id="cb414-2" title="2"><span class="co"># the argument name for brevity</span></a>
+<a class="sourceLine" id="cb414-3" title="3">lbs_to_grams(<span class="dv">3</span>)</a></code></pre></div>
 <pre><code>## 1360.7772</code></pre>
 </div>
 </div>
@@ -325,7 +323,7 @@ The variables used inside a function are local to that function. Think
 of your function as a guarded sandbox, where no child leaves unless you
 specifically tell them to. This sandbox is called and <em>enviroment</em>.
 Let’s cover this concept formally!</p>
-<div id="enviroments" class="section level4 hasAnchor" number="3.1.1.1">
+<div id="enviroments" class="section level4 hasAnchor">
 <h4><span class="header-section-number">3.1.1.1</span> Enviroments<a href="func_loop.html#enviroments" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>In programming, an environment refers to a structure that holds
 variables. When you create a variable in a program, the environment is
@@ -348,35 +346,35 @@ is over.</p></li>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="func_loop.html#cb416-1" aria-hidden="true" tabindex="-1"></a>lbs_to_grams <span class="ot">&lt;-</span> <span class="cf">function</span>(lbs) {</span>
-<span id="cb416-2"><a href="func_loop.html#cb416-2" aria-hidden="true" tabindex="-1"></a>  grams <span class="ot">=</span> <span class="fl">453.5924</span> <span class="sc">*</span> lbs</span>
-<span id="cb416-3"><a href="func_loop.html#cb416-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(grams)</span>
-<span id="cb416-4"><a href="func_loop.html#cb416-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb416-5"><a href="func_loop.html#cb416-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb416-6"><a href="func_loop.html#cb416-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a variable in the global environment</span></span>
-<span id="cb416-7"><a href="func_loop.html#cb416-7" aria-hidden="true" tabindex="-1"></a>glo_grams <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb416-8"><a href="func_loop.html#cb416-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb416-9"><a href="func_loop.html#cb416-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Try to access the local variable &quot;grams&quot;</span></span>
-<span id="cb416-10"><a href="func_loop.html#cb416-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(grams)</span></code></pre></div>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb416-1" title="1">lbs_to_grams &lt;-<span class="st"> </span><span class="cf">function</span>(lbs) {</a>
+<a class="sourceLine" id="cb416-2" title="2">  grams =<span class="st"> </span><span class="fl">453.5924</span> <span class="op">*</span><span class="st"> </span>lbs</a>
+<a class="sourceLine" id="cb416-3" title="3">  <span class="kw">return</span>(grams)</a>
+<a class="sourceLine" id="cb416-4" title="4">}</a>
+<a class="sourceLine" id="cb416-5" title="5"></a>
+<a class="sourceLine" id="cb416-6" title="6"><span class="co"># Create a variable in the global environment</span></a>
+<a class="sourceLine" id="cb416-7" title="7">glo_grams &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb416-8" title="8"></a>
+<a class="sourceLine" id="cb416-9" title="9"><span class="co"># Try to access the local variable &quot;grams&quot;</span></a>
+<a class="sourceLine" id="cb416-10" title="10"><span class="kw">print</span>(grams)</a></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;grams&#39; not found</code></pre>
-<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="func_loop.html#cb418-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Try to access the global variable &quot;glo_grams&quot;</span></span>
-<span id="cb418-2"><a href="func_loop.html#cb418-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(glo_grams)</span></code></pre></div>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb418-1" title="1"><span class="co"># Try to access the global variable &quot;glo_grams&quot;</span></a>
+<a class="sourceLine" id="cb418-2" title="2"><span class="kw">print</span>(glo_grams)</a></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb420"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb420-1"><a href="func_loop.html#cb420-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lbs_to_grams(lbs):</span>
-<span id="cb420-2"><a href="func_loop.html#cb420-2" aria-hidden="true" tabindex="-1"></a>  grams <span class="op">=</span> <span class="fl">453.5924</span> <span class="op">*</span> lbs</span>
-<span id="cb420-3"><a href="func_loop.html#cb420-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> grams</span>
-<span id="cb420-4"><a href="func_loop.html#cb420-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb420-5"><a href="func_loop.html#cb420-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a variable in the global environment</span></span>
-<span id="cb420-6"><a href="func_loop.html#cb420-6" aria-hidden="true" tabindex="-1"></a>glo_grams <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb420-7"><a href="func_loop.html#cb420-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb420-8"><a href="func_loop.html#cb420-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Try to access the local variable &quot;grams&quot;</span></span>
-<span id="cb420-9"><a href="func_loop.html#cb420-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(grams)</span></code></pre></div>
-<pre><code>## name &#39;grams&#39; is not defined</code></pre>
-<div class="sourceCode" id="cb422"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb422-1"><a href="func_loop.html#cb422-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Try to access the global variable &quot;glo_grams&quot;</span></span>
-<span id="cb422-2"><a href="func_loop.html#cb422-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(glo_grams)</span></code></pre></div>
+<div class="sourceCode" id="cb420"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb420-1" title="1"><span class="kw">def</span> lbs_to_grams(lbs):</a>
+<a class="sourceLine" id="cb420-2" title="2">  grams <span class="op">=</span> <span class="fl">453.5924</span> <span class="op">*</span> lbs</a>
+<a class="sourceLine" id="cb420-3" title="3">  <span class="cf">return</span> grams</a>
+<a class="sourceLine" id="cb420-4" title="4"></a>
+<a class="sourceLine" id="cb420-5" title="5"><span class="co"># Create a variable in the global environment</span></a>
+<a class="sourceLine" id="cb420-6" title="6">glo_grams <span class="op">=</span> <span class="dv">2</span></a>
+<a class="sourceLine" id="cb420-7" title="7"></a>
+<a class="sourceLine" id="cb420-8" title="8"><span class="co"># Try to access the local variable &quot;grams&quot;</span></a>
+<a class="sourceLine" id="cb420-9" title="9"><span class="bu">print</span>(grams)</a></code></pre></div>
+<pre><code>## NameError: name &#39;grams&#39; is not defined</code></pre>
+<div class="sourceCode" id="cb422"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb422-1" title="1"><span class="co"># Try to access the global variable &quot;glo_grams&quot;</span></a>
+<a class="sourceLine" id="cb422-2" title="2"><span class="bu">print</span>(glo_grams)</a></code></pre></div>
 <pre><code>## 2</code></pre>
 </div>
 </div>
@@ -397,43 +395,43 @@ lbs variable in the global… Like for instance:</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="func_loop.html#cb424-1" aria-hidden="true" tabindex="-1"></a><span class="co"># I specified in the global lbs at some point </span></span>
-<span id="cb424-2"><a href="func_loop.html#cb424-2" aria-hidden="true" tabindex="-1"></a>lbs <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb424-3"><a href="func_loop.html#cb424-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb424-4"><a href="func_loop.html#cb424-4" aria-hidden="true" tabindex="-1"></a><span class="co"># and here I made a typo!</span></span>
-<span id="cb424-5"><a href="func_loop.html#cb424-5" aria-hidden="true" tabindex="-1"></a><span class="co">#                            V</span></span>
-<span id="cb424-6"><a href="func_loop.html#cb424-6" aria-hidden="true" tabindex="-1"></a>bug_lbs_to_grams <span class="ot">&lt;-</span> <span class="cf">function</span>(lb) {</span>
-<span id="cb424-7"><a href="func_loop.html#cb424-7" aria-hidden="true" tabindex="-1"></a>  grams <span class="ot">=</span> <span class="fl">453.5924</span> <span class="sc">*</span> lbs</span>
-<span id="cb424-8"><a href="func_loop.html#cb424-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(grams)</span>
-<span id="cb424-9"><a href="func_loop.html#cb424-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb424-10"><a href="func_loop.html#cb424-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb424-11"><a href="func_loop.html#cb424-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, no matter what I call, I will always get the same result! </span></span>
-<span id="cb424-12"><a href="func_loop.html#cb424-12" aria-hidden="true" tabindex="-1"></a><span class="co"># e.g.: 453.5924 * 3 </span></span>
-<span id="cb424-13"><a href="func_loop.html#cb424-13" aria-hidden="true" tabindex="-1"></a><span class="fu">bug_lbs_to_grams</span>(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb424-1" title="1"><span class="co"># I specified in the global lbs at some point </span></a>
+<a class="sourceLine" id="cb424-2" title="2">lbs &lt;-<span class="st"> </span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb424-3" title="3"></a>
+<a class="sourceLine" id="cb424-4" title="4"><span class="co"># and here I made a typo!</span></a>
+<a class="sourceLine" id="cb424-5" title="5"><span class="co">#                            V</span></a>
+<a class="sourceLine" id="cb424-6" title="6">bug_lbs_to_grams &lt;-<span class="st"> </span><span class="cf">function</span>(lb) {</a>
+<a class="sourceLine" id="cb424-7" title="7">  grams =<span class="st"> </span><span class="fl">453.5924</span> <span class="op">*</span><span class="st"> </span>lbs</a>
+<a class="sourceLine" id="cb424-8" title="8">  <span class="kw">return</span>(grams)</a>
+<a class="sourceLine" id="cb424-9" title="9">}</a>
+<a class="sourceLine" id="cb424-10" title="10"></a>
+<a class="sourceLine" id="cb424-11" title="11"><span class="co"># Then, no matter what I call, I will always get the same result! </span></a>
+<a class="sourceLine" id="cb424-12" title="12"><span class="co"># e.g.: 453.5924 * 3 </span></a>
+<a class="sourceLine" id="cb424-13" title="13"><span class="kw">bug_lbs_to_grams</span>(<span class="dv">2</span>)</a></code></pre></div>
 <pre><code>## [1] 1360.777</code></pre>
-<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="func_loop.html#cb426-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bug_lbs_to_grams</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb426-1" title="1"><span class="kw">bug_lbs_to_grams</span>(<span class="dv">10</span>)</a></code></pre></div>
 <pre><code>## [1] 1360.777</code></pre>
-<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="func_loop.html#cb428-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bug_lbs_to_grams</span>(<span class="dv">42</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb428-1" title="1"><span class="kw">bug_lbs_to_grams</span>(<span class="dv">42</span>)</a></code></pre></div>
 <pre><code>## [1] 1360.777</code></pre>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb430"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb430-1"><a href="func_loop.html#cb430-1" aria-hidden="true" tabindex="-1"></a><span class="co"># I specified in the global lbs at some point </span></span>
-<span id="cb430-2"><a href="func_loop.html#cb430-2" aria-hidden="true" tabindex="-1"></a>lbs <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb430-3"><a href="func_loop.html#cb430-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb430-4"><a href="func_loop.html#cb430-4" aria-hidden="true" tabindex="-1"></a><span class="co"># and here I made a typo!</span></span>
-<span id="cb430-5"><a href="func_loop.html#cb430-5" aria-hidden="true" tabindex="-1"></a><span class="co">#                     V</span></span>
-<span id="cb430-6"><a href="func_loop.html#cb430-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> bug_lbs_to_grams(lb):</span>
-<span id="cb430-7"><a href="func_loop.html#cb430-7" aria-hidden="true" tabindex="-1"></a>  grams <span class="op">=</span> <span class="fl">453.5924</span> <span class="op">*</span> lbs</span>
-<span id="cb430-8"><a href="func_loop.html#cb430-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> grams</span>
-<span id="cb430-9"><a href="func_loop.html#cb430-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb430-10"><a href="func_loop.html#cb430-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, no matter what I call, I will always get the same result! </span></span>
-<span id="cb430-11"><a href="func_loop.html#cb430-11" aria-hidden="true" tabindex="-1"></a><span class="co"># e.g.: 453.5924 * 3 </span></span>
-<span id="cb430-12"><a href="func_loop.html#cb430-12" aria-hidden="true" tabindex="-1"></a>bug_lbs_to_grams(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb430"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb430-1" title="1"><span class="co"># I specified in the global lbs at some point </span></a>
+<a class="sourceLine" id="cb430-2" title="2">lbs <span class="op">=</span> <span class="dv">3</span></a>
+<a class="sourceLine" id="cb430-3" title="3"></a>
+<a class="sourceLine" id="cb430-4" title="4"><span class="co"># and here I made a typo!</span></a>
+<a class="sourceLine" id="cb430-5" title="5"><span class="co">#                     V</span></a>
+<a class="sourceLine" id="cb430-6" title="6"><span class="kw">def</span> bug_lbs_to_grams(lb):</a>
+<a class="sourceLine" id="cb430-7" title="7">  grams <span class="op">=</span> <span class="fl">453.5924</span> <span class="op">*</span> lbs</a>
+<a class="sourceLine" id="cb430-8" title="8">  <span class="cf">return</span> grams</a>
+<a class="sourceLine" id="cb430-9" title="9"></a>
+<a class="sourceLine" id="cb430-10" title="10"><span class="co"># Then, no matter what I call, I will always get the same result! </span></a>
+<a class="sourceLine" id="cb430-11" title="11"><span class="co"># e.g.: 453.5924 * 3 </span></a>
+<a class="sourceLine" id="cb430-12" title="12">bug_lbs_to_grams(<span class="dv">2</span>)</a></code></pre></div>
 <pre><code>## 1360.7772</code></pre>
-<div class="sourceCode" id="cb432"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb432-1"><a href="func_loop.html#cb432-1" aria-hidden="true" tabindex="-1"></a>bug_lbs_to_grams(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb432"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb432-1" title="1">bug_lbs_to_grams(<span class="dv">10</span>)</a></code></pre></div>
 <pre><code>## 1360.7772</code></pre>
-<div class="sourceCode" id="cb434"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb434-1"><a href="func_loop.html#cb434-1" aria-hidden="true" tabindex="-1"></a>bug_lbs_to_grams(<span class="dv">42</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb434"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb434-1" title="1">bug_lbs_to_grams(<span class="dv">42</span>)</a></code></pre></div>
 <pre><code>## 1360.7772</code></pre>
 </div>
 </div>
@@ -452,28 +450,28 @@ risky and prone to bugs</strong>.</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="func_loop.html#cb436-1" aria-hidden="true" tabindex="-1"></a><span class="co"># global lbs</span></span>
-<span id="cb436-2"><a href="func_loop.html#cb436-2" aria-hidden="true" tabindex="-1"></a>lbs <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb436-3"><a href="func_loop.html#cb436-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb436-4"><a href="func_loop.html#cb436-4" aria-hidden="true" tabindex="-1"></a><span class="co"># but this does not affect the &quot;lbs&quot; of the function argument</span></span>
-<span id="cb436-5"><a href="func_loop.html#cb436-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_grams</span>(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb436-1" title="1"><span class="co"># global lbs</span></a>
+<a class="sourceLine" id="cb436-2" title="2">lbs &lt;-<span class="st"> </span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb436-3" title="3"></a>
+<a class="sourceLine" id="cb436-4" title="4"><span class="co"># but this does not affect the &quot;lbs&quot; of the function argument</span></a>
+<a class="sourceLine" id="cb436-5" title="5"><span class="kw">lbs_to_grams</span>(<span class="dv">2</span>)</a></code></pre></div>
 <pre><code>## [1] 907.1848</code></pre>
-<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="func_loop.html#cb438-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_grams</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb438-1" title="1"><span class="kw">lbs_to_grams</span>(<span class="dv">10</span>)</a></code></pre></div>
 <pre><code>## [1] 4535.924</code></pre>
-<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="func_loop.html#cb440-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_grams</span>(<span class="dv">42</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb440-1" title="1"><span class="kw">lbs_to_grams</span>(<span class="dv">42</span>)</a></code></pre></div>
 <pre><code>## [1] 19050.88</code></pre>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb442"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb442-1"><a href="func_loop.html#cb442-1" aria-hidden="true" tabindex="-1"></a><span class="co"># global lbs </span></span>
-<span id="cb442-2"><a href="func_loop.html#cb442-2" aria-hidden="true" tabindex="-1"></a>lbs <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb442-3"><a href="func_loop.html#cb442-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb442-4"><a href="func_loop.html#cb442-4" aria-hidden="true" tabindex="-1"></a><span class="co"># but this does not affect the &quot;lbs&quot; of the function argument</span></span>
-<span id="cb442-5"><a href="func_loop.html#cb442-5" aria-hidden="true" tabindex="-1"></a>lbs_to_grams(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb442"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb442-1" title="1"><span class="co"># global lbs </span></a>
+<a class="sourceLine" id="cb442-2" title="2">lbs <span class="op">=</span> <span class="dv">3</span></a>
+<a class="sourceLine" id="cb442-3" title="3"></a>
+<a class="sourceLine" id="cb442-4" title="4"><span class="co"># but this does not affect the &quot;lbs&quot; of the function argument</span></a>
+<a class="sourceLine" id="cb442-5" title="5">lbs_to_grams(<span class="dv">2</span>)</a></code></pre></div>
 <pre><code>## 907.1848</code></pre>
-<div class="sourceCode" id="cb444"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb444-1"><a href="func_loop.html#cb444-1" aria-hidden="true" tabindex="-1"></a>lbs_to_grams(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb444"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb444-1" title="1">lbs_to_grams(<span class="dv">10</span>)</a></code></pre></div>
 <pre><code>## 4535.924</code></pre>
-<div class="sourceCode" id="cb446"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb446-1"><a href="func_loop.html#cb446-1" aria-hidden="true" tabindex="-1"></a>lbs_to_grams(<span class="dv">42</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb446"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb446-1" title="1">lbs_to_grams(<span class="dv">42</span>)</a></code></pre></div>
 <pre><code>## 19050.8808</code></pre>
 </div>
 </div>
@@ -503,7 +501,7 @@ be a great help in these situations. You can learn more about debugging
 in RStudio <a href="https://support.posit.co/hc/en-us/articles/205612627-Debugging-with-the-RStudio-IDE">in this
 guide</a>.</p>
 </div>
-<div id="multiple-arguments" class="section level4 hasAnchor" number="3.1.1.2">
+<div id="multiple-arguments" class="section level4 hasAnchor">
 <h4><span class="header-section-number">3.1.1.2</span> Multiple arguments<a href="func_loop.html#multiple-arguments" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Say we want now to convert pounds to milliliters. To convert from mass
 to volume, we will need an additional information, the specific mass. In
@@ -521,37 +519,37 @@ using the <code>specific_mass</code>, we’ll convert grams to liters.</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="func_loop.html#cb448-1" aria-hidden="true" tabindex="-1"></a>lbs_to_ml <span class="ot">&lt;-</span> <span class="cf">function</span>(lbs, specific_mass) {</span>
-<span id="cb448-2"><a href="func_loop.html#cb448-2" aria-hidden="true" tabindex="-1"></a>  grams <span class="ot">&lt;-</span> <span class="fu">lbs_to_grams</span>(lbs)</span>
-<span id="cb448-3"><a href="func_loop.html#cb448-3" aria-hidden="true" tabindex="-1"></a>  ml <span class="ot">&lt;-</span> grams <span class="sc">/</span> specific_mass</span>
-<span id="cb448-4"><a href="func_loop.html#cb448-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(ml)</span>
-<span id="cb448-5"><a href="func_loop.html#cb448-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb448-6"><a href="func_loop.html#cb448-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb448-7"><a href="func_loop.html#cb448-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Specific mass of water and oil</span></span>
-<span id="cb448-8"><a href="func_loop.html#cb448-8" aria-hidden="true" tabindex="-1"></a>water_mass <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb448-9"><a href="func_loop.html#cb448-9" aria-hidden="true" tabindex="-1"></a>oil_mass <span class="ot">=</span> <span class="fl">0.92</span></span>
-<span id="cb448-10"><a href="func_loop.html#cb448-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb448-11"><a href="func_loop.html#cb448-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 2 lbs of water and oil to ml</span></span>
-<span id="cb448-12"><a href="func_loop.html#cb448-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_ml</span>(<span class="dv">2</span>, water_mass)</span></code></pre></div>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb448-1" title="1">lbs_to_ml &lt;-<span class="st"> </span><span class="cf">function</span>(lbs, specific_mass) {</a>
+<a class="sourceLine" id="cb448-2" title="2">  grams &lt;-<span class="st"> </span><span class="kw">lbs_to_grams</span>(lbs)</a>
+<a class="sourceLine" id="cb448-3" title="3">  ml &lt;-<span class="st"> </span>grams <span class="op">/</span><span class="st"> </span>specific_mass</a>
+<a class="sourceLine" id="cb448-4" title="4">  <span class="kw">return</span>(ml)</a>
+<a class="sourceLine" id="cb448-5" title="5">}</a>
+<a class="sourceLine" id="cb448-6" title="6"></a>
+<a class="sourceLine" id="cb448-7" title="7"><span class="co"># Specific mass of water and oil</span></a>
+<a class="sourceLine" id="cb448-8" title="8">water_mass =<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb448-9" title="9">oil_mass =<span class="st"> </span><span class="fl">0.92</span></a>
+<a class="sourceLine" id="cb448-10" title="10"></a>
+<a class="sourceLine" id="cb448-11" title="11"><span class="co"># Convert 2 lbs of water and oil to ml</span></a>
+<a class="sourceLine" id="cb448-12" title="12"><span class="kw">lbs_to_ml</span>(<span class="dv">2</span>, water_mass)</a></code></pre></div>
 <pre><code>## [1] 907.1848</code></pre>
-<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="func_loop.html#cb450-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_ml</span>(<span class="dv">2</span>, oil_mass)</span></code></pre></div>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb450-1" title="1"><span class="kw">lbs_to_ml</span>(<span class="dv">2</span>, oil_mass)</a></code></pre></div>
 <pre><code>## [1] 986.0704</code></pre>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb452"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb452-1"><a href="func_loop.html#cb452-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lbs_to_ml(lbs, specific_mass):</span>
-<span id="cb452-2"><a href="func_loop.html#cb452-2" aria-hidden="true" tabindex="-1"></a>  grams <span class="op">=</span> lbs_to_grams(lbs)</span>
-<span id="cb452-3"><a href="func_loop.html#cb452-3" aria-hidden="true" tabindex="-1"></a>  ml <span class="op">=</span> grams <span class="op">/</span> specific_mass</span>
-<span id="cb452-4"><a href="func_loop.html#cb452-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> ml</span>
-<span id="cb452-5"><a href="func_loop.html#cb452-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb452-6"><a href="func_loop.html#cb452-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Specific mass of water and oil</span></span>
-<span id="cb452-7"><a href="func_loop.html#cb452-7" aria-hidden="true" tabindex="-1"></a>water_mass <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb452-8"><a href="func_loop.html#cb452-8" aria-hidden="true" tabindex="-1"></a>oil_mass <span class="op">=</span> <span class="fl">0.92</span></span>
-<span id="cb452-9"><a href="func_loop.html#cb452-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb452-10"><a href="func_loop.html#cb452-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 2 lbs of water and oil to ml</span></span>
-<span id="cb452-11"><a href="func_loop.html#cb452-11" aria-hidden="true" tabindex="-1"></a>lbs_to_ml(<span class="dv">2</span>, water_mass)</span></code></pre></div>
+<div class="sourceCode" id="cb452"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb452-1" title="1"><span class="kw">def</span> lbs_to_ml(lbs, specific_mass):</a>
+<a class="sourceLine" id="cb452-2" title="2">  grams <span class="op">=</span> lbs_to_grams(lbs)</a>
+<a class="sourceLine" id="cb452-3" title="3">  ml <span class="op">=</span> grams <span class="op">/</span> specific_mass</a>
+<a class="sourceLine" id="cb452-4" title="4">  <span class="cf">return</span> ml</a>
+<a class="sourceLine" id="cb452-5" title="5"></a>
+<a class="sourceLine" id="cb452-6" title="6"><span class="co"># Specific mass of water and oil</span></a>
+<a class="sourceLine" id="cb452-7" title="7">water_mass <span class="op">=</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb452-8" title="8">oil_mass <span class="op">=</span> <span class="fl">0.92</span></a>
+<a class="sourceLine" id="cb452-9" title="9"></a>
+<a class="sourceLine" id="cb452-10" title="10"><span class="co"># Convert 2 lbs of water and oil to ml</span></a>
+<a class="sourceLine" id="cb452-11" title="11">lbs_to_ml(<span class="dv">2</span>, water_mass)</a></code></pre></div>
 <pre><code>## 907.1848</code></pre>
-<div class="sourceCode" id="cb454"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb454-1"><a href="func_loop.html#cb454-1" aria-hidden="true" tabindex="-1"></a>lbs_to_ml(<span class="dv">2</span>, oil_mass)</span></code></pre></div>
+<div class="sourceCode" id="cb454"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb454-1" title="1">lbs_to_ml(<span class="dv">2</span>, oil_mass)</a></code></pre></div>
 <pre><code>## 986.0704347826087</code></pre>
 </div>
 </div>
@@ -559,26 +557,26 @@ using the <code>specific_mass</code>, we’ll convert grams to liters.</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="func_loop.html#cb456-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specific mass of water and oil</span></span>
-<span id="cb456-2"><a href="func_loop.html#cb456-2" aria-hidden="true" tabindex="-1"></a>water_mass <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb456-3"><a href="func_loop.html#cb456-3" aria-hidden="true" tabindex="-1"></a>oil_mass <span class="ot">=</span> <span class="fl">0.92</span></span>
-<span id="cb456-4"><a href="func_loop.html#cb456-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb456-5"><a href="func_loop.html#cb456-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 2 lbs of water and oil to ml</span></span>
-<span id="cb456-6"><a href="func_loop.html#cb456-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_ml</span>(<span class="dv">2</span>, <span class="at">specific_mass=</span>water_mass)</span></code></pre></div>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb456-1" title="1"><span class="co"># Specific mass of water and oil</span></a>
+<a class="sourceLine" id="cb456-2" title="2">water_mass =<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb456-3" title="3">oil_mass =<span class="st"> </span><span class="fl">0.92</span></a>
+<a class="sourceLine" id="cb456-4" title="4"></a>
+<a class="sourceLine" id="cb456-5" title="5"><span class="co"># Convert 2 lbs of water and oil to ml</span></a>
+<a class="sourceLine" id="cb456-6" title="6"><span class="kw">lbs_to_ml</span>(<span class="dv">2</span>, <span class="dt">specific_mass=</span>water_mass)</a></code></pre></div>
 <pre><code>## [1] 907.1848</code></pre>
-<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="func_loop.html#cb458-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_ml</span>(<span class="dv">2</span>, <span class="at">specific_mass=</span>oil_mass)</span></code></pre></div>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb458-1" title="1"><span class="kw">lbs_to_ml</span>(<span class="dv">2</span>, <span class="dt">specific_mass=</span>oil_mass)</a></code></pre></div>
 <pre><code>## [1] 986.0704</code></pre>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb460"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb460-1"><a href="func_loop.html#cb460-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specific mass of water and oil</span></span>
-<span id="cb460-2"><a href="func_loop.html#cb460-2" aria-hidden="true" tabindex="-1"></a>water_mass <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb460-3"><a href="func_loop.html#cb460-3" aria-hidden="true" tabindex="-1"></a>oil_mass <span class="op">=</span> <span class="fl">0.92</span></span>
-<span id="cb460-4"><a href="func_loop.html#cb460-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb460-5"><a href="func_loop.html#cb460-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 2 lbs of water and oil to ml</span></span>
-<span id="cb460-6"><a href="func_loop.html#cb460-6" aria-hidden="true" tabindex="-1"></a>lbs_to_ml(<span class="dv">2</span>, specific_mass<span class="op">=</span>water_mass)</span></code></pre></div>
+<div class="sourceCode" id="cb460"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb460-1" title="1"><span class="co"># Specific mass of water and oil</span></a>
+<a class="sourceLine" id="cb460-2" title="2">water_mass <span class="op">=</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb460-3" title="3">oil_mass <span class="op">=</span> <span class="fl">0.92</span></a>
+<a class="sourceLine" id="cb460-4" title="4"></a>
+<a class="sourceLine" id="cb460-5" title="5"><span class="co"># Convert 2 lbs of water and oil to ml</span></a>
+<a class="sourceLine" id="cb460-6" title="6">lbs_to_ml(<span class="dv">2</span>, specific_mass<span class="op">=</span>water_mass)</a></code></pre></div>
 <pre><code>## 907.1848</code></pre>
-<div class="sourceCode" id="cb462"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb462-1"><a href="func_loop.html#cb462-1" aria-hidden="true" tabindex="-1"></a>lbs_to_ml(<span class="dv">2</span>, specific_mass<span class="op">=</span>oil_mass)</span></code></pre></div>
+<div class="sourceCode" id="cb462"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb462-1" title="1">lbs_to_ml(<span class="dv">2</span>, specific_mass<span class="op">=</span>oil_mass)</a></code></pre></div>
 <pre><code>## 986.0704347826087</code></pre>
 </div>
 </div>
@@ -594,31 +592,31 @@ and the the code more readable in general!</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="func_loop.html#cb464-1" aria-hidden="true" tabindex="-1"></a>lbs_to_ml <span class="ot">&lt;-</span> <span class="cf">function</span>(lbs, <span class="at">specific_weight =</span> <span class="dv">1</span>) {</span>
-<span id="cb464-2"><a href="func_loop.html#cb464-2" aria-hidden="true" tabindex="-1"></a>  grams <span class="ot">&lt;-</span> <span class="fu">lbs_to_grams</span>(lbs)</span>
-<span id="cb464-3"><a href="func_loop.html#cb464-3" aria-hidden="true" tabindex="-1"></a>  ml <span class="ot">&lt;-</span> grams <span class="sc">/</span> specific_weight</span>
-<span id="cb464-4"><a href="func_loop.html#cb464-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(ml)</span>
-<span id="cb464-5"><a href="func_loop.html#cb464-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb464-6"><a href="func_loop.html#cb464-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb464-7"><a href="func_loop.html#cb464-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 2 lbs of water to ml (default behavior)</span></span>
-<span id="cb464-8"><a href="func_loop.html#cb464-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_ml</span>(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb464-1" title="1">lbs_to_ml &lt;-<span class="st"> </span><span class="cf">function</span>(lbs, <span class="dt">specific_weight =</span> <span class="dv">1</span>) {</a>
+<a class="sourceLine" id="cb464-2" title="2">  grams &lt;-<span class="st"> </span><span class="kw">lbs_to_grams</span>(lbs)</a>
+<a class="sourceLine" id="cb464-3" title="3">  ml &lt;-<span class="st"> </span>grams <span class="op">/</span><span class="st"> </span>specific_weight</a>
+<a class="sourceLine" id="cb464-4" title="4">  <span class="kw">return</span>(ml)</a>
+<a class="sourceLine" id="cb464-5" title="5">}</a>
+<a class="sourceLine" id="cb464-6" title="6"></a>
+<a class="sourceLine" id="cb464-7" title="7"><span class="co"># Convert 2 lbs of water to ml (default behavior)</span></a>
+<a class="sourceLine" id="cb464-8" title="8"><span class="kw">lbs_to_ml</span>(<span class="dv">2</span>)</a></code></pre></div>
 <pre><code>## [1] 907.1848</code></pre>
-<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="func_loop.html#cb466-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 2 lbs of oil to ml (specific behavior)</span></span>
-<span id="cb466-2"><a href="func_loop.html#cb466-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_ml</span>(<span class="dv">2</span>, <span class="fl">0.92</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb466-1" title="1"><span class="co"># Convert 2 lbs of oil to ml (specific behavior)</span></a>
+<a class="sourceLine" id="cb466-2" title="2"><span class="kw">lbs_to_ml</span>(<span class="dv">2</span>, <span class="fl">0.92</span>)</a></code></pre></div>
 <pre><code>## [1] 986.0704</code></pre>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb468"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb468-1"><a href="func_loop.html#cb468-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lbs_to_ml(lbs, specific_weight<span class="op">=</span><span class="dv">1</span>):</span>
-<span id="cb468-2"><a href="func_loop.html#cb468-2" aria-hidden="true" tabindex="-1"></a>  grams <span class="op">=</span> lbs_to_grams(lbs)</span>
-<span id="cb468-3"><a href="func_loop.html#cb468-3" aria-hidden="true" tabindex="-1"></a>  ml <span class="op">=</span> grams <span class="op">/</span> specific_weight</span>
-<span id="cb468-4"><a href="func_loop.html#cb468-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> ml</span>
-<span id="cb468-5"><a href="func_loop.html#cb468-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb468-6"><a href="func_loop.html#cb468-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 2 lbs of water to ml (default behavior)</span></span>
-<span id="cb468-7"><a href="func_loop.html#cb468-7" aria-hidden="true" tabindex="-1"></a>lbs_to_ml(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb468"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb468-1" title="1"><span class="kw">def</span> lbs_to_ml(lbs, specific_weight<span class="op">=</span><span class="dv">1</span>):</a>
+<a class="sourceLine" id="cb468-2" title="2">  grams <span class="op">=</span> lbs_to_grams(lbs)</a>
+<a class="sourceLine" id="cb468-3" title="3">  ml <span class="op">=</span> grams <span class="op">/</span> specific_weight</a>
+<a class="sourceLine" id="cb468-4" title="4">  <span class="cf">return</span> ml</a>
+<a class="sourceLine" id="cb468-5" title="5"></a>
+<a class="sourceLine" id="cb468-6" title="6"><span class="co"># Convert 2 lbs of water to ml (default behavior)</span></a>
+<a class="sourceLine" id="cb468-7" title="7">lbs_to_ml(<span class="dv">2</span>)</a></code></pre></div>
 <pre><code>## 907.1848</code></pre>
-<div class="sourceCode" id="cb470"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb470-1"><a href="func_loop.html#cb470-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 2 lbs of oil to ml (specific behavior)</span></span>
-<span id="cb470-2"><a href="func_loop.html#cb470-2" aria-hidden="true" tabindex="-1"></a>lbs_to_ml(<span class="dv">2</span>, <span class="fl">0.92</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb470"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb470-1" title="1"><span class="co"># Convert 2 lbs of oil to ml (specific behavior)</span></a>
+<a class="sourceLine" id="cb470-2" title="2">lbs_to_ml(<span class="dv">2</span>, <span class="fl">0.92</span>)</a></code></pre></div>
 <pre><code>## 986.0704347826087</code></pre>
 </div>
 </div>
@@ -627,7 +625,7 @@ easier to use. They allow the function to handle a wider range of
 scenarios while keeping the code clean and readable.</p>
 </div>
 </div>
-<div id="exercise-cups-to-grams-converter" class="section level3 hasAnchor" number="3.1.2">
+<div id="exercise-cups-to-grams-converter" class="section level3 hasAnchor">
 <h3><span class="header-section-number">3.1.2</span> Exercise: cups to grams converter<a href="func_loop.html#exercise-cups-to-grams-converter" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>So I once watched this movie with a small rat chef named Remy. Like it’s
 a very popular one, but I can’t say the title for copyright reasons.
@@ -690,8 +688,8 @@ ingredient. You can find the values in the table below:</p>
 </tr>
 </tbody>
 </table></li>
-<li><p>Call the <code>ml_to_grams</code> function with the relative ml and
-specific weight computed above, and return the result.</p></li>
+<li>Call the <code>ml_to_grams</code> function with the relative ml and
+specific weight computed above, and return the result.</li>
 </ol></li>
 <li>Run the function to convert the following:
 <ol style="list-style-type: lower-roman">
@@ -703,7 +701,7 @@ specific weight computed above, and return the result.</p></li>
 </ol>
 </div>
 </div>
-<div id="looping" class="section level2 hasAnchor" number="3.2">
+<div id="looping" class="section level2 hasAnchor">
 <h2><span class="header-section-number">3.2</span> State and For Loop<a href="func_loop.html#looping" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Normally, if you have to run some operations on multiple objects, you
 would store these objects in a vector, and then work with the vector
@@ -715,23 +713,23 @@ measurements to grams. Then, we can simply take our function
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="func_loop.html#cb472-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a vector of measurements in lbs</span></span>
-<span id="cb472-2"><a href="func_loop.html#cb472-2" aria-hidden="true" tabindex="-1"></a>measurements <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb472-3"><a href="func_loop.html#cb472-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb472-4"><a href="func_loop.html#cb472-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert measurements to grams</span></span>
-<span id="cb472-5"><a href="func_loop.html#cb472-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lbs_to_grams</span>(measurements)</span></code></pre></div>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb472-1" title="1"><span class="co"># Create a vector of measurements in lbs</span></a>
+<a class="sourceLine" id="cb472-2" title="2">measurements &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb472-3" title="3"></a>
+<a class="sourceLine" id="cb472-4" title="4"><span class="co"># Convert measurements to grams</span></a>
+<a class="sourceLine" id="cb472-5" title="5"><span class="kw">lbs_to_grams</span>(measurements)</a></code></pre></div>
 <pre><code>## [1]  453.5924  907.1848 1360.7772</code></pre>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb474"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb474-1"><a href="func_loop.html#cb474-1" aria-hidden="true" tabindex="-1"></a><span class="co"># importing numpy</span></span>
-<span id="cb474-2"><a href="func_loop.html#cb474-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb474-3"><a href="func_loop.html#cb474-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb474-4"><a href="func_loop.html#cb474-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a list of measurements in lbs</span></span>
-<span id="cb474-5"><a href="func_loop.html#cb474-5" aria-hidden="true" tabindex="-1"></a>measurements <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
-<span id="cb474-6"><a href="func_loop.html#cb474-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb474-7"><a href="func_loop.html#cb474-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert measurements to grams</span></span>
-<span id="cb474-8"><a href="func_loop.html#cb474-8" aria-hidden="true" tabindex="-1"></a>lbs_to_grams(measurements)</span></code></pre></div>
+<div class="sourceCode" id="cb474"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb474-1" title="1"><span class="co"># importing numpy</span></a>
+<a class="sourceLine" id="cb474-2" title="2"><span class="im">import</span> numpy <span class="im">as</span> np</a>
+<a class="sourceLine" id="cb474-3" title="3"></a>
+<a class="sourceLine" id="cb474-4" title="4"><span class="co"># Create a list of measurements in lbs</span></a>
+<a class="sourceLine" id="cb474-5" title="5">measurements <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</a>
+<a class="sourceLine" id="cb474-6" title="6"></a>
+<a class="sourceLine" id="cb474-7" title="7"><span class="co"># Convert measurements to grams</span></a>
+<a class="sourceLine" id="cb474-8" title="8">lbs_to_grams(measurements)</a></code></pre></div>
 <pre><code>## array([ 453.5924,  907.1848, 1360.7772])</code></pre>
 </div>
 </div>
@@ -759,19 +757,6 @@ each number is the sum of the two preceding ones, usually starting with
 <table>
 <caption>This table shows the first 10 numbers of the Fibonacci sequence,
 starting from <span class="math inline">\(r_{0}\)</span> to <span class="math inline">\(r_{9}\)</span>.</caption>
-<colgroup>
-<col width="9%" />
-<col width="9%" />
-<col width="9%" />
-<col width="9%" />
-<col width="9%" />
-<col width="9%" />
-<col width="9%" />
-<col width="9%" />
-<col width="9%" />
-<col width="9%" />
-<col width="9%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th><span class="math inline">\(r_{i}\)</span></th>
@@ -827,16 +812,16 @@ newly calculated number.</li>
 </ol>
 <p>We will return to the Fibonacci example after having introduced the
 <code>for</code> loop syntax.</p>
-<div id="the-syntax" class="section level3 hasAnchor" number="3.2.1">
+<div id="the-syntax" class="section level3 hasAnchor">
 <h3><span class="header-section-number">3.2.1</span> The syntax<a href="func_loop.html#the-syntax" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>As the syntax in R and python for looping is quite different, <strong>R and
 python chunks will be separate</strong>. You should be able to read each
 language independently.</p>
 <p>We can code a for loop as following.</p>
 <p><strong>In R:</strong></p>
-<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="func_loop.html#cb476-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
-<span id="cb476-2"><a href="func_loop.html#cb476-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
-<span id="cb476-3"><a href="func_loop.html#cb476-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb476-1" title="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>) {</a>
+<a class="sourceLine" id="cb476-2" title="2">  <span class="kw">print</span>(i)</a>
+<a class="sourceLine" id="cb476-3" title="3">}</a></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 2
 ## [1] 3
@@ -862,10 +847,10 @@ has taken all values from 1 to 10.</li>
 <p>We can also use the for loop to iterate over the elements of a vector
 directly, rather than their indices. For example, a for loop that prints
 the elements of a vector:</p>
-<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="func_loop.html#cb478-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cherry&quot;</span>)</span>
-<span id="cb478-2"><a href="func_loop.html#cb478-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (fruit <span class="cf">in</span> vec) {</span>
-<span id="cb478-3"><a href="func_loop.html#cb478-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(fruit)</span>
-<span id="cb478-4"><a href="func_loop.html#cb478-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb478-1" title="1">vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cherry&quot;</span>)</a>
+<a class="sourceLine" id="cb478-2" title="2"><span class="cf">for</span> (fruit <span class="cf">in</span> vec) {</a>
+<a class="sourceLine" id="cb478-3" title="3">  <span class="kw">print</span>(fruit)</a>
+<a class="sourceLine" id="cb478-4" title="4">}</a></code></pre></div>
 <pre><code>## [1] &quot;apple&quot;
 ## [1] &quot;banana&quot;
 ## [1] &quot;cherry&quot;</code></pre>
@@ -879,8 +864,8 @@ it at the end: what’s the value for the first cycle? And for the second?</p>
 <p><strong>In Python:</strong></p>
 <p>In Python, we can print the numbers from 1 to 10 using a for loop as
 follows:</p>
-<div class="sourceCode" id="cb480"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb480-1"><a href="func_loop.html#cb480-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>):</span>
-<span id="cb480-2"><a href="func_loop.html#cb480-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(i)</span></code></pre></div>
+<div class="sourceCode" id="cb480"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb480-1" title="1"><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>):</a>
+<a class="sourceLine" id="cb480-2" title="2">  <span class="bu">print</span>(i)</a></code></pre></div>
 <pre><code>## 1
 ## 2
 ## 3
@@ -908,9 +893,9 @@ has taken all values from 1 to 10.</li>
 <p>We can also use the for loop to iterate over the elements of a numpy
 array directly, rather than their indices. For example, a for loop that
 prints the elements of a numpy array:</p>
-<div class="sourceCode" id="cb482"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb482-1"><a href="func_loop.html#cb482-1" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.array([<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cherry&quot;</span>])</span>
-<span id="cb482-2"><a href="func_loop.html#cb482-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> fruit <span class="kw">in</span> arr:</span>
-<span id="cb482-3"><a href="func_loop.html#cb482-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(fruit)</span></code></pre></div>
+<div class="sourceCode" id="cb482"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb482-1" title="1">arr <span class="op">=</span> np.array([<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cherry&quot;</span>])</a>
+<a class="sourceLine" id="cb482-2" title="2"><span class="cf">for</span> fruit <span class="kw">in</span> arr:</a>
+<a class="sourceLine" id="cb482-3" title="3">  <span class="bu">print</span>(fruit)</a></code></pre></div>
 <pre><code>## apple
 ## banana
 ## cherry</code></pre>
@@ -932,7 +917,7 @@ It gets updated at each step over the sequence.</li>
 and update it in the cycle with <code>iter_counts = iter_counts + 1</code>. Print
 it at the end: what’s the value for the first cycle? And for the second?</p>
 </div>
-<div id="coding-the-fibonacci-sequence" class="section level3 hasAnchor" number="3.2.2">
+<div id="coding-the-fibonacci-sequence" class="section level3 hasAnchor">
 <h3><span class="header-section-number">3.2.2</span> Coding The Fibonacci sequence<a href="func_loop.html#coding-the-fibonacci-sequence" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Having covered how to write a for cycle, we come back to our Fibonacci
 example. Differently from the loop above, in order to implement our
@@ -945,31 +930,31 @@ vector.</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="func_loop.html#cb484-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the first two numbers in the sequence</span></span>
-<span id="cb484-2"><a href="func_loop.html#cb484-2" aria-hidden="true" tabindex="-1"></a>fibonacci <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span>
-<span id="cb484-3"><a href="func_loop.html#cb484-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb484-4"><a href="func_loop.html#cb484-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate the next 18 numbers in the sequence</span></span>
-<span id="cb484-5"><a href="func_loop.html#cb484-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">20</span>) {</span>
-<span id="cb484-6"><a href="func_loop.html#cb484-6" aria-hidden="true" tabindex="-1"></a>  fibonacci[i] <span class="ot">&lt;-</span> fibonacci[i <span class="sc">-</span> <span class="dv">1</span>] <span class="sc">+</span> fibonacci[i <span class="sc">-</span> <span class="dv">2</span>]</span>
-<span id="cb484-7"><a href="func_loop.html#cb484-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># alternatively</span></span>
-<span id="cb484-8"><a href="func_loop.html#cb484-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fibonacci &lt;- c(fibonacci, fibonacci[i - 1] + fibonacci[i - 2])</span></span>
-<span id="cb484-9"><a href="func_loop.html#cb484-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb484-1" title="1"><span class="co"># Initialize the first two numbers in the sequence</span></a>
+<a class="sourceLine" id="cb484-2" title="2">fibonacci &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb484-3" title="3"></a>
+<a class="sourceLine" id="cb484-4" title="4"><span class="co"># Generate the next 18 numbers in the sequence</span></a>
+<a class="sourceLine" id="cb484-5" title="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">3</span><span class="op">:</span><span class="dv">20</span>) {</a>
+<a class="sourceLine" id="cb484-6" title="6">  fibonacci[i] &lt;-<span class="st"> </span>fibonacci[i <span class="op">-</span><span class="st"> </span><span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>fibonacci[i <span class="op">-</span><span class="st"> </span><span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb484-7" title="7">  <span class="co"># alternatively</span></a>
+<a class="sourceLine" id="cb484-8" title="8">  <span class="co"># fibonacci &lt;- c(fibonacci, fibonacci[i - 1] + fibonacci[i - 2])</span></a>
+<a class="sourceLine" id="cb484-9" title="9">}</a></code></pre></div>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb485"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb485-1"><a href="func_loop.html#cb485-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the first two numbers in the sequence</span></span>
-<span id="cb485-2"><a href="func_loop.html#cb485-2" aria-hidden="true" tabindex="-1"></a>fibonacci <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>]</span>
-<span id="cb485-3"><a href="func_loop.html#cb485-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb485-4"><a href="func_loop.html#cb485-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate the next 18 numbers in the sequence</span></span>
-<span id="cb485-5"><a href="func_loop.html#cb485-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">20</span>):</span>
-<span id="cb485-6"><a href="func_loop.html#cb485-6" aria-hidden="true" tabindex="-1"></a>  fibonacci.append(fibonacci[i <span class="op">-</span> <span class="dv">1</span>] <span class="op">+</span> fibonacci[i <span class="op">-</span> <span class="dv">2</span>])</span>
-<span id="cb485-7"><a href="func_loop.html#cb485-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># alternatively</span></span>
-<span id="cb485-8"><a href="func_loop.html#cb485-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">#fibonacci = fibonacci + [fibonacci[i - 1] + fibonacci[i - 2]]</span></span>
-<span id="cb485-9"><a href="func_loop.html#cb485-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb485-10"><a href="func_loop.html#cb485-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb485-11"><a href="func_loop.html#cb485-11" aria-hidden="true" tabindex="-1"></a><span class="co"># converting the list into a numpy array </span></span>
-<span id="cb485-12"><a href="func_loop.html#cb485-12" aria-hidden="true" tabindex="-1"></a><span class="co"># (useful if we want to use vectorised operations later!)</span></span>
-<span id="cb485-13"><a href="func_loop.html#cb485-13" aria-hidden="true" tabindex="-1"></a>fibonacci <span class="op">=</span> np.array(fibonacci)</span></code></pre></div>
+<div class="sourceCode" id="cb485"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb485-1" title="1"><span class="co"># Initialize the first two numbers in the sequence</span></a>
+<a class="sourceLine" id="cb485-2" title="2">fibonacci <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb485-3" title="3"></a>
+<a class="sourceLine" id="cb485-4" title="4"><span class="co"># Generate the next 18 numbers in the sequence</span></a>
+<a class="sourceLine" id="cb485-5" title="5"><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">20</span>):</a>
+<a class="sourceLine" id="cb485-6" title="6">  fibonacci.append(fibonacci[i <span class="op">-</span> <span class="dv">1</span>] <span class="op">+</span> fibonacci[i <span class="op">-</span> <span class="dv">2</span>])</a>
+<a class="sourceLine" id="cb485-7" title="7">  <span class="co"># alternatively</span></a>
+<a class="sourceLine" id="cb485-8" title="8">  <span class="co">#fibonacci = fibonacci + [fibonacci[i - 1] + fibonacci[i - 2]]</span></a>
+<a class="sourceLine" id="cb485-9" title="9"></a>
+<a class="sourceLine" id="cb485-10" title="10"></a>
+<a class="sourceLine" id="cb485-11" title="11"><span class="co"># converting the list into a numpy array </span></a>
+<a class="sourceLine" id="cb485-12" title="12"><span class="co"># (useful if we want to use vectorised operations later!)</span></a>
+<a class="sourceLine" id="cb485-13" title="13">fibonacci <span class="op">=</span> np.array(fibonacci)</a></code></pre></div>
 </div>
 </div>
 <p>In the R code:</p>
@@ -1008,15 +993,15 @@ an extra vector (with one element) to the existing vector.</li>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="func_loop.html#cb486-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the Fibonacci sequence</span></span>
-<span id="cb486-2"><a href="func_loop.html#cb486-2" aria-hidden="true" tabindex="-1"></a>fibonacci</span></code></pre></div>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb486-1" title="1"><span class="co"># Print the Fibonacci sequence</span></a>
+<a class="sourceLine" id="cb486-2" title="2">fibonacci</a></code></pre></div>
 <pre><code>##  [1]    0    1    1    2    3    5    8   13   21   34   55
 ## [12]   89  144  233  377  610  987 1597 2584 4181</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb488"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb488-1"><a href="func_loop.html#cb488-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the Fibonacci sequence</span></span>
-<span id="cb488-2"><a href="func_loop.html#cb488-2" aria-hidden="true" tabindex="-1"></a>fibonacci</span></code></pre></div>
+<div class="sourceCode" id="cb488"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb488-1" title="1"><span class="co"># Print the Fibonacci sequence</span></a>
+<a class="sourceLine" id="cb488-2" title="2">fibonacci</a></code></pre></div>
 <pre><code>## array([   0,    1,    1,    2,    3,    5,    8,   13,   21,   34,   55,
 ##          89,  144,  233,  377,  610,  987, 1597, 2584, 4181])</code></pre>
 </div>
@@ -1027,7 +1012,7 @@ happening at every iteration, e.g. try to add: <code>print(i)</code>,
 <code>print(fibonacci[i])</code> and <code>print(fibonacci[i-1])</code> before the
 computation, or <code>print(fibonacci)</code> after the computation has been done.
 <code>print</code> statements are extremely useful for debugging for cycles!</p>
-<div id="safer-for-loops" class="section level4 hasAnchor" number="3.2.2.1">
+<div id="safer-for-loops" class="section level4 hasAnchor">
 <h4><span class="header-section-number">3.2.2.1</span> Safer for loops<a href="func_loop.html#safer-for-loops" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The for loop above is straightforward and works fine for the specific
 task of computing the Fibonacci sequence alone. However, it could
@@ -1041,49 +1026,49 @@ that of working with <strong>functions within your loops</strong>.</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="func_loop.html#cb490-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define a function to update the Fibonacci sequence</span></span>
-<span id="cb490-2"><a href="func_loop.html#cb490-2" aria-hidden="true" tabindex="-1"></a>update_fibonacci <span class="ot">&lt;-</span> <span class="cf">function</span>(R) {</span>
-<span id="cb490-3"><a href="func_loop.html#cb490-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(R)</span>
-<span id="cb490-4"><a href="func_loop.html#cb490-4" aria-hidden="true" tabindex="-1"></a>  r_t <span class="ot">&lt;-</span> R[n] <span class="sc">+</span> R[n <span class="sc">-</span> <span class="dv">1</span>]</span>
-<span id="cb490-5"><a href="func_loop.html#cb490-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">c</span>(R, r_t))</span>
-<span id="cb490-6"><a href="func_loop.html#cb490-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb490-7"><a href="func_loop.html#cb490-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb490-8"><a href="func_loop.html#cb490-8" aria-hidden="true" tabindex="-1"></a><span class="co"># define a function to compute the Fibonacci sequence</span></span>
-<span id="cb490-9"><a href="func_loop.html#cb490-9" aria-hidden="true" tabindex="-1"></a>compute_fibonacci <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
-<span id="cb490-10"><a href="func_loop.html#cb490-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Initialize the first two numbers in the sequence</span></span>
-<span id="cb490-11"><a href="func_loop.html#cb490-11" aria-hidden="true" tabindex="-1"></a>  fibonacci <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span>
-<span id="cb490-12"><a href="func_loop.html#cb490-12" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb490-13"><a href="func_loop.html#cb490-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Generate the next n-2 numbers in the sequence</span></span>
-<span id="cb490-14"><a href="func_loop.html#cb490-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">3</span><span class="sc">:</span>n) </span>
-<span id="cb490-15"><a href="func_loop.html#cb490-15" aria-hidden="true" tabindex="-1"></a>    fibonacci <span class="ot">&lt;-</span> <span class="fu">update_fibonacci</span>(fibonacci)</span>
-<span id="cb490-16"><a href="func_loop.html#cb490-16" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb490-17"><a href="func_loop.html#cb490-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(fibonacci)</span>
-<span id="cb490-18"><a href="func_loop.html#cb490-18" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb490-19"><a href="func_loop.html#cb490-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb490-20"><a href="func_loop.html#cb490-20" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_fibonacci</span>(<span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb490-1" title="1"><span class="co"># define a function to update the Fibonacci sequence</span></a>
+<a class="sourceLine" id="cb490-2" title="2">update_fibonacci &lt;-<span class="st"> </span><span class="cf">function</span>(R) {</a>
+<a class="sourceLine" id="cb490-3" title="3">  n &lt;-<span class="st"> </span><span class="kw">length</span>(R)</a>
+<a class="sourceLine" id="cb490-4" title="4">  r_t &lt;-<span class="st"> </span>R[n] <span class="op">+</span><span class="st"> </span>R[n <span class="op">-</span><span class="st"> </span><span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb490-5" title="5">  <span class="kw">return</span>(<span class="kw">c</span>(R, r_t))</a>
+<a class="sourceLine" id="cb490-6" title="6">}</a>
+<a class="sourceLine" id="cb490-7" title="7"></a>
+<a class="sourceLine" id="cb490-8" title="8"><span class="co"># define a function to compute the Fibonacci sequence</span></a>
+<a class="sourceLine" id="cb490-9" title="9">compute_fibonacci &lt;-<span class="st"> </span><span class="cf">function</span>(n) {</a>
+<a class="sourceLine" id="cb490-10" title="10">  <span class="co"># Initialize the first two numbers in the sequence</span></a>
+<a class="sourceLine" id="cb490-11" title="11">  fibonacci &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb490-12" title="12">  </a>
+<a class="sourceLine" id="cb490-13" title="13">  <span class="co"># Generate the next n-2 numbers in the sequence</span></a>
+<a class="sourceLine" id="cb490-14" title="14">  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">3</span><span class="op">:</span>n) </a>
+<a class="sourceLine" id="cb490-15" title="15">    fibonacci &lt;-<span class="st"> </span><span class="kw">update_fibonacci</span>(fibonacci)</a>
+<a class="sourceLine" id="cb490-16" title="16">  </a>
+<a class="sourceLine" id="cb490-17" title="17">  <span class="kw">return</span>(fibonacci)</a>
+<a class="sourceLine" id="cb490-18" title="18">}</a>
+<a class="sourceLine" id="cb490-19" title="19"></a>
+<a class="sourceLine" id="cb490-20" title="20"><span class="kw">compute_fibonacci</span>(<span class="dv">20</span>)</a></code></pre></div>
 <pre><code>##  [1]    0    1    1    2    3    5    8   13   21   34   55
 ## [12]   89  144  233  377  610  987 1597 2584 4181</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb492"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb492-1"><a href="func_loop.html#cb492-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function to update the Fibonacci sequence</span></span>
-<span id="cb492-2"><a href="func_loop.html#cb492-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update_fibonacci(R):</span>
-<span id="cb492-3"><a href="func_loop.html#cb492-3" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(R)</span>
-<span id="cb492-4"><a href="func_loop.html#cb492-4" aria-hidden="true" tabindex="-1"></a>    r_t <span class="op">=</span> R[n <span class="op">-</span> <span class="dv">1</span>] <span class="op">+</span> R[n <span class="op">-</span> <span class="dv">2</span>]</span>
-<span id="cb492-5"><a href="func_loop.html#cb492-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> R <span class="op">+</span> [r_t]</span>
-<span id="cb492-6"><a href="func_loop.html#cb492-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb492-7"><a href="func_loop.html#cb492-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function to compute the Fibonacci sequence</span></span>
-<span id="cb492-8"><a href="func_loop.html#cb492-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_fibonacci(n):</span>
-<span id="cb492-9"><a href="func_loop.html#cb492-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialize the first two numbers in the sequence</span></span>
-<span id="cb492-10"><a href="func_loop.html#cb492-10" aria-hidden="true" tabindex="-1"></a>    fibonacci <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>]</span>
-<span id="cb492-11"><a href="func_loop.html#cb492-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb492-12"><a href="func_loop.html#cb492-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate the next n-2 numbers in the sequence</span></span>
-<span id="cb492-13"><a href="func_loop.html#cb492-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>, n <span class="op">+</span> <span class="dv">1</span>):</span>
-<span id="cb492-14"><a href="func_loop.html#cb492-14" aria-hidden="true" tabindex="-1"></a>        fibonacci <span class="op">=</span> update_fibonacci(fibonacci)</span>
-<span id="cb492-15"><a href="func_loop.html#cb492-15" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb492-16"><a href="func_loop.html#cb492-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> fibonacci</span>
-<span id="cb492-17"><a href="func_loop.html#cb492-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb492-18"><a href="func_loop.html#cb492-18" aria-hidden="true" tabindex="-1"></a>compute_fibonacci(<span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb492"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb492-1" title="1"><span class="co"># Define a function to update the Fibonacci sequence</span></a>
+<a class="sourceLine" id="cb492-2" title="2"><span class="kw">def</span> update_fibonacci(R):</a>
+<a class="sourceLine" id="cb492-3" title="3">    n <span class="op">=</span> <span class="bu">len</span>(R)</a>
+<a class="sourceLine" id="cb492-4" title="4">    r_t <span class="op">=</span> R[n <span class="op">-</span> <span class="dv">1</span>] <span class="op">+</span> R[n <span class="op">-</span> <span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb492-5" title="5">    <span class="cf">return</span> R <span class="op">+</span> [r_t]</a>
+<a class="sourceLine" id="cb492-6" title="6"></a>
+<a class="sourceLine" id="cb492-7" title="7"><span class="co"># Define a function to compute the Fibonacci sequence</span></a>
+<a class="sourceLine" id="cb492-8" title="8"><span class="kw">def</span> compute_fibonacci(n):</a>
+<a class="sourceLine" id="cb492-9" title="9">    <span class="co"># Initialize the first two numbers in the sequence</span></a>
+<a class="sourceLine" id="cb492-10" title="10">    fibonacci <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb492-11" title="11">    </a>
+<a class="sourceLine" id="cb492-12" title="12">    <span class="co"># Generate the next n-2 numbers in the sequence</span></a>
+<a class="sourceLine" id="cb492-13" title="13">    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>, n <span class="op">+</span> <span class="dv">1</span>):</a>
+<a class="sourceLine" id="cb492-14" title="14">        fibonacci <span class="op">=</span> update_fibonacci(fibonacci)</a>
+<a class="sourceLine" id="cb492-15" title="15">    </a>
+<a class="sourceLine" id="cb492-16" title="16">    <span class="cf">return</span> fibonacci</a>
+<a class="sourceLine" id="cb492-17" title="17"></a>
+<a class="sourceLine" id="cb492-18" title="18">compute_fibonacci(<span class="dv">20</span>)</a></code></pre></div>
 <pre><code>## [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181]</code></pre>
 </div>
 </div>
@@ -1102,7 +1087,7 @@ instance, this function might turn out to be useful in the next
 exercise, where you’ll have to call it with <code>n=10</code>.</p>
 </div>
 </div>
-<div id="exercise-3" class="section level3 hasAnchor" number="3.2.3">
+<div id="exercise-3" class="section level3 hasAnchor">
 <h3><span class="header-section-number">3.2.3</span> Exercise<a href="func_loop.html#exercise-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Write now a new function <code>my_cusum</code> to compute the cumulative sum of a
 list of numbers, using a for loop. Use the function to calculate the
@@ -1127,12 +1112,12 @@ of the first then numbers of the Fibonacci sequence.</p></li>
 </ul>
 </div>
 </div>
-<div id="more-about-looping" class="section level2 hasAnchor" number="3.3">
+<div id="more-about-looping" class="section level2 hasAnchor">
 <h2><span class="header-section-number">3.3</span> More about looping<a href="func_loop.html#more-about-looping" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In this section we will be giving few extra details and concepts you
 should know about looping. If you got familiar with the <code>for</code> cycle
 above, they should be fairly straightforward to understand!</p>
-<div id="nested-loops" class="section level3 hasAnchor" number="3.3.1">
+<div id="nested-loops" class="section level3 hasAnchor">
 <h3><span class="header-section-number">3.3.1</span> Nested loops<a href="func_loop.html#nested-loops" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Nested loops are useful when we have to repeat a block of code for each
 combination of elements from two or more sequences. This can be
@@ -1143,11 +1128,11 @@ multiplication table from 1 to 4.</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="func_loop.html#cb494-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
-<span id="cb494-2"><a href="func_loop.html#cb494-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
-<span id="cb494-3"><a href="func_loop.html#cb494-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">&quot;x&quot;</span>, j, <span class="st">&quot;=&quot;</span>, i<span class="sc">*</span>j))</span>
-<span id="cb494-4"><a href="func_loop.html#cb494-4" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb494-5"><a href="func_loop.html#cb494-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb494-1" title="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) {</a>
+<a class="sourceLine" id="cb494-2" title="2">  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) {</a>
+<a class="sourceLine" id="cb494-3" title="3">    <span class="kw">print</span>(<span class="kw">paste</span>(i, <span class="st">&quot;x&quot;</span>, j, <span class="st">&quot;=&quot;</span>, i<span class="op">*</span>j))</a>
+<a class="sourceLine" id="cb494-4" title="4">  }</a>
+<a class="sourceLine" id="cb494-5" title="5">}</a></code></pre></div>
 <pre><code>## [1] &quot;1 x 1 = 1&quot;
 ## [1] &quot;1 x 2 = 2&quot;
 ## [1] &quot;1 x 3 = 3&quot;
@@ -1167,9 +1152,9 @@ multiplication table from 1 to 4.</p>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb496"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb496-1"><a href="func_loop.html#cb496-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">5</span>):</span>
-<span id="cb496-2"><a href="func_loop.html#cb496-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">5</span>):</span>
-<span id="cb496-3"><a href="func_loop.html#cb496-3" aria-hidden="true" tabindex="-1"></a>      <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss"> x </span><span class="sc">{</span>j<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span>i<span class="op">*</span>j<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb496"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb496-1" title="1"><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">5</span>):</a>
+<a class="sourceLine" id="cb496-2" title="2">  <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">5</span>):</a>
+<a class="sourceLine" id="cb496-3" title="3">      <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{i}</span><span class="ss"> x </span><span class="sc">{j}</span><span class="ss"> = </span><span class="sc">{i</span><span class="op">*</span><span class="sc">j}</span><span class="ss">&quot;</span>)</a></code></pre></div>
 <pre><code>## 1 x 1 = 1
 ## 1 x 2 = 2
 ## 1 x 3 = 3
@@ -1202,7 +1187,7 @@ expression <code>i*j</code>. So if <code>i</code> is 2 and <code>j</code> is 3, 
 because it allows you to easily insert the values of variables into
 strings, which you can then print to see what’s happening in your loops!</p>
 </div>
-<div id="while-loops" class="section level3 hasAnchor" number="3.3.2">
+<div id="while-loops" class="section level3 hasAnchor">
 <h3><span class="header-section-number">3.3.2</span> While loops<a href="func_loop.html#while-loops" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Similarly to for loops, we have the while loops. They allow us to repeat
 a block of code until a certain condition is met. This can be incredibly
@@ -1212,11 +1197,11 @@ until a certain threshold is reached.</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="func_loop.html#cb498-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb498-2"><a href="func_loop.html#cb498-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&lt;=</span> <span class="dv">10</span>) {</span>
-<span id="cb498-3"><a href="func_loop.html#cb498-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
-<span id="cb498-4"><a href="func_loop.html#cb498-4" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb498-5"><a href="func_loop.html#cb498-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb498-1" title="1">i &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb498-2" title="2"><span class="cf">while</span> (i <span class="op">&lt;=</span><span class="st"> </span><span class="dv">10</span>) {</a>
+<a class="sourceLine" id="cb498-3" title="3">  <span class="kw">print</span>(i)</a>
+<a class="sourceLine" id="cb498-4" title="4">  i &lt;-<span class="st"> </span>i <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb498-5" title="5">}</a></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 2
 ## [1] 3
@@ -1230,10 +1215,10 @@ until a certain threshold is reached.</p>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb500"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb500-1"><a href="func_loop.html#cb500-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb500-2"><a href="func_loop.html#cb500-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> i <span class="op">&lt;=</span> <span class="dv">10</span>:</span>
-<span id="cb500-3"><a href="func_loop.html#cb500-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(i)</span>
-<span id="cb500-4"><a href="func_loop.html#cb500-4" aria-hidden="true" tabindex="-1"></a>  i <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb500"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb500-1" title="1">i <span class="op">=</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb500-2" title="2"><span class="cf">while</span> i <span class="op">&lt;=</span> <span class="dv">10</span>:</a>
+<a class="sourceLine" id="cb500-3" title="3">  <span class="bu">print</span>(i)</a>
+<a class="sourceLine" id="cb500-4" title="4">  i <span class="op">+=</span> <span class="dv">1</span></a></code></pre></div>
 <pre><code>## 1
 ## 2
 ## 3
@@ -1263,7 +1248,7 @@ i.e., when <code>i</code> is greater than 10.</li>
 </ul>
 <p>We are missing one last ingredient to looping! Break and next.</p>
 </div>
-<div id="break-and-nextcontinue" class="section level3 hasAnchor" number="3.3.3">
+<div id="break-and-nextcontinue" class="section level3 hasAnchor">
 <h3><span class="header-section-number">3.3.3</span> Break and next/continue<a href="func_loop.html#break-and-nextcontinue" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Break and next/continue are control flow statements that can be used to
 alter the flow of a loop. They can be used when we want to stop a loop
@@ -1274,16 +1259,16 @@ condition is met.</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="func_loop.html#cb502-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
-<span id="cb502-2"><a href="func_loop.html#cb502-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">5</span>) {</span>
-<span id="cb502-3"><a href="func_loop.html#cb502-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">next</span>  <span class="co"># Skip the rest of the iteration </span></span>
-<span id="cb502-4"><a href="func_loop.html#cb502-4" aria-hidden="true" tabindex="-1"></a>          <span class="co"># and continue with the next iteration</span></span>
-<span id="cb502-5"><a href="func_loop.html#cb502-5" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb502-6"><a href="func_loop.html#cb502-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">&gt;</span> <span class="dv">8</span>) {</span>
-<span id="cb502-7"><a href="func_loop.html#cb502-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span>  <span class="co"># Immediately terminate the loop</span></span>
-<span id="cb502-8"><a href="func_loop.html#cb502-8" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb502-9"><a href="func_loop.html#cb502-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)  <span class="co"># Print the current value of i</span></span>
-<span id="cb502-10"><a href="func_loop.html#cb502-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb502-1" title="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>) {</a>
+<a class="sourceLine" id="cb502-2" title="2">  <span class="cf">if</span> (i <span class="op">==</span><span class="st"> </span><span class="dv">5</span>) {</a>
+<a class="sourceLine" id="cb502-3" title="3">    <span class="cf">next</span>  <span class="co"># Skip the rest of the iteration </span></a>
+<a class="sourceLine" id="cb502-4" title="4">          <span class="co"># and continue with the next iteration</span></a>
+<a class="sourceLine" id="cb502-5" title="5">  }</a>
+<a class="sourceLine" id="cb502-6" title="6">  <span class="cf">if</span> (i <span class="op">&gt;</span><span class="st"> </span><span class="dv">8</span>) {</a>
+<a class="sourceLine" id="cb502-7" title="7">    <span class="cf">break</span>  <span class="co"># Immediately terminate the loop</span></a>
+<a class="sourceLine" id="cb502-8" title="8">  }</a>
+<a class="sourceLine" id="cb502-9" title="9">  <span class="kw">print</span>(i)  <span class="co"># Print the current value of i</span></a>
+<a class="sourceLine" id="cb502-10" title="10">}</a></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 2
 ## [1] 3
@@ -1294,13 +1279,13 @@ condition is met.</p>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb504"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb504-1"><a href="func_loop.html#cb504-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>):</span>
-<span id="cb504-2"><a href="func_loop.html#cb504-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> i <span class="op">==</span> <span class="dv">5</span>:</span>
-<span id="cb504-3"><a href="func_loop.html#cb504-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">continue</span>  <span class="co"># Skip the rest of the iteration </span></span>
-<span id="cb504-4"><a href="func_loop.html#cb504-4" aria-hidden="true" tabindex="-1"></a>              <span class="co"># and continue with the next iteration</span></span>
-<span id="cb504-5"><a href="func_loop.html#cb504-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> i <span class="op">&gt;</span> <span class="dv">8</span>:</span>
-<span id="cb504-6"><a href="func_loop.html#cb504-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span>  <span class="co"># Immediately terminate the loop</span></span>
-<span id="cb504-7"><a href="func_loop.html#cb504-7" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(i)  <span class="co"># Print the current value of i</span></span></code></pre></div>
+<div class="sourceCode" id="cb504"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb504-1" title="1"><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>):</a>
+<a class="sourceLine" id="cb504-2" title="2">  <span class="cf">if</span> i <span class="op">==</span> <span class="dv">5</span>:</a>
+<a class="sourceLine" id="cb504-3" title="3">    <span class="cf">continue</span>  <span class="co"># Skip the rest of the iteration </span></a>
+<a class="sourceLine" id="cb504-4" title="4">              <span class="co"># and continue with the next iteration</span></a>
+<a class="sourceLine" id="cb504-5" title="5">  <span class="cf">if</span> i <span class="op">&gt;</span> <span class="dv">8</span>:</a>
+<a class="sourceLine" id="cb504-6" title="6">    <span class="cf">break</span>  <span class="co"># Immediately terminate the loop</span></a>
+<a class="sourceLine" id="cb504-7" title="7">  <span class="bu">print</span>(i)  <span class="co"># Print the current value of i</span></a></code></pre></div>
 <pre><code>## 1
 ## 2
 ## 3
@@ -1333,24 +1318,24 @@ divisible by a certain number. Using <code>break</code>:</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="func_loop.html#cb506-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">30</span>)</span>
-<span id="cb506-2"><a href="func_loop.html#cb506-2" aria-hidden="true" tabindex="-1"></a>divisor <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb506-3"><a href="func_loop.html#cb506-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (num <span class="cf">in</span> numbers) {</span>
-<span id="cb506-4"><a href="func_loop.html#cb506-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (num <span class="sc">%%</span> divisor <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb506-5"><a href="func_loop.html#cb506-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(num, <span class="st">&quot;is the first number divisible by&quot;</span>, divisor))</span>
-<span id="cb506-6"><a href="func_loop.html#cb506-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
-<span id="cb506-7"><a href="func_loop.html#cb506-7" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb506-8"><a href="func_loop.html#cb506-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb506-1" title="1">numbers &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">30</span>)</a>
+<a class="sourceLine" id="cb506-2" title="2">divisor &lt;-<span class="st"> </span><span class="dv">4</span></a>
+<a class="sourceLine" id="cb506-3" title="3"><span class="cf">for</span> (num <span class="cf">in</span> numbers) {</a>
+<a class="sourceLine" id="cb506-4" title="4">  <span class="cf">if</span> (num <span class="op">%%</span><span class="st"> </span>divisor <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb506-5" title="5">    <span class="kw">print</span>(<span class="kw">paste</span>(num, <span class="st">&quot;is the first number divisible by&quot;</span>, divisor))</a>
+<a class="sourceLine" id="cb506-6" title="6">    <span class="cf">break</span></a>
+<a class="sourceLine" id="cb506-7" title="7">  }</a>
+<a class="sourceLine" id="cb506-8" title="8">}</a></code></pre></div>
 <pre><code>## [1] &quot;24 is the first number divisible by 4&quot;</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb508"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb508-1"><a href="func_loop.html#cb508-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">30</span>]</span>
-<span id="cb508-2"><a href="func_loop.html#cb508-2" aria-hidden="true" tabindex="-1"></a>divisor <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb508-3"><a href="func_loop.html#cb508-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> num <span class="kw">in</span> numbers:</span>
-<span id="cb508-4"><a href="func_loop.html#cb508-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> num <span class="op">%</span> divisor <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb508-5"><a href="func_loop.html#cb508-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>num<span class="sc">}</span><span class="ss"> is the first number divisible by </span><span class="sc">{</span>divisor<span class="sc">}</span><span class="ss">&quot;</span>)</span>
-<span id="cb508-6"><a href="func_loop.html#cb508-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span></code></pre></div>
+<div class="sourceCode" id="cb508"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb508-1" title="1">numbers <span class="op">=</span> [<span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">30</span>]</a>
+<a class="sourceLine" id="cb508-2" title="2">divisor <span class="op">=</span> <span class="dv">4</span></a>
+<a class="sourceLine" id="cb508-3" title="3"><span class="cf">for</span> num <span class="kw">in</span> numbers:</a>
+<a class="sourceLine" id="cb508-4" title="4">  <span class="cf">if</span> num <span class="op">%</span> divisor <span class="op">==</span> <span class="dv">0</span>:</a>
+<a class="sourceLine" id="cb508-5" title="5">    <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>num<span class="sc">}</span><span class="ss"> is the first number divisible by </span><span class="sc">{</span>divisor<span class="sc">}</span><span class="ss">&quot;</span>)</a>
+<a class="sourceLine" id="cb508-6" title="6">    <span class="cf">break</span></a></code></pre></div>
 <pre><code>## 24 is the first number divisible by 4</code></pre>
 </div>
 </div>
@@ -1361,30 +1346,30 @@ whether we’ve found a suitable number:</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="func_loop.html#cb510-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">30</span>)</span>
-<span id="cb510-2"><a href="func_loop.html#cb510-2" aria-hidden="true" tabindex="-1"></a>divisor <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb510-3"><a href="func_loop.html#cb510-3" aria-hidden="true" tabindex="-1"></a>found <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
-<span id="cb510-4"><a href="func_loop.html#cb510-4" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb510-5"><a href="func_loop.html#cb510-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (<span class="sc">!</span>found <span class="sc">&amp;&amp;</span> i <span class="sc">&lt;=</span> <span class="fu">length</span>(numbers)) {</span>
-<span id="cb510-6"><a href="func_loop.html#cb510-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (numbers[i] <span class="sc">%%</span> divisor <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb510-7"><a href="func_loop.html#cb510-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(numbers[i], <span class="st">&quot;is the first number divisible by&quot;</span>, divisor))</span>
-<span id="cb510-8"><a href="func_loop.html#cb510-8" aria-hidden="true" tabindex="-1"></a>    found <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
-<span id="cb510-9"><a href="func_loop.html#cb510-9" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb510-10"><a href="func_loop.html#cb510-10" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb510-11"><a href="func_loop.html#cb510-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb510-1" title="1">numbers &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">30</span>)</a>
+<a class="sourceLine" id="cb510-2" title="2">divisor &lt;-<span class="st"> </span><span class="dv">4</span></a>
+<a class="sourceLine" id="cb510-3" title="3">found &lt;-<span class="st"> </span><span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb510-4" title="4">i &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb510-5" title="5"><span class="cf">while</span> (<span class="op">!</span>found <span class="op">&amp;&amp;</span><span class="st"> </span>i <span class="op">&lt;=</span><span class="st"> </span><span class="kw">length</span>(numbers)) {</a>
+<a class="sourceLine" id="cb510-6" title="6">  <span class="cf">if</span> (numbers[i] <span class="op">%%</span><span class="st"> </span>divisor <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb510-7" title="7">    <span class="kw">print</span>(<span class="kw">paste</span>(numbers[i], <span class="st">&quot;is the first number divisible by&quot;</span>, divisor))</a>
+<a class="sourceLine" id="cb510-8" title="8">    found &lt;-<span class="st"> </span><span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb510-9" title="9">  }</a>
+<a class="sourceLine" id="cb510-10" title="10">  i &lt;-<span class="st"> </span>i <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb510-11" title="11">}</a></code></pre></div>
 <pre><code>## [1] &quot;24 is the first number divisible by 4&quot;</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb512"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb512-1"><a href="func_loop.html#cb512-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">30</span>]</span>
-<span id="cb512-2"><a href="func_loop.html#cb512-2" aria-hidden="true" tabindex="-1"></a>divisor <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb512-3"><a href="func_loop.html#cb512-3" aria-hidden="true" tabindex="-1"></a>found <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb512-4"><a href="func_loop.html#cb512-4" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb512-5"><a href="func_loop.html#cb512-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="kw">not</span> found <span class="kw">and</span> i <span class="op">&lt;</span> <span class="bu">len</span>(numbers):</span>
-<span id="cb512-6"><a href="func_loop.html#cb512-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> numbers[i] <span class="op">%</span> divisor <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb512-7"><a href="func_loop.html#cb512-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>numbers[i]<span class="sc">}</span><span class="ss"> is the first number divisible by </span><span class="sc">{</span>divisor<span class="sc">}</span><span class="ss">&quot;</span>)</span>
-<span id="cb512-8"><a href="func_loop.html#cb512-8" aria-hidden="true" tabindex="-1"></a>    found <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb512-9"><a href="func_loop.html#cb512-9" aria-hidden="true" tabindex="-1"></a>  i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb512"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb512-1" title="1">numbers <span class="op">=</span> [<span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">30</span>]</a>
+<a class="sourceLine" id="cb512-2" title="2">divisor <span class="op">=</span> <span class="dv">4</span></a>
+<a class="sourceLine" id="cb512-3" title="3">found <span class="op">=</span> <span class="va">False</span></a>
+<a class="sourceLine" id="cb512-4" title="4">i <span class="op">=</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb512-5" title="5"><span class="cf">while</span> <span class="kw">not</span> found <span class="kw">and</span> i <span class="op">&lt;</span> <span class="bu">len</span>(numbers):</a>
+<a class="sourceLine" id="cb512-6" title="6">  <span class="cf">if</span> numbers[i] <span class="op">%</span> divisor <span class="op">==</span> <span class="dv">0</span>:</a>
+<a class="sourceLine" id="cb512-7" title="7">    <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>numbers[i]<span class="sc">}</span><span class="ss"> is the first number divisible by </span><span class="sc">{</span>divisor<span class="sc">}</span><span class="ss">&quot;</span>)</a>
+<a class="sourceLine" id="cb512-8" title="8">    found <span class="op">=</span> <span class="va">True</span></a>
+<a class="sourceLine" id="cb512-9" title="9">  i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span></a></code></pre></div>
 <pre><code>## 24 is the first number divisible by 4</code></pre>
 </div>
 </div>
@@ -1397,7 +1382,7 @@ explicitly using a <code>break</code> statement.</p>
 <p><strong>Finding MATH245 a Walk in the Park?</strong></p>
 <p><strong>Dive into our Extra Coding Challenges!</strong> You’ve mastered the basics,
 now it’s time to test your mettle. Venture into the final Chapter
-<a href="challenge.html#challenge">6</a> where a nasty bunch of medium to hard coding exercises
+<a href="challenge.html#challenge">7</a> where a nasty bunch of medium to hard coding exercises
 awaits. These brain-teasers are designed to stretch your coding skills
 to their limits. Participation is optional, but if you’re up for a
 challenge and keen to level up your skills, I highly recommend giving
