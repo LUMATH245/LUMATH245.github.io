@@ -16,38 +16,28 @@ We are going to study algorithms for root finding. From a mathematical
 perspective, we would like to build a sequence that converges t to the root of
 a given function $f$.
 
+Note that in the context of MATH245, when we talk about "solving an equation"
+or "finding a solution" or "finding a fixed point", it is always in the sense
+of approximating the solution with a computer program.
+
 ## Fixed point iteration
 
-We can always rephrase a root finding problem $f(x) = 0$ to a fixed point problem! Let $g(x) = f(x) + x$. Then
+We can always rephrase a root finding problem $f(x) = 0$ to a fixed point
+problem! Let $g(x) = f(x) + x$. Then
 \[
 f(x) = 0 \Longleftrightarrow g(x) = x.
 \]
 
-
-### Fixed point iteration
-
-We are interested in finding fixed points of a given function $f$. To construct an algorithm to find fixed points, we exploit the definition of a fixed point: a fixed point is invariant when we apply the function $f$. This suggests an iterative algorithm, starting from an initial point $x_0$, and defining the sequence
+We can apply the approaches from Chapter 6, and we are done! Let's start with a
+familiar example. Find a solution of the equation
 \[
-x_{n+1} = f(x_n).
+\cos(x) - x = 0.
 \]
-
-If the sequence $(x_n)_n$ contains a fixed point $x^*$ of $f$, then $x_n$ converges to $x^*$. 
-
-**Exercise:** Prove the previous statement.
-
-But with the right assumptions, we can actual say more. Assume the sequence
-$(x_n)_n$ defined above converges to a limit $x^*$. Then, _under suitable assumptions on the function_ $f$ we have
+We can rewrite this problem as find a fixed point of the function
 \[
-f(x^*) = f \left (\lim_{n \to \infty} x_n \right ) = \lim_{n \to \infty} f(x_n) = \lim_{n \to \infty} x_{n+1} = x^*.
+g(x) = \cos(x).
 \]
-
-Note that the key step is the second equality. In general, that is only true if $x$ is continuous. The first and last equalities rely on the assumption that $(x_n)$ converges to $x^*$; the third equality is the definition of $x_n$.
-
-This suggests a very simple algorithm to find fixed points of a function $f$: pick an initial point $x_0$, and recursively compute $x_{n+1} = f(x_n)$.
-
-### Examples
-
-Let's start by fixing the number of iterations. Then, a natural implementation of the fixed point algorithm is to use a _for_ loop.
+We can use the same code we used last week, for example:
 
 ::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
@@ -55,14 +45,14 @@ Let's start by fixing the number of iterations. Then, a natural implementation o
 **R**
 
 ```{r}
-# Define our function f (cosine).
-f <- function(x) cos(x)
+# Define our function g (cosine).
+g <- function(x) cos(x)
 
 # Define initial point x_0.
 x <- 0.1
 
 for(i in 1:100){
-    x <- f(x)
+    x <- g(x)
 }
 
 # Show x.
@@ -79,15 +69,15 @@ x
 # Importing the numpy module
 import numpy as np
 
-# Define our function f (cosine).
-def f(x):
+# Define our function g (cosine).
+def g(x):
     return np.cos(x)
 
 # Define initial point x_0.
 x = 0.1
 
 for i in range(100): 
-    x = f(x)
+    x = g(x)
 
 # Show x.
 x 
@@ -96,7 +86,7 @@ x
 </div>
 :::
 
-We can check if $x$ is a fixed point by applying $f$ again.
+We can check that $x$ satisfies the desired equation.
 
 ::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
@@ -104,7 +94,7 @@ We can check if $x$ is a fixed point by applying $f$ again.
 **R**
 
 ```{r}
-f(x)
+cos(x) - x
 ```
 
 </div>
@@ -114,129 +104,38 @@ f(x)
 **Python**
 
 ```{python}
-f(x)
+np.cos(x) - x
 ```
 
 </div>
 :::
 
-We can see that the fixed operation converged to a fixed point. Note that here we fixed the number of iterations; we might be computing too many! We can inspect the convergence visually by plotting the values of $x_n$.
+Are we done? Well, we have *a* method to find roots, but is it a good method?
 
-```{r echo = F}
-n <- 100
-r <- numeric(n)
-x <- 0.1
+## Newton's method
 
-for(i in 1:n){
-    r[i] <- x
-    x <- f(x)
-}
-
-point_plot <- ggplot(data.frame(x = seq(1, n), y = r), aes(x=x, y=y)) + 
-  geom_point() + 
-  theme_minimal() +
-  ylab("x_n") +
-  xlab("n")
-
-point_plot
-```
-
-The values of $x_n$ oscillate up and down for the first few iterates, but after about 25 iterations the sequence is close to the fixed point.
-
-**Exercise**: Use the previous example to implement the fixed point iteration for
+Most possibly you have encountered Newton's method in the past. Rather than just presenting a formula, let's start by framing Newton's method in the context of fixed point methods. Let's assume we are interested in solving the equation $f(x) = 0$. Rather than using $g(x) = f(x) + x$, we can define
 \[
-f(x) = \frac{1}{2}\left(\frac{2}{x}+x\right).
+g(x) = x + f(x)h(x).
 \]
-Plot the first 25 iterates. 
-
-## Convergence
-
-### Initial point and convergence
-
-The fixed point iteration $x_n$ may not converge. The sequence is characterised
-by the function $f$ and the initial point $x_0$. Both impact the convergence of
-the sequence. Some functions $f$ do not have a fixed point, for example $f(x) =
-e^x$. Other functions have a fixed point, but the convergence of the fixed
-point iteration depends on the initial point $x_0$, for example $f(x) = 2x$.
-
-Let's look at another example. Consider
+Now I have a choice in the function $h$. Note that we still have
 \[
-f(x) = x^2.
+f(x) = 0 \Leftrightarrow g(x) = x,
+\]
+so any choice of $h$ gives us a fixed point. What is the best choice of $h$? Newton's method corresponds to 
+\[
+h(x) = - 1 / f'(x).
 \]
 
-The following plot depicts the first ten fixed point iterations with the initial value $x_0 = 0.2$
-
-```{r echo = F}
-f <- \(x) x^2
-n <- 10 
-r <- numeric(n)
-x <- 0.2
-
-for(i in 1:n){
-    r[i] <- x
-    x <- f(x)
-}
-
-point_plot <- ggplot(data.frame(x = seq(1, n), y = r), aes(x=x, y=y)) + 
-  geom_point() + 
-  theme_minimal() +
-  ylab("x_n") +
-  xlab("n")
-
-point_plot
-```
-
-And here is the fixed point iteration for the same function, now using $x_0 = 1.2$.
-
-```{r echo = F}
-f <- \(x) x^2
-n <- 10
-r <- numeric(n)
-x <- 1.2
-
-for(i in 1:n){
-    r[i] <- x
-    x <- f(x)
-}
-
-point_plot <- ggplot(data.frame(x = seq(1, n), y = r), aes(x=x, y=y)) + 
-  geom_point() + 
-  theme_minimal() +
-  ylab("x_n") +
-  xlab("n")
-
-point_plot
-```
-
-Note the $y$-axis scale in the last plot! With $x_0=1.2$, at the tenth iterate the value is above $10^{40}$. In contrast, with $x_0=0.2$ the fixed iteration converges quickly to zero.
-
-**Exercise:** What is the exact expression of the $n-th$ fixed point iteration of f(x) = x^2$? Can you come up with a criterion to decide when will the sequence converge, depending on $x_0$?
-
-### Convergence criterion
-
-Computing a fixed number of iterations is not a good strategy. We have seen in the examples above that sometimes the sequence converges in just a few iterates. In consequence, computing further iterations does not provide a better estimate of the fixed point. Ideally, we would like to stop the iteration when we are _close_ to the fixed point. We could fixed a threshold $\varepsilon > 0$, and stop the iteration when we are closer than $\varepsilon$ to the fixed point,
+The natural question is what method converges **faster** to a zero of $f$,
 \[
-| x_n - x^* | < \varepsilon.
+g_1(x) = x + f(x)
 \]
-
-However, we cannot implement this criterion. Remember, the aim of the fixed
-point iteration is to estimate the fixed point $x^*$. But to implement this
-criterion, we need to know $x^*$ in advance. But if we already have $x^*$, we
-do not need to do any iteration!
-
-For real functions, we can use the Cauchy completeness of the real numbers to
-implement an alternative convergence criteria. Remember that in the real
-numbers, a sequence is convergent if and only if the sequence is Cauchy, that
-is, if terms of the sequence become arbitrarily close to each other as the
-sequence progresses. In particular, if a sequence is convergent, consecutive
-terms become close.
-
-**Note**: to be rigorous, a sequence can have _consecutive_ terms becoming
-arbitrarily close and yet not converge (e.g. $a_n=\sqrt{n}). This means that
-checking consecutive terms provides a necessary but not sufficient condition.
-However, it works well in practice.
-
-Let's see how to implement this in practice. Now that we have a criterion to stop the iteration, we can use a while loop instead of a for loop.
+or
+\[
+g_2(x) = x - f(x)/f'(x)?
+\]
+Let's do a quick experiment. Let's consider, as before $f(x) = \cos(x) - x$. Let's do fixed point iteration in both cases.
 
 ::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
@@ -244,28 +143,31 @@ Let's see how to implement this in practice. Now that we have a criterion to sto
 **R**
 
 ```{r}
-# Define our function f (cosine).
-f <- function(x) cos(x)
+# Define our function f and f'
+f <- function(x) cos(x)-x
+fp <- function(x) -sin(x) - 1
 
-# Our threshold for stopping.
-eps <- 1.e-8
+#Define both methods
+g1 <- function(x) x + f(x) 
+g2 <- function(x) x - f(x)/fp(x)
 
 # Define initial point x_0.
-x <- 0.1
+x1 <- 0.1 #for the first method
+x2 <- 0.1 #for the second method
 
-# Compute the first iterate, 
-# so we can evaluate the stopping criterion.
-x1 <- f(x) 
+#Lists to save the points
+n <- 20 #Number of iterations
+r1 <- numeric(n)
+r2 <- numeric(n)
 
-while(abs(x-x1) > eps){
-   x <- x1 #Replace x by the next iteration x1. 
-   x1 <- f(x) #Compute the next iteration
+for(i in 1:n){
+    x1 <- g1(x1)
+    x2 <- g2(x2)
+
+    r1[i] <- x1
+    r2[i] <- x2
 }
-
-# Show x1. Note that the latest iteration is now x1.
-x1 
 ```
-
 
 </div>
 
@@ -277,35 +179,41 @@ x1
 # Importing the numpy module
 import numpy as np
 
-# Define our function f (cosine).
+# Define our function f and fp
 def f(x):
-    return np.cos(x)
+    return np.cos(x)-x
 
-# Our threshold for stopping.
-eps = 1.e-8
+def fp(x):
+    return -np.sin(x)-1
+
+# Define our fixed point methods
+def g1(x):
+    return x + f(x)
+
+def g2(x):
+    return x - f(x)/fp(x)
 
 # Define initial point x_0.
-x = 0.1
+x1 = 0.1 #for the first method
+x2 = 0.1 #for the second method
 
-# Compute the first iterate, 
-# so we can evaluate the stopping criterion.
-x1 = f(x) 
+# Lists to save the points
+n = 20
+r1 = np.empty(n) #empty list of n elements
+r2 = np.empty(n) 
 
-while abs(x-x1) > eps:
-   x = x1 #Replace x by the next iteration x1. 
-   x1 = f(x) #Compute the next iteration
+for i in range(n): 
+    x1 = g1(x1)
+    x2 = g2(x2)
 
-# Show x1
-x1 
+    r1[i] = x1
+    r2[i] = x2
 ```
 
 </div>
 :::
 
-
-Here, we have computed iterates until the distance between two consecutive iterations was less than $\varepsilon=1-^{-8}$. However, this implementation is dangerous. What would happen if we apply it for an initial value or a function $f$ for which the fixed point iteration does not converge? It would never end! 
-
-When we implement stopping criteria, we need to ensure that the criteria will eventually be satisfied. For fixed point iterations, as for many other iterative schemes, the safest option is to limit the number of iterations. To do so, we can keep track of how many iterations we have performed in a variable $it$, and stop the iteration if the number of iterations exceeds a given number. Look at the following implementation:
+We plot `r1` and `r2` to assess convergence.
 
 ::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
@@ -313,33 +221,15 @@ When we implement stopping criteria, we need to ensure that the criteria will ev
 **R**
 
 ```{r}
-# Define our function f (cosine).
-f <- function(x) cos(x)
+library(ggplot2) 
+point_plot <- ggplot(data.frame(x = seq(1, n), y1 = r1, y2=r2)) + 
+  geom_line(aes(x=x,y=y1),color="blue") + 
+  geom_line(aes(x=x,y=y2),color="red") + 
+  theme_minimal() +
+  ylab("x_n") +
+  xlab("n")
 
-# Our thresholds for stopping.
-eps <- 1.e-8
-itmax <- 100
-
-# Define initial point x_0.
-x <- 0.1
-
-# Compute the first iterate, 
-# so we can evaluate the stopping criterion.
-x1 <- f(x) 
-
-it <- 0 # Iteration counter
-
-while(abs(x-x1) > eps & it < itmax ){
-   x <- x1 #Replace x by the next iteration x1. 
-   x1 <- f(x) #Compute the next iteration
-   it <- it + 1 #Update counter
-}
-
-#Print number of iterations:
-print(paste("Iterations: ",it))
-
-# Show x1. Note that the latest iteration is now x1.
-x1 
+point_plot
 ```
 
 </div>
@@ -349,125 +239,32 @@ x1
 **Python**
 
 ```{python}
-# Importing the numpy module
-import numpy as np
+from plotnine import *
+import pandas as pd
 
-# Define our function f (cosine).
-def f(x):
-    return np.cos(x)
+point_plot = ggplot(pd.DataFrame({"x": range(n), "y1": r1, "y2":r2})) + \
+   geom_line(aes(x="x",y="y1"),color="blue") + \
+   geom_line(aes(x="x",y="y2"),color="red") + \
+   theme_minimal() + \
+   ylab("x_n") + \
+   xlab("n")
 
-# Our threshold for stopping.
-eps = 1.e-8
-itmax = 100
-
-# Define initial point x_0.
-x = 0.1
-
-# Compute the first iterate, 
-# so we can evaluate the stopping criterion.
-x1 = f(x) 
-
-it = 0 # Iteration counter
-
-while abs(x-x1) > eps and it < itmax:
-   x = x1 #Replace x by the next iteration x1. 
-   x1 = f(x) #Compute the next iteration
-   it = it + 1
-
-print("Iterations: {}".format(it))
-
-# Show x1
-x1 
+point_plot
 ```
 
 </div>
 :::
 
-We can see that it takes 46 iterations to satisfy the stopping criteria. Since we set the maximum iterations `itmax` at 100, this means that the distance between consecutive iterates is smaller than `eps`. 
+We can clearly see that the second method (Newton's method) is much faster! We will talk more about why Newton's method is faster, and how can we actually define and measure "faster", at the end of this Chapter.
 
-## Fixed point theorems
-
-This section cover some theory about fixed points.
-
-We have seen how to implement the fixed point iteration, and how to implement stopping criteria to ensure our algorithm does not run forever. However, we know that for some functions, and depending on the initial point $x_0$, our fixed point iteration will not converge. Would not it be nice to have some results to figure out when the sequence _actually_ converges? And even better, to know how long it will take to converge?
-
-Fixed point theorems are results about the existence and uniqueness of fixed points. There are many fixed point theorems, depending on the assumptions we make on the function $f$. The general form of a fixed point theorem is as follows:
-
-**"Theorem":** Let $f:X \to X$ be a function satisfying \ldots . Then, there exists $x^*\in X$ such that $f(x^*)=x^*$.
-
-Here $X$ can be many different types of spaces, and the properties required to ensure the existence of a fixed point will relate to the type of space. For example, in topology we have the Brouwer fixed point theorem (continous function on compact convex sets); in algebra we have Kleene fixed point theorem (order preserving functions on a complete lattice); in analysis, we have the Banach fixed point theorem (contraction mappings on a metric space).
-
-Here, we will discuss briefly a version of Brouwer and Banach fixed point theorems for real functions.
-
-### Existence of fixed points
-
-For real funcions, we can state a simple existence result.
-
-**Proposition:** Let $f:[a,b] \to [a,b]$ continuous, then $f(x)=x$ has at least one solution on $[a,b]$.
-
-**Exercise:** Use the intermediate value theorem to prove the proposition. **Hint:** Define $g(x) = f(x) - x$.
-
-### Uniqueness of fixed points
-
-The previous proposition ensures that a fixed point exists, but often we are also interested in knowing that the fixed point is _unique_. We will use another results that you might know from MATH113, the contraction mapping theorem.
-
-First, a couple of definitions.
-
-**Definition (Lipschitz function)**: A function $f:[a,b] \to \mathbb{R}$ is called a *Lipschitz function* if there exists some $k \in [0,\infty)$ such that, for all $x,y \in [a,b]$,
-\begin{equation}
-|f(x)-f(y)| \leq k|x-y|.
-\end{equation}
-We call $k$ a *Lipschitz constant*.
-
-**Definition (contraction mapping)**: A contraction mapping is a Lipschitz function $f:[a,b] \to [a,b]$  with Lipschitz constant $k<1$. 
-Note that all Lipschitz functions are continous (**why?**), but the reverse is
-generally not true. However, as a continous function from $[a,b]$ to itself, we
-already know that the function has (at least) one fixed point.
-
-#### Checking if a function is a contraction mapping
-
-Computing the Lipschitz constant is difficult if we do not impose further restrictions. If we ask _a little more_ about $f$, namely that $f$ is differentiable, then we can use the mean value theorem to find a Lipschitz constant of $f$. More precisely, assume that $f$ is differentiable and $f'(x)$ is bounded in $[a,b]$ (that is, there exists $\rho\in\mathbb{R}^+$ such that for all $x\in [a,b]$ $|f'(x)| \leq \rho$). Then, by the mean value theorem, for every $x,y \in [a,b], x<y$, there exists some $c \in [x,y]$ such that
+**Exercise:** One of the main limitations of Newton's method is that it requires us to compute and implement the derivative of $f$. An alternative is to use the secant method, which one can derive by replacing $f'(x)$ by an approximation of the form
 \[
-|f(x)-f(y)| = |f'(c)||x-y|,
+(f(x) - f(y)) / (x-y).
 \]
-and using the bound on $f'$, we have 
-\[
-|f(x)-f(y)| = |f'(c)||x-y| \leq \rho |x-y|.
-\]
-Therefore $\rho$ is a Lipschitz constant for $f$. 
+Write a fixed point method using this approximation for the derivative of $f$, implement it, and compare it with the fixed point iteration and Newton's method when applied to $f(x) = cos(x) - x$. What method is faster? **Hint:** you will need to use the last two values in the sequence to approximate the derivate, so you will need a two-dimensional $g$.
 
-To check if a function is a contraction mapping, it is enough to show that its derivative is bounded by $\rho < 1$.
-
-We can now state the contraction mapping theorem.
-
-**Theorem (contraction mapping):** Let $f:[a,b] \to [a,b]$ be a contraction mapping with Lipschitz constant $k$. Then there is exactly one fixed point, $x^*$, of $f$ on the interval $[a,b]$. Furthermore, for any $x_0\in [a,b]$ the fixed point iteration $x_{n+1} = f(x_{n})$, $n=1,2,\dots$, satisfies
-\begin{equation}
-|x^* -x_n| \leq |b-a| k^n.
-\end{equation}
-
-**Exercise:** Prove the contraction mapping theorem. **Hints:** to prove uniqueness, assume there are two fixed points and apply the definition of contraction mapping; to prove the inequality, note that $|x^* - x_n| = |f(x^*) - f(x_{n-1})|$, and apply the definition of Lipschitz function.
-
-Note that this theorem gives as more than uniqueness: it tells us how close we are to the fixed point, even if we do not know the fixed point! We can use this result to estimate how many iterations are needed to achieve a desired approximation.
-
-**Example:** Consider the function $f:[0,1/3]\rightarrow [0,1/3]$, $f(x) = x^2$. We note that $f$ is a contraction mapping, since $|f'(x)| = |2x| \leq 2/3 < 1$ for $x \in [0,1/3]$. A Lipschitz constant for for $f$ is $k = 2/3$. The contraction mapping theorem tells as that there is a unique fixed point, and that
-\[
-|x^* - x_n| \leq \frac{1}{3} \left(\frac{2}{3}\right)^n.
-\]
-Let's assume that we are interested in finding the fixed point with an error less than $\varepsilon$. We can impose
-\[
-\frac{1}{3} \left(\frac{2}{3}\right)^n \leq \varepsilon,
-\]
-and find
-\[
-n \geq \frac{\log(\varepsilon) - \log(1/3)}{\log(2/3)}.
-\]
-
-Note that we can do this in general:
-\[
-n \geq \frac{\log(\varepsilon) - \log(|b-a|)}{\log(k)}.
-\]
-
-Let's apply this result to run the fixed point iteration for this function using a _for_ loop.
+#Root finding in R and Python
+R and Python have a suit of root finding methods. We will see examples here using the library `nleqslv` in R, and `scipy` in Python. Let's see how to solve the same problem as before, finding a zero of $f(x) = cos(x) - x$.
 
 ::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
 <div>
@@ -475,24 +272,12 @@ Let's apply this result to run the fixed point iteration for this function using
 **R**
 
 ```{r}
-# Define our function f (cosine).
-f <- \(x) x^2
+library(nleqslv) 
 
-# Define initial point x_0.
-x <- 0.1
+f <- \(x) cos(x) - x
+x0 <- 0.1
 
-# Fixed desired error
-eps <- 1.e-1
-
-# Compute number of iterations (next integer)
-N <- ceiling((log(eps) - log(1/3))/log(2/3))
-
-for(i in 1:N){
-    x <- f(x)
-}
-
-# Show x.
-x 
+nleqslv(x0,f)
 ```
 
 </div>
@@ -502,62 +287,102 @@ x
 **Python**
 
 ```{python}
-# Importing the numpy module
-import numpy as np
+import scipy as sp
 
-# Define our function f
-f = lambda x: x**2
+f = lambda x: np.cos(x) - x
+x0 = 0.1
 
-# Define initial point x_0.
-x = 0.1
-
-# Fixed desired error
-eps = 1.e-1
-
-# Compute number of iterations (next integer)
-N = int(np.ceil((np.log(eps) - np.log(1/3))/np.log(2/3)))
-
-for i in range(N): 
-    x = f(x)
-
-# Show x.
-x 
+sp.optimize.root_scalar(f,x0=x0)
 ```
+
 </div>
 :::
 
-In this case, we know that the exact value of the fixed point is $x^* = 0$. We can see that after `N` iterations, the value of $x_N$ is less than `eps` as expected. Note that the estimate for $N$ was far to large, we are getting a much lower error that what is ensured by the error bound. However, the error also depends on the initial point $x_0$. Try running the iteration with $x_0 = 1/3$, for example.
+As you can see, both methods return information about the process. Of particular interest are the convergence result (true or false), the number of iterations that the method performed and of course, the approximation for the root of $f$.
 
-## Exercises
+We are just using all the default options, but these functions actually allow us to select the method, the convergence criterion, specify the derivative. They are also available for functions higher dimensions. For example, we can use Newton's method.
 
-**Exercise:** We have seen how to implement a stopping criterion based on the
-_absolute_ difference between consecutive iterates. Sometimes, if a function
-takes large values, that criterion may take too long to be satisfied. Implement
-another stopping criterion based on the _relative_ difference, $|(x_{n+1} -
-x_n)/x_n| < \varepsilon_r$. Implement it together with the absolute value
-criterion, and the bound on the maximum number of iterations.
+::: {style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;"}
+<div>
 
-**Exercise:** Implement a function `recursive_fixed_point` that takes a
-function `f`, a point `x` and an absolute tolerance `eps`, and runs the fixed
-point iteration recursively (that is, calling `recursive_fixed_point` itself
-within the function). You should not use any _for_ or _while_ loops. 
+**R**
 
-**Challenge:** Implement a function `recursive_fixed_point` that takes a
-function `f`, a point `x` and an absolute tolerance `eps`, a relative tolerance
-`eps_r` and a maximum number of iterates `itmax` and runs the fixed point
-iteration recursively (that is, calling `recursive_fixed_point` itself within
-the function). You should not use any _for_ or _while_ loops. The function
-should return `NA` or `np.nan` if the maximum number of iterations is reached.
+```{r}
+library(nleqslv) 
 
-**Exercise:** Apply the contraction mapping theorem to $f:[0,1]\rightarrow
-[0,1]$, $f(x) = cos(x)$. Implement the fixed point iteration using the absolute
-error criterion. Run the fixed point iteration for 100 equispaced points in
-[0,1], and compare the number of iterations with the number of iterations given
-by the contraction mapping theorem.
+f <- \(x) cos(x) - x
+fp <- \(x) -sin(x) - 1
+x0 <- 0.1
+
+nleqslv(x0,f,fp,method="Newton")
+```
+
+</div>
+
+<div>
+
+**Python**
+
+```{python}
+import scipy as sp
+
+f = lambda x: np.cos(x) - x
+fp = lambda x: -np.sin(x) - 1
+x0 = 0.1
+
+sp.optimize.root_scalar(f,x0=x0,fprime=fp,method="Newton")
+```
+
+</div>
+:::
+
+Note that the internal implementation and default values in R and Python are different, even when applying the same method. In this case, the R method stops by default when $f(x) < 1.e-8$ (check `ftol` in the documentation of `nleqslv`), whilst the Python implementation uses stopping criteria `xtol` and `rtol`, similar to the fixed point controls we defined in Chapter 6 on the absolute and relative difference of the last two iterates.
+
+**Exercise:** Explore the other methods implemented in R and Python. Do they all require implementing $f'$? Are the methods slower if $f'$ is not defined? Check the documentation for `nleqslv` or `root_scalar` to find more details.
 
 
+## A note on convergence
 
+There is a mathematical definition of convergence rate that allows us to compare methods. Convergence can be defined in general for any sequence. Consider a sequence $x_n \to x^\ast$ as $n \to \infty$. Suppose that for all $n =0, 1,\dots$, $x_n \neq x^\ast$. Let $\epsilon_n = x_n - x^\ast$, the error in using $x_n$ to approximate $x^\ast$. If there exist positive constants $\lambda$ and $\alpha$ such that
+\[
+\lim_{n \rightarrow \infty} \frac{|x_{n+1} - x^\ast|}{|x_n  -x^\ast|^\alpha}=  \lambda
+\]
+then we say that $x_n \to x^\ast$ with **order** $\alpha$ and **asymptotic error constant** $\lambda$.
 
+Two special cases are:
+
+* If $\alpha =1$ (and $\lambda <1$), the sequence is *linearly convergent*.
+* If $\alpha =2$, the sequence is  *quadratically convergent*.
+
+For the fixed point iteration in Chapter 6, using the contraction mapping theorem, we have theorem to characterise the convergence.
+
+**Theorem:** Suppose that $g:[a,b] \to [a,b]$ is a contraction mapping. For $x_0 \in [a,b]$ define the sequence $x_0, x_1, \dots$, by $x_n = g(x_{n-1})$, $n=1,2,\dots$, and let $x^\ast$ be the unique fixed point of $g$ in $[a,b]$ (from the contraction mapping theorem).
+
+a. If $g$ is continuously differentiable with $g'(x^*) \neq 0$, then $x_n \to x^\ast$
+linearly, with $\lambda = |g' (x^*) |$.
+b. If $g$ is twice continuously differentiable with $g' (x^*)=0$ and $g''(x^*) \neq 0$, then $x_n  \to x^*$ quadratically with $\lambda = |g''(x^*)|/2$.
+
+**Exercise:** Prove the previous theorem. **Hint:** Note that the contraction mapping theorem gives an expression for the distance between the $n-th$ iterate and the fixed point, exactly what we need in the definition of convergence.
+
+**Exercise:** Assume we are applying the Newton's method to find a root of a function $f$. Apply the previous theorem to show that the Newton's method has quadratic convergence if $f'(x) \neq 0$. 
+
+The secant method has a convergence rate 1.62 (approximately). We can use the convergence rates to compare the methods: the standard fixed point iteration has (in general) a linear convergence rate (that is, $\alpha=1$), the secant method a convergence rate of 1.62, and Newton's method a convergence rate of 2.
+
+**Exercise:** Evaluate 100 iterations of the standard fixed point method, Newton's method and secant method (if you have implemented it), for the function $f(x) = cos(x) - x$.  Use the last iteration as the "true" value of the fixed point. Plot the log-error of each iterate, that is $\log(|x_n - x^\ast|)$ for each method. What does this represent in terms of convergence rates?
+
+## A note on Newton's method.
+
+There is an alternative (and useful!!) alternative derivation of the Newton's method. It requires the Taylor expansion of a function. Consider a function $f$, that we assume is smooth (it has as many derivatives as we need). We would like to solve
+\[
+f(x) = 0.
+\]
+We start at a value $x_0$, and we are looking for $x_1$ such that $f(x_1) = 0$. We can write:
+\[
+0 = f(x_1) = f(x_0 + (x_1 - x_0)).
+\]
+If we assume that $x_1-x_0$ is _small_, we can use the Taylor expansion of $f$ about $x_0$. 
+
+**Challenge:** Use the Taylor expansion up to order one, and isolate $x_1$ to find expression for Newton's method. Could we derive higher order methods in this manner?
 
 
 ```{=html}

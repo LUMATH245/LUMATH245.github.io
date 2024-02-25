@@ -167,9 +167,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7" data-path="roots.html"><a href="roots.html"><i class="fa fa-check"></i><b>7</b> Root finding</a><ul>
 <li class="chapter" data-level="7.1" data-path="roots.html"><a href="roots.html#fixed-point-iteration-1"><i class="fa fa-check"></i><b>7.1</b> Fixed point iteration</a></li>
-<li class="chapter" data-level="7.2" data-path="roots.html"><a href="roots.html#convergence-1"><i class="fa fa-check"></i><b>7.2</b> Convergence</a></li>
-<li class="chapter" data-level="7.3" data-path="roots.html"><a href="roots.html#fixed-point-theorems-1"><i class="fa fa-check"></i><b>7.3</b> Fixed point theorems</a></li>
-<li class="chapter" data-level="7.4" data-path="roots.html"><a href="roots.html#exercises-1"><i class="fa fa-check"></i><b>7.4</b> Exercises</a></li>
+<li class="chapter" data-level="7.2" data-path="roots.html"><a href="roots.html#newtons-method"><i class="fa fa-check"></i><b>7.2</b> Newton’s method</a></li>
+<li class="chapter" data-level="7.3" data-path="roots.html"><a href="roots.html#a-note-on-convergence"><i class="fa fa-check"></i><b>7.3</b> A note on convergence</a></li>
+<li class="chapter" data-level="7.4" data-path="roots.html"><a href="roots.html#a-note-on-newtons-method."><i class="fa fa-check"></i><b>7.4</b> A note on Newton’s method.</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="challenge.html"><a href="challenge.html"><i class="fa fa-check"></i><b>8</b> Additional Programming Challenges</a><ul>
 <li class="chapter" data-level="8.1" data-path="challenge.html"><a href="challenge.html#part-1-scientific-computing"><i class="fa fa-check"></i><b>8.1</b> Part 1: Scientific Computing</a></li>
@@ -221,20 +221,20 @@ Here’s the function signature and call to get you started:</li>
 <div class="grid-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb885"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb885-1" title="1">hatter &lt;-<span class="st"> </span><span class="cf">function</span>(hats) {</a>
-<a class="sourceLine" id="cb885-2" title="2">  <span class="co"># Your code here</span></a>
-<a class="sourceLine" id="cb885-3" title="3">}</a>
-<a class="sourceLine" id="cb885-4" title="4"></a>
-<a class="sourceLine" id="cb885-5" title="5">test_game &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb885-6" title="6"><span class="kw">hatter</span>(test_game)</a></code></pre></div>
+<div class="sourceCode" id="cb882"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb882-1" title="1">hatter &lt;-<span class="st"> </span><span class="cf">function</span>(hats) {</a>
+<a class="sourceLine" id="cb882-2" title="2">  <span class="co"># Your code here</span></a>
+<a class="sourceLine" id="cb882-3" title="3">}</a>
+<a class="sourceLine" id="cb882-4" title="4"></a>
+<a class="sourceLine" id="cb882-5" title="5">test_game &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb882-6" title="6"><span class="kw">hatter</span>(test_game)</a></code></pre></div>
 </div>
 <div>
 <p><strong>python</strong></p>
-<div class="sourceCode" id="cb886"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb886-1" title="1"><span class="kw">def</span> hatter(hats):</a>
-<a class="sourceLine" id="cb886-2" title="2">    <span class="co"># Your code here</span></a>
-<a class="sourceLine" id="cb886-3" title="3"></a>
-<a class="sourceLine" id="cb886-4" title="4">test_game <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb886-5" title="5">hatter(test_game)</a></code></pre></div>
+<div class="sourceCode" id="cb883"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb883-1" title="1"><span class="kw">def</span> hatter(hats):</a>
+<a class="sourceLine" id="cb883-2" title="2">    <span class="co"># Your code here</span></a>
+<a class="sourceLine" id="cb883-3" title="3"></a>
+<a class="sourceLine" id="cb883-4" title="4">test_game <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb883-5" title="5">hatter(test_game)</a></code></pre></div>
 </div>
 </div>
 <ol start="2" style="list-style-type: decimal">
