@@ -4,28 +4,25 @@ editor_options:
     wrap: sentence
 ---
 
-# Fixed point iteration {#fixed}
+# Root finding {#roots}
 
-Fixed point iteration is both a useful analytical tool, and a powerful
-algorithm. We will use fixed point iteration to learn about analysis and
-performance of algorithms, we will cover different implementations and their
-advantages and disadvantages, and we will look into several basic examples.
-These algorithms will later be useful in the final project. 
+Root finding is a fancy name for a very common task in mathematics: solving an
+equation. Any equation can be written in the form $f(x) = 0$, for a suitable
+function $f$, and then solving the equation means finding a zero of $f$. A root
+is just an alternative name for the zeros of a function, that you already know
+from studying the _roots_ of polynomials.
 
-## Fixed points
+We are going to study algorithms for root finding. From a mathematical
+perspective, we would like to build a sequence that converges t to the root of
+a given function $f$.
 
-A fixed point is a value that does not change under a given function. More
-precisely, let $f$ be a function. A point $x^*$ is a fixed point of $f$ if and
-only if 
-\[ 
-f(x^*) = x^*.
+## Fixed point iteration
+
+We can always rephrase a root finding problem $f(x) = 0$ to a fixed point problem! Let $g(x) = f(x) + x$. Then
+\[
+f(x) = 0 \Longleftrightarrow g(x) = x.
 \]
 
-Note that we have not indicated the domain or range of the function; this definition is as general as it can be. The examples and applications of fixed points in this module are going to be about real function, e.g. $f:\mathbb{R}\rightarrow\mathbb{R}$.
-
-**Example**: $x=0$ is a fixed point of $f(x) = 2x$.
-
-**Example**: For any $a > 0$, $x=\sqrt{a}$ is a fixed point of $f(x) = \frac{1}{2}\left(\frac{a}{x}+x\right)$.
 
 ### Fixed point iteration
 
@@ -213,7 +210,7 @@ point_plot
 
 Note the $y$-axis scale in the last plot! With $x_0=1.2$, at the tenth iterate the value is above $10^{40}$. In contrast, with $x_0=0.2$ the fixed iteration converges quickly to zero.
 
-**Exercise:** What is the exact expression of the $n-th$ fixed point iteration of $f(x) = x^2$? Can you come up with a criterion to decide when will the sequence converge, depending on $x_0$?
+**Exercise:** What is the exact expression of the $n-th$ fixed point iteration of f(x) = x^2$? Can you come up with a criterion to decide when will the sequence converge, depending on $x_0$?
 
 ### Convergence criterion
 
@@ -235,7 +232,7 @@ sequence progresses. In particular, if a sequence is convergent, consecutive
 terms become close.
 
 **Note**: to be rigorous, a sequence can have _consecutive_ terms becoming
-arbitrarily close and yet not converge (e.g. $a_n=\sqrt{n}$). This means that
+arbitrarily close and yet not converge (e.g. $a_n=\sqrt{n}). This means that
 checking consecutive terms provides a necessary but not sufficient condition.
 However, it works well in practice.
 
@@ -396,7 +393,7 @@ We have seen how to implement the fixed point iteration, and how to implement st
 
 Fixed point theorems are results about the existence and uniqueness of fixed points. There are many fixed point theorems, depending on the assumptions we make on the function $f$. The general form of a fixed point theorem is as follows:
 
-**"Theorem":** Let $f:X \to X$ be a function satisfying $\ldots$. Then, there exists $x^*\in X$ such that $f(x^*)=x^*$.
+**"Theorem":** Let $f:X \to X$ be a function satisfying \ldots . Then, there exists $x^*\in X$ such that $f(x^*)=x^*$.
 
 Here $X$ can be many different types of spaces, and the properties required to ensure the existence of a fixed point will relate to the type of space. For example, in topology we have the Brouwer fixed point theorem (continous function on compact convex sets); in algebra we have Kleene fixed point theorem (order preserving functions on a complete lattice); in analysis, we have the Banach fixed point theorem (contraction mappings on a metric space).
 

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6 Fixed point iteration | Lancaster University MATH245 Computational Mathematics</title>
-  <meta name="description" content="6 Fixed point iteration | Lancaster University MATH245 Computational Mathematics" />
+  <title>7 Root finding | Lancaster University MATH245 Computational Mathematics</title>
+  <meta name="description" content="7 Root finding | Lancaster University MATH245 Computational Mathematics" />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6 Fixed point iteration | Lancaster University MATH245 Computational Mathematics" />
+  <meta property="og:title" content="7 Root finding | Lancaster University MATH245 Computational Mathematics" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6 Fixed point iteration | Lancaster University MATH245 Computational Mathematics" />
+  <meta name="twitter:title" content="7 Root finding | Lancaster University MATH245 Computational Mathematics" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="df_plt.html"/>
-<link rel="next" href="roots.html"/>
+<link rel="prev" href="fixed.html"/>
+<link rel="next" href="challenge.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -191,26 +191,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="fixed" class="section level1 hasAnchor">
-<h1><span class="header-section-number">6</span> Fixed point iteration<a href="fixed.html#fixed" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Fixed point iteration is both a useful analytical tool, and a powerful
-algorithm. We will use fixed point iteration to learn about analysis and
-performance of algorithms, we will cover different implementations and their
-advantages and disadvantages, and we will look into several basic examples.
-These algorithms will later be useful in the final project.</p>
-<div id="fixed-points" class="section level2 hasAnchor">
-<h2><span class="header-section-number">6.1</span> Fixed points<a href="fixed.html#fixed-points" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>A fixed point is a value that does not change under a given function. More
-precisely, let <span class="math inline">\(f\)</span> be a function. A point <span class="math inline">\(x^*\)</span> is a fixed point of <span class="math inline">\(f\)</span> if and
-only if
-<span class="math display">\[ 
-f(x^*) = x^*.
+<div id="roots" class="section level1 hasAnchor">
+<h1><span class="header-section-number">7</span> Root finding<a href="roots.html#roots" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Root finding is a fancy name for a very common task in mathematics: solving an
+equation. Any equation can be written in the form <span class="math inline">\(f(x) = 0\)</span>, for a suitable
+function <span class="math inline">\(f\)</span>, and then solving the equation means finding a zero of <span class="math inline">\(f\)</span>. A root
+is just an alternative name for the zeros of a function, that you already know
+from studying the <em>roots</em> of polynomials.</p>
+<p>We are going to study algorithms for root finding. From a mathematical
+perspective, we would like to build a sequence that converges t to the root of
+a given function <span class="math inline">\(f\)</span>.</p>
+<div id="fixed-point-iteration-1" class="section level2 hasAnchor">
+<h2><span class="header-section-number">7.1</span> Fixed point iteration<a href="roots.html#fixed-point-iteration-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We can always rephrase a root finding problem <span class="math inline">\(f(x) = 0\)</span> to a fixed point problem! Let <span class="math inline">\(g(x) = f(x) + x\)</span>. Then
+<span class="math display">\[
+f(x) = 0 \Longleftrightarrow g(x) = x.
 \]</span></p>
-<p>Note that we have not indicated the domain or range of the function; this definition is as general as it can be. The examples and applications of fixed points in this module are going to be about real function, e.g. <span class="math inline">\(f:\mathbb{R}\rightarrow\mathbb{R}\)</span>.</p>
-<p><strong>Example</strong>: <span class="math inline">\(x=0\)</span> is a fixed point of <span class="math inline">\(f(x) = 2x\)</span>.</p>
-<p><strong>Example</strong>: For any <span class="math inline">\(a &gt; 0\)</span>, <span class="math inline">\(x=\sqrt{a}\)</span> is a fixed point of <span class="math inline">\(f(x) = \frac{1}{2}\left(\frac{a}{x}+x\right)\)</span>.</p>
-<div id="fixed-point-iteration" class="section level3 hasAnchor">
-<h3><span class="header-section-number">6.1.1</span> Fixed point iteration<a href="fixed.html#fixed-point-iteration" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="fixed-point-iteration-2" class="section level3 hasAnchor">
+<h3><span class="header-section-number">7.1.1</span> Fixed point iteration<a href="roots.html#fixed-point-iteration-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We are interested in finding fixed points of a given function <span class="math inline">\(f\)</span>. To construct an algorithm to find fixed points, we exploit the definition of a fixed point: a fixed point is invariant when we apply the function <span class="math inline">\(f\)</span>. This suggests an iterative algorithm, starting from an initial point <span class="math inline">\(x_0\)</span>, and defining the sequence
 <span class="math display">\[
 x_{n+1} = f(x_n).
@@ -225,43 +223,43 @@ f(x^*) = f \left (\lim_{n \to \infty} x_n \right ) = \lim_{n \to \infty} f(x_n) 
 <p>Note that the key step is the second equality. In general, that is only true if <span class="math inline">\(x\)</span> is continuous. The first and last equalities rely on the assumption that <span class="math inline">\((x_n)\)</span> converges to <span class="math inline">\(x^*\)</span>; the third equality is the definition of <span class="math inline">\(x_n\)</span>.</p>
 <p>This suggests a very simple algorithm to find fixed points of a function <span class="math inline">\(f\)</span>: pick an initial point <span class="math inline">\(x_0\)</span>, and recursively compute <span class="math inline">\(x_{n+1} = f(x_n)\)</span>.</p>
 </div>
-<div id="examples" class="section level3 hasAnchor">
-<h3><span class="header-section-number">6.1.2</span> Examples<a href="fixed.html#examples" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="examples-1" class="section level3 hasAnchor">
+<h3><span class="header-section-number">7.1.2</span> Examples<a href="roots.html#examples-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s start by fixing the number of iterations. Then, a natural implementation of the fixed point algorithm is to use a <em>for</em> loop.</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb837"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb837-1" title="1"><span class="co"># Define our function f (cosine).</span></a>
-<a class="sourceLine" id="cb837-2" title="2">f &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">cos</span>(x)</a>
-<a class="sourceLine" id="cb837-3" title="3"></a>
-<a class="sourceLine" id="cb837-4" title="4"><span class="co"># Define initial point x_0.</span></a>
-<a class="sourceLine" id="cb837-5" title="5">x &lt;-<span class="st"> </span><span class="fl">0.1</span></a>
-<a class="sourceLine" id="cb837-6" title="6"></a>
-<a class="sourceLine" id="cb837-7" title="7"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>){</a>
-<a class="sourceLine" id="cb837-8" title="8">    x &lt;-<span class="st"> </span><span class="kw">f</span>(x)</a>
-<a class="sourceLine" id="cb837-9" title="9">}</a>
-<a class="sourceLine" id="cb837-10" title="10"></a>
-<a class="sourceLine" id="cb837-11" title="11"><span class="co"># Show x.</span></a>
-<a class="sourceLine" id="cb837-12" title="12">x </a></code></pre></div>
+<div class="sourceCode" id="cb861"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb861-1" title="1"><span class="co"># Define our function f (cosine).</span></a>
+<a class="sourceLine" id="cb861-2" title="2">f &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">cos</span>(x)</a>
+<a class="sourceLine" id="cb861-3" title="3"></a>
+<a class="sourceLine" id="cb861-4" title="4"><span class="co"># Define initial point x_0.</span></a>
+<a class="sourceLine" id="cb861-5" title="5">x &lt;-<span class="st"> </span><span class="fl">0.1</span></a>
+<a class="sourceLine" id="cb861-6" title="6"></a>
+<a class="sourceLine" id="cb861-7" title="7"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>){</a>
+<a class="sourceLine" id="cb861-8" title="8">    x &lt;-<span class="st"> </span><span class="kw">f</span>(x)</a>
+<a class="sourceLine" id="cb861-9" title="9">}</a>
+<a class="sourceLine" id="cb861-10" title="10"></a>
+<a class="sourceLine" id="cb861-11" title="11"><span class="co"># Show x.</span></a>
+<a class="sourceLine" id="cb861-12" title="12">x </a></code></pre></div>
 <pre><code>## [1] 0.7390851</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb839"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb839-1" title="1"><span class="co"># Importing the numpy module</span></a>
-<a class="sourceLine" id="cb839-2" title="2"><span class="im">import</span> numpy <span class="im">as</span> np</a>
-<a class="sourceLine" id="cb839-3" title="3"></a>
-<a class="sourceLine" id="cb839-4" title="4"><span class="co"># Define our function f (cosine).</span></a>
-<a class="sourceLine" id="cb839-5" title="5"><span class="kw">def</span> f(x):</a>
-<a class="sourceLine" id="cb839-6" title="6">    <span class="cf">return</span> np.cos(x)</a>
-<a class="sourceLine" id="cb839-7" title="7"></a>
-<a class="sourceLine" id="cb839-8" title="8"><span class="co"># Define initial point x_0.</span></a>
-<a class="sourceLine" id="cb839-9" title="9">x <span class="op">=</span> <span class="fl">0.1</span></a>
-<a class="sourceLine" id="cb839-10" title="10"></a>
-<a class="sourceLine" id="cb839-11" title="11"><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>): </a>
-<a class="sourceLine" id="cb839-12" title="12">    x <span class="op">=</span> f(x)</a>
-<a class="sourceLine" id="cb839-13" title="13"></a>
-<a class="sourceLine" id="cb839-14" title="14"><span class="co"># Show x.</span></a>
-<a class="sourceLine" id="cb839-15" title="15">x </a></code></pre></div>
+<div class="sourceCode" id="cb863"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb863-1" title="1"><span class="co"># Importing the numpy module</span></a>
+<a class="sourceLine" id="cb863-2" title="2"><span class="im">import</span> numpy <span class="im">as</span> np</a>
+<a class="sourceLine" id="cb863-3" title="3"></a>
+<a class="sourceLine" id="cb863-4" title="4"><span class="co"># Define our function f (cosine).</span></a>
+<a class="sourceLine" id="cb863-5" title="5"><span class="kw">def</span> f(x):</a>
+<a class="sourceLine" id="cb863-6" title="6">    <span class="cf">return</span> np.cos(x)</a>
+<a class="sourceLine" id="cb863-7" title="7"></a>
+<a class="sourceLine" id="cb863-8" title="8"><span class="co"># Define initial point x_0.</span></a>
+<a class="sourceLine" id="cb863-9" title="9">x <span class="op">=</span> <span class="fl">0.1</span></a>
+<a class="sourceLine" id="cb863-10" title="10"></a>
+<a class="sourceLine" id="cb863-11" title="11"><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>): </a>
+<a class="sourceLine" id="cb863-12" title="12">    x <span class="op">=</span> f(x)</a>
+<a class="sourceLine" id="cb863-13" title="13"></a>
+<a class="sourceLine" id="cb863-14" title="14"><span class="co"># Show x.</span></a>
+<a class="sourceLine" id="cb863-15" title="15">x </a></code></pre></div>
 <pre><code>## 0.7390851332151607</code></pre>
 </div>
 </div>
@@ -269,17 +267,17 @@ f(x^*) = f \left (\lim_{n \to \infty} x_n \right ) = \lim_{n \to \infty} f(x_n) 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb841"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb841-1" title="1"><span class="kw">f</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb865"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb865-1" title="1"><span class="kw">f</span>(x)</a></code></pre></div>
 <pre><code>## [1] 0.7390851</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb843"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb843-1" title="1">f(x)</a></code></pre></div>
+<div class="sourceCode" id="cb867"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb867-1" title="1">f(x)</a></code></pre></div>
 <pre><code>## 0.7390851332151607</code></pre>
 </div>
 </div>
 <p>We can see that the fixed operation converged to a fixed point. Note that here we fixed the number of iterations; we might be computing too many! We can inspect the convergence visually by plotting the values of <span class="math inline">\(x_n\)</span>.</p>
-<p><img src="images/unnamed-chunk-278-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-291-1.png" width="50%" /></p>
 <p>The values of <span class="math inline">\(x_n\)</span> oscillate up and down for the first few iterates, but after about 25 iterations the sequence is close to the fixed point.</p>
 <p><strong>Exercise</strong>: Use the previous example to implement the fixed point iteration for
 <span class="math display">\[
@@ -288,10 +286,10 @@ f(x) = \frac{1}{2}\left(\frac{2}{x}+x\right).
 Plot the first 25 iterates.</p>
 </div>
 </div>
-<div id="convergence" class="section level2 hasAnchor">
-<h2><span class="header-section-number">6.2</span> Convergence<a href="fixed.html#convergence" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="initial-point-and-convergence" class="section level3 hasAnchor">
-<h3><span class="header-section-number">6.2.1</span> Initial point and convergence<a href="fixed.html#initial-point-and-convergence" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="convergence-1" class="section level2 hasAnchor">
+<h2><span class="header-section-number">7.2</span> Convergence<a href="roots.html#convergence-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="initial-point-and-convergence-1" class="section level3 hasAnchor">
+<h3><span class="header-section-number">7.2.1</span> Initial point and convergence<a href="roots.html#initial-point-and-convergence-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The fixed point iteration <span class="math inline">\(x_n\)</span> may not converge. The sequence is characterised
 by the function <span class="math inline">\(f\)</span> and the initial point <span class="math inline">\(x_0\)</span>. Both impact the convergence of
 the sequence. Some functions <span class="math inline">\(f\)</span> do not have a fixed point, for example <span class="math inline">\(f(x) = e^x\)</span>. Other functions have a fixed point, but the convergence of the fixed
@@ -301,14 +299,14 @@ point iteration depends on the initial point <span class="math inline">\(x_0\)</
 f(x) = x^2.
 \]</span></p>
 <p>The following plot depicts the first ten fixed point iterations with the initial value <span class="math inline">\(x_0 = 0.2\)</span></p>
-<p><img src="images/unnamed-chunk-279-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-292-1.png" width="50%" /></p>
 <p>And here is the fixed point iteration for the same function, now using <span class="math inline">\(x_0 = 1.2\)</span>.</p>
-<p><img src="images/unnamed-chunk-280-1.png" width="50%" /></p>
+<p><img src="images/unnamed-chunk-293-1.png" width="50%" /></p>
 <p>Note the <span class="math inline">\(y\)</span>-axis scale in the last plot! With <span class="math inline">\(x_0=1.2\)</span>, at the tenth iterate the value is above <span class="math inline">\(10^{40}\)</span>. In contrast, with <span class="math inline">\(x_0=0.2\)</span> the fixed iteration converges quickly to zero.</p>
-<p><strong>Exercise:</strong> What is the exact expression of the <span class="math inline">\(n-th\)</span> fixed point iteration of <span class="math inline">\(f(x) = x^2\)</span>? Can you come up with a criterion to decide when will the sequence converge, depending on <span class="math inline">\(x_0\)</span>?</p>
+<p><strong>Exercise:</strong> What is the exact expression of the <span class="math inline">\(n-th\)</span> fixed point iteration of f(x) = x^2$? Can you come up with a criterion to decide when will the sequence converge, depending on <span class="math inline">\(x_0\)</span>?</p>
 </div>
-<div id="convergence-criterion" class="section level3 hasAnchor">
-<h3><span class="header-section-number">6.2.2</span> Convergence criterion<a href="fixed.html#convergence-criterion" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="convergence-criterion-1" class="section level3 hasAnchor">
+<h3><span class="header-section-number">7.2.2</span> Convergence criterion<a href="roots.html#convergence-criterion-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Computing a fixed number of iterations is not a good strategy. We have seen in the examples above that sometimes the sequence converges in just a few iterates. In consequence, computing further iterations does not provide a better estimate of the fixed point. Ideally, we would like to stop the iteration when we are <em>close</em> to the fixed point. We could fixed a threshold <span class="math inline">\(\varepsilon &gt; 0\)</span>, and stop the iteration when we are closer than <span class="math inline">\(\varepsilon\)</span> to the fixed point,
 <span class="math display">\[
 | x_n - x^* | &lt; \varepsilon.
@@ -324,60 +322,60 @@ is, if terms of the sequence become arbitrarily close to each other as the
 sequence progresses. In particular, if a sequence is convergent, consecutive
 terms become close.</p>
 <p><strong>Note</strong>: to be rigorous, a sequence can have <em>consecutive</em> terms becoming
-arbitrarily close and yet not converge (e.g. <span class="math inline">\(a_n=\sqrt{n}\)</span>). This means that
+arbitrarily close and yet not converge (e.g. $a_n=). This means that
 checking consecutive terms provides a necessary but not sufficient condition.
 However, it works well in practice.</p>
 <p>Let’s see how to implement this in practice. Now that we have a criterion to stop the iteration, we can use a while loop instead of a for loop.</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb845"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb845-1" title="1"><span class="co"># Define our function f (cosine).</span></a>
-<a class="sourceLine" id="cb845-2" title="2">f &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">cos</span>(x)</a>
-<a class="sourceLine" id="cb845-3" title="3"></a>
-<a class="sourceLine" id="cb845-4" title="4"><span class="co"># Our threshold for stopping.</span></a>
-<a class="sourceLine" id="cb845-5" title="5">eps &lt;-<span class="st"> </span><span class="dv">1</span>.e<span class="dv">-8</span></a>
-<a class="sourceLine" id="cb845-6" title="6"></a>
-<a class="sourceLine" id="cb845-7" title="7"><span class="co"># Define initial point x_0.</span></a>
-<a class="sourceLine" id="cb845-8" title="8">x &lt;-<span class="st"> </span><span class="fl">0.1</span></a>
-<a class="sourceLine" id="cb845-9" title="9"></a>
-<a class="sourceLine" id="cb845-10" title="10"><span class="co"># Compute the first iterate, </span></a>
-<a class="sourceLine" id="cb845-11" title="11"><span class="co"># so we can evaluate the stopping criterion.</span></a>
-<a class="sourceLine" id="cb845-12" title="12">x1 &lt;-<span class="st"> </span><span class="kw">f</span>(x) </a>
-<a class="sourceLine" id="cb845-13" title="13"></a>
-<a class="sourceLine" id="cb845-14" title="14"><span class="cf">while</span>(<span class="kw">abs</span>(x<span class="op">-</span>x1) <span class="op">&gt;</span><span class="st"> </span>eps){</a>
-<a class="sourceLine" id="cb845-15" title="15">   x &lt;-<span class="st"> </span>x1 <span class="co">#Replace x by the next iteration x1. </span></a>
-<a class="sourceLine" id="cb845-16" title="16">   x1 &lt;-<span class="st"> </span><span class="kw">f</span>(x) <span class="co">#Compute the next iteration</span></a>
-<a class="sourceLine" id="cb845-17" title="17">}</a>
-<a class="sourceLine" id="cb845-18" title="18"></a>
-<a class="sourceLine" id="cb845-19" title="19"><span class="co"># Show x1. Note that the latest iteration is now x1.</span></a>
-<a class="sourceLine" id="cb845-20" title="20">x1 </a></code></pre></div>
+<div class="sourceCode" id="cb869"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb869-1" title="1"><span class="co"># Define our function f (cosine).</span></a>
+<a class="sourceLine" id="cb869-2" title="2">f &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">cos</span>(x)</a>
+<a class="sourceLine" id="cb869-3" title="3"></a>
+<a class="sourceLine" id="cb869-4" title="4"><span class="co"># Our threshold for stopping.</span></a>
+<a class="sourceLine" id="cb869-5" title="5">eps &lt;-<span class="st"> </span><span class="dv">1</span>.e<span class="dv">-8</span></a>
+<a class="sourceLine" id="cb869-6" title="6"></a>
+<a class="sourceLine" id="cb869-7" title="7"><span class="co"># Define initial point x_0.</span></a>
+<a class="sourceLine" id="cb869-8" title="8">x &lt;-<span class="st"> </span><span class="fl">0.1</span></a>
+<a class="sourceLine" id="cb869-9" title="9"></a>
+<a class="sourceLine" id="cb869-10" title="10"><span class="co"># Compute the first iterate, </span></a>
+<a class="sourceLine" id="cb869-11" title="11"><span class="co"># so we can evaluate the stopping criterion.</span></a>
+<a class="sourceLine" id="cb869-12" title="12">x1 &lt;-<span class="st"> </span><span class="kw">f</span>(x) </a>
+<a class="sourceLine" id="cb869-13" title="13"></a>
+<a class="sourceLine" id="cb869-14" title="14"><span class="cf">while</span>(<span class="kw">abs</span>(x<span class="op">-</span>x1) <span class="op">&gt;</span><span class="st"> </span>eps){</a>
+<a class="sourceLine" id="cb869-15" title="15">   x &lt;-<span class="st"> </span>x1 <span class="co">#Replace x by the next iteration x1. </span></a>
+<a class="sourceLine" id="cb869-16" title="16">   x1 &lt;-<span class="st"> </span><span class="kw">f</span>(x) <span class="co">#Compute the next iteration</span></a>
+<a class="sourceLine" id="cb869-17" title="17">}</a>
+<a class="sourceLine" id="cb869-18" title="18"></a>
+<a class="sourceLine" id="cb869-19" title="19"><span class="co"># Show x1. Note that the latest iteration is now x1.</span></a>
+<a class="sourceLine" id="cb869-20" title="20">x1 </a></code></pre></div>
 <pre><code>## [1] 0.7390851</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb847"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb847-1" title="1"><span class="co"># Importing the numpy module</span></a>
-<a class="sourceLine" id="cb847-2" title="2"><span class="im">import</span> numpy <span class="im">as</span> np</a>
-<a class="sourceLine" id="cb847-3" title="3"></a>
-<a class="sourceLine" id="cb847-4" title="4"><span class="co"># Define our function f (cosine).</span></a>
-<a class="sourceLine" id="cb847-5" title="5"><span class="kw">def</span> f(x):</a>
-<a class="sourceLine" id="cb847-6" title="6">    <span class="cf">return</span> np.cos(x)</a>
-<a class="sourceLine" id="cb847-7" title="7"></a>
-<a class="sourceLine" id="cb847-8" title="8"><span class="co"># Our threshold for stopping.</span></a>
-<a class="sourceLine" id="cb847-9" title="9">eps <span class="op">=</span> <span class="dv">1</span>.e<span class="dv">-8</span></a>
-<a class="sourceLine" id="cb847-10" title="10"></a>
-<a class="sourceLine" id="cb847-11" title="11"><span class="co"># Define initial point x_0.</span></a>
-<a class="sourceLine" id="cb847-12" title="12">x <span class="op">=</span> <span class="fl">0.1</span></a>
-<a class="sourceLine" id="cb847-13" title="13"></a>
-<a class="sourceLine" id="cb847-14" title="14"><span class="co"># Compute the first iterate, </span></a>
-<a class="sourceLine" id="cb847-15" title="15"><span class="co"># so we can evaluate the stopping criterion.</span></a>
-<a class="sourceLine" id="cb847-16" title="16">x1 <span class="op">=</span> f(x) </a>
-<a class="sourceLine" id="cb847-17" title="17"></a>
-<a class="sourceLine" id="cb847-18" title="18"><span class="cf">while</span> <span class="bu">abs</span>(x<span class="op">-</span>x1) <span class="op">&gt;</span> eps:</a>
-<a class="sourceLine" id="cb847-19" title="19">   x <span class="op">=</span> x1 <span class="co">#Replace x by the next iteration x1. </span></a>
-<a class="sourceLine" id="cb847-20" title="20">   x1 <span class="op">=</span> f(x) <span class="co">#Compute the next iteration</span></a>
-<a class="sourceLine" id="cb847-21" title="21"></a>
-<a class="sourceLine" id="cb847-22" title="22"><span class="co"># Show x1</span></a>
-<a class="sourceLine" id="cb847-23" title="23">x1 </a></code></pre></div>
+<div class="sourceCode" id="cb871"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb871-1" title="1"><span class="co"># Importing the numpy module</span></a>
+<a class="sourceLine" id="cb871-2" title="2"><span class="im">import</span> numpy <span class="im">as</span> np</a>
+<a class="sourceLine" id="cb871-3" title="3"></a>
+<a class="sourceLine" id="cb871-4" title="4"><span class="co"># Define our function f (cosine).</span></a>
+<a class="sourceLine" id="cb871-5" title="5"><span class="kw">def</span> f(x):</a>
+<a class="sourceLine" id="cb871-6" title="6">    <span class="cf">return</span> np.cos(x)</a>
+<a class="sourceLine" id="cb871-7" title="7"></a>
+<a class="sourceLine" id="cb871-8" title="8"><span class="co"># Our threshold for stopping.</span></a>
+<a class="sourceLine" id="cb871-9" title="9">eps <span class="op">=</span> <span class="dv">1</span>.e<span class="dv">-8</span></a>
+<a class="sourceLine" id="cb871-10" title="10"></a>
+<a class="sourceLine" id="cb871-11" title="11"><span class="co"># Define initial point x_0.</span></a>
+<a class="sourceLine" id="cb871-12" title="12">x <span class="op">=</span> <span class="fl">0.1</span></a>
+<a class="sourceLine" id="cb871-13" title="13"></a>
+<a class="sourceLine" id="cb871-14" title="14"><span class="co"># Compute the first iterate, </span></a>
+<a class="sourceLine" id="cb871-15" title="15"><span class="co"># so we can evaluate the stopping criterion.</span></a>
+<a class="sourceLine" id="cb871-16" title="16">x1 <span class="op">=</span> f(x) </a>
+<a class="sourceLine" id="cb871-17" title="17"></a>
+<a class="sourceLine" id="cb871-18" title="18"><span class="cf">while</span> <span class="bu">abs</span>(x<span class="op">-</span>x1) <span class="op">&gt;</span> eps:</a>
+<a class="sourceLine" id="cb871-19" title="19">   x <span class="op">=</span> x1 <span class="co">#Replace x by the next iteration x1. </span></a>
+<a class="sourceLine" id="cb871-20" title="20">   x1 <span class="op">=</span> f(x) <span class="co">#Compute the next iteration</span></a>
+<a class="sourceLine" id="cb871-21" title="21"></a>
+<a class="sourceLine" id="cb871-22" title="22"><span class="co"># Show x1</span></a>
+<a class="sourceLine" id="cb871-23" title="23">x1 </a></code></pre></div>
 <pre><code>## 0.7390851365828572</code></pre>
 </div>
 </div>
@@ -386,88 +384,88 @@ However, it works well in practice.</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb849"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb849-1" title="1"><span class="co"># Define our function f (cosine).</span></a>
-<a class="sourceLine" id="cb849-2" title="2">f &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">cos</span>(x)</a>
-<a class="sourceLine" id="cb849-3" title="3"></a>
-<a class="sourceLine" id="cb849-4" title="4"><span class="co"># Our thresholds for stopping.</span></a>
-<a class="sourceLine" id="cb849-5" title="5">eps &lt;-<span class="st"> </span><span class="dv">1</span>.e<span class="dv">-8</span></a>
-<a class="sourceLine" id="cb849-6" title="6">itmax &lt;-<span class="st"> </span><span class="dv">100</span></a>
-<a class="sourceLine" id="cb849-7" title="7"></a>
-<a class="sourceLine" id="cb849-8" title="8"><span class="co"># Define initial point x_0.</span></a>
-<a class="sourceLine" id="cb849-9" title="9">x &lt;-<span class="st"> </span><span class="fl">0.1</span></a>
-<a class="sourceLine" id="cb849-10" title="10"></a>
-<a class="sourceLine" id="cb849-11" title="11"><span class="co"># Compute the first iterate, </span></a>
-<a class="sourceLine" id="cb849-12" title="12"><span class="co"># so we can evaluate the stopping criterion.</span></a>
-<a class="sourceLine" id="cb849-13" title="13">x1 &lt;-<span class="st"> </span><span class="kw">f</span>(x) </a>
-<a class="sourceLine" id="cb849-14" title="14"></a>
-<a class="sourceLine" id="cb849-15" title="15">it &lt;-<span class="st"> </span><span class="dv">0</span> <span class="co"># Iteration counter</span></a>
-<a class="sourceLine" id="cb849-16" title="16"></a>
-<a class="sourceLine" id="cb849-17" title="17"><span class="cf">while</span>(<span class="kw">abs</span>(x<span class="op">-</span>x1) <span class="op">&gt;</span><span class="st"> </span>eps <span class="op">&amp;</span><span class="st"> </span>it <span class="op">&lt;</span><span class="st"> </span>itmax ){</a>
-<a class="sourceLine" id="cb849-18" title="18">   x &lt;-<span class="st"> </span>x1 <span class="co">#Replace x by the next iteration x1. </span></a>
-<a class="sourceLine" id="cb849-19" title="19">   x1 &lt;-<span class="st"> </span><span class="kw">f</span>(x) <span class="co">#Compute the next iteration</span></a>
-<a class="sourceLine" id="cb849-20" title="20">   it &lt;-<span class="st"> </span>it <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="co">#Update counter</span></a>
-<a class="sourceLine" id="cb849-21" title="21">}</a>
-<a class="sourceLine" id="cb849-22" title="22"></a>
-<a class="sourceLine" id="cb849-23" title="23"><span class="co">#Print number of iterations:</span></a>
-<a class="sourceLine" id="cb849-24" title="24"><span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Iterations: &quot;</span>,it))</a></code></pre></div>
+<div class="sourceCode" id="cb873"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb873-1" title="1"><span class="co"># Define our function f (cosine).</span></a>
+<a class="sourceLine" id="cb873-2" title="2">f &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">cos</span>(x)</a>
+<a class="sourceLine" id="cb873-3" title="3"></a>
+<a class="sourceLine" id="cb873-4" title="4"><span class="co"># Our thresholds for stopping.</span></a>
+<a class="sourceLine" id="cb873-5" title="5">eps &lt;-<span class="st"> </span><span class="dv">1</span>.e<span class="dv">-8</span></a>
+<a class="sourceLine" id="cb873-6" title="6">itmax &lt;-<span class="st"> </span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb873-7" title="7"></a>
+<a class="sourceLine" id="cb873-8" title="8"><span class="co"># Define initial point x_0.</span></a>
+<a class="sourceLine" id="cb873-9" title="9">x &lt;-<span class="st"> </span><span class="fl">0.1</span></a>
+<a class="sourceLine" id="cb873-10" title="10"></a>
+<a class="sourceLine" id="cb873-11" title="11"><span class="co"># Compute the first iterate, </span></a>
+<a class="sourceLine" id="cb873-12" title="12"><span class="co"># so we can evaluate the stopping criterion.</span></a>
+<a class="sourceLine" id="cb873-13" title="13">x1 &lt;-<span class="st"> </span><span class="kw">f</span>(x) </a>
+<a class="sourceLine" id="cb873-14" title="14"></a>
+<a class="sourceLine" id="cb873-15" title="15">it &lt;-<span class="st"> </span><span class="dv">0</span> <span class="co"># Iteration counter</span></a>
+<a class="sourceLine" id="cb873-16" title="16"></a>
+<a class="sourceLine" id="cb873-17" title="17"><span class="cf">while</span>(<span class="kw">abs</span>(x<span class="op">-</span>x1) <span class="op">&gt;</span><span class="st"> </span>eps <span class="op">&amp;</span><span class="st"> </span>it <span class="op">&lt;</span><span class="st"> </span>itmax ){</a>
+<a class="sourceLine" id="cb873-18" title="18">   x &lt;-<span class="st"> </span>x1 <span class="co">#Replace x by the next iteration x1. </span></a>
+<a class="sourceLine" id="cb873-19" title="19">   x1 &lt;-<span class="st"> </span><span class="kw">f</span>(x) <span class="co">#Compute the next iteration</span></a>
+<a class="sourceLine" id="cb873-20" title="20">   it &lt;-<span class="st"> </span>it <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="co">#Update counter</span></a>
+<a class="sourceLine" id="cb873-21" title="21">}</a>
+<a class="sourceLine" id="cb873-22" title="22"></a>
+<a class="sourceLine" id="cb873-23" title="23"><span class="co">#Print number of iterations:</span></a>
+<a class="sourceLine" id="cb873-24" title="24"><span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Iterations: &quot;</span>,it))</a></code></pre></div>
 <pre><code>## [1] &quot;Iterations:  46&quot;</code></pre>
-<div class="sourceCode" id="cb851"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb851-1" title="1"><span class="co"># Show x1. Note that the latest iteration is now x1.</span></a>
-<a class="sourceLine" id="cb851-2" title="2">x1 </a></code></pre></div>
+<div class="sourceCode" id="cb875"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb875-1" title="1"><span class="co"># Show x1. Note that the latest iteration is now x1.</span></a>
+<a class="sourceLine" id="cb875-2" title="2">x1 </a></code></pre></div>
 <pre><code>## [1] 0.7390851</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb853"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb853-1" title="1"><span class="co"># Importing the numpy module</span></a>
-<a class="sourceLine" id="cb853-2" title="2"><span class="im">import</span> numpy <span class="im">as</span> np</a>
-<a class="sourceLine" id="cb853-3" title="3"></a>
-<a class="sourceLine" id="cb853-4" title="4"><span class="co"># Define our function f (cosine).</span></a>
-<a class="sourceLine" id="cb853-5" title="5"><span class="kw">def</span> f(x):</a>
-<a class="sourceLine" id="cb853-6" title="6">    <span class="cf">return</span> np.cos(x)</a>
-<a class="sourceLine" id="cb853-7" title="7"></a>
-<a class="sourceLine" id="cb853-8" title="8"><span class="co"># Our threshold for stopping.</span></a>
-<a class="sourceLine" id="cb853-9" title="9">eps <span class="op">=</span> <span class="dv">1</span>.e<span class="dv">-8</span></a>
-<a class="sourceLine" id="cb853-10" title="10">itmax <span class="op">=</span> <span class="dv">100</span></a>
-<a class="sourceLine" id="cb853-11" title="11"></a>
-<a class="sourceLine" id="cb853-12" title="12"><span class="co"># Define initial point x_0.</span></a>
-<a class="sourceLine" id="cb853-13" title="13">x <span class="op">=</span> <span class="fl">0.1</span></a>
-<a class="sourceLine" id="cb853-14" title="14"></a>
-<a class="sourceLine" id="cb853-15" title="15"><span class="co"># Compute the first iterate, </span></a>
-<a class="sourceLine" id="cb853-16" title="16"><span class="co"># so we can evaluate the stopping criterion.</span></a>
-<a class="sourceLine" id="cb853-17" title="17">x1 <span class="op">=</span> f(x) </a>
-<a class="sourceLine" id="cb853-18" title="18"></a>
-<a class="sourceLine" id="cb853-19" title="19">it <span class="op">=</span> <span class="dv">0</span> <span class="co"># Iteration counter</span></a>
-<a class="sourceLine" id="cb853-20" title="20"></a>
-<a class="sourceLine" id="cb853-21" title="21"><span class="cf">while</span> <span class="bu">abs</span>(x<span class="op">-</span>x1) <span class="op">&gt;</span> eps <span class="kw">and</span> it <span class="op">&lt;</span> itmax:</a>
-<a class="sourceLine" id="cb853-22" title="22">   x <span class="op">=</span> x1 <span class="co">#Replace x by the next iteration x1. </span></a>
-<a class="sourceLine" id="cb853-23" title="23">   x1 <span class="op">=</span> f(x) <span class="co">#Compute the next iteration</span></a>
-<a class="sourceLine" id="cb853-24" title="24">   it <span class="op">=</span> it <span class="op">+</span> <span class="dv">1</span></a>
-<a class="sourceLine" id="cb853-25" title="25"></a>
-<a class="sourceLine" id="cb853-26" title="26"><span class="bu">print</span>(<span class="st">&quot;Iterations: </span><span class="sc">{}</span><span class="st">&quot;</span>.<span class="bu">format</span>(it))</a></code></pre></div>
+<div class="sourceCode" id="cb877"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb877-1" title="1"><span class="co"># Importing the numpy module</span></a>
+<a class="sourceLine" id="cb877-2" title="2"><span class="im">import</span> numpy <span class="im">as</span> np</a>
+<a class="sourceLine" id="cb877-3" title="3"></a>
+<a class="sourceLine" id="cb877-4" title="4"><span class="co"># Define our function f (cosine).</span></a>
+<a class="sourceLine" id="cb877-5" title="5"><span class="kw">def</span> f(x):</a>
+<a class="sourceLine" id="cb877-6" title="6">    <span class="cf">return</span> np.cos(x)</a>
+<a class="sourceLine" id="cb877-7" title="7"></a>
+<a class="sourceLine" id="cb877-8" title="8"><span class="co"># Our threshold for stopping.</span></a>
+<a class="sourceLine" id="cb877-9" title="9">eps <span class="op">=</span> <span class="dv">1</span>.e<span class="dv">-8</span></a>
+<a class="sourceLine" id="cb877-10" title="10">itmax <span class="op">=</span> <span class="dv">100</span></a>
+<a class="sourceLine" id="cb877-11" title="11"></a>
+<a class="sourceLine" id="cb877-12" title="12"><span class="co"># Define initial point x_0.</span></a>
+<a class="sourceLine" id="cb877-13" title="13">x <span class="op">=</span> <span class="fl">0.1</span></a>
+<a class="sourceLine" id="cb877-14" title="14"></a>
+<a class="sourceLine" id="cb877-15" title="15"><span class="co"># Compute the first iterate, </span></a>
+<a class="sourceLine" id="cb877-16" title="16"><span class="co"># so we can evaluate the stopping criterion.</span></a>
+<a class="sourceLine" id="cb877-17" title="17">x1 <span class="op">=</span> f(x) </a>
+<a class="sourceLine" id="cb877-18" title="18"></a>
+<a class="sourceLine" id="cb877-19" title="19">it <span class="op">=</span> <span class="dv">0</span> <span class="co"># Iteration counter</span></a>
+<a class="sourceLine" id="cb877-20" title="20"></a>
+<a class="sourceLine" id="cb877-21" title="21"><span class="cf">while</span> <span class="bu">abs</span>(x<span class="op">-</span>x1) <span class="op">&gt;</span> eps <span class="kw">and</span> it <span class="op">&lt;</span> itmax:</a>
+<a class="sourceLine" id="cb877-22" title="22">   x <span class="op">=</span> x1 <span class="co">#Replace x by the next iteration x1. </span></a>
+<a class="sourceLine" id="cb877-23" title="23">   x1 <span class="op">=</span> f(x) <span class="co">#Compute the next iteration</span></a>
+<a class="sourceLine" id="cb877-24" title="24">   it <span class="op">=</span> it <span class="op">+</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb877-25" title="25"></a>
+<a class="sourceLine" id="cb877-26" title="26"><span class="bu">print</span>(<span class="st">&quot;Iterations: </span><span class="sc">{}</span><span class="st">&quot;</span>.<span class="bu">format</span>(it))</a></code></pre></div>
 <pre><code>## Iterations: 46</code></pre>
-<div class="sourceCode" id="cb855"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb855-1" title="1"><span class="co"># Show x1</span></a>
-<a class="sourceLine" id="cb855-2" title="2">x1 </a></code></pre></div>
+<div class="sourceCode" id="cb879"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb879-1" title="1"><span class="co"># Show x1</span></a>
+<a class="sourceLine" id="cb879-2" title="2">x1 </a></code></pre></div>
 <pre><code>## 0.7390851365828572</code></pre>
 </div>
 </div>
 <p>We can see that it takes 46 iterations to satisfy the stopping criteria. Since we set the maximum iterations <code>itmax</code> at 100, this means that the distance between consecutive iterates is smaller than <code>eps</code>.</p>
 </div>
 </div>
-<div id="fixed-point-theorems" class="section level2 hasAnchor">
-<h2><span class="header-section-number">6.3</span> Fixed point theorems<a href="fixed.html#fixed-point-theorems" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="fixed-point-theorems-1" class="section level2 hasAnchor">
+<h2><span class="header-section-number">7.3</span> Fixed point theorems<a href="roots.html#fixed-point-theorems-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This section cover some theory about fixed points.</p>
 <p>We have seen how to implement the fixed point iteration, and how to implement stopping criteria to ensure our algorithm does not run forever. However, we know that for some functions, and depending on the initial point <span class="math inline">\(x_0\)</span>, our fixed point iteration will not converge. Would not it be nice to have some results to figure out when the sequence <em>actually</em> converges? And even better, to know how long it will take to converge?</p>
 <p>Fixed point theorems are results about the existence and uniqueness of fixed points. There are many fixed point theorems, depending on the assumptions we make on the function <span class="math inline">\(f\)</span>. The general form of a fixed point theorem is as follows:</p>
-<p><strong>“Theorem”:</strong> Let <span class="math inline">\(f:X \to X\)</span> be a function satisfying <span class="math inline">\(\ldots\)</span>. Then, there exists <span class="math inline">\(x^*\in X\)</span> such that <span class="math inline">\(f(x^*)=x^*\)</span>.</p>
+<p><strong>“Theorem”:</strong> Let <span class="math inline">\(f:X \to X\)</span> be a function satisfying . Then, there exists <span class="math inline">\(x^*\in X\)</span> such that <span class="math inline">\(f(x^*)=x^*\)</span>.</p>
 <p>Here <span class="math inline">\(X\)</span> can be many different types of spaces, and the properties required to ensure the existence of a fixed point will relate to the type of space. For example, in topology we have the Brouwer fixed point theorem (continous function on compact convex sets); in algebra we have Kleene fixed point theorem (order preserving functions on a complete lattice); in analysis, we have the Banach fixed point theorem (contraction mappings on a metric space).</p>
 <p>Here, we will discuss briefly a version of Brouwer and Banach fixed point theorems for real functions.</p>
-<div id="existence-of-fixed-points" class="section level3 hasAnchor">
-<h3><span class="header-section-number">6.3.1</span> Existence of fixed points<a href="fixed.html#existence-of-fixed-points" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="existence-of-fixed-points-1" class="section level3 hasAnchor">
+<h3><span class="header-section-number">7.3.1</span> Existence of fixed points<a href="roots.html#existence-of-fixed-points-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For real funcions, we can state a simple existence result.</p>
 <p><strong>Proposition:</strong> Let <span class="math inline">\(f:[a,b] \to [a,b]\)</span> continuous, then <span class="math inline">\(f(x)=x\)</span> has at least one solution on <span class="math inline">\([a,b]\)</span>.</p>
 <p><strong>Exercise:</strong> Use the intermediate value theorem to prove the proposition. <strong>Hint:</strong> Define <span class="math inline">\(g(x) = f(x) - x\)</span>.</p>
 </div>
-<div id="uniqueness-of-fixed-points" class="section level3 hasAnchor">
-<h3><span class="header-section-number">6.3.2</span> Uniqueness of fixed points<a href="fixed.html#uniqueness-of-fixed-points" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="uniqueness-of-fixed-points-1" class="section level3 hasAnchor">
+<h3><span class="header-section-number">7.3.2</span> Uniqueness of fixed points<a href="roots.html#uniqueness-of-fixed-points-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The previous proposition ensures that a fixed point exists, but often we are also interested in knowing that the fixed point is <em>unique</em>. We will use another results that you might know from MATH113, the contraction mapping theorem.</p>
 <p>First, a couple of definitions.</p>
 <p><strong>Definition (Lipschitz function)</strong>: A function <span class="math inline">\(f:[a,b] \to \mathbb{R}\)</span> is called a <em>Lipschitz function</em> if there exists some <span class="math inline">\(k \in [0,\infty)\)</span> such that, for all <span class="math inline">\(x,y \in [a,b]\)</span>,
@@ -479,8 +477,8 @@ We call <span class="math inline">\(k\)</span> a <em>Lipschitz constant</em>.</p
 Note that all Lipschitz functions are continous (<strong>why?</strong>), but the reverse is
 generally not true. However, as a continous function from <span class="math inline">\([a,b]\)</span> to itself, we
 already know that the function has (at least) one fixed point.</p>
-<div id="checking-if-a-function-is-a-contraction-mapping" class="section level4 hasAnchor">
-<h4><span class="header-section-number">6.3.2.1</span> Checking if a function is a contraction mapping<a href="fixed.html#checking-if-a-function-is-a-contraction-mapping" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="checking-if-a-function-is-a-contraction-mapping-1" class="section level4 hasAnchor">
+<h4><span class="header-section-number">7.3.2.1</span> Checking if a function is a contraction mapping<a href="roots.html#checking-if-a-function-is-a-contraction-mapping-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Computing the Lipschitz constant is difficult if we do not impose further restrictions. If we ask <em>a little more</em> about <span class="math inline">\(f\)</span>, namely that <span class="math inline">\(f\)</span> is differentiable, then we can use the mean value theorem to find a Lipschitz constant of <span class="math inline">\(f\)</span>. More precisely, assume that <span class="math inline">\(f\)</span> is differentiable and <span class="math inline">\(f&#39;(x)\)</span> is bounded in <span class="math inline">\([a,b]\)</span> (that is, there exists <span class="math inline">\(\rho\in\mathbb{R}^+\)</span> such that for all <span class="math inline">\(x\in [a,b]\)</span> <span class="math inline">\(|f&#39;(x)| \leq \rho\)</span>). Then, by the mean value theorem, for every <span class="math inline">\(x,y \in [a,b], x&lt;y\)</span>, there exists some <span class="math inline">\(c \in [x,y]\)</span> such that
 <span class="math display">\[
 |f(x)-f(y)| = |f&#39;(c)||x-y|,
@@ -518,48 +516,48 @@ n \geq \frac{\log(\varepsilon) - \log(|b-a|)}{\log(k)}.
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb857"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb857-1" title="1"><span class="co"># Define our function f (cosine).</span></a>
-<a class="sourceLine" id="cb857-2" title="2">f &lt;-<span class="st"> </span>\(x) x<span class="op">^</span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb857-3" title="3"></a>
-<a class="sourceLine" id="cb857-4" title="4"><span class="co"># Define initial point x_0.</span></a>
-<a class="sourceLine" id="cb857-5" title="5">x &lt;-<span class="st"> </span><span class="fl">0.1</span></a>
-<a class="sourceLine" id="cb857-6" title="6"></a>
-<a class="sourceLine" id="cb857-7" title="7"><span class="co"># Fixed desired error</span></a>
-<a class="sourceLine" id="cb857-8" title="8">eps &lt;-<span class="st"> </span><span class="dv">1</span>.e<span class="dv">-1</span></a>
-<a class="sourceLine" id="cb857-9" title="9"></a>
-<a class="sourceLine" id="cb857-10" title="10"><span class="co"># Compute number of iterations (next integer)</span></a>
-<a class="sourceLine" id="cb857-11" title="11">N &lt;-<span class="st"> </span><span class="kw">ceiling</span>((<span class="kw">log</span>(eps) <span class="op">-</span><span class="st"> </span><span class="kw">log</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>))<span class="op">/</span><span class="kw">log</span>(<span class="dv">2</span><span class="op">/</span><span class="dv">3</span>))</a>
-<a class="sourceLine" id="cb857-12" title="12"></a>
-<a class="sourceLine" id="cb857-13" title="13"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>N){</a>
-<a class="sourceLine" id="cb857-14" title="14">    x &lt;-<span class="st"> </span><span class="kw">f</span>(x)</a>
-<a class="sourceLine" id="cb857-15" title="15">}</a>
-<a class="sourceLine" id="cb857-16" title="16"></a>
-<a class="sourceLine" id="cb857-17" title="17"><span class="co"># Show x.</span></a>
-<a class="sourceLine" id="cb857-18" title="18">x </a></code></pre></div>
+<div class="sourceCode" id="cb881"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb881-1" title="1"><span class="co"># Define our function f (cosine).</span></a>
+<a class="sourceLine" id="cb881-2" title="2">f &lt;-<span class="st"> </span>\(x) x<span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb881-3" title="3"></a>
+<a class="sourceLine" id="cb881-4" title="4"><span class="co"># Define initial point x_0.</span></a>
+<a class="sourceLine" id="cb881-5" title="5">x &lt;-<span class="st"> </span><span class="fl">0.1</span></a>
+<a class="sourceLine" id="cb881-6" title="6"></a>
+<a class="sourceLine" id="cb881-7" title="7"><span class="co"># Fixed desired error</span></a>
+<a class="sourceLine" id="cb881-8" title="8">eps &lt;-<span class="st"> </span><span class="dv">1</span>.e<span class="dv">-1</span></a>
+<a class="sourceLine" id="cb881-9" title="9"></a>
+<a class="sourceLine" id="cb881-10" title="10"><span class="co"># Compute number of iterations (next integer)</span></a>
+<a class="sourceLine" id="cb881-11" title="11">N &lt;-<span class="st"> </span><span class="kw">ceiling</span>((<span class="kw">log</span>(eps) <span class="op">-</span><span class="st"> </span><span class="kw">log</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>))<span class="op">/</span><span class="kw">log</span>(<span class="dv">2</span><span class="op">/</span><span class="dv">3</span>))</a>
+<a class="sourceLine" id="cb881-12" title="12"></a>
+<a class="sourceLine" id="cb881-13" title="13"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>N){</a>
+<a class="sourceLine" id="cb881-14" title="14">    x &lt;-<span class="st"> </span><span class="kw">f</span>(x)</a>
+<a class="sourceLine" id="cb881-15" title="15">}</a>
+<a class="sourceLine" id="cb881-16" title="16"></a>
+<a class="sourceLine" id="cb881-17" title="17"><span class="co"># Show x.</span></a>
+<a class="sourceLine" id="cb881-18" title="18">x </a></code></pre></div>
 <pre><code>## [1] 1e-08</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb859"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb859-1" title="1"><span class="co"># Importing the numpy module</span></a>
-<a class="sourceLine" id="cb859-2" title="2"><span class="im">import</span> numpy <span class="im">as</span> np</a>
-<a class="sourceLine" id="cb859-3" title="3"></a>
-<a class="sourceLine" id="cb859-4" title="4"><span class="co"># Define our function f</span></a>
-<a class="sourceLine" id="cb859-5" title="5">f <span class="op">=</span> <span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb859-6" title="6"></a>
-<a class="sourceLine" id="cb859-7" title="7"><span class="co"># Define initial point x_0.</span></a>
-<a class="sourceLine" id="cb859-8" title="8">x <span class="op">=</span> <span class="fl">0.1</span></a>
-<a class="sourceLine" id="cb859-9" title="9"></a>
-<a class="sourceLine" id="cb859-10" title="10"><span class="co"># Fixed desired error</span></a>
-<a class="sourceLine" id="cb859-11" title="11">eps <span class="op">=</span> <span class="dv">1</span>.e<span class="dv">-1</span></a>
-<a class="sourceLine" id="cb859-12" title="12"></a>
-<a class="sourceLine" id="cb859-13" title="13"><span class="co"># Compute number of iterations (next integer)</span></a>
-<a class="sourceLine" id="cb859-14" title="14">N <span class="op">=</span> <span class="bu">int</span>(np.ceil((np.log(eps) <span class="op">-</span> np.log(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>))<span class="op">/</span>np.log(<span class="dv">2</span><span class="op">/</span><span class="dv">3</span>)))</a>
-<a class="sourceLine" id="cb859-15" title="15"></a>
-<a class="sourceLine" id="cb859-16" title="16"><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N): </a>
-<a class="sourceLine" id="cb859-17" title="17">    x <span class="op">=</span> f(x)</a>
-<a class="sourceLine" id="cb859-18" title="18"></a>
-<a class="sourceLine" id="cb859-19" title="19"><span class="co"># Show x.</span></a>
-<a class="sourceLine" id="cb859-20" title="20">x </a></code></pre></div>
+<div class="sourceCode" id="cb883"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb883-1" title="1"><span class="co"># Importing the numpy module</span></a>
+<a class="sourceLine" id="cb883-2" title="2"><span class="im">import</span> numpy <span class="im">as</span> np</a>
+<a class="sourceLine" id="cb883-3" title="3"></a>
+<a class="sourceLine" id="cb883-4" title="4"><span class="co"># Define our function f</span></a>
+<a class="sourceLine" id="cb883-5" title="5">f <span class="op">=</span> <span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb883-6" title="6"></a>
+<a class="sourceLine" id="cb883-7" title="7"><span class="co"># Define initial point x_0.</span></a>
+<a class="sourceLine" id="cb883-8" title="8">x <span class="op">=</span> <span class="fl">0.1</span></a>
+<a class="sourceLine" id="cb883-9" title="9"></a>
+<a class="sourceLine" id="cb883-10" title="10"><span class="co"># Fixed desired error</span></a>
+<a class="sourceLine" id="cb883-11" title="11">eps <span class="op">=</span> <span class="dv">1</span>.e<span class="dv">-1</span></a>
+<a class="sourceLine" id="cb883-12" title="12"></a>
+<a class="sourceLine" id="cb883-13" title="13"><span class="co"># Compute number of iterations (next integer)</span></a>
+<a class="sourceLine" id="cb883-14" title="14">N <span class="op">=</span> <span class="bu">int</span>(np.ceil((np.log(eps) <span class="op">-</span> np.log(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>))<span class="op">/</span>np.log(<span class="dv">2</span><span class="op">/</span><span class="dv">3</span>)))</a>
+<a class="sourceLine" id="cb883-15" title="15"></a>
+<a class="sourceLine" id="cb883-16" title="16"><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N): </a>
+<a class="sourceLine" id="cb883-17" title="17">    x <span class="op">=</span> f(x)</a>
+<a class="sourceLine" id="cb883-18" title="18"></a>
+<a class="sourceLine" id="cb883-19" title="19"><span class="co"># Show x.</span></a>
+<a class="sourceLine" id="cb883-20" title="20">x </a></code></pre></div>
 <pre><code>## 1.0000000000000008e-08</code></pre>
 </div>
 </div>
@@ -567,8 +565,8 @@ n \geq \frac{\log(\varepsilon) - \log(|b-a|)}{\log(k)}.
 </div>
 </div>
 </div>
-<div id="exercises" class="section level2 hasAnchor">
-<h2><span class="header-section-number">6.4</span> Exercises<a href="fixed.html#exercises" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="exercises-1" class="section level2 hasAnchor">
+<h2><span class="header-section-number">7.4</span> Exercises<a href="roots.html#exercises-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Exercise:</strong> We have seen how to implement a stopping criterion based on the
 <em>absolute</em> difference between consecutive iterates. Sometimes, if a function
 takes large values, that criterion may take too long to be satisfied. Implement
@@ -601,8 +599,8 @@ by the contraction mapping theorem.</p>
           </div>
         </div>
       </div>
-<a href="df_plt.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="roots.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="fixed.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="challenge.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
