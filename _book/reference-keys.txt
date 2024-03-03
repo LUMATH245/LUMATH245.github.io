@@ -113,6 +113,16 @@ fixed-point-iteration-1
 newtons-method
 a-note-on-convergence
 a-note-on-newtons-method.
+gd
+optimisation-and-root-finding
+gradient-descent
+in-one-dimension
+in-several-dimensions
+notes
+optimisation-is-a-very-rich-field
+local-vs-global-optimisation
+gradient-descent-and-neural-networks
+exercises-and-challenges
 challenge
 part-1-scientific-computing
 hatters_challenge
