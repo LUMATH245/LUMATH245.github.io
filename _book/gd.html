@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="roots.html"/>
-<link rel="next" href="challenge.html"/>
+<link rel="next" href="mc.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -177,8 +177,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3" data-path="gd.html"><a href="gd.html#notes"><i class="fa fa-check"></i><b>8.3</b> Notes</a></li>
 <li class="chapter" data-level="8.4" data-path="gd.html"><a href="gd.html#exercises-and-challenges"><i class="fa fa-check"></i><b>8.4</b> Exercises and challenges</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="challenge.html"><a href="challenge.html"><i class="fa fa-check"></i><b>9</b> Additional Programming Challenges</a><ul>
-<li class="chapter" data-level="9.1" data-path="challenge.html"><a href="challenge.html#part-1-scientific-computing"><i class="fa fa-check"></i><b>9.1</b> Part 1: Scientific Computing</a></li>
+<li class="chapter" data-level="9" data-path="mc.html"><a href="mc.html"><i class="fa fa-check"></i><b>9</b> Monte Carlo methods</a><ul>
+<li class="chapter" data-level="9.1" data-path="mc.html"><a href="mc.html#simple-example-area-of-a-circle"><i class="fa fa-check"></i><b>9.1</b> Simple example: area of a circle</a></li>
+<li class="chapter" data-level="9.2" data-path="mc.html"><a href="mc.html#definition-and-properties"><i class="fa fa-check"></i><b>9.2</b> Definition and properties</a></li>
+<li class="chapter" data-level="9.3" data-path="mc.html"><a href="mc.html#example"><i class="fa fa-check"></i><b>9.3</b> Example</a></li>
+<li class="chapter" data-level="9.4" data-path="mc.html"><a href="mc.html#error-estimate"><i class="fa fa-check"></i><b>9.4</b> Error estimate</a></li>
+<li class="chapter" data-level="9.5" data-path="mc.html"><a href="mc.html#asymptotic-error"><i class="fa fa-check"></i><b>9.5</b> Asymptotic error</a></li>
+<li class="chapter" data-level="9.6" data-path="mc.html"><a href="mc.html#exercises-1"><i class="fa fa-check"></i><b>9.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="challenge.html"><a href="challenge.html"><i class="fa fa-check"></i><b>10</b> Additional Programming Challenges</a><ul>
+<li class="chapter" data-level="10.1" data-path="challenge.html"><a href="challenge.html#part-1-scientific-computing"><i class="fa fa-check"></i><b>10.1</b> Part 1: Scientific Computing</a></li>
 </ul></li>
 </ul>
 
@@ -511,7 +519,7 @@ therefore <span class="math inline">\(\mathbf{x} \in \mathbb{R}^d\)</span>, and 
 <a class="sourceLine" id="cb901-16" title="16">plt.contour(np.array(df.x).reshape((<span class="dv">100</span>,<span class="dv">100</span>)),<span class="op">\</span></a>
 <a class="sourceLine" id="cb901-17" title="17">            np.array(df.y).reshape((<span class="dv">100</span>,<span class="dv">100</span>)),<span class="op">\</span></a>
 <a class="sourceLine" id="cb901-18" title="18">            np.array(df.z).reshape((<span class="dv">100</span>,<span class="dv">100</span>)))</a></code></pre></div>
-<pre><code>## &lt;matplotlib.contour.QuadContourSet object at 0x7f329b1a9190&gt;</code></pre>
+<pre><code>## &lt;matplotlib.contour.QuadContourSet object at 0x7fc23c089700&gt;</code></pre>
 <p><img src="images/unnamed-chunk-308-1.png" width="50%" /></p>
 </div>
 </div>
@@ -560,9 +568,9 @@ therefore <span class="math inline">\(\mathbf{x} \in \mathbb{R}^d\)</span>, and 
 <a class="sourceLine" id="cb904-13" title="13">plt.contour(np.array(df.x).reshape((<span class="dv">100</span>,<span class="dv">100</span>)),<span class="op">\</span></a>
 <a class="sourceLine" id="cb904-14" title="14">            np.array(df.y).reshape((<span class="dv">100</span>,<span class="dv">100</span>)),<span class="op">\</span></a>
 <a class="sourceLine" id="cb904-15" title="15">            np.array(df.z).reshape((<span class="dv">100</span>,<span class="dv">100</span>)))</a></code></pre></div>
-<pre><code>## &lt;matplotlib.contour.QuadContourSet object at 0x7f329b220f70&gt;</code></pre>
+<pre><code>## &lt;matplotlib.contour.QuadContourSet object at 0x7fc23bf2a100&gt;</code></pre>
 <div class="sourceCode" id="cb906"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb906-1" title="1">plt.scatter(r[:,<span class="dv">0</span>],r[:,<span class="dv">1</span>])</a></code></pre></div>
-<pre><code>## &lt;matplotlib.collections.PathCollection object at 0x7f329aea8be0&gt;</code></pre>
+<pre><code>## &lt;matplotlib.collections.PathCollection object at 0x7fc23bee9bb0&gt;</code></pre>
 <p><img src="images/unnamed-chunk-310-1.png" width="50%" /></p>
 </div>
 </div>
@@ -626,7 +634,7 @@ function, and apply gradient descent.</p>
         </div>
       </div>
 <a href="roots.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="challenge.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="mc.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

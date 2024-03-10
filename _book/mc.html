@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>9 Monte Carlo methods | Lancaster University MATH245 Computational Mathematics</title>
+  <meta name="description" content="9 Monte Carlo methods | Lancaster University MATH245 Computational Mathematics" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="9 Monte Carlo methods | Lancaster University MATH245 Computational Mathematics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="9 Monte Carlo methods | Lancaster University MATH245 Computational Mathematics" />
+  
+  
+  
+
+<meta name="author" content="Lecturers: Dr Eduard Campillo-Funollet and Dr Gaetano Romano" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="gd.html"/>
+<link rel="next" href="challenge.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="intro_prog.html"><a href="intro_prog.html"><i class="fa fa-check"></i><b>1</b> Introduction to Computational Mathematics</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro_prog.html"><a href="intro_prog.html#what-is-a-computer"><i class="fa fa-check"></i><b>1.1</b> What is a Computer?</a></li>
+<li class="chapter" data-level="1.2" data-path="intro_prog.html"><a href="intro_prog.html#computing-accessing-memory-and-storing"><i class="fa fa-check"></i><b>1.2</b> Computing, Accessing Memory and Storing</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="log_vec.html"><a href="log_vec.html"><i class="fa fa-check"></i><b>2</b> Logic and Vectors</a><ul>
+<li class="chapter" data-level="2.1" data-path="log_vec.html"><a href="log_vec.html#comparisons"><i class="fa fa-check"></i><b>2.1</b> Comparisons</a></li>
+<li class="chapter" data-level="2.2" data-path="log_vec.html"><a href="log_vec.html#logical-arithmetic"><i class="fa fa-check"></i><b>2.2</b> Logical Arithmetic</a></li>
+<li class="chapter" data-level="2.3" data-path="log_vec.html"><a href="log_vec.html#flow"><i class="fa fa-check"></i><b>2.3</b> Flow</a></li>
+<li class="chapter" data-level="2.4" data-path="log_vec.html"><a href="log_vec.html#vectors"><i class="fa fa-check"></i><b>2.4</b> Vectors</a></li>
+<li class="chapter" data-level="2.5" data-path="log_vec.html"><a href="log_vec.html#accessing-vectors"><i class="fa fa-check"></i><b>2.5</b> Accessing vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="func_loop.html"><a href="func_loop.html"><i class="fa fa-check"></i><b>3</b> Functions and Loops</a><ul>
+<li class="chapter" data-level="3.1" data-path="func_loop.html"><a href="func_loop.html#functions"><i class="fa fa-check"></i><b>3.1</b> Functions</a></li>
+<li class="chapter" data-level="3.2" data-path="func_loop.html"><a href="func_loop.html#looping"><i class="fa fa-check"></i><b>3.2</b> State and For Loop</a></li>
+<li class="chapter" data-level="3.3" data-path="func_loop.html"><a href="func_loop.html#more-about-looping"><i class="fa fa-check"></i><b>3.3</b> More about looping</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="maps_alg.html"><a href="maps_alg.html"><i class="fa fa-check"></i><b>4</b> Functional Programming and Linear Algebra</a><ul>
+<li class="chapter" data-level="4.1" data-path="maps_alg.html"><a href="maps_alg.html#Maps"><i class="fa fa-check"></i><b>4.1</b> An intro to Functional Programming</a></li>
+<li class="chapter" data-level="4.2" data-path="maps_alg.html"><a href="maps_alg.html#doing-linear-algebra"><i class="fa fa-check"></i><b>4.2</b> Doing Linear Algebra</a></li>
+<li class="chapter" data-level="4.3" data-path="maps_alg.html"><a href="maps_alg.html#an-end-note-to-this-chapter"><i class="fa fa-check"></i><b>4.3</b> An end note to this chapter</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="df_plt.html"><a href="df_plt.html"><i class="fa fa-check"></i><b>5</b> Data Frames and Plotting</a><ul>
+<li class="chapter" data-level="5.1" data-path="df_plt.html"><a href="df_plt.html#data-frames"><i class="fa fa-check"></i><b>5.1</b> Data Frames</a></li>
+<li class="chapter" data-level="5.2" data-path="df_plt.html"><a href="df_plt.html#plotting-with-ggplot-and-plotnine"><i class="fa fa-check"></i><b>5.2</b> Plotting with ggplot (and plotnine)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="fixed.html"><a href="fixed.html"><i class="fa fa-check"></i><b>6</b> Fixed point iteration</a><ul>
+<li class="chapter" data-level="6.1" data-path="fixed.html"><a href="fixed.html#fixed-points"><i class="fa fa-check"></i><b>6.1</b> Fixed points</a></li>
+<li class="chapter" data-level="6.2" data-path="fixed.html"><a href="fixed.html#convergence"><i class="fa fa-check"></i><b>6.2</b> Convergence</a></li>
+<li class="chapter" data-level="6.3" data-path="fixed.html"><a href="fixed.html#fixed-point-theorems"><i class="fa fa-check"></i><b>6.3</b> Fixed point theorems</a></li>
+<li class="chapter" data-level="6.4" data-path="fixed.html"><a href="fixed.html#exercises"><i class="fa fa-check"></i><b>6.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="roots.html"><a href="roots.html"><i class="fa fa-check"></i><b>7</b> Root finding</a><ul>
+<li class="chapter" data-level="7.1" data-path="roots.html"><a href="roots.html#fixed-point-iteration-1"><i class="fa fa-check"></i><b>7.1</b> Fixed point iteration</a></li>
+<li class="chapter" data-level="7.2" data-path="roots.html"><a href="roots.html#newtons-method"><i class="fa fa-check"></i><b>7.2</b> Newton’s method</a></li>
+<li class="chapter" data-level="7.3" data-path="roots.html"><a href="roots.html#a-note-on-convergence"><i class="fa fa-check"></i><b>7.3</b> A note on convergence</a></li>
+<li class="chapter" data-level="7.4" data-path="roots.html"><a href="roots.html#a-note-on-newtons-method."><i class="fa fa-check"></i><b>7.4</b> A note on Newton’s method.</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="gd.html"><a href="gd.html"><i class="fa fa-check"></i><b>8</b> Gradient descent</a><ul>
+<li class="chapter" data-level="8.1" data-path="gd.html"><a href="gd.html#optimisation-and-root-finding"><i class="fa fa-check"></i><b>8.1</b> Optimisation and root finding</a></li>
+<li class="chapter" data-level="8.2" data-path="gd.html"><a href="gd.html#gradient-descent"><i class="fa fa-check"></i><b>8.2</b> Gradient descent</a></li>
+<li class="chapter" data-level="8.3" data-path="gd.html"><a href="gd.html#notes"><i class="fa fa-check"></i><b>8.3</b> Notes</a></li>
+<li class="chapter" data-level="8.4" data-path="gd.html"><a href="gd.html#exercises-and-challenges"><i class="fa fa-check"></i><b>8.4</b> Exercises and challenges</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="mc.html"><a href="mc.html"><i class="fa fa-check"></i><b>9</b> Monte Carlo methods</a><ul>
+<li class="chapter" data-level="9.1" data-path="mc.html"><a href="mc.html#simple-example-area-of-a-circle"><i class="fa fa-check"></i><b>9.1</b> Simple example: area of a circle</a></li>
+<li class="chapter" data-level="9.2" data-path="mc.html"><a href="mc.html#definition-and-properties"><i class="fa fa-check"></i><b>9.2</b> Definition and properties</a></li>
+<li class="chapter" data-level="9.3" data-path="mc.html"><a href="mc.html#example"><i class="fa fa-check"></i><b>9.3</b> Example</a></li>
+<li class="chapter" data-level="9.4" data-path="mc.html"><a href="mc.html#error-estimate"><i class="fa fa-check"></i><b>9.4</b> Error estimate</a></li>
+<li class="chapter" data-level="9.5" data-path="mc.html"><a href="mc.html#asymptotic-error"><i class="fa fa-check"></i><b>9.5</b> Asymptotic error</a></li>
+<li class="chapter" data-level="9.6" data-path="mc.html"><a href="mc.html#exercises-1"><i class="fa fa-check"></i><b>9.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="challenge.html"><a href="challenge.html"><i class="fa fa-check"></i><b>10</b> Additional Programming Challenges</a><ul>
+<li class="chapter" data-level="10.1" data-path="challenge.html"><a href="challenge.html#part-1-scientific-computing"><i class="fa fa-check"></i><b>10.1</b> Part 1: Scientific Computing</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lancaster University MATH245 Computational Mathematics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="mc" class="section level1 hasAnchor">
+<h1><span class="header-section-number">9</span> Monte Carlo methods<a href="mc.html#mc" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Monte Carlo methods are a family of computer algorithms that use randomness. The most well known applications include numerical integration (computing integrals that cannot be computed analytically) and generating draws from a probability distribution. Monte Carlo methos are simple, but inefficient. In other words, they are easy to understand and implement, even for problems that would be hard to solve with other methods, but they require long computational times.</p>
+<div id="simple-example-area-of-a-circle" class="section level2 hasAnchor">
+<h2><span class="header-section-number">9.1</span> Simple example: area of a circle<a href="mc.html#simple-example-area-of-a-circle" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We would like to compute the area of a circle of radius <span class="math inline">\(r=1/2\)</span>, with centre at the <span class="math inline">\(c=(1/2,1/2)\)</span>. I know, we all know the formula for the area of the circle, but this is a toy example! We are going to think about it from a probability point of view. Consider the circle in the region <span class="math inline">\(D = [0,1]\times[0,1]\)</span>. If we sample a point randomly in the region <span class="math inline">\(D\)</span>, what is the probability of sampling a point <em>inside</em> the circle?</p>
+<p><img src="images/unnamed-chunk-311-3.png" width="50%" /></p>
+<p><em>Intuitively</em>, we expect to sample points inside the circle with a probability proportional to the area of the circle. More precisely, since the area of the region <span class="math inline">\(D\)</span> is 1, if <span class="math inline">\(A\)</span> is the area of the circle, we would expect to sample points inside the circle with probability <span class="math inline">\(A\)</span>!</p>
+<p>Now, we are interested in estimating this probability with the computer. To do so, we can just sample a large number <span class="math inline">\(N\)</span> of points in the region <span class="math inline">\(D\)</span>, and we can count how many are inside the circle. This just requires a few lines of code:</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb908"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb908-1" title="1">r &lt;-<span class="st"> </span><span class="fl">0.5</span> <span class="co">#circle radius</span></a>
+<a class="sourceLine" id="cb908-2" title="2">C &lt;-<span class="st"> </span><span class="kw">c</span>(.<span class="dv">5</span>,.<span class="dv">5</span>) <span class="co">#Circle centre</span></a>
+<a class="sourceLine" id="cb908-3" title="3">N &lt;-<span class="st"> </span><span class="dv">10000</span> <span class="co">#N samples</span></a>
+<a class="sourceLine" id="cb908-4" title="4"></a>
+<a class="sourceLine" id="cb908-5" title="5"><span class="co">#We sample x and y coordinates</span></a>
+<a class="sourceLine" id="cb908-6" title="6">x &lt;-<span class="st"> </span><span class="kw">runif</span>(N)</a>
+<a class="sourceLine" id="cb908-7" title="7">y &lt;-<span class="st"> </span><span class="kw">runif</span>(N)</a>
+<a class="sourceLine" id="cb908-8" title="8"></a>
+<a class="sourceLine" id="cb908-9" title="9"><span class="co">#number of points inside circle</span></a>
+<a class="sourceLine" id="cb908-10" title="10">N_A &lt;-<span class="st"> </span><span class="kw">sum</span>( (x<span class="op">-</span>C[<span class="dv">1</span>])<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>(y<span class="op">-</span>C[<span class="dv">2</span>])<span class="op">^</span><span class="dv">2</span> <span class="op">&lt;=</span><span class="st"> </span>r<span class="op">^</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb908-11" title="11"></a>
+<a class="sourceLine" id="cb908-12" title="12"><span class="co">#Probability of point in circle:</span></a>
+<a class="sourceLine" id="cb908-13" title="13">N_A<span class="op">/</span>N</a></code></pre></div>
+<pre><code>## [1] 0.7855</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb910"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb910-1" title="1"><span class="im">import</span> numpy <span class="im">as</span> np</a>
+<a class="sourceLine" id="cb910-2" title="2">r <span class="op">=</span> <span class="fl">0.5</span> <span class="co">#circle radius</span></a>
+<a class="sourceLine" id="cb910-3" title="3">C <span class="op">=</span> np.array((.<span class="dv">5</span>,.<span class="dv">5</span>)) <span class="co">#Circle centre</span></a>
+<a class="sourceLine" id="cb910-4" title="4">N <span class="op">=</span> <span class="dv">10000</span> <span class="co">#N samples</span></a>
+<a class="sourceLine" id="cb910-5" title="5"></a>
+<a class="sourceLine" id="cb910-6" title="6"><span class="co">#We sample x and y coordinates</span></a>
+<a class="sourceLine" id="cb910-7" title="7">x <span class="op">=</span> np.random.uniform(size<span class="op">=</span>N)</a>
+<a class="sourceLine" id="cb910-8" title="8">y <span class="op">=</span> np.random.uniform(size<span class="op">=</span>N)</a>
+<a class="sourceLine" id="cb910-9" title="9"></a>
+<a class="sourceLine" id="cb910-10" title="10"><span class="co">#number of points inside circle</span></a>
+<a class="sourceLine" id="cb910-11" title="11">N_A <span class="op">=</span> <span class="bu">sum</span>( (x<span class="op">-</span>C[<span class="dv">0</span>])<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (y<span class="op">-</span>C[<span class="dv">1</span>])<span class="op">**</span><span class="dv">2</span> <span class="op">&lt;=</span> r<span class="op">**</span><span class="dv">2</span> )</a>
+<a class="sourceLine" id="cb910-12" title="12"></a>
+<a class="sourceLine" id="cb910-13" title="13"><span class="co">#Probability of point in circle:</span></a>
+<a class="sourceLine" id="cb910-14" title="14">N_A<span class="op">/</span>N</a></code></pre></div>
+<pre><code>## 0.7901</code></pre>
+</div>
+</div>
+<p>A few comments regarding this algorithm:</p>
+<ul>
+<li><p>The R and Python version give slightly different answers. This is not due to the language, but due to the randomness of the algorithm! Each time we run the algorithm, we sample <em>randomly</em> <span class="math inline">\(N\)</span> points. For large <span class="math inline">\(N\)</span>, the result is close to the exact result (that is, in the limit <span class="math inline">\(N\to \infty\)</span>, <span class="math inline">\(N_A/N\)</span> converges to the area of the circle.</p></li>
+<li><p>The exact answer in this case is <span class="math inline">\(\pi/4 \approx 0.7853982\)</span>. The approximation with <span class="math inline">\(N=10000\)</span> is correct only to one or two decimal positions. We would need a larger <span class="math inline">\(N\)</span> to get a good approximation. For example, running the algorithm with <span class="math inline">\(N=10^8\)</span> gives <span class="math inline">\(N_A/N = 0.785425\)</span>, which is just correct to the third decimal!</p></li>
+<li><p>This highlights that the algorithm is <strong>slow</strong>, but it is simple. Note that the implementation did not require any advanced function, just being able to sample in a given region, and counting.</p></li>
+<li><p>Note that this is just another look at the most basic method to estimate a probability: run the experiment many times, and count the proportions of successes.</p></li>
+</ul>
+<div id="a-historical-note" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.1.1</span> A historical note<a href="mc.html#a-historical-note" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are several algorithms named “Monte Carlo”. Numerical integration, or the approximating probabilities are among the more common ones (and note that in fact, they are two sides of the same problem!). The Monte Carlo method for numerical integration was invented in the 1940s, by a team of scientists working on nuclear weapons (if you have seen Oppenheimer, that same team of people, just about a year after). The name of the method comes from the casino in Monaco, a reference to the randomness.</p>
+</div>
+</div>
+<div id="definition-and-properties" class="section level2 hasAnchor">
+<h2><span class="header-section-number">9.2</span> Definition and properties<a href="mc.html#definition-and-properties" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Because there are many algorithms with the same name, it is actually difficult to find a <em>consensus</em> definition of the Monte Carlo method. We are going to present here the definition in the context of numerical integration.</p>
+<p>Let’s consider the following integral</p>
+<p><span class="math display">\[
+I = \int_A f(x)\mathrm{d}x,
+\]</span>
+where $A ^m $, and <span class="math inline">\(f:\mathbb{R}^m\rightarrow \mathbb{R}\)</span>. Let <span class="math inline">\(V = \int_A \mathrm{d}x\)</span> be the volume of <span class="math inline">\(A\)</span>.</p>
+<p>Let <span class="math inline">\(x_1,\ldots,x_N\)</span> be <span class="math inline">\(N\)</span> independent, identically distributed samples from <span class="math inline">\(\mathrm{Unif}(A)\)</span>, the uniform distribution on the set <span class="math inline">\(A\)</span>. Then, the Monte Carlo estimator if <span class="math inline">\(I\)</span> is given by
+<span class="math display">\[
+Q_N = V \frac{1}{N} \sum_{i=1}^N f(x_i).
+\]</span>
+Note that the right hand side is the volume times the sample mean of <span class="math inline">\(f\)</span>.</p>
+<div id="proof-of-convergence" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.2.1</span> Proof of convergence<a href="mc.html#proof-of-convergence" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The simplest proof that <span class="math inline">\(Q_N \rightarrow I\)</span> as <span class="math inline">\(N\to\infty\)</span> requires the law of large numbers. Intuitively, what we need to know is that the sample of <span class="math inline">\(f\)</span> converges to its expected value <span class="math inline">\(\mathbb{E}(f)\)</span>. Now, the expected value of <span class="math inline">\(f\)</span> under the uniform distribution on <span class="math inline">\(A\)</span> is
+<span class="math display">\[
+\mathbb{E}(f) = \frac{1}{V}a \int_A f(x) \mathrm{d} x.
+\]</span>
+Then, we have
+<span class="math display">\[
+Q_N \to V \mathbb{E}(f) = V \frac{1}{V} \int_A f(x) \mathrm{d} x = I.
+\]</span></p>
+</div>
+</div>
+<div id="example" class="section level2 hasAnchor">
+<h2><span class="header-section-number">9.3</span> Example<a href="mc.html#example" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s use Monte Carlo integration to estimate the following integral:
+<span class="math display">\[
+\int_0^1 e^{-x^2}.
+\]</span>
+This is an example of integral that cannot be computed analytically, but it is simple to estimate with Monte Carlo integration!</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb912"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb912-1" title="1">f &lt;-<span class="st"> </span>\(x) <span class="kw">exp</span>(<span class="op">-</span>x<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb912-2" title="2">N &lt;-<span class="st"> </span><span class="dv">100000</span> <span class="co">#N samples</span></a>
+<a class="sourceLine" id="cb912-3" title="3"></a>
+<a class="sourceLine" id="cb912-4" title="4"><span class="co">#We sample x and y coordinates</span></a>
+<a class="sourceLine" id="cb912-5" title="5">x &lt;-<span class="st"> </span><span class="kw">runif</span>(N)</a>
+<a class="sourceLine" id="cb912-6" title="6"></a>
+<a class="sourceLine" id="cb912-7" title="7"><span class="co">#number of points inside circle</span></a>
+<a class="sourceLine" id="cb912-8" title="8">Q_N &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">f</span>(x))</a>
+<a class="sourceLine" id="cb912-9" title="9"></a>
+<a class="sourceLine" id="cb912-10" title="10">Q_N</a></code></pre></div>
+<pre><code>## [1] 0.7461035</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb914"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb914-1" title="1"><span class="im">import</span> numpy <span class="im">as</span> np</a>
+<a class="sourceLine" id="cb914-2" title="2">f <span class="op">=</span> <span class="kw">lambda</span> x: np.exp(<span class="op">-</span>x<span class="op">**</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb914-3" title="3">N <span class="op">=</span> <span class="dv">100000</span> <span class="co">#N samples</span></a>
+<a class="sourceLine" id="cb914-4" title="4"></a>
+<a class="sourceLine" id="cb914-5" title="5">x <span class="op">=</span> np.random.uniform(size<span class="op">=</span>N)</a>
+<a class="sourceLine" id="cb914-6" title="6"></a>
+<a class="sourceLine" id="cb914-7" title="7">Q_N <span class="op">=</span> np.mean(f(x))</a>
+<a class="sourceLine" id="cb914-8" title="8"></a>
+<a class="sourceLine" id="cb914-9" title="9">Q_N</a></code></pre></div>
+<pre><code>## 0.746881487711398</code></pre>
+</div>
+</div>
+</div>
+<div id="error-estimate" class="section level2 hasAnchor">
+<h2><span class="header-section-number">9.4</span> Error estimate<a href="mc.html#error-estimate" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Using a similar idea, we can study the error of the Monte Carlo estimation. Note that Monte Carlo algorithm is an stochastic algorithm, therefore every time we run we get different results, due to the different random samples. We can think about the error estimate as estimating <em>the probability</em> of getting an estimate in a certain range. More precisely, the variance of <span class="math inline">\(Q_N\)</span> is
+<span class="math display">\[
+\mathrm{Var}(Q_N) = V^2 \frac{\sigma_N^2}{N},
+\]</span>
+where <span class="math inline">\(\sigma^2_N\)</span> is the unbiased estimate of the variance of <span class="math inline">\(f\)</span> with <span class="math inline">\(N\)</span> samples,
+<span class="math display">\[
+\sigma^2_N = \frac{1}{N-1}\sum_{i=1}^N ( f(x_i) - \langle f \rangle )^2,
+\]</span>
+where <span class="math inline">\(\langle f \rangle\)</span> is the sample mean of <span class="math inline">\(f\)</span>.</p>
+<p><strong>Proof:</strong> We just need to apply the properties of the variance to the definition of <span class="math inline">\(Q_N\)</span>,
+<span class="math display">\[
+\mathrm{Var}(Q_N) = \frac{V^2}{N^2}\sum_{i=1}^N \mathrm{Var}(f) = V^2\frac{\mathrm{Var}(f)}{N},
+\]</span>
+and replacing <span class="math inline">\(\mathrm{Var}(f)\)</span> by the unbiased estimate we obtain the result.</p>
+<p>Notes:</p>
+<ul>
+<li>We can use the variance to construct a <em>confidence interval</em> for the estimates, using the standard Gaussian construction of condifence intervals, <span class="math inline">\(\mu \pm \sigma z_{1-\alpha}\)</span>. Let’s look at the previous example,
+<span class="math display">\[
+\int_0^1 e^{-x^2}.
+\]</span></li>
+</ul>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb916"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb916-1" title="1">f &lt;-<span class="st"> </span>\(x) <span class="kw">exp</span>(<span class="op">-</span>x<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb916-2" title="2">N &lt;-<span class="st"> </span><span class="dv">100000</span> <span class="co">#N samples</span></a>
+<a class="sourceLine" id="cb916-3" title="3"></a>
+<a class="sourceLine" id="cb916-4" title="4"><span class="co">#We sample x and y coordinates</span></a>
+<a class="sourceLine" id="cb916-5" title="5">x &lt;-<span class="st"> </span><span class="kw">runif</span>(N)</a>
+<a class="sourceLine" id="cb916-6" title="6"></a>
+<a class="sourceLine" id="cb916-7" title="7"><span class="co">#number of points inside circle</span></a>
+<a class="sourceLine" id="cb916-8" title="8">Q_N &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">f</span>(x))</a>
+<a class="sourceLine" id="cb916-9" title="9"></a>
+<a class="sourceLine" id="cb916-10" title="10"><span class="co">#Note R uses unbiases var estimate</span></a>
+<a class="sourceLine" id="cb916-11" title="11">vf &lt;-<span class="st"> </span><span class="kw">var</span>(<span class="kw">f</span>(x))</a>
+<a class="sourceLine" id="cb916-12" title="12"></a>
+<a class="sourceLine" id="cb916-13" title="13"></a>
+<a class="sourceLine" id="cb916-14" title="14"><span class="co">#Estimate var</span></a>
+<a class="sourceLine" id="cb916-15" title="15">v &lt;-<span class="st"> </span>vf <span class="op">/</span><span class="st"> </span>N </a>
+<a class="sourceLine" id="cb916-16" title="16"></a>
+<a class="sourceLine" id="cb916-17" title="17"><span class="co">#Confidence interval .95</span></a>
+<a class="sourceLine" id="cb916-18" title="18">lb &lt;-<span class="st"> </span>Q_N <span class="op">-</span><span class="st"> </span><span class="kw">sqrt</span>(v)<span class="op">*</span><span class="kw">qnorm</span>(<span class="fl">0.95</span>)</a>
+<a class="sourceLine" id="cb916-19" title="19">ub &lt;-<span class="st"> </span>Q_N <span class="op">+</span><span class="st"> </span><span class="kw">sqrt</span>(v)<span class="op">*</span><span class="kw">qnorm</span>(<span class="fl">0.95</span>)</a>
+<a class="sourceLine" id="cb916-20" title="20"></a>
+<a class="sourceLine" id="cb916-21" title="21"><span class="kw">print</span>(lb)</a></code></pre></div>
+<pre><code>## [1] 0.7466636</code></pre>
+<div class="sourceCode" id="cb918"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb918-1" title="1"><span class="kw">print</span>(Q_N)</a></code></pre></div>
+<pre><code>## [1] 0.7477096</code></pre>
+<div class="sourceCode" id="cb920"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb920-1" title="1"><span class="kw">print</span>(ub) </a></code></pre></div>
+<pre><code>## [1] 0.7487555</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb922"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb922-1" title="1"><span class="im">import</span> numpy <span class="im">as</span> np</a>
+<a class="sourceLine" id="cb922-2" title="2"><span class="im">import</span> scipy.stats <span class="im">as</span> ss</a>
+<a class="sourceLine" id="cb922-3" title="3">f <span class="op">=</span> <span class="kw">lambda</span> x: np.exp(<span class="op">-</span>x<span class="op">**</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb922-4" title="4">N <span class="op">=</span> <span class="dv">100000</span> <span class="co">#N samples</span></a>
+<a class="sourceLine" id="cb922-5" title="5"></a>
+<a class="sourceLine" id="cb922-6" title="6">x <span class="op">=</span> np.random.uniform(size<span class="op">=</span>N)</a>
+<a class="sourceLine" id="cb922-7" title="7"></a>
+<a class="sourceLine" id="cb922-8" title="8">Q_N <span class="op">=</span> np.mean(f(x))</a>
+<a class="sourceLine" id="cb922-9" title="9"></a>
+<a class="sourceLine" id="cb922-10" title="10"><span class="co">#Note ddof for unbiased!</span></a>
+<a class="sourceLine" id="cb922-11" title="11">vf <span class="op">=</span> np.var(f(x),ddof<span class="op">=</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb922-12" title="12"></a>
+<a class="sourceLine" id="cb922-13" title="13"><span class="co">#Estimate var</span></a>
+<a class="sourceLine" id="cb922-14" title="14">v <span class="op">=</span> vf <span class="op">/</span> N</a>
+<a class="sourceLine" id="cb922-15" title="15"></a>
+<a class="sourceLine" id="cb922-16" title="16"><span class="co">#Confidence interval .95</span></a>
+<a class="sourceLine" id="cb922-17" title="17">lb <span class="op">=</span> Q_N <span class="op">-</span> np.sqrt(v)<span class="op">*</span>ss.norm.ppf(.<span class="dv">95</span>)</a>
+<a class="sourceLine" id="cb922-18" title="18">ub <span class="op">=</span> Q_N <span class="op">+</span> np.sqrt(v)<span class="op">*</span>ss.norm.ppf(.<span class="dv">95</span>)</a>
+<a class="sourceLine" id="cb922-19" title="19"></a>
+<a class="sourceLine" id="cb922-20" title="20"><span class="bu">print</span>(lb)</a></code></pre></div>
+<pre><code>## 0.7444699335305386</code></pre>
+<div class="sourceCode" id="cb924"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb924-1" title="1"><span class="bu">print</span>(Q_N)</a></code></pre></div>
+<pre><code>## 0.7455169800603269</code></pre>
+<div class="sourceCode" id="cb926"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb926-1" title="1"><span class="bu">print</span>(ub) </a></code></pre></div>
+<pre><code>## 0.7465640265901151</code></pre>
+</div>
+</div>
+<p>In this case, we can use built-in functions of R/Python to get an alternative estimate of the integral, for comparison:</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb928"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb928-1" title="1"><span class="kw">sqrt</span>(pi)<span class="op">*</span>(<span class="kw">pnorm</span>(<span class="kw">sqrt</span>(<span class="dv">2</span>))<span class="op">-</span><span class="kw">pnorm</span>(<span class="dv">0</span>))</a></code></pre></div>
+<pre><code>## [1] 0.7468241</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb930"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb930-1" title="1">np.sqrt(np.pi)<span class="op">*</span>(ss.norm.cdf(np.sqrt(<span class="dv">2</span>))<span class="op">-</span>ss.norm.cdf(<span class="dv">0</span>))</a></code></pre></div>
+<pre><code>## 0.7468241328124271</code></pre>
+</div>
+</div>
+<p>Note that the true value is within the 95% confidence interval!</p>
+</div>
+<div id="asymptotic-error" class="section level2 hasAnchor">
+<h2><span class="header-section-number">9.5</span> Asymptotic error<a href="mc.html#asymptotic-error" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>From the formula for the variance, we can see that the length of the confidence interval is proportional to <span class="math inline">\(1/\sqrt{N}\)</span>. Note that this explains the <em>slow</em> convergence of the method. We can visualise this by plotting the real error (if we know the exact value of the integral!) vs the number of iterations:</p>
+<p><img src="images/unnamed-chunk-320-1.png" width="50%" /></p>
+<p>Here, the blue line is computed as <span class="math inline">\(V\sqrt{\sigma_N^2/N}\)</span>, and the error is computed as the absolute value of the difference between the “exact” value (using R/Python built-in functions) and the Monte Carlo approximation. Note that the scales are logarithmic in both axes, so the error, as a function of <span class="math inline">\(N\)</span>, becomes a straight line with slope <span class="math inline">\(-1/2\)</span>.</p>
+</div>
+<div id="exercises-1" class="section level2 hasAnchor">
+<h2><span class="header-section-number">9.6</span> Exercises<a href="mc.html#exercises-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="area-of-a-circle" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.6.1</span> Area of a circle<a href="mc.html#area-of-a-circle" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The first example can be re-written as an integral of a certain function on the domain <span class="math inline">\(D\)</span> (<strong>hint:</strong> it is not a continuous function, think about a piecewise function related to a point being in the circle). Implement that function and use the previous example to compute a confidence interval when <span class="math inline">\(N=10^6\)</span>. This is a (very inefficient!) method to estimate <span class="math inline">\(\pi\)</span>.</p>
+</div>
+<div id="more-functions" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.6.2</span> More functions<a href="mc.html#more-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Implement a function factory <code>mc_factory(f,a,b)</code> that creates a function <code>mc(n)</code> that performs Monte Carlo integration of <span class="math inline">\(f\)</span> on the inverval <span class="math inline">\((a,b)\)</span> using <span class="math inline">\(n\)</span> samples. Implement a function factory <code>mcv_factory(f,a,b)</code> to obtain functions to compute the variance of the Monte Carlo integration of <span class="math inline">\(f\)</span> on the interval <span class="math inline">\((a,b)\)</span> using <span class="math inline">\(n\)</span> samples.</p>
+<style type="text/css">
+.book .book-body .page-wrapper .page-inner {
+  max-width: 1200px !important;
+}
+</style>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="gd.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="challenge.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -123,6 +123,17 @@ optimisation-is-a-very-rich-field
 local-vs-global-optimisation
 gradient-descent-and-neural-networks
 exercises-and-challenges
+mc
+simple-example-area-of-a-circle
+a-historical-note
+definition-and-properties
+proof-of-convergence
+example
+error-estimate
+asymptotic-error
+exercises-1
+area-of-a-circle
+more-functions
 challenge
 part-1-scientific-computing
 hatters_challenge
