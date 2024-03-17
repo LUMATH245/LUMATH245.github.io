@@ -185,8 +185,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.5" data-path="mc.html"><a href="mc.html#asymptotic-error"><i class="fa fa-check"></i><b>9.5</b> Asymptotic error</a></li>
 <li class="chapter" data-level="9.6" data-path="mc.html"><a href="mc.html#exercises-1"><i class="fa fa-check"></i><b>9.6</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="challenge.html"><a href="challenge.html"><i class="fa fa-check"></i><b>10</b> Additional Programming Challenges</a><ul>
-<li class="chapter" data-level="10.1" data-path="challenge.html"><a href="challenge.html#part-1-scientific-computing"><i class="fa fa-check"></i><b>10.1</b> Part 1: Scientific Computing</a></li>
+<li class="chapter" data-level="10" data-path="ode.html"><a href="ode.html"><i class="fa fa-check"></i><b>10</b> Ordinary differential equations</a><ul>
+<li class="chapter" data-level="10.1" data-path="ode.html"><a href="ode.html#numerical-integration"><i class="fa fa-check"></i><b>10.1</b> Numerical integration</a></li>
+<li class="chapter" data-level="10.2" data-path="ode.html"><a href="ode.html#ordinary-differential-equations"><i class="fa fa-check"></i><b>10.2</b> Ordinary differential equations</a></li>
+<li class="chapter" data-level="10.3" data-path="ode.html"><a href="ode.html#higher-order-methods"><i class="fa fa-check"></i><b>10.3</b> Higher order methods</a></li>
+<li class="chapter" data-level="10.4" data-path="ode.html"><a href="ode.html#systems-of-odes"><i class="fa fa-check"></i><b>10.4</b> Systems of ODEs</a></li>
+<li class="chapter" data-level="10.5" data-path="ode.html"><a href="ode.html#examples-1"><i class="fa fa-check"></i><b>10.5</b> Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="challenge.html"><a href="challenge.html"><i class="fa fa-check"></i><b>11</b> Additional Programming Challenges</a><ul>
+<li class="chapter" data-level="11.1" data-path="challenge.html"><a href="challenge.html#part-1-scientific-computing"><i class="fa fa-check"></i><b>11.1</b> Part 1: Scientific Computing</a></li>
 </ul></li>
 </ul>
 
@@ -519,7 +526,7 @@ therefore <span class="math inline">\(\mathbf{x} \in \mathbb{R}^d\)</span>, and 
 <a class="sourceLine" id="cb901-16" title="16">plt.contour(np.array(df.x).reshape((<span class="dv">100</span>,<span class="dv">100</span>)),<span class="op">\</span></a>
 <a class="sourceLine" id="cb901-17" title="17">            np.array(df.y).reshape((<span class="dv">100</span>,<span class="dv">100</span>)),<span class="op">\</span></a>
 <a class="sourceLine" id="cb901-18" title="18">            np.array(df.z).reshape((<span class="dv">100</span>,<span class="dv">100</span>)))</a></code></pre></div>
-<pre><code>## &lt;matplotlib.contour.QuadContourSet object at 0x7fc23c089700&gt;</code></pre>
+<pre><code>## &lt;matplotlib.contour.QuadContourSet object at 0x7fc9193a9250&gt;</code></pre>
 <p><img src="images/unnamed-chunk-308-1.png" width="50%" /></p>
 </div>
 </div>
@@ -568,9 +575,9 @@ therefore <span class="math inline">\(\mathbf{x} \in \mathbb{R}^d\)</span>, and 
 <a class="sourceLine" id="cb904-13" title="13">plt.contour(np.array(df.x).reshape((<span class="dv">100</span>,<span class="dv">100</span>)),<span class="op">\</span></a>
 <a class="sourceLine" id="cb904-14" title="14">            np.array(df.y).reshape((<span class="dv">100</span>,<span class="dv">100</span>)),<span class="op">\</span></a>
 <a class="sourceLine" id="cb904-15" title="15">            np.array(df.z).reshape((<span class="dv">100</span>,<span class="dv">100</span>)))</a></code></pre></div>
-<pre><code>## &lt;matplotlib.contour.QuadContourSet object at 0x7fc23bf2a100&gt;</code></pre>
+<pre><code>## &lt;matplotlib.contour.QuadContourSet object at 0x7fc918f53370&gt;</code></pre>
 <div class="sourceCode" id="cb906"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb906-1" title="1">plt.scatter(r[:,<span class="dv">0</span>],r[:,<span class="dv">1</span>])</a></code></pre></div>
-<pre><code>## &lt;matplotlib.collections.PathCollection object at 0x7fc23bee9bb0&gt;</code></pre>
+<pre><code>## &lt;matplotlib.collections.PathCollection object at 0x7fc9199ab520&gt;</code></pre>
 <p><img src="images/unnamed-chunk-310-1.png" width="50%" /></p>
 </div>
 </div>

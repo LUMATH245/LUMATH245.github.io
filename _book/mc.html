@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="gd.html"/>
-<link rel="next" href="challenge.html"/>
+<link rel="next" href="ode.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -185,8 +185,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.5" data-path="mc.html"><a href="mc.html#asymptotic-error"><i class="fa fa-check"></i><b>9.5</b> Asymptotic error</a></li>
 <li class="chapter" data-level="9.6" data-path="mc.html"><a href="mc.html#exercises-1"><i class="fa fa-check"></i><b>9.6</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="challenge.html"><a href="challenge.html"><i class="fa fa-check"></i><b>10</b> Additional Programming Challenges</a><ul>
-<li class="chapter" data-level="10.1" data-path="challenge.html"><a href="challenge.html#part-1-scientific-computing"><i class="fa fa-check"></i><b>10.1</b> Part 1: Scientific Computing</a></li>
+<li class="chapter" data-level="10" data-path="ode.html"><a href="ode.html"><i class="fa fa-check"></i><b>10</b> Ordinary differential equations</a><ul>
+<li class="chapter" data-level="10.1" data-path="ode.html"><a href="ode.html#numerical-integration"><i class="fa fa-check"></i><b>10.1</b> Numerical integration</a></li>
+<li class="chapter" data-level="10.2" data-path="ode.html"><a href="ode.html#ordinary-differential-equations"><i class="fa fa-check"></i><b>10.2</b> Ordinary differential equations</a></li>
+<li class="chapter" data-level="10.3" data-path="ode.html"><a href="ode.html#higher-order-methods"><i class="fa fa-check"></i><b>10.3</b> Higher order methods</a></li>
+<li class="chapter" data-level="10.4" data-path="ode.html"><a href="ode.html#systems-of-odes"><i class="fa fa-check"></i><b>10.4</b> Systems of ODEs</a></li>
+<li class="chapter" data-level="10.5" data-path="ode.html"><a href="ode.html#examples-1"><i class="fa fa-check"></i><b>10.5</b> Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="challenge.html"><a href="challenge.html"><i class="fa fa-check"></i><b>11</b> Additional Programming Challenges</a><ul>
+<li class="chapter" data-level="11.1" data-path="challenge.html"><a href="challenge.html#part-1-scientific-computing"><i class="fa fa-check"></i><b>11.1</b> Part 1: Scientific Computing</a></li>
 </ul></li>
 </ul>
 
@@ -230,7 +237,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb908-11" title="11"></a>
 <a class="sourceLine" id="cb908-12" title="12"><span class="co">#Probability of point in circle:</span></a>
 <a class="sourceLine" id="cb908-13" title="13">N_A<span class="op">/</span>N</a></code></pre></div>
-<pre><code>## [1] 0.7855</code></pre>
+<pre><code>## [1] 0.7903</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
@@ -248,7 +255,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb910-12" title="12"></a>
 <a class="sourceLine" id="cb910-13" title="13"><span class="co">#Probability of point in circle:</span></a>
 <a class="sourceLine" id="cb910-14" title="14">N_A<span class="op">/</span>N</a></code></pre></div>
-<pre><code>## 0.7901</code></pre>
+<pre><code>## 0.7869</code></pre>
 </div>
 </div>
 <p>A few comments regarding this algorithm:</p>
@@ -308,7 +315,7 @@ This is an example of integral that cannot be computed analytically, but it is s
 <a class="sourceLine" id="cb912-8" title="8">Q_N &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">f</span>(x))</a>
 <a class="sourceLine" id="cb912-9" title="9"></a>
 <a class="sourceLine" id="cb912-10" title="10">Q_N</a></code></pre></div>
-<pre><code>## [1] 0.7461035</code></pre>
+<pre><code>## [1] 0.7454731</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
@@ -321,7 +328,7 @@ This is an example of integral that cannot be computed analytically, but it is s
 <a class="sourceLine" id="cb914-7" title="7">Q_N <span class="op">=</span> np.mean(f(x))</a>
 <a class="sourceLine" id="cb914-8" title="8"></a>
 <a class="sourceLine" id="cb914-9" title="9">Q_N</a></code></pre></div>
-<pre><code>## 0.746881487711398</code></pre>
+<pre><code>## 0.7481048471093882</code></pre>
 </div>
 </div>
 </div>
@@ -368,15 +375,15 @@ and replacing <span class="math inline">\(\mathrm{Var}(f)\)</span> by the unbias
 <a class="sourceLine" id="cb916-15" title="15">v &lt;-<span class="st"> </span>vf <span class="op">/</span><span class="st"> </span>N </a>
 <a class="sourceLine" id="cb916-16" title="16"></a>
 <a class="sourceLine" id="cb916-17" title="17"><span class="co">#Confidence interval .95</span></a>
-<a class="sourceLine" id="cb916-18" title="18">lb &lt;-<span class="st"> </span>Q_N <span class="op">-</span><span class="st"> </span><span class="kw">sqrt</span>(v)<span class="op">*</span><span class="kw">qnorm</span>(<span class="fl">0.95</span>)</a>
-<a class="sourceLine" id="cb916-19" title="19">ub &lt;-<span class="st"> </span>Q_N <span class="op">+</span><span class="st"> </span><span class="kw">sqrt</span>(v)<span class="op">*</span><span class="kw">qnorm</span>(<span class="fl">0.95</span>)</a>
+<a class="sourceLine" id="cb916-18" title="18">lb &lt;-<span class="st"> </span>Q_N <span class="op">-</span><span class="st"> </span><span class="kw">sqrt</span>(v)<span class="op">*</span><span class="kw">qnorm</span>(<span class="fl">0.975</span>)</a>
+<a class="sourceLine" id="cb916-19" title="19">ub &lt;-<span class="st"> </span>Q_N <span class="op">+</span><span class="st"> </span><span class="kw">sqrt</span>(v)<span class="op">*</span><span class="kw">qnorm</span>(<span class="fl">0.975</span>)</a>
 <a class="sourceLine" id="cb916-20" title="20"></a>
 <a class="sourceLine" id="cb916-21" title="21"><span class="kw">print</span>(lb)</a></code></pre></div>
-<pre><code>## [1] 0.7466636</code></pre>
+<pre><code>## [1] 0.7457384</code></pre>
 <div class="sourceCode" id="cb918"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb918-1" title="1"><span class="kw">print</span>(Q_N)</a></code></pre></div>
-<pre><code>## [1] 0.7477096</code></pre>
+<pre><code>## [1] 0.7469843</code></pre>
 <div class="sourceCode" id="cb920"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb920-1" title="1"><span class="kw">print</span>(ub) </a></code></pre></div>
-<pre><code>## [1] 0.7487555</code></pre>
+<pre><code>## [1] 0.7482303</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
@@ -396,15 +403,15 @@ and replacing <span class="math inline">\(\mathrm{Var}(f)\)</span> by the unbias
 <a class="sourceLine" id="cb922-14" title="14">v <span class="op">=</span> vf <span class="op">/</span> N</a>
 <a class="sourceLine" id="cb922-15" title="15"></a>
 <a class="sourceLine" id="cb922-16" title="16"><span class="co">#Confidence interval .95</span></a>
-<a class="sourceLine" id="cb922-17" title="17">lb <span class="op">=</span> Q_N <span class="op">-</span> np.sqrt(v)<span class="op">*</span>ss.norm.ppf(.<span class="dv">95</span>)</a>
-<a class="sourceLine" id="cb922-18" title="18">ub <span class="op">=</span> Q_N <span class="op">+</span> np.sqrt(v)<span class="op">*</span>ss.norm.ppf(.<span class="dv">95</span>)</a>
+<a class="sourceLine" id="cb922-17" title="17">lb <span class="op">=</span> Q_N <span class="op">-</span> np.sqrt(v)<span class="op">*</span>ss.norm.ppf(.<span class="dv">975</span>)</a>
+<a class="sourceLine" id="cb922-18" title="18">ub <span class="op">=</span> Q_N <span class="op">+</span> np.sqrt(v)<span class="op">*</span>ss.norm.ppf(.<span class="dv">975</span>)</a>
 <a class="sourceLine" id="cb922-19" title="19"></a>
 <a class="sourceLine" id="cb922-20" title="20"><span class="bu">print</span>(lb)</a></code></pre></div>
-<pre><code>## 0.7444699335305386</code></pre>
+<pre><code>## 0.7450276024869795</code></pre>
 <div class="sourceCode" id="cb924"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb924-1" title="1"><span class="bu">print</span>(Q_N)</a></code></pre></div>
-<pre><code>## 0.7455169800603269</code></pre>
+<pre><code>## 0.7462747078120927</code></pre>
 <div class="sourceCode" id="cb926"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb926-1" title="1"><span class="bu">print</span>(ub) </a></code></pre></div>
-<pre><code>## 0.7465640265901151</code></pre>
+<pre><code>## 0.7475218131372059</code></pre>
 </div>
 </div>
 <p>In this case, we can use built-in functions of R/Python to get an alternative estimate of the integral, for comparison:</p>
@@ -452,7 +459,7 @@ and replacing <span class="math inline">\(\mathrm{Var}(f)\)</span> by the unbias
         </div>
       </div>
 <a href="gd.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="challenge.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="ode.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

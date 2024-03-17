@@ -214,8 +214,8 @@ vf <- var(f(x))
 v <- vf / N 
 
 #Confidence interval .95
-lb <- Q_N - sqrt(v)*qnorm(0.95)
-ub <- Q_N + sqrt(v)*qnorm(0.95)
+lb <- Q_N - sqrt(v)*qnorm(0.975)
+ub <- Q_N + sqrt(v)*qnorm(0.975)
 
 print(lb)
 print(Q_N)
@@ -244,8 +244,8 @@ vf = np.var(f(x),ddof=1)
 v = vf / N
 
 #Confidence interval .95
-lb = Q_N - np.sqrt(v)*ss.norm.ppf(.95)
-ub = Q_N + np.sqrt(v)*ss.norm.ppf(.95)
+lb = Q_N - np.sqrt(v)*ss.norm.ppf(.975)
+ub = Q_N + np.sqrt(v)*ss.norm.ppf(.975)
 
 print(lb)
 print(Q_N)
