@@ -465,7 +465,7 @@ f(x,y) = 3x^2+4y^2.
 \]</span>
 In several dimensions, the generalization of the derivative is the gradient,
 <span class="math display">\[
-\nabla f(x,y) = \left( \partial_x f(x,y),  \partial_y f(x,y) \right) = (6x,4y).
+\nabla f(x,y) = \left( \partial_x f(x,y),  \partial_y f(x,y) \right) = (6x,8y).
 \]</span>
 The gradient is <em>the direction of maximum increase</em>, so similarly to what we
 did with the derivative in one dimension, the <em>opposite</em> direction of the
@@ -527,7 +527,7 @@ therefore <span class="math inline">\(\mathbf{x} \in \mathbb{R}^d\)</span>, and 
 <a class="sourceLine" id="cb901-16" title="16">plt.contour(np.array(df.x).reshape((<span class="dv">100</span>,<span class="dv">100</span>)),<span class="op">\</span></a>
 <a class="sourceLine" id="cb901-17" title="17">            np.array(df.y).reshape((<span class="dv">100</span>,<span class="dv">100</span>)),<span class="op">\</span></a>
 <a class="sourceLine" id="cb901-18" title="18">            np.array(df.z).reshape((<span class="dv">100</span>,<span class="dv">100</span>)))</a></code></pre></div>
-<pre><code>## &lt;matplotlib.contour.QuadContourSet object at 0x7f7ce54884f0&gt;</code></pre>
+<pre><code>## &lt;matplotlib.contour.QuadContourSet object at 0x7fbdb0b81250&gt;</code></pre>
 <p><img src="images/unnamed-chunk-308-1.png" width="50%" /></p>
 </div>
 </div>
@@ -576,9 +576,9 @@ therefore <span class="math inline">\(\mathbf{x} \in \mathbb{R}^d\)</span>, and 
 <a class="sourceLine" id="cb904-13" title="13">plt.contour(np.array(df.x).reshape((<span class="dv">100</span>,<span class="dv">100</span>)),<span class="op">\</span></a>
 <a class="sourceLine" id="cb904-14" title="14">            np.array(df.y).reshape((<span class="dv">100</span>,<span class="dv">100</span>)),<span class="op">\</span></a>
 <a class="sourceLine" id="cb904-15" title="15">            np.array(df.z).reshape((<span class="dv">100</span>,<span class="dv">100</span>)))</a></code></pre></div>
-<pre><code>## &lt;matplotlib.contour.QuadContourSet object at 0x7f7ce5116880&gt;</code></pre>
+<pre><code>## &lt;matplotlib.contour.QuadContourSet object at 0x7fbdb00ac880&gt;</code></pre>
 <div class="sourceCode" id="cb906"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb906-1" title="1">plt.scatter(r[:,<span class="dv">0</span>],r[:,<span class="dv">1</span>])</a></code></pre></div>
-<pre><code>## &lt;matplotlib.collections.PathCollection object at 0x7f7ce514ffd0&gt;</code></pre>
+<pre><code>## &lt;matplotlib.collections.PathCollection object at 0x7fbdb005ce20&gt;</code></pre>
 <p><img src="images/unnamed-chunk-310-1.png" width="50%" /></p>
 </div>
 </div>

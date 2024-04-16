@@ -237,7 +237,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb908-11" title="11"></a>
 <a class="sourceLine" id="cb908-12" title="12"><span class="co">#Probability of point in circle:</span></a>
 <a class="sourceLine" id="cb908-13" title="13">N_A<span class="op">/</span>N</a></code></pre></div>
-<pre><code>## [1] 0.7818</code></pre>
+<pre><code>## [1] 0.7894</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
@@ -255,7 +255,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb910-12" title="12"></a>
 <a class="sourceLine" id="cb910-13" title="13"><span class="co">#Probability of point in circle:</span></a>
 <a class="sourceLine" id="cb910-14" title="14">N_A<span class="op">/</span>N</a></code></pre></div>
-<pre><code>## 0.7807</code></pre>
+<pre><code>## 0.7885</code></pre>
 </div>
 </div>
 <p>A few comments regarding this algorithm:</p>
@@ -315,7 +315,7 @@ This is an example of integral that cannot be computed analytically, but it is s
 <a class="sourceLine" id="cb912-8" title="8">Q_N &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">f</span>(x))</a>
 <a class="sourceLine" id="cb912-9" title="9"></a>
 <a class="sourceLine" id="cb912-10" title="10">Q_N</a></code></pre></div>
-<pre><code>## [1] 0.7464882</code></pre>
+<pre><code>## [1] 0.7473842</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
@@ -328,7 +328,7 @@ This is an example of integral that cannot be computed analytically, but it is s
 <a class="sourceLine" id="cb914-7" title="7">Q_N <span class="op">=</span> np.mean(f(x))</a>
 <a class="sourceLine" id="cb914-8" title="8"></a>
 <a class="sourceLine" id="cb914-9" title="9">Q_N</a></code></pre></div>
-<pre><code>## 0.7467285315976235</code></pre>
+<pre><code>## 0.7469442408609209</code></pre>
 </div>
 </div>
 </div>
@@ -379,11 +379,11 @@ and replacing <span class="math inline">\(\mathrm{Var}(f)\)</span> by the unbias
 <a class="sourceLine" id="cb916-19" title="19">ub &lt;-<span class="st"> </span>Q_N <span class="op">+</span><span class="st"> </span><span class="kw">sqrt</span>(v)<span class="op">*</span><span class="kw">qnorm</span>(<span class="fl">0.975</span>)</a>
 <a class="sourceLine" id="cb916-20" title="20"></a>
 <a class="sourceLine" id="cb916-21" title="21"><span class="kw">print</span>(lb)</a></code></pre></div>
-<pre><code>## [1] 0.745054</code></pre>
+<pre><code>## [1] 0.7459668</code></pre>
 <div class="sourceCode" id="cb918"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb918-1" title="1"><span class="kw">print</span>(Q_N)</a></code></pre></div>
-<pre><code>## [1] 0.746301</code></pre>
+<pre><code>## [1] 0.7472119</code></pre>
 <div class="sourceCode" id="cb920"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb920-1" title="1"><span class="kw">print</span>(ub) </a></code></pre></div>
-<pre><code>## [1] 0.7475479</code></pre>
+<pre><code>## [1] 0.7484569</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
@@ -407,11 +407,11 @@ and replacing <span class="math inline">\(\mathrm{Var}(f)\)</span> by the unbias
 <a class="sourceLine" id="cb922-18" title="18">ub <span class="op">=</span> Q_N <span class="op">+</span> np.sqrt(v)<span class="op">*</span>ss.norm.ppf(.<span class="dv">975</span>)</a>
 <a class="sourceLine" id="cb922-19" title="19"></a>
 <a class="sourceLine" id="cb922-20" title="20"><span class="bu">print</span>(lb)</a></code></pre></div>
-<pre><code>## 0.7447073891434696</code></pre>
+<pre><code>## 0.7454901273999883</code></pre>
 <div class="sourceCode" id="cb924"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb924-1" title="1"><span class="bu">print</span>(Q_N)</a></code></pre></div>
-<pre><code>## 0.7459538306545306</code></pre>
+<pre><code>## 0.7467378416981171</code></pre>
 <div class="sourceCode" id="cb926"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb926-1" title="1"><span class="bu">print</span>(ub) </a></code></pre></div>
-<pre><code>## 0.7472002721655916</code></pre>
+<pre><code>## 0.7479855559962458</code></pre>
 </div>
 </div>
 <p>In this case, we can use built-in functions of R/Python to get an alternative estimate of the integral, for comparison:</p>
