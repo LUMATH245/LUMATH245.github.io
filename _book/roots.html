@@ -466,7 +466,8 @@ R and Python have a suit of root finding methods. We will see examples here usin
 ##            flag: converged
 ##  function_calls: 10
 ##      iterations: 5
-##            root: 0.7390851332151607</code></pre>
+##            root: 0.7390851332151607
+##          method: newton</code></pre>
 </div>
 </div>
 <p>As you can see, both methods return information about the process. Of particular interest are the convergence result (true or false), the number of iterations that the method performed and of course, the approximation for the root of <span class="math inline">\(f\)</span>.</p>
@@ -518,7 +519,8 @@ R and Python have a suit of root finding methods. We will see examples here usin
 ##            flag: converged
 ##  function_calls: 10
 ##      iterations: 5
-##            root: 0.7390851332151607</code></pre>
+##            root: 0.7390851332151607
+##          method: newton</code></pre>
 </div>
 </div>
 <p>Note that the internal implementation and default values in R and Python are different, even when applying the same method. In this case, the R method stops by default when <span class="math inline">\(f(x) &lt; 1.e-8\)</span> (check <code>ftol</code> in the documentation of <code>nleqslv</code>), whilst the Python implementation uses stopping criteria <code>xtol</code> and <code>rtol</code>, similar to the fixed point controls we defined in Chapter 6 on the absolute and relative difference of the last two iterates.</p>

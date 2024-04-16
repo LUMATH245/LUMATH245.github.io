@@ -282,7 +282,7 @@ f(x,y) = 3x^2+4y^2.
 \]
 In several dimensions, the generalization of the derivative is the gradient,
 \[
-\nabla f(x,y) = \left( \partial_x f(x,y),  \partial_y f(x,y) \right) = (6x,4x).
+\nabla f(x,y) = \left( \partial_x f(x,y),  \partial_y f(x,y) \right) = (6x,4y).
 \]
 The gradient is _the direction of maximum increase_, so similarly to what we
 did with the derivative in one dimension, the _opposite_ direction of the
