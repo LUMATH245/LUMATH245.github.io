@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>11 Additional Programming Challenges | Lancaster University MATH245 Computational Mathematics</title>
+  <meta name="description" content="11 Additional Programming Challenges | Lancaster University MATH245 Computational Mathematics" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="11 Additional Programming Challenges | Lancaster University MATH245 Computational Mathematics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="11 Additional Programming Challenges | Lancaster University MATH245 Computational Mathematics" />
+  
+  
+  
+
+<meta name="author" content="Lecturers: Dr Eduard Campillo-Funollet and Dr Gaetano Romano" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="ode.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="intro_prog.html"><a href="intro_prog.html"><i class="fa fa-check"></i><b>1</b> Introduction to Computational Mathematics</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro_prog.html"><a href="intro_prog.html#what-is-a-computer"><i class="fa fa-check"></i><b>1.1</b> What is a Computer?</a></li>
+<li class="chapter" data-level="1.2" data-path="intro_prog.html"><a href="intro_prog.html#computing-accessing-memory-and-storing"><i class="fa fa-check"></i><b>1.2</b> Computing, Accessing Memory and Storing</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="log_vec.html"><a href="log_vec.html"><i class="fa fa-check"></i><b>2</b> Logic and Vectors</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="log_vec.html"><a href="log_vec.html#comparisons"><i class="fa fa-check"></i><b>2.1</b> Comparisons</a></li>
+<li class="chapter" data-level="2.2" data-path="log_vec.html"><a href="log_vec.html#logical-arithmetic"><i class="fa fa-check"></i><b>2.2</b> Logical Arithmetic</a></li>
+<li class="chapter" data-level="2.3" data-path="log_vec.html"><a href="log_vec.html#flow"><i class="fa fa-check"></i><b>2.3</b> Flow</a></li>
+<li class="chapter" data-level="2.4" data-path="log_vec.html"><a href="log_vec.html#vectors"><i class="fa fa-check"></i><b>2.4</b> Vectors</a></li>
+<li class="chapter" data-level="2.5" data-path="log_vec.html"><a href="log_vec.html#accessing-vectors"><i class="fa fa-check"></i><b>2.5</b> Accessing vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="func_loop.html"><a href="func_loop.html"><i class="fa fa-check"></i><b>3</b> Functions and Loops</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="func_loop.html"><a href="func_loop.html#functions"><i class="fa fa-check"></i><b>3.1</b> Functions</a></li>
+<li class="chapter" data-level="3.2" data-path="func_loop.html"><a href="func_loop.html#looping"><i class="fa fa-check"></i><b>3.2</b> State and For Loop</a></li>
+<li class="chapter" data-level="3.3" data-path="func_loop.html"><a href="func_loop.html#more-about-looping"><i class="fa fa-check"></i><b>3.3</b> More about looping</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="maps_alg.html"><a href="maps_alg.html"><i class="fa fa-check"></i><b>4</b> Functional Programming and Linear Algebra</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="maps_alg.html"><a href="maps_alg.html#Maps"><i class="fa fa-check"></i><b>4.1</b> An intro to Functional Programming</a></li>
+<li class="chapter" data-level="4.2" data-path="maps_alg.html"><a href="maps_alg.html#doing-linear-algebra"><i class="fa fa-check"></i><b>4.2</b> Doing Linear Algebra</a></li>
+<li class="chapter" data-level="4.3" data-path="maps_alg.html"><a href="maps_alg.html#an-end-note-to-this-chapter"><i class="fa fa-check"></i><b>4.3</b> An end note to this chapter</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="df_plt.html"><a href="df_plt.html"><i class="fa fa-check"></i><b>5</b> Data Frames and Plotting</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="df_plt.html"><a href="df_plt.html#data-frames"><i class="fa fa-check"></i><b>5.1</b> Data Frames</a></li>
+<li class="chapter" data-level="5.2" data-path="df_plt.html"><a href="df_plt.html#plotting-with-ggplot-and-plotnine"><i class="fa fa-check"></i><b>5.2</b> Plotting with ggplot (and plotnine)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="fixed.html"><a href="fixed.html"><i class="fa fa-check"></i><b>6</b> Fixed point iteration</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="fixed.html"><a href="fixed.html#fixed-points"><i class="fa fa-check"></i><b>6.1</b> Fixed points</a></li>
+<li class="chapter" data-level="6.2" data-path="fixed.html"><a href="fixed.html#convergence"><i class="fa fa-check"></i><b>6.2</b> Convergence</a></li>
+<li class="chapter" data-level="6.3" data-path="fixed.html"><a href="fixed.html#fixed-point-theorems"><i class="fa fa-check"></i><b>6.3</b> Fixed point theorems</a></li>
+<li class="chapter" data-level="6.4" data-path="fixed.html"><a href="fixed.html#exercises"><i class="fa fa-check"></i><b>6.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="roots.html"><a href="roots.html"><i class="fa fa-check"></i><b>7</b> Root finding</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="roots.html"><a href="roots.html#fixed-point-iteration-1"><i class="fa fa-check"></i><b>7.1</b> Fixed point iteration</a></li>
+<li class="chapter" data-level="7.2" data-path="roots.html"><a href="roots.html#newtons-method"><i class="fa fa-check"></i><b>7.2</b> Newton’s method</a></li>
+<li class="chapter" data-level="7.3" data-path="roots.html"><a href="roots.html#a-note-on-convergence"><i class="fa fa-check"></i><b>7.3</b> A note on convergence</a></li>
+<li class="chapter" data-level="7.4" data-path="roots.html"><a href="roots.html#a-note-on-newtons-method."><i class="fa fa-check"></i><b>7.4</b> A note on Newton’s method.</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="gd.html"><a href="gd.html"><i class="fa fa-check"></i><b>8</b> Gradient descent</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="gd.html"><a href="gd.html#optimisation-and-root-finding"><i class="fa fa-check"></i><b>8.1</b> Optimisation and root finding</a></li>
+<li class="chapter" data-level="8.2" data-path="gd.html"><a href="gd.html#gradient-descent"><i class="fa fa-check"></i><b>8.2</b> Gradient descent</a></li>
+<li class="chapter" data-level="8.3" data-path="gd.html"><a href="gd.html#notes"><i class="fa fa-check"></i><b>8.3</b> Notes</a></li>
+<li class="chapter" data-level="8.4" data-path="gd.html"><a href="gd.html#exercises-and-challenges"><i class="fa fa-check"></i><b>8.4</b> Exercises and challenges</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="mc.html"><a href="mc.html"><i class="fa fa-check"></i><b>9</b> Monte Carlo methods</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="mc.html"><a href="mc.html#simple-example-area-of-a-circle"><i class="fa fa-check"></i><b>9.1</b> Simple example: area of a circle</a></li>
+<li class="chapter" data-level="9.2" data-path="mc.html"><a href="mc.html#definition-and-properties"><i class="fa fa-check"></i><b>9.2</b> Definition and properties</a></li>
+<li class="chapter" data-level="9.3" data-path="mc.html"><a href="mc.html#example"><i class="fa fa-check"></i><b>9.3</b> Example</a></li>
+<li class="chapter" data-level="9.4" data-path="mc.html"><a href="mc.html#error-estimate"><i class="fa fa-check"></i><b>9.4</b> Error estimate</a></li>
+<li class="chapter" data-level="9.5" data-path="mc.html"><a href="mc.html#asymptotic-error"><i class="fa fa-check"></i><b>9.5</b> Asymptotic error</a></li>
+<li class="chapter" data-level="9.6" data-path="mc.html"><a href="mc.html#exercises-1"><i class="fa fa-check"></i><b>9.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="ode.html"><a href="ode.html"><i class="fa fa-check"></i><b>10</b> Ordinary differential equations</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="ode.html"><a href="ode.html#numerical-integration"><i class="fa fa-check"></i><b>10.1</b> Numerical integration</a></li>
+<li class="chapter" data-level="10.2" data-path="ode.html"><a href="ode.html#ordinary-differential-equations"><i class="fa fa-check"></i><b>10.2</b> Ordinary differential equations</a></li>
+<li class="chapter" data-level="10.3" data-path="ode.html"><a href="ode.html#higher-order-methods"><i class="fa fa-check"></i><b>10.3</b> Higher order methods</a></li>
+<li class="chapter" data-level="10.4" data-path="ode.html"><a href="ode.html#systems-of-odes"><i class="fa fa-check"></i><b>10.4</b> Systems of ODEs</a></li>
+<li class="chapter" data-level="10.5" data-path="ode.html"><a href="ode.html#examples-1"><i class="fa fa-check"></i><b>10.5</b> Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="challenge.html"><a href="challenge.html"><i class="fa fa-check"></i><b>11</b> Additional Programming Challenges</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="challenge.html"><a href="challenge.html#part-1-scientific-computing"><i class="fa fa-check"></i><b>11.1</b> Part 1: Scientific Computing</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lancaster University MATH245 Computational Mathematics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="challenge" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">11</span> Additional Programming Challenges<a href="challenge.html#challenge" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Please note, solutions will not be provided for these challenges. However, if you’re really stumped or just want to discuss your approach, feel free to drop us, your friendly lecturers, an email.</p>
+<div id="part-1-scientific-computing" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> Part 1: Scientific Computing<a href="challenge.html#part-1-scientific-computing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="hatters_challenge" class="section level3 hasAnchor" number="11.1.1">
+<h3><span class="header-section-number">11.1.1</span> The Hats in a Line game<a href="challenge.html#hatters_challenge" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We are going to code and demonstrate that the optimal solution to one of the most famous combinatorics games, that of the hats in a line, works with on average 1 error half of the time.</p>
+<p>The game goes like this. You are one of <span class="math inline">\(n\)</span> players who will be put on a set of stairs, standing in a line, and each of you will be wearing a hat that is either black or white at random (with probability 0.5). Given that you’re on some stairs, you can only see the hats of the players in front of you, but not your own or the ones behind you.</p>
+<p>You can devise a strategy with the other players before the game starts, however you are not allowed to communicate with the other players after the hats are placed <strong>if not by stating the color of your hat out loud</strong>. Starting from the top of the stairs, e.g. the back of the line, each player has to guess their own hat colour out loud. Note that:</p>
+<ul>
+<li>Each person gets a single attempt.</li>
+<li>The goal is to minimize the number of wrong guesses.</li>
+<li>Everyone can hear the other players guess. This is the only allowed information that can be communicated.</li>
+</ul>
+<p>It turns out that there is an optimal strategy, that will end the game with <strong>a single error, only 50% of the times</strong> the game is played.</p>
+<p><strong>You are free to guess the solution to this game on your own</strong> or even with your friends over a couple of drinks. However, as this is a programming exercise, I highly recommend you read <a href="https://mathspp.com/blog/problems/hats-in-a-line">this amazing article from mathspp.com</a>.</p>
+<div id="hatters_week3" class="section level4 hasAnchor" number="11.1.1.1">
+<h4><span class="header-section-number">11.1.1.1</span> Checking the Optimal Strategy<a href="challenge.html#hatters_week3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>Recommended after reading Chapter 3</strong></p>
+<ol style="list-style-type: decimal">
+<li>Write a function that implements the optimal strategy for one game. The function takes as input a vector of <code>0</code> and <code>1</code>s, the hat colours of the hats of the players, where <code>0</code> represent a white hat, and <code>1</code> a black hat:<br />
+<br />
+This function should return another vector with the guesses of the players <strong>obtained through the optimal strategy</strong>, in sequential order.<br />
+<br />
+Here’s the function signature and call to get you started:</li>
+</ol>
+<div class="grid-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb948"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb948-1"><a href="challenge.html#cb948-1" aria-hidden="true" tabindex="-1"></a>hatter <span class="ot">&lt;-</span> <span class="cf">function</span>(hats) {</span>
+<span id="cb948-2"><a href="challenge.html#cb948-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Your code here</span></span>
+<span id="cb948-3"><a href="challenge.html#cb948-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb948-4"><a href="challenge.html#cb948-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb948-5"><a href="challenge.html#cb948-5" aria-hidden="true" tabindex="-1"></a>test_game <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb948-6"><a href="challenge.html#cb948-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hatter</span>(test_game)</span></code></pre></div>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb949"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb949-1"><a href="challenge.html#cb949-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hatter(hats):</span>
+<span id="cb949-2"><a href="challenge.html#cb949-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Your code here</span></span>
+<span id="cb949-3"><a href="challenge.html#cb949-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb949-4"><a href="challenge.html#cb949-4" aria-hidden="true" tabindex="-1"></a>test_game <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>]</span>
+<span id="cb949-5"><a href="challenge.html#cb949-5" aria-hidden="true" tabindex="-1"></a>hatter(test_game)</span></code></pre></div>
+</div>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Show by conjecture that this optimal strategy works with 1 error around 50% of the times. Simulate 1000 games. To do so:</p>
+<ol style="list-style-type: lower-roman">
+<li><p>Assume that for each game you will have 10 players</p></li>
+<li><p>Create 1000 binary vectors of hats <span class="math inline">\(h^{(k)}_{1:n}\)</span>, where <span class="math inline">\(n=10\)</span>, and <span class="math inline">\(k = 1, \dots, 1000\)</span>. You can do so by sampling from a binomial distribution with trial parameter 1, and with success probability 0.5, e.g. <span class="math inline">\(h^k_i \sim \text{Bin}(1, 0.3)\)</span> . You can sample from a binomial distribution with <code>rbinom</code> in R and <code>np.random.binomial</code> in Python.</p></li>
+<li><p>Get the amount of errors of each game by computing <span class="math inline">\(\epsilon_k = ||h^{(k)}_{1:n} - hatter(h^{(k)}_{1:n})||\)</span> for <span class="math inline">\(k = 1, \dots, 1000\)</span>.</p></li>
+<li><p>Check that <span class="math inline">\(\frac{\sum_{i = 1}^{1000} \epsilon_i}{1000} \approx 0.5\)</span>.</p></li>
+</ol></li>
+</ol>
+</div>
+<div id="a-functional-programming-solution" class="section level4 hasAnchor" number="11.1.1.2">
+<h4><span class="header-section-number">11.1.1.2</span> A Functional Programming Solution<a href="challenge.html#a-functional-programming-solution" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>Recommended over Chapter 4</strong></p>
+<p>In Chapter 4, we learned that state in functional programming can be handled using recursion. It’s not surprising that we can express the optimal solution for the hatter problem in a recursive function.</p>
+<p>Let’s denote the vector of hats as <span class="math inline">\(h_{1:n} = [h_1, h_2, ..., h_n]\)</span>. We define <span class="math inline">\(a_{1:n} = [a_1 = \sum_{i = 2}^n h_i, a_2 = \sum_{i = 3}^n h_i, \dots, a_{n-1} = h_n, a_n = 0]\)</span> as the vector representing the number of hats seen ahead by each player. The magnitude of this vector, represented as <span class="math inline">\(|a|\)</span>, is the number of elements in it. We also define <span class="math inline">\(a_{-1}\)</span> as the sub-vector of <span class="math inline">\(a\)</span> that excludes the first element (e.g. we drop the first element from <span class="math inline">\(a\)</span>).</p>
+<p>The recursive solution to the hatter function can then be expressed as:</p>
+<p><span class="math display">\[
+hatter(s,\ a) =  \begin{cases}
+    s \mod 2,&amp; \text{if } |a| \leq 0\\
+    hatter(s + p,\ a_{-1}),              &amp; \text{otherwise}
+\end{cases}
+\]</span></p>
+<p>where <span class="math inline">\(p = (s+a_1)\mod 2\)</span> is the value that each player says aloud. If the magnitude of <span class="math inline">\(a\)</span> is less than or equal to 0, we return <span class="math inline">\(s \mod 2\)</span>. Otherwise, we recursively call the <code>hatter</code> function with the new state <span class="math inline">\(s + p\)</span> and the sub-vector <span class="math inline">\(a_{-1}\)</span> (we drop the first element).</p>
+<p>Your task is to:</p>
+<ol style="list-style-type: decimal">
+<li><p>Code the recursive solution to the hatter problem. You can test it on the same vector above. Every time you compute the <span class="math inline">\(p\)</span> value, you should print this. Try to run the recursive solution on the previous game.</p></li>
+<li><p>We can improve on the recursive solution with a <code>reduce</code> statement however! In this way we will be able to run the recursion directly on the <span class="math inline">\(a\)</span> vector, without removing or dropping any element.</p>
+<p><strong>Hint:</strong> <span class="math inline">\(f(f(s_{t-1}, a_{t-1}), a_t) \rightarrow s_t\)</span>. Go and have a look at the diagram in Chapter 4. Also, you will need to accumulate the results if you want to have a vector returned. In this way you will avoid the printing. This can be done with either <code>accumulate</code> in R or <code>itertools.accumulate</code> in Python.</p></li>
+<li><p>Compare the timing of the for loop solution with the timing of the reduce solution. Which one is faster?</p>
+<ol style="list-style-type: lower-roman">
+<li><p>Search the internet or ask GPT on how to effectively time functions execution in both R and Python.</p></li>
+<li><p>Try to run the hatter function on a vector with <span class="math inline">\(100\,000\)</span> hats. You should see a significant difference.</p></li>
+</ol></li>
+</ol>
+</div>
+</div>
+<div id="gen_fizzbuzz_short" class="section level3 hasAnchor" number="11.1.2">
+<h3><span class="header-section-number">11.1.2</span> Generic FizzBuzz<a href="challenge.html#gen_fizzbuzz_short" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Recommended over Chapter 4</strong></p>
+<p>Imagine R as the ‘Ugly Duckling’ of programming languages. Initially, it’s often misunderstood and overlooked by coding newbies who see it as clunky or uncool. But, thanks to the magic of the <code>tidyverse</code>, R has been going through a major glow-up. It’s evolving into one of the most elegant and powerful languages out there 🦢. To see this, what if I tell you that you can code the above <code>generic_fizzbuzz</code> of the exercise in Section 4.1.4 in a very elegant, compact way?</p>
+<p>Rewrite <code>generic_fizzbuzz</code> respecting the following conditions:</p>
+<ul>
+<li><p>Your <code>generic_fizzbuzz</code> code should be under 4 statements (lines) and human readable</p></li>
+<li><p>You should not use any brackets <code>{}</code></p></li>
+<li><p>You should avoid for cycles</p></li>
+<li><p>You will probably need the pipe operator <code>|&gt;</code> (See intro in Chapter <a href="df_plt.html#data-frames">5.1</a>), and another couple of <code>purrr</code> functions (see the cheatsheet, <a href="https://rstudio.github.io/cheatsheets/html/purrr.html">which you can find here</a>).</p></li>
+</ul>
+<style type="text/css">
+.book .book-body .page-wrapper .page-inner {
+  max-width: 1200px !important;
+}
+
+/* change the grid layout to one column when the width is less than 1000px */
+@media (max-width: 1000px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column-gap: 10px;
+  }
+}
+</style>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ode.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

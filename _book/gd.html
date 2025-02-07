@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>8 Gradient descent | Lancaster University MATH245 Computational Mathematics</title>
+  <meta name="description" content="8 Gradient descent | Lancaster University MATH245 Computational Mathematics" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="8 Gradient descent | Lancaster University MATH245 Computational Mathematics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="8 Gradient descent | Lancaster University MATH245 Computational Mathematics" />
+  
+  
+  
+
+<meta name="author" content="Lecturers: Dr Eduard Campillo-Funollet and Dr Gaetano Romano" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="roots.html"/>
+<link rel="next" href="mc.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="intro_prog.html"><a href="intro_prog.html"><i class="fa fa-check"></i><b>1</b> Introduction to Computational Mathematics</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro_prog.html"><a href="intro_prog.html#what-is-a-computer"><i class="fa fa-check"></i><b>1.1</b> What is a Computer?</a></li>
+<li class="chapter" data-level="1.2" data-path="intro_prog.html"><a href="intro_prog.html#computing-accessing-memory-and-storing"><i class="fa fa-check"></i><b>1.2</b> Computing, Accessing Memory and Storing</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="log_vec.html"><a href="log_vec.html"><i class="fa fa-check"></i><b>2</b> Logic and Vectors</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="log_vec.html"><a href="log_vec.html#comparisons"><i class="fa fa-check"></i><b>2.1</b> Comparisons</a></li>
+<li class="chapter" data-level="2.2" data-path="log_vec.html"><a href="log_vec.html#logical-arithmetic"><i class="fa fa-check"></i><b>2.2</b> Logical Arithmetic</a></li>
+<li class="chapter" data-level="2.3" data-path="log_vec.html"><a href="log_vec.html#flow"><i class="fa fa-check"></i><b>2.3</b> Flow</a></li>
+<li class="chapter" data-level="2.4" data-path="log_vec.html"><a href="log_vec.html#vectors"><i class="fa fa-check"></i><b>2.4</b> Vectors</a></li>
+<li class="chapter" data-level="2.5" data-path="log_vec.html"><a href="log_vec.html#accessing-vectors"><i class="fa fa-check"></i><b>2.5</b> Accessing vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="func_loop.html"><a href="func_loop.html"><i class="fa fa-check"></i><b>3</b> Functions and Loops</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="func_loop.html"><a href="func_loop.html#functions"><i class="fa fa-check"></i><b>3.1</b> Functions</a></li>
+<li class="chapter" data-level="3.2" data-path="func_loop.html"><a href="func_loop.html#looping"><i class="fa fa-check"></i><b>3.2</b> State and For Loop</a></li>
+<li class="chapter" data-level="3.3" data-path="func_loop.html"><a href="func_loop.html#more-about-looping"><i class="fa fa-check"></i><b>3.3</b> More about looping</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="maps_alg.html"><a href="maps_alg.html"><i class="fa fa-check"></i><b>4</b> Functional Programming and Linear Algebra</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="maps_alg.html"><a href="maps_alg.html#Maps"><i class="fa fa-check"></i><b>4.1</b> An intro to Functional Programming</a></li>
+<li class="chapter" data-level="4.2" data-path="maps_alg.html"><a href="maps_alg.html#doing-linear-algebra"><i class="fa fa-check"></i><b>4.2</b> Doing Linear Algebra</a></li>
+<li class="chapter" data-level="4.3" data-path="maps_alg.html"><a href="maps_alg.html#an-end-note-to-this-chapter"><i class="fa fa-check"></i><b>4.3</b> An end note to this chapter</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="df_plt.html"><a href="df_plt.html"><i class="fa fa-check"></i><b>5</b> Data Frames and Plotting</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="df_plt.html"><a href="df_plt.html#data-frames"><i class="fa fa-check"></i><b>5.1</b> Data Frames</a></li>
+<li class="chapter" data-level="5.2" data-path="df_plt.html"><a href="df_plt.html#plotting-with-ggplot-and-plotnine"><i class="fa fa-check"></i><b>5.2</b> Plotting with ggplot (and plotnine)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="fixed.html"><a href="fixed.html"><i class="fa fa-check"></i><b>6</b> Fixed point iteration</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="fixed.html"><a href="fixed.html#fixed-points"><i class="fa fa-check"></i><b>6.1</b> Fixed points</a></li>
+<li class="chapter" data-level="6.2" data-path="fixed.html"><a href="fixed.html#convergence"><i class="fa fa-check"></i><b>6.2</b> Convergence</a></li>
+<li class="chapter" data-level="6.3" data-path="fixed.html"><a href="fixed.html#fixed-point-theorems"><i class="fa fa-check"></i><b>6.3</b> Fixed point theorems</a></li>
+<li class="chapter" data-level="6.4" data-path="fixed.html"><a href="fixed.html#exercises"><i class="fa fa-check"></i><b>6.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="roots.html"><a href="roots.html"><i class="fa fa-check"></i><b>7</b> Root finding</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="roots.html"><a href="roots.html#fixed-point-iteration-1"><i class="fa fa-check"></i><b>7.1</b> Fixed point iteration</a></li>
+<li class="chapter" data-level="7.2" data-path="roots.html"><a href="roots.html#newtons-method"><i class="fa fa-check"></i><b>7.2</b> Newton’s method</a></li>
+<li class="chapter" data-level="7.3" data-path="roots.html"><a href="roots.html#a-note-on-convergence"><i class="fa fa-check"></i><b>7.3</b> A note on convergence</a></li>
+<li class="chapter" data-level="7.4" data-path="roots.html"><a href="roots.html#a-note-on-newtons-method."><i class="fa fa-check"></i><b>7.4</b> A note on Newton’s method.</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="gd.html"><a href="gd.html"><i class="fa fa-check"></i><b>8</b> Gradient descent</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="gd.html"><a href="gd.html#optimisation-and-root-finding"><i class="fa fa-check"></i><b>8.1</b> Optimisation and root finding</a></li>
+<li class="chapter" data-level="8.2" data-path="gd.html"><a href="gd.html#gradient-descent"><i class="fa fa-check"></i><b>8.2</b> Gradient descent</a></li>
+<li class="chapter" data-level="8.3" data-path="gd.html"><a href="gd.html#notes"><i class="fa fa-check"></i><b>8.3</b> Notes</a></li>
+<li class="chapter" data-level="8.4" data-path="gd.html"><a href="gd.html#exercises-and-challenges"><i class="fa fa-check"></i><b>8.4</b> Exercises and challenges</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="mc.html"><a href="mc.html"><i class="fa fa-check"></i><b>9</b> Monte Carlo methods</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="mc.html"><a href="mc.html#simple-example-area-of-a-circle"><i class="fa fa-check"></i><b>9.1</b> Simple example: area of a circle</a></li>
+<li class="chapter" data-level="9.2" data-path="mc.html"><a href="mc.html#definition-and-properties"><i class="fa fa-check"></i><b>9.2</b> Definition and properties</a></li>
+<li class="chapter" data-level="9.3" data-path="mc.html"><a href="mc.html#example"><i class="fa fa-check"></i><b>9.3</b> Example</a></li>
+<li class="chapter" data-level="9.4" data-path="mc.html"><a href="mc.html#error-estimate"><i class="fa fa-check"></i><b>9.4</b> Error estimate</a></li>
+<li class="chapter" data-level="9.5" data-path="mc.html"><a href="mc.html#asymptotic-error"><i class="fa fa-check"></i><b>9.5</b> Asymptotic error</a></li>
+<li class="chapter" data-level="9.6" data-path="mc.html"><a href="mc.html#exercises-1"><i class="fa fa-check"></i><b>9.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="ode.html"><a href="ode.html"><i class="fa fa-check"></i><b>10</b> Ordinary differential equations</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="ode.html"><a href="ode.html#numerical-integration"><i class="fa fa-check"></i><b>10.1</b> Numerical integration</a></li>
+<li class="chapter" data-level="10.2" data-path="ode.html"><a href="ode.html#ordinary-differential-equations"><i class="fa fa-check"></i><b>10.2</b> Ordinary differential equations</a></li>
+<li class="chapter" data-level="10.3" data-path="ode.html"><a href="ode.html#higher-order-methods"><i class="fa fa-check"></i><b>10.3</b> Higher order methods</a></li>
+<li class="chapter" data-level="10.4" data-path="ode.html"><a href="ode.html#systems-of-odes"><i class="fa fa-check"></i><b>10.4</b> Systems of ODEs</a></li>
+<li class="chapter" data-level="10.5" data-path="ode.html"><a href="ode.html#examples-1"><i class="fa fa-check"></i><b>10.5</b> Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="challenge.html"><a href="challenge.html"><i class="fa fa-check"></i><b>11</b> Additional Programming Challenges</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="challenge.html"><a href="challenge.html#part-1-scientific-computing"><i class="fa fa-check"></i><b>11.1</b> Part 1: Scientific Computing</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lancaster University MATH245 Computational Mathematics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="gd" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">8</span> Gradient descent<a href="gd.html#gd" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In this chapter we are going to study optimisation methods, and we will focus
+on gradient descent. Optimisation problems are ubiquitous in many applications,
+but also in mathematics in statistics. We will look at the example of maximum
+likelihood estimation, but first we will consider a few toy problems. First we
+will see that under certain conditions, we can actually solve optimisation
+problems using the methods from previous chapters. In fact, it was probably the
+first method you learnt to find the maxima or minima of functions, take the
+derivative and find zeros, in other words, root finding!</p>
+<div id="optimisation-and-root-finding" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Optimisation and root finding<a href="gd.html#optimisation-and-root-finding" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s start with a simple example. Consider the following function:
+<span class="math display">\[
+f(x) = \frac{a}{2}\left( 1 + x - x^2 - x^3 \right),
+\]</span>
+where <span class="math inline">\(a\)</span> is a positive known constant.</p>
+<p><strong>Note:</strong> this function is related to an applied optimisation problem: the
+maximum efficiency of a wind turbine. See
+<a href="https://en.wikipedia.org/wiki/Betz%27s\_law" class="uri">https://en.wikipedia.org/wiki/Betz%27s\_law</a> for more information.</p>
+<p>If you are asked to find a <em>maximum</em> of this function, what would you do? The
+most common approach is as follows:</p>
+<ol style="list-style-type: decimal">
+<li>Compute <span class="math inline">\(f&#39;(x) = (a/2) (1 - 2x -3x^2)\)</span>.</li>
+<li>Solve <span class="math inline">\(f&#39;(x) = 0\)</span> to obtain <span class="math inline">\(x = -1\)</span> and <span class="math inline">\(x = 1/3\)</span>.</li>
+<li>Compute $f’’(x) = (a/2) ( -2 - 6x )</li>
+<li>Since <span class="math inline">\(f&#39;&#39;(-1) &gt; 0\)</span>, <span class="math inline">\(x=-1\)</span> is a minimum; since <span class="math inline">\(f&#39;&#39;(1/3)&lt;0\)</span>, <span class="math inline">\(x=1/3\)</span> is a maximum.</li>
+</ol>
+<p>Let’s consider this steps. To do Step 1 and Step 2, we require that <span class="math inline">\(f\)</span> is
+differentiable (to be precise, that it has one derivative, and the derivative
+is continuous). To do Step 3 and Step 4, we require that <span class="math inline">\(f\)</span> is twice
+differentiable (more precisely, that is has two derivatives, and the second
+derivative is continuous). Often, Step 3 and Step 4 can be avoided by studying
+the function of interest. For example, in this case, I know that <span class="math inline">\(f&#39;\)</span> is a
+negative parabola, and in consequence the largest zero will satisfy <span class="math inline">\(f&#39;&#39;(x) &lt; 0\)</span>. Terefore, the largest zero must be a maximum of <span class="math inline">\(f\)</span>.</p>
+<p>Note that I do not need to know the value of <span class="math inline">\(a\)</span> to find the <em>maximum</em>. I would
+need the value of <span class="math inline">\(a\)</span> to find the value of <span class="math inline">\(f\)</span> at the maximum.</p>
+<p>Step 2 is a root finding problem: solve an equation like <span class="math inline">\(g(x) = 0\)</span>. In this
+case, it was possible to solve the equation by hand, but in general we would
+need a root finding method. For example:</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb882"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb882-1"><a href="gd.html#cb882-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nleqslv) </span>
+<span id="cb882-2"><a href="gd.html#cb882-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb882-3"><a href="gd.html#cb882-3" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> \(x) <span class="dv">1</span> <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>x <span class="sc">-</span> <span class="dv">3</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb882-4"><a href="gd.html#cb882-4" aria-hidden="true" tabindex="-1"></a>gp <span class="ot">&lt;-</span> \(x) <span class="sc">-</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">6</span><span class="sc">*</span>x</span>
+<span id="cb882-5"><a href="gd.html#cb882-5" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb882-6"><a href="gd.html#cb882-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb882-7"><a href="gd.html#cb882-7" aria-hidden="true" tabindex="-1"></a><span class="fu">nleqslv</span>(x0,g,gp,<span class="at">method=</span><span class="st">&quot;Newton&quot;</span>)</span></code></pre></div>
+<pre><code>## $x
+## [1] 0.3333333
+## 
+## $fvec
+## [1] -8.96076e-11
+## 
+## $termcd
+## [1] 1
+## 
+## $message
+## [1] &quot;Function criterion near zero&quot;
+## 
+## $scalex
+## [1] 1
+## 
+## $nfcnt
+## [1] 4
+## 
+## $njcnt
+## [1] 4
+## 
+## $iter
+## [1] 4</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb884"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb884-1"><a href="gd.html#cb884-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy <span class="im">as</span> sp</span>
+<span id="cb884-2"><a href="gd.html#cb884-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb884-3"><a href="gd.html#cb884-3" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="kw">lambda</span> x: <span class="dv">1</span> <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>x <span class="op">-</span> <span class="dv">3</span><span class="op">*</span>x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb884-4"><a href="gd.html#cb884-4" aria-hidden="true" tabindex="-1"></a>gp <span class="op">=</span> <span class="kw">lambda</span> x: <span class="op">-</span><span class="dv">2</span> <span class="op">-</span> <span class="dv">6</span><span class="op">*</span>x</span>
+<span id="cb884-5"><a href="gd.html#cb884-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb884-6"><a href="gd.html#cb884-6" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb884-7"><a href="gd.html#cb884-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb884-8"><a href="gd.html#cb884-8" aria-hidden="true" tabindex="-1"></a>sp.optimize.root_scalar(g,x0<span class="op">=</span>x0,fprime<span class="op">=</span>gp,method<span class="op">=</span><span class="st">&quot;Newton&quot;</span>)</span></code></pre></div>
+<pre><code>##       converged: True
+##            flag: converged
+##  function_calls: 10
+##      iterations: 5
+##            root: 0.3333333333333333
+##          method: newton</code></pre>
+</div>
+</div>
+<p>Note that to apply the Newton method, we need to compute the derivative of
+<span class="math inline">\(f&#39;\)</span>, that is, we need two derivatives of <span class="math inline">\(f\)</span>! Even if I can argue differently
+for Step 3 and Step 4, to apply an efficient root finding method in Step 2 I
+need the second derivative of <span class="math inline">\(f\)</span>. Esimating the second derivative is costly.
+For high-dimensional functions, it is costly even for computers, both in terms
+of time but also due to numerical errors, even if <em>in theory</em> there is an
+equivalent approach (by computing the gradient and the Hessian matrix).</p>
+</div>
+<div id="gradient-descent" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Gradient descent<a href="gd.html#gradient-descent" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="in-one-dimension" class="section level3 hasAnchor" number="8.2.1">
+<h3><span class="header-section-number">8.2.1</span> In one dimension<a href="gd.html#in-one-dimension" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We would like to design an <em>iterative</em> method to find the minimum of a
+function. Let’s think about the one dimensional case first, suing the same
+example as before (I am setting <span class="math inline">\(a=2\)</span> to simplify the notation).</p>
+<p><strong>Note:</strong> Optimisation problems can be maximisation or minimisation problems.
+From now own, we will focus on <em>minimisation</em> algorithms. We can always change
+a problem from a maximisation to a minimisation problem multiplying the
+objective function by <span class="math inline">\(-1\)</span>. Applying this trick to the previous function, we
+have:
+<span class="math display">\[
+g(x) = -(1 + x - x^2 - x^3),
+\]</span>
+and we are interested in finding a minimum <strong>without</strong> having to compute the
+second derivative. Let’s assume that we start at the same point as before,
+<span class="math inline">\(x_0 = 0.1\)</span>. In which direction is the minimum of <span class="math inline">\(g\)</span>? Well, that question is
+very hard, but we can ask something simpler: in which direction is <span class="math inline">\(f\)</span> getting
+smaller, to the right of <span class="math inline">\(x_0\)</span> or to the left? In one dimension, there are only
+two possible directions! We do not want to deal with the second derivative, but
+we can use the the first derivative,
+<span class="math display">\[
+g&#39;(x)  = -(1 - 2x - 3x^2).
+\]</span>
+Let’s define these functions in R/Python, and look the the value at <span class="math inline">\(x_0\)</span>.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb886"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb886-1"><a href="gd.html#cb886-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> \(x) <span class="sc">-</span>(<span class="dv">1</span><span class="sc">+</span>x<span class="sc">-</span>x<span class="sc">^</span><span class="dv">2</span><span class="sc">-</span>x<span class="sc">^</span><span class="dv">3</span>)</span>
+<span id="cb886-2"><a href="gd.html#cb886-2" aria-hidden="true" tabindex="-1"></a>gp <span class="ot">&lt;-</span> \(x) <span class="sc">-</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>x <span class="sc">-</span> <span class="dv">3</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb886-3"><a href="gd.html#cb886-3" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb886-4"><a href="gd.html#cb886-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb886-5"><a href="gd.html#cb886-5" aria-hidden="true" tabindex="-1"></a><span class="fu">gp</span>(x0)</span></code></pre></div>
+<pre><code>## [1] -0.77</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb888"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb888-1"><a href="gd.html#cb888-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="kw">lambda</span> x: <span class="op">-</span>(<span class="dv">1</span><span class="op">+</span>x<span class="op">-</span>x<span class="op">^</span><span class="dv">2</span><span class="op">-</span>x<span class="op">^</span><span class="dv">3</span>)</span>
+<span id="cb888-2"><a href="gd.html#cb888-2" aria-hidden="true" tabindex="-1"></a>gp <span class="op">=</span> <span class="kw">lambda</span> x: <span class="op">-</span>(<span class="dv">1</span> <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>x <span class="op">-</span> <span class="dv">3</span><span class="op">*</span>x<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb888-3"><a href="gd.html#cb888-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb888-4"><a href="gd.html#cb888-4" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb888-5"><a href="gd.html#cb888-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb888-6"><a href="gd.html#cb888-6" aria-hidden="true" tabindex="-1"></a>gp(x0)</span></code></pre></div>
+<pre><code>## -0.77</code></pre>
+</div>
+</div>
+<p>We can see that <span class="math inline">\(g&#39;(x_0) &lt; 0\)</span>, therefore the function is decreasing. If we take
+<em>a small step</em> to the right, the value would be smaller. We can use this idea
+to construct the next iterate: we fix a <em>small</em> step <span class="math inline">\(h\)</span>, and we take <span class="math inline">\(x_0 + h\)</span>. Note that we do <span class="math inline">\(x_0+h\)</span> instead of <span class="math inline">\(x_0 - h\)</span> because of the sign of the
+derivative. In fact, there is no reason to move just a distance <span class="math inline">\(h\)</span>, we can use
+a step <em>proportional</em> to the value of the derivative: the larger (in absolute
+value), the steepest the function, so we decrease more by moving in that
+direction. Thus instead of a step <span class="math inline">\(h\)</span>, we fixed a <em>small</em> value <span class="math inline">\(\gamma\)</span> and we
+define <span class="math inline">\(x_1 = x_0 - \gamma g&#39;(x_0)\)</span>. Note that if <span class="math inline">\(g&#39;\)</span> is negative, we move in
+the positive direction. We can repeat this process many times to get better
+approximations. Say we repeat it 100 times, for example.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb890"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb890-1"><a href="gd.html#cb890-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> \(x) <span class="sc">-</span>(<span class="dv">1</span><span class="sc">+</span>x<span class="sc">-</span>x<span class="sc">^</span><span class="dv">2</span><span class="sc">-</span>x<span class="sc">^</span><span class="dv">3</span>)</span>
+<span id="cb890-2"><a href="gd.html#cb890-2" aria-hidden="true" tabindex="-1"></a>gp <span class="ot">&lt;-</span> \(x) <span class="sc">-</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>x <span class="sc">-</span> <span class="dv">3</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb890-3"><a href="gd.html#cb890-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">0.1</span> <span class="co">#x0</span></span>
+<span id="cb890-4"><a href="gd.html#cb890-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb890-5"><a href="gd.html#cb890-5" aria-hidden="true" tabindex="-1"></a>gamma <span class="ot">&lt;-</span> <span class="dv">1</span>.e<span class="dv">-3</span></span>
+<span id="cb890-6"><a href="gd.html#cb890-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb890-7"><a href="gd.html#cb890-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
+<span id="cb890-8"><a href="gd.html#cb890-8" aria-hidden="true" tabindex="-1"></a>   x <span class="ot">&lt;-</span> x <span class="sc">-</span> gamma <span class="sc">*</span> <span class="fu">gp</span>(x)</span>
+<span id="cb890-9"><a href="gd.html#cb890-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb890-10"><a href="gd.html#cb890-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb890-11"><a href="gd.html#cb890-11" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] 0.3282104</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb892"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb892-1"><a href="gd.html#cb892-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="kw">lambda</span> x: <span class="op">-</span>(<span class="dv">1</span><span class="op">+</span>x<span class="op">-</span>x<span class="op">^</span><span class="dv">2</span><span class="op">-</span>x<span class="op">^</span><span class="dv">3</span>)</span>
+<span id="cb892-2"><a href="gd.html#cb892-2" aria-hidden="true" tabindex="-1"></a>gp <span class="op">=</span> <span class="kw">lambda</span> x: <span class="op">-</span>(<span class="dv">1</span> <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>x <span class="op">-</span> <span class="dv">3</span><span class="op">*</span>x<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb892-3"><a href="gd.html#cb892-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb892-4"><a href="gd.html#cb892-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb892-5"><a href="gd.html#cb892-5" aria-hidden="true" tabindex="-1"></a>gamma <span class="op">=</span> <span class="fl">1.e-3</span></span>
+<span id="cb892-6"><a href="gd.html#cb892-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb892-7"><a href="gd.html#cb892-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
+<span id="cb892-8"><a href="gd.html#cb892-8" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> x <span class="op">-</span> gamma<span class="op">*</span>gp(x)</span>
+<span id="cb892-9"><a href="gd.html#cb892-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb892-10"><a href="gd.html#cb892-10" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## 0.3282104064962167</code></pre>
+</div>
+</div>
+<p>The method apparently works, we are getting a value close to the true minimum,
+<span class="math inline">\(x=1/3\)</span>. It is a slow method, but we are requiring less from the function, and
+it is simple. We can actually plot the iterates visualise the convergence:</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb894"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb894-1"><a href="gd.html#cb894-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb894-2"><a href="gd.html#cb894-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb894-3"><a href="gd.html#cb894-3" aria-hidden="true" tabindex="-1"></a>gamma <span class="ot">&lt;-</span> <span class="dv">1</span>.e<span class="dv">-3</span> <span class="co">#&quot;Step&quot;</span></span>
+<span id="cb894-4"><a href="gd.html#cb894-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span> <span class="co">#Iterations</span></span>
+<span id="cb894-5"><a href="gd.html#cb894-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb894-6"><a href="gd.html#cb894-6" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n) <span class="co">#Results</span></span>
+<span id="cb894-7"><a href="gd.html#cb894-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb894-8"><a href="gd.html#cb894-8" aria-hidden="true" tabindex="-1"></a>r[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fl">0.1</span> <span class="co">#Initial point</span></span>
+<span id="cb894-9"><a href="gd.html#cb894-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb894-10"><a href="gd.html#cb894-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>n){</span>
+<span id="cb894-11"><a href="gd.html#cb894-11" aria-hidden="true" tabindex="-1"></a>   r[i] <span class="ot">&lt;-</span> r[i<span class="dv">-1</span>] <span class="sc">-</span> gamma <span class="sc">*</span> <span class="fu">gp</span>(r[i<span class="dv">-1</span>])</span>
+<span id="cb894-12"><a href="gd.html#cb894-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb894-13"><a href="gd.html#cb894-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb894-14"><a href="gd.html#cb894-14" aria-hidden="true" tabindex="-1"></a>point_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">1</span>, n), <span class="at">y =</span> r), <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
+<span id="cb894-15"><a href="gd.html#cb894-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb894-16"><a href="gd.html#cb894-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb894-17"><a href="gd.html#cb894-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;x_n&quot;</span>) <span class="sc">+</span></span>
+<span id="cb894-18"><a href="gd.html#cb894-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;n&quot;</span>)</span>
+<span id="cb894-19"><a href="gd.html#cb894-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb894-20"><a href="gd.html#cb894-20" aria-hidden="true" tabindex="-1"></a>point_plot</span></code></pre></div>
+<p><img src="images/unnamed-chunk-305-1.png" width="50%" /></p>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb895"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb895-1"><a href="gd.html#cb895-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb895-2"><a href="gd.html#cb895-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb895-3"><a href="gd.html#cb895-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb895-4"><a href="gd.html#cb895-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb895-5"><a href="gd.html#cb895-5" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb895-6"><a href="gd.html#cb895-6" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.empty(n)</span>
+<span id="cb895-7"><a href="gd.html#cb895-7" aria-hidden="true" tabindex="-1"></a>gamma <span class="op">=</span> <span class="fl">1.e-3</span></span>
+<span id="cb895-8"><a href="gd.html#cb895-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb895-9"><a href="gd.html#cb895-9" aria-hidden="true" tabindex="-1"></a>r[<span class="dv">0</span>] <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb895-10"><a href="gd.html#cb895-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb895-11"><a href="gd.html#cb895-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,n):</span>
+<span id="cb895-12"><a href="gd.html#cb895-12" aria-hidden="true" tabindex="-1"></a>    r[i] <span class="op">=</span> r[i<span class="op">-</span><span class="dv">1</span>] <span class="op">-</span> gamma<span class="op">*</span>gp(r[i<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb895-13"><a href="gd.html#cb895-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb895-14"><a href="gd.html#cb895-14" aria-hidden="true" tabindex="-1"></a>point_plot <span class="op">=</span> ggplot(pd.DataFrame({<span class="st">&quot;x&quot;</span>:<span class="bu">range</span>(n), <span class="st">&quot;y&quot;</span>: r}), aes(x<span class="op">=</span><span class="st">&quot;x&quot;</span>, y<span class="op">=</span><span class="st">&quot;y&quot;</span>)) <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb895-15"><a href="gd.html#cb895-15" aria-hidden="true" tabindex="-1"></a>  geom_point() <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb895-16"><a href="gd.html#cb895-16" aria-hidden="true" tabindex="-1"></a>  theme_minimal() <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb895-17"><a href="gd.html#cb895-17" aria-hidden="true" tabindex="-1"></a>  ylab(<span class="st">&quot;x_n&quot;</span>) <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb895-18"><a href="gd.html#cb895-18" aria-hidden="true" tabindex="-1"></a>  xlab(<span class="st">&quot;n&quot;</span>)</span>
+<span id="cb895-19"><a href="gd.html#cb895-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb895-20"><a href="gd.html#cb895-20" aria-hidden="true" tabindex="-1"></a>point_plot</span></code></pre></div>
+<pre><code>## &lt;string&gt;:2: FutureWarning: Using repr(plot) to draw and show the plot figure is deprecated and will be removed in a future version. Use plot.show().
+## &lt;Figure Size: (640 x 480)&gt;</code></pre>
+<p><img src="images/unnamed-chunk-306-1.png" width="50%" /></p>
+</div>
+</div>
+<p>Similarly to the approach we took with fixed point iterations and root finding methods, we could impose other stopping criteria other than the maximum number of iterations.</p>
+<p><strong>Exercise:</strong> Implement the method including three stopping criteria: maximum number of iterations, distance to the previous iteration, and decrease of <span class="math inline">\(f\)</span> (that is, how much <span class="math inline">\(f\)</span> decreased from the previous step).</p>
+</div>
+<div id="in-several-dimensions" class="section level3 hasAnchor" number="8.2.2">
+<h3><span class="header-section-number">8.2.2</span> In several dimensions<a href="gd.html#in-several-dimensions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The method of gradient descent is easy to generalise to multivariate functions. Let’s consider the function
+<span class="math display">\[
+f(x,y) = 3x^2+4y^2.
+\]</span>
+In several dimensions, the generalization of the derivative is the gradient,
+<span class="math display">\[
+\nabla f(x,y) = \left( \partial_x f(x,y),  \partial_y f(x,y) \right) = (6x,8y).
+\]</span>
+The gradient is <em>the direction of maximum increase</em>, so similarly to what we
+did with the derivative in one dimension, the <em>opposite</em> direction of the
+gradient will give us the dimension of maximum decrease. Therefore, we can start again at <span class="math inline">\(\mathbf{x}_0\)</span>, and define
+<span class="math display">\[
+\mathbf{x}_{n+1} = \mathbf{x}_n - \gamma \nabla f(\mathbf{x}_n).
+\]</span>
+A few notes: we are considering <span class="math inline">\(f: \mathbb{R}^d \rightarrow \mathbb{R}\)</span>,
+therefore <span class="math inline">\(\mathbf{x} \in \mathbb{R}^d\)</span>, and the gradient <span class="math inline">\(\nabla f(\mathbf{x}) \in \mathbb{R}^d\)</span>. As in the one dimensional case, <span class="math inline">\(\gamma \in \mathbb{R}^+\)</span> is a <em>small</em> value.</p>
+<p>Let’s have a closer look at our example function <span class="math inline">\(f\)</span>. Rather than using three-dimensional plots, we will use countour plots. The following code is similar to the code we used in the workshops to evaluate functions on a grid. <strong>Note</strong> that here I am abusing the map function in order to provide more examples of the use of map! The function <code>f</code>, both in R and Python, can be applied directly to the grid, to get a result with the same shape.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb897"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb897-1"><a href="gd.html#cb897-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pracma)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;pracma&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     cross</code></pre>
+<div class="sourceCode" id="cb900"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb900-1"><a href="gd.html#cb900-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb900-2"><a href="gd.html#cb900-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb900-3"><a href="gd.html#cb900-3" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> \(x) <span class="dv">3</span><span class="sc">*</span>x[<span class="dv">1</span>]<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">4</span><span class="sc">*</span>x[<span class="dv">2</span>]<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb900-4"><a href="gd.html#cb900-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb900-5"><a href="gd.html#cb900-5" aria-hidden="true" tabindex="-1"></a><span class="co">#10000 points on a grid [-3,3]x[-3,3]</span></span>
+<span id="cb900-6"><a href="gd.html#cb900-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb900-7"><a href="gd.html#cb900-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Alternative to meshgrid</span></span>
+<span id="cb900-8"><a href="gd.html#cb900-8" aria-hidden="true" tabindex="-1"></a>grid <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="at">length.out=</span><span class="dv">100</span>),<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="at">length.out=</span><span class="dv">100</span>))</span>
+<span id="cb900-9"><a href="gd.html#cb900-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb900-10"><a href="gd.html#cb900-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Alternative to map_dbl (see Ch. 4)</span></span>
+<span id="cb900-11"><a href="gd.html#cb900-11" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">apply</span>(grid,<span class="dv">1</span>,f) <span class="co">#1 means &quot;over rows&quot;.</span></span>
+<span id="cb900-12"><a href="gd.html#cb900-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb900-13"><a href="gd.html#cb900-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Put everything in dataframe</span></span>
+<span id="cb900-14"><a href="gd.html#cb900-14" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x=</span>grid[<span class="dv">1</span>],<span class="at">y=</span>grid[<span class="dv">2</span>],<span class="at">z=</span>z)</span>
+<span id="cb900-15"><a href="gd.html#cb900-15" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>,<span class="st">&quot;y&quot;</span>,<span class="st">&quot;z&quot;</span>)</span>
+<span id="cb900-16"><a href="gd.html#cb900-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb900-17"><a href="gd.html#cb900-17" aria-hidden="true" tabindex="-1"></a>contour_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y, <span class="at">z=</span>z)) <span class="sc">+</span> </span>
+<span id="cb900-18"><a href="gd.html#cb900-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_contour</span>() </span>
+<span id="cb900-19"><a href="gd.html#cb900-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb900-20"><a href="gd.html#cb900-20" aria-hidden="true" tabindex="-1"></a>contour_plot</span></code></pre></div>
+<p><img src="images/unnamed-chunk-307-3.png" width="50%" /></p>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb901"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb901-1"><a href="gd.html#cb901-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
+<span id="cb901-2"><a href="gd.html#cb901-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb901-3"><a href="gd.html#cb901-3" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: <span class="dv">3</span><span class="op">*</span>x[<span class="dv">0</span>]<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">4</span><span class="op">*</span>x[<span class="dv">1</span>]<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb901-4"><a href="gd.html#cb901-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb901-5"><a href="gd.html#cb901-5" aria-hidden="true" tabindex="-1"></a>xy <span class="op">=</span> np.meshgrid(np.linspace(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">100</span>),np.linspace(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">100</span>))</span>
+<span id="cb901-6"><a href="gd.html#cb901-6" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> [ np.array((x,y)) <span class="cf">for</span> x,y <span class="kw">in</span> <span class="bu">zip</span>(xy[<span class="dv">0</span>].ravel(),xy[<span class="dv">1</span>].ravel()) ] <span class="co">#List format</span></span>
+<span id="cb901-7"><a href="gd.html#cb901-7" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> <span class="bu">map</span>(f,grid)</span>
+<span id="cb901-8"><a href="gd.html#cb901-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb901-9"><a href="gd.html#cb901-9" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">&quot;x&quot;</span>:xy[<span class="dv">0</span>].ravel(),<span class="st">&quot;y&quot;</span>:xy[<span class="dv">1</span>].ravel(),<span class="st">&quot;z&quot;</span>:z})</span>
+<span id="cb901-10"><a href="gd.html#cb901-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb901-11"><a href="gd.html#cb901-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Unfortunately geom_contour does not</span></span>
+<span id="cb901-12"><a href="gd.html#cb901-12" aria-hidden="true" tabindex="-1"></a><span class="co"># work on plotnine!</span></span>
+<span id="cb901-13"><a href="gd.html#cb901-13" aria-hidden="true" tabindex="-1"></a><span class="co"># There are alternatives using matplotlib.</span></span>
+<span id="cb901-14"><a href="gd.html#cb901-14" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb901-15"><a href="gd.html#cb901-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb901-16"><a href="gd.html#cb901-16" aria-hidden="true" tabindex="-1"></a>plt.contour(np.array(df.x).reshape((<span class="dv">100</span>,<span class="dv">100</span>)),<span class="op">\</span></span>
+<span id="cb901-17"><a href="gd.html#cb901-17" aria-hidden="true" tabindex="-1"></a>            np.array(df.y).reshape((<span class="dv">100</span>,<span class="dv">100</span>)),<span class="op">\</span></span>
+<span id="cb901-18"><a href="gd.html#cb901-18" aria-hidden="true" tabindex="-1"></a>            np.array(df.z).reshape((<span class="dv">100</span>,<span class="dv">100</span>)))</span></code></pre></div>
+<pre><code>## &lt;matplotlib.contour.QuadContourSet object at 0x779e42df1d90&gt;</code></pre>
+<p><img src="images/unnamed-chunk-308-1.png" width="50%" /></p>
+</div>
+</div>
+<p>Now we want to apply the gradient descent algorithm to this function <span class="math inline">\(f\)</span>. We proceed as before:</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb903"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb903-1"><a href="gd.html#cb903-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Gradient </span></span>
+<span id="cb903-2"><a href="gd.html#cb903-2" aria-hidden="true" tabindex="-1"></a>Df <span class="ot">&lt;-</span> \(x) <span class="fu">c</span>(<span class="dv">6</span><span class="sc">*</span>x[<span class="dv">1</span>],<span class="dv">4</span><span class="sc">*</span>x[<span class="dv">2</span>])</span>
+<span id="cb903-3"><a href="gd.html#cb903-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb903-4"><a href="gd.html#cb903-4" aria-hidden="true" tabindex="-1"></a>gamma <span class="ot">&lt;-</span> <span class="dv">1</span>.e<span class="dv">-3</span> <span class="co">#&quot;Step&quot;</span></span>
+<span id="cb903-5"><a href="gd.html#cb903-5" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span> <span class="co">#Iterations</span></span>
+<span id="cb903-6"><a href="gd.html#cb903-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb903-7"><a href="gd.html#cb903-7" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">nrow=</span>n,<span class="at">ncol=</span><span class="dv">2</span>) <span class="co">#Results</span></span>
+<span id="cb903-8"><a href="gd.html#cb903-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb903-9"><a href="gd.html#cb903-9" aria-hidden="true" tabindex="-1"></a>r[<span class="dv">1</span>,] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.1</span>,<span class="fl">0.1</span>) <span class="co">#Initial point</span></span>
+<span id="cb903-10"><a href="gd.html#cb903-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb903-11"><a href="gd.html#cb903-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>n){</span>
+<span id="cb903-12"><a href="gd.html#cb903-12" aria-hidden="true" tabindex="-1"></a>   r[i,] <span class="ot">&lt;-</span> r[i<span class="dv">-1</span>,] <span class="sc">-</span> gamma <span class="sc">*</span> <span class="fu">Df</span>(r[i<span class="dv">-1</span>,])</span>
+<span id="cb903-13"><a href="gd.html#cb903-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb903-14"><a href="gd.html#cb903-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb903-15"><a href="gd.html#cb903-15" aria-hidden="true" tabindex="-1"></a>resdf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(r)</span>
+<span id="cb903-16"><a href="gd.html#cb903-16" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(resdf) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>,<span class="st">&quot;y&quot;</span>)</span>
+<span id="cb903-17"><a href="gd.html#cb903-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb903-18"><a href="gd.html#cb903-18" aria-hidden="true" tabindex="-1"></a>contour_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df) <span class="sc">+</span> </span>
+<span id="cb903-19"><a href="gd.html#cb903-19" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_contour</span>(<span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y,<span class="at">z=</span>z)) <span class="sc">+</span> </span>
+<span id="cb903-20"><a href="gd.html#cb903-20" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_point</span>(<span class="at">data=</span>resdf,<span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y))</span>
+<span id="cb903-21"><a href="gd.html#cb903-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb903-22"><a href="gd.html#cb903-22" aria-hidden="true" tabindex="-1"></a>contour_plot</span></code></pre></div>
+<p><img src="images/unnamed-chunk-309-3.png" width="50%" /></p>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb904"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb904-1"><a href="gd.html#cb904-1" aria-hidden="true" tabindex="-1"></a>Df <span class="op">=</span> <span class="kw">lambda</span> x: np.array([<span class="dv">6</span><span class="op">*</span>x[<span class="dv">0</span>],<span class="dv">4</span><span class="op">*</span>x[<span class="dv">1</span>]])</span>
+<span id="cb904-2"><a href="gd.html#cb904-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb904-3"><a href="gd.html#cb904-3" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb904-4"><a href="gd.html#cb904-4" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.empty( (n,<span class="dv">2</span>) )</span>
+<span id="cb904-5"><a href="gd.html#cb904-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb904-6"><a href="gd.html#cb904-6" aria-hidden="true" tabindex="-1"></a>gamma <span class="op">=</span> <span class="fl">1.e-3</span></span>
+<span id="cb904-7"><a href="gd.html#cb904-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb904-8"><a href="gd.html#cb904-8" aria-hidden="true" tabindex="-1"></a>r[<span class="dv">0</span>] <span class="op">=</span> <span class="fl">0.1</span><span class="op">*</span>np.ones(<span class="dv">2</span>)</span>
+<span id="cb904-9"><a href="gd.html#cb904-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb904-10"><a href="gd.html#cb904-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,n):</span>
+<span id="cb904-11"><a href="gd.html#cb904-11" aria-hidden="true" tabindex="-1"></a>    r[i] <span class="op">=</span> r[i<span class="op">-</span><span class="dv">1</span>] <span class="op">-</span> gamma<span class="op">*</span>gp(r[i<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb904-12"><a href="gd.html#cb904-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb904-13"><a href="gd.html#cb904-13" aria-hidden="true" tabindex="-1"></a>plt.contour(np.array(df.x).reshape((<span class="dv">100</span>,<span class="dv">100</span>)),<span class="op">\</span></span>
+<span id="cb904-14"><a href="gd.html#cb904-14" aria-hidden="true" tabindex="-1"></a>            np.array(df.y).reshape((<span class="dv">100</span>,<span class="dv">100</span>)),<span class="op">\</span></span>
+<span id="cb904-15"><a href="gd.html#cb904-15" aria-hidden="true" tabindex="-1"></a>            np.array(df.z).reshape((<span class="dv">100</span>,<span class="dv">100</span>)))</span></code></pre></div>
+<pre><code>## &lt;matplotlib.contour.QuadContourSet object at 0x779e42a56750&gt;</code></pre>
+<div class="sourceCode" id="cb906"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb906-1"><a href="gd.html#cb906-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(r[:,<span class="dv">0</span>],r[:,<span class="dv">1</span>])</span></code></pre></div>
+<pre><code>## &lt;matplotlib.collections.PathCollection object at 0x779e42d0f790&gt;</code></pre>
+<p><img src="images/unnamed-chunk-310-1.png" width="50%" /></p>
+</div>
+</div>
+</div>
+</div>
+<div id="notes" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Notes<a href="gd.html#notes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The following notes discuss some other aspects of optimisation and gradient descent.</p>
+<div id="optimisation-is-a-very-rich-field" class="section level3 hasAnchor" number="8.3.1">
+<h3><span class="header-section-number">8.3.1</span> Optimisation is a very rich field<a href="gd.html#optimisation-is-a-very-rich-field" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We have seen the very tip of the iceberg on optimisation. There are specific
+methods for specific problems (that is, for different types of functions), from
+discrete optimisation (discrete functions), to linear programming (linear
+functions with linear constraints), constrained optimisation, stochastic
+methods… Both R and Python have libraries for optimisation problems in
+general (see for example <code>optim</code> in R and <code>scipy.minimize</code> in Python).</p>
+<p>Gradient descent is a key technique in machine learning, and in statistics in
+general. The main advantage of gradient descent is requiring only one
+derivative. There are many improvements to the basic algorithm we discussed
+here, for example in choosing optimal values for <span class="math inline">\(\gamma\)</span>.</p>
+</div>
+<div id="local-vs-global-optimisation" class="section level3 hasAnchor" number="8.3.2">
+<h3><span class="header-section-number">8.3.2</span> Local vs global optimisation<a href="gd.html#local-vs-global-optimisation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The methods discussed in this chapter will find a local minimum, but a function
+may have many local minima. Often, we run the algorithm several times, from
+different starting points <span class="math inline">\(\mathbf{x}_0\)</span>, to find the global minimiser (or at
+least, a better local minimiser).</p>
+<p>Sometimes, a function might have <strong>many</strong> local minima. This is often the case
+in statistics, where the function we minimise is a likelihood (or in machine
+learning looking at a loss function). In that setting, we might be interested
+in not using the direction of the gradient, but some <em>stochastic</em> perturbation
+of it, to avoid getting stuck in a local minimiser.</p>
+</div>
+<div id="gradient-descent-and-neural-networks" class="section level3 hasAnchor" number="8.3.3">
+<h3><span class="header-section-number">8.3.3</span> Gradient descent and neural networks<a href="gd.html#gradient-descent-and-neural-networks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Gradient descent is a key algorithm in machine learning, and in neural networks
+in particular. In that setting, the loss function can have millions of
+variables, but the basic setting is the same: compute the gradient of a loss
+function, and apply gradient descent.</p>
+<p>There are lots of challenges: how do I compute the gradient of a function with millions of variables? how do I avoid the (possibly many) local minima? Do I actually want a global minimiser, or just a “good” local minimiser?</p>
+</div>
+</div>
+<div id="exercises-and-challenges" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Exercises and challenges<a href="gd.html#exercises-and-challenges" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Exercise:</strong> Re-do the example plots in your computer.</p>
+<p><strong>Exercise:</strong> Apply the gradient descent method to <span class="math inline">\(f(x,y) = (2-x)^2/(2y^2) +(3-x)^2/(2y^2) + \log(y)\)</span>.</p>
+<p><strong>Challenge:</strong> Use finite differences to approximate the gradient of <span class="math inline">\(f\)</span>, that is, instead of computing <span class="math inline">\(\nabla f\)</span> manually, fix a step <span class="math inline">\(h &lt;&lt; \gamma\)</span>, and use an approximation of the type <span class="math inline">\((f(x+h)-f(x))/h\)</span> for the derivatives with respect to each variable.</p>
+<p><strong>Challenge:</strong> Implement the contour plots without using map. Note that both R and Python can work well with functions of several variables, if the functions are defined correctly, and the input values have the right structure.</p>
+<p><strong>Challenge:</strong> Implement a simple method to find better values for <span class="math inline">\(\gamma\)</span>: fix an initial value for <span class="math inline">\(\gamma\)</span> (e.g. <span class="math inline">\(\gamma=1\)</span>), and keep and check if the corresponding <span class="math inline">\(x_{n+1}\)</span> decreases <span class="math inline">\(f\)</span>. If it does, use that value, otherwise divide <span class="math inline">\(\gamma\)</span> by 2, and check again.</p>
+<style type="text/css">
+.book .book-body .page-wrapper .page-inner {
+  max-width: 1200px !important;
+}
+</style>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="roots.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="mc.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

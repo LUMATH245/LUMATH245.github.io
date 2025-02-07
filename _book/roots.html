@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7 Root finding | Lancaster University MATH245 Computational Mathematics</title>
+  <meta name="description" content="7 Root finding | Lancaster University MATH245 Computational Mathematics" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7 Root finding | Lancaster University MATH245 Computational Mathematics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 Root finding | Lancaster University MATH245 Computational Mathematics" />
+  
+  
+  
+
+<meta name="author" content="Lecturers: Dr Eduard Campillo-Funollet and Dr Gaetano Romano" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="fixed.html"/>
+<link rel="next" href="gd.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="intro_prog.html"><a href="intro_prog.html"><i class="fa fa-check"></i><b>1</b> Introduction to Computational Mathematics</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro_prog.html"><a href="intro_prog.html#what-is-a-computer"><i class="fa fa-check"></i><b>1.1</b> What is a Computer?</a></li>
+<li class="chapter" data-level="1.2" data-path="intro_prog.html"><a href="intro_prog.html#computing-accessing-memory-and-storing"><i class="fa fa-check"></i><b>1.2</b> Computing, Accessing Memory and Storing</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="log_vec.html"><a href="log_vec.html"><i class="fa fa-check"></i><b>2</b> Logic and Vectors</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="log_vec.html"><a href="log_vec.html#comparisons"><i class="fa fa-check"></i><b>2.1</b> Comparisons</a></li>
+<li class="chapter" data-level="2.2" data-path="log_vec.html"><a href="log_vec.html#logical-arithmetic"><i class="fa fa-check"></i><b>2.2</b> Logical Arithmetic</a></li>
+<li class="chapter" data-level="2.3" data-path="log_vec.html"><a href="log_vec.html#flow"><i class="fa fa-check"></i><b>2.3</b> Flow</a></li>
+<li class="chapter" data-level="2.4" data-path="log_vec.html"><a href="log_vec.html#vectors"><i class="fa fa-check"></i><b>2.4</b> Vectors</a></li>
+<li class="chapter" data-level="2.5" data-path="log_vec.html"><a href="log_vec.html#accessing-vectors"><i class="fa fa-check"></i><b>2.5</b> Accessing vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="func_loop.html"><a href="func_loop.html"><i class="fa fa-check"></i><b>3</b> Functions and Loops</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="func_loop.html"><a href="func_loop.html#functions"><i class="fa fa-check"></i><b>3.1</b> Functions</a></li>
+<li class="chapter" data-level="3.2" data-path="func_loop.html"><a href="func_loop.html#looping"><i class="fa fa-check"></i><b>3.2</b> State and For Loop</a></li>
+<li class="chapter" data-level="3.3" data-path="func_loop.html"><a href="func_loop.html#more-about-looping"><i class="fa fa-check"></i><b>3.3</b> More about looping</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="maps_alg.html"><a href="maps_alg.html"><i class="fa fa-check"></i><b>4</b> Functional Programming and Linear Algebra</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="maps_alg.html"><a href="maps_alg.html#Maps"><i class="fa fa-check"></i><b>4.1</b> An intro to Functional Programming</a></li>
+<li class="chapter" data-level="4.2" data-path="maps_alg.html"><a href="maps_alg.html#doing-linear-algebra"><i class="fa fa-check"></i><b>4.2</b> Doing Linear Algebra</a></li>
+<li class="chapter" data-level="4.3" data-path="maps_alg.html"><a href="maps_alg.html#an-end-note-to-this-chapter"><i class="fa fa-check"></i><b>4.3</b> An end note to this chapter</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="df_plt.html"><a href="df_plt.html"><i class="fa fa-check"></i><b>5</b> Data Frames and Plotting</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="df_plt.html"><a href="df_plt.html#data-frames"><i class="fa fa-check"></i><b>5.1</b> Data Frames</a></li>
+<li class="chapter" data-level="5.2" data-path="df_plt.html"><a href="df_plt.html#plotting-with-ggplot-and-plotnine"><i class="fa fa-check"></i><b>5.2</b> Plotting with ggplot (and plotnine)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="fixed.html"><a href="fixed.html"><i class="fa fa-check"></i><b>6</b> Fixed point iteration</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="fixed.html"><a href="fixed.html#fixed-points"><i class="fa fa-check"></i><b>6.1</b> Fixed points</a></li>
+<li class="chapter" data-level="6.2" data-path="fixed.html"><a href="fixed.html#convergence"><i class="fa fa-check"></i><b>6.2</b> Convergence</a></li>
+<li class="chapter" data-level="6.3" data-path="fixed.html"><a href="fixed.html#fixed-point-theorems"><i class="fa fa-check"></i><b>6.3</b> Fixed point theorems</a></li>
+<li class="chapter" data-level="6.4" data-path="fixed.html"><a href="fixed.html#exercises"><i class="fa fa-check"></i><b>6.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="roots.html"><a href="roots.html"><i class="fa fa-check"></i><b>7</b> Root finding</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="roots.html"><a href="roots.html#fixed-point-iteration-1"><i class="fa fa-check"></i><b>7.1</b> Fixed point iteration</a></li>
+<li class="chapter" data-level="7.2" data-path="roots.html"><a href="roots.html#newtons-method"><i class="fa fa-check"></i><b>7.2</b> Newton’s method</a></li>
+<li class="chapter" data-level="7.3" data-path="roots.html"><a href="roots.html#a-note-on-convergence"><i class="fa fa-check"></i><b>7.3</b> A note on convergence</a></li>
+<li class="chapter" data-level="7.4" data-path="roots.html"><a href="roots.html#a-note-on-newtons-method."><i class="fa fa-check"></i><b>7.4</b> A note on Newton’s method.</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="gd.html"><a href="gd.html"><i class="fa fa-check"></i><b>8</b> Gradient descent</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="gd.html"><a href="gd.html#optimisation-and-root-finding"><i class="fa fa-check"></i><b>8.1</b> Optimisation and root finding</a></li>
+<li class="chapter" data-level="8.2" data-path="gd.html"><a href="gd.html#gradient-descent"><i class="fa fa-check"></i><b>8.2</b> Gradient descent</a></li>
+<li class="chapter" data-level="8.3" data-path="gd.html"><a href="gd.html#notes"><i class="fa fa-check"></i><b>8.3</b> Notes</a></li>
+<li class="chapter" data-level="8.4" data-path="gd.html"><a href="gd.html#exercises-and-challenges"><i class="fa fa-check"></i><b>8.4</b> Exercises and challenges</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="mc.html"><a href="mc.html"><i class="fa fa-check"></i><b>9</b> Monte Carlo methods</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="mc.html"><a href="mc.html#simple-example-area-of-a-circle"><i class="fa fa-check"></i><b>9.1</b> Simple example: area of a circle</a></li>
+<li class="chapter" data-level="9.2" data-path="mc.html"><a href="mc.html#definition-and-properties"><i class="fa fa-check"></i><b>9.2</b> Definition and properties</a></li>
+<li class="chapter" data-level="9.3" data-path="mc.html"><a href="mc.html#example"><i class="fa fa-check"></i><b>9.3</b> Example</a></li>
+<li class="chapter" data-level="9.4" data-path="mc.html"><a href="mc.html#error-estimate"><i class="fa fa-check"></i><b>9.4</b> Error estimate</a></li>
+<li class="chapter" data-level="9.5" data-path="mc.html"><a href="mc.html#asymptotic-error"><i class="fa fa-check"></i><b>9.5</b> Asymptotic error</a></li>
+<li class="chapter" data-level="9.6" data-path="mc.html"><a href="mc.html#exercises-1"><i class="fa fa-check"></i><b>9.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="ode.html"><a href="ode.html"><i class="fa fa-check"></i><b>10</b> Ordinary differential equations</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="ode.html"><a href="ode.html#numerical-integration"><i class="fa fa-check"></i><b>10.1</b> Numerical integration</a></li>
+<li class="chapter" data-level="10.2" data-path="ode.html"><a href="ode.html#ordinary-differential-equations"><i class="fa fa-check"></i><b>10.2</b> Ordinary differential equations</a></li>
+<li class="chapter" data-level="10.3" data-path="ode.html"><a href="ode.html#higher-order-methods"><i class="fa fa-check"></i><b>10.3</b> Higher order methods</a></li>
+<li class="chapter" data-level="10.4" data-path="ode.html"><a href="ode.html#systems-of-odes"><i class="fa fa-check"></i><b>10.4</b> Systems of ODEs</a></li>
+<li class="chapter" data-level="10.5" data-path="ode.html"><a href="ode.html#examples-1"><i class="fa fa-check"></i><b>10.5</b> Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="challenge.html"><a href="challenge.html"><i class="fa fa-check"></i><b>11</b> Additional Programming Challenges</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="challenge.html"><a href="challenge.html#part-1-scientific-computing"><i class="fa fa-check"></i><b>11.1</b> Part 1: Scientific Computing</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lancaster University MATH245 Computational Mathematics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="roots" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">7</span> Root finding<a href="roots.html#roots" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Root finding is a fancy name for a very common task in mathematics: solving an
+equation. Any equation can be written in the form <span class="math inline">\(f(x) = 0\)</span>, for a suitable
+function <span class="math inline">\(f\)</span>, and then solving the equation means finding a zero of <span class="math inline">\(f\)</span>. A root
+is just an alternative name for the zeros of a function, that you already know
+from studying the <em>roots</em> of polynomials.</p>
+<p>We are going to study algorithms for root finding. From a mathematical
+perspective, we would like to build a sequence that converges t to the root of
+a given function <span class="math inline">\(f\)</span>.</p>
+<p>Note that in the context of MATH245, when we talk about “solving an equation”
+or “finding a solution” or “finding a fixed point”, it is always in the sense
+of approximating the solution with a computer program.</p>
+<div id="fixed-point-iteration-1" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Fixed point iteration<a href="roots.html#fixed-point-iteration-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We can always rephrase a root finding problem <span class="math inline">\(f(x) = 0\)</span> to a fixed point
+problem! Let <span class="math inline">\(g(x) = f(x) + x\)</span>. Then
+<span class="math display">\[
+f(x) = 0 \Longleftrightarrow g(x) = x.
+\]</span></p>
+<p>We can apply the approaches from Chapter 6, and we are done! Let’s start with a
+familiar example. Find a solution of the equation
+<span class="math display">\[
+\cos(x) - x = 0.
+\]</span>
+We can rewrite this problem as find a fixed point of the function
+<span class="math display">\[
+g(x) = \cos(x).
+\]</span>
+We can use the same code we used last week, for example:</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb861"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb861-1"><a href="roots.html#cb861-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function g (cosine).</span></span>
+<span id="cb861-2"><a href="roots.html#cb861-2" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">cos</span>(x)</span>
+<span id="cb861-3"><a href="roots.html#cb861-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb861-4"><a href="roots.html#cb861-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial point x_0.</span></span>
+<span id="cb861-5"><a href="roots.html#cb861-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb861-6"><a href="roots.html#cb861-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb861-7"><a href="roots.html#cb861-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb861-8"><a href="roots.html#cb861-8" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">g</span>(x)</span>
+<span id="cb861-9"><a href="roots.html#cb861-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb861-10"><a href="roots.html#cb861-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb861-11"><a href="roots.html#cb861-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Show x.</span></span>
+<span id="cb861-12"><a href="roots.html#cb861-12" aria-hidden="true" tabindex="-1"></a>x </span></code></pre></div>
+<pre><code>## [1] 0.7390851</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb863"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb863-1"><a href="roots.html#cb863-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the numpy module</span></span>
+<span id="cb863-2"><a href="roots.html#cb863-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb863-3"><a href="roots.html#cb863-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb863-4"><a href="roots.html#cb863-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function g (cosine).</span></span>
+<span id="cb863-5"><a href="roots.html#cb863-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> g(x):</span>
+<span id="cb863-6"><a href="roots.html#cb863-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.cos(x)</span>
+<span id="cb863-7"><a href="roots.html#cb863-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb863-8"><a href="roots.html#cb863-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial point x_0.</span></span>
+<span id="cb863-9"><a href="roots.html#cb863-9" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb863-10"><a href="roots.html#cb863-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb863-11"><a href="roots.html#cb863-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>): </span>
+<span id="cb863-12"><a href="roots.html#cb863-12" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> g(x)</span>
+<span id="cb863-13"><a href="roots.html#cb863-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb863-14"><a href="roots.html#cb863-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Show x.</span></span>
+<span id="cb863-15"><a href="roots.html#cb863-15" aria-hidden="true" tabindex="-1"></a>x </span></code></pre></div>
+<pre><code>## 0.7390851332151607</code></pre>
+</div>
+</div>
+<p>We can check that <span class="math inline">\(x\)</span> satisfies the desired equation.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb865"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb865-1"><a href="roots.html#cb865-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cos</span>(x) <span class="sc">-</span> x</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb867"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb867-1"><a href="roots.html#cb867-1" aria-hidden="true" tabindex="-1"></a>np.cos(x) <span class="op">-</span> x</span></code></pre></div>
+<pre><code>## 0.0</code></pre>
+</div>
+</div>
+<p>Are we done? Well, we have <em>a</em> method to find roots, but is it a good method?</p>
+</div>
+<div id="newtons-method" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Newton’s method<a href="roots.html#newtons-method" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Most possibly you have encountered Newton’s method in the past. Rather than just presenting a formula, let’s start by framing Newton’s method in the context of fixed point methods. Let’s assume we are interested in solving the equation <span class="math inline">\(f(x) = 0\)</span>. Rather than using <span class="math inline">\(g(x) = f(x) + x\)</span>, we can define
+<span class="math display">\[
+g(x) = x + f(x)h(x).
+\]</span>
+Now I have a choice in the function <span class="math inline">\(h\)</span>. Note that we still have
+<span class="math display">\[
+f(x) = 0 \Leftrightarrow g(x) = x,
+\]</span>
+so any choice of <span class="math inline">\(h\)</span> gives us a fixed point. What is the best choice of <span class="math inline">\(h\)</span>? Newton’s method corresponds to
+<span class="math display">\[
+h(x) = - 1 / f&#39;(x).
+\]</span></p>
+<p>The natural question is what method converges <strong>faster</strong> to a zero of <span class="math inline">\(f\)</span>,
+<span class="math display">\[
+g_1(x) = x + f(x)
+\]</span>
+or
+<span class="math display">\[
+g_2(x) = x - f(x)/f&#39;(x)?
+\]</span>
+Let’s do a quick experiment. Let’s consider, as before <span class="math inline">\(f(x) = \cos(x) - x\)</span>. Let’s do fixed point iteration in both cases.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb869"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb869-1"><a href="roots.html#cb869-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function f and f&#39;</span></span>
+<span id="cb869-2"><a href="roots.html#cb869-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">cos</span>(x)<span class="sc">-</span>x</span>
+<span id="cb869-3"><a href="roots.html#cb869-3" aria-hidden="true" tabindex="-1"></a>fp <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="sc">-</span><span class="fu">sin</span>(x) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb869-4"><a href="roots.html#cb869-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb869-5"><a href="roots.html#cb869-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Define both methods</span></span>
+<span id="cb869-6"><a href="roots.html#cb869-6" aria-hidden="true" tabindex="-1"></a>g1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x <span class="sc">+</span> <span class="fu">f</span>(x) </span>
+<span id="cb869-7"><a href="roots.html#cb869-7" aria-hidden="true" tabindex="-1"></a>g2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x <span class="sc">-</span> <span class="fu">f</span>(x)<span class="sc">/</span><span class="fu">fp</span>(x)</span>
+<span id="cb869-8"><a href="roots.html#cb869-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb869-9"><a href="roots.html#cb869-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial point x_0.</span></span>
+<span id="cb869-10"><a href="roots.html#cb869-10" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fl">0.1</span> <span class="co">#for the first method</span></span>
+<span id="cb869-11"><a href="roots.html#cb869-11" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fl">0.1</span> <span class="co">#for the second method</span></span>
+<span id="cb869-12"><a href="roots.html#cb869-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb869-13"><a href="roots.html#cb869-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Lists to save the points</span></span>
+<span id="cb869-14"><a href="roots.html#cb869-14" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">20</span> <span class="co">#Number of iterations</span></span>
+<span id="cb869-15"><a href="roots.html#cb869-15" aria-hidden="true" tabindex="-1"></a>r1 <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n)</span>
+<span id="cb869-16"><a href="roots.html#cb869-16" aria-hidden="true" tabindex="-1"></a>r2 <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n)</span>
+<span id="cb869-17"><a href="roots.html#cb869-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb869-18"><a href="roots.html#cb869-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
+<span id="cb869-19"><a href="roots.html#cb869-19" aria-hidden="true" tabindex="-1"></a>    x1 <span class="ot">&lt;-</span> <span class="fu">g1</span>(x1)</span>
+<span id="cb869-20"><a href="roots.html#cb869-20" aria-hidden="true" tabindex="-1"></a>    x2 <span class="ot">&lt;-</span> <span class="fu">g2</span>(x2)</span>
+<span id="cb869-21"><a href="roots.html#cb869-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb869-22"><a href="roots.html#cb869-22" aria-hidden="true" tabindex="-1"></a>    r1[i] <span class="ot">&lt;-</span> x1</span>
+<span id="cb869-23"><a href="roots.html#cb869-23" aria-hidden="true" tabindex="-1"></a>    r2[i] <span class="ot">&lt;-</span> x2</span>
+<span id="cb869-24"><a href="roots.html#cb869-24" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb870"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb870-1"><a href="roots.html#cb870-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the numpy module</span></span>
+<span id="cb870-2"><a href="roots.html#cb870-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb870-3"><a href="roots.html#cb870-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb870-4"><a href="roots.html#cb870-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function f and fp</span></span>
+<span id="cb870-5"><a href="roots.html#cb870-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
+<span id="cb870-6"><a href="roots.html#cb870-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.cos(x)<span class="op">-</span>x</span>
+<span id="cb870-7"><a href="roots.html#cb870-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb870-8"><a href="roots.html#cb870-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fp(x):</span>
+<span id="cb870-9"><a href="roots.html#cb870-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span>np.sin(x)<span class="op">-</span><span class="dv">1</span></span>
+<span id="cb870-10"><a href="roots.html#cb870-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb870-11"><a href="roots.html#cb870-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our fixed point methods</span></span>
+<span id="cb870-12"><a href="roots.html#cb870-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> g1(x):</span>
+<span id="cb870-13"><a href="roots.html#cb870-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">+</span> f(x)</span>
+<span id="cb870-14"><a href="roots.html#cb870-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb870-15"><a href="roots.html#cb870-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> g2(x):</span>
+<span id="cb870-16"><a href="roots.html#cb870-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">-</span> f(x)<span class="op">/</span>fp(x)</span>
+<span id="cb870-17"><a href="roots.html#cb870-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb870-18"><a href="roots.html#cb870-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial point x_0.</span></span>
+<span id="cb870-19"><a href="roots.html#cb870-19" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> <span class="fl">0.1</span> <span class="co">#for the first method</span></span>
+<span id="cb870-20"><a href="roots.html#cb870-20" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> <span class="fl">0.1</span> <span class="co">#for the second method</span></span>
+<span id="cb870-21"><a href="roots.html#cb870-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb870-22"><a href="roots.html#cb870-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Lists to save the points</span></span>
+<span id="cb870-23"><a href="roots.html#cb870-23" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb870-24"><a href="roots.html#cb870-24" aria-hidden="true" tabindex="-1"></a>r1 <span class="op">=</span> np.empty(n) <span class="co">#empty list of n elements</span></span>
+<span id="cb870-25"><a href="roots.html#cb870-25" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> np.empty(n) </span>
+<span id="cb870-26"><a href="roots.html#cb870-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb870-27"><a href="roots.html#cb870-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n): </span>
+<span id="cb870-28"><a href="roots.html#cb870-28" aria-hidden="true" tabindex="-1"></a>    x1 <span class="op">=</span> g1(x1)</span>
+<span id="cb870-29"><a href="roots.html#cb870-29" aria-hidden="true" tabindex="-1"></a>    x2 <span class="op">=</span> g2(x2)</span>
+<span id="cb870-30"><a href="roots.html#cb870-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb870-31"><a href="roots.html#cb870-31" aria-hidden="true" tabindex="-1"></a>    r1[i] <span class="op">=</span> x1</span>
+<span id="cb870-32"><a href="roots.html#cb870-32" aria-hidden="true" tabindex="-1"></a>    r2[i] <span class="op">=</span> x2</span></code></pre></div>
+</div>
+</div>
+<p>We plot <code>r1</code> and <code>r2</code> to assess convergence.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb871"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb871-1"><a href="roots.html#cb871-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
+<span id="cb871-2"><a href="roots.html#cb871-2" aria-hidden="true" tabindex="-1"></a>point_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">1</span>, n), <span class="at">y1 =</span> r1, <span class="at">y2=</span>r2)) <span class="sc">+</span> </span>
+<span id="cb871-3"><a href="roots.html#cb871-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y1),<span class="at">color=</span><span class="st">&quot;blue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb871-4"><a href="roots.html#cb871-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y2),<span class="at">color=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb871-5"><a href="roots.html#cb871-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb871-6"><a href="roots.html#cb871-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;x_n&quot;</span>) <span class="sc">+</span></span>
+<span id="cb871-7"><a href="roots.html#cb871-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;n&quot;</span>)</span>
+<span id="cb871-8"><a href="roots.html#cb871-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb871-9"><a href="roots.html#cb871-9" aria-hidden="true" tabindex="-1"></a>point_plot</span></code></pre></div>
+<p><img src="images/unnamed-chunk-293-1.png" width="50%" /></p>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb872"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb872-1"><a href="roots.html#cb872-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb872-2"><a href="roots.html#cb872-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb872-3"><a href="roots.html#cb872-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb872-4"><a href="roots.html#cb872-4" aria-hidden="true" tabindex="-1"></a>point_plot <span class="op">=</span> ggplot(pd.DataFrame({<span class="st">&quot;x&quot;</span>: <span class="bu">range</span>(n), <span class="st">&quot;y1&quot;</span>: r1, <span class="st">&quot;y2&quot;</span>:r2})) <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb872-5"><a href="roots.html#cb872-5" aria-hidden="true" tabindex="-1"></a>   geom_line(aes(x<span class="op">=</span><span class="st">&quot;x&quot;</span>,y<span class="op">=</span><span class="st">&quot;y1&quot;</span>),color<span class="op">=</span><span class="st">&quot;blue&quot;</span>) <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb872-6"><a href="roots.html#cb872-6" aria-hidden="true" tabindex="-1"></a>   geom_line(aes(x<span class="op">=</span><span class="st">&quot;x&quot;</span>,y<span class="op">=</span><span class="st">&quot;y2&quot;</span>),color<span class="op">=</span><span class="st">&quot;red&quot;</span>) <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb872-7"><a href="roots.html#cb872-7" aria-hidden="true" tabindex="-1"></a>   theme_minimal() <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb872-8"><a href="roots.html#cb872-8" aria-hidden="true" tabindex="-1"></a>   ylab(<span class="st">&quot;x_n&quot;</span>) <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb872-9"><a href="roots.html#cb872-9" aria-hidden="true" tabindex="-1"></a>   xlab(<span class="st">&quot;n&quot;</span>)</span>
+<span id="cb872-10"><a href="roots.html#cb872-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb872-11"><a href="roots.html#cb872-11" aria-hidden="true" tabindex="-1"></a>point_plot</span></code></pre></div>
+<pre><code>## &lt;string&gt;:2: FutureWarning: Using repr(plot) to draw and show the plot figure is deprecated and will be removed in a future version. Use plot.show().
+## &lt;Figure Size: (640 x 480)&gt;</code></pre>
+<p><img src="images/unnamed-chunk-294-1.png" width="50%" /></p>
+</div>
+</div>
+<p>We can clearly see that the second method (Newton’s method) is much faster! We will talk more about why Newton’s method is faster, and how can we actually define and measure “faster”, at the end of this Chapter.</p>
+<p><strong>Exercise:</strong> One of the main limitations of Newton’s method is that it requires us to compute and implement the derivative of <span class="math inline">\(f\)</span>. An alternative is to use the secant method, which one can derive by replacing <span class="math inline">\(f&#39;(x)\)</span> by an approximation of the form
+<span class="math display">\[
+(f(x) - f(y)) / (x-y).
+\]</span>
+Write a fixed point method using this approximation for the derivative of <span class="math inline">\(f\)</span>, implement it, and compare it with the fixed point iteration and Newton’s method when applied to <span class="math inline">\(f(x) = cos(x) - x\)</span>. What method is faster? <strong>Hint:</strong> you will need to use the last two values in the sequence to approximate the derivate, so you will need a two-dimensional <span class="math inline">\(g\)</span>.</p>
+<p>#Root finding in R and Python
+R and Python have a suit of root finding methods. We will see examples here using the library <code>nleqslv</code> in R, and <code>scipy</code> in Python. Let’s see how to solve the same problem as before, finding a zero of <span class="math inline">\(f(x) = cos(x) - x\)</span>.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb874"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb874-1"><a href="roots.html#cb874-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nleqslv) </span>
+<span id="cb874-2"><a href="roots.html#cb874-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb874-3"><a href="roots.html#cb874-3" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> \(x) <span class="fu">cos</span>(x) <span class="sc">-</span> x</span>
+<span id="cb874-4"><a href="roots.html#cb874-4" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb874-5"><a href="roots.html#cb874-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb874-6"><a href="roots.html#cb874-6" aria-hidden="true" tabindex="-1"></a><span class="fu">nleqslv</span>(x0,f)</span></code></pre></div>
+<pre><code>## $x
+## [1] 0.7390851
+## 
+## $fvec
+## [1] 3.201369e-09
+## 
+## $termcd
+## [1] 1
+## 
+## $message
+## [1] &quot;Function criterion near zero&quot;
+## 
+## $scalex
+## [1] 1
+## 
+## $nfcnt
+## [1] 5
+## 
+## $njcnt
+## [1] 1
+## 
+## $iter
+## [1] 5</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb876"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb876-1"><a href="roots.html#cb876-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy <span class="im">as</span> sp</span>
+<span id="cb876-2"><a href="roots.html#cb876-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb876-3"><a href="roots.html#cb876-3" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: np.cos(x) <span class="op">-</span> x</span>
+<span id="cb876-4"><a href="roots.html#cb876-4" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb876-5"><a href="roots.html#cb876-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb876-6"><a href="roots.html#cb876-6" aria-hidden="true" tabindex="-1"></a>sp.optimize.root_scalar(f,x0<span class="op">=</span>x0)</span></code></pre></div>
+<pre><code>##       converged: True
+##            flag: converged
+##  function_calls: 10
+##      iterations: 5
+##            root: 0.7390851332151607
+##          method: newton</code></pre>
+</div>
+</div>
+<p>As you can see, both methods return information about the process. Of particular interest are the convergence result (true or false), the number of iterations that the method performed and of course, the approximation for the root of <span class="math inline">\(f\)</span>.</p>
+<p>We are just using all the default options, but these functions actually allow us to select the method, the convergence criterion, specify the derivative. They are also available for functions higher dimensions. For example, we can use Newton’s method.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb878"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb878-1"><a href="roots.html#cb878-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nleqslv) </span>
+<span id="cb878-2"><a href="roots.html#cb878-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb878-3"><a href="roots.html#cb878-3" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> \(x) <span class="fu">cos</span>(x) <span class="sc">-</span> x</span>
+<span id="cb878-4"><a href="roots.html#cb878-4" aria-hidden="true" tabindex="-1"></a>fp <span class="ot">&lt;-</span> \(x) <span class="sc">-</span><span class="fu">sin</span>(x) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb878-5"><a href="roots.html#cb878-5" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb878-6"><a href="roots.html#cb878-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb878-7"><a href="roots.html#cb878-7" aria-hidden="true" tabindex="-1"></a><span class="fu">nleqslv</span>(x0,f,fp,<span class="at">method=</span><span class="st">&quot;Newton&quot;</span>)</span></code></pre></div>
+<pre><code>## $x
+## [1] 0.7390851
+## 
+## $fvec
+## [1] -1.725253e-11
+## 
+## $termcd
+## [1] 1
+## 
+## $message
+## [1] &quot;Function criterion near zero&quot;
+## 
+## $scalex
+## [1] 1
+## 
+## $nfcnt
+## [1] 4
+## 
+## $njcnt
+## [1] 4
+## 
+## $iter
+## [1] 4</code></pre>
+</div>
+<div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb880"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb880-1"><a href="roots.html#cb880-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy <span class="im">as</span> sp</span>
+<span id="cb880-2"><a href="roots.html#cb880-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb880-3"><a href="roots.html#cb880-3" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: np.cos(x) <span class="op">-</span> x</span>
+<span id="cb880-4"><a href="roots.html#cb880-4" aria-hidden="true" tabindex="-1"></a>fp <span class="op">=</span> <span class="kw">lambda</span> x: <span class="op">-</span>np.sin(x) <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb880-5"><a href="roots.html#cb880-5" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb880-6"><a href="roots.html#cb880-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb880-7"><a href="roots.html#cb880-7" aria-hidden="true" tabindex="-1"></a>sp.optimize.root_scalar(f,x0<span class="op">=</span>x0,fprime<span class="op">=</span>fp,method<span class="op">=</span><span class="st">&quot;Newton&quot;</span>)</span></code></pre></div>
+<pre><code>##       converged: True
+##            flag: converged
+##  function_calls: 10
+##      iterations: 5
+##            root: 0.7390851332151607
+##          method: newton</code></pre>
+</div>
+</div>
+<p>Note that the internal implementation and default values in R and Python are different, even when applying the same method. In this case, the R method stops by default when <span class="math inline">\(f(x) &lt; 1.e-8\)</span> (check <code>ftol</code> in the documentation of <code>nleqslv</code>), whilst the Python implementation uses stopping criteria <code>xtol</code> and <code>rtol</code>, similar to the fixed point controls we defined in Chapter 6 on the absolute and relative difference of the last two iterates.</p>
+<p><strong>Exercise:</strong> Explore the other methods implemented in R and Python. Do they all require implementing <span class="math inline">\(f&#39;\)</span>? Are the methods slower if <span class="math inline">\(f&#39;\)</span> is not defined? Check the documentation for <code>nleqslv</code> or <code>root_scalar</code> to find more details.</p>
+</div>
+<div id="a-note-on-convergence" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> A note on convergence<a href="roots.html#a-note-on-convergence" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There is a mathematical definition of convergence rate that allows us to compare methods. Convergence can be defined in general for any sequence. Consider a sequence <span class="math inline">\(x_n \to x^\ast\)</span> as <span class="math inline">\(n \to \infty\)</span>. Suppose that for all <span class="math inline">\(n =0, 1,\dots\)</span>, <span class="math inline">\(x_n \neq x^\ast\)</span>. Let <span class="math inline">\(\epsilon_n = x_n - x^\ast\)</span>, the error in using <span class="math inline">\(x_n\)</span> to approximate <span class="math inline">\(x^\ast\)</span>. If there exist positive constants <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\alpha\)</span> such that
+<span class="math display">\[
+\lim_{n \rightarrow \infty} \frac{|x_{n+1} - x^\ast|}{|x_n  -x^\ast|^\alpha}=  \lambda
+\]</span>
+then we say that <span class="math inline">\(x_n \to x^\ast\)</span> with <strong>order</strong> <span class="math inline">\(\alpha\)</span> and <strong>asymptotic error constant</strong> <span class="math inline">\(\lambda\)</span>.</p>
+<p>Two special cases are:</p>
+<ul>
+<li>If <span class="math inline">\(\alpha =1\)</span> (and <span class="math inline">\(\lambda &lt;1\)</span>), the sequence is <em>linearly convergent</em>.</li>
+<li>If <span class="math inline">\(\alpha =2\)</span>, the sequence is <em>quadratically convergent</em>.</li>
+</ul>
+<p>For the fixed point iteration in Chapter 6, using the contraction mapping theorem, we have theorem to characterise the convergence.</p>
+<p><strong>Theorem:</strong> Suppose that <span class="math inline">\(g:[a,b] \to [a,b]\)</span> is a contraction mapping. For <span class="math inline">\(x_0 \in [a,b]\)</span> define the sequence <span class="math inline">\(x_0, x_1, \dots\)</span>, by <span class="math inline">\(x_n = g(x_{n-1})\)</span>, <span class="math inline">\(n=1,2,\dots\)</span>, and let <span class="math inline">\(x^\ast\)</span> be the unique fixed point of <span class="math inline">\(g\)</span> in <span class="math inline">\([a,b]\)</span> (from the contraction mapping theorem).</p>
+<ol style="list-style-type: lower-alpha">
+<li>If <span class="math inline">\(g\)</span> is continuously differentiable with <span class="math inline">\(g&#39;(x^*) \neq 0\)</span>, then <span class="math inline">\(x_n \to x^\ast\)</span>
+linearly, with <span class="math inline">\(\lambda = |g&#39; (x^*) |\)</span>.</li>
+<li>If <span class="math inline">\(g\)</span> is twice continuously differentiable with <span class="math inline">\(g&#39; (x^*)=0\)</span> and <span class="math inline">\(g&#39;&#39;(x^*) \neq 0\)</span>, then <span class="math inline">\(x_n \to x^*\)</span> quadratically with <span class="math inline">\(\lambda = |g&#39;&#39;(x^*)|/2\)</span>.</li>
+</ol>
+<p><strong>Exercise:</strong> Prove the previous theorem. <strong>Hint:</strong> Note that the contraction mapping theorem gives an expression for the distance between the <span class="math inline">\(n-th\)</span> iterate and the fixed point, exactly what we need in the definition of convergence.</p>
+<p><strong>Exercise:</strong> Assume we are applying the Newton’s method to find a root of a function <span class="math inline">\(f\)</span>. Apply the previous theorem to show that the Newton’s method has quadratic convergence if <span class="math inline">\(f&#39;(x) \neq 0\)</span>.</p>
+<p>The secant method has a convergence rate 1.62 (approximately). We can use the convergence rates to compare the methods: the standard fixed point iteration has (in general) a linear convergence rate (that is, <span class="math inline">\(\alpha=1\)</span>), the secant method a convergence rate of 1.62, and Newton’s method a convergence rate of 2.</p>
+<p><strong>Exercise:</strong> Evaluate 100 iterations of the standard fixed point method, Newton’s method and secant method (if you have implemented it), for the function <span class="math inline">\(f(x) = cos(x) - x\)</span>. Use the last iteration as the “true” value of the fixed point. Plot the log-error of each iterate, that is <span class="math inline">\(\log(|x_n - x^\ast|)\)</span> for each method. What does this represent in terms of convergence rates?</p>
+</div>
+<div id="a-note-on-newtons-method." class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> A note on Newton’s method.<a href="roots.html#a-note-on-newtons-method." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There is an alternative (and useful!!) alternative derivation of the Newton’s method. It requires the Taylor expansion of a function. Consider a function <span class="math inline">\(f\)</span>, that we assume is smooth (it has as many derivatives as we need). We would like to solve
+<span class="math display">\[
+f(x) = 0.
+\]</span>
+We start at a value <span class="math inline">\(x_0\)</span>, and we are looking for <span class="math inline">\(x_1\)</span> such that <span class="math inline">\(f(x_1) = 0\)</span>. We can write:
+<span class="math display">\[
+0 = f(x_1) = f(x_0 + (x_1 - x_0)).
+\]</span>
+If we assume that <span class="math inline">\(x_1-x_0\)</span> is <em>small</em>, we can use the Taylor expansion of <span class="math inline">\(f\)</span> about <span class="math inline">\(x_0\)</span>.</p>
+<p><strong>Challenge:</strong> Use the Taylor expansion up to order one, and isolate <span class="math inline">\(x_1\)</span> to find expression for Newton’s method. Could we derive higher order methods in this manner?</p>
+<style type="text/css">
+.book .book-body .page-wrapper .page-inner {
+  max-width: 1200px !important;
+}
+</style>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="fixed.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="gd.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

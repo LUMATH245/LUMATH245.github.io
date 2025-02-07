@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Logic and Vectors | Lancaster University MATH245 Computational Mathematics</title>
+  <meta name="description" content="2 Logic and Vectors | Lancaster University MATH245 Computational Mathematics" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Logic and Vectors | Lancaster University MATH245 Computational Mathematics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Logic and Vectors | Lancaster University MATH245 Computational Mathematics" />
+  
+  
+  
+
+<meta name="author" content="Lecturers: Dr Eduard Campillo-Funollet and Dr Gaetano Romano" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro_prog.html"/>
+<link rel="next" href="func_loop.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="intro_prog.html"><a href="intro_prog.html"><i class="fa fa-check"></i><b>1</b> Introduction to Computational Mathematics</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro_prog.html"><a href="intro_prog.html#what-is-a-computer"><i class="fa fa-check"></i><b>1.1</b> What is a Computer?</a></li>
+<li class="chapter" data-level="1.2" data-path="intro_prog.html"><a href="intro_prog.html#computing-accessing-memory-and-storing"><i class="fa fa-check"></i><b>1.2</b> Computing, Accessing Memory and Storing</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="log_vec.html"><a href="log_vec.html"><i class="fa fa-check"></i><b>2</b> Logic and Vectors</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="log_vec.html"><a href="log_vec.html#comparisons"><i class="fa fa-check"></i><b>2.1</b> Comparisons</a></li>
+<li class="chapter" data-level="2.2" data-path="log_vec.html"><a href="log_vec.html#logical-arithmetic"><i class="fa fa-check"></i><b>2.2</b> Logical Arithmetic</a></li>
+<li class="chapter" data-level="2.3" data-path="log_vec.html"><a href="log_vec.html#flow"><i class="fa fa-check"></i><b>2.3</b> Flow</a></li>
+<li class="chapter" data-level="2.4" data-path="log_vec.html"><a href="log_vec.html#vectors"><i class="fa fa-check"></i><b>2.4</b> Vectors</a></li>
+<li class="chapter" data-level="2.5" data-path="log_vec.html"><a href="log_vec.html#accessing-vectors"><i class="fa fa-check"></i><b>2.5</b> Accessing vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="func_loop.html"><a href="func_loop.html"><i class="fa fa-check"></i><b>3</b> Functions and Loops</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="func_loop.html"><a href="func_loop.html#functions"><i class="fa fa-check"></i><b>3.1</b> Functions</a></li>
+<li class="chapter" data-level="3.2" data-path="func_loop.html"><a href="func_loop.html#looping"><i class="fa fa-check"></i><b>3.2</b> State and For Loop</a></li>
+<li class="chapter" data-level="3.3" data-path="func_loop.html"><a href="func_loop.html#more-about-looping"><i class="fa fa-check"></i><b>3.3</b> More about looping</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="maps_alg.html"><a href="maps_alg.html"><i class="fa fa-check"></i><b>4</b> Functional Programming and Linear Algebra</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="maps_alg.html"><a href="maps_alg.html#Maps"><i class="fa fa-check"></i><b>4.1</b> An intro to Functional Programming</a></li>
+<li class="chapter" data-level="4.2" data-path="maps_alg.html"><a href="maps_alg.html#doing-linear-algebra"><i class="fa fa-check"></i><b>4.2</b> Doing Linear Algebra</a></li>
+<li class="chapter" data-level="4.3" data-path="maps_alg.html"><a href="maps_alg.html#an-end-note-to-this-chapter"><i class="fa fa-check"></i><b>4.3</b> An end note to this chapter</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="df_plt.html"><a href="df_plt.html"><i class="fa fa-check"></i><b>5</b> Data Frames and Plotting</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="df_plt.html"><a href="df_plt.html#data-frames"><i class="fa fa-check"></i><b>5.1</b> Data Frames</a></li>
+<li class="chapter" data-level="5.2" data-path="df_plt.html"><a href="df_plt.html#plotting-with-ggplot-and-plotnine"><i class="fa fa-check"></i><b>5.2</b> Plotting with ggplot (and plotnine)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="fixed.html"><a href="fixed.html"><i class="fa fa-check"></i><b>6</b> Fixed point iteration</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="fixed.html"><a href="fixed.html#fixed-points"><i class="fa fa-check"></i><b>6.1</b> Fixed points</a></li>
+<li class="chapter" data-level="6.2" data-path="fixed.html"><a href="fixed.html#convergence"><i class="fa fa-check"></i><b>6.2</b> Convergence</a></li>
+<li class="chapter" data-level="6.3" data-path="fixed.html"><a href="fixed.html#fixed-point-theorems"><i class="fa fa-check"></i><b>6.3</b> Fixed point theorems</a></li>
+<li class="chapter" data-level="6.4" data-path="fixed.html"><a href="fixed.html#exercises"><i class="fa fa-check"></i><b>6.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="roots.html"><a href="roots.html"><i class="fa fa-check"></i><b>7</b> Root finding</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="roots.html"><a href="roots.html#fixed-point-iteration-1"><i class="fa fa-check"></i><b>7.1</b> Fixed point iteration</a></li>
+<li class="chapter" data-level="7.2" data-path="roots.html"><a href="roots.html#newtons-method"><i class="fa fa-check"></i><b>7.2</b> Newton’s method</a></li>
+<li class="chapter" data-level="7.3" data-path="roots.html"><a href="roots.html#a-note-on-convergence"><i class="fa fa-check"></i><b>7.3</b> A note on convergence</a></li>
+<li class="chapter" data-level="7.4" data-path="roots.html"><a href="roots.html#a-note-on-newtons-method."><i class="fa fa-check"></i><b>7.4</b> A note on Newton’s method.</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="gd.html"><a href="gd.html"><i class="fa fa-check"></i><b>8</b> Gradient descent</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="gd.html"><a href="gd.html#optimisation-and-root-finding"><i class="fa fa-check"></i><b>8.1</b> Optimisation and root finding</a></li>
+<li class="chapter" data-level="8.2" data-path="gd.html"><a href="gd.html#gradient-descent"><i class="fa fa-check"></i><b>8.2</b> Gradient descent</a></li>
+<li class="chapter" data-level="8.3" data-path="gd.html"><a href="gd.html#notes"><i class="fa fa-check"></i><b>8.3</b> Notes</a></li>
+<li class="chapter" data-level="8.4" data-path="gd.html"><a href="gd.html#exercises-and-challenges"><i class="fa fa-check"></i><b>8.4</b> Exercises and challenges</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="mc.html"><a href="mc.html"><i class="fa fa-check"></i><b>9</b> Monte Carlo methods</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="mc.html"><a href="mc.html#simple-example-area-of-a-circle"><i class="fa fa-check"></i><b>9.1</b> Simple example: area of a circle</a></li>
+<li class="chapter" data-level="9.2" data-path="mc.html"><a href="mc.html#definition-and-properties"><i class="fa fa-check"></i><b>9.2</b> Definition and properties</a></li>
+<li class="chapter" data-level="9.3" data-path="mc.html"><a href="mc.html#example"><i class="fa fa-check"></i><b>9.3</b> Example</a></li>
+<li class="chapter" data-level="9.4" data-path="mc.html"><a href="mc.html#error-estimate"><i class="fa fa-check"></i><b>9.4</b> Error estimate</a></li>
+<li class="chapter" data-level="9.5" data-path="mc.html"><a href="mc.html#asymptotic-error"><i class="fa fa-check"></i><b>9.5</b> Asymptotic error</a></li>
+<li class="chapter" data-level="9.6" data-path="mc.html"><a href="mc.html#exercises-1"><i class="fa fa-check"></i><b>9.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="ode.html"><a href="ode.html"><i class="fa fa-check"></i><b>10</b> Ordinary differential equations</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="ode.html"><a href="ode.html#numerical-integration"><i class="fa fa-check"></i><b>10.1</b> Numerical integration</a></li>
+<li class="chapter" data-level="10.2" data-path="ode.html"><a href="ode.html#ordinary-differential-equations"><i class="fa fa-check"></i><b>10.2</b> Ordinary differential equations</a></li>
+<li class="chapter" data-level="10.3" data-path="ode.html"><a href="ode.html#higher-order-methods"><i class="fa fa-check"></i><b>10.3</b> Higher order methods</a></li>
+<li class="chapter" data-level="10.4" data-path="ode.html"><a href="ode.html#systems-of-odes"><i class="fa fa-check"></i><b>10.4</b> Systems of ODEs</a></li>
+<li class="chapter" data-level="10.5" data-path="ode.html"><a href="ode.html#examples-1"><i class="fa fa-check"></i><b>10.5</b> Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="challenge.html"><a href="challenge.html"><i class="fa fa-check"></i><b>11</b> Additional Programming Challenges</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="challenge.html"><a href="challenge.html#part-1-scientific-computing"><i class="fa fa-check"></i><b>11.1</b> Part 1: Scientific Computing</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lancaster University MATH245 Computational Mathematics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="log_vec" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Logic and Vectors<a href="log_vec.html#log_vec" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In this chapter, we will introduce you to the basics of logic in a
+computer. Computer Logic is related in its own way to the branch of
+mathematical logic, in particular with the branch of Boolean algebra.
+And if truth is something elusive in the philosophical discourse, in
+Boolean algebra it is well defined, as the <span class="math inline">\(\land, \ \lor, \lnot\)</span> logic
+operators are. If you’re used to these, for the rest of this chapter, we
+will use a different notation for these three symbols: <code>AND</code>, <code>OR</code> and
+<code>NOT</code>.</p>
+<p>In programming, logic is essential, as it allows us to create and
+manipulate expressions and statements that can be evaluated as true or
+false. In this way logic enables us to control the flow and structure of
+our programs, and to perform various operations and calculations on
+data.</p>
+<div id="comparisons" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Comparisons<a href="log_vec.html#comparisons" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Before we start with logic, we should cover what <em>comparison</em> is. I
+mean, we can again philosophize about it, but pulling out the Oxford
+English Dictionary, “[Comparison is ] the action, or an act, of
+comparing, likening, or representing as similar: see compare.” If we
+pull out the definition of <em>compare,</em> we simply get “To liken”. The
+concept of comparison is inherit in human existence, as it’s the concept
+of what <code>TRUE</code> is, (Kierkegaard lost his mind finding out that there’s
+not a way that two things are the same, that truth is subjective, and
+that please do not compare people, that is not nice).</p>
+<p><img src="images/chapter2/kier.jpeg" width="495" /></p>
+<p>Anyway, in programming, comparison is the process of examining two or
+more objects or values and determining their relationship or difference.
+Comparison can be used for various purposes, such as checking the
+validity of an input, showing that two variables contain the same item,
+or most importantly to control the flow of a program (later with this).
+For now, let’s focus on how to compare objects and values in both R and
+Python, and how to use the results of comparison in your programs.</p>
+<p>First, let’s see how to check for equality in R and Python. Equality
+means that two objects or values are exactly the same in every aspect.
+To check for equality, we use the operator <code>==</code>, which returns <code>TRUE</code> if
+the objects or values are equal, and <code>FALSE</code> if they are not. As you
+will see, R uses uppercase letters for <code>TRUE</code> and <code>FALSE</code>, while
+Python starts with a capital letter and uses lower case for the remaining letters, e.g. <code>True</code> and <code>False</code>.</p>
+<p>For example, we can compare two strings, two integers, or two doubles,
+as shown below:</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="log_vec.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing two strings</span></span>
+<span id="cb86-2"><a href="log_vec.html#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;Hello&quot;</span> <span class="sc">==</span> <span class="st">&quot;Hello&quot;</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="log_vec.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;Hello&quot;</span> <span class="sc">==</span> <span class="st">&quot;hello&quot;</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="log_vec.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing two integers</span></span>
+<span id="cb90-2"><a href="log_vec.html#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">==</span> <span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="log_vec.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">==</span> <span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="log_vec.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing two reals</span></span>
+<span id="cb94-2"><a href="log_vec.html#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="fl">3.14</span> <span class="sc">==</span> <span class="fl">3.14</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="log_vec.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fl">3.14</span> <span class="sc">==</span> <span class="fl">3.1415</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb98-1"><a href="log_vec.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing two strings</span></span>
+<span id="cb98-2"><a href="log_vec.html#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="co">&quot;Hello&quot;</span> <span class="op">==</span> <span class="st">&quot;Hello&quot;</span></span></code></pre></div>
+<pre><code>## True</code></pre>
+<div class="sourceCode" id="cb100"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb100-1"><a href="log_vec.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co">&quot;Hello&quot;</span> <span class="op">==</span> <span class="st">&quot;hello&quot;</span></span></code></pre></div>
+<pre><code>## False</code></pre>
+<div class="sourceCode" id="cb102"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb102-1"><a href="log_vec.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing two integers</span></span>
+<span id="cb102-2"><a href="log_vec.html#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="op">==</span> <span class="dv">2</span></span></code></pre></div>
+<pre><code>## True</code></pre>
+<div class="sourceCode" id="cb104"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb104-1"><a href="log_vec.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="op">==</span> <span class="dv">3</span></span></code></pre></div>
+<pre><code>## False</code></pre>
+<div class="sourceCode" id="cb106"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb106-1"><a href="log_vec.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing two reals</span></span>
+<span id="cb106-2"><a href="log_vec.html#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="fl">3.14</span> <span class="op">==</span> <span class="fl">3.14</span></span></code></pre></div>
+<pre><code>## True</code></pre>
+<div class="sourceCode" id="cb108"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb108-1"><a href="log_vec.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fl">3.14</span> <span class="op">==</span> <span class="fl">3.1415</span></span></code></pre></div>
+<pre><code>## False</code></pre>
+</div>
+</div>
+<p>From these examples, we can notice how the computer is, indeed, very
+strict with the definition of <em>equality.</em> Two things might seem similar,
+or likely to be the same, but they are not.</p>
+<p>Note that the comparison is case-sensitive, meaning that uppercase and
+lowercase letters are considered different. Also note that the
+comparison is precise, meaning that even a small difference in the
+decimal places can make two numbers unequal. Numbers with decimal places and fractional numbers, in computing are called <em>floating precision numbers (floats)</em>. Floats are a way of representing real numbers in computer systems. They are designed to handle a wide range of values, from extremely small to extremely large, with fractional components.</p>
+<p>Try adding more decimals to the above examples, and see how far you can get until you get two same
+numbers! The amount of decimal places in floats <em>is at the basis of
+precision</em> and how comparisons of floats are made will affect your
+programs. The precision of a floating-point number is determined by the number of significant digits that it can represent: double-precision floats, the defaults in R and python, can represent about 16 decimal digits of precision. Albeit systems are in place to avoid numerical errors for smaller numbers, <strong>be careful when you compare two floats</strong> and try to avoid comparing two floating point numbers to see if they are equal. Instead you could see if the discrepancy between them is less than some small, positive number (see later to how to check less than).</p>
+<div id="exercise-1" class="section level4 hasAnchor" number="2.1.0.1">
+<h4><span class="header-section-number">2.1.0.1</span> Exercise<a href="log_vec.html#exercise-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>Try to run the comparison <code>1e5/(1e5 + 1e-16) == 1</code> and see what happens.</li>
+<li>The expression <code>0.1 + 0.3 == 0.4</code> gives <code>TRUE</code>, but <code>0.1 + 0.2 + 0.3 == 0.6</code> evaluates to <code>FALSE</code>. Why?</li>
+</ul>
+<p>Similar to equality, we can check for inequality. Inequality means that
+two objects or values are not exactly the same in every aspect. To check
+for inequality, we use the operator <code>!=</code>, which returns <code>TRUE</code> if the
+objects or values are not equal, and <code>FALSE</code> if they are. As earlier:</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="log_vec.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing two strings</span></span>
+<span id="cb110-2"><a href="log_vec.html#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;Hello&quot;</span> <span class="sc">!=</span> <span class="st">&quot;Hello&quot;</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="log_vec.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;Hello&quot;</span> <span class="sc">!=</span> <span class="st">&quot;hello&quot;</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="log_vec.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing two integers</span></span>
+<span id="cb114-2"><a href="log_vec.html#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">!=</span> <span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="log_vec.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">!=</span> <span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="log_vec.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing two doubles</span></span>
+<span id="cb118-2"><a href="log_vec.html#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="fl">3.14</span> <span class="sc">!=</span> <span class="fl">3.14</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="log_vec.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fl">3.14</span> <span class="sc">!=</span> <span class="fl">3.1415</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb122-1"><a href="log_vec.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing two strings</span></span>
+<span id="cb122-2"><a href="log_vec.html#cb122-2" aria-hidden="true" tabindex="-1"></a><span class="co">&quot;Hello&quot;</span> <span class="op">!=</span> <span class="st">&quot;Hello&quot;</span></span></code></pre></div>
+<pre><code>## False</code></pre>
+<div class="sourceCode" id="cb124"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb124-1"><a href="log_vec.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co">&quot;Hello&quot;</span> <span class="op">!=</span> <span class="st">&quot;hello&quot;</span></span></code></pre></div>
+<pre><code>## True</code></pre>
+<div class="sourceCode" id="cb126"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb126-1"><a href="log_vec.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing two integers</span></span>
+<span id="cb126-2"><a href="log_vec.html#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="op">!=</span> <span class="dv">2</span></span></code></pre></div>
+<pre><code>## False</code></pre>
+<div class="sourceCode" id="cb128"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb128-1"><a href="log_vec.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="op">!=</span> <span class="dv">3</span></span></code></pre></div>
+<pre><code>## True</code></pre>
+<div class="sourceCode" id="cb130"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb130-1"><a href="log_vec.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing two doubles</span></span>
+<span id="cb130-2"><a href="log_vec.html#cb130-2" aria-hidden="true" tabindex="-1"></a><span class="fl">3.14</span> <span class="op">!=</span> <span class="fl">3.14</span></span></code></pre></div>
+<pre><code>## False</code></pre>
+<div class="sourceCode" id="cb132"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb132-1"><a href="log_vec.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fl">3.14</span> <span class="op">!=</span> <span class="fl">3.1415</span></span></code></pre></div>
+<pre><code>## True</code></pre>
+</div>
+</div>
+<p>As mentioned above, we can also compare the content of variables. As we
+learned last week, a variable is a name that refers to a value or an
+object that is stored in the memory, so by comparing variables we
+compare the value they refer to. For example, we can assign the string
+<code>"Hello"</code> to the variable <code>x</code> in both languages, as shown below:</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="log_vec.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a string to a variable</span></span>
+<span id="cb134-2"><a href="log_vec.html#cb134-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&quot;Hello&quot;</span></span></code></pre></div>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb135-1"><a href="log_vec.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a string to a variable</span></span>
+<span id="cb135-2"><a href="log_vec.html#cb135-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">&quot;Hello&quot;</span></span></code></pre></div>
+</div>
+</div>
+<p>And we can then use the same operators as before, <code>==</code> for equality and
+<code>!=</code> for inequality. For example, we can compare the variable <code>x</code> with
+another string, another variable, or itself, as shown below:</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="log_vec.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing a variable with a string</span></span>
+<span id="cb136-2"><a href="log_vec.html#cb136-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> <span class="st">&quot;Hello&quot;</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="log_vec.html#cb138-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> <span class="st">&quot;hello&quot;</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="log_vec.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing a variable with another variable</span></span>
+<span id="cb140-2"><a href="log_vec.html#cb140-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="st">&quot;World&quot;</span></span>
+<span id="cb140-3"><a href="log_vec.html#cb140-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> y</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="log_vec.html#cb142-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="st">&quot;Hello&quot;</span></span>
+<span id="cb142-2"><a href="log_vec.html#cb142-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> y</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="log_vec.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing a variable with itself</span></span>
+<span id="cb144-2"><a href="log_vec.html#cb144-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> x</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb146-1"><a href="log_vec.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing a variable with a string</span></span>
+<span id="cb146-2"><a href="log_vec.html#cb146-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">==</span> <span class="st">&quot;Hello&quot;</span></span></code></pre></div>
+<pre><code>## True</code></pre>
+<div class="sourceCode" id="cb148"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb148-1"><a href="log_vec.html#cb148-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">==</span> <span class="st">&quot;hello&quot;</span></span></code></pre></div>
+<pre><code>## False</code></pre>
+<div class="sourceCode" id="cb150"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb150-1"><a href="log_vec.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing a variable with another variable</span></span>
+<span id="cb150-2"><a href="log_vec.html#cb150-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="st">&quot;World&quot;</span></span>
+<span id="cb150-3"><a href="log_vec.html#cb150-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">==</span> y</span></code></pre></div>
+<pre><code>## False</code></pre>
+<div class="sourceCode" id="cb152"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb152-1"><a href="log_vec.html#cb152-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="st">&quot;Hello&quot;</span></span>
+<span id="cb152-2"><a href="log_vec.html#cb152-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">==</span> y</span></code></pre></div>
+<pre><code>## True</code></pre>
+<div class="sourceCode" id="cb154"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb154-1"><a href="log_vec.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparing a variable with itself</span></span>
+<span id="cb154-2"><a href="log_vec.html#cb154-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">==</span> x</span></code></pre></div>
+<pre><code>## True</code></pre>
+</div>
+</div>
+<p>In addition to equality and inequality, we can also compare the
+magnitude or the order of two values or objects. This is especially
+useful in computational maths, as we often need to check if a value is
+within a certain range, or if a value satisfies a certain condition. To
+compare the magnitude or the order of two values or objects, we use the
+following operators:</p>
+<ul>
+<li>Greater than (<code>&gt;</code>): This operator returns <code>TRUE</code> if the left operand
+is larger than the right operand, and <code>FALSE</code> otherwise. For
+example, <code>3 &gt; 2</code> returns <code>TRUE</code>, but <code>2 &gt; 3</code> returns <code>FALSE</code>.</li>
+<li>Less than (<code>&lt;</code>): This operator returns <code>TRUE</code> if the left operand is
+smaller than the right operand, and <code>FALSE</code> otherwise.</li>
+<li>Greater than or equal to (<code>&gt;=</code>): This operator returns <code>TRUE</code> if the
+left operand is larger than or equal to the right operand, and
+<code>FALSE</code> otherwise. For example, <code>3 &gt;= 2</code> and <code>3 &gt;= 3</code> both return
+<code>TRUE</code>, but <code>2 &gt;= 3</code> returns <code>FALSE</code>.</li>
+<li>Less than or equal to (<code>&lt;=</code>): As above, this operator returns <code>TRUE</code>
+if the left operand is smaller than or equal to the right operand,
+and <code>FALSE</code> otherwise.</li>
+</ul>
+<p>The comparison is going to be consistent with the equality and
+inequality operators, meaning that if <code>x == y</code>, then <code>x &gt;= y</code> and
+<code>x &lt;= y</code> are both <code>TRUE</code>, and if <code>x != y</code>, then either <code>x &gt; y</code> or
+<code>x &lt; y</code> is <code>TRUE</code>.</p>
+<p>As an exercise, try to compare two integers, two doubles, or two
+variables, as done above, but with the inequality operators, and see the
+result.</p>
+<p>In the next section, we will introduce you to another important aspect
+of logic: logical arithmetic. Logical arithmetic is the process of
+combining and manipulating logical values, such as <code>TRUE</code> and <code>FALSE</code>,
+using logical operators, such as <code>AND</code> and <code>OR</code>. Logical arithmetic can
+be used for various purposes, such as creating complex conditions,
+testing multiple hypotheses, or performing set operations.</p>
+</div>
+</div>
+<div id="logical-arithmetic" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Logical Arithmetic<a href="log_vec.html#logical-arithmetic" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This might seem easy if you already have a background in logic, but even
+if you haven’t, the following paragraphs should cover all the necessary
+concepts that you will need for programming.</p>
+<p>Logical arithmetic is the process of combining and manipulating logical
+values, <code>TRUE</code> and <code>FALSE</code>, which are <em>logic operands</em>, using the
+<em>logical operators</em> <code>AND</code> and <code>OR</code> or <code>NOT</code>.</p>
+<p>Let’s start from <code>AND</code> and <code>OR</code>:</p>
+<ul>
+<li><p>The <code>AND</code> operator returns <code>TRUE</code> if both operands are <code>TRUE</code>, and
+<code>FALSE</code> otherwise.</p></li>
+<li><p>The <code>OR</code> operator returns <code>TRUE</code> if either or both operands are
+<code>TRUE</code>, and <code>FALSE</code> otherwise.</p></li>
+<li><p>The <code>NOT</code> operator returns the opposite of the operand, e.g. <code>NOT TRUE</code> gives <code>FALSE</code>.</p></li>
+</ul>
+<p>We can use the <code>AND</code> and <code>OR</code> operators to combine two logical values,
+such as <code>TRUE</code> and <code>FALSE</code>, as shown below:</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="log_vec.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the AND operator</span></span>
+<span id="cb156-2"><a href="log_vec.html#cb156-2" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">&amp;</span> <span class="cn">TRUE</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="log_vec.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">&amp;</span> <span class="cn">FALSE</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="log_vec.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="sc">&amp;</span> <span class="cn">TRUE</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="log_vec.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="sc">&amp;</span> <span class="cn">FALSE</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="log_vec.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the OR operator</span></span>
+<span id="cb164-2"><a href="log_vec.html#cb164-2" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">|</span> <span class="cn">TRUE</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="log_vec.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">|</span> <span class="cn">FALSE</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="log_vec.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="sc">|</span> <span class="cn">TRUE</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="log_vec.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="sc">|</span> <span class="cn">FALSE</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb172-1"><a href="log_vec.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the AND operator</span></span>
+<span id="cb172-2"><a href="log_vec.html#cb172-2" aria-hidden="true" tabindex="-1"></a><span class="va">True</span> <span class="kw">and</span> <span class="va">True</span></span></code></pre></div>
+<pre><code>## True</code></pre>
+<div class="sourceCode" id="cb174"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb174-1"><a href="log_vec.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="va">True</span> <span class="kw">and</span> <span class="va">False</span></span></code></pre></div>
+<pre><code>## False</code></pre>
+<div class="sourceCode" id="cb176"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb176-1"><a href="log_vec.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="va">False</span> <span class="kw">and</span> <span class="va">True</span></span></code></pre></div>
+<pre><code>## False</code></pre>
+<div class="sourceCode" id="cb178"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb178-1"><a href="log_vec.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="va">False</span> <span class="kw">and</span> <span class="va">False</span></span></code></pre></div>
+<pre><code>## False</code></pre>
+<div class="sourceCode" id="cb180"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb180-1"><a href="log_vec.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the OR operator</span></span>
+<span id="cb180-2"><a href="log_vec.html#cb180-2" aria-hidden="true" tabindex="-1"></a><span class="va">True</span> <span class="kw">or</span> <span class="va">True</span></span></code></pre></div>
+<pre><code>## True</code></pre>
+<div class="sourceCode" id="cb182"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb182-1"><a href="log_vec.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="va">True</span> <span class="kw">or</span> <span class="va">False</span></span></code></pre></div>
+<pre><code>## True</code></pre>
+<div class="sourceCode" id="cb184"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb184-1"><a href="log_vec.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="va">False</span> <span class="kw">or</span> <span class="va">True</span></span></code></pre></div>
+<pre><code>## True</code></pre>
+<div class="sourceCode" id="cb186"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb186-1"><a href="log_vec.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="va">False</span> <span class="kw">or</span> <span class="va">False</span></span></code></pre></div>
+<pre><code>## False</code></pre>
+</div>
+</div>
+<p>The syntax and the output are very similar in both languages, except that R uses <code>AND</code> and <code>OR</code> for <code>AND</code> and <code>OR</code>, while Python uses <code>and</code> and <code>or</code>. More formally, we can use a table to show
+all the possible outcomes of the <code>AND</code> and <code>OR</code> operators. Let’s say
+that <span class="math inline">\(a, \ b\)</span> are our operands, then:</p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(a\)</span></th>
+<th><span class="math inline">\(b\)</span></th>
+<th><span class="math inline">\(a\)</span> AND <span class="math inline">\(b\)</span></th>
+<th><span class="math inline">\(a\)</span> OR <span class="math inline">\(b\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>TRUE</td>
+<td>TRUE</td>
+<td>TRUE</td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td>TRUE</td>
+<td>FALSE</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td>FALSE</td>
+<td>TRUE</td>
+<td>FALSE</td>
+<td>TRUE</td>
+</tr>
+<tr class="even">
+<td>FALSE</td>
+<td>FALSE</td>
+<td>FALSE</td>
+<td>FALSE</td>
+</tr>
+</tbody>
+</table>
+<p>The table has four rows, corresponding to the four
+possible combinations of the operands a and b. Again, the table is easy
+to build, as it shows a AND b is only TRUE when both a and b are TRUE, a
+OR b is only FALSE when both a and b are FALSE.</p>
+<div id="precendence-of-operators" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Precendence of operators<a href="log_vec.html#precendence-of-operators" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In logical operations, as in general algebra, the precedence of
+operators determines the order in which operations are performed:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Logical NOT</strong>: This operator has the highest precedence and is
+performed first</li>
+<li><strong>Logical AND</strong>: This operator has the next highest precedence after
+Logical NOT</li>
+<li><strong>Logical OR</strong>: This operator has lower precedence than Logical
+AND</li>
+</ol>
+<p>So, in an expression without parentheses, the NOT operation is performed
+first, followed by the AND operation, and finally the OR operation.</p>
+<p>For example, in the expression <code>p or NOT q AND r</code> is <code>p OR ((NOT q) AND r)</code>, the operations would
+be performed in the following order:</p>
+<ol style="list-style-type: decimal">
+<li><code>NOT q</code> is performed first due to the highest precedence of <code>NOT</code>.</li>
+<li>Then, <code>(NOT q) AND r</code> is performed due to the next highest precedence
+of <code>AND</code>.</li>
+<li>Finally, <code>((NOT q) AND r) OR p</code> is performed due to the lowest
+precedence of <code>OR</code>.</li>
+</ol>
+<p>Parentheses can be used to change this order. For example, in the
+expression <code>p AND (q OR r)</code>, the operation <code>q OR r</code> is performed first due
+to the parentheses, even though <code>AND</code> has lower precedence than <code>OR</code>.</p>
+<p>For example, consider the following expression:</p>
+<p><code>TRUE OR TRUE AND FALSE</code></p>
+<p>Without parentheses, in this expression the <code>AND</code> operator has higher
+precedence than the <code>OR</code> operator, so it is evaluated first. The result
+is then combined with the <code>OR</code> operator. The expression is equivalent
+to:</p>
+<p><code>TRUE OR (TRUE AND FALSE)</code></p>
+<p>However, if we use parentheses to group the operands differently, we can
+change the order of evaluation and the result of the expression. If we
+use parentheses to group the first and the last operands, we get:</p>
+<p><code>(TRUE OR TRUE) AND FALSE</code></p>
+<p>The value of this expression is in fact <code>FALSE</code>. Now, the <code>OR</code> operator
+is evaluated first, giving <code>TRUE</code> and the result is then combined with
+the <code>AND</code> operator, giving <code>FALSE</code>.</p>
+<div id="exercise-2" class="section level4 hasAnchor" number="2.2.1.1">
+<h4><span class="header-section-number">2.2.1.1</span> Exercise<a href="log_vec.html#exercise-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>To test your understanding of logical arithmetic, try to find what is
+the value of:</p>
+<ul>
+<li><code>TRUE OR TRUE AND FALSE</code>?</li>
+<li><code>FALSE OR FALSE AND TRUE</code>?</li>
+<li><code>(TRUE AND FALSE) OR (FALSE AND TRUE)</code>?</li>
+<li><code>(TRUE OR TRUE) AND FALSE</code>?</li>
+<li><code>(TRUE OR FALSE) AND (FALSE OR TRUE)</code>?</li>
+</ul>
+<p>You should use the console in R or Python to check your answers. You can
+review the table and the examples above, and try to understand the logic
+behind each expression.</p>
+</div>
+</div>
+</div>
+<div id="flow" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Flow<a href="log_vec.html#flow" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Another important aspect of logic is flow. Flow is the order and
+direction in which the instructions of a program are executed <strong>and is
+at the base of an algorithm</strong>.</p>
+<p>Normally, a computer program, has a start, it will do something, and
+then terminate (return an output). This is called the <em>flow</em> of a
+program. Now, of course, to control the flow, you need a mechanism that
+checks on the state of your program, and performs an action based on the
+state in which you are. Surprisingly enough, we run programs in every
+day tasks too. When driving down from Glasgow to London, we need to
+check where we are, and turn the steering wheel accordingly in such a
+way that our car points towards South. When doing the laundry in a
+laundrette, we first check the amounts of money we have, and then, if we
+have enough, load up the washing machine, if we don’t, well, we need to
+get some more. Or say, for example, that you need to code something,
+maybe for an assignment :) What you might end up doing, is the
+following:</p>
+<p><img src="images/chapter2/code_something.png" /></p>
+<p><strong>I have to remark that this was a joke:</strong> remember that if you cheat at
+this stage with programming you are just cheating yourself.</p>
+<p>More formally, in computer programs, flow can be controlled by using
+<em>conditional statements</em>, such as if - else if - else. Conditional
+statements allow us to execute different blocks of code depending on the
+result of a logical expression or condition. For example, we can use
+conditional statements to perform different actions based on the value
+of a variable, the input of the user, or the outcome of a calculation.</p>
+<div id="the-if-then-else-statement" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> The if-then-else statement<a href="log_vec.html#the-if-then-else-statement" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The simplest form of a conditional statement is the if statement. The if
+statement checks a single condition, and executes a block of code if the
+condition is true. For example, we can use an if statement to print a
+message if a variable is positive, as shown below:</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="log_vec.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
+<span id="cb188-2"><a href="log_vec.html#cb188-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb188-3"><a href="log_vec.html#cb188-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb188-4"><a href="log_vec.html#cb188-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using an if statement</span></span>
+<span id="cb188-5"><a href="log_vec.html#cb188-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb188-6"><a href="log_vec.html#cb188-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x is positive&quot;</span>)</span>
+<span id="cb188-7"><a href="log_vec.html#cb188-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;x is positive&quot;</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb190-1"><a href="log_vec.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
+<span id="cb190-2"><a href="log_vec.html#cb190-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb190-3"><a href="log_vec.html#cb190-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb190-4"><a href="log_vec.html#cb190-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using an if statement</span></span>
+<span id="cb190-5"><a href="log_vec.html#cb190-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb190-6"><a href="log_vec.html#cb190-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;x is positive&quot;</span>) <span class="co"># add a new line below without indentation</span></span></code></pre></div>
+<pre><code>## x is positive</code></pre>
+</div>
+</div>
+<p>Concerning syntax, e.g. the way we write the code:</p>
+<ul>
+<li><p>To enclose the condition that is checked by the if statement, e.g.
+where your logic expression goes (e.g. the block of code that
+evaluates either to <code>TRUE</code> or <code>FALSE):</code></p>
+<ul>
+<li><p>R uses an <code>if</code> followed by parentheses <code>()</code>, where the condition
+goes</p></li>
+<li><p>Python has no parentheses, but has a <code>:</code> symbol to indicate that
+the condition has ended and the block of code to execute has
+started</p></li>
+</ul></li>
+<li><p>To denote the block of code to execute if the condition is true:</p>
+<ul>
+<li><p>R uses curly braces <code>{}</code> to enclose the block of code that is
+executed if the condition is true. All code that is relative to
+the if condition needs to be within these brackets</p></li>
+<li><p>Python, uses indentation to delimit the block of execution. All
+code that needs to execute needs to be indented at the same
+level. Indentation in Python is achieved either with a tab
+(recommended), or with 4 spaces. NOTE: An additional empty line without identation
+(e.g. a simple white space) is needed below the if- block,
+otherwise Python won’t be able to understand that the block has ended.
+Generally, for this reason, it’s a good habit to save your Python scripts
+always with an empty line at the end</p></li>
+</ul></li>
+</ul>
+<p>The if statement only executes the block of code if the
+condition is true, and does nothing otherwise. This means, that if the
+condition is <code>FALSE</code>, the program will simply skip the code within the
+block, as if it never existed.</p>
+<p>Sometimes, we may want to check more than one condition, and execute
+different blocks of code for each condition. For this, we can use the
+if - else if - else statement. The if - else if - else statement checks
+multiple conditions in order, and executes the first block of code that
+corresponds to a true condition. If none of the conditions are true, the
+else block of code is executed. For example, we can use an if - else
+if - else statement to print a message based on the sign of a variable,
+as shown below:</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="log_vec.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
+<span id="cb192-2"><a href="log_vec.html#cb192-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb192-3"><a href="log_vec.html#cb192-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb192-4"><a href="log_vec.html#cb192-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using an if - else if - else statement</span></span>
+<span id="cb192-5"><a href="log_vec.html#cb192-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb192-6"><a href="log_vec.html#cb192-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x is negative&quot;</span>)</span>
+<span id="cb192-7"><a href="log_vec.html#cb192-7" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb192-8"><a href="log_vec.html#cb192-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x is zero&quot;</span>)</span>
+<span id="cb192-9"><a href="log_vec.html#cb192-9" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb192-10"><a href="log_vec.html#cb192-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x is positive&quot;</span>)</span>
+<span id="cb192-11"><a href="log_vec.html#cb192-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;x is positive&quot;</code></pre>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="log_vec.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x is positive</span></span></code></pre></div>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb195-1"><a href="log_vec.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
+<span id="cb195-2"><a href="log_vec.html#cb195-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb195-3"><a href="log_vec.html#cb195-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-4"><a href="log_vec.html#cb195-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using an if - else if - else statement</span></span>
+<span id="cb195-5"><a href="log_vec.html#cb195-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb195-6"><a href="log_vec.html#cb195-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;x is negative&quot;</span>)</span>
+<span id="cb195-7"><a href="log_vec.html#cb195-7" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> x <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb195-8"><a href="log_vec.html#cb195-8" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;x is zero&quot;</span>)</span>
+<span id="cb195-9"><a href="log_vec.html#cb195-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb195-10"><a href="log_vec.html#cb195-10" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;x is positive&quot;</span>)</span></code></pre></div>
+<pre><code>## x is positive</code></pre>
+<div class="sourceCode" id="cb197"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb197-1"><a href="log_vec.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x is positive</span></span></code></pre></div>
+</div>
+</div>
+<p>Concerning syntax, R uses <code>else if</code> and Python uses <code>elif</code> for the second
+condition. The order of the conditions is important, as only
+the first condition that is true is executed. If none of the conditions
+are true, the else block is executed.</p>
+<p>Sometimes, we may want to check two or more independent conditions, and
+execute different blocks of code for each condition. For this, we can
+use two or more if statements one after another. This is different from
+using an if - else if - else statement, as each if statement is
+evaluated separately, and more than one block of code can be executed.
+For example, we can use two if statements to print a message based on
+the divisibility of a variable by 2 and 3, as shown below:</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="log_vec.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
+<span id="cb198-2"><a href="log_vec.html#cb198-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">12</span></span>
+<span id="cb198-3"><a href="log_vec.html#cb198-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-4"><a href="log_vec.html#cb198-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using two if statements</span></span>
+<span id="cb198-5"><a href="log_vec.html#cb198-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (n <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb198-6"><a href="log_vec.html#cb198-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;n is divisible by 2&quot;</span>)</span>
+<span id="cb198-7"><a href="log_vec.html#cb198-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;n is divisible by 2&quot;</code></pre>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="log_vec.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (n <span class="sc">%%</span> <span class="dv">3</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb200-2"><a href="log_vec.html#cb200-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;n is divisible by 3&quot;</span>)</span>
+<span id="cb200-3"><a href="log_vec.html#cb200-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;n is divisible by 3&quot;</code></pre>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="log_vec.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="co"># n is divisible by 2</span></span>
+<span id="cb202-2"><a href="log_vec.html#cb202-2" aria-hidden="true" tabindex="-1"></a><span class="co"># n is divisible by 3</span></span></code></pre></div>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb203-1"><a href="log_vec.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
+<span id="cb203-2"><a href="log_vec.html#cb203-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb203-3"><a href="log_vec.html#cb203-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb203-4"><a href="log_vec.html#cb203-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using two if statements</span></span>
+<span id="cb203-5"><a href="log_vec.html#cb203-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb203-6"><a href="log_vec.html#cb203-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;n is divisible by 2&quot;</span>)</span></code></pre></div>
+<pre><code>## n is divisible by 2</code></pre>
+<div class="sourceCode" id="cb205"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb205-1"><a href="log_vec.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> n <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb205-2"><a href="log_vec.html#cb205-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;n is divisible by 3&quot;</span>)</span></code></pre></div>
+<pre><code>## n is divisible by 3</code></pre>
+<div class="sourceCode" id="cb207"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb207-1"><a href="log_vec.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="co"># n is divisible by 2</span></span>
+<span id="cb207-2"><a href="log_vec.html#cb207-2" aria-hidden="true" tabindex="-1"></a><span class="co"># n is divisible by 3</span></span></code></pre></div>
+</div>
+</div>
+<p>In R the modulo operator is <code>%%</code>, while Python
+uses <code>%</code>. Both if statements are executed, as both conditions
+are true. If we used an if - else if - else statement instead, only the
+first condition would be executed, and the second condition would be
+ignored.</p>
+</div>
+<div id="nesting-if-statements" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Nesting if-statements<a href="log_vec.html#nesting-if-statements" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sometimes, we may want to check a condition within another condition,
+and execute different blocks of code for each combination. For this, we
+can use a nested if statement. A nested if statement is an if statement
+inside another if statement. A nested if statement can have multiple
+levels of nesting, and can also include else if and else blocks. For
+example, we can use a nested if statement to print a message based on
+the value and the sign of a variable, as shown below:</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="log_vec.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
+<span id="cb208-2"><a href="log_vec.html#cb208-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">10</span></span>
+<span id="cb208-3"><a href="log_vec.html#cb208-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb208-4"><a href="log_vec.html#cb208-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a nested if statement</span></span>
+<span id="cb208-5"><a href="log_vec.html#cb208-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb208-6"><a href="log_vec.html#cb208-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">10</span>) {</span>
+<span id="cb208-7"><a href="log_vec.html#cb208-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&quot;x is positive and greater than 10&quot;</span>)</span>
+<span id="cb208-8"><a href="log_vec.html#cb208-8" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb208-9"><a href="log_vec.html#cb208-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&quot;x is positive and less than or equal to 10&quot;</span>)</span>
+<span id="cb208-10"><a href="log_vec.html#cb208-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb208-11"><a href="log_vec.html#cb208-11" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb208-12"><a href="log_vec.html#cb208-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">10</span>) {</span>
+<span id="cb208-13"><a href="log_vec.html#cb208-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&quot;x is negative and less than -10&quot;</span>)</span>
+<span id="cb208-14"><a href="log_vec.html#cb208-14" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb208-15"><a href="log_vec.html#cb208-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&quot;x is negative and greater than or equal to -10&quot;</span>)</span>
+<span id="cb208-16"><a href="log_vec.html#cb208-16" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb208-17"><a href="log_vec.html#cb208-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;x is negative and greater than or equal to -10&quot;</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb210-1"><a href="log_vec.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
+<span id="cb210-2"><a href="log_vec.html#cb210-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="op">-</span><span class="dv">10</span></span>
+<span id="cb210-3"><a href="log_vec.html#cb210-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb210-4"><a href="log_vec.html#cb210-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a nested if statement</span></span>
+<span id="cb210-5"><a href="log_vec.html#cb210-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb210-6"><a href="log_vec.html#cb210-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">10</span>:</span>
+<span id="cb210-7"><a href="log_vec.html#cb210-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;x is positive and greater than 10&quot;</span>)</span>
+<span id="cb210-8"><a href="log_vec.html#cb210-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>:</span>
+<span id="cb210-9"><a href="log_vec.html#cb210-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;x is positive and less than or equal to 10&quot;</span>)</span>
+<span id="cb210-10"><a href="log_vec.html#cb210-10" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb210-11"><a href="log_vec.html#cb210-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> x <span class="op">&lt;</span> <span class="op">-</span><span class="dv">10</span>:</span>
+<span id="cb210-12"><a href="log_vec.html#cb210-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;x is negative and less than -10&quot;</span>)</span>
+<span id="cb210-13"><a href="log_vec.html#cb210-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>:</span>
+<span id="cb210-14"><a href="log_vec.html#cb210-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;x is negative and greater than or equal to -10&quot;</span>)</span></code></pre></div>
+<pre><code>## x is negative and greater than or equal to -10</code></pre>
+</div>
+</div>
+<p>Concerning syntax, you can now see the double indentation in the python
+code. The nested if statement checks the outer condition first (x being
+positive), and then checks the inner condition if the outer condition is
+true (x being greater then 10). Note also that the nested if statement
+can have multiple levels of nesting, and can also include else if and
+else blocks.</p>
+<p>In the next section, we will introduce you to a fun and popular game
+that involves logic and flow: FizzBuzz.</p>
+</div>
+<div id="fizzbuzz" class="section level3 hasAnchor" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> FizzBuzz<a href="log_vec.html#fizzbuzz" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>FizzBuzz is a game that tests your ability to use logic and flow in
+programming. The rules of the game are simple: given a number, print
+“Fizz” if the number is divisible by 3, print “Buzz” if the number is
+divisible by 5, print “FizzBuzz” if the number is divisible by both 3
+and 5, and print the number itself otherwise. For example, given the
+number 15, print “FizzBuzz”, given the number 9, print “Fizz”, given the
+number 10, print “Buzz”, and given the number 7, print 7.</p>
+<p>To play FizzBuzz in R or Python, we can use a variable to store the
+number, and then use an if - else if - else statement to check the
+conditions and print the output, as shown below:</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="log_vec.html#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
+<span id="cb212-2"><a href="log_vec.html#cb212-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb212-3"><a href="log_vec.html#cb212-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb212-4"><a href="log_vec.html#cb212-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Playing FizzBuzz</span></span>
+<span id="cb212-5"><a href="log_vec.html#cb212-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (n <span class="sc">%%</span> <span class="dv">3</span> <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> n <span class="sc">%%</span> <span class="dv">5</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb212-6"><a href="log_vec.html#cb212-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;FizzBuzz&quot;</span>)</span>
+<span id="cb212-7"><a href="log_vec.html#cb212-7" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (n <span class="sc">%%</span> <span class="dv">3</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb212-8"><a href="log_vec.html#cb212-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Fizz&quot;</span>)</span>
+<span id="cb212-9"><a href="log_vec.html#cb212-9" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (n <span class="sc">%%</span> <span class="dv">5</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb212-10"><a href="log_vec.html#cb212-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Buzz&quot;</span>)</span>
+<span id="cb212-11"><a href="log_vec.html#cb212-11" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb212-12"><a href="log_vec.html#cb212-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(n)</span>
+<span id="cb212-13"><a href="log_vec.html#cb212-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;FizzBuzz&quot;</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb214"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb214-1"><a href="log_vec.html#cb214-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigning a value to a variable</span></span>
+<span id="cb214-2"><a href="log_vec.html#cb214-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">15</span></span>
+<span id="cb214-3"><a href="log_vec.html#cb214-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb214-4"><a href="log_vec.html#cb214-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Playing FizzBuzz</span></span>
+<span id="cb214-5"><a href="log_vec.html#cb214-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> n <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span> <span class="kw">and</span> n <span class="op">%</span> <span class="dv">5</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb214-6"><a href="log_vec.html#cb214-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;FizzBuzz&quot;</span>)</span>
+<span id="cb214-7"><a href="log_vec.html#cb214-7" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> n <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb214-8"><a href="log_vec.html#cb214-8" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;Fizz&quot;</span>)</span>
+<span id="cb214-9"><a href="log_vec.html#cb214-9" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> n <span class="op">%</span> <span class="dv">5</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb214-10"><a href="log_vec.html#cb214-10" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">&quot;Buzz&quot;</span>)</span>
+<span id="cb214-11"><a href="log_vec.html#cb214-11" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb214-12"><a href="log_vec.html#cb214-12" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(n)</span></code></pre></div>
+<pre><code>## FizzBuzz</code></pre>
+</div>
+</div>
+<p>The Fizzbuzz condition uses the modulo <code>%%</code> (<code>%</code> in Python) operator. This, recall,
+returns the remainder of the division. The logical and operator
+returns true if both operands are true. Note also that the order of the
+conditions is important, as we need to check the divisibility by both 3
+and 5 first, and then we check the divisibility by 3 or 5 separately.</p>
+<p>To see how FizzBuzz works, try to replace the value of the
+variable <code>n</code> with different numbers, and see what the output is. For
+example, try <code>n &lt;- 45</code> in R, or <code>n = 45</code> in Python, and see what
+happens!</p>
+<div id="exercise-skibbidifizzbuzz" class="section level4 hasAnchor" number="2.3.3.1">
+<h4><span class="header-section-number">2.3.3.1</span> Exercise: Skibbidifizzbuzz<a href="log_vec.html#exercise-skibbidifizzbuzz" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>As an exercise, try to write a variation of FizzBuzz, called
+Skibbidifizzbuzz, where the rules are the same as above, but now you
+have to add “Skibbidi” if the number is divisible by 2. For example,
+given the number 12, print “SkibbidiFizz”, given the number 20, print
+“SkibbidiBuzz”, given the number 30, print “SkibbidiFizzBuzz”, and given
+the number 8, print “Skibbidi”.</p>
+<p><strong>HINT</strong> To write a quick solution, you will need to collate strings. This means that if we have the strings <code>"a"</code>, <code>"b"</code>, collated those will be <code>"ab"</code>, and if we have <code>"a"</code>, <code>"b"</code>, <code>"b"</code>, <code>"a"</code>, collated they will read <code>"abba"</code> (mammamia).</p>
+<p>To collate strings in R and python:</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="log_vec.html#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="co"># collate strings</span></span>
+<span id="cb216-2"><a href="log_vec.html#cb216-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;abbc&quot;</code></pre>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="log_vec.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you can also collate strings saved in variables</span></span>
+<span id="cb218-2"><a href="log_vec.html#cb218-2" aria-hidden="true" tabindex="-1"></a>string_in_a_variable <span class="ot">&lt;-</span> <span class="st">&quot;mia&quot;</span></span>
+<span id="cb218-3"><a href="log_vec.html#cb218-3" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">&quot;mamma&quot;</span>, string_in_a_variable)</span></code></pre></div>
+<pre><code>## [1] &quot;mammamia&quot;</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb220"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb220-1"><a href="log_vec.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="co"># collate strings</span></span>
+<span id="cb220-2"><a href="log_vec.html#cb220-2" aria-hidden="true" tabindex="-1"></a><span class="co">&quot;a&quot;</span> <span class="op">+</span> <span class="st">&quot;b&quot;</span> <span class="op">+</span> <span class="st">&quot;b&quot;</span> <span class="op">+</span> <span class="st">&quot;c&quot;</span></span></code></pre></div>
+<pre><code>## &#39;abbc&#39;</code></pre>
+<div class="sourceCode" id="cb222"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb222-1"><a href="log_vec.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you can also collate strings saved in variables</span></span>
+<span id="cb222-2"><a href="log_vec.html#cb222-2" aria-hidden="true" tabindex="-1"></a>string_in_a_variable <span class="op">=</span> <span class="st">&quot;mia&quot;</span></span>
+<span id="cb222-3"><a href="log_vec.html#cb222-3" aria-hidden="true" tabindex="-1"></a><span class="co">&quot;mamma&quot;</span> <span class="op">+</span> string_in_a_variable</span></code></pre></div>
+<pre><code>## &#39;mammamia&#39;</code></pre>
+</div>
+</div>
+<p>Which strings could you collate for “SkibbidiFizzBuzz”?</p>
+</div>
+</div>
+</div>
+<div id="vectors" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Vectors<a href="log_vec.html#vectors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We now introduce the first (and the most fundamental!) data structures in programming: vectors. Vectors, as in maths, are ordered collections of values that can be manipulated as a single unit. All elements in a vector need to be homogeneous, e.g. of the same type, for example we cannot have a vector with a string and an integer together. Later on, when we will introduce matrices, we will find out that these are nothing but a collection of vectors (vectors of vectors).
+And we, in maths, know how powerful linear algebra is: through vectors, we can store, process, and analyze large amounts of numerical data efficiently and elegantly.</p>
+<div id="creating-vectors" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Creating vectors<a href="log_vec.html#creating-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We will now see how to create and use vectors in R and Python, and how to perform element wise operations on vectors.</p>
+<p>To create a vector in R, we use the <code>c</code> function, which stands for concatenate. The <code>c</code> function takes one or more values as arguments, and returns a vector that contains those values. For example, we can create a vector that contains the numbers 1, 2, and 3, as shown below:</p>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="log_vec.html#cb224-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a vector in R</span></span>
+<span id="cb224-2"><a href="log_vec.html#cb224-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb224-3"><a href="log_vec.html#cb224-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] 1 2 3</code></pre>
+<p>To create a vector in Python, we use the <code>array</code> function from the <code>numpy</code> module, which stands for numerical Python. While technically the Python array is not the same of an R vector (as you can have arrays of arrays, which is a similar structure to a matrix), we will use the Python array interchangeably for now, as they behave very similar and they fulfill similar roles.
+The first thing to use arrays in python, is to import the <code>numpy</code> array. The <code>numpy</code> module is a library that provides various tools and functions for working with numerical data and scientific computing. The <code>array</code> function takes a list as an argument, and returns an array that contains the elements of the list. A list, in Python, is another, built-in structure to represent and ordered set of data, but it comes from the original python, was designed with different aims, and comes with a lot less powers then the numpy <code>array</code>. So for now, please stick to the following when you create vectors in python.
+We can create an array that contains the numbers 1, 2, and 3, as shown below:</p>
+<div class="sourceCode" id="cb226"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb226-1"><a href="log_vec.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the numpy module</span></span>
+<span id="cb226-2"><a href="log_vec.html#cb226-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb226-3"><a href="log_vec.html#cb226-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb226-4"><a href="log_vec.html#cb226-4" aria-hidden="true" tabindex="-1"></a><span class="co"># This is a simple python list</span></span>
+<span id="cb226-5"><a href="log_vec.html#cb226-5" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## [1, 2, 3]</code></pre>
+<div class="sourceCode" id="cb228"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb228-1"><a href="log_vec.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating an array in Python</span></span>
+<span id="cb228-2"><a href="log_vec.html#cb228-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb228-3"><a href="log_vec.html#cb228-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## array([1, 2, 3])</code></pre>
+<p>We need to import the <code>numpy</code> library before using the <code>array</code> function, and we use the alias <code>np</code> to refer to the module. Therefore, before we proceed it is probably a good time to introduce what a library is.</p>
+<div id="libraries" class="section level4 hasAnchor" number="2.4.1.1">
+<h4><span class="header-section-number">2.4.1.1</span> Libraries<a href="log_vec.html#libraries" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>A library is a collection of code that provides predefined functions, classes, variables, and other resources that can be used by other programs. Libraries can save time and effort by allowing programmers to reuse existing code and avoid writing everything from scratch. Libraries can also enhance the functionality and the performance of a programming language by offering specialized tools and features that are not built-in.</p>
+<p>For example, the numpy library is a library that provides various tools and functions for working with numerical data and scientific computing. The numpy library is not part of the standard Python language, but it can be installed and imported by using the import statement. The import statement tells Python to load the library and make it available for use. The import statement can also assign an alias or a nickname to the library, such as np, to make it easier to refer to the library in the code.</p>
+<p>Normally, one has to reference import numpy as np only at the beginning of the script, before using any of the functions or resources from the numpy library:</p>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb230-1"><a href="log_vec.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this is the math library from past week!</span></span>
+<span id="cb230-2"><a href="log_vec.html#cb230-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb230-3"><a href="log_vec.html#cb230-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the numpy library and assigning an alias</span></span>
+<span id="cb230-4"><a href="log_vec.html#cb230-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb230-5"><a href="log_vec.html#cb230-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb230-6"><a href="log_vec.html#cb230-6" aria-hidden="true" tabindex="-1"></a><span class="co">#     rest of your script!    #</span></span>
+<span id="cb230-7"><a href="log_vec.html#cb230-7" aria-hidden="true" tabindex="-1"></a><span class="co"># ~~~~~~~~~~~~~~~~~~~~~~~~~~~ # </span></span></code></pre></div>
+<p>This way, Python knows where to find the functions that is needed, and the programmer does not have to repeat the import statement every time.</p>
+<p>R has libraries too, those are imported via the command <code>library</code>. For example, at one point, we will be calling the tidyverse library, that is a collection of functions for modern R:</p>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="log_vec.html#cb231-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<pre><code>## ── Attaching core tidyverse packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.2     ✔ readr     2.1.4
+## ✔ forcats   1.0.0     ✔ stringr   1.5.0
+## ✔ ggplot2   3.4.2     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+## ✔ purrr     1.0.1     
+## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ purrr::%||%()   masks base::%||%()
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<p>We call these at a later time as R has already plenty of scientific computing functions and structures built in.</p>
+</div>
+<div id="creating-sequences" class="section level4 hasAnchor" number="2.4.1.2">
+<h4><span class="header-section-number">2.4.1.2</span> Creating sequences<a href="log_vec.html#creating-sequences" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>One of the common ways to create vectors or arrays is to use sequences. Sequences are ordered collections of values that follow a certain pattern or rule. Sequences can be useful for generating data, plotting, or creating loops, as we will see later on.
+As you will see, here the syntax is going to be a bit different in each language, as R uses functions such <code>:</code> or <code>seq</code> and Python uses <code>np.arange</code> or <code>np.linspace</code> to create and initialize vectors. We will see how to create sequences of integers, any sequence of equally spaced numbers, and finally, how to initialize an empty vectors with all same values.</p>
+<p><strong>To create a sequence of integers in R</strong>, we can use the colon operator <code>:</code>, in Python, we can use the <code>arange</code> function from <code>numpy</code>. Both take two integers as arguments, and returns a vector or an array that contains all the integers from the first argument to the second argument, with a step size of 1. For example, we can create a sequence of integers from -5 to 10, as shown below:</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="log_vec.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a sequence of integers from -5 to 10</span></span>
+<span id="cb233-2"><a href="log_vec.html#cb233-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">5</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb233-3"><a href="log_vec.html#cb233-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>##  [1] -5 -4 -3 -2 -1  0  1  2  3  4  5  6  7  8  9 10</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb235-1"><a href="log_vec.html#cb235-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a sequence of integers from -5 to 10</span></span>
+<span id="cb235-2"><a href="log_vec.html#cb235-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">5</span>, <span class="dv">11</span>)</span>
+<span id="cb235-3"><a href="log_vec.html#cb235-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## array([-5, -4, -3, -2, -1,  0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10])</code></pre>
+</div>
+</div>
+<p>Differently from R, <code>arange</code> requires the second argument to be one step more than the desired end point of the sequence, so if we want to go up to 10, we need to have the second argument to be 11.</p>
+<p><strong>To create any sequence</strong>, we can use the <code>seq</code> function in R, and the <code>arange</code> or <code>linspace</code> functions in Python. For example, we can create a sequence of numbers from 0 to 1, with a step size of 0.1, or with a length of 11, as shown below:</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<p>The <code>seq</code> function in R can take named arguments, such as <code>from</code>, <code>to</code>, <code>by</code>, or <code>length.out</code>, to specify the parameters of the sequence.</p>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="log_vec.html#cb237-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a sequence of numbers from 0 to 1, with a step size of 0.1</span></span>
+<span id="cb237-2"><a href="log_vec.html#cb237-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span>
+<span id="cb237-3"><a href="log_vec.html#cb237-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>##  [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0</code></pre>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="log_vec.html#cb239-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a sequence of numbers from 0 to 1, with a length of 11</span></span>
+<span id="cb239-2"><a href="log_vec.html#cb239-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">11</span>)</span>
+<span id="cb239-3"><a href="log_vec.html#cb239-3" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
+<pre><code>##  [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<p>The <code>np.arange</code> function in Python, with an additional argument, will indicate the step size. Again, in this case, arange requires the second argument to be one step more than the desired end point of the sequence. The <code>np.linspace</code> function, instead, will create a vector of a desired length (11 elements) of equally spaced elements. It requires the third argument to be the desired length of the sequence.</p>
+<div class="sourceCode" id="cb241"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb241-1"><a href="log_vec.html#cb241-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a sequence of numbers from 0 to 1, with a step size of 0.1</span></span>
+<span id="cb241-2"><a href="log_vec.html#cb241-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="fl">1.1</span>, <span class="fl">0.1</span>)</span>
+<span id="cb241-3"><a href="log_vec.html#cb241-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## array([0. , 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1. ])</code></pre>
+<div class="sourceCode" id="cb243"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb243-1"><a href="log_vec.html#cb243-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a sequence of numbers from 0 to 1, with a length of 11</span></span>
+<span id="cb243-2"><a href="log_vec.html#cb243-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">11</span>)</span>
+<span id="cb243-3"><a href="log_vec.html#cb243-3" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
+<pre><code>## array([0. , 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1. ])</code></pre>
+</div>
+</div>
+<p><strong>Empty vectors.</strong> Lastly, there might be some cases where we have to create an empty vector or array in R and Python. An empty vector or array can be useful for initializing a vector or array that will be filled with values later, as we will see in the next chapters. For this, we can use the <code>vector</code> or <code>array</code> function, respectively, and specify the type and the length of the vector or array. An empty vector or array is a vector or array that contains no values, but has a predefined type and length. For example, we can create an empty vector or array of type numeric and length 5, as shown below:</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="log_vec.html#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating an empty vector of type numeric and length 5</span></span>
+<span id="cb245-2"><a href="log_vec.html#cb245-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">&quot;numeric&quot;</span>, <span class="at">length =</span> <span class="dv">5</span>)</span>
+<span id="cb245-3"><a href="log_vec.html#cb245-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] 0 0 0 0 0</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb247"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb247-1"><a href="log_vec.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating an empty array of type numeric and length 5</span></span>
+<span id="cb247-2"><a href="log_vec.html#cb247-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.empty(<span class="dv">5</span>, dtype <span class="op">=</span> <span class="st">&quot;float&quot;</span>)</span>
+<span id="cb247-3"><a href="log_vec.html#cb247-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## array([4.9e-324, 9.9e-324, 1.5e-323, 2.0e-323, 2.5e-323])</code></pre>
+</div>
+</div>
+<p>Note that the <code>vector</code> function in R takes the <code>mode</code> argument to specify the type of the vector, and the <code>length</code> argument to specify the length of the vector. The <code>np.empty</code> function in Python takes the the length of the array as the first argument, and the <code>dtype</code> argument to specify the type of the array, e.g. integer, float, Python object, etc.</p>
+</div>
+</div>
+<div id="modifying-vectors" class="section level3 hasAnchor" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> Modifying vectors<a href="log_vec.html#modifying-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>One of the main advantages of using vectors or arrays is that we can perform elementwise operations on them. Elementwise operations are operations that are applied to each element of the vector or the array individually, and return a new vector or array that contains the results. Elementwise operations preserve the shape and the length of the vector or the array, meaning that the resulting vector or array has the same number of elements as the original vector or array.</p>
+<p>For example, we can add, subtract, multiply, or divide a vector or an array by a scalar (which is a single value):</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="log_vec.html#cb249-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb249-2"><a href="log_vec.html#cb249-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb249-3"><a href="log_vec.html#cb249-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Raw vector</span></span>
+<span id="cb249-4"><a href="log_vec.html#cb249-4" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="log_vec.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding a scalar to a vector</span></span>
+<span id="cb251-2"><a href="log_vec.html#cb251-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
+<pre><code>## [1] 2 3 4 5 6</code></pre>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="log_vec.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subtracting a scalar from a vector</span></span>
+<span id="cb253-2"><a href="log_vec.html#cb253-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">-</span> <span class="dv">1</span></span></code></pre></div>
+<pre><code>## [1] 0 1 2 3 4</code></pre>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="log_vec.html#cb255-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiplying a vector by a scalar</span></span>
+<span id="cb255-2"><a href="log_vec.html#cb255-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">*</span> <span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1]  2  4  6  8 10</code></pre>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="log_vec.html#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dividing a vector by a scalar</span></span>
+<span id="cb257-2"><a href="log_vec.html#cb257-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">/</span> <span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] 0.5 1.0 1.5 2.0 2.5</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb259"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb259-1"><a href="log_vec.html#cb259-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">6</span>)</span>
+<span id="cb259-2"><a href="log_vec.html#cb259-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb259-3"><a href="log_vec.html#cb259-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Raw vector</span></span>
+<span id="cb259-4"><a href="log_vec.html#cb259-4" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## array([1, 2, 3, 4, 5])</code></pre>
+<div class="sourceCode" id="cb261"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb261-1"><a href="log_vec.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding a scalar to an array</span></span>
+<span id="cb261-2"><a href="log_vec.html#cb261-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">+</span> <span class="dv">1</span></span></code></pre></div>
+<pre><code>## array([2, 3, 4, 5, 6])</code></pre>
+<div class="sourceCode" id="cb263"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb263-1"><a href="log_vec.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subtracting a scalar from an array</span></span>
+<span id="cb263-2"><a href="log_vec.html#cb263-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">-</span> <span class="dv">1</span></span></code></pre></div>
+<pre><code>## array([0, 1, 2, 3, 4])</code></pre>
+<div class="sourceCode" id="cb265"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb265-1"><a href="log_vec.html#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiplying an array by a scalar</span></span>
+<span id="cb265-2"><a href="log_vec.html#cb265-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">*</span> <span class="dv">2</span></span></code></pre></div>
+<pre><code>## array([ 2,  4,  6,  8, 10])</code></pre>
+<div class="sourceCode" id="cb267"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb267-1"><a href="log_vec.html#cb267-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dividing an array by a scalar</span></span>
+<span id="cb267-2"><a href="log_vec.html#cb267-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">/</span> <span class="dv">2</span></span></code></pre></div>
+<pre><code>## array([0.5, 1. , 1.5, 2. , 2.5])</code></pre>
+</div>
+</div>
+<p>The element wise operations are performed by using the same arithmetic operators as the past chapter, such as <code>+</code>, <code>-</code>, <code>*</code>, and <code>/</code>.</p>
+<div id="vec-func" class="section level4 hasAnchor" number="2.4.2.1">
+<h4><span class="header-section-number">2.4.2.1</span> Functions and algebra with vectors<a href="log_vec.html#vec-func" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>But we can do more! One of the benefits of using vectors or arrays is that we can apply a whole function, such as <code>sin(.)</code> or <code>log(.)</code>, on the entire vector elementwise. This means that the function is applied to each element of the vector individually, and returns a new vector that contains the results. For example, let’s apply the <code>sin(.)</code> function, which calculates the sine of an angle in radians, on a vector that contains the angles <span class="math inline">\(0\)</span>, <span class="math inline">\(\pi/2\)</span>, <span class="math inline">\(\pi\)</span>, and <span class="math inline">\(3 \pi/2\)</span>:</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="log_vec.html#cb269-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a vector of angles in radians</span></span>
+<span id="cb269-2"><a href="log_vec.html#cb269-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, pi<span class="sc">/</span><span class="dv">2</span>, pi, <span class="dv">3</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb269-3"><a href="log_vec.html#cb269-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] 0.000000 1.570796 3.141593 4.712389</code></pre>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="log_vec.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Applying the sin function on the vector elementwise</span></span>
+<span id="cb271-2"><a href="log_vec.html#cb271-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sin</span>(x)</span></code></pre></div>
+<pre><code>## [1]  0.000000e+00  1.000000e+00  1.224647e-16 -1.000000e+00</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb273"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb273-1"><a href="log_vec.html#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating an array of angles in radians</span></span>
+<span id="cb273-2"><a href="log_vec.html#cb273-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">0</span>, np.pi<span class="op">/</span><span class="dv">2</span>, np.pi, <span class="dv">3</span><span class="op">*</span>np.pi<span class="op">/</span><span class="dv">2</span>])</span>
+<span id="cb273-3"><a href="log_vec.html#cb273-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## array([0.        , 1.57079633, 3.14159265, 4.71238898])</code></pre>
+<div class="sourceCode" id="cb275"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb275-1"><a href="log_vec.html#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Applying the sin function on the array elementwise</span></span>
+<span id="cb275-2"><a href="log_vec.html#cb275-2" aria-hidden="true" tabindex="-1"></a>np.sin(x)</span></code></pre></div>
+<pre><code>## array([ 0.0000000e+00,  1.0000000e+00,  1.2246468e-16, -1.0000000e+00])</code></pre>
+</div>
+</div>
+<p>The function is applied to each element of the vector or the array individually, and returns a new vector or array that contains the results. Note also that by default the results are in scientific notation.</p>
+<p>We can also apply many other functions! Go back to last week introduction and see how many of the functions we introduced already, such as <code>log()</code>, run elementwise on vectors.</p>
+<p>And as we can sum two scalars, another benefit of using vectors or arrays is that we can do elementwise product and sum of two vectors. If two vectors or arrays are the same length, this will return a new vector or array that contains the elementwise results of your desired operation:</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="log_vec.html#cb277-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating two vectors of the same length</span></span>
+<span id="cb277-2"><a href="log_vec.html#cb277-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
+<span id="cb277-3"><a href="log_vec.html#cb277-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">8</span></span>
+<span id="cb277-4"><a href="log_vec.html#cb277-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb277-5"><a href="log_vec.html#cb277-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Doing elementwise product of two vectors</span></span>
+<span id="cb277-6"><a href="log_vec.html#cb277-6" aria-hidden="true" tabindex="-1"></a>x <span class="sc">*</span> y</span></code></pre></div>
+<pre><code>## [1]  5 12 21 32</code></pre>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="log_vec.html#cb279-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Doing elementwise sum of two vectors</span></span>
+<span id="cb279-2"><a href="log_vec.html#cb279-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> y</span></code></pre></div>
+<pre><code>## [1]  6  8 10 12</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb281"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb281-1"><a href="log_vec.html#cb281-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating two arrays of the same length</span></span>
+<span id="cb281-2"><a href="log_vec.html#cb281-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">5</span>)</span>
+<span id="cb281-3"><a href="log_vec.html#cb281-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.arange(<span class="dv">5</span>, <span class="dv">9</span>)</span>
+<span id="cb281-4"><a href="log_vec.html#cb281-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb281-5"><a href="log_vec.html#cb281-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Doing elementwise product of two arrays</span></span>
+<span id="cb281-6"><a href="log_vec.html#cb281-6" aria-hidden="true" tabindex="-1"></a>x <span class="op">*</span> y</span></code></pre></div>
+<pre><code>## array([ 5, 12, 21, 32])</code></pre>
+<div class="sourceCode" id="cb283"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb283-1"><a href="log_vec.html#cb283-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Doing elementwise sum of two arrays</span></span>
+<span id="cb283-2"><a href="log_vec.html#cb283-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">+</span> y</span></code></pre></div>
+<pre><code>## array([ 6,  8, 10, 12])</code></pre>
+</div>
+</div>
+<p>The elementwise product and sum are performed by using the same arithmetic operators as before, such as <code>*</code> and <code>+</code>. Note also that the elementwise product and sum preserve the shape and the length of the vectors or the arrays, meaning that the resulting vector or array has the same number of elements as the input vectors or arrays.</p>
+</div>
+<div id="doing-the-dot-product-of-two-vectors" class="section level4 hasAnchor" number="2.4.2.2">
+<h4><span class="header-section-number">2.4.2.2</span> Doing the dot product of two vectors<a href="log_vec.html#doing-the-dot-product-of-two-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Lastly, one important operation that we can do with vectors or arrays is the dot product, and this will be super useful to you in the future as you will deal with applications in linear algebra, geometry, and machine learning. Recall that the dot product takes two vectors or arrays of the same length, and returns a single number that is the sum of the elementwise products of the vectors or arrays. For example, the dot product of the vectors <code>[1, 2, 3, 4]</code> and <code>[5, 6, 7, 8]</code> is <code>1*5 + 2*6 + 3*7 + 4*8 = 70</code>.</p>
+<p>To calculate the dot product of two vectors or arrays in R and Python, we use the following functions:</p>
+<ul>
+<li>In R, we use the <code>%*%</code> operator, which performs matrix multiplication. If the input vectors are one-dimensional, the matrix multiplication is equivalent to the dot product. For example, we can calculate the dot product of two vectors, as shown below:</li>
+</ul>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="log_vec.html#cb285-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Doing the dot product of two vectors</span></span>
+<span id="cb285-2"><a href="log_vec.html#cb285-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%*%</span> y</span></code></pre></div>
+<pre><code>##      [,1]
+## [1,]   70</code></pre>
+<ul>
+<li>In Python, we use the <code>dot</code> function from the <code>numpy</code> module, which performs the dot product of two arrays. For example, we can calculate the dot product of two arrays, as shown below:</li>
+</ul>
+<div class="sourceCode" id="cb287"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb287-1"><a href="log_vec.html#cb287-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Doing the dot product of two arrays</span></span>
+<span id="cb287-2"><a href="log_vec.html#cb287-2" aria-hidden="true" tabindex="-1"></a>np.dot(x, y)</span></code></pre></div>
+<pre><code>## 70</code></pre>
+<p>The syntax are quite different in both languages, as R uses a special operator and Python uses a function from <code>numpy</code>. Note also that the dot product requires the input vectors or arrays to have the same length, otherwise it will produce an error.</p>
+<p>We will cover how to do algebra with Python and R in the next chapters.</p>
+</div>
+</div>
+</div>
+<div id="accessing-vectors" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Accessing vectors<a href="log_vec.html#accessing-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We will see now how to access the elements of a vector. Accessing the elements of a vector or an array is important as it allows us to select, extract and even modify specific values or subsets of values from a vector.</p>
+<div id="checking-the-size-and-dimension-of-a-vector" class="section level3 hasAnchor" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> Checking the size and dimension of a vector<a href="log_vec.html#checking-the-size-and-dimension-of-a-vector" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Before we access the elements of a vector or an array, it is useful to know the size and the dimension of the vector or the array. <strong>The size</strong> of a vector or an array is the number of elements that it contains. <strong>The dimension</strong>, on the other hand, is the number of axes or directions that it has. For example, a one-dimensional vector or array has only one axis or direction, and a two-dimensional vector or a matrix will have two axes or directions, such as rows and columns.</p>
+<p>To check the size and the dimension of a vector or an array in R and Python, we can use the following functions:</p>
+<p>In R, we can use the <code>length</code> function to get the size of a vector, and the <code>dim</code> function to get the dimension of a vector.</p>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="log_vec.html#cb289-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a vector of numbers</span></span>
+<span id="cb289-2"><a href="log_vec.html#cb289-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
+<span id="cb289-3"><a href="log_vec.html#cb289-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb289-4"><a href="log_vec.html#cb289-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the size of the vector</span></span>
+<span id="cb289-5"><a href="log_vec.html#cb289-5" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="log_vec.html#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the dimension of the vector</span></span>
+<span id="cb291-2"><a href="log_vec.html#cb291-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x)</span></code></pre></div>
+<pre><code>## NULL</code></pre>
+<p>The <code>length</code> function returns the number of elements in the vector, which is 4, and the <code>dim</code> function returns <code>NULL</code>, which means that the vector has no dimension. This is because a vector in R is always one-dimensional, and the <code>dim</code> function is more useful for higher-dimensional objects, such as <strong>matrices</strong> or <strong>data frames</strong>. We will learn about these structures later on, so do not worry about it for now.</p>
+<p>In Python, we can use the <code>size</code> attribute or the <code>len</code> function to get the size of an array, and the <code>shape</code> attribute or the <code>ndim</code> attribute to get the dimension of an array.</p>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb293"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb293-1"><a href="log_vec.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating an array of numbers</span></span>
+<span id="cb293-2"><a href="log_vec.html#cb293-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">4</span>)</span>
+<span id="cb293-3"><a href="log_vec.html#cb293-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb293-4"><a href="log_vec.html#cb293-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the size of the array</span></span>
+<span id="cb293-5"><a href="log_vec.html#cb293-5" aria-hidden="true" tabindex="-1"></a>x.size</span></code></pre></div>
+<pre><code>## 3</code></pre>
+<div class="sourceCode" id="cb295"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb295-1"><a href="log_vec.html#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4</span></span>
+<span id="cb295-2"><a href="log_vec.html#cb295-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(x)</span></code></pre></div>
+<pre><code>## 3</code></pre>
+<div class="sourceCode" id="cb297"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb297-1"><a href="log_vec.html#cb297-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4</span></span>
+<span id="cb297-2"><a href="log_vec.html#cb297-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb297-3"><a href="log_vec.html#cb297-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the dimension of the array</span></span>
+<span id="cb297-4"><a href="log_vec.html#cb297-4" aria-hidden="true" tabindex="-1"></a>x.shape</span></code></pre></div>
+<pre><code>## (3,)</code></pre>
+<div class="sourceCode" id="cb299"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb299-1"><a href="log_vec.html#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (4,)</span></span>
+<span id="cb299-2"><a href="log_vec.html#cb299-2" aria-hidden="true" tabindex="-1"></a>x.ndim</span></code></pre></div>
+<pre><code>## 1</code></pre>
+<div class="sourceCode" id="cb301"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb301-1"><a href="log_vec.html#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1</span></span></code></pre></div>
+<p>The <code>size</code> attribute and the <code>len</code> function both return the number of elements in the array, which is 4, and the <code>shape</code> attribute and the <code>ndim</code> attribute both return the dimension of the array, which is 1. The <code>shape</code> attribute returns a <em>tuple</em>, that contains the length of each axis of the array, and the <code>ndim</code> attribute returns an integer that represents the number of axes of the array. Note that a one-dimensional array in Python has a shape of <code>(n,)</code>, where <code>n</code> is the size of the array, and a comma is needed to indicate that it is a tuple. A <em>tuple</em> is another one dimentional structure in Python, but for now you can treat it as just a couple of numbers.</p>
+</div>
+<div id="accessing-vector-elements" class="section level3 hasAnchor" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> Accessing Vector Elements<a href="log_vec.html#accessing-vector-elements" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can access the elements of the vector or the array by using indexing. Indexing is a way of referring to a specific element or a subset of elements of a vector or an array by using their position or location. Every element of a vector, in fact, has an index, that is a number that indicates its order in the vector.</p>
+<p>Indexing the elements of a vector or an array in R and Python has <strong>a fundamental difference</strong> that you need to be extremely careful about. R uses what is called <em>one-based</em> indexing, while Python uses <em>zero-based</em> indexing. This means that R starts counting the elements of a vector or an array from 1, e.g. the first element starts at one, while Python starts counting the elements of a vector or an array from 0. This difference can cause confusion and errors if you are not aware of it, so you need to pay attention to the indexing system of each language:</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="log_vec.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The index will be</span></span>
+<span id="cb302-2"><a href="log_vec.html#cb302-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">#  1  2  3  4</span></span>
+<span id="cb302-3"><a href="log_vec.html#cb302-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span></code></pre></div>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb303"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb303-1"><a href="log_vec.html#cb303-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The index will be:</span></span>
+<span id="cb303-2"><a href="log_vec.html#cb303-2" aria-hidden="true" tabindex="-1"></a>           <span class="co">#  0  1  2  3</span></span>
+<span id="cb303-3"><a href="log_vec.html#cb303-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span></code></pre></div>
+</div>
+</div>
+<p>Let’s see how to practically access the single elements by using indexing.</p>
+<ul>
+<li>In R, the elements of a vector are indexed from 1 to the size of the vector, and we can use the square brackets <code>[ ]</code> to access them by using their index.</li>
+</ul>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="log_vec.html#cb304-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the first element of the vector</span></span>
+<span id="cb304-2"><a href="log_vec.html#cb304-2" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="log_vec.html#cb306-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the last element of the vector</span></span>
+<span id="cb306-2"><a href="log_vec.html#cb306-2" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">length</span>(x)]</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="log_vec.html#cb308-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing any element of the vector</span></span>
+<span id="cb308-2"><a href="log_vec.html#cb308-2" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p>The first element of the vector has an index of 1, the last element of the vector has an index of the size of the vector, which is 4. The square brackets <code>[ ]</code> are used to access the elements of the vector: therefore the index must be an integer between 1 and the size of the vector, otherwise it will produce an error or a missing value.</p>
+<ul>
+<li>In Python, the elements of an array are indexed from 0 to the size of the array minus 1, and we can use the square brackets <code>[ ]</code> to access them by using their index.</li>
+</ul>
+<div class="sourceCode" id="cb310"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb310-1"><a href="log_vec.html#cb310-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the first element of the array</span></span>
+<span id="cb310-2"><a href="log_vec.html#cb310-2" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">0</span>]</span></code></pre></div>
+<pre><code>## 1</code></pre>
+<div class="sourceCode" id="cb312"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb312-1"><a href="log_vec.html#cb312-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the last element of the array</span></span>
+<span id="cb312-2"><a href="log_vec.html#cb312-2" aria-hidden="true" tabindex="-1"></a>x[<span class="bu">len</span>(x) <span class="op">-</span> <span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## 4</code></pre>
+<div class="sourceCode" id="cb314"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb314-1"><a href="log_vec.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing any element of the array</span></span>
+<span id="cb314-2"><a href="log_vec.html#cb314-2" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## 3</code></pre>
+<p>In Python, the first element of the array has an index of 0, the last element of the array has an index of the size of the array minus 1, which in our case is 3. The square brackets <code>[ ]</code> are used to access the elements of the array by using their index, and that the index must be an integer between 0 and the size of the array minus 1, otherwise it will produce an error or an out of bounds exception.
+Differently from R, in Python, however we can access the arrays from the back, using negative integers. Try:</p>
+<div class="sourceCode" id="cb316"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb316-1"><a href="log_vec.html#cb316-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the last element of the array</span></span>
+<span id="cb316-2"><a href="log_vec.html#cb316-2" aria-hidden="true" tabindex="-1"></a>x[<span class="op">-</span><span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## 4</code></pre>
+<div class="sourceCode" id="cb318"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb318-1"><a href="log_vec.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the second last element of the array</span></span>
+<span id="cb318-2"><a href="log_vec.html#cb318-2" aria-hidden="true" tabindex="-1"></a>x[<span class="op">-</span><span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## 3</code></pre>
+<div class="sourceCode" id="cb320"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb320-1"><a href="log_vec.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the first element of the array</span></span>
+<span id="cb320-2"><a href="log_vec.html#cb320-2" aria-hidden="true" tabindex="-1"></a>x[<span class="op">-</span><span class="bu">len</span>(x)]</span></code></pre></div>
+<pre><code>## 1</code></pre>
+<div id="accessing-multiple-elements-at-once" class="section level4 hasAnchor" number="2.5.2.1">
+<h4><span class="header-section-number">2.5.2.1</span> Accessing multiple elements at once<a href="log_vec.html#accessing-multiple-elements-at-once" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>In addition to accessing a single element of a vector or an array, we can also access multiple elements at once by using indexing. This can be useful for selecting, modifying, or extracting specific values or subsets of values from a vector or an array. There are different ways to access multiple elements at once, depending on the criteria or the pattern that we want to use.</p>
+<ul>
+<li>To access any sequence of elements of a vector or an array, we can use sequences of integers as indices. This means we can use the colon operator <code>:</code> to create sequences of integers in R and Python, as we saw in the previous section, and use these to access and splice the first three elements, the last three elements, or even the <em>even-indexed</em> elements of a vector or an array (pun not intended).</li>
+</ul>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="log_vec.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a vector of the first 6 integers</span></span>
+<span id="cb322-2"><a href="log_vec.html#cb322-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb322-3"><a href="log_vec.html#cb322-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb322-4"><a href="log_vec.html#cb322-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the first three elements of the vector</span></span>
+<span id="cb322-5"><a href="log_vec.html#cb322-5" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## [1] 1 2 3</code></pre>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="log_vec.html#cb324-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the last three elements of the vector</span></span>
+<span id="cb324-2"><a href="log_vec.html#cb324-2" aria-hidden="true" tabindex="-1"></a><span class="co"># index is 4, 5, 6</span></span>
+<span id="cb324-3"><a href="log_vec.html#cb324-3" aria-hidden="true" tabindex="-1"></a>x[(<span class="fu">length</span>(x) <span class="sc">-</span> <span class="dv">2</span>)<span class="sc">:</span><span class="fu">length</span>(x)]</span></code></pre></div>
+<pre><code>## [1] 4 5 6</code></pre>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="log_vec.html#cb326-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the even-indexed elements of the vector</span></span>
+<span id="cb326-2"><a href="log_vec.html#cb326-2" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">2</span>, <span class="at">to =</span> <span class="fu">length</span>(x), <span class="at">by =</span> <span class="dv">2</span>)]</span></code></pre></div>
+<pre><code>## [1] 2 4 6</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb328"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb328-1"><a href="log_vec.html#cb328-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating an array of the first 6 integers</span></span>
+<span id="cb328-2"><a href="log_vec.html#cb328-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">7</span>)</span>
+<span id="cb328-3"><a href="log_vec.html#cb328-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb328-4"><a href="log_vec.html#cb328-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the first three elements of the array</span></span>
+<span id="cb328-5"><a href="log_vec.html#cb328-5" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">0</span>:<span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## array([1, 2, 3])</code></pre>
+<div class="sourceCode" id="cb330"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb330-1"><a href="log_vec.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the last three elements of the array</span></span>
+<span id="cb330-2"><a href="log_vec.html#cb330-2" aria-hidden="true" tabindex="-1"></a><span class="co"># index is 3, 4, 5</span></span>
+<span id="cb330-3"><a href="log_vec.html#cb330-3" aria-hidden="true" tabindex="-1"></a>x[(<span class="bu">len</span>(x) <span class="op">-</span> <span class="dv">3</span>):<span class="bu">len</span>(x)]</span></code></pre></div>
+<pre><code>## array([4, 5, 6])</code></pre>
+<div class="sourceCode" id="cb332"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb332-1"><a href="log_vec.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the even-indexed elements of the array</span></span>
+<span id="cb332-2"><a href="log_vec.html#cb332-2" aria-hidden="true" tabindex="-1"></a>x[np.arange(<span class="dv">1</span>, <span class="bu">len</span>(x), <span class="dv">2</span>)]</span></code></pre></div>
+<pre><code>## array([2, 4, 6])</code></pre>
+</div>
+</div>
+<p>Recall that R uses one-based indexing and Python uses zero-based indexing. The sequences of integers for accesing the indeces are created by using the colon operator <code>:</code> or the <code>seq</code> function in R, and the <code>np.arange</code> function in Python. The sequences of integers can have different start, end, or step values, depending on the desired subset of elements. Try to experiment a bit with the start and end values of the subsets introduced above!</p>
+<ul>
+<li>Similarly, we can use vectors or arrays of integers as indices to access multiple elements <em>at every location</em>. To do so, we will first create some vectors, and then use those vectors to access the elements of other vectors respectively. For example, we can access three elements at random of a vector or an array, as shown below:</li>
+</ul>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="log_vec.html#cb334-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing element 2, 5 and 6 of the vector</span></span>
+<span id="cb334-2"><a href="log_vec.html#cb334-2" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">6</span>)]</span></code></pre></div>
+<pre><code>## [1] 2 5 6</code></pre>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="log_vec.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="co"># note how in this way we can shuffle order!</span></span>
+<span id="cb336-2"><a href="log_vec.html#cb336-2" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">5</span>)]</span></code></pre></div>
+<pre><code>## [1] 2 6 5</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb338"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb338-1"><a href="log_vec.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing element 2, 5 and 6 of the vector</span></span>
+<span id="cb338-2"><a href="log_vec.html#cb338-2" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">5</span>]]</span></code></pre></div>
+<pre><code>## array([2, 5, 6])</code></pre>
+<div class="sourceCode" id="cb340"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb340-1"><a href="log_vec.html#cb340-1" aria-hidden="true" tabindex="-1"></a><span class="co"># note how in this way we can shuffle order!</span></span>
+<span id="cb340-2"><a href="log_vec.html#cb340-2" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">4</span>]]</span></code></pre></div>
+<pre><code>## array([2, 6, 5])</code></pre>
+</div>
+</div>
+<p>To access multiple elements at random of a vector or an array, we can also use vectors or arrays of booleans as indices. Vectors or arrays of booleans are collections of logical values, as introduced above, e.g. either <code>TRUE</code> or <code>FALSE</code>. In this case, it is important that the vectors or arrays of booleans have the same length as the vector or the array, and that only the elements that correspond to <code>TRUE</code> (in R) or <code>True</code> (in Python) values are selected.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="log_vec.html#cb342-1" aria-hidden="true" tabindex="-1"></a><span class="co"># boolean index vector:</span></span>
+<span id="cb342-2"><a href="log_vec.html#cb342-2" aria-hidden="true" tabindex="-1"></a><span class="co">#                    2                   5     6</span></span>
+<span id="cb342-3"><a href="log_vec.html#cb342-3" aria-hidden="true" tabindex="-1"></a>index <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb342-4"><a href="log_vec.html#cb342-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb342-5"><a href="log_vec.html#cb342-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing element 2, 5 and 6 of the vector</span></span>
+<span id="cb342-6"><a href="log_vec.html#cb342-6" aria-hidden="true" tabindex="-1"></a>x[index]</span></code></pre></div>
+<pre><code>## [1] 2 5 6</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb344"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb344-1"><a href="log_vec.html#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="co"># boolean index vector:</span></span>
+<span id="cb344-2"><a href="log_vec.html#cb344-2" aria-hidden="true" tabindex="-1"></a><span class="co">#                   1                   4     5</span></span>
+<span id="cb344-3"><a href="log_vec.html#cb344-3" aria-hidden="true" tabindex="-1"></a>index <span class="op">=</span> [<span class="va">False</span>, <span class="va">True</span>, <span class="va">False</span>, <span class="va">False</span>, <span class="va">True</span>, <span class="va">True</span>]</span>
+<span id="cb344-4"><a href="log_vec.html#cb344-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb344-5"><a href="log_vec.html#cb344-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing element 2, 5 and 6 of the vector</span></span>
+<span id="cb344-6"><a href="log_vec.html#cb344-6" aria-hidden="true" tabindex="-1"></a>x[index]</span></code></pre></div>
+<pre><code>## array([2, 5, 6])</code></pre>
+</div>
+</div>
+<p>Why is this useful? Well, with this trick, we can use logical operators obtained by logical arithmetic to create vectors or arrays of booleans in R and Python. For example, we can access the elements that are greater than 3 of a vector or an array, as shown below:</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="log_vec.html#cb346-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a vector of numbers</span></span>
+<span id="cb346-2"><a href="log_vec.html#cb346-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb346-3"><a href="log_vec.html#cb346-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb346-4"><a href="log_vec.html#cb346-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the elements that are greater than 3 of the vector</span></span>
+<span id="cb346-5"><a href="log_vec.html#cb346-5" aria-hidden="true" tabindex="-1"></a>x[x <span class="sc">&gt;</span> <span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## [1] 4 5 6</code></pre>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="log_vec.html#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing even elements </span></span>
+<span id="cb348-2"><a href="log_vec.html#cb348-2" aria-hidden="true" tabindex="-1"></a>x[x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>]</span></code></pre></div>
+<pre><code>## [1] 2 4 6</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb350"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb350-1"><a href="log_vec.html#cb350-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating an array of numbers</span></span>
+<span id="cb350-2"><a href="log_vec.html#cb350-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>])</span>
+<span id="cb350-3"><a href="log_vec.html#cb350-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb350-4"><a href="log_vec.html#cb350-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing the elements that are greater than 3 of the array</span></span>
+<span id="cb350-5"><a href="log_vec.html#cb350-5" aria-hidden="true" tabindex="-1"></a>x[x <span class="op">&gt;</span> <span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## array([4, 5, 6])</code></pre>
+<div class="sourceCode" id="cb352"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb352-1"><a href="log_vec.html#cb352-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing even elements </span></span>
+<span id="cb352-2"><a href="log_vec.html#cb352-2" aria-hidden="true" tabindex="-1"></a>x[x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>]</span></code></pre></div>
+<pre><code>## array([2, 4, 6])</code></pre>
+</div>
+</div>
+</div>
+<div id="overwriting-elements-of-vectors" class="section level4 hasAnchor" number="2.5.2.2">
+<h4><span class="header-section-number">2.5.2.2</span> Overwriting elements of vectors<a href="log_vec.html#overwriting-elements-of-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Finally, as we can overwrite variables, we can overwrite single (or multiple!) elements of a vector without modifying the entire vector. This is essentially achieved by selecting the elements of interest, and then assigning new elements to those. The replacement, of course needs to be of the same length of the elements we wish to replace. If the new values are not compatible with the type and the length of the vector, both languages will produce an error or a warning.</p>
+<p>In R, we can use the square brackets <code>[ ]</code> to access the elements of the vector by using their index, and the left arrow <code>&lt;-</code> to assign new values to them. For example, to overwrite the first element, the last element, and the third element:</p>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="log_vec.html#cb354-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a vector of numbers</span></span>
+<span id="cb354-2"><a href="log_vec.html#cb354-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb354-3"><a href="log_vec.html#cb354-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb354-4"><a href="log_vec.html#cb354-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Overwriting the first element of the vector</span></span>
+<span id="cb354-5"><a href="log_vec.html#cb354-5" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb354-6"><a href="log_vec.html#cb354-6" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] 10  2  3  4</code></pre>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="log_vec.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Overwriting the last element of the vector</span></span>
+<span id="cb356-2"><a href="log_vec.html#cb356-2" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">length</span>(x)] <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb356-3"><a href="log_vec.html#cb356-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] 10  2  3 20</code></pre>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="log_vec.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Overwriting any element of the vector</span></span>
+<span id="cb358-2"><a href="log_vec.html#cb358-2" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="cb358-3"><a href="log_vec.html#cb358-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] 10  2 30 20</code></pre>
+<p>In Python, we can use the square brackets <code>[ ]</code> to access the elements of the array by using their index, and the equal sign <code>=</code> to assign new values to them. For example, to overwrite the first element, the last element, and third element:</p>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb360"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb360-1"><a href="log_vec.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating an array of numbers</span></span>
+<span id="cb360-2"><a href="log_vec.html#cb360-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span>
+<span id="cb360-3"><a href="log_vec.html#cb360-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-4"><a href="log_vec.html#cb360-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Overwriting the first element of the array</span></span>
+<span id="cb360-5"><a href="log_vec.html#cb360-5" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb360-6"><a href="log_vec.html#cb360-6" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## array([10,  2,  3,  4])</code></pre>
+<div class="sourceCode" id="cb362"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb362-1"><a href="log_vec.html#cb362-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Overwriting the last element of the array</span></span>
+<span id="cb362-2"><a href="log_vec.html#cb362-2" aria-hidden="true" tabindex="-1"></a>x[<span class="bu">len</span>(x) <span class="op">-</span> <span class="dv">1</span>] <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb362-3"><a href="log_vec.html#cb362-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## array([10,  2,  3, 20])</code></pre>
+<div class="sourceCode" id="cb364"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb364-1"><a href="log_vec.html#cb364-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Overwriting any element of the array</span></span>
+<span id="cb364-2"><a href="log_vec.html#cb364-2" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span>] <span class="op">=</span> <span class="dv">30</span></span>
+<span id="cb364-3"><a href="log_vec.html#cb364-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## array([10,  2, 30, 20])</code></pre>
+<p>In this code, the square brackets <code>[ ]</code> are used to access the elements of the array by using their index, and the equal sign <code>=</code> is used to assign new values to them</p>
+<p>Note that the final vector has the three elements we accessed all changed.
+As mentioned, we can select and replace multiple elements simultaneously in a single command, look for instance at the code below.</p>
+</div>
+<div id="exercise-vector-fizzbuzz" class="section level4 hasAnchor" number="2.5.2.3">
+<h4><span class="header-section-number">2.5.2.3</span> Exercise: vector fizzbuzz<a href="log_vec.html#exercise-vector-fizzbuzz" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>You are ready to see your first complex program. Can you tell what it does?
+Break down, comment and describe the following code, and adapt it do perform Skibbidifizzbuzz.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="log_vec.html#cb366-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span></span>
+<span id="cb366-2"><a href="log_vec.html#cb366-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb366-3"><a href="log_vec.html#cb366-3" aria-hidden="true" tabindex="-1"></a>fizz_index <span class="ot">&lt;-</span> x <span class="sc">%%</span> <span class="dv">3</span> <span class="sc">==</span> <span class="dv">0</span></span>
+<span id="cb366-4"><a href="log_vec.html#cb366-4" aria-hidden="true" tabindex="-1"></a>buzz_index <span class="ot">&lt;-</span> x <span class="sc">%%</span> <span class="dv">5</span> <span class="sc">==</span> <span class="dv">0</span></span>
+<span id="cb366-5"><a href="log_vec.html#cb366-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb366-6"><a href="log_vec.html#cb366-6" aria-hidden="true" tabindex="-1"></a>x[fizz_index] <span class="ot">&lt;-</span> <span class="st">&quot;fizz&quot;</span></span>
+<span id="cb366-7"><a href="log_vec.html#cb366-7" aria-hidden="true" tabindex="-1"></a>x[buzz_index] <span class="ot">&lt;-</span> <span class="st">&quot;buzz&quot;</span></span>
+<span id="cb366-8"><a href="log_vec.html#cb366-8" aria-hidden="true" tabindex="-1"></a>x[fizz_index <span class="sc">&amp;</span> buzz_index] <span class="ot">&lt;-</span> <span class="st">&quot;fizzbuzz&quot;</span></span>
+<span id="cb366-9"><a href="log_vec.html#cb366-9" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>##   [1] &quot;1&quot;        &quot;2&quot;        &quot;fizz&quot;     &quot;4&quot;        &quot;buzz&quot;    
+##   [6] &quot;fizz&quot;     &quot;7&quot;        &quot;8&quot;        &quot;fizz&quot;     &quot;buzz&quot;    
+##  [11] &quot;11&quot;       &quot;fizz&quot;     &quot;13&quot;       &quot;14&quot;       &quot;fizzbuzz&quot;
+##  [16] &quot;16&quot;       &quot;17&quot;       &quot;fizz&quot;     &quot;19&quot;       &quot;buzz&quot;    
+##  [21] &quot;fizz&quot;     &quot;22&quot;       &quot;23&quot;       &quot;fizz&quot;     &quot;buzz&quot;    
+##  [26] &quot;26&quot;       &quot;fizz&quot;     &quot;28&quot;       &quot;29&quot;       &quot;fizzbuzz&quot;
+##  [31] &quot;31&quot;       &quot;32&quot;       &quot;fizz&quot;     &quot;34&quot;       &quot;buzz&quot;    
+##  [36] &quot;fizz&quot;     &quot;37&quot;       &quot;38&quot;       &quot;fizz&quot;     &quot;buzz&quot;    
+##  [41] &quot;41&quot;       &quot;fizz&quot;     &quot;43&quot;       &quot;44&quot;       &quot;fizzbuzz&quot;
+##  [46] &quot;46&quot;       &quot;47&quot;       &quot;fizz&quot;     &quot;49&quot;       &quot;buzz&quot;    
+##  [51] &quot;fizz&quot;     &quot;52&quot;       &quot;53&quot;       &quot;fizz&quot;     &quot;buzz&quot;    
+##  [56] &quot;56&quot;       &quot;fizz&quot;     &quot;58&quot;       &quot;59&quot;       &quot;fizzbuzz&quot;
+##  [61] &quot;61&quot;       &quot;62&quot;       &quot;fizz&quot;     &quot;64&quot;       &quot;buzz&quot;    
+##  [66] &quot;fizz&quot;     &quot;67&quot;       &quot;68&quot;       &quot;fizz&quot;     &quot;buzz&quot;    
+##  [71] &quot;71&quot;       &quot;fizz&quot;     &quot;73&quot;       &quot;74&quot;       &quot;fizzbuzz&quot;
+##  [76] &quot;76&quot;       &quot;77&quot;       &quot;fizz&quot;     &quot;79&quot;       &quot;buzz&quot;    
+##  [81] &quot;fizz&quot;     &quot;82&quot;       &quot;83&quot;       &quot;fizz&quot;     &quot;buzz&quot;    
+##  [86] &quot;86&quot;       &quot;fizz&quot;     &quot;88&quot;       &quot;89&quot;       &quot;fizzbuzz&quot;
+##  [91] &quot;91&quot;       &quot;92&quot;       &quot;fizz&quot;     &quot;94&quot;       &quot;buzz&quot;    
+##  [96] &quot;fizz&quot;     &quot;97&quot;       &quot;98&quot;       &quot;fizz&quot;     &quot;buzz&quot;</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb368"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb368-1"><a href="log_vec.html#cb368-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">101</span>, dtype<span class="op">=</span><span class="bu">object</span>)</span>
+<span id="cb368-2"><a href="log_vec.html#cb368-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb368-3"><a href="log_vec.html#cb368-3" aria-hidden="true" tabindex="-1"></a>fizz_index <span class="op">=</span> x <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span></span>
+<span id="cb368-4"><a href="log_vec.html#cb368-4" aria-hidden="true" tabindex="-1"></a>buzz_index <span class="op">=</span> x <span class="op">%</span> <span class="dv">5</span> <span class="op">==</span> <span class="dv">0</span></span>
+<span id="cb368-5"><a href="log_vec.html#cb368-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb368-6"><a href="log_vec.html#cb368-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb368-7"><a href="log_vec.html#cb368-7" aria-hidden="true" tabindex="-1"></a>x[fizz_index] <span class="op">=</span> <span class="st">&quot;fizz&quot;</span></span>
+<span id="cb368-8"><a href="log_vec.html#cb368-8" aria-hidden="true" tabindex="-1"></a>x[buzz_index] <span class="op">=</span> <span class="st">&quot;buzz&quot;</span></span>
+<span id="cb368-9"><a href="log_vec.html#cb368-9" aria-hidden="true" tabindex="-1"></a>x[np.logical_and(fizz_index, buzz_index)] <span class="op">=</span> <span class="st">&quot;fizzbuzz&quot;</span></span>
+<span id="cb368-10"><a href="log_vec.html#cb368-10" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## array([1, 2, &#39;fizz&#39;, 4, &#39;buzz&#39;, &#39;fizz&#39;, 7, 8, &#39;fizz&#39;, &#39;buzz&#39;, 11, &#39;fizz&#39;,
+##        13, 14, &#39;fizzbuzz&#39;, 16, 17, &#39;fizz&#39;, 19, &#39;buzz&#39;, &#39;fizz&#39;, 22, 23,
+##        &#39;fizz&#39;, &#39;buzz&#39;, 26, &#39;fizz&#39;, 28, 29, &#39;fizzbuzz&#39;, 31, 32, &#39;fizz&#39;, 34,
+##        &#39;buzz&#39;, &#39;fizz&#39;, 37, 38, &#39;fizz&#39;, &#39;buzz&#39;, 41, &#39;fizz&#39;, 43, 44,
+##        &#39;fizzbuzz&#39;, 46, 47, &#39;fizz&#39;, 49, &#39;buzz&#39;, &#39;fizz&#39;, 52, 53, &#39;fizz&#39;,
+##        &#39;buzz&#39;, 56, &#39;fizz&#39;, 58, 59, &#39;fizzbuzz&#39;, 61, 62, &#39;fizz&#39;, 64, &#39;buzz&#39;,
+##        &#39;fizz&#39;, 67, 68, &#39;fizz&#39;, &#39;buzz&#39;, 71, &#39;fizz&#39;, 73, 74, &#39;fizzbuzz&#39;, 76,
+##        77, &#39;fizz&#39;, 79, &#39;buzz&#39;, &#39;fizz&#39;, 82, 83, &#39;fizz&#39;, &#39;buzz&#39;, 86, &#39;fizz&#39;,
+##        88, 89, &#39;fizzbuzz&#39;, 91, 92, &#39;fizz&#39;, 94, &#39;buzz&#39;, &#39;fizz&#39;, 97, 98,
+##        &#39;fizz&#39;, &#39;buzz&#39;], dtype=object)</code></pre>
+</div>
+</div>
+<p>Small hint: You should be careful about the type of output vector in R. You’ll notice now it’s a character vector.
+Python does not convert the type of vector automatically, the dtype argument is needed to ensure the vector can contain both integers and strings. Remove the dtype argument from the first line and see what happens.</p>
+</div>
+</div>
+<div id="some-useful-functions" class="section level3 hasAnchor" number="2.5.3">
+<h3><span class="header-section-number">2.5.3</span> Some Useful Functions<a href="log_vec.html#some-useful-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We finish this chapter with few useful functions that work with vectors. Those will come in handy in your scientific computing endeavors, in particular towards the second part of the module, as they’re all functions that are necessary to extract useful information from our vectors.</p>
+<p>Let’s start with considering a very simple quadratic function:</p>
+<p><span class="math display">\[
+y = x^2 - x
+\]</span></p>
+<p><img src="images/unnamed-chunk-102-1.png" width="50%" /></p>
+<p>Now, let’s say we want to evaluate this function over a sequence of values between -5 and 5 (those values plotted).<br />
+To code this, we learned we can do simply some algebra with vector:</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="log_vec.html#cb370-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a sequence of numbers </span></span>
+<span id="cb370-2"><a href="log_vec.html#cb370-2" aria-hidden="true" tabindex="-1"></a><span class="co"># from -5 to 5 with increments of 0.1</span></span>
+<span id="cb370-3"><a href="log_vec.html#cb370-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span>
+<span id="cb370-4"><a href="log_vec.html#cb370-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb370-5"><a href="log_vec.html#cb370-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the value of x^2 - x for each</span></span>
+<span id="cb370-6"><a href="log_vec.html#cb370-6" aria-hidden="true" tabindex="-1"></a><span class="co"># element of x and assign it to y</span></span>
+<span id="cb370-7"><a href="log_vec.html#cb370-7" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> x</span></code></pre></div>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb371"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb371-1"><a href="log_vec.html#cb371-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a sequence of numbers </span></span>
+<span id="cb371-2"><a href="log_vec.html#cb371-2" aria-hidden="true" tabindex="-1"></a><span class="co"># from -5 to 5 with increments of 0.1</span></span>
+<span id="cb371-3"><a href="log_vec.html#cb371-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">5</span>, <span class="fl">5.1</span>, <span class="fl">0.1</span>)</span>
+<span id="cb371-4"><a href="log_vec.html#cb371-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb371-5"><a href="log_vec.html#cb371-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the value of x^2 - x for each</span></span>
+<span id="cb371-6"><a href="log_vec.html#cb371-6" aria-hidden="true" tabindex="-1"></a><span class="co"># element of x and assign it to y</span></span>
+<span id="cb371-7"><a href="log_vec.html#cb371-7" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span> <span class="op">-</span> x</span></code></pre></div>
+</div>
+</div>
+<p>Now that we have our <span class="math inline">\(y\)</span> values, let’s see what we can get from it! See if what you see in the output matches what you see in the plot!</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
+<div>
+<p><strong>R</strong></p>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="log_vec.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the maximum value of y</span></span>
+<span id="cb372-2"><a href="log_vec.html#cb372-2" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(y)</span></code></pre></div>
+<pre><code>## [1] 30</code></pre>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="log_vec.html#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the minimum value of y</span></span>
+<span id="cb374-2"><a href="log_vec.html#cb374-2" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(y)</span></code></pre></div>
+<pre><code>## [1] -0.25</code></pre>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="log_vec.html#cb376-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the index of the element</span></span>
+<span id="cb376-2"><a href="log_vec.html#cb376-2" aria-hidden="true" tabindex="-1"></a><span class="co"># in y that has the maximum value</span></span>
+<span id="cb376-3"><a href="log_vec.html#cb376-3" aria-hidden="true" tabindex="-1"></a><span class="fu">which.max</span>(y)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="log_vec.html#cb378-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the index of the element</span></span>
+<span id="cb378-2"><a href="log_vec.html#cb378-2" aria-hidden="true" tabindex="-1"></a><span class="co"># in y that has the minimum value</span></span>
+<span id="cb378-3"><a href="log_vec.html#cb378-3" aria-hidden="true" tabindex="-1"></a><span class="fu">which.min</span>(y)</span></code></pre></div>
+<pre><code>## [1] 56</code></pre>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="log_vec.html#cb380-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the minimum value of y</span></span>
+<span id="cb380-2"><a href="log_vec.html#cb380-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (equivalent to above, why?)</span></span>
+<span id="cb380-3"><a href="log_vec.html#cb380-3" aria-hidden="true" tabindex="-1"></a>y[<span class="fu">which.min</span>(y)]</span></code></pre></div>
+<pre><code>## [1] -0.25</code></pre>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="log_vec.html#cb382-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check which elements of y are </span></span>
+<span id="cb382-2"><a href="log_vec.html#cb382-2" aria-hidden="true" tabindex="-1"></a><span class="co"># less than 0 and return a logical vector</span></span>
+<span id="cb382-3"><a href="log_vec.html#cb382-3" aria-hidden="true" tabindex="-1"></a>neg_index <span class="ot">&lt;-</span> y <span class="sc">&lt;</span> <span class="dv">0</span></span>
+<span id="cb382-4"><a href="log_vec.html#cb382-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb382-5"><a href="log_vec.html#cb382-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the indices of the elements</span></span>
+<span id="cb382-6"><a href="log_vec.html#cb382-6" aria-hidden="true" tabindex="-1"></a><span class="co"># in y that are less than 0</span></span>
+<span id="cb382-7"><a href="log_vec.html#cb382-7" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(neg_index)</span></code></pre></div>
+<pre><code>## [1] 52 53 54 55 56 57 58 59 60</code></pre>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="log_vec.html#cb384-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print the elements in y that are less than 0</span></span>
+<span id="cb384-2"><a href="log_vec.html#cb384-2" aria-hidden="true" tabindex="-1"></a>y[<span class="fu">which</span>(neg_index)]</span></code></pre></div>
+<pre><code>## [1] -0.09 -0.16 -0.21 -0.24 -0.25 -0.24 -0.21 -0.16 -0.09</code></pre>
+</div>
+<div>
+<p><strong>python</strong></p>
+<div class="sourceCode" id="cb386"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb386-1"><a href="log_vec.html#cb386-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the maximum value of y</span></span>
+<span id="cb386-2"><a href="log_vec.html#cb386-2" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">max</span>(y)</span></code></pre></div>
+<pre><code>## 30.0</code></pre>
+<div class="sourceCode" id="cb388"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb388-1"><a href="log_vec.html#cb388-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the minimum value of y</span></span>
+<span id="cb388-2"><a href="log_vec.html#cb388-2" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">min</span>(y)</span></code></pre></div>
+<pre><code>## -0.25</code></pre>
+<div class="sourceCode" id="cb390"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb390-1"><a href="log_vec.html#cb390-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the index of the element </span></span>
+<span id="cb390-2"><a href="log_vec.html#cb390-2" aria-hidden="true" tabindex="-1"></a><span class="co"># in y that has the maximum value</span></span>
+<span id="cb390-3"><a href="log_vec.html#cb390-3" aria-hidden="true" tabindex="-1"></a>np.argmax(y)</span></code></pre></div>
+<pre><code>## 0</code></pre>
+<div class="sourceCode" id="cb392"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb392-1"><a href="log_vec.html#cb392-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the index of the element</span></span>
+<span id="cb392-2"><a href="log_vec.html#cb392-2" aria-hidden="true" tabindex="-1"></a><span class="co"># in y that has the minimum value</span></span>
+<span id="cb392-3"><a href="log_vec.html#cb392-3" aria-hidden="true" tabindex="-1"></a>np.argmin(y)</span></code></pre></div>
+<pre><code>## 55</code></pre>
+<div class="sourceCode" id="cb394"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb394-1"><a href="log_vec.html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the minimum value of y</span></span>
+<span id="cb394-2"><a href="log_vec.html#cb394-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (equivalent to above, why?)</span></span>
+<span id="cb394-3"><a href="log_vec.html#cb394-3" aria-hidden="true" tabindex="-1"></a>y[np.argmin(y)]</span></code></pre></div>
+<pre><code>## -0.25</code></pre>
+<div class="sourceCode" id="cb396"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb396-1"><a href="log_vec.html#cb396-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check which elements of y are</span></span>
+<span id="cb396-2"><a href="log_vec.html#cb396-2" aria-hidden="true" tabindex="-1"></a><span class="co"># less than 0 and return a logical vector</span></span>
+<span id="cb396-3"><a href="log_vec.html#cb396-3" aria-hidden="true" tabindex="-1"></a>neg_index <span class="op">=</span> y <span class="op">&lt;</span> <span class="dv">0</span></span>
+<span id="cb396-4"><a href="log_vec.html#cb396-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb396-5"><a href="log_vec.html#cb396-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the indices of the elements</span></span>
+<span id="cb396-6"><a href="log_vec.html#cb396-6" aria-hidden="true" tabindex="-1"></a><span class="co"># in y that are less than 0</span></span>
+<span id="cb396-7"><a href="log_vec.html#cb396-7" aria-hidden="true" tabindex="-1"></a>np.where(neg_index)</span></code></pre></div>
+<pre><code>## (array([51, 52, 53, 54, 55, 56, 57, 58, 59, 60]),)</code></pre>
+<div class="sourceCode" id="cb398"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb398-1"><a href="log_vec.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print the elements in y that are less than 0</span></span>
+<span id="cb398-2"><a href="log_vec.html#cb398-2" aria-hidden="true" tabindex="-1"></a>y[np.where(neg_index)]</span></code></pre></div>
+<pre><code>## array([-9.00000000e-02, -1.60000000e-01, -2.10000000e-01, -2.40000000e-01,
+##        -2.50000000e-01, -2.40000000e-01, -2.10000000e-01, -1.60000000e-01,
+##        -9.00000000e-02, -2.13162821e-14])</code></pre>
+</div>
+</div>
+<style type="text/css">
+.book .book-body .page-wrapper .page-inner {
+  max-width: 1200px !important;
+}
+</style>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro_prog.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="func_loop.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
