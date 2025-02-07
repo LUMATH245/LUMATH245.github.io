@@ -122,7 +122,7 @@ This technique, sometimes referred as *currying*, is often used in functional pr
 Let's have a look at this weird function:
 
 $$
-f(x) = x^2 + x *  \sin(x + 1.5 x^2)
+f(x) = x^2 + x *  \sin(x - 1.5 x^2)
 $$
 
 ```{r echo = F}
