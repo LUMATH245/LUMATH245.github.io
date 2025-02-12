@@ -265,37 +265,37 @@ f(x^*) = f \left (\lim_{n \to \infty} x_n \right ) = \lim_{n \to \infty} f(x_n) 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb837"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb837-1"><a href="fixed.html#cb837-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function f (cosine).</span></span>
-<span id="cb837-2"><a href="fixed.html#cb837-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">cos</span>(x)</span>
-<span id="cb837-3"><a href="fixed.html#cb837-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb837-4"><a href="fixed.html#cb837-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial point x_0.</span></span>
-<span id="cb837-5"><a href="fixed.html#cb837-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
-<span id="cb837-6"><a href="fixed.html#cb837-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb837-7"><a href="fixed.html#cb837-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
-<span id="cb837-8"><a href="fixed.html#cb837-8" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">f</span>(x)</span>
-<span id="cb837-9"><a href="fixed.html#cb837-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb837-10"><a href="fixed.html#cb837-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb837-11"><a href="fixed.html#cb837-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Show x.</span></span>
-<span id="cb837-12"><a href="fixed.html#cb837-12" aria-hidden="true" tabindex="-1"></a>x </span></code></pre></div>
+<div class="sourceCode" id="cb826"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb826-1"><a href="fixed.html#cb826-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function f (cosine).</span></span>
+<span id="cb826-2"><a href="fixed.html#cb826-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">cos</span>(x)</span>
+<span id="cb826-3"><a href="fixed.html#cb826-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb826-4"><a href="fixed.html#cb826-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial point x_0.</span></span>
+<span id="cb826-5"><a href="fixed.html#cb826-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb826-6"><a href="fixed.html#cb826-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb826-7"><a href="fixed.html#cb826-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb826-8"><a href="fixed.html#cb826-8" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">f</span>(x)</span>
+<span id="cb826-9"><a href="fixed.html#cb826-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb826-10"><a href="fixed.html#cb826-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb826-11"><a href="fixed.html#cb826-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Show x.</span></span>
+<span id="cb826-12"><a href="fixed.html#cb826-12" aria-hidden="true" tabindex="-1"></a>x </span></code></pre></div>
 <pre><code>## [1] 0.7390851</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb839"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb839-1"><a href="fixed.html#cb839-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the numpy module</span></span>
-<span id="cb839-2"><a href="fixed.html#cb839-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb839-3"><a href="fixed.html#cb839-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb839-4"><a href="fixed.html#cb839-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function f (cosine).</span></span>
-<span id="cb839-5"><a href="fixed.html#cb839-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
-<span id="cb839-6"><a href="fixed.html#cb839-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.cos(x)</span>
-<span id="cb839-7"><a href="fixed.html#cb839-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb839-8"><a href="fixed.html#cb839-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial point x_0.</span></span>
-<span id="cb839-9"><a href="fixed.html#cb839-9" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">0.1</span></span>
-<span id="cb839-10"><a href="fixed.html#cb839-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb839-11"><a href="fixed.html#cb839-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>): </span>
-<span id="cb839-12"><a href="fixed.html#cb839-12" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> f(x)</span>
-<span id="cb839-13"><a href="fixed.html#cb839-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb839-14"><a href="fixed.html#cb839-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Show x.</span></span>
-<span id="cb839-15"><a href="fixed.html#cb839-15" aria-hidden="true" tabindex="-1"></a>x </span></code></pre></div>
+<div class="sourceCode" id="cb828"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb828-1"><a href="fixed.html#cb828-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the numpy module</span></span>
+<span id="cb828-2"><a href="fixed.html#cb828-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb828-3"><a href="fixed.html#cb828-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb828-4"><a href="fixed.html#cb828-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function f (cosine).</span></span>
+<span id="cb828-5"><a href="fixed.html#cb828-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
+<span id="cb828-6"><a href="fixed.html#cb828-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.cos(x)</span>
+<span id="cb828-7"><a href="fixed.html#cb828-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb828-8"><a href="fixed.html#cb828-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial point x_0.</span></span>
+<span id="cb828-9"><a href="fixed.html#cb828-9" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb828-10"><a href="fixed.html#cb828-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb828-11"><a href="fixed.html#cb828-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>): </span>
+<span id="cb828-12"><a href="fixed.html#cb828-12" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> f(x)</span>
+<span id="cb828-13"><a href="fixed.html#cb828-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb828-14"><a href="fixed.html#cb828-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Show x.</span></span>
+<span id="cb828-15"><a href="fixed.html#cb828-15" aria-hidden="true" tabindex="-1"></a>x </span></code></pre></div>
 <pre><code>## 0.7390851332151607</code></pre>
 </div>
 </div>
@@ -303,12 +303,12 @@ f(x^*) = f \left (\lim_{n \to \infty} x_n \right ) = \lim_{n \to \infty} f(x_n) 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb841"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb841-1"><a href="fixed.html#cb841-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb830"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb830-1"><a href="fixed.html#cb830-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(x)</span></code></pre></div>
 <pre><code>## [1] 0.7390851</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb843"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb843-1"><a href="fixed.html#cb843-1" aria-hidden="true" tabindex="-1"></a>f(x)</span></code></pre></div>
+<div class="sourceCode" id="cb832"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb832-1"><a href="fixed.html#cb832-1" aria-hidden="true" tabindex="-1"></a>f(x)</span></code></pre></div>
 <pre><code>## 0.7390851332151607</code></pre>
 </div>
 </div>
@@ -365,53 +365,53 @@ However, it works well in practice.</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb845"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb845-1"><a href="fixed.html#cb845-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function f (cosine).</span></span>
-<span id="cb845-2"><a href="fixed.html#cb845-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">cos</span>(x)</span>
-<span id="cb845-3"><a href="fixed.html#cb845-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb845-4"><a href="fixed.html#cb845-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Our threshold for stopping.</span></span>
-<span id="cb845-5"><a href="fixed.html#cb845-5" aria-hidden="true" tabindex="-1"></a>eps <span class="ot">&lt;-</span> <span class="dv">1</span>.e<span class="dv">-8</span></span>
-<span id="cb845-6"><a href="fixed.html#cb845-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb845-7"><a href="fixed.html#cb845-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial point x_0.</span></span>
-<span id="cb845-8"><a href="fixed.html#cb845-8" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
-<span id="cb845-9"><a href="fixed.html#cb845-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb845-10"><a href="fixed.html#cb845-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the first iterate, </span></span>
-<span id="cb845-11"><a href="fixed.html#cb845-11" aria-hidden="true" tabindex="-1"></a><span class="co"># so we can evaluate the stopping criterion.</span></span>
-<span id="cb845-12"><a href="fixed.html#cb845-12" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">f</span>(x) </span>
-<span id="cb845-13"><a href="fixed.html#cb845-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb845-14"><a href="fixed.html#cb845-14" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(<span class="fu">abs</span>(x<span class="sc">-</span>x1) <span class="sc">&gt;</span> eps){</span>
-<span id="cb845-15"><a href="fixed.html#cb845-15" aria-hidden="true" tabindex="-1"></a>   x <span class="ot">&lt;-</span> x1 <span class="co">#Replace x by the next iteration x1. </span></span>
-<span id="cb845-16"><a href="fixed.html#cb845-16" aria-hidden="true" tabindex="-1"></a>   x1 <span class="ot">&lt;-</span> <span class="fu">f</span>(x) <span class="co">#Compute the next iteration</span></span>
-<span id="cb845-17"><a href="fixed.html#cb845-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb845-18"><a href="fixed.html#cb845-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb845-19"><a href="fixed.html#cb845-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Show x1. Note that the latest iteration is now x1.</span></span>
-<span id="cb845-20"><a href="fixed.html#cb845-20" aria-hidden="true" tabindex="-1"></a>x1 </span></code></pre></div>
+<div class="sourceCode" id="cb834"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb834-1"><a href="fixed.html#cb834-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function f (cosine).</span></span>
+<span id="cb834-2"><a href="fixed.html#cb834-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">cos</span>(x)</span>
+<span id="cb834-3"><a href="fixed.html#cb834-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb834-4"><a href="fixed.html#cb834-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Our threshold for stopping.</span></span>
+<span id="cb834-5"><a href="fixed.html#cb834-5" aria-hidden="true" tabindex="-1"></a>eps <span class="ot">&lt;-</span> <span class="dv">1</span>.e<span class="dv">-8</span></span>
+<span id="cb834-6"><a href="fixed.html#cb834-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb834-7"><a href="fixed.html#cb834-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial point x_0.</span></span>
+<span id="cb834-8"><a href="fixed.html#cb834-8" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb834-9"><a href="fixed.html#cb834-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb834-10"><a href="fixed.html#cb834-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the first iterate, </span></span>
+<span id="cb834-11"><a href="fixed.html#cb834-11" aria-hidden="true" tabindex="-1"></a><span class="co"># so we can evaluate the stopping criterion.</span></span>
+<span id="cb834-12"><a href="fixed.html#cb834-12" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">f</span>(x) </span>
+<span id="cb834-13"><a href="fixed.html#cb834-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb834-14"><a href="fixed.html#cb834-14" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(<span class="fu">abs</span>(x<span class="sc">-</span>x1) <span class="sc">&gt;</span> eps){</span>
+<span id="cb834-15"><a href="fixed.html#cb834-15" aria-hidden="true" tabindex="-1"></a>   x <span class="ot">&lt;-</span> x1 <span class="co">#Replace x by the next iteration x1. </span></span>
+<span id="cb834-16"><a href="fixed.html#cb834-16" aria-hidden="true" tabindex="-1"></a>   x1 <span class="ot">&lt;-</span> <span class="fu">f</span>(x) <span class="co">#Compute the next iteration</span></span>
+<span id="cb834-17"><a href="fixed.html#cb834-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb834-18"><a href="fixed.html#cb834-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb834-19"><a href="fixed.html#cb834-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Show x1. Note that the latest iteration is now x1.</span></span>
+<span id="cb834-20"><a href="fixed.html#cb834-20" aria-hidden="true" tabindex="-1"></a>x1 </span></code></pre></div>
 <pre><code>## [1] 0.7390851</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb847"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb847-1"><a href="fixed.html#cb847-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the numpy module</span></span>
-<span id="cb847-2"><a href="fixed.html#cb847-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb847-3"><a href="fixed.html#cb847-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb847-4"><a href="fixed.html#cb847-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function f (cosine).</span></span>
-<span id="cb847-5"><a href="fixed.html#cb847-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
-<span id="cb847-6"><a href="fixed.html#cb847-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.cos(x)</span>
-<span id="cb847-7"><a href="fixed.html#cb847-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb847-8"><a href="fixed.html#cb847-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Our threshold for stopping.</span></span>
-<span id="cb847-9"><a href="fixed.html#cb847-9" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> <span class="fl">1.e-8</span></span>
-<span id="cb847-10"><a href="fixed.html#cb847-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb847-11"><a href="fixed.html#cb847-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial point x_0.</span></span>
-<span id="cb847-12"><a href="fixed.html#cb847-12" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">0.1</span></span>
-<span id="cb847-13"><a href="fixed.html#cb847-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb847-14"><a href="fixed.html#cb847-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the first iterate, </span></span>
-<span id="cb847-15"><a href="fixed.html#cb847-15" aria-hidden="true" tabindex="-1"></a><span class="co"># so we can evaluate the stopping criterion.</span></span>
-<span id="cb847-16"><a href="fixed.html#cb847-16" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> f(x) </span>
-<span id="cb847-17"><a href="fixed.html#cb847-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb847-18"><a href="fixed.html#cb847-18" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">abs</span>(x<span class="op">-</span>x1) <span class="op">&gt;</span> eps:</span>
-<span id="cb847-19"><a href="fixed.html#cb847-19" aria-hidden="true" tabindex="-1"></a>   x <span class="op">=</span> x1 <span class="co">#Replace x by the next iteration x1. </span></span>
-<span id="cb847-20"><a href="fixed.html#cb847-20" aria-hidden="true" tabindex="-1"></a>   x1 <span class="op">=</span> f(x) <span class="co">#Compute the next iteration</span></span>
-<span id="cb847-21"><a href="fixed.html#cb847-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb847-22"><a href="fixed.html#cb847-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Show x1</span></span>
-<span id="cb847-23"><a href="fixed.html#cb847-23" aria-hidden="true" tabindex="-1"></a>x1 </span></code></pre></div>
+<div class="sourceCode" id="cb836"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb836-1"><a href="fixed.html#cb836-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the numpy module</span></span>
+<span id="cb836-2"><a href="fixed.html#cb836-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb836-3"><a href="fixed.html#cb836-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb836-4"><a href="fixed.html#cb836-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function f (cosine).</span></span>
+<span id="cb836-5"><a href="fixed.html#cb836-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
+<span id="cb836-6"><a href="fixed.html#cb836-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.cos(x)</span>
+<span id="cb836-7"><a href="fixed.html#cb836-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb836-8"><a href="fixed.html#cb836-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Our threshold for stopping.</span></span>
+<span id="cb836-9"><a href="fixed.html#cb836-9" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> <span class="fl">1.e-8</span></span>
+<span id="cb836-10"><a href="fixed.html#cb836-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb836-11"><a href="fixed.html#cb836-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial point x_0.</span></span>
+<span id="cb836-12"><a href="fixed.html#cb836-12" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb836-13"><a href="fixed.html#cb836-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb836-14"><a href="fixed.html#cb836-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the first iterate, </span></span>
+<span id="cb836-15"><a href="fixed.html#cb836-15" aria-hidden="true" tabindex="-1"></a><span class="co"># so we can evaluate the stopping criterion.</span></span>
+<span id="cb836-16"><a href="fixed.html#cb836-16" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> f(x) </span>
+<span id="cb836-17"><a href="fixed.html#cb836-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb836-18"><a href="fixed.html#cb836-18" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">abs</span>(x<span class="op">-</span>x1) <span class="op">&gt;</span> eps:</span>
+<span id="cb836-19"><a href="fixed.html#cb836-19" aria-hidden="true" tabindex="-1"></a>   x <span class="op">=</span> x1 <span class="co">#Replace x by the next iteration x1. </span></span>
+<span id="cb836-20"><a href="fixed.html#cb836-20" aria-hidden="true" tabindex="-1"></a>   x1 <span class="op">=</span> f(x) <span class="co">#Compute the next iteration</span></span>
+<span id="cb836-21"><a href="fixed.html#cb836-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb836-22"><a href="fixed.html#cb836-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Show x1</span></span>
+<span id="cb836-23"><a href="fixed.html#cb836-23" aria-hidden="true" tabindex="-1"></a>x1 </span></code></pre></div>
 <pre><code>## 0.7390851365828572</code></pre>
 </div>
 </div>
@@ -420,66 +420,66 @@ However, it works well in practice.</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb849"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb849-1"><a href="fixed.html#cb849-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function f (cosine).</span></span>
-<span id="cb849-2"><a href="fixed.html#cb849-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">cos</span>(x)</span>
-<span id="cb849-3"><a href="fixed.html#cb849-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb849-4"><a href="fixed.html#cb849-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Our thresholds for stopping.</span></span>
-<span id="cb849-5"><a href="fixed.html#cb849-5" aria-hidden="true" tabindex="-1"></a>eps <span class="ot">&lt;-</span> <span class="dv">1</span>.e<span class="dv">-8</span></span>
-<span id="cb849-6"><a href="fixed.html#cb849-6" aria-hidden="true" tabindex="-1"></a>itmax <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb849-7"><a href="fixed.html#cb849-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb849-8"><a href="fixed.html#cb849-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial point x_0.</span></span>
-<span id="cb849-9"><a href="fixed.html#cb849-9" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
-<span id="cb849-10"><a href="fixed.html#cb849-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb849-11"><a href="fixed.html#cb849-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the first iterate, </span></span>
-<span id="cb849-12"><a href="fixed.html#cb849-12" aria-hidden="true" tabindex="-1"></a><span class="co"># so we can evaluate the stopping criterion.</span></span>
-<span id="cb849-13"><a href="fixed.html#cb849-13" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">f</span>(x) </span>
-<span id="cb849-14"><a href="fixed.html#cb849-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb849-15"><a href="fixed.html#cb849-15" aria-hidden="true" tabindex="-1"></a>it <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># Iteration counter</span></span>
-<span id="cb849-16"><a href="fixed.html#cb849-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb849-17"><a href="fixed.html#cb849-17" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(<span class="fu">abs</span>(x<span class="sc">-</span>x1) <span class="sc">&gt;</span> eps <span class="sc">&amp;</span> it <span class="sc">&lt;</span> itmax ){</span>
-<span id="cb849-18"><a href="fixed.html#cb849-18" aria-hidden="true" tabindex="-1"></a>   x <span class="ot">&lt;-</span> x1 <span class="co">#Replace x by the next iteration x1. </span></span>
-<span id="cb849-19"><a href="fixed.html#cb849-19" aria-hidden="true" tabindex="-1"></a>   x1 <span class="ot">&lt;-</span> <span class="fu">f</span>(x) <span class="co">#Compute the next iteration</span></span>
-<span id="cb849-20"><a href="fixed.html#cb849-20" aria-hidden="true" tabindex="-1"></a>   it <span class="ot">&lt;-</span> it <span class="sc">+</span> <span class="dv">1</span> <span class="co">#Update counter</span></span>
-<span id="cb849-21"><a href="fixed.html#cb849-21" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb849-22"><a href="fixed.html#cb849-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb849-23"><a href="fixed.html#cb849-23" aria-hidden="true" tabindex="-1"></a><span class="co">#Print number of iterations:</span></span>
-<span id="cb849-24"><a href="fixed.html#cb849-24" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Iterations: &quot;</span>,it))</span></code></pre></div>
+<div class="sourceCode" id="cb838"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb838-1"><a href="fixed.html#cb838-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function f (cosine).</span></span>
+<span id="cb838-2"><a href="fixed.html#cb838-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">cos</span>(x)</span>
+<span id="cb838-3"><a href="fixed.html#cb838-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb838-4"><a href="fixed.html#cb838-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Our thresholds for stopping.</span></span>
+<span id="cb838-5"><a href="fixed.html#cb838-5" aria-hidden="true" tabindex="-1"></a>eps <span class="ot">&lt;-</span> <span class="dv">1</span>.e<span class="dv">-8</span></span>
+<span id="cb838-6"><a href="fixed.html#cb838-6" aria-hidden="true" tabindex="-1"></a>itmax <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb838-7"><a href="fixed.html#cb838-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb838-8"><a href="fixed.html#cb838-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial point x_0.</span></span>
+<span id="cb838-9"><a href="fixed.html#cb838-9" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb838-10"><a href="fixed.html#cb838-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb838-11"><a href="fixed.html#cb838-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the first iterate, </span></span>
+<span id="cb838-12"><a href="fixed.html#cb838-12" aria-hidden="true" tabindex="-1"></a><span class="co"># so we can evaluate the stopping criterion.</span></span>
+<span id="cb838-13"><a href="fixed.html#cb838-13" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">f</span>(x) </span>
+<span id="cb838-14"><a href="fixed.html#cb838-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb838-15"><a href="fixed.html#cb838-15" aria-hidden="true" tabindex="-1"></a>it <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># Iteration counter</span></span>
+<span id="cb838-16"><a href="fixed.html#cb838-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb838-17"><a href="fixed.html#cb838-17" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(<span class="fu">abs</span>(x<span class="sc">-</span>x1) <span class="sc">&gt;</span> eps <span class="sc">&amp;</span> it <span class="sc">&lt;</span> itmax ){</span>
+<span id="cb838-18"><a href="fixed.html#cb838-18" aria-hidden="true" tabindex="-1"></a>   x <span class="ot">&lt;-</span> x1 <span class="co">#Replace x by the next iteration x1. </span></span>
+<span id="cb838-19"><a href="fixed.html#cb838-19" aria-hidden="true" tabindex="-1"></a>   x1 <span class="ot">&lt;-</span> <span class="fu">f</span>(x) <span class="co">#Compute the next iteration</span></span>
+<span id="cb838-20"><a href="fixed.html#cb838-20" aria-hidden="true" tabindex="-1"></a>   it <span class="ot">&lt;-</span> it <span class="sc">+</span> <span class="dv">1</span> <span class="co">#Update counter</span></span>
+<span id="cb838-21"><a href="fixed.html#cb838-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb838-22"><a href="fixed.html#cb838-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb838-23"><a href="fixed.html#cb838-23" aria-hidden="true" tabindex="-1"></a><span class="co">#Print number of iterations:</span></span>
+<span id="cb838-24"><a href="fixed.html#cb838-24" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Iterations: &quot;</span>,it))</span></code></pre></div>
 <pre><code>## [1] &quot;Iterations:  46&quot;</code></pre>
-<div class="sourceCode" id="cb851"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb851-1"><a href="fixed.html#cb851-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show x1. Note that the latest iteration is now x1.</span></span>
-<span id="cb851-2"><a href="fixed.html#cb851-2" aria-hidden="true" tabindex="-1"></a>x1 </span></code></pre></div>
+<div class="sourceCode" id="cb840"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb840-1"><a href="fixed.html#cb840-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show x1. Note that the latest iteration is now x1.</span></span>
+<span id="cb840-2"><a href="fixed.html#cb840-2" aria-hidden="true" tabindex="-1"></a>x1 </span></code></pre></div>
 <pre><code>## [1] 0.7390851</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb853"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb853-1"><a href="fixed.html#cb853-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the numpy module</span></span>
-<span id="cb853-2"><a href="fixed.html#cb853-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb853-3"><a href="fixed.html#cb853-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb853-4"><a href="fixed.html#cb853-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function f (cosine).</span></span>
-<span id="cb853-5"><a href="fixed.html#cb853-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
-<span id="cb853-6"><a href="fixed.html#cb853-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.cos(x)</span>
-<span id="cb853-7"><a href="fixed.html#cb853-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb853-8"><a href="fixed.html#cb853-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Our threshold for stopping.</span></span>
-<span id="cb853-9"><a href="fixed.html#cb853-9" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> <span class="fl">1.e-8</span></span>
-<span id="cb853-10"><a href="fixed.html#cb853-10" aria-hidden="true" tabindex="-1"></a>itmax <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb853-11"><a href="fixed.html#cb853-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb853-12"><a href="fixed.html#cb853-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial point x_0.</span></span>
-<span id="cb853-13"><a href="fixed.html#cb853-13" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">0.1</span></span>
-<span id="cb853-14"><a href="fixed.html#cb853-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb853-15"><a href="fixed.html#cb853-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the first iterate, </span></span>
-<span id="cb853-16"><a href="fixed.html#cb853-16" aria-hidden="true" tabindex="-1"></a><span class="co"># so we can evaluate the stopping criterion.</span></span>
-<span id="cb853-17"><a href="fixed.html#cb853-17" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> f(x) </span>
-<span id="cb853-18"><a href="fixed.html#cb853-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb853-19"><a href="fixed.html#cb853-19" aria-hidden="true" tabindex="-1"></a>it <span class="op">=</span> <span class="dv">0</span> <span class="co"># Iteration counter</span></span>
-<span id="cb853-20"><a href="fixed.html#cb853-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb853-21"><a href="fixed.html#cb853-21" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">abs</span>(x<span class="op">-</span>x1) <span class="op">&gt;</span> eps <span class="kw">and</span> it <span class="op">&lt;</span> itmax:</span>
-<span id="cb853-22"><a href="fixed.html#cb853-22" aria-hidden="true" tabindex="-1"></a>   x <span class="op">=</span> x1 <span class="co">#Replace x by the next iteration x1. </span></span>
-<span id="cb853-23"><a href="fixed.html#cb853-23" aria-hidden="true" tabindex="-1"></a>   x1 <span class="op">=</span> f(x) <span class="co">#Compute the next iteration</span></span>
-<span id="cb853-24"><a href="fixed.html#cb853-24" aria-hidden="true" tabindex="-1"></a>   it <span class="op">=</span> it <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb853-25"><a href="fixed.html#cb853-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb853-26"><a href="fixed.html#cb853-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Iterations: </span><span class="sc">{}</span><span class="st">&quot;</span>.<span class="bu">format</span>(it))</span></code></pre></div>
+<div class="sourceCode" id="cb842"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb842-1"><a href="fixed.html#cb842-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the numpy module</span></span>
+<span id="cb842-2"><a href="fixed.html#cb842-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb842-3"><a href="fixed.html#cb842-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb842-4"><a href="fixed.html#cb842-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function f (cosine).</span></span>
+<span id="cb842-5"><a href="fixed.html#cb842-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
+<span id="cb842-6"><a href="fixed.html#cb842-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.cos(x)</span>
+<span id="cb842-7"><a href="fixed.html#cb842-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb842-8"><a href="fixed.html#cb842-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Our threshold for stopping.</span></span>
+<span id="cb842-9"><a href="fixed.html#cb842-9" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> <span class="fl">1.e-8</span></span>
+<span id="cb842-10"><a href="fixed.html#cb842-10" aria-hidden="true" tabindex="-1"></a>itmax <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb842-11"><a href="fixed.html#cb842-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb842-12"><a href="fixed.html#cb842-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial point x_0.</span></span>
+<span id="cb842-13"><a href="fixed.html#cb842-13" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb842-14"><a href="fixed.html#cb842-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb842-15"><a href="fixed.html#cb842-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the first iterate, </span></span>
+<span id="cb842-16"><a href="fixed.html#cb842-16" aria-hidden="true" tabindex="-1"></a><span class="co"># so we can evaluate the stopping criterion.</span></span>
+<span id="cb842-17"><a href="fixed.html#cb842-17" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> f(x) </span>
+<span id="cb842-18"><a href="fixed.html#cb842-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb842-19"><a href="fixed.html#cb842-19" aria-hidden="true" tabindex="-1"></a>it <span class="op">=</span> <span class="dv">0</span> <span class="co"># Iteration counter</span></span>
+<span id="cb842-20"><a href="fixed.html#cb842-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb842-21"><a href="fixed.html#cb842-21" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">abs</span>(x<span class="op">-</span>x1) <span class="op">&gt;</span> eps <span class="kw">and</span> it <span class="op">&lt;</span> itmax:</span>
+<span id="cb842-22"><a href="fixed.html#cb842-22" aria-hidden="true" tabindex="-1"></a>   x <span class="op">=</span> x1 <span class="co">#Replace x by the next iteration x1. </span></span>
+<span id="cb842-23"><a href="fixed.html#cb842-23" aria-hidden="true" tabindex="-1"></a>   x1 <span class="op">=</span> f(x) <span class="co">#Compute the next iteration</span></span>
+<span id="cb842-24"><a href="fixed.html#cb842-24" aria-hidden="true" tabindex="-1"></a>   it <span class="op">=</span> it <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb842-25"><a href="fixed.html#cb842-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb842-26"><a href="fixed.html#cb842-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Iterations: </span><span class="sc">{}</span><span class="st">&quot;</span>.<span class="bu">format</span>(it))</span></code></pre></div>
 <pre><code>## Iterations: 46</code></pre>
-<div class="sourceCode" id="cb855"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb855-1"><a href="fixed.html#cb855-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show x1</span></span>
-<span id="cb855-2"><a href="fixed.html#cb855-2" aria-hidden="true" tabindex="-1"></a>x1 </span></code></pre></div>
+<div class="sourceCode" id="cb844"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb844-1"><a href="fixed.html#cb844-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show x1</span></span>
+<span id="cb844-2"><a href="fixed.html#cb844-2" aria-hidden="true" tabindex="-1"></a>x1 </span></code></pre></div>
 <pre><code>## 0.7390851365828572</code></pre>
 </div>
 </div>
@@ -552,48 +552,48 @@ n \geq \frac{\log(\varepsilon) - \log(|b-a|)}{\log(k)}.
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb857"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb857-1"><a href="fixed.html#cb857-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function f (cosine).</span></span>
-<span id="cb857-2"><a href="fixed.html#cb857-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> \(x) x<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb857-3"><a href="fixed.html#cb857-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb857-4"><a href="fixed.html#cb857-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial point x_0.</span></span>
-<span id="cb857-5"><a href="fixed.html#cb857-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
-<span id="cb857-6"><a href="fixed.html#cb857-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb857-7"><a href="fixed.html#cb857-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Fixed desired error</span></span>
-<span id="cb857-8"><a href="fixed.html#cb857-8" aria-hidden="true" tabindex="-1"></a>eps <span class="ot">&lt;-</span> <span class="dv">1</span>.e<span class="dv">-1</span></span>
-<span id="cb857-9"><a href="fixed.html#cb857-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb857-10"><a href="fixed.html#cb857-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute number of iterations (next integer)</span></span>
-<span id="cb857-11"><a href="fixed.html#cb857-11" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">ceiling</span>((<span class="fu">log</span>(eps) <span class="sc">-</span> <span class="fu">log</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>))<span class="sc">/</span><span class="fu">log</span>(<span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>))</span>
-<span id="cb857-12"><a href="fixed.html#cb857-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb857-13"><a href="fixed.html#cb857-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N){</span>
-<span id="cb857-14"><a href="fixed.html#cb857-14" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">f</span>(x)</span>
-<span id="cb857-15"><a href="fixed.html#cb857-15" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb857-16"><a href="fixed.html#cb857-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb857-17"><a href="fixed.html#cb857-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Show x.</span></span>
-<span id="cb857-18"><a href="fixed.html#cb857-18" aria-hidden="true" tabindex="-1"></a>x </span></code></pre></div>
+<div class="sourceCode" id="cb846"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb846-1"><a href="fixed.html#cb846-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function f (cosine).</span></span>
+<span id="cb846-2"><a href="fixed.html#cb846-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> \(x) x<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb846-3"><a href="fixed.html#cb846-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb846-4"><a href="fixed.html#cb846-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial point x_0.</span></span>
+<span id="cb846-5"><a href="fixed.html#cb846-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb846-6"><a href="fixed.html#cb846-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb846-7"><a href="fixed.html#cb846-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Fixed desired error</span></span>
+<span id="cb846-8"><a href="fixed.html#cb846-8" aria-hidden="true" tabindex="-1"></a>eps <span class="ot">&lt;-</span> <span class="dv">1</span>.e<span class="dv">-1</span></span>
+<span id="cb846-9"><a href="fixed.html#cb846-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb846-10"><a href="fixed.html#cb846-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute number of iterations (next integer)</span></span>
+<span id="cb846-11"><a href="fixed.html#cb846-11" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">ceiling</span>((<span class="fu">log</span>(eps) <span class="sc">-</span> <span class="fu">log</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>))<span class="sc">/</span><span class="fu">log</span>(<span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>))</span>
+<span id="cb846-12"><a href="fixed.html#cb846-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb846-13"><a href="fixed.html#cb846-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N){</span>
+<span id="cb846-14"><a href="fixed.html#cb846-14" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">f</span>(x)</span>
+<span id="cb846-15"><a href="fixed.html#cb846-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb846-16"><a href="fixed.html#cb846-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb846-17"><a href="fixed.html#cb846-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Show x.</span></span>
+<span id="cb846-18"><a href="fixed.html#cb846-18" aria-hidden="true" tabindex="-1"></a>x </span></code></pre></div>
 <pre><code>## [1] 1e-08</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb859"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb859-1"><a href="fixed.html#cb859-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the numpy module</span></span>
-<span id="cb859-2"><a href="fixed.html#cb859-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb859-3"><a href="fixed.html#cb859-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb859-4"><a href="fixed.html#cb859-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function f</span></span>
-<span id="cb859-5"><a href="fixed.html#cb859-5" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb859-6"><a href="fixed.html#cb859-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb859-7"><a href="fixed.html#cb859-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial point x_0.</span></span>
-<span id="cb859-8"><a href="fixed.html#cb859-8" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">0.1</span></span>
-<span id="cb859-9"><a href="fixed.html#cb859-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb859-10"><a href="fixed.html#cb859-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Fixed desired error</span></span>
-<span id="cb859-11"><a href="fixed.html#cb859-11" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> <span class="fl">1.e-1</span></span>
-<span id="cb859-12"><a href="fixed.html#cb859-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb859-13"><a href="fixed.html#cb859-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute number of iterations (next integer)</span></span>
-<span id="cb859-14"><a href="fixed.html#cb859-14" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="bu">int</span>(np.ceil((np.log(eps) <span class="op">-</span> np.log(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>))<span class="op">/</span>np.log(<span class="dv">2</span><span class="op">/</span><span class="dv">3</span>)))</span>
-<span id="cb859-15"><a href="fixed.html#cb859-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb859-16"><a href="fixed.html#cb859-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N): </span>
-<span id="cb859-17"><a href="fixed.html#cb859-17" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> f(x)</span>
-<span id="cb859-18"><a href="fixed.html#cb859-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb859-19"><a href="fixed.html#cb859-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Show x.</span></span>
-<span id="cb859-20"><a href="fixed.html#cb859-20" aria-hidden="true" tabindex="-1"></a>x </span></code></pre></div>
+<div class="sourceCode" id="cb848"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb848-1"><a href="fixed.html#cb848-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the numpy module</span></span>
+<span id="cb848-2"><a href="fixed.html#cb848-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb848-3"><a href="fixed.html#cb848-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb848-4"><a href="fixed.html#cb848-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function f</span></span>
+<span id="cb848-5"><a href="fixed.html#cb848-5" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb848-6"><a href="fixed.html#cb848-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb848-7"><a href="fixed.html#cb848-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial point x_0.</span></span>
+<span id="cb848-8"><a href="fixed.html#cb848-8" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb848-9"><a href="fixed.html#cb848-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb848-10"><a href="fixed.html#cb848-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Fixed desired error</span></span>
+<span id="cb848-11"><a href="fixed.html#cb848-11" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> <span class="fl">1.e-1</span></span>
+<span id="cb848-12"><a href="fixed.html#cb848-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb848-13"><a href="fixed.html#cb848-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute number of iterations (next integer)</span></span>
+<span id="cb848-14"><a href="fixed.html#cb848-14" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="bu">int</span>(np.ceil((np.log(eps) <span class="op">-</span> np.log(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>))<span class="op">/</span>np.log(<span class="dv">2</span><span class="op">/</span><span class="dv">3</span>)))</span>
+<span id="cb848-15"><a href="fixed.html#cb848-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb848-16"><a href="fixed.html#cb848-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N): </span>
+<span id="cb848-17"><a href="fixed.html#cb848-17" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> f(x)</span>
+<span id="cb848-18"><a href="fixed.html#cb848-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb848-19"><a href="fixed.html#cb848-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Show x.</span></span>
+<span id="cb848-20"><a href="fixed.html#cb848-20" aria-hidden="true" tabindex="-1"></a>x </span></code></pre></div>
 <pre><code>## 1.0000000000000008e-08</code></pre>
 </div>
 </div>

@@ -440,36 +440,36 @@ y(x) = \frac{5x-1}{25} \exp (2x) + \frac{1}{25}\exp(-3x),
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb932"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb932-1"><a href="ode.html#cb932-1" aria-hidden="true" tabindex="-1"></a><span class="co"># euler(f, a, b, y0, N) computes the vector hat_y which approximates the </span></span>
-<span id="cb932-2"><a href="ode.html#cb932-2" aria-hidden="true" tabindex="-1"></a><span class="co"># solution to the ODE y&#39; = f(x,y) on [a,b] with initial condition y(a)=y0.</span></span>
-<span id="cb932-3"><a href="ode.html#cb932-3" aria-hidden="true" tabindex="-1"></a><span class="co"># It uses step-size h=(b-a)/N so hat_y[i] approximates y(a + (i-1)h).</span></span>
-<span id="cb932-4"><a href="ode.html#cb932-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb932-5"><a href="ode.html#cb932-5" aria-hidden="true" tabindex="-1"></a>euler <span class="ot">=</span> <span class="cf">function</span>(f, a, b, y0, N){</span>
-<span id="cb932-6"><a href="ode.html#cb932-6" aria-hidden="true" tabindex="-1"></a>  h <span class="ot">=</span> (b<span class="sc">-</span>a)<span class="sc">/</span>N</span>
-<span id="cb932-7"><a href="ode.html#cb932-7" aria-hidden="true" tabindex="-1"></a>  x_seq <span class="ot">=</span> <span class="fu">seq</span>(a, b, h)</span>
-<span id="cb932-8"><a href="ode.html#cb932-8" aria-hidden="true" tabindex="-1"></a>  hat_y <span class="ot">=</span> <span class="fu">rep</span>(y0, N<span class="sc">+</span><span class="dv">1</span>)</span>
-<span id="cb932-9"><a href="ode.html#cb932-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N){</span>
-<span id="cb932-10"><a href="ode.html#cb932-10" aria-hidden="true" tabindex="-1"></a>    hat_y[i<span class="sc">+</span><span class="dv">1</span>] <span class="ot">=</span> hat_y[i] <span class="sc">+</span> h<span class="sc">*</span><span class="fu">f</span>(x_seq[i], hat_y[i])</span>
-<span id="cb932-11"><a href="ode.html#cb932-11" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb932-12"><a href="ode.html#cb932-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">x=</span>x_seq, <span class="at">y=</span>hat_y))</span>
-<span id="cb932-13"><a href="ode.html#cb932-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb921"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb921-1"><a href="ode.html#cb921-1" aria-hidden="true" tabindex="-1"></a><span class="co"># euler(f, a, b, y0, N) computes the vector hat_y which approximates the </span></span>
+<span id="cb921-2"><a href="ode.html#cb921-2" aria-hidden="true" tabindex="-1"></a><span class="co"># solution to the ODE y&#39; = f(x,y) on [a,b] with initial condition y(a)=y0.</span></span>
+<span id="cb921-3"><a href="ode.html#cb921-3" aria-hidden="true" tabindex="-1"></a><span class="co"># It uses step-size h=(b-a)/N so hat_y[i] approximates y(a + (i-1)h).</span></span>
+<span id="cb921-4"><a href="ode.html#cb921-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb921-5"><a href="ode.html#cb921-5" aria-hidden="true" tabindex="-1"></a>euler <span class="ot">=</span> <span class="cf">function</span>(f, a, b, y0, N){</span>
+<span id="cb921-6"><a href="ode.html#cb921-6" aria-hidden="true" tabindex="-1"></a>  h <span class="ot">=</span> (b<span class="sc">-</span>a)<span class="sc">/</span>N</span>
+<span id="cb921-7"><a href="ode.html#cb921-7" aria-hidden="true" tabindex="-1"></a>  x_seq <span class="ot">=</span> <span class="fu">seq</span>(a, b, h)</span>
+<span id="cb921-8"><a href="ode.html#cb921-8" aria-hidden="true" tabindex="-1"></a>  hat_y <span class="ot">=</span> <span class="fu">rep</span>(y0, N<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb921-9"><a href="ode.html#cb921-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N){</span>
+<span id="cb921-10"><a href="ode.html#cb921-10" aria-hidden="true" tabindex="-1"></a>    hat_y[i<span class="sc">+</span><span class="dv">1</span>] <span class="ot">=</span> hat_y[i] <span class="sc">+</span> h<span class="sc">*</span><span class="fu">f</span>(x_seq[i], hat_y[i])</span>
+<span id="cb921-11"><a href="ode.html#cb921-11" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb921-12"><a href="ode.html#cb921-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">x=</span>x_seq, <span class="at">y=</span>hat_y))</span>
+<span id="cb921-13"><a href="ode.html#cb921-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb933"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb933-1"><a href="ode.html#cb933-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb933-2"><a href="ode.html#cb933-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> euler(f,a,b,y0,N):</span>
-<span id="cb933-3"><a href="ode.html#cb933-3" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> (b<span class="op">-</span>a)<span class="op">/</span>N</span>
-<span id="cb933-4"><a href="ode.html#cb933-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb933-5"><a href="ode.html#cb933-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#from a to b in steps of h </span></span>
-<span id="cb933-6"><a href="ode.html#cb933-6" aria-hidden="true" tabindex="-1"></a>    x_seq <span class="op">=</span> np.arange(a,b,h)</span>
-<span id="cb933-7"><a href="ode.html#cb933-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb933-8"><a href="ode.html#cb933-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Initial value y0</span></span>
-<span id="cb933-9"><a href="ode.html#cb933-9" aria-hidden="true" tabindex="-1"></a>    hat_y <span class="op">=</span> y0<span class="op">*</span>np.ones(N<span class="op">+</span><span class="dv">1</span>) <span class="co">#N+1 values </span></span>
-<span id="cb933-10"><a href="ode.html#cb933-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb933-11"><a href="ode.html#cb933-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,N):</span>
-<span id="cb933-12"><a href="ode.html#cb933-12" aria-hidden="true" tabindex="-1"></a>        hat_y[i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> hat_y[i] <span class="op">+</span> h<span class="op">*</span>f(x_seq[i],hat_y[i])</span>
-<span id="cb933-13"><a href="ode.html#cb933-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb933-14"><a href="ode.html#cb933-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x_seq,hat_y</span></code></pre></div>
+<div class="sourceCode" id="cb922"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb922-1"><a href="ode.html#cb922-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb922-2"><a href="ode.html#cb922-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> euler(f,a,b,y0,N):</span>
+<span id="cb922-3"><a href="ode.html#cb922-3" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> (b<span class="op">-</span>a)<span class="op">/</span>N</span>
+<span id="cb922-4"><a href="ode.html#cb922-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb922-5"><a href="ode.html#cb922-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#from a to b in steps of h </span></span>
+<span id="cb922-6"><a href="ode.html#cb922-6" aria-hidden="true" tabindex="-1"></a>    x_seq <span class="op">=</span> np.arange(a,b,h)</span>
+<span id="cb922-7"><a href="ode.html#cb922-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb922-8"><a href="ode.html#cb922-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Initial value y0</span></span>
+<span id="cb922-9"><a href="ode.html#cb922-9" aria-hidden="true" tabindex="-1"></a>    hat_y <span class="op">=</span> y0<span class="op">*</span>np.ones(N<span class="op">+</span><span class="dv">1</span>) <span class="co">#N+1 values </span></span>
+<span id="cb922-10"><a href="ode.html#cb922-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb922-11"><a href="ode.html#cb922-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,N):</span>
+<span id="cb922-12"><a href="ode.html#cb922-12" aria-hidden="true" tabindex="-1"></a>        hat_y[i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> hat_y[i] <span class="op">+</span> h<span class="op">*</span>f(x_seq[i],hat_y[i])</span>
+<span id="cb922-13"><a href="ode.html#cb922-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb922-14"><a href="ode.html#cb922-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x_seq,hat_y</span></code></pre></div>
 </div>
 </div>
 <p>In order to solve the ODE above, we need to implement the Euler method with
@@ -480,34 +480,34 @@ We compare it with the exact solution, taking <span class="math inline">\(N=2\)<
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb934"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb934-1"><a href="ode.html#cb934-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">=</span> <span class="cf">function</span>(x, y){</span>
-<span id="cb934-2"><a href="ode.html#cb934-2" aria-hidden="true" tabindex="-1"></a>  x<span class="sc">*</span><span class="fu">exp</span>(<span class="dv">2</span><span class="sc">*</span>x) <span class="sc">-</span> <span class="dv">3</span><span class="sc">*</span>y</span>
-<span id="cb934-3"><a href="ode.html#cb934-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb934-4"><a href="ode.html#cb934-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb934-5"><a href="ode.html#cb934-5" aria-hidden="true" tabindex="-1"></a>yexact <span class="ot">=</span> <span class="cf">function</span>(x){</span>
-<span id="cb934-6"><a href="ode.html#cb934-6" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">5</span><span class="sc">*</span>x <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">*</span><span class="fu">exp</span>(<span class="dv">2</span><span class="sc">*</span>x)<span class="sc">/</span><span class="dv">25</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="dv">3</span><span class="sc">*</span>x)<span class="sc">/</span><span class="dv">25</span></span>
-<span id="cb934-7"><a href="ode.html#cb934-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb934-8"><a href="ode.html#cb934-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb934-9"><a href="ode.html#cb934-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">euler</span>(f, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb923"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb923-1"><a href="ode.html#cb923-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">=</span> <span class="cf">function</span>(x, y){</span>
+<span id="cb923-2"><a href="ode.html#cb923-2" aria-hidden="true" tabindex="-1"></a>  x<span class="sc">*</span><span class="fu">exp</span>(<span class="dv">2</span><span class="sc">*</span>x) <span class="sc">-</span> <span class="dv">3</span><span class="sc">*</span>y</span>
+<span id="cb923-3"><a href="ode.html#cb923-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb923-4"><a href="ode.html#cb923-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb923-5"><a href="ode.html#cb923-5" aria-hidden="true" tabindex="-1"></a>yexact <span class="ot">=</span> <span class="cf">function</span>(x){</span>
+<span id="cb923-6"><a href="ode.html#cb923-6" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">5</span><span class="sc">*</span>x <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">*</span><span class="fu">exp</span>(<span class="dv">2</span><span class="sc">*</span>x)<span class="sc">/</span><span class="dv">25</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="dv">3</span><span class="sc">*</span>x)<span class="sc">/</span><span class="dv">25</span></span>
+<span id="cb923-7"><a href="ode.html#cb923-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb923-8"><a href="ode.html#cb923-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb923-9"><a href="ode.html#cb923-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">euler</span>(f, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## $x
 ## [1] 0.0 0.5 1.0
 ## 
 ## $y
 ## [1] 0.0000000 0.0000000 0.6795705</code></pre>
-<div class="sourceCode" id="cb936"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb936-1"><a href="ode.html#cb936-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">yexact</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb925"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb925-1"><a href="ode.html#cb925-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">yexact</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>)))</span></code></pre></div>
 <pre><code>## [1] 0.0000000 0.1720221 1.1842405</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb938"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb938-1"><a href="ode.html#cb938-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x,y):</span>
-<span id="cb938-2"><a href="ode.html#cb938-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x<span class="op">*</span>np.exp(<span class="dv">2</span><span class="op">*</span>x) <span class="op">-</span> <span class="dv">3</span><span class="op">*</span>y</span>
-<span id="cb938-3"><a href="ode.html#cb938-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb938-4"><a href="ode.html#cb938-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> yexact(x):</span>
-<span id="cb938-5"><a href="ode.html#cb938-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (<span class="dv">5</span><span class="op">*</span>x<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>np.exp(<span class="dv">2</span><span class="op">*</span>x)<span class="op">/</span><span class="dv">25</span> <span class="op">+</span> np.exp(<span class="op">-</span><span class="dv">3</span><span class="op">*</span>x)<span class="op">/</span><span class="dv">25</span></span>
-<span id="cb938-6"><a href="ode.html#cb938-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb938-7"><a href="ode.html#cb938-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(euler(f,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb927"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb927-1"><a href="ode.html#cb927-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x,y):</span>
+<span id="cb927-2"><a href="ode.html#cb927-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x<span class="op">*</span>np.exp(<span class="dv">2</span><span class="op">*</span>x) <span class="op">-</span> <span class="dv">3</span><span class="op">*</span>y</span>
+<span id="cb927-3"><a href="ode.html#cb927-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb927-4"><a href="ode.html#cb927-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> yexact(x):</span>
+<span id="cb927-5"><a href="ode.html#cb927-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (<span class="dv">5</span><span class="op">*</span>x<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>np.exp(<span class="dv">2</span><span class="op">*</span>x)<span class="op">/</span><span class="dv">25</span> <span class="op">+</span> np.exp(<span class="op">-</span><span class="dv">3</span><span class="op">*</span>x)<span class="op">/</span><span class="dv">25</span></span>
+<span id="cb927-6"><a href="ode.html#cb927-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb927-7"><a href="ode.html#cb927-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(euler(f,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## (array([0. , 0.5]), array([0.        , 0.        , 0.67957046]))</code></pre>
-<div class="sourceCode" id="cb940"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb940-1"><a href="ode.html#cb940-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([yexact(x) <span class="cf">for</span> x <span class="kw">in</span> [<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="dv">1</span>]])</span></code></pre></div>
+<div class="sourceCode" id="cb929"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb929-1"><a href="ode.html#cb929-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([yexact(x) <span class="cf">for</span> x <span class="kw">in</span> [<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="dv">1</span>]])</span></code></pre></div>
 <pre><code>## [0.0, 0.1720221161134799, 1.1842404585636186]</code></pre>
 </div>
 </div>
@@ -636,47 +636,47 @@ with initial condition <span class="math inline">\((x(0),y(0))=(0,1)\)</span>. S
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb942"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb942-1"><a href="ode.html#cb942-1" aria-hidden="true" tabindex="-1"></a><span class="co"># midpoint_system(f, a, b, x0, N) computes the matrix hat_x which approximates</span></span>
-<span id="cb942-2"><a href="ode.html#cb942-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the solution to the ODE x&#39; = f(t,x) on [a,b] with initial condition x(a)=x0.</span></span>
-<span id="cb942-3"><a href="ode.html#cb942-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Here t is a scalar in [a,b] and x is a vector with the same dimension as f.</span></span>
-<span id="cb942-4"><a href="ode.html#cb942-4" aria-hidden="true" tabindex="-1"></a><span class="co"># It uses step-size h=(b-a)/N so hat_x[i,] approximates x(a + (i-1)h).</span></span>
-<span id="cb942-5"><a href="ode.html#cb942-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb942-6"><a href="ode.html#cb942-6" aria-hidden="true" tabindex="-1"></a>midpoint_system <span class="ot">=</span> <span class="cf">function</span>(f, a, b, x0, N){</span>
-<span id="cb942-7"><a href="ode.html#cb942-7" aria-hidden="true" tabindex="-1"></a>  h <span class="ot">=</span> (b<span class="sc">-</span>a)<span class="sc">/</span>N</span>
-<span id="cb942-8"><a href="ode.html#cb942-8" aria-hidden="true" tabindex="-1"></a>  time_seq <span class="ot">=</span> <span class="fu">seq</span>(a, b, h)</span>
-<span id="cb942-9"><a href="ode.html#cb942-9" aria-hidden="true" tabindex="-1"></a>  hat_x <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">ncol =</span> <span class="fu">length</span>(x0), <span class="at">nrow =</span> (N<span class="sc">+</span><span class="dv">1</span>))</span>
-<span id="cb942-10"><a href="ode.html#cb942-10" aria-hidden="true" tabindex="-1"></a>  hat_x[<span class="dv">1</span>,] <span class="ot">=</span> x0</span>
-<span id="cb942-11"><a href="ode.html#cb942-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N){</span>
-<span id="cb942-12"><a href="ode.html#cb942-12" aria-hidden="true" tabindex="-1"></a>    w <span class="ot">=</span> hat_x[i,] <span class="sc">+</span> h<span class="sc">*</span><span class="fu">f</span>(time_seq[i], hat_x[i,])<span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb942-13"><a href="ode.html#cb942-13" aria-hidden="true" tabindex="-1"></a>    hat_x[i<span class="sc">+</span><span class="dv">1</span>,] <span class="ot">=</span> hat_x[i,] <span class="sc">+</span> h<span class="sc">*</span><span class="fu">f</span>(time_seq[i]<span class="sc">+</span>h<span class="sc">/</span><span class="dv">2</span>, w)</span>
-<span id="cb942-14"><a href="ode.html#cb942-14" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb942-15"><a href="ode.html#cb942-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">t=</span>time_seq, <span class="at">x=</span>hat_x))</span>
-<span id="cb942-16"><a href="ode.html#cb942-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb942-17"><a href="ode.html#cb942-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb942-18"><a href="ode.html#cb942-18" aria-hidden="true" tabindex="-1"></a><span class="co"># In this function, t is a scalar and x is a 2-dimensional vector</span></span>
-<span id="cb942-19"><a href="ode.html#cb942-19" aria-hidden="true" tabindex="-1"></a>simple_harmonic_f <span class="ot">=</span> <span class="cf">function</span>(t,x){</span>
-<span id="cb942-20"><a href="ode.html#cb942-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(x[<span class="dv">2</span>],<span class="sc">-</span>x[<span class="dv">1</span>])</span>
-<span id="cb942-21"><a href="ode.html#cb942-21" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb942-22"><a href="ode.html#cb942-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb942-23"><a href="ode.html#cb942-23" aria-hidden="true" tabindex="-1"></a>sol <span class="ot">=</span> <span class="fu">midpoint_system</span>(simple_harmonic_f, <span class="dv">0</span>, <span class="dv">2</span><span class="sc">*</span>pi, <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb931"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb931-1"><a href="ode.html#cb931-1" aria-hidden="true" tabindex="-1"></a><span class="co"># midpoint_system(f, a, b, x0, N) computes the matrix hat_x which approximates</span></span>
+<span id="cb931-2"><a href="ode.html#cb931-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the solution to the ODE x&#39; = f(t,x) on [a,b] with initial condition x(a)=x0.</span></span>
+<span id="cb931-3"><a href="ode.html#cb931-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Here t is a scalar in [a,b] and x is a vector with the same dimension as f.</span></span>
+<span id="cb931-4"><a href="ode.html#cb931-4" aria-hidden="true" tabindex="-1"></a><span class="co"># It uses step-size h=(b-a)/N so hat_x[i,] approximates x(a + (i-1)h).</span></span>
+<span id="cb931-5"><a href="ode.html#cb931-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb931-6"><a href="ode.html#cb931-6" aria-hidden="true" tabindex="-1"></a>midpoint_system <span class="ot">=</span> <span class="cf">function</span>(f, a, b, x0, N){</span>
+<span id="cb931-7"><a href="ode.html#cb931-7" aria-hidden="true" tabindex="-1"></a>  h <span class="ot">=</span> (b<span class="sc">-</span>a)<span class="sc">/</span>N</span>
+<span id="cb931-8"><a href="ode.html#cb931-8" aria-hidden="true" tabindex="-1"></a>  time_seq <span class="ot">=</span> <span class="fu">seq</span>(a, b, h)</span>
+<span id="cb931-9"><a href="ode.html#cb931-9" aria-hidden="true" tabindex="-1"></a>  hat_x <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">ncol =</span> <span class="fu">length</span>(x0), <span class="at">nrow =</span> (N<span class="sc">+</span><span class="dv">1</span>))</span>
+<span id="cb931-10"><a href="ode.html#cb931-10" aria-hidden="true" tabindex="-1"></a>  hat_x[<span class="dv">1</span>,] <span class="ot">=</span> x0</span>
+<span id="cb931-11"><a href="ode.html#cb931-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N){</span>
+<span id="cb931-12"><a href="ode.html#cb931-12" aria-hidden="true" tabindex="-1"></a>    w <span class="ot">=</span> hat_x[i,] <span class="sc">+</span> h<span class="sc">*</span><span class="fu">f</span>(time_seq[i], hat_x[i,])<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb931-13"><a href="ode.html#cb931-13" aria-hidden="true" tabindex="-1"></a>    hat_x[i<span class="sc">+</span><span class="dv">1</span>,] <span class="ot">=</span> hat_x[i,] <span class="sc">+</span> h<span class="sc">*</span><span class="fu">f</span>(time_seq[i]<span class="sc">+</span>h<span class="sc">/</span><span class="dv">2</span>, w)</span>
+<span id="cb931-14"><a href="ode.html#cb931-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb931-15"><a href="ode.html#cb931-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">t=</span>time_seq, <span class="at">x=</span>hat_x))</span>
+<span id="cb931-16"><a href="ode.html#cb931-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb931-17"><a href="ode.html#cb931-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb931-18"><a href="ode.html#cb931-18" aria-hidden="true" tabindex="-1"></a><span class="co"># In this function, t is a scalar and x is a 2-dimensional vector</span></span>
+<span id="cb931-19"><a href="ode.html#cb931-19" aria-hidden="true" tabindex="-1"></a>simple_harmonic_f <span class="ot">=</span> <span class="cf">function</span>(t,x){</span>
+<span id="cb931-20"><a href="ode.html#cb931-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(x[<span class="dv">2</span>],<span class="sc">-</span>x[<span class="dv">1</span>])</span>
+<span id="cb931-21"><a href="ode.html#cb931-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb931-22"><a href="ode.html#cb931-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb931-23"><a href="ode.html#cb931-23" aria-hidden="true" tabindex="-1"></a>sol <span class="ot">=</span> <span class="fu">midpoint_system</span>(simple_harmonic_f, <span class="dv">0</span>, <span class="dv">2</span><span class="sc">*</span>pi, <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dv">20</span>)</span></code></pre></div>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb943"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb943-1"><a href="ode.html#cb943-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> midpoint_system(f, a, b, x0, N):</span>
-<span id="cb943-2"><a href="ode.html#cb943-2" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> (b<span class="op">-</span>a)<span class="op">/</span>N</span>
-<span id="cb943-3"><a href="ode.html#cb943-3" aria-hidden="true" tabindex="-1"></a>    time_seq <span class="op">=</span> np.arange(a, b, h)</span>
-<span id="cb943-4"><a href="ode.html#cb943-4" aria-hidden="true" tabindex="-1"></a>    hat_x <span class="op">=</span> np.zeros( (N<span class="op">+</span><span class="dv">1</span>,<span class="bu">len</span>(x0)) )</span>
-<span id="cb943-5"><a href="ode.html#cb943-5" aria-hidden="true" tabindex="-1"></a>    hat_x[<span class="dv">0</span>,:] <span class="op">=</span> x0</span>
-<span id="cb943-6"><a href="ode.html#cb943-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,N):</span>
-<span id="cb943-7"><a href="ode.html#cb943-7" aria-hidden="true" tabindex="-1"></a>        w <span class="op">=</span> hat_x[i,:] <span class="op">+</span> h<span class="op">*</span>f(time_seq[i], hat_x[i,:])<span class="op">/</span><span class="dv">2</span></span>
-<span id="cb943-8"><a href="ode.html#cb943-8" aria-hidden="true" tabindex="-1"></a>        hat_x[i<span class="op">+</span><span class="dv">1</span>,:] <span class="op">=</span> hat_x[i,:] <span class="op">+</span> h<span class="op">*</span>f(time_seq[i]<span class="op">+</span>h<span class="op">/</span><span class="dv">2</span>, w)</span>
-<span id="cb943-9"><a href="ode.html#cb943-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb943-10"><a href="ode.html#cb943-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> time_seq,x</span>
-<span id="cb943-11"><a href="ode.html#cb943-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb943-12"><a href="ode.html#cb943-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> simple_harmonic_f(t,x):</span>
-<span id="cb943-13"><a href="ode.html#cb943-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array((x[<span class="dv">1</span>],<span class="op">-</span>x[<span class="dv">0</span>]))</span>
-<span id="cb943-14"><a href="ode.html#cb943-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb943-15"><a href="ode.html#cb943-15" aria-hidden="true" tabindex="-1"></a>sol <span class="op">=</span> midpoint_system(simple_harmonic_f, <span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>np.pi, np.arange(<span class="dv">2</span>), <span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb932"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb932-1"><a href="ode.html#cb932-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> midpoint_system(f, a, b, x0, N):</span>
+<span id="cb932-2"><a href="ode.html#cb932-2" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> (b<span class="op">-</span>a)<span class="op">/</span>N</span>
+<span id="cb932-3"><a href="ode.html#cb932-3" aria-hidden="true" tabindex="-1"></a>    time_seq <span class="op">=</span> np.arange(a, b, h)</span>
+<span id="cb932-4"><a href="ode.html#cb932-4" aria-hidden="true" tabindex="-1"></a>    hat_x <span class="op">=</span> np.zeros( (N<span class="op">+</span><span class="dv">1</span>,<span class="bu">len</span>(x0)) )</span>
+<span id="cb932-5"><a href="ode.html#cb932-5" aria-hidden="true" tabindex="-1"></a>    hat_x[<span class="dv">0</span>,:] <span class="op">=</span> x0</span>
+<span id="cb932-6"><a href="ode.html#cb932-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,N):</span>
+<span id="cb932-7"><a href="ode.html#cb932-7" aria-hidden="true" tabindex="-1"></a>        w <span class="op">=</span> hat_x[i,:] <span class="op">+</span> h<span class="op">*</span>f(time_seq[i], hat_x[i,:])<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb932-8"><a href="ode.html#cb932-8" aria-hidden="true" tabindex="-1"></a>        hat_x[i<span class="op">+</span><span class="dv">1</span>,:] <span class="op">=</span> hat_x[i,:] <span class="op">+</span> h<span class="op">*</span>f(time_seq[i]<span class="op">+</span>h<span class="op">/</span><span class="dv">2</span>, w)</span>
+<span id="cb932-9"><a href="ode.html#cb932-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb932-10"><a href="ode.html#cb932-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> time_seq,x</span>
+<span id="cb932-11"><a href="ode.html#cb932-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb932-12"><a href="ode.html#cb932-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> simple_harmonic_f(t,x):</span>
+<span id="cb932-13"><a href="ode.html#cb932-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array((x[<span class="dv">1</span>],<span class="op">-</span>x[<span class="dv">0</span>]))</span>
+<span id="cb932-14"><a href="ode.html#cb932-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb932-15"><a href="ode.html#cb932-15" aria-hidden="true" tabindex="-1"></a>sol <span class="op">=</span> midpoint_system(simple_harmonic_f, <span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>np.pi, np.arange(<span class="dv">2</span>), <span class="dv">20</span>)</span></code></pre></div>
 </div>
 </div>
 <p>Here is a plot of the solution:</p>
@@ -747,35 +747,35 @@ Note that if <span class="math inline">\(\alpha =0\)</span> and <span class="mat
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb944"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb944-1"><a href="ode.html#cb944-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lotka_volterra(alpha, beta, gamma, delta, initial, time, steps)</span></span>
-<span id="cb944-2"><a href="ode.html#cb944-2" aria-hidden="true" tabindex="-1"></a><span class="co"># obtains a numerical solution to the Lotka Volterra equations </span></span>
-<span id="cb944-3"><a href="ode.html#cb944-3" aria-hidden="true" tabindex="-1"></a><span class="co"># with given parameters alpha, beta, gamma and delta on the interval</span></span>
-<span id="cb944-4"><a href="ode.html#cb944-4" aria-hidden="true" tabindex="-1"></a><span class="co"># [0, time] with initial values given by the 2-dimensional vector initial.</span></span>
-<span id="cb944-5"><a href="ode.html#cb944-5" aria-hidden="true" tabindex="-1"></a><span class="co"># steps specifies the number of steps to use in the midpoint method.</span></span>
-<span id="cb944-6"><a href="ode.html#cb944-6" aria-hidden="true" tabindex="-1"></a><span class="co"># lotka_volterra(0, 1.5, 1, 1.5, c(0.99,0.01), 0.2, 2)$x[,1] gives the answer</span></span>
-<span id="cb944-7"><a href="ode.html#cb944-7" aria-hidden="true" tabindex="-1"></a><span class="co"># c(0.9900000, 0.9884801, 0.9868876)</span></span>
-<span id="cb944-8"><a href="ode.html#cb944-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb944-9"><a href="ode.html#cb944-9" aria-hidden="true" tabindex="-1"></a>lotka_volterra <span class="ot">=</span> <span class="cf">function</span>(alpha, beta, gamma, delta, initial, time, steps){</span>
-<span id="cb944-10"><a href="ode.html#cb944-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lv_f is the right-hand side in the Lotka-Volterra ODE </span></span>
-<span id="cb944-11"><a href="ode.html#cb944-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># t is a scalar and doesn&#39;t explicitly appear as it is time-homogeneous</span></span>
-<span id="cb944-12"><a href="ode.html#cb944-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># x is a 2-dimensional vector</span></span>
-<span id="cb944-13"><a href="ode.html#cb944-13" aria-hidden="true" tabindex="-1"></a>  lv_f <span class="ot">=</span> <span class="cf">function</span>(t,x){</span>
-<span id="cb944-14"><a href="ode.html#cb944-14" aria-hidden="true" tabindex="-1"></a>    f1 <span class="ot">=</span> alpha<span class="sc">*</span>x[<span class="dv">1</span>] <span class="sc">-</span> beta<span class="sc">*</span>x[<span class="dv">1</span>]<span class="sc">*</span>x[<span class="dv">2</span>]</span>
-<span id="cb944-15"><a href="ode.html#cb944-15" aria-hidden="true" tabindex="-1"></a>    f2 <span class="ot">=</span> delta<span class="sc">*</span>x[<span class="dv">1</span>]<span class="sc">*</span>x[<span class="dv">2</span>] <span class="sc">-</span> gamma<span class="sc">*</span>x[<span class="dv">2</span>]</span>
-<span id="cb944-16"><a href="ode.html#cb944-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">c</span>(f1,f2))</span>
-<span id="cb944-17"><a href="ode.html#cb944-17" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb944-18"><a href="ode.html#cb944-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">midpoint_system</span>(lv_f, <span class="dv">0</span>, time, initial, steps))</span>
-<span id="cb944-19"><a href="ode.html#cb944-19" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb933"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb933-1"><a href="ode.html#cb933-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lotka_volterra(alpha, beta, gamma, delta, initial, time, steps)</span></span>
+<span id="cb933-2"><a href="ode.html#cb933-2" aria-hidden="true" tabindex="-1"></a><span class="co"># obtains a numerical solution to the Lotka Volterra equations </span></span>
+<span id="cb933-3"><a href="ode.html#cb933-3" aria-hidden="true" tabindex="-1"></a><span class="co"># with given parameters alpha, beta, gamma and delta on the interval</span></span>
+<span id="cb933-4"><a href="ode.html#cb933-4" aria-hidden="true" tabindex="-1"></a><span class="co"># [0, time] with initial values given by the 2-dimensional vector initial.</span></span>
+<span id="cb933-5"><a href="ode.html#cb933-5" aria-hidden="true" tabindex="-1"></a><span class="co"># steps specifies the number of steps to use in the midpoint method.</span></span>
+<span id="cb933-6"><a href="ode.html#cb933-6" aria-hidden="true" tabindex="-1"></a><span class="co"># lotka_volterra(0, 1.5, 1, 1.5, c(0.99,0.01), 0.2, 2)$x[,1] gives the answer</span></span>
+<span id="cb933-7"><a href="ode.html#cb933-7" aria-hidden="true" tabindex="-1"></a><span class="co"># c(0.9900000, 0.9884801, 0.9868876)</span></span>
+<span id="cb933-8"><a href="ode.html#cb933-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb933-9"><a href="ode.html#cb933-9" aria-hidden="true" tabindex="-1"></a>lotka_volterra <span class="ot">=</span> <span class="cf">function</span>(alpha, beta, gamma, delta, initial, time, steps){</span>
+<span id="cb933-10"><a href="ode.html#cb933-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lv_f is the right-hand side in the Lotka-Volterra ODE </span></span>
+<span id="cb933-11"><a href="ode.html#cb933-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># t is a scalar and doesn&#39;t explicitly appear as it is time-homogeneous</span></span>
+<span id="cb933-12"><a href="ode.html#cb933-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># x is a 2-dimensional vector</span></span>
+<span id="cb933-13"><a href="ode.html#cb933-13" aria-hidden="true" tabindex="-1"></a>  lv_f <span class="ot">=</span> <span class="cf">function</span>(t,x){</span>
+<span id="cb933-14"><a href="ode.html#cb933-14" aria-hidden="true" tabindex="-1"></a>    f1 <span class="ot">=</span> alpha<span class="sc">*</span>x[<span class="dv">1</span>] <span class="sc">-</span> beta<span class="sc">*</span>x[<span class="dv">1</span>]<span class="sc">*</span>x[<span class="dv">2</span>]</span>
+<span id="cb933-15"><a href="ode.html#cb933-15" aria-hidden="true" tabindex="-1"></a>    f2 <span class="ot">=</span> delta<span class="sc">*</span>x[<span class="dv">1</span>]<span class="sc">*</span>x[<span class="dv">2</span>] <span class="sc">-</span> gamma<span class="sc">*</span>x[<span class="dv">2</span>]</span>
+<span id="cb933-16"><a href="ode.html#cb933-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">c</span>(f1,f2))</span>
+<span id="cb933-17"><a href="ode.html#cb933-17" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb933-18"><a href="ode.html#cb933-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">midpoint_system</span>(lv_f, <span class="dv">0</span>, time, initial, steps))</span>
+<span id="cb933-19"><a href="ode.html#cb933-19" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb945"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb945-1"><a href="ode.html#cb945-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lotka_volterra(alpha, beta, gamma, delta, initial, time, steps):</span>
-<span id="cb945-2"><a href="ode.html#cb945-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> lv_f(t,x):</span>
-<span id="cb945-3"><a href="ode.html#cb945-3" aria-hidden="true" tabindex="-1"></a>        f1 <span class="op">=</span> alpha<span class="op">*</span>x[<span class="dv">0</span>] <span class="op">-</span> beta<span class="op">*</span>x[<span class="dv">0</span>]<span class="op">*</span>x[<span class="dv">1</span>]</span>
-<span id="cb945-4"><a href="ode.html#cb945-4" aria-hidden="true" tabindex="-1"></a>        f2 <span class="op">=</span> delta<span class="op">*</span>x[<span class="dv">0</span>]<span class="op">*</span>x[<span class="dv">1</span>] <span class="op">-</span> gamma<span class="op">*</span>x[<span class="dv">1</span>]</span>
-<span id="cb945-5"><a href="ode.html#cb945-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.array([f1,f2])</span>
-<span id="cb945-6"><a href="ode.html#cb945-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb945-7"><a href="ode.html#cb945-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> midpoint_system(lv_f, <span class="dv">0</span>, time, initial, steps)</span></code></pre></div>
+<div class="sourceCode" id="cb934"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb934-1"><a href="ode.html#cb934-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lotka_volterra(alpha, beta, gamma, delta, initial, time, steps):</span>
+<span id="cb934-2"><a href="ode.html#cb934-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> lv_f(t,x):</span>
+<span id="cb934-3"><a href="ode.html#cb934-3" aria-hidden="true" tabindex="-1"></a>        f1 <span class="op">=</span> alpha<span class="op">*</span>x[<span class="dv">0</span>] <span class="op">-</span> beta<span class="op">*</span>x[<span class="dv">0</span>]<span class="op">*</span>x[<span class="dv">1</span>]</span>
+<span id="cb934-4"><a href="ode.html#cb934-4" aria-hidden="true" tabindex="-1"></a>        f2 <span class="op">=</span> delta<span class="op">*</span>x[<span class="dv">0</span>]<span class="op">*</span>x[<span class="dv">1</span>] <span class="op">-</span> gamma<span class="op">*</span>x[<span class="dv">1</span>]</span>
+<span id="cb934-5"><a href="ode.html#cb934-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.array([f1,f2])</span>
+<span id="cb934-6"><a href="ode.html#cb934-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb934-7"><a href="ode.html#cb934-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> midpoint_system(lv_f, <span class="dv">0</span>, time, initial, steps)</span></code></pre></div>
 </div>
 </div>
 <p>Suppose that the initial densities of prey and predator are <span class="math inline">\(x_0 =70\)</span> and <span class="math inline">\(y_0 =80\)</span> and that the parameters are <span class="math inline">\(\alpha =1\)</span>, <span class="math inline">\(\beta =0.01\)</span>, <span class="math inline">\(\gamma =0.6\)</span> and <span class="math inline">\(\delta =0.005\)</span>. We estimate the trajectory of prey and predator over the time interval <span class="math inline">\([0,20]\)</span> using <span class="math inline">\(N=200\)</span> steps (<span class="math inline">\(h=0.1\)</span> step size) with the midpoint method and plot the results.</p>
@@ -808,30 +808,30 @@ For sufficiently small values of <span class="math inline">\(\rho\)</span> (depe
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb946"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb946-1"><a href="ode.html#cb946-1" aria-hidden="true" tabindex="-1"></a>lorenz_solver <span class="ot">=</span> <span class="cf">function</span>(sigma, beta, rho, initial, time, steps){</span>
-<span id="cb946-2"><a href="ode.html#cb946-2" aria-hidden="true" tabindex="-1"></a>  lorenz_f <span class="ot">=</span> <span class="cf">function</span>(t,x){</span>
-<span id="cb946-3"><a href="ode.html#cb946-3" aria-hidden="true" tabindex="-1"></a>    f1 <span class="ot">=</span> sigma<span class="sc">*</span>(x[<span class="dv">2</span>] <span class="sc">-</span> x[<span class="dv">1</span>])</span>
-<span id="cb946-4"><a href="ode.html#cb946-4" aria-hidden="true" tabindex="-1"></a>    f2 <span class="ot">=</span> x[<span class="dv">1</span>]<span class="sc">*</span>(rho <span class="sc">-</span> x[<span class="dv">3</span>]) <span class="sc">-</span> x[<span class="dv">2</span>]</span>
-<span id="cb946-5"><a href="ode.html#cb946-5" aria-hidden="true" tabindex="-1"></a>    f3 <span class="ot">=</span> x[<span class="dv">1</span>]<span class="sc">*</span>x[<span class="dv">2</span>] <span class="sc">-</span> beta<span class="sc">*</span>x[<span class="dv">3</span>]</span>
-<span id="cb946-6"><a href="ode.html#cb946-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">c</span>(f1,f2,f3))</span>
-<span id="cb946-7"><a href="ode.html#cb946-7" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb946-8"><a href="ode.html#cb946-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">midpoint_system</span>(lorenz_f, <span class="dv">0</span>, time, initial, steps))</span>
-<span id="cb946-9"><a href="ode.html#cb946-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb946-10"><a href="ode.html#cb946-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb946-11"><a href="ode.html#cb946-11" aria-hidden="true" tabindex="-1"></a>sol <span class="ot">=</span> <span class="fu">lorenz_solver</span>(<span class="dv">10</span>, <span class="dv">8</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">14</span>, <span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>,<span class="sc">-</span><span class="dv">8</span>,<span class="dv">29</span>), <span class="dv">100</span>, <span class="dv">10000</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb935"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb935-1"><a href="ode.html#cb935-1" aria-hidden="true" tabindex="-1"></a>lorenz_solver <span class="ot">=</span> <span class="cf">function</span>(sigma, beta, rho, initial, time, steps){</span>
+<span id="cb935-2"><a href="ode.html#cb935-2" aria-hidden="true" tabindex="-1"></a>  lorenz_f <span class="ot">=</span> <span class="cf">function</span>(t,x){</span>
+<span id="cb935-3"><a href="ode.html#cb935-3" aria-hidden="true" tabindex="-1"></a>    f1 <span class="ot">=</span> sigma<span class="sc">*</span>(x[<span class="dv">2</span>] <span class="sc">-</span> x[<span class="dv">1</span>])</span>
+<span id="cb935-4"><a href="ode.html#cb935-4" aria-hidden="true" tabindex="-1"></a>    f2 <span class="ot">=</span> x[<span class="dv">1</span>]<span class="sc">*</span>(rho <span class="sc">-</span> x[<span class="dv">3</span>]) <span class="sc">-</span> x[<span class="dv">2</span>]</span>
+<span id="cb935-5"><a href="ode.html#cb935-5" aria-hidden="true" tabindex="-1"></a>    f3 <span class="ot">=</span> x[<span class="dv">1</span>]<span class="sc">*</span>x[<span class="dv">2</span>] <span class="sc">-</span> beta<span class="sc">*</span>x[<span class="dv">3</span>]</span>
+<span id="cb935-6"><a href="ode.html#cb935-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">c</span>(f1,f2,f3))</span>
+<span id="cb935-7"><a href="ode.html#cb935-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb935-8"><a href="ode.html#cb935-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">midpoint_system</span>(lorenz_f, <span class="dv">0</span>, time, initial, steps))</span>
+<span id="cb935-9"><a href="ode.html#cb935-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb935-10"><a href="ode.html#cb935-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb935-11"><a href="ode.html#cb935-11" aria-hidden="true" tabindex="-1"></a>sol <span class="ot">=</span> <span class="fu">lorenz_solver</span>(<span class="dv">10</span>, <span class="dv">8</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">14</span>, <span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>,<span class="sc">-</span><span class="dv">8</span>,<span class="dv">29</span>), <span class="dv">100</span>, <span class="dv">10000</span>)</span></code></pre></div>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb947"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb947-1"><a href="ode.html#cb947-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lorenz_solver(sigma, beta, rho, initial, time, steps):</span>
-<span id="cb947-2"><a href="ode.html#cb947-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> lorenz_f(t,x):</span>
-<span id="cb947-3"><a href="ode.html#cb947-3" aria-hidden="true" tabindex="-1"></a>        f1 <span class="op">=</span> sigma<span class="op">*</span>(x[<span class="dv">1</span>] <span class="op">-</span> x[<span class="dv">0</span>])</span>
-<span id="cb947-4"><a href="ode.html#cb947-4" aria-hidden="true" tabindex="-1"></a>        f2 <span class="op">=</span> x[<span class="dv">0</span>]<span class="op">*</span>(rho <span class="op">-</span> x[<span class="dv">2</span>]) <span class="op">-</span> x[<span class="dv">1</span>]</span>
-<span id="cb947-5"><a href="ode.html#cb947-5" aria-hidden="true" tabindex="-1"></a>        f3 <span class="op">=</span> x[<span class="dv">0</span>]<span class="op">*</span>x[<span class="dv">1</span>] <span class="op">-</span> beta<span class="op">*</span>x[<span class="dv">2</span>]</span>
-<span id="cb947-6"><a href="ode.html#cb947-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array((f1,f2,f3))</span>
-<span id="cb947-7"><a href="ode.html#cb947-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb947-8"><a href="ode.html#cb947-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> midpoint_system(lorenz_f, <span class="dv">0</span>, time, initial, steps))</span>
-<span id="cb947-9"><a href="ode.html#cb947-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb947-10"><a href="ode.html#cb947-10" aria-hidden="true" tabindex="-1"></a>sol <span class="op">=</span> lorenz_solver(<span class="dv">10</span>, <span class="dv">8</span><span class="op">/</span><span class="dv">3</span>, <span class="dv">14</span>, np.array((<span class="op">-</span><span class="dv">10</span>,<span class="op">-</span><span class="dv">8</span>,<span class="dv">29</span>)), <span class="dv">100</span>, <span class="dv">10000</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb936"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb936-1"><a href="ode.html#cb936-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lorenz_solver(sigma, beta, rho, initial, time, steps):</span>
+<span id="cb936-2"><a href="ode.html#cb936-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> lorenz_f(t,x):</span>
+<span id="cb936-3"><a href="ode.html#cb936-3" aria-hidden="true" tabindex="-1"></a>        f1 <span class="op">=</span> sigma<span class="op">*</span>(x[<span class="dv">1</span>] <span class="op">-</span> x[<span class="dv">0</span>])</span>
+<span id="cb936-4"><a href="ode.html#cb936-4" aria-hidden="true" tabindex="-1"></a>        f2 <span class="op">=</span> x[<span class="dv">0</span>]<span class="op">*</span>(rho <span class="op">-</span> x[<span class="dv">2</span>]) <span class="op">-</span> x[<span class="dv">1</span>]</span>
+<span id="cb936-5"><a href="ode.html#cb936-5" aria-hidden="true" tabindex="-1"></a>        f3 <span class="op">=</span> x[<span class="dv">0</span>]<span class="op">*</span>x[<span class="dv">1</span>] <span class="op">-</span> beta<span class="op">*</span>x[<span class="dv">2</span>]</span>
+<span id="cb936-6"><a href="ode.html#cb936-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array((f1,f2,f3))</span>
+<span id="cb936-7"><a href="ode.html#cb936-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb936-8"><a href="ode.html#cb936-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> midpoint_system(lorenz_f, <span class="dv">0</span>, time, initial, steps))</span>
+<span id="cb936-9"><a href="ode.html#cb936-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb936-10"><a href="ode.html#cb936-10" aria-hidden="true" tabindex="-1"></a>sol <span class="op">=</span> lorenz_solver(<span class="dv">10</span>, <span class="dv">8</span><span class="op">/</span><span class="dv">3</span>, <span class="dv">14</span>, np.array((<span class="op">-</span><span class="dv">10</span>,<span class="op">-</span><span class="dv">8</span>,<span class="dv">29</span>)), <span class="dv">100</span>, <span class="dv">10000</span>)</span></code></pre></div>
 </div>
 </div>
 <p>Here is a plot of the solutions:</p>

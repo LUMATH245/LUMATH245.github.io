@@ -237,38 +237,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb908"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb908-1"><a href="mc.html#cb908-1" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="co">#circle radius</span></span>
-<span id="cb908-2"><a href="mc.html#cb908-2" aria-hidden="true" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="fu">c</span>(.<span class="dv">5</span>,.<span class="dv">5</span>) <span class="co">#Circle centre</span></span>
-<span id="cb908-3"><a href="mc.html#cb908-3" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10000</span> <span class="co">#N samples</span></span>
-<span id="cb908-4"><a href="mc.html#cb908-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb908-5"><a href="mc.html#cb908-5" aria-hidden="true" tabindex="-1"></a><span class="co">#We sample x and y coordinates</span></span>
-<span id="cb908-6"><a href="mc.html#cb908-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(N)</span>
-<span id="cb908-7"><a href="mc.html#cb908-7" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">runif</span>(N)</span>
-<span id="cb908-8"><a href="mc.html#cb908-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb908-9"><a href="mc.html#cb908-9" aria-hidden="true" tabindex="-1"></a><span class="co">#number of points inside circle</span></span>
-<span id="cb908-10"><a href="mc.html#cb908-10" aria-hidden="true" tabindex="-1"></a>N_A <span class="ot">&lt;-</span> <span class="fu">sum</span>( (x<span class="sc">-</span>C[<span class="dv">1</span>])<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> (y<span class="sc">-</span>C[<span class="dv">2</span>])<span class="sc">^</span><span class="dv">2</span> <span class="sc">&lt;=</span> r<span class="sc">^</span><span class="dv">2</span> )</span>
-<span id="cb908-11"><a href="mc.html#cb908-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb908-12"><a href="mc.html#cb908-12" aria-hidden="true" tabindex="-1"></a><span class="co">#Probability of point in circle:</span></span>
-<span id="cb908-13"><a href="mc.html#cb908-13" aria-hidden="true" tabindex="-1"></a>N_A<span class="sc">/</span>N</span></code></pre></div>
-<pre><code>## [1] 0.7883</code></pre>
+<div class="sourceCode" id="cb897"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb897-1"><a href="mc.html#cb897-1" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="co">#circle radius</span></span>
+<span id="cb897-2"><a href="mc.html#cb897-2" aria-hidden="true" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="fu">c</span>(.<span class="dv">5</span>,.<span class="dv">5</span>) <span class="co">#Circle centre</span></span>
+<span id="cb897-3"><a href="mc.html#cb897-3" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10000</span> <span class="co">#N samples</span></span>
+<span id="cb897-4"><a href="mc.html#cb897-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb897-5"><a href="mc.html#cb897-5" aria-hidden="true" tabindex="-1"></a><span class="co">#We sample x and y coordinates</span></span>
+<span id="cb897-6"><a href="mc.html#cb897-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(N)</span>
+<span id="cb897-7"><a href="mc.html#cb897-7" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">runif</span>(N)</span>
+<span id="cb897-8"><a href="mc.html#cb897-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb897-9"><a href="mc.html#cb897-9" aria-hidden="true" tabindex="-1"></a><span class="co">#number of points inside circle</span></span>
+<span id="cb897-10"><a href="mc.html#cb897-10" aria-hidden="true" tabindex="-1"></a>N_A <span class="ot">&lt;-</span> <span class="fu">sum</span>( (x<span class="sc">-</span>C[<span class="dv">1</span>])<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> (y<span class="sc">-</span>C[<span class="dv">2</span>])<span class="sc">^</span><span class="dv">2</span> <span class="sc">&lt;=</span> r<span class="sc">^</span><span class="dv">2</span> )</span>
+<span id="cb897-11"><a href="mc.html#cb897-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb897-12"><a href="mc.html#cb897-12" aria-hidden="true" tabindex="-1"></a><span class="co">#Probability of point in circle:</span></span>
+<span id="cb897-13"><a href="mc.html#cb897-13" aria-hidden="true" tabindex="-1"></a>N_A<span class="sc">/</span>N</span></code></pre></div>
+<pre><code>## [1] 0.7824</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb910"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb910-1"><a href="mc.html#cb910-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb910-2"><a href="mc.html#cb910-2" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> <span class="fl">0.5</span> <span class="co">#circle radius</span></span>
-<span id="cb910-3"><a href="mc.html#cb910-3" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> np.array((<span class="fl">.5</span>,<span class="fl">.5</span>)) <span class="co">#Circle centre</span></span>
-<span id="cb910-4"><a href="mc.html#cb910-4" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">10000</span> <span class="co">#N samples</span></span>
-<span id="cb910-5"><a href="mc.html#cb910-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb910-6"><a href="mc.html#cb910-6" aria-hidden="true" tabindex="-1"></a><span class="co">#We sample x and y coordinates</span></span>
-<span id="cb910-7"><a href="mc.html#cb910-7" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.uniform(size<span class="op">=</span>N)</span>
-<span id="cb910-8"><a href="mc.html#cb910-8" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.random.uniform(size<span class="op">=</span>N)</span>
-<span id="cb910-9"><a href="mc.html#cb910-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb910-10"><a href="mc.html#cb910-10" aria-hidden="true" tabindex="-1"></a><span class="co">#number of points inside circle</span></span>
-<span id="cb910-11"><a href="mc.html#cb910-11" aria-hidden="true" tabindex="-1"></a>N_A <span class="op">=</span> <span class="bu">sum</span>( (x<span class="op">-</span>C[<span class="dv">0</span>])<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (y<span class="op">-</span>C[<span class="dv">1</span>])<span class="op">**</span><span class="dv">2</span> <span class="op">&lt;=</span> r<span class="op">**</span><span class="dv">2</span> )</span>
-<span id="cb910-12"><a href="mc.html#cb910-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb910-13"><a href="mc.html#cb910-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Probability of point in circle:</span></span>
-<span id="cb910-14"><a href="mc.html#cb910-14" aria-hidden="true" tabindex="-1"></a>N_A<span class="op">/</span>N</span></code></pre></div>
-<pre><code>## 0.7823</code></pre>
+<div class="sourceCode" id="cb899"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb899-1"><a href="mc.html#cb899-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb899-2"><a href="mc.html#cb899-2" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> <span class="fl">0.5</span> <span class="co">#circle radius</span></span>
+<span id="cb899-3"><a href="mc.html#cb899-3" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> np.array((<span class="fl">.5</span>,<span class="fl">.5</span>)) <span class="co">#Circle centre</span></span>
+<span id="cb899-4"><a href="mc.html#cb899-4" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">10000</span> <span class="co">#N samples</span></span>
+<span id="cb899-5"><a href="mc.html#cb899-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb899-6"><a href="mc.html#cb899-6" aria-hidden="true" tabindex="-1"></a><span class="co">#We sample x and y coordinates</span></span>
+<span id="cb899-7"><a href="mc.html#cb899-7" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.uniform(size<span class="op">=</span>N)</span>
+<span id="cb899-8"><a href="mc.html#cb899-8" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.random.uniform(size<span class="op">=</span>N)</span>
+<span id="cb899-9"><a href="mc.html#cb899-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb899-10"><a href="mc.html#cb899-10" aria-hidden="true" tabindex="-1"></a><span class="co">#number of points inside circle</span></span>
+<span id="cb899-11"><a href="mc.html#cb899-11" aria-hidden="true" tabindex="-1"></a>N_A <span class="op">=</span> <span class="bu">sum</span>( (x<span class="op">-</span>C[<span class="dv">0</span>])<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (y<span class="op">-</span>C[<span class="dv">1</span>])<span class="op">**</span><span class="dv">2</span> <span class="op">&lt;=</span> r<span class="op">**</span><span class="dv">2</span> )</span>
+<span id="cb899-12"><a href="mc.html#cb899-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb899-13"><a href="mc.html#cb899-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Probability of point in circle:</span></span>
+<span id="cb899-14"><a href="mc.html#cb899-14" aria-hidden="true" tabindex="-1"></a>N_A<span class="op">/</span>N</span></code></pre></div>
+<pre><code>## 0.7837</code></pre>
 </div>
 </div>
 <p>A few comments regarding this algorithm:</p>
@@ -318,30 +318,30 @@ This is an example of integral that cannot be computed analytically, but it is s
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb912"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb912-1"><a href="mc.html#cb912-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> \(x) <span class="fu">exp</span>(<span class="sc">-</span>x<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb912-2"><a href="mc.html#cb912-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100000</span> <span class="co">#N samples</span></span>
-<span id="cb912-3"><a href="mc.html#cb912-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb912-4"><a href="mc.html#cb912-4" aria-hidden="true" tabindex="-1"></a><span class="co">#We sample x and y coordinates</span></span>
-<span id="cb912-5"><a href="mc.html#cb912-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(N)</span>
-<span id="cb912-6"><a href="mc.html#cb912-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb912-7"><a href="mc.html#cb912-7" aria-hidden="true" tabindex="-1"></a><span class="co">#number of points inside circle</span></span>
-<span id="cb912-8"><a href="mc.html#cb912-8" aria-hidden="true" tabindex="-1"></a>Q_N <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">f</span>(x))</span>
-<span id="cb912-9"><a href="mc.html#cb912-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb912-10"><a href="mc.html#cb912-10" aria-hidden="true" tabindex="-1"></a>Q_N</span></code></pre></div>
-<pre><code>## [1] 0.7460047</code></pre>
+<div class="sourceCode" id="cb901"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb901-1"><a href="mc.html#cb901-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> \(x) <span class="fu">exp</span>(<span class="sc">-</span>x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb901-2"><a href="mc.html#cb901-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100000</span> <span class="co">#N samples</span></span>
+<span id="cb901-3"><a href="mc.html#cb901-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb901-4"><a href="mc.html#cb901-4" aria-hidden="true" tabindex="-1"></a><span class="co">#We sample x and y coordinates</span></span>
+<span id="cb901-5"><a href="mc.html#cb901-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(N)</span>
+<span id="cb901-6"><a href="mc.html#cb901-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb901-7"><a href="mc.html#cb901-7" aria-hidden="true" tabindex="-1"></a><span class="co">#number of points inside circle</span></span>
+<span id="cb901-8"><a href="mc.html#cb901-8" aria-hidden="true" tabindex="-1"></a>Q_N <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">f</span>(x))</span>
+<span id="cb901-9"><a href="mc.html#cb901-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb901-10"><a href="mc.html#cb901-10" aria-hidden="true" tabindex="-1"></a>Q_N</span></code></pre></div>
+<pre><code>## [1] 0.746362</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb914"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb914-1"><a href="mc.html#cb914-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb914-2"><a href="mc.html#cb914-2" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: np.exp(<span class="op">-</span>x<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb914-3"><a href="mc.html#cb914-3" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">100000</span> <span class="co">#N samples</span></span>
-<span id="cb914-4"><a href="mc.html#cb914-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb914-5"><a href="mc.html#cb914-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.uniform(size<span class="op">=</span>N)</span>
-<span id="cb914-6"><a href="mc.html#cb914-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb914-7"><a href="mc.html#cb914-7" aria-hidden="true" tabindex="-1"></a>Q_N <span class="op">=</span> np.mean(f(x))</span>
-<span id="cb914-8"><a href="mc.html#cb914-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb914-9"><a href="mc.html#cb914-9" aria-hidden="true" tabindex="-1"></a>Q_N</span></code></pre></div>
-<pre><code>## 0.7464197321732856</code></pre>
+<div class="sourceCode" id="cb903"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb903-1"><a href="mc.html#cb903-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb903-2"><a href="mc.html#cb903-2" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: np.exp(<span class="op">-</span>x<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb903-3"><a href="mc.html#cb903-3" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">100000</span> <span class="co">#N samples</span></span>
+<span id="cb903-4"><a href="mc.html#cb903-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb903-5"><a href="mc.html#cb903-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.uniform(size<span class="op">=</span>N)</span>
+<span id="cb903-6"><a href="mc.html#cb903-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb903-7"><a href="mc.html#cb903-7" aria-hidden="true" tabindex="-1"></a>Q_N <span class="op">=</span> np.mean(f(x))</span>
+<span id="cb903-8"><a href="mc.html#cb903-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb903-9"><a href="mc.html#cb903-9" aria-hidden="true" tabindex="-1"></a>Q_N</span></code></pre></div>
+<pre><code>## 0.7471536005108109</code></pre>
 </div>
 </div>
 </div>
@@ -371,72 +371,72 @@ and replacing <span class="math inline">\(\mathrm{Var}(f)\)</span> by the unbias
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb916"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb916-1"><a href="mc.html#cb916-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> \(x) <span class="fu">exp</span>(<span class="sc">-</span>x<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb916-2"><a href="mc.html#cb916-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100000</span> <span class="co">#N samples</span></span>
-<span id="cb916-3"><a href="mc.html#cb916-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb916-4"><a href="mc.html#cb916-4" aria-hidden="true" tabindex="-1"></a><span class="co">#We sample x and y coordinates</span></span>
-<span id="cb916-5"><a href="mc.html#cb916-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(N)</span>
-<span id="cb916-6"><a href="mc.html#cb916-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb916-7"><a href="mc.html#cb916-7" aria-hidden="true" tabindex="-1"></a><span class="co">#number of points inside circle</span></span>
-<span id="cb916-8"><a href="mc.html#cb916-8" aria-hidden="true" tabindex="-1"></a>Q_N <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">f</span>(x))</span>
-<span id="cb916-9"><a href="mc.html#cb916-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb916-10"><a href="mc.html#cb916-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Note R uses unbiases var estimate</span></span>
-<span id="cb916-11"><a href="mc.html#cb916-11" aria-hidden="true" tabindex="-1"></a>vf <span class="ot">&lt;-</span> <span class="fu">var</span>(<span class="fu">f</span>(x))</span>
-<span id="cb916-12"><a href="mc.html#cb916-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb916-13"><a href="mc.html#cb916-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb916-14"><a href="mc.html#cb916-14" aria-hidden="true" tabindex="-1"></a><span class="co">#Estimate var</span></span>
-<span id="cb916-15"><a href="mc.html#cb916-15" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> vf <span class="sc">/</span> N </span>
-<span id="cb916-16"><a href="mc.html#cb916-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb916-17"><a href="mc.html#cb916-17" aria-hidden="true" tabindex="-1"></a><span class="co">#Confidence interval .95</span></span>
-<span id="cb916-18"><a href="mc.html#cb916-18" aria-hidden="true" tabindex="-1"></a>lb <span class="ot">&lt;-</span> Q_N <span class="sc">-</span> <span class="fu">sqrt</span>(v)<span class="sc">*</span><span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span>
-<span id="cb916-19"><a href="mc.html#cb916-19" aria-hidden="true" tabindex="-1"></a>ub <span class="ot">&lt;-</span> Q_N <span class="sc">+</span> <span class="fu">sqrt</span>(v)<span class="sc">*</span><span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span>
-<span id="cb916-20"><a href="mc.html#cb916-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb916-21"><a href="mc.html#cb916-21" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(lb)</span></code></pre></div>
-<pre><code>## [1] 0.7457707</code></pre>
-<div class="sourceCode" id="cb918"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb918-1"><a href="mc.html#cb918-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(Q_N)</span></code></pre></div>
-<pre><code>## [1] 0.7470177</code></pre>
-<div class="sourceCode" id="cb920"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb920-1"><a href="mc.html#cb920-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ub) </span></code></pre></div>
-<pre><code>## [1] 0.7482647</code></pre>
+<div class="sourceCode" id="cb905"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb905-1"><a href="mc.html#cb905-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> \(x) <span class="fu">exp</span>(<span class="sc">-</span>x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb905-2"><a href="mc.html#cb905-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100000</span> <span class="co">#N samples</span></span>
+<span id="cb905-3"><a href="mc.html#cb905-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb905-4"><a href="mc.html#cb905-4" aria-hidden="true" tabindex="-1"></a><span class="co">#We sample x and y coordinates</span></span>
+<span id="cb905-5"><a href="mc.html#cb905-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(N)</span>
+<span id="cb905-6"><a href="mc.html#cb905-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb905-7"><a href="mc.html#cb905-7" aria-hidden="true" tabindex="-1"></a><span class="co">#number of points inside circle</span></span>
+<span id="cb905-8"><a href="mc.html#cb905-8" aria-hidden="true" tabindex="-1"></a>Q_N <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">f</span>(x))</span>
+<span id="cb905-9"><a href="mc.html#cb905-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb905-10"><a href="mc.html#cb905-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Note R uses unbiases var estimate</span></span>
+<span id="cb905-11"><a href="mc.html#cb905-11" aria-hidden="true" tabindex="-1"></a>vf <span class="ot">&lt;-</span> <span class="fu">var</span>(<span class="fu">f</span>(x))</span>
+<span id="cb905-12"><a href="mc.html#cb905-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb905-13"><a href="mc.html#cb905-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb905-14"><a href="mc.html#cb905-14" aria-hidden="true" tabindex="-1"></a><span class="co">#Estimate var</span></span>
+<span id="cb905-15"><a href="mc.html#cb905-15" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> vf <span class="sc">/</span> N </span>
+<span id="cb905-16"><a href="mc.html#cb905-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb905-17"><a href="mc.html#cb905-17" aria-hidden="true" tabindex="-1"></a><span class="co">#Confidence interval .95</span></span>
+<span id="cb905-18"><a href="mc.html#cb905-18" aria-hidden="true" tabindex="-1"></a>lb <span class="ot">&lt;-</span> Q_N <span class="sc">-</span> <span class="fu">sqrt</span>(v)<span class="sc">*</span><span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span>
+<span id="cb905-19"><a href="mc.html#cb905-19" aria-hidden="true" tabindex="-1"></a>ub <span class="ot">&lt;-</span> Q_N <span class="sc">+</span> <span class="fu">sqrt</span>(v)<span class="sc">*</span><span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span>
+<span id="cb905-20"><a href="mc.html#cb905-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb905-21"><a href="mc.html#cb905-21" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(lb)</span></code></pre></div>
+<pre><code>## [1] 0.7451537</code></pre>
+<div class="sourceCode" id="cb907"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb907-1"><a href="mc.html#cb907-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(Q_N)</span></code></pre></div>
+<pre><code>## [1] 0.7464003</code></pre>
+<div class="sourceCode" id="cb909"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb909-1"><a href="mc.html#cb909-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ub) </span></code></pre></div>
+<pre><code>## [1] 0.7476468</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb922"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb922-1"><a href="mc.html#cb922-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb922-2"><a href="mc.html#cb922-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> ss</span>
-<span id="cb922-3"><a href="mc.html#cb922-3" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: np.exp(<span class="op">-</span>x<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb922-4"><a href="mc.html#cb922-4" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">100000</span> <span class="co">#N samples</span></span>
-<span id="cb922-5"><a href="mc.html#cb922-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb922-6"><a href="mc.html#cb922-6" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.uniform(size<span class="op">=</span>N)</span>
-<span id="cb922-7"><a href="mc.html#cb922-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb922-8"><a href="mc.html#cb922-8" aria-hidden="true" tabindex="-1"></a>Q_N <span class="op">=</span> np.mean(f(x))</span>
-<span id="cb922-9"><a href="mc.html#cb922-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb922-10"><a href="mc.html#cb922-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Note ddof for unbiased!</span></span>
-<span id="cb922-11"><a href="mc.html#cb922-11" aria-hidden="true" tabindex="-1"></a>vf <span class="op">=</span> np.var(f(x),ddof<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb922-12"><a href="mc.html#cb922-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb922-13"><a href="mc.html#cb922-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Estimate var</span></span>
-<span id="cb922-14"><a href="mc.html#cb922-14" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> vf <span class="op">/</span> N</span>
-<span id="cb922-15"><a href="mc.html#cb922-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb922-16"><a href="mc.html#cb922-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Confidence interval .95</span></span>
-<span id="cb922-17"><a href="mc.html#cb922-17" aria-hidden="true" tabindex="-1"></a>lb <span class="op">=</span> Q_N <span class="op">-</span> np.sqrt(v)<span class="op">*</span>ss.norm.ppf(<span class="fl">.975</span>)</span>
-<span id="cb922-18"><a href="mc.html#cb922-18" aria-hidden="true" tabindex="-1"></a>ub <span class="op">=</span> Q_N <span class="op">+</span> np.sqrt(v)<span class="op">*</span>ss.norm.ppf(<span class="fl">.975</span>)</span>
-<span id="cb922-19"><a href="mc.html#cb922-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb922-20"><a href="mc.html#cb922-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(lb)</span></code></pre></div>
-<pre><code>## 0.7452057383785574</code></pre>
-<div class="sourceCode" id="cb924"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb924-1"><a href="mc.html#cb924-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Q_N)</span></code></pre></div>
-<pre><code>## 0.7464501257232408</code></pre>
-<div class="sourceCode" id="cb926"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb926-1"><a href="mc.html#cb926-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ub) </span></code></pre></div>
-<pre><code>## 0.7476945130679241</code></pre>
+<div class="sourceCode" id="cb911"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb911-1"><a href="mc.html#cb911-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb911-2"><a href="mc.html#cb911-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> ss</span>
+<span id="cb911-3"><a href="mc.html#cb911-3" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: np.exp(<span class="op">-</span>x<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb911-4"><a href="mc.html#cb911-4" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">100000</span> <span class="co">#N samples</span></span>
+<span id="cb911-5"><a href="mc.html#cb911-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb911-6"><a href="mc.html#cb911-6" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.uniform(size<span class="op">=</span>N)</span>
+<span id="cb911-7"><a href="mc.html#cb911-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb911-8"><a href="mc.html#cb911-8" aria-hidden="true" tabindex="-1"></a>Q_N <span class="op">=</span> np.mean(f(x))</span>
+<span id="cb911-9"><a href="mc.html#cb911-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb911-10"><a href="mc.html#cb911-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Note ddof for unbiased!</span></span>
+<span id="cb911-11"><a href="mc.html#cb911-11" aria-hidden="true" tabindex="-1"></a>vf <span class="op">=</span> np.var(f(x),ddof<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb911-12"><a href="mc.html#cb911-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb911-13"><a href="mc.html#cb911-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Estimate var</span></span>
+<span id="cb911-14"><a href="mc.html#cb911-14" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> vf <span class="op">/</span> N</span>
+<span id="cb911-15"><a href="mc.html#cb911-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb911-16"><a href="mc.html#cb911-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Confidence interval .95</span></span>
+<span id="cb911-17"><a href="mc.html#cb911-17" aria-hidden="true" tabindex="-1"></a>lb <span class="op">=</span> Q_N <span class="op">-</span> np.sqrt(v)<span class="op">*</span>ss.norm.ppf(<span class="fl">.975</span>)</span>
+<span id="cb911-18"><a href="mc.html#cb911-18" aria-hidden="true" tabindex="-1"></a>ub <span class="op">=</span> Q_N <span class="op">+</span> np.sqrt(v)<span class="op">*</span>ss.norm.ppf(<span class="fl">.975</span>)</span>
+<span id="cb911-19"><a href="mc.html#cb911-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb911-20"><a href="mc.html#cb911-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(lb)</span></code></pre></div>
+<pre><code>## 0.7451229589126037</code></pre>
+<div class="sourceCode" id="cb913"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb913-1"><a href="mc.html#cb913-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Q_N)</span></code></pre></div>
+<pre><code>## 0.7463658113247381</code></pre>
+<div class="sourceCode" id="cb915"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb915-1"><a href="mc.html#cb915-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ub) </span></code></pre></div>
+<pre><code>## 0.7476086637368725</code></pre>
 </div>
 </div>
 <p>In this case, we can use built-in functions of R/Python to get an alternative estimate of the integral, for comparison:</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb928"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb928-1"><a href="mc.html#cb928-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(pi)<span class="sc">*</span>(<span class="fu">pnorm</span>(<span class="fu">sqrt</span>(<span class="dv">2</span>))<span class="sc">-</span><span class="fu">pnorm</span>(<span class="dv">0</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb917"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb917-1"><a href="mc.html#cb917-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(pi)<span class="sc">*</span>(<span class="fu">pnorm</span>(<span class="fu">sqrt</span>(<span class="dv">2</span>))<span class="sc">-</span><span class="fu">pnorm</span>(<span class="dv">0</span>))</span></code></pre></div>
 <pre><code>## [1] 0.7468241</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb930"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb930-1"><a href="mc.html#cb930-1" aria-hidden="true" tabindex="-1"></a>np.sqrt(np.pi)<span class="op">*</span>(ss.norm.cdf(np.sqrt(<span class="dv">2</span>))<span class="op">-</span>ss.norm.cdf(<span class="dv">0</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb919"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb919-1"><a href="mc.html#cb919-1" aria-hidden="true" tabindex="-1"></a>np.sqrt(np.pi)<span class="op">*</span>(ss.norm.cdf(np.sqrt(<span class="dv">2</span>))<span class="op">-</span>ss.norm.cdf(<span class="dv">0</span>))</span></code></pre></div>
 <pre><code>## 0.7468241328124271</code></pre>
 </div>
 </div>

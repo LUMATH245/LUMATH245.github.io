@@ -258,37 +258,37 @@ We can use the same code we used last week, for example:</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb861"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb861-1"><a href="roots.html#cb861-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function g (cosine).</span></span>
-<span id="cb861-2"><a href="roots.html#cb861-2" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">cos</span>(x)</span>
-<span id="cb861-3"><a href="roots.html#cb861-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb861-4"><a href="roots.html#cb861-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial point x_0.</span></span>
-<span id="cb861-5"><a href="roots.html#cb861-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
-<span id="cb861-6"><a href="roots.html#cb861-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb861-7"><a href="roots.html#cb861-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
-<span id="cb861-8"><a href="roots.html#cb861-8" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">g</span>(x)</span>
-<span id="cb861-9"><a href="roots.html#cb861-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb861-10"><a href="roots.html#cb861-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb861-11"><a href="roots.html#cb861-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Show x.</span></span>
-<span id="cb861-12"><a href="roots.html#cb861-12" aria-hidden="true" tabindex="-1"></a>x </span></code></pre></div>
+<div class="sourceCode" id="cb850"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb850-1"><a href="roots.html#cb850-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function g (cosine).</span></span>
+<span id="cb850-2"><a href="roots.html#cb850-2" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">cos</span>(x)</span>
+<span id="cb850-3"><a href="roots.html#cb850-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb850-4"><a href="roots.html#cb850-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial point x_0.</span></span>
+<span id="cb850-5"><a href="roots.html#cb850-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb850-6"><a href="roots.html#cb850-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb850-7"><a href="roots.html#cb850-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb850-8"><a href="roots.html#cb850-8" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">g</span>(x)</span>
+<span id="cb850-9"><a href="roots.html#cb850-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb850-10"><a href="roots.html#cb850-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb850-11"><a href="roots.html#cb850-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Show x.</span></span>
+<span id="cb850-12"><a href="roots.html#cb850-12" aria-hidden="true" tabindex="-1"></a>x </span></code></pre></div>
 <pre><code>## [1] 0.7390851</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb863"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb863-1"><a href="roots.html#cb863-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the numpy module</span></span>
-<span id="cb863-2"><a href="roots.html#cb863-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb863-3"><a href="roots.html#cb863-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb863-4"><a href="roots.html#cb863-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function g (cosine).</span></span>
-<span id="cb863-5"><a href="roots.html#cb863-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> g(x):</span>
-<span id="cb863-6"><a href="roots.html#cb863-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.cos(x)</span>
-<span id="cb863-7"><a href="roots.html#cb863-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb863-8"><a href="roots.html#cb863-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial point x_0.</span></span>
-<span id="cb863-9"><a href="roots.html#cb863-9" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">0.1</span></span>
-<span id="cb863-10"><a href="roots.html#cb863-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb863-11"><a href="roots.html#cb863-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>): </span>
-<span id="cb863-12"><a href="roots.html#cb863-12" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> g(x)</span>
-<span id="cb863-13"><a href="roots.html#cb863-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb863-14"><a href="roots.html#cb863-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Show x.</span></span>
-<span id="cb863-15"><a href="roots.html#cb863-15" aria-hidden="true" tabindex="-1"></a>x </span></code></pre></div>
+<div class="sourceCode" id="cb852"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb852-1"><a href="roots.html#cb852-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the numpy module</span></span>
+<span id="cb852-2"><a href="roots.html#cb852-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb852-3"><a href="roots.html#cb852-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb852-4"><a href="roots.html#cb852-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function g (cosine).</span></span>
+<span id="cb852-5"><a href="roots.html#cb852-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> g(x):</span>
+<span id="cb852-6"><a href="roots.html#cb852-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.cos(x)</span>
+<span id="cb852-7"><a href="roots.html#cb852-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb852-8"><a href="roots.html#cb852-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial point x_0.</span></span>
+<span id="cb852-9"><a href="roots.html#cb852-9" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb852-10"><a href="roots.html#cb852-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb852-11"><a href="roots.html#cb852-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>): </span>
+<span id="cb852-12"><a href="roots.html#cb852-12" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> g(x)</span>
+<span id="cb852-13"><a href="roots.html#cb852-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb852-14"><a href="roots.html#cb852-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Show x.</span></span>
+<span id="cb852-15"><a href="roots.html#cb852-15" aria-hidden="true" tabindex="-1"></a>x </span></code></pre></div>
 <pre><code>## 0.7390851332151607</code></pre>
 </div>
 </div>
@@ -296,12 +296,12 @@ We can use the same code we used last week, for example:</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb865"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb865-1"><a href="roots.html#cb865-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cos</span>(x) <span class="sc">-</span> x</span></code></pre></div>
+<div class="sourceCode" id="cb854"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb854-1"><a href="roots.html#cb854-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cos</span>(x) <span class="sc">-</span> x</span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb867"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb867-1"><a href="roots.html#cb867-1" aria-hidden="true" tabindex="-1"></a>np.cos(x) <span class="op">-</span> x</span></code></pre></div>
+<div class="sourceCode" id="cb856"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb856-1"><a href="roots.html#cb856-1" aria-hidden="true" tabindex="-1"></a>np.cos(x) <span class="op">-</span> x</span></code></pre></div>
 <pre><code>## 0.0</code></pre>
 </div>
 </div>
@@ -333,95 +333,95 @@ Let’s do a quick experiment. Let’s consider, as before <span class="math inl
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb869"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb869-1"><a href="roots.html#cb869-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function f and f&#39;</span></span>
-<span id="cb869-2"><a href="roots.html#cb869-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">cos</span>(x)<span class="sc">-</span>x</span>
-<span id="cb869-3"><a href="roots.html#cb869-3" aria-hidden="true" tabindex="-1"></a>fp <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="sc">-</span><span class="fu">sin</span>(x) <span class="sc">-</span> <span class="dv">1</span></span>
-<span id="cb869-4"><a href="roots.html#cb869-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb869-5"><a href="roots.html#cb869-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Define both methods</span></span>
-<span id="cb869-6"><a href="roots.html#cb869-6" aria-hidden="true" tabindex="-1"></a>g1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x <span class="sc">+</span> <span class="fu">f</span>(x) </span>
-<span id="cb869-7"><a href="roots.html#cb869-7" aria-hidden="true" tabindex="-1"></a>g2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x <span class="sc">-</span> <span class="fu">f</span>(x)<span class="sc">/</span><span class="fu">fp</span>(x)</span>
-<span id="cb869-8"><a href="roots.html#cb869-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb869-9"><a href="roots.html#cb869-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial point x_0.</span></span>
-<span id="cb869-10"><a href="roots.html#cb869-10" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fl">0.1</span> <span class="co">#for the first method</span></span>
-<span id="cb869-11"><a href="roots.html#cb869-11" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fl">0.1</span> <span class="co">#for the second method</span></span>
-<span id="cb869-12"><a href="roots.html#cb869-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb869-13"><a href="roots.html#cb869-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Lists to save the points</span></span>
-<span id="cb869-14"><a href="roots.html#cb869-14" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">20</span> <span class="co">#Number of iterations</span></span>
-<span id="cb869-15"><a href="roots.html#cb869-15" aria-hidden="true" tabindex="-1"></a>r1 <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n)</span>
-<span id="cb869-16"><a href="roots.html#cb869-16" aria-hidden="true" tabindex="-1"></a>r2 <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n)</span>
-<span id="cb869-17"><a href="roots.html#cb869-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb869-18"><a href="roots.html#cb869-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
-<span id="cb869-19"><a href="roots.html#cb869-19" aria-hidden="true" tabindex="-1"></a>    x1 <span class="ot">&lt;-</span> <span class="fu">g1</span>(x1)</span>
-<span id="cb869-20"><a href="roots.html#cb869-20" aria-hidden="true" tabindex="-1"></a>    x2 <span class="ot">&lt;-</span> <span class="fu">g2</span>(x2)</span>
-<span id="cb869-21"><a href="roots.html#cb869-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb869-22"><a href="roots.html#cb869-22" aria-hidden="true" tabindex="-1"></a>    r1[i] <span class="ot">&lt;-</span> x1</span>
-<span id="cb869-23"><a href="roots.html#cb869-23" aria-hidden="true" tabindex="-1"></a>    r2[i] <span class="ot">&lt;-</span> x2</span>
-<span id="cb869-24"><a href="roots.html#cb869-24" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb858"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb858-1"><a href="roots.html#cb858-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function f and f&#39;</span></span>
+<span id="cb858-2"><a href="roots.html#cb858-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">cos</span>(x)<span class="sc">-</span>x</span>
+<span id="cb858-3"><a href="roots.html#cb858-3" aria-hidden="true" tabindex="-1"></a>fp <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="sc">-</span><span class="fu">sin</span>(x) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb858-4"><a href="roots.html#cb858-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb858-5"><a href="roots.html#cb858-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Define both methods</span></span>
+<span id="cb858-6"><a href="roots.html#cb858-6" aria-hidden="true" tabindex="-1"></a>g1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x <span class="sc">+</span> <span class="fu">f</span>(x) </span>
+<span id="cb858-7"><a href="roots.html#cb858-7" aria-hidden="true" tabindex="-1"></a>g2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x <span class="sc">-</span> <span class="fu">f</span>(x)<span class="sc">/</span><span class="fu">fp</span>(x)</span>
+<span id="cb858-8"><a href="roots.html#cb858-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb858-9"><a href="roots.html#cb858-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial point x_0.</span></span>
+<span id="cb858-10"><a href="roots.html#cb858-10" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fl">0.1</span> <span class="co">#for the first method</span></span>
+<span id="cb858-11"><a href="roots.html#cb858-11" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fl">0.1</span> <span class="co">#for the second method</span></span>
+<span id="cb858-12"><a href="roots.html#cb858-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb858-13"><a href="roots.html#cb858-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Lists to save the points</span></span>
+<span id="cb858-14"><a href="roots.html#cb858-14" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">20</span> <span class="co">#Number of iterations</span></span>
+<span id="cb858-15"><a href="roots.html#cb858-15" aria-hidden="true" tabindex="-1"></a>r1 <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n)</span>
+<span id="cb858-16"><a href="roots.html#cb858-16" aria-hidden="true" tabindex="-1"></a>r2 <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n)</span>
+<span id="cb858-17"><a href="roots.html#cb858-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb858-18"><a href="roots.html#cb858-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
+<span id="cb858-19"><a href="roots.html#cb858-19" aria-hidden="true" tabindex="-1"></a>    x1 <span class="ot">&lt;-</span> <span class="fu">g1</span>(x1)</span>
+<span id="cb858-20"><a href="roots.html#cb858-20" aria-hidden="true" tabindex="-1"></a>    x2 <span class="ot">&lt;-</span> <span class="fu">g2</span>(x2)</span>
+<span id="cb858-21"><a href="roots.html#cb858-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb858-22"><a href="roots.html#cb858-22" aria-hidden="true" tabindex="-1"></a>    r1[i] <span class="ot">&lt;-</span> x1</span>
+<span id="cb858-23"><a href="roots.html#cb858-23" aria-hidden="true" tabindex="-1"></a>    r2[i] <span class="ot">&lt;-</span> x2</span>
+<span id="cb858-24"><a href="roots.html#cb858-24" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb870"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb870-1"><a href="roots.html#cb870-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the numpy module</span></span>
-<span id="cb870-2"><a href="roots.html#cb870-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb870-3"><a href="roots.html#cb870-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb870-4"><a href="roots.html#cb870-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function f and fp</span></span>
-<span id="cb870-5"><a href="roots.html#cb870-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
-<span id="cb870-6"><a href="roots.html#cb870-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.cos(x)<span class="op">-</span>x</span>
-<span id="cb870-7"><a href="roots.html#cb870-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb870-8"><a href="roots.html#cb870-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fp(x):</span>
-<span id="cb870-9"><a href="roots.html#cb870-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span>np.sin(x)<span class="op">-</span><span class="dv">1</span></span>
-<span id="cb870-10"><a href="roots.html#cb870-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb870-11"><a href="roots.html#cb870-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our fixed point methods</span></span>
-<span id="cb870-12"><a href="roots.html#cb870-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> g1(x):</span>
-<span id="cb870-13"><a href="roots.html#cb870-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">+</span> f(x)</span>
-<span id="cb870-14"><a href="roots.html#cb870-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb870-15"><a href="roots.html#cb870-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> g2(x):</span>
-<span id="cb870-16"><a href="roots.html#cb870-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">-</span> f(x)<span class="op">/</span>fp(x)</span>
-<span id="cb870-17"><a href="roots.html#cb870-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb870-18"><a href="roots.html#cb870-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial point x_0.</span></span>
-<span id="cb870-19"><a href="roots.html#cb870-19" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> <span class="fl">0.1</span> <span class="co">#for the first method</span></span>
-<span id="cb870-20"><a href="roots.html#cb870-20" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> <span class="fl">0.1</span> <span class="co">#for the second method</span></span>
-<span id="cb870-21"><a href="roots.html#cb870-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb870-22"><a href="roots.html#cb870-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Lists to save the points</span></span>
-<span id="cb870-23"><a href="roots.html#cb870-23" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">20</span></span>
-<span id="cb870-24"><a href="roots.html#cb870-24" aria-hidden="true" tabindex="-1"></a>r1 <span class="op">=</span> np.empty(n) <span class="co">#empty list of n elements</span></span>
-<span id="cb870-25"><a href="roots.html#cb870-25" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> np.empty(n) </span>
-<span id="cb870-26"><a href="roots.html#cb870-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb870-27"><a href="roots.html#cb870-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n): </span>
-<span id="cb870-28"><a href="roots.html#cb870-28" aria-hidden="true" tabindex="-1"></a>    x1 <span class="op">=</span> g1(x1)</span>
-<span id="cb870-29"><a href="roots.html#cb870-29" aria-hidden="true" tabindex="-1"></a>    x2 <span class="op">=</span> g2(x2)</span>
-<span id="cb870-30"><a href="roots.html#cb870-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb870-31"><a href="roots.html#cb870-31" aria-hidden="true" tabindex="-1"></a>    r1[i] <span class="op">=</span> x1</span>
-<span id="cb870-32"><a href="roots.html#cb870-32" aria-hidden="true" tabindex="-1"></a>    r2[i] <span class="op">=</span> x2</span></code></pre></div>
+<div class="sourceCode" id="cb859"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb859-1"><a href="roots.html#cb859-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the numpy module</span></span>
+<span id="cb859-2"><a href="roots.html#cb859-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb859-3"><a href="roots.html#cb859-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb859-4"><a href="roots.html#cb859-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our function f and fp</span></span>
+<span id="cb859-5"><a href="roots.html#cb859-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
+<span id="cb859-6"><a href="roots.html#cb859-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.cos(x)<span class="op">-</span>x</span>
+<span id="cb859-7"><a href="roots.html#cb859-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb859-8"><a href="roots.html#cb859-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fp(x):</span>
+<span id="cb859-9"><a href="roots.html#cb859-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span>np.sin(x)<span class="op">-</span><span class="dv">1</span></span>
+<span id="cb859-10"><a href="roots.html#cb859-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb859-11"><a href="roots.html#cb859-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Define our fixed point methods</span></span>
+<span id="cb859-12"><a href="roots.html#cb859-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> g1(x):</span>
+<span id="cb859-13"><a href="roots.html#cb859-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">+</span> f(x)</span>
+<span id="cb859-14"><a href="roots.html#cb859-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb859-15"><a href="roots.html#cb859-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> g2(x):</span>
+<span id="cb859-16"><a href="roots.html#cb859-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">-</span> f(x)<span class="op">/</span>fp(x)</span>
+<span id="cb859-17"><a href="roots.html#cb859-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb859-18"><a href="roots.html#cb859-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial point x_0.</span></span>
+<span id="cb859-19"><a href="roots.html#cb859-19" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> <span class="fl">0.1</span> <span class="co">#for the first method</span></span>
+<span id="cb859-20"><a href="roots.html#cb859-20" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> <span class="fl">0.1</span> <span class="co">#for the second method</span></span>
+<span id="cb859-21"><a href="roots.html#cb859-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb859-22"><a href="roots.html#cb859-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Lists to save the points</span></span>
+<span id="cb859-23"><a href="roots.html#cb859-23" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb859-24"><a href="roots.html#cb859-24" aria-hidden="true" tabindex="-1"></a>r1 <span class="op">=</span> np.empty(n) <span class="co">#empty list of n elements</span></span>
+<span id="cb859-25"><a href="roots.html#cb859-25" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> np.empty(n) </span>
+<span id="cb859-26"><a href="roots.html#cb859-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb859-27"><a href="roots.html#cb859-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n): </span>
+<span id="cb859-28"><a href="roots.html#cb859-28" aria-hidden="true" tabindex="-1"></a>    x1 <span class="op">=</span> g1(x1)</span>
+<span id="cb859-29"><a href="roots.html#cb859-29" aria-hidden="true" tabindex="-1"></a>    x2 <span class="op">=</span> g2(x2)</span>
+<span id="cb859-30"><a href="roots.html#cb859-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb859-31"><a href="roots.html#cb859-31" aria-hidden="true" tabindex="-1"></a>    r1[i] <span class="op">=</span> x1</span>
+<span id="cb859-32"><a href="roots.html#cb859-32" aria-hidden="true" tabindex="-1"></a>    r2[i] <span class="op">=</span> x2</span></code></pre></div>
 </div>
 </div>
 <p>We plot <code>r1</code> and <code>r2</code> to assess convergence.</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb871"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb871-1"><a href="roots.html#cb871-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
-<span id="cb871-2"><a href="roots.html#cb871-2" aria-hidden="true" tabindex="-1"></a>point_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">1</span>, n), <span class="at">y1 =</span> r1, <span class="at">y2=</span>r2)) <span class="sc">+</span> </span>
-<span id="cb871-3"><a href="roots.html#cb871-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y1),<span class="at">color=</span><span class="st">&quot;blue&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb871-4"><a href="roots.html#cb871-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y2),<span class="at">color=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb871-5"><a href="roots.html#cb871-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb871-6"><a href="roots.html#cb871-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;x_n&quot;</span>) <span class="sc">+</span></span>
-<span id="cb871-7"><a href="roots.html#cb871-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;n&quot;</span>)</span>
-<span id="cb871-8"><a href="roots.html#cb871-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb871-9"><a href="roots.html#cb871-9" aria-hidden="true" tabindex="-1"></a>point_plot</span></code></pre></div>
+<div class="sourceCode" id="cb860"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb860-1"><a href="roots.html#cb860-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
+<span id="cb860-2"><a href="roots.html#cb860-2" aria-hidden="true" tabindex="-1"></a>point_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">1</span>, n), <span class="at">y1 =</span> r1, <span class="at">y2=</span>r2)) <span class="sc">+</span> </span>
+<span id="cb860-3"><a href="roots.html#cb860-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y1),<span class="at">color=</span><span class="st">&quot;blue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb860-4"><a href="roots.html#cb860-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y2),<span class="at">color=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb860-5"><a href="roots.html#cb860-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb860-6"><a href="roots.html#cb860-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;x_n&quot;</span>) <span class="sc">+</span></span>
+<span id="cb860-7"><a href="roots.html#cb860-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;n&quot;</span>)</span>
+<span id="cb860-8"><a href="roots.html#cb860-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb860-9"><a href="roots.html#cb860-9" aria-hidden="true" tabindex="-1"></a>point_plot</span></code></pre></div>
 <p><img src="images/unnamed-chunk-293-1.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb872"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb872-1"><a href="roots.html#cb872-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb872-2"><a href="roots.html#cb872-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb872-3"><a href="roots.html#cb872-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb872-4"><a href="roots.html#cb872-4" aria-hidden="true" tabindex="-1"></a>point_plot <span class="op">=</span> ggplot(pd.DataFrame({<span class="st">&quot;x&quot;</span>: <span class="bu">range</span>(n), <span class="st">&quot;y1&quot;</span>: r1, <span class="st">&quot;y2&quot;</span>:r2})) <span class="op">+</span> <span class="op">\</span></span>
-<span id="cb872-5"><a href="roots.html#cb872-5" aria-hidden="true" tabindex="-1"></a>   geom_line(aes(x<span class="op">=</span><span class="st">&quot;x&quot;</span>,y<span class="op">=</span><span class="st">&quot;y1&quot;</span>),color<span class="op">=</span><span class="st">&quot;blue&quot;</span>) <span class="op">+</span> <span class="op">\</span></span>
-<span id="cb872-6"><a href="roots.html#cb872-6" aria-hidden="true" tabindex="-1"></a>   geom_line(aes(x<span class="op">=</span><span class="st">&quot;x&quot;</span>,y<span class="op">=</span><span class="st">&quot;y2&quot;</span>),color<span class="op">=</span><span class="st">&quot;red&quot;</span>) <span class="op">+</span> <span class="op">\</span></span>
-<span id="cb872-7"><a href="roots.html#cb872-7" aria-hidden="true" tabindex="-1"></a>   theme_minimal() <span class="op">+</span> <span class="op">\</span></span>
-<span id="cb872-8"><a href="roots.html#cb872-8" aria-hidden="true" tabindex="-1"></a>   ylab(<span class="st">&quot;x_n&quot;</span>) <span class="op">+</span> <span class="op">\</span></span>
-<span id="cb872-9"><a href="roots.html#cb872-9" aria-hidden="true" tabindex="-1"></a>   xlab(<span class="st">&quot;n&quot;</span>)</span>
-<span id="cb872-10"><a href="roots.html#cb872-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb872-11"><a href="roots.html#cb872-11" aria-hidden="true" tabindex="-1"></a>point_plot</span></code></pre></div>
+<div class="sourceCode" id="cb861"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb861-1"><a href="roots.html#cb861-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb861-2"><a href="roots.html#cb861-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb861-3"><a href="roots.html#cb861-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb861-4"><a href="roots.html#cb861-4" aria-hidden="true" tabindex="-1"></a>point_plot <span class="op">=</span> ggplot(pd.DataFrame({<span class="st">&quot;x&quot;</span>: <span class="bu">range</span>(n), <span class="st">&quot;y1&quot;</span>: r1, <span class="st">&quot;y2&quot;</span>:r2})) <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb861-5"><a href="roots.html#cb861-5" aria-hidden="true" tabindex="-1"></a>   geom_line(aes(x<span class="op">=</span><span class="st">&quot;x&quot;</span>,y<span class="op">=</span><span class="st">&quot;y1&quot;</span>),color<span class="op">=</span><span class="st">&quot;blue&quot;</span>) <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb861-6"><a href="roots.html#cb861-6" aria-hidden="true" tabindex="-1"></a>   geom_line(aes(x<span class="op">=</span><span class="st">&quot;x&quot;</span>,y<span class="op">=</span><span class="st">&quot;y2&quot;</span>),color<span class="op">=</span><span class="st">&quot;red&quot;</span>) <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb861-7"><a href="roots.html#cb861-7" aria-hidden="true" tabindex="-1"></a>   theme_minimal() <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb861-8"><a href="roots.html#cb861-8" aria-hidden="true" tabindex="-1"></a>   ylab(<span class="st">&quot;x_n&quot;</span>) <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb861-9"><a href="roots.html#cb861-9" aria-hidden="true" tabindex="-1"></a>   xlab(<span class="st">&quot;n&quot;</span>)</span>
+<span id="cb861-10"><a href="roots.html#cb861-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb861-11"><a href="roots.html#cb861-11" aria-hidden="true" tabindex="-1"></a>point_plot</span></code></pre></div>
 <pre><code>## &lt;string&gt;:2: FutureWarning: Using repr(plot) to draw and show the plot figure is deprecated and will be removed in a future version. Use plot.show().
 ## &lt;Figure Size: (640 x 480)&gt;</code></pre>
 <p><img src="images/unnamed-chunk-294-1.png" width="50%" /></p>
@@ -438,12 +438,12 @@ R and Python have a suit of root finding methods. We will see examples here usin
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb874"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb874-1"><a href="roots.html#cb874-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nleqslv) </span>
-<span id="cb874-2"><a href="roots.html#cb874-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb874-3"><a href="roots.html#cb874-3" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> \(x) <span class="fu">cos</span>(x) <span class="sc">-</span> x</span>
-<span id="cb874-4"><a href="roots.html#cb874-4" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
-<span id="cb874-5"><a href="roots.html#cb874-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb874-6"><a href="roots.html#cb874-6" aria-hidden="true" tabindex="-1"></a><span class="fu">nleqslv</span>(x0,f)</span></code></pre></div>
+<div class="sourceCode" id="cb863"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb863-1"><a href="roots.html#cb863-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nleqslv) </span>
+<span id="cb863-2"><a href="roots.html#cb863-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb863-3"><a href="roots.html#cb863-3" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> \(x) <span class="fu">cos</span>(x) <span class="sc">-</span> x</span>
+<span id="cb863-4"><a href="roots.html#cb863-4" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb863-5"><a href="roots.html#cb863-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb863-6"><a href="roots.html#cb863-6" aria-hidden="true" tabindex="-1"></a><span class="fu">nleqslv</span>(x0,f)</span></code></pre></div>
 <pre><code>## $x
 ## [1] 0.7390851
 ## 
@@ -470,12 +470,12 @@ R and Python have a suit of root finding methods. We will see examples here usin
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb876"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb876-1"><a href="roots.html#cb876-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy <span class="im">as</span> sp</span>
-<span id="cb876-2"><a href="roots.html#cb876-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb876-3"><a href="roots.html#cb876-3" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: np.cos(x) <span class="op">-</span> x</span>
-<span id="cb876-4"><a href="roots.html#cb876-4" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> <span class="fl">0.1</span></span>
-<span id="cb876-5"><a href="roots.html#cb876-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb876-6"><a href="roots.html#cb876-6" aria-hidden="true" tabindex="-1"></a>sp.optimize.root_scalar(f,x0<span class="op">=</span>x0)</span></code></pre></div>
+<div class="sourceCode" id="cb865"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb865-1"><a href="roots.html#cb865-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy <span class="im">as</span> sp</span>
+<span id="cb865-2"><a href="roots.html#cb865-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb865-3"><a href="roots.html#cb865-3" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: np.cos(x) <span class="op">-</span> x</span>
+<span id="cb865-4"><a href="roots.html#cb865-4" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb865-5"><a href="roots.html#cb865-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb865-6"><a href="roots.html#cb865-6" aria-hidden="true" tabindex="-1"></a>sp.optimize.root_scalar(f,x0<span class="op">=</span>x0)</span></code></pre></div>
 <pre><code>##       converged: True
 ##            flag: converged
 ##  function_calls: 10
@@ -489,13 +489,13 @@ R and Python have a suit of root finding methods. We will see examples here usin
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb878"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb878-1"><a href="roots.html#cb878-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nleqslv) </span>
-<span id="cb878-2"><a href="roots.html#cb878-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb878-3"><a href="roots.html#cb878-3" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> \(x) <span class="fu">cos</span>(x) <span class="sc">-</span> x</span>
-<span id="cb878-4"><a href="roots.html#cb878-4" aria-hidden="true" tabindex="-1"></a>fp <span class="ot">&lt;-</span> \(x) <span class="sc">-</span><span class="fu">sin</span>(x) <span class="sc">-</span> <span class="dv">1</span></span>
-<span id="cb878-5"><a href="roots.html#cb878-5" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
-<span id="cb878-6"><a href="roots.html#cb878-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb878-7"><a href="roots.html#cb878-7" aria-hidden="true" tabindex="-1"></a><span class="fu">nleqslv</span>(x0,f,fp,<span class="at">method=</span><span class="st">&quot;Newton&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb867"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb867-1"><a href="roots.html#cb867-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nleqslv) </span>
+<span id="cb867-2"><a href="roots.html#cb867-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb867-3"><a href="roots.html#cb867-3" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> \(x) <span class="fu">cos</span>(x) <span class="sc">-</span> x</span>
+<span id="cb867-4"><a href="roots.html#cb867-4" aria-hidden="true" tabindex="-1"></a>fp <span class="ot">&lt;-</span> \(x) <span class="sc">-</span><span class="fu">sin</span>(x) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb867-5"><a href="roots.html#cb867-5" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb867-6"><a href="roots.html#cb867-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb867-7"><a href="roots.html#cb867-7" aria-hidden="true" tabindex="-1"></a><span class="fu">nleqslv</span>(x0,f,fp,<span class="at">method=</span><span class="st">&quot;Newton&quot;</span>)</span></code></pre></div>
 <pre><code>## $x
 ## [1] 0.7390851
 ## 
@@ -522,13 +522,13 @@ R and Python have a suit of root finding methods. We will see examples here usin
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb880"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb880-1"><a href="roots.html#cb880-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy <span class="im">as</span> sp</span>
-<span id="cb880-2"><a href="roots.html#cb880-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb880-3"><a href="roots.html#cb880-3" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: np.cos(x) <span class="op">-</span> x</span>
-<span id="cb880-4"><a href="roots.html#cb880-4" aria-hidden="true" tabindex="-1"></a>fp <span class="op">=</span> <span class="kw">lambda</span> x: <span class="op">-</span>np.sin(x) <span class="op">-</span> <span class="dv">1</span></span>
-<span id="cb880-5"><a href="roots.html#cb880-5" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> <span class="fl">0.1</span></span>
-<span id="cb880-6"><a href="roots.html#cb880-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb880-7"><a href="roots.html#cb880-7" aria-hidden="true" tabindex="-1"></a>sp.optimize.root_scalar(f,x0<span class="op">=</span>x0,fprime<span class="op">=</span>fp,method<span class="op">=</span><span class="st">&quot;Newton&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb869"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb869-1"><a href="roots.html#cb869-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy <span class="im">as</span> sp</span>
+<span id="cb869-2"><a href="roots.html#cb869-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb869-3"><a href="roots.html#cb869-3" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: np.cos(x) <span class="op">-</span> x</span>
+<span id="cb869-4"><a href="roots.html#cb869-4" aria-hidden="true" tabindex="-1"></a>fp <span class="op">=</span> <span class="kw">lambda</span> x: <span class="op">-</span>np.sin(x) <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb869-5"><a href="roots.html#cb869-5" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb869-6"><a href="roots.html#cb869-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb869-7"><a href="roots.html#cb869-7" aria-hidden="true" tabindex="-1"></a>sp.optimize.root_scalar(f,x0<span class="op">=</span>x0,fprime<span class="op">=</span>fp,method<span class="op">=</span><span class="st">&quot;Newton&quot;</span>)</span></code></pre></div>
 <pre><code>##       converged: True
 ##            flag: converged
 ##  function_calls: 10
