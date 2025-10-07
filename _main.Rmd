@@ -1,7 +1,7 @@
 ---
 title: "Lancaster University MATH245 Computational Mathematics"
-author: "Lecturers: Dr Eduard Campillo-Funollet and Dr Gaetano Romano"
-date: "2023/2024"
+author: "Lecturers: Dr Gaetano Romano and Dr Matthias Sachs"
+date: "2025/2026"
 site: bookdown::bookdown_site
 documentclass: book
 output:
@@ -6210,7 +6210,7 @@ ggplot(mtcars, aes(x=mpg)) +
 (
   ggplot(mtcars, aes(x='mpg')) +
   geom_histogram(binwidth=5)
-)
+).show()
 ```
 
 </div>
@@ -6260,14 +6260,14 @@ ggplot(mtcars, aes(y=mpg)) +
 (
   ggplot(mtcars, aes(y='mpg')) +
   geom_histogram()
-)
+).show()
 
 # we can obtain a similar visualization via coord flip
 (
   ggplot(mtcars, aes(x='mpg')) +
   geom_histogram() +
   coord_flip()
-)
+).show()
 
 ```
 
@@ -6297,7 +6297,7 @@ ggplot(mtcars, aes(y=mpg)) +
 (
   ggplot(mtcars, aes(y='mpg')) +
   geom_boxplot()
-)
+).show()
 ```
 
 </div>
@@ -6342,7 +6342,7 @@ ggplot(mtcars, aes(y=mpg)) +
   ggplot(mtcars, aes(x="mpg")) +
     geom_histogram(aes(y = "..density.."), binwidth=3) +
     geom_density()
-)
+).show()
 ```
 
 </div>
@@ -6376,7 +6376,7 @@ ggplot(mtcars, aes(x=hp, y=mpg)) +
 (
   ggplot(mtcars, aes(x='hp', y='mpg')) +
   geom_point() # + theme_minimal()
-)
+).show()
 ```
 
 </div>
@@ -6408,7 +6408,7 @@ ggplot(mtcars, aes(x=hp, y=mpg, color=am)) +
 (
   ggplot(mtcars, aes(x='hp', y='mpg', color='am')) +
   geom_point()
-)
+).show()
 ```
 
 </div>
@@ -6440,7 +6440,7 @@ ggplot(mtcars, aes(x=hp, y=mpg, color=am, shape= vs)) +
 (
   ggplot(mtcars, aes(x='hp', y='mpg', color='am', shape='vs')) +
   geom_point()
-)
+).show()
 ```
 
 </div>
@@ -6469,7 +6469,7 @@ ggplot(mtcars, aes(y=mpg, color=am, linetype = vs)) +
 (
   ggplot(mtcars, aes(y='mpg', color='am', linetype='vs')) +
   geom_boxplot()
-)
+).show()
 ```
 
 </div>
@@ -6523,7 +6523,7 @@ ggplot(mtcars, aes(x=hp, y=mpg, color=am)) +
   labs(x="Horse Power", y="Consumption (mpg)") +
   xlim(0, 250) +
   theme_bw()
-)
+).show()
 ```
 
 </div>
@@ -6557,7 +6557,7 @@ ggplot(mtcars, aes(x=hp, y=mpg, color=am)) +
 ggplot(mtcars, aes(x='hp', y='mpg', color='am')) +
   geom_point() + 
   facet_wrap('~gear')
-)
+).show()
 ```
 
 </div>
@@ -6613,7 +6613,7 @@ pt + facet_wrap(~vs)
 (
   ggplot(mtcars, aes(x='hp', y='disp', color='am')) +
   geom_line()
-)
+).show()
 
 
 
@@ -6624,14 +6624,14 @@ pt + facet_wrap(~vs)
   ggplot(mtcars.query("am == 'manual'"),
   aes(x='hp', y='disp')) +
   geom_line()
-)
+).show()
 
 # barcharts
 # great for categorical variables
 (
   ggplot(mtcars, aes(x='cyl', fill='am')) +
   geom_bar()
-)
+).show()
 
 # we can store the plot in a variable and add more layers if 
 # needed 

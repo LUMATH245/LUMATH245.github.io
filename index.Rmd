@@ -1,7 +1,7 @@
 ---
 title: "Lancaster University MATH245 Computational Mathematics"
-author: "Lecturers: Dr Eduard Campillo-Funollet and Dr Gaetano Romano"
-date: "2023/2024"
+author: "Lecturers: Dr Gaetano Romano and Dr Matthias Sachs"
+date: "2025/2026"
 site: bookdown::bookdown_site
 documentclass: book
 output:
