@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>8 Gradient descent | Lancaster University MATH245 Computational Mathematics</title>
   <meta name="description" content="8 Gradient descent | Lancaster University MATH245 Computational Mathematics" />
-  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="8 Gradient descent | Lancaster University MATH245 Computational Mathematics" />
   <meta property="og:type" content="book" />
@@ -20,7 +20,7 @@
   
   
 
-<meta name="author" content="Lecturers: Dr Eduard Campillo-Funollet and Dr Gaetano Romano" />
+<meta name="author" content="Lecturers: Dr Gaetano Romano and Dr Matthias Sachs" />
 
 
 
@@ -54,6 +54,7 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -259,7 +260,8 @@ is continuous). To do Step 3 and Step 4, we require that <span class="math inlin
 differentiable (more precisely, that is has two derivatives, and the second
 derivative is continuous). Often, Step 3 and Step 4 can be avoided by studying
 the function of interest. For example, in this case, I know that <span class="math inline">\(f&#39;\)</span> is a
-negative parabola, and in consequence the largest zero will satisfy <span class="math inline">\(f&#39;&#39;(x) &lt; 0\)</span>. Terefore, the largest zero must be a maximum of <span class="math inline">\(f\)</span>.</p>
+negative parabola, and in consequence the largest zero will satisfy <span class="math inline">\(f&#39;&#39;(x) &lt;
+0\)</span>. Terefore, the largest zero must be a maximum of <span class="math inline">\(f\)</span>.</p>
 <p>Note that I do not need to know the value of <span class="math inline">\(a\)</span> to find the <em>maximum</em>. I would
 need the value of <span class="math inline">\(a\)</span> to find the value of <span class="math inline">\(f\)</span> at the maximum.</p>
 <p>Step 2 is a root finding problem: solve an equation like <span class="math inline">\(g(x) = 0\)</span>. In this
@@ -268,13 +270,13 @@ need a root finding method. For example:</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb871"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb871-1"><a href="gd.html#cb871-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nleqslv) </span>
-<span id="cb871-2"><a href="gd.html#cb871-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb871-3"><a href="gd.html#cb871-3" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> \(x) <span class="dv">1</span> <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>x <span class="sc">-</span> <span class="dv">3</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb871-4"><a href="gd.html#cb871-4" aria-hidden="true" tabindex="-1"></a>gp <span class="ot">&lt;-</span> \(x) <span class="sc">-</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">6</span><span class="sc">*</span>x</span>
-<span id="cb871-5"><a href="gd.html#cb871-5" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
-<span id="cb871-6"><a href="gd.html#cb871-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb871-7"><a href="gd.html#cb871-7" aria-hidden="true" tabindex="-1"></a><span class="fu">nleqslv</span>(x0,g,gp,<span class="at">method=</span><span class="st">&quot;Newton&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb869"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb869-1"><a href="gd.html#cb869-1" tabindex="-1"></a><span class="fu">library</span>(nleqslv) </span>
+<span id="cb869-2"><a href="gd.html#cb869-2" tabindex="-1"></a></span>
+<span id="cb869-3"><a href="gd.html#cb869-3" tabindex="-1"></a>g <span class="ot">&lt;-</span> \(x) <span class="dv">1</span> <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>x <span class="sc">-</span> <span class="dv">3</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb869-4"><a href="gd.html#cb869-4" tabindex="-1"></a>gp <span class="ot">&lt;-</span> \(x) <span class="sc">-</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">6</span><span class="sc">*</span>x</span>
+<span id="cb869-5"><a href="gd.html#cb869-5" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb869-6"><a href="gd.html#cb869-6" tabindex="-1"></a></span>
+<span id="cb869-7"><a href="gd.html#cb869-7" tabindex="-1"></a><span class="fu">nleqslv</span>(x0,g,gp,<span class="at">method=</span><span class="st">&quot;Newton&quot;</span>)</span></code></pre></div>
 <pre><code>## $x
 ## [1] 0.3333333
 ## 
@@ -301,14 +303,14 @@ need a root finding method. For example:</p>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb873"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb873-1"><a href="gd.html#cb873-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy <span class="im">as</span> sp</span>
-<span id="cb873-2"><a href="gd.html#cb873-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb873-3"><a href="gd.html#cb873-3" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="kw">lambda</span> x: <span class="dv">1</span> <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>x <span class="op">-</span> <span class="dv">3</span><span class="op">*</span>x<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb873-4"><a href="gd.html#cb873-4" aria-hidden="true" tabindex="-1"></a>gp <span class="op">=</span> <span class="kw">lambda</span> x: <span class="op">-</span><span class="dv">2</span> <span class="op">-</span> <span class="dv">6</span><span class="op">*</span>x</span>
-<span id="cb873-5"><a href="gd.html#cb873-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb873-6"><a href="gd.html#cb873-6" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> <span class="fl">0.1</span></span>
-<span id="cb873-7"><a href="gd.html#cb873-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb873-8"><a href="gd.html#cb873-8" aria-hidden="true" tabindex="-1"></a>sp.optimize.root_scalar(g,x0<span class="op">=</span>x0,fprime<span class="op">=</span>gp,method<span class="op">=</span><span class="st">&quot;Newton&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb871"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb871-1"><a href="gd.html#cb871-1" tabindex="-1"></a><span class="im">import</span> scipy <span class="im">as</span> sp</span>
+<span id="cb871-2"><a href="gd.html#cb871-2" tabindex="-1"></a></span>
+<span id="cb871-3"><a href="gd.html#cb871-3" tabindex="-1"></a>g <span class="op">=</span> <span class="kw">lambda</span> x: <span class="dv">1</span> <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>x <span class="op">-</span> <span class="dv">3</span><span class="op">*</span>x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb871-4"><a href="gd.html#cb871-4" tabindex="-1"></a>gp <span class="op">=</span> <span class="kw">lambda</span> x: <span class="op">-</span><span class="dv">2</span> <span class="op">-</span> <span class="dv">6</span><span class="op">*</span>x</span>
+<span id="cb871-5"><a href="gd.html#cb871-5" tabindex="-1"></a></span>
+<span id="cb871-6"><a href="gd.html#cb871-6" tabindex="-1"></a>x0 <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb871-7"><a href="gd.html#cb871-7" tabindex="-1"></a></span>
+<span id="cb871-8"><a href="gd.html#cb871-8" tabindex="-1"></a>sp.optimize.root_scalar(g,x0<span class="op">=</span>x0,fprime<span class="op">=</span>gp,method<span class="op">=</span><span class="st">&quot;Newton&quot;</span>)</span></code></pre></div>
 <pre><code>##       converged: True
 ##            flag: converged
 ##  function_calls: 10
@@ -354,27 +356,28 @@ Let’s define these functions in R/Python, and look the the value at <span clas
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb875"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb875-1"><a href="gd.html#cb875-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> \(x) <span class="sc">-</span>(<span class="dv">1</span><span class="sc">+</span>x<span class="sc">-</span>x<span class="sc">^</span><span class="dv">2</span><span class="sc">-</span>x<span class="sc">^</span><span class="dv">3</span>)</span>
-<span id="cb875-2"><a href="gd.html#cb875-2" aria-hidden="true" tabindex="-1"></a>gp <span class="ot">&lt;-</span> \(x) <span class="sc">-</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>x <span class="sc">-</span> <span class="dv">3</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb875-3"><a href="gd.html#cb875-3" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
-<span id="cb875-4"><a href="gd.html#cb875-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb875-5"><a href="gd.html#cb875-5" aria-hidden="true" tabindex="-1"></a><span class="fu">gp</span>(x0)</span></code></pre></div>
+<div class="sourceCode" id="cb873"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb873-1"><a href="gd.html#cb873-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> \(x) <span class="sc">-</span>(<span class="dv">1</span><span class="sc">+</span>x<span class="sc">-</span>x<span class="sc">^</span><span class="dv">2</span><span class="sc">-</span>x<span class="sc">^</span><span class="dv">3</span>)</span>
+<span id="cb873-2"><a href="gd.html#cb873-2" tabindex="-1"></a>gp <span class="ot">&lt;-</span> \(x) <span class="sc">-</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>x <span class="sc">-</span> <span class="dv">3</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb873-3"><a href="gd.html#cb873-3" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb873-4"><a href="gd.html#cb873-4" tabindex="-1"></a></span>
+<span id="cb873-5"><a href="gd.html#cb873-5" tabindex="-1"></a><span class="fu">gp</span>(x0)</span></code></pre></div>
 <pre><code>## [1] -0.77</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb877"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb877-1"><a href="gd.html#cb877-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="kw">lambda</span> x: <span class="op">-</span>(<span class="dv">1</span><span class="op">+</span>x<span class="op">-</span>x<span class="op">^</span><span class="dv">2</span><span class="op">-</span>x<span class="op">^</span><span class="dv">3</span>)</span>
-<span id="cb877-2"><a href="gd.html#cb877-2" aria-hidden="true" tabindex="-1"></a>gp <span class="op">=</span> <span class="kw">lambda</span> x: <span class="op">-</span>(<span class="dv">1</span> <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>x <span class="op">-</span> <span class="dv">3</span><span class="op">*</span>x<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb877-3"><a href="gd.html#cb877-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb877-4"><a href="gd.html#cb877-4" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> <span class="fl">0.1</span></span>
-<span id="cb877-5"><a href="gd.html#cb877-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb877-6"><a href="gd.html#cb877-6" aria-hidden="true" tabindex="-1"></a>gp(x0)</span></code></pre></div>
+<div class="sourceCode" id="cb875"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb875-1"><a href="gd.html#cb875-1" tabindex="-1"></a>g <span class="op">=</span> <span class="kw">lambda</span> x: <span class="op">-</span>(<span class="dv">1</span><span class="op">+</span>x<span class="op">-</span>x<span class="op">^</span><span class="dv">2</span><span class="op">-</span>x<span class="op">^</span><span class="dv">3</span>)</span>
+<span id="cb875-2"><a href="gd.html#cb875-2" tabindex="-1"></a>gp <span class="op">=</span> <span class="kw">lambda</span> x: <span class="op">-</span>(<span class="dv">1</span> <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>x <span class="op">-</span> <span class="dv">3</span><span class="op">*</span>x<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb875-3"><a href="gd.html#cb875-3" tabindex="-1"></a></span>
+<span id="cb875-4"><a href="gd.html#cb875-4" tabindex="-1"></a>x0 <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb875-5"><a href="gd.html#cb875-5" tabindex="-1"></a></span>
+<span id="cb875-6"><a href="gd.html#cb875-6" tabindex="-1"></a>gp(x0)</span></code></pre></div>
 <pre><code>## -0.77</code></pre>
 </div>
 </div>
 <p>We can see that <span class="math inline">\(g&#39;(x_0) &lt; 0\)</span>, therefore the function is decreasing. If we take
 <em>a small step</em> to the right, the value would be smaller. We can use this idea
-to construct the next iterate: we fix a <em>small</em> step <span class="math inline">\(h\)</span>, and we take <span class="math inline">\(x_0 + h\)</span>. Note that we do <span class="math inline">\(x_0+h\)</span> instead of <span class="math inline">\(x_0 - h\)</span> because of the sign of the
+to construct the next iterate: we fix a <em>small</em> step <span class="math inline">\(h\)</span>, and we take <span class="math inline">\(x_0 +
+h\)</span>. Note that we do <span class="math inline">\(x_0+h\)</span> instead of <span class="math inline">\(x_0 - h\)</span> because of the sign of the
 derivative. In fact, there is no reason to move just a distance <span class="math inline">\(h\)</span>, we can use
 a step <em>proportional</em> to the value of the derivative: the larger (in absolute
 value), the steepest the function, so we decrease more by moving in that
@@ -385,31 +388,31 @@ approximations. Say we repeat it 100 times, for example.</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb879"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb879-1"><a href="gd.html#cb879-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> \(x) <span class="sc">-</span>(<span class="dv">1</span><span class="sc">+</span>x<span class="sc">-</span>x<span class="sc">^</span><span class="dv">2</span><span class="sc">-</span>x<span class="sc">^</span><span class="dv">3</span>)</span>
-<span id="cb879-2"><a href="gd.html#cb879-2" aria-hidden="true" tabindex="-1"></a>gp <span class="ot">&lt;-</span> \(x) <span class="sc">-</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>x <span class="sc">-</span> <span class="dv">3</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb879-3"><a href="gd.html#cb879-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">0.1</span> <span class="co">#x0</span></span>
-<span id="cb879-4"><a href="gd.html#cb879-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb879-5"><a href="gd.html#cb879-5" aria-hidden="true" tabindex="-1"></a>gamma <span class="ot">&lt;-</span> <span class="dv">1</span>.e<span class="dv">-3</span></span>
-<span id="cb879-6"><a href="gd.html#cb879-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb879-7"><a href="gd.html#cb879-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
-<span id="cb879-8"><a href="gd.html#cb879-8" aria-hidden="true" tabindex="-1"></a>   x <span class="ot">&lt;-</span> x <span class="sc">-</span> gamma <span class="sc">*</span> <span class="fu">gp</span>(x)</span>
-<span id="cb879-9"><a href="gd.html#cb879-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb879-10"><a href="gd.html#cb879-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb879-11"><a href="gd.html#cb879-11" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb877"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb877-1"><a href="gd.html#cb877-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> \(x) <span class="sc">-</span>(<span class="dv">1</span><span class="sc">+</span>x<span class="sc">-</span>x<span class="sc">^</span><span class="dv">2</span><span class="sc">-</span>x<span class="sc">^</span><span class="dv">3</span>)</span>
+<span id="cb877-2"><a href="gd.html#cb877-2" tabindex="-1"></a>gp <span class="ot">&lt;-</span> \(x) <span class="sc">-</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>x <span class="sc">-</span> <span class="dv">3</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb877-3"><a href="gd.html#cb877-3" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">0.1</span> <span class="co">#x0</span></span>
+<span id="cb877-4"><a href="gd.html#cb877-4" tabindex="-1"></a></span>
+<span id="cb877-5"><a href="gd.html#cb877-5" tabindex="-1"></a>gamma <span class="ot">&lt;-</span> <span class="dv">1</span>.e<span class="dv">-3</span></span>
+<span id="cb877-6"><a href="gd.html#cb877-6" tabindex="-1"></a></span>
+<span id="cb877-7"><a href="gd.html#cb877-7" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
+<span id="cb877-8"><a href="gd.html#cb877-8" tabindex="-1"></a>   x <span class="ot">&lt;-</span> x <span class="sc">-</span> gamma <span class="sc">*</span> <span class="fu">gp</span>(x)</span>
+<span id="cb877-9"><a href="gd.html#cb877-9" tabindex="-1"></a>}</span>
+<span id="cb877-10"><a href="gd.html#cb877-10" tabindex="-1"></a></span>
+<span id="cb877-11"><a href="gd.html#cb877-11" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>## [1] 0.3282104</code></pre>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb881"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb881-1"><a href="gd.html#cb881-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="kw">lambda</span> x: <span class="op">-</span>(<span class="dv">1</span><span class="op">+</span>x<span class="op">-</span>x<span class="op">^</span><span class="dv">2</span><span class="op">-</span>x<span class="op">^</span><span class="dv">3</span>)</span>
-<span id="cb881-2"><a href="gd.html#cb881-2" aria-hidden="true" tabindex="-1"></a>gp <span class="op">=</span> <span class="kw">lambda</span> x: <span class="op">-</span>(<span class="dv">1</span> <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>x <span class="op">-</span> <span class="dv">3</span><span class="op">*</span>x<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb881-3"><a href="gd.html#cb881-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">0.1</span></span>
-<span id="cb881-4"><a href="gd.html#cb881-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb881-5"><a href="gd.html#cb881-5" aria-hidden="true" tabindex="-1"></a>gamma <span class="op">=</span> <span class="fl">1.e-3</span></span>
-<span id="cb881-6"><a href="gd.html#cb881-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb881-7"><a href="gd.html#cb881-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
-<span id="cb881-8"><a href="gd.html#cb881-8" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> x <span class="op">-</span> gamma<span class="op">*</span>gp(x)</span>
-<span id="cb881-9"><a href="gd.html#cb881-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb881-10"><a href="gd.html#cb881-10" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb879"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb879-1"><a href="gd.html#cb879-1" tabindex="-1"></a>g <span class="op">=</span> <span class="kw">lambda</span> x: <span class="op">-</span>(<span class="dv">1</span><span class="op">+</span>x<span class="op">-</span>x<span class="op">^</span><span class="dv">2</span><span class="op">-</span>x<span class="op">^</span><span class="dv">3</span>)</span>
+<span id="cb879-2"><a href="gd.html#cb879-2" tabindex="-1"></a>gp <span class="op">=</span> <span class="kw">lambda</span> x: <span class="op">-</span>(<span class="dv">1</span> <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>x <span class="op">-</span> <span class="dv">3</span><span class="op">*</span>x<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb879-3"><a href="gd.html#cb879-3" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb879-4"><a href="gd.html#cb879-4" tabindex="-1"></a></span>
+<span id="cb879-5"><a href="gd.html#cb879-5" tabindex="-1"></a>gamma <span class="op">=</span> <span class="fl">1.e-3</span></span>
+<span id="cb879-6"><a href="gd.html#cb879-6" tabindex="-1"></a></span>
+<span id="cb879-7"><a href="gd.html#cb879-7" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
+<span id="cb879-8"><a href="gd.html#cb879-8" tabindex="-1"></a>    x <span class="op">=</span> x <span class="op">-</span> gamma<span class="op">*</span>gp(x)</span>
+<span id="cb879-9"><a href="gd.html#cb879-9" tabindex="-1"></a></span>
+<span id="cb879-10"><a href="gd.html#cb879-10" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>## 0.3282104064962167</code></pre>
 </div>
 </div>
@@ -419,52 +422,50 @@ it is simple. We can actually plot the iterates visualise the convergence:</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb883"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb883-1"><a href="gd.html#cb883-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb883-2"><a href="gd.html#cb883-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb883-3"><a href="gd.html#cb883-3" aria-hidden="true" tabindex="-1"></a>gamma <span class="ot">&lt;-</span> <span class="dv">1</span>.e<span class="dv">-3</span> <span class="co">#&quot;Step&quot;</span></span>
-<span id="cb883-4"><a href="gd.html#cb883-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span> <span class="co">#Iterations</span></span>
-<span id="cb883-5"><a href="gd.html#cb883-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb883-6"><a href="gd.html#cb883-6" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n) <span class="co">#Results</span></span>
-<span id="cb883-7"><a href="gd.html#cb883-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb883-8"><a href="gd.html#cb883-8" aria-hidden="true" tabindex="-1"></a>r[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fl">0.1</span> <span class="co">#Initial point</span></span>
-<span id="cb883-9"><a href="gd.html#cb883-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb883-10"><a href="gd.html#cb883-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>n){</span>
-<span id="cb883-11"><a href="gd.html#cb883-11" aria-hidden="true" tabindex="-1"></a>   r[i] <span class="ot">&lt;-</span> r[i<span class="dv">-1</span>] <span class="sc">-</span> gamma <span class="sc">*</span> <span class="fu">gp</span>(r[i<span class="dv">-1</span>])</span>
-<span id="cb883-12"><a href="gd.html#cb883-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb883-13"><a href="gd.html#cb883-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb883-14"><a href="gd.html#cb883-14" aria-hidden="true" tabindex="-1"></a>point_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">1</span>, n), <span class="at">y =</span> r), <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
-<span id="cb883-15"><a href="gd.html#cb883-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb883-16"><a href="gd.html#cb883-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb883-17"><a href="gd.html#cb883-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;x_n&quot;</span>) <span class="sc">+</span></span>
-<span id="cb883-18"><a href="gd.html#cb883-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;n&quot;</span>)</span>
-<span id="cb883-19"><a href="gd.html#cb883-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb883-20"><a href="gd.html#cb883-20" aria-hidden="true" tabindex="-1"></a>point_plot</span></code></pre></div>
+<div class="sourceCode" id="cb881"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb881-1"><a href="gd.html#cb881-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb881-2"><a href="gd.html#cb881-2" tabindex="-1"></a></span>
+<span id="cb881-3"><a href="gd.html#cb881-3" tabindex="-1"></a>gamma <span class="ot">&lt;-</span> <span class="dv">1</span>.e<span class="dv">-3</span> <span class="co">#&quot;Step&quot;</span></span>
+<span id="cb881-4"><a href="gd.html#cb881-4" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span> <span class="co">#Iterations</span></span>
+<span id="cb881-5"><a href="gd.html#cb881-5" tabindex="-1"></a></span>
+<span id="cb881-6"><a href="gd.html#cb881-6" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n) <span class="co">#Results</span></span>
+<span id="cb881-7"><a href="gd.html#cb881-7" tabindex="-1"></a></span>
+<span id="cb881-8"><a href="gd.html#cb881-8" tabindex="-1"></a>r[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fl">0.1</span> <span class="co">#Initial point</span></span>
+<span id="cb881-9"><a href="gd.html#cb881-9" tabindex="-1"></a></span>
+<span id="cb881-10"><a href="gd.html#cb881-10" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>n){</span>
+<span id="cb881-11"><a href="gd.html#cb881-11" tabindex="-1"></a>   r[i] <span class="ot">&lt;-</span> r[i<span class="dv">-1</span>] <span class="sc">-</span> gamma <span class="sc">*</span> <span class="fu">gp</span>(r[i<span class="dv">-1</span>])</span>
+<span id="cb881-12"><a href="gd.html#cb881-12" tabindex="-1"></a>}</span>
+<span id="cb881-13"><a href="gd.html#cb881-13" tabindex="-1"></a></span>
+<span id="cb881-14"><a href="gd.html#cb881-14" tabindex="-1"></a>point_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">1</span>, n), <span class="at">y =</span> r), <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y)) <span class="sc">+</span> </span>
+<span id="cb881-15"><a href="gd.html#cb881-15" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb881-16"><a href="gd.html#cb881-16" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb881-17"><a href="gd.html#cb881-17" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;x_n&quot;</span>) <span class="sc">+</span></span>
+<span id="cb881-18"><a href="gd.html#cb881-18" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;n&quot;</span>)</span>
+<span id="cb881-19"><a href="gd.html#cb881-19" tabindex="-1"></a></span>
+<span id="cb881-20"><a href="gd.html#cb881-20" tabindex="-1"></a>point_plot</span></code></pre></div>
 <p><img src="images/unnamed-chunk-305-1.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb884"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb884-1"><a href="gd.html#cb884-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb884-2"><a href="gd.html#cb884-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb884-3"><a href="gd.html#cb884-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb884-4"><a href="gd.html#cb884-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb884-5"><a href="gd.html#cb884-5" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">1000</span></span>
-<span id="cb884-6"><a href="gd.html#cb884-6" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.empty(n)</span>
-<span id="cb884-7"><a href="gd.html#cb884-7" aria-hidden="true" tabindex="-1"></a>gamma <span class="op">=</span> <span class="fl">1.e-3</span></span>
-<span id="cb884-8"><a href="gd.html#cb884-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb884-9"><a href="gd.html#cb884-9" aria-hidden="true" tabindex="-1"></a>r[<span class="dv">0</span>] <span class="op">=</span> <span class="fl">0.1</span></span>
-<span id="cb884-10"><a href="gd.html#cb884-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb884-11"><a href="gd.html#cb884-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,n):</span>
-<span id="cb884-12"><a href="gd.html#cb884-12" aria-hidden="true" tabindex="-1"></a>    r[i] <span class="op">=</span> r[i<span class="op">-</span><span class="dv">1</span>] <span class="op">-</span> gamma<span class="op">*</span>gp(r[i<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb884-13"><a href="gd.html#cb884-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb884-14"><a href="gd.html#cb884-14" aria-hidden="true" tabindex="-1"></a>point_plot <span class="op">=</span> ggplot(pd.DataFrame({<span class="st">&quot;x&quot;</span>:<span class="bu">range</span>(n), <span class="st">&quot;y&quot;</span>: r}), aes(x<span class="op">=</span><span class="st">&quot;x&quot;</span>, y<span class="op">=</span><span class="st">&quot;y&quot;</span>)) <span class="op">+</span> <span class="op">\</span></span>
-<span id="cb884-15"><a href="gd.html#cb884-15" aria-hidden="true" tabindex="-1"></a>  geom_point() <span class="op">+</span> <span class="op">\</span></span>
-<span id="cb884-16"><a href="gd.html#cb884-16" aria-hidden="true" tabindex="-1"></a>  theme_minimal() <span class="op">+</span> <span class="op">\</span></span>
-<span id="cb884-17"><a href="gd.html#cb884-17" aria-hidden="true" tabindex="-1"></a>  ylab(<span class="st">&quot;x_n&quot;</span>) <span class="op">+</span> <span class="op">\</span></span>
-<span id="cb884-18"><a href="gd.html#cb884-18" aria-hidden="true" tabindex="-1"></a>  xlab(<span class="st">&quot;n&quot;</span>)</span>
-<span id="cb884-19"><a href="gd.html#cb884-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb884-20"><a href="gd.html#cb884-20" aria-hidden="true" tabindex="-1"></a>point_plot</span></code></pre></div>
-<pre><code>## &lt;string&gt;:2: FutureWarning: Using repr(plot) to draw and show the plot figure is deprecated and will be removed in a future version. Use plot.show().
-## &lt;Figure Size: (640 x 480)&gt;</code></pre>
+<div class="sourceCode" id="cb882"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb882-1"><a href="gd.html#cb882-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb882-2"><a href="gd.html#cb882-2" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb882-3"><a href="gd.html#cb882-3" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb882-4"><a href="gd.html#cb882-4" tabindex="-1"></a></span>
+<span id="cb882-5"><a href="gd.html#cb882-5" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb882-6"><a href="gd.html#cb882-6" tabindex="-1"></a>r <span class="op">=</span> np.empty(n)</span>
+<span id="cb882-7"><a href="gd.html#cb882-7" tabindex="-1"></a>gamma <span class="op">=</span> <span class="fl">1.e-3</span></span>
+<span id="cb882-8"><a href="gd.html#cb882-8" tabindex="-1"></a></span>
+<span id="cb882-9"><a href="gd.html#cb882-9" tabindex="-1"></a>r[<span class="dv">0</span>] <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb882-10"><a href="gd.html#cb882-10" tabindex="-1"></a></span>
+<span id="cb882-11"><a href="gd.html#cb882-11" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,n):</span>
+<span id="cb882-12"><a href="gd.html#cb882-12" tabindex="-1"></a>    r[i] <span class="op">=</span> r[i<span class="op">-</span><span class="dv">1</span>] <span class="op">-</span> gamma<span class="op">*</span>gp(r[i<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb882-13"><a href="gd.html#cb882-13" tabindex="-1"></a></span>
+<span id="cb882-14"><a href="gd.html#cb882-14" tabindex="-1"></a>point_plot <span class="op">=</span> ggplot(pd.DataFrame({<span class="st">&quot;x&quot;</span>:<span class="bu">range</span>(n), <span class="st">&quot;y&quot;</span>: r}), aes(x<span class="op">=</span><span class="st">&quot;x&quot;</span>, y<span class="op">=</span><span class="st">&quot;y&quot;</span>)) <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb882-15"><a href="gd.html#cb882-15" tabindex="-1"></a>  geom_point() <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb882-16"><a href="gd.html#cb882-16" tabindex="-1"></a>  theme_minimal() <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb882-17"><a href="gd.html#cb882-17" tabindex="-1"></a>  ylab(<span class="st">&quot;x_n&quot;</span>) <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb882-18"><a href="gd.html#cb882-18" tabindex="-1"></a>  xlab(<span class="st">&quot;n&quot;</span>)</span>
+<span id="cb882-19"><a href="gd.html#cb882-19" tabindex="-1"></a></span>
+<span id="cb882-20"><a href="gd.html#cb882-20" tabindex="-1"></a>point_plot</span></code></pre></div>
 <p><img src="images/unnamed-chunk-306-1.png" width="50%" /></p>
 </div>
 </div>
@@ -488,60 +489,61 @@ gradient will give us the dimension of maximum decrease. Therefore, we can start
 \mathbf{x}_{n+1} = \mathbf{x}_n - \gamma \nabla f(\mathbf{x}_n).
 \]</span>
 A few notes: we are considering <span class="math inline">\(f: \mathbb{R}^d \rightarrow \mathbb{R}\)</span>,
-therefore <span class="math inline">\(\mathbf{x} \in \mathbb{R}^d\)</span>, and the gradient <span class="math inline">\(\nabla f(\mathbf{x}) \in \mathbb{R}^d\)</span>. As in the one dimensional case, <span class="math inline">\(\gamma \in \mathbb{R}^+\)</span> is a <em>small</em> value.</p>
+therefore <span class="math inline">\(\mathbf{x} \in \mathbb{R}^d\)</span>, and the gradient <span class="math inline">\(\nabla f(\mathbf{x})
+\in \mathbb{R}^d\)</span>. As in the one dimensional case, <span class="math inline">\(\gamma \in \mathbb{R}^+\)</span> is a <em>small</em> value.</p>
 <p>Let’s have a closer look at our example function <span class="math inline">\(f\)</span>. Rather than using three-dimensional plots, we will use countour plots. The following code is similar to the code we used in the workshops to evaluate functions on a grid. <strong>Note</strong> that here I am abusing the map function in order to provide more examples of the use of map! The function <code>f</code>, both in R and Python, can be applied directly to the grid, to get a result with the same shape.</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb886"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb886-1"><a href="gd.html#cb886-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pracma)</span></code></pre></div>
+<div class="sourceCode" id="cb883"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb883-1"><a href="gd.html#cb883-1" tabindex="-1"></a><span class="fu">library</span>(pracma)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;pracma&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:purrr&#39;:
 ## 
 ##     cross</code></pre>
-<div class="sourceCode" id="cb889"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb889-1"><a href="gd.html#cb889-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb889-2"><a href="gd.html#cb889-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb889-3"><a href="gd.html#cb889-3" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> \(x) <span class="dv">3</span><span class="sc">*</span>x[<span class="dv">1</span>]<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">4</span><span class="sc">*</span>x[<span class="dv">2</span>]<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb889-4"><a href="gd.html#cb889-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb889-5"><a href="gd.html#cb889-5" aria-hidden="true" tabindex="-1"></a><span class="co">#10000 points on a grid [-3,3]x[-3,3]</span></span>
-<span id="cb889-6"><a href="gd.html#cb889-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb889-7"><a href="gd.html#cb889-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Alternative to meshgrid</span></span>
-<span id="cb889-8"><a href="gd.html#cb889-8" aria-hidden="true" tabindex="-1"></a>grid <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="at">length.out=</span><span class="dv">100</span>),<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="at">length.out=</span><span class="dv">100</span>))</span>
-<span id="cb889-9"><a href="gd.html#cb889-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb889-10"><a href="gd.html#cb889-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Alternative to map_dbl (see Ch. 4)</span></span>
-<span id="cb889-11"><a href="gd.html#cb889-11" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">apply</span>(grid,<span class="dv">1</span>,f) <span class="co">#1 means &quot;over rows&quot;.</span></span>
-<span id="cb889-12"><a href="gd.html#cb889-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb889-13"><a href="gd.html#cb889-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Put everything in dataframe</span></span>
-<span id="cb889-14"><a href="gd.html#cb889-14" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x=</span>grid[<span class="dv">1</span>],<span class="at">y=</span>grid[<span class="dv">2</span>],<span class="at">z=</span>z)</span>
-<span id="cb889-15"><a href="gd.html#cb889-15" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>,<span class="st">&quot;y&quot;</span>,<span class="st">&quot;z&quot;</span>)</span>
-<span id="cb889-16"><a href="gd.html#cb889-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb889-17"><a href="gd.html#cb889-17" aria-hidden="true" tabindex="-1"></a>contour_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y, <span class="at">z=</span>z)) <span class="sc">+</span> </span>
-<span id="cb889-18"><a href="gd.html#cb889-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_contour</span>() </span>
-<span id="cb889-19"><a href="gd.html#cb889-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb889-20"><a href="gd.html#cb889-20" aria-hidden="true" tabindex="-1"></a>contour_plot</span></code></pre></div>
+<div class="sourceCode" id="cb886"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb886-1"><a href="gd.html#cb886-1" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb886-2"><a href="gd.html#cb886-2" tabindex="-1"></a></span>
+<span id="cb886-3"><a href="gd.html#cb886-3" tabindex="-1"></a>f <span class="ot">&lt;-</span> \(x) <span class="dv">3</span><span class="sc">*</span>x[<span class="dv">1</span>]<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">4</span><span class="sc">*</span>x[<span class="dv">2</span>]<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb886-4"><a href="gd.html#cb886-4" tabindex="-1"></a></span>
+<span id="cb886-5"><a href="gd.html#cb886-5" tabindex="-1"></a><span class="co">#10000 points on a grid [-3,3]x[-3,3]</span></span>
+<span id="cb886-6"><a href="gd.html#cb886-6" tabindex="-1"></a></span>
+<span id="cb886-7"><a href="gd.html#cb886-7" tabindex="-1"></a><span class="co">#Alternative to meshgrid</span></span>
+<span id="cb886-8"><a href="gd.html#cb886-8" tabindex="-1"></a>grid <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="at">length.out=</span><span class="dv">100</span>),<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="at">length.out=</span><span class="dv">100</span>))</span>
+<span id="cb886-9"><a href="gd.html#cb886-9" tabindex="-1"></a></span>
+<span id="cb886-10"><a href="gd.html#cb886-10" tabindex="-1"></a><span class="co">#Alternative to map_dbl (see Ch. 4)</span></span>
+<span id="cb886-11"><a href="gd.html#cb886-11" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">apply</span>(grid,<span class="dv">1</span>,f) <span class="co">#1 means &quot;over rows&quot;.</span></span>
+<span id="cb886-12"><a href="gd.html#cb886-12" tabindex="-1"></a></span>
+<span id="cb886-13"><a href="gd.html#cb886-13" tabindex="-1"></a><span class="co">#Put everything in dataframe</span></span>
+<span id="cb886-14"><a href="gd.html#cb886-14" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x=</span>grid[<span class="dv">1</span>],<span class="at">y=</span>grid[<span class="dv">2</span>],<span class="at">z=</span>z)</span>
+<span id="cb886-15"><a href="gd.html#cb886-15" tabindex="-1"></a><span class="fu">colnames</span>(df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>,<span class="st">&quot;y&quot;</span>,<span class="st">&quot;z&quot;</span>)</span>
+<span id="cb886-16"><a href="gd.html#cb886-16" tabindex="-1"></a></span>
+<span id="cb886-17"><a href="gd.html#cb886-17" tabindex="-1"></a>contour_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>y, <span class="at">z=</span>z)) <span class="sc">+</span> </span>
+<span id="cb886-18"><a href="gd.html#cb886-18" tabindex="-1"></a>  <span class="fu">geom_contour</span>() </span>
+<span id="cb886-19"><a href="gd.html#cb886-19" tabindex="-1"></a></span>
+<span id="cb886-20"><a href="gd.html#cb886-20" tabindex="-1"></a>contour_plot</span></code></pre></div>
 <p><img src="images/unnamed-chunk-307-3.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb890"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb890-1"><a href="gd.html#cb890-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
-<span id="cb890-2"><a href="gd.html#cb890-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb890-3"><a href="gd.html#cb890-3" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: <span class="dv">3</span><span class="op">*</span>x[<span class="dv">0</span>]<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">4</span><span class="op">*</span>x[<span class="dv">1</span>]<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb890-4"><a href="gd.html#cb890-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb890-5"><a href="gd.html#cb890-5" aria-hidden="true" tabindex="-1"></a>xy <span class="op">=</span> np.meshgrid(np.linspace(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">100</span>),np.linspace(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">100</span>))</span>
-<span id="cb890-6"><a href="gd.html#cb890-6" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> [ np.array((x,y)) <span class="cf">for</span> x,y <span class="kw">in</span> <span class="bu">zip</span>(xy[<span class="dv">0</span>].ravel(),xy[<span class="dv">1</span>].ravel()) ] <span class="co">#List format</span></span>
-<span id="cb890-7"><a href="gd.html#cb890-7" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> <span class="bu">map</span>(f,grid)</span>
-<span id="cb890-8"><a href="gd.html#cb890-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb890-9"><a href="gd.html#cb890-9" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">&quot;x&quot;</span>:xy[<span class="dv">0</span>].ravel(),<span class="st">&quot;y&quot;</span>:xy[<span class="dv">1</span>].ravel(),<span class="st">&quot;z&quot;</span>:z})</span>
-<span id="cb890-10"><a href="gd.html#cb890-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb890-11"><a href="gd.html#cb890-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Unfortunately geom_contour does not</span></span>
-<span id="cb890-12"><a href="gd.html#cb890-12" aria-hidden="true" tabindex="-1"></a><span class="co"># work on plotnine!</span></span>
-<span id="cb890-13"><a href="gd.html#cb890-13" aria-hidden="true" tabindex="-1"></a><span class="co"># There are alternatives using matplotlib.</span></span>
-<span id="cb890-14"><a href="gd.html#cb890-14" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb890-15"><a href="gd.html#cb890-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb890-16"><a href="gd.html#cb890-16" aria-hidden="true" tabindex="-1"></a>plt.contour(np.array(df.x).reshape((<span class="dv">100</span>,<span class="dv">100</span>)),<span class="op">\</span></span>
-<span id="cb890-17"><a href="gd.html#cb890-17" aria-hidden="true" tabindex="-1"></a>            np.array(df.y).reshape((<span class="dv">100</span>,<span class="dv">100</span>)),<span class="op">\</span></span>
-<span id="cb890-18"><a href="gd.html#cb890-18" aria-hidden="true" tabindex="-1"></a>            np.array(df.z).reshape((<span class="dv">100</span>,<span class="dv">100</span>)))</span></code></pre></div>
-<pre><code>## &lt;matplotlib.contour.QuadContourSet object at 0x75bd1af31d90&gt;</code></pre>
+<div class="sourceCode" id="cb887"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb887-1"><a href="gd.html#cb887-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
+<span id="cb887-2"><a href="gd.html#cb887-2" tabindex="-1"></a></span>
+<span id="cb887-3"><a href="gd.html#cb887-3" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: <span class="dv">3</span><span class="op">*</span>x[<span class="dv">0</span>]<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">4</span><span class="op">*</span>x[<span class="dv">1</span>]<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb887-4"><a href="gd.html#cb887-4" tabindex="-1"></a></span>
+<span id="cb887-5"><a href="gd.html#cb887-5" tabindex="-1"></a>xy <span class="op">=</span> np.meshgrid(np.linspace(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">100</span>),np.linspace(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">100</span>))</span>
+<span id="cb887-6"><a href="gd.html#cb887-6" tabindex="-1"></a>grid <span class="op">=</span> [ np.array((x,y)) <span class="cf">for</span> x,y <span class="kw">in</span> <span class="bu">zip</span>(xy[<span class="dv">0</span>].ravel(),xy[<span class="dv">1</span>].ravel()) ] <span class="co">#List format</span></span>
+<span id="cb887-7"><a href="gd.html#cb887-7" tabindex="-1"></a>z <span class="op">=</span> <span class="bu">map</span>(f,grid)</span>
+<span id="cb887-8"><a href="gd.html#cb887-8" tabindex="-1"></a></span>
+<span id="cb887-9"><a href="gd.html#cb887-9" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">&quot;x&quot;</span>:xy[<span class="dv">0</span>].ravel(),<span class="st">&quot;y&quot;</span>:xy[<span class="dv">1</span>].ravel(),<span class="st">&quot;z&quot;</span>:z})</span>
+<span id="cb887-10"><a href="gd.html#cb887-10" tabindex="-1"></a></span>
+<span id="cb887-11"><a href="gd.html#cb887-11" tabindex="-1"></a><span class="co"># Unfortunately geom_contour does not</span></span>
+<span id="cb887-12"><a href="gd.html#cb887-12" tabindex="-1"></a><span class="co"># work on plotnine!</span></span>
+<span id="cb887-13"><a href="gd.html#cb887-13" tabindex="-1"></a><span class="co"># There are alternatives using matplotlib.</span></span>
+<span id="cb887-14"><a href="gd.html#cb887-14" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb887-15"><a href="gd.html#cb887-15" tabindex="-1"></a></span>
+<span id="cb887-16"><a href="gd.html#cb887-16" tabindex="-1"></a>plt.contour(np.array(df.x).reshape((<span class="dv">100</span>,<span class="dv">100</span>)),<span class="op">\</span></span>
+<span id="cb887-17"><a href="gd.html#cb887-17" tabindex="-1"></a>            np.array(df.y).reshape((<span class="dv">100</span>,<span class="dv">100</span>)),<span class="op">\</span></span>
+<span id="cb887-18"><a href="gd.html#cb887-18" tabindex="-1"></a>            np.array(df.z).reshape((<span class="dv">100</span>,<span class="dv">100</span>)))</span></code></pre></div>
+<pre><code>## &lt;matplotlib.contour.QuadContourSet object at 0x16878e090&gt;</code></pre>
 <p><img src="images/unnamed-chunk-308-1.png" width="50%" /></p>
 </div>
 </div>
@@ -549,50 +551,50 @@ therefore <span class="math inline">\(\mathbf{x} \in \mathbb{R}^d\)</span>, and 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-column-gap: 10px;">
 <div>
 <p><strong>R</strong></p>
-<div class="sourceCode" id="cb892"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb892-1"><a href="gd.html#cb892-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Gradient </span></span>
-<span id="cb892-2"><a href="gd.html#cb892-2" aria-hidden="true" tabindex="-1"></a>Df <span class="ot">&lt;-</span> \(x) <span class="fu">c</span>(<span class="dv">6</span><span class="sc">*</span>x[<span class="dv">1</span>],<span class="dv">4</span><span class="sc">*</span>x[<span class="dv">2</span>])</span>
-<span id="cb892-3"><a href="gd.html#cb892-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb892-4"><a href="gd.html#cb892-4" aria-hidden="true" tabindex="-1"></a>gamma <span class="ot">&lt;-</span> <span class="dv">1</span>.e<span class="dv">-3</span> <span class="co">#&quot;Step&quot;</span></span>
-<span id="cb892-5"><a href="gd.html#cb892-5" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span> <span class="co">#Iterations</span></span>
-<span id="cb892-6"><a href="gd.html#cb892-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb892-7"><a href="gd.html#cb892-7" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">nrow=</span>n,<span class="at">ncol=</span><span class="dv">2</span>) <span class="co">#Results</span></span>
-<span id="cb892-8"><a href="gd.html#cb892-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb892-9"><a href="gd.html#cb892-9" aria-hidden="true" tabindex="-1"></a>r[<span class="dv">1</span>,] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.1</span>,<span class="fl">0.1</span>) <span class="co">#Initial point</span></span>
-<span id="cb892-10"><a href="gd.html#cb892-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb892-11"><a href="gd.html#cb892-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>n){</span>
-<span id="cb892-12"><a href="gd.html#cb892-12" aria-hidden="true" tabindex="-1"></a>   r[i,] <span class="ot">&lt;-</span> r[i<span class="dv">-1</span>,] <span class="sc">-</span> gamma <span class="sc">*</span> <span class="fu">Df</span>(r[i<span class="dv">-1</span>,])</span>
-<span id="cb892-13"><a href="gd.html#cb892-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb892-14"><a href="gd.html#cb892-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb892-15"><a href="gd.html#cb892-15" aria-hidden="true" tabindex="-1"></a>resdf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(r)</span>
-<span id="cb892-16"><a href="gd.html#cb892-16" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(resdf) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>,<span class="st">&quot;y&quot;</span>)</span>
-<span id="cb892-17"><a href="gd.html#cb892-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb892-18"><a href="gd.html#cb892-18" aria-hidden="true" tabindex="-1"></a>contour_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df) <span class="sc">+</span> </span>
-<span id="cb892-19"><a href="gd.html#cb892-19" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_contour</span>(<span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y,<span class="at">z=</span>z)) <span class="sc">+</span> </span>
-<span id="cb892-20"><a href="gd.html#cb892-20" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_point</span>(<span class="at">data=</span>resdf,<span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y))</span>
-<span id="cb892-21"><a href="gd.html#cb892-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb892-22"><a href="gd.html#cb892-22" aria-hidden="true" tabindex="-1"></a>contour_plot</span></code></pre></div>
+<div class="sourceCode" id="cb889"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb889-1"><a href="gd.html#cb889-1" tabindex="-1"></a><span class="co">#Gradient </span></span>
+<span id="cb889-2"><a href="gd.html#cb889-2" tabindex="-1"></a>Df <span class="ot">&lt;-</span> \(x) <span class="fu">c</span>(<span class="dv">6</span><span class="sc">*</span>x[<span class="dv">1</span>],<span class="dv">4</span><span class="sc">*</span>x[<span class="dv">2</span>])</span>
+<span id="cb889-3"><a href="gd.html#cb889-3" tabindex="-1"></a></span>
+<span id="cb889-4"><a href="gd.html#cb889-4" tabindex="-1"></a>gamma <span class="ot">&lt;-</span> <span class="dv">1</span>.e<span class="dv">-3</span> <span class="co">#&quot;Step&quot;</span></span>
+<span id="cb889-5"><a href="gd.html#cb889-5" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span> <span class="co">#Iterations</span></span>
+<span id="cb889-6"><a href="gd.html#cb889-6" tabindex="-1"></a></span>
+<span id="cb889-7"><a href="gd.html#cb889-7" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">nrow=</span>n,<span class="at">ncol=</span><span class="dv">2</span>) <span class="co">#Results</span></span>
+<span id="cb889-8"><a href="gd.html#cb889-8" tabindex="-1"></a></span>
+<span id="cb889-9"><a href="gd.html#cb889-9" tabindex="-1"></a>r[<span class="dv">1</span>,] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.1</span>,<span class="fl">0.1</span>) <span class="co">#Initial point</span></span>
+<span id="cb889-10"><a href="gd.html#cb889-10" tabindex="-1"></a></span>
+<span id="cb889-11"><a href="gd.html#cb889-11" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>n){</span>
+<span id="cb889-12"><a href="gd.html#cb889-12" tabindex="-1"></a>   r[i,] <span class="ot">&lt;-</span> r[i<span class="dv">-1</span>,] <span class="sc">-</span> gamma <span class="sc">*</span> <span class="fu">Df</span>(r[i<span class="dv">-1</span>,])</span>
+<span id="cb889-13"><a href="gd.html#cb889-13" tabindex="-1"></a>}</span>
+<span id="cb889-14"><a href="gd.html#cb889-14" tabindex="-1"></a></span>
+<span id="cb889-15"><a href="gd.html#cb889-15" tabindex="-1"></a>resdf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(r)</span>
+<span id="cb889-16"><a href="gd.html#cb889-16" tabindex="-1"></a><span class="fu">colnames</span>(resdf) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>,<span class="st">&quot;y&quot;</span>)</span>
+<span id="cb889-17"><a href="gd.html#cb889-17" tabindex="-1"></a></span>
+<span id="cb889-18"><a href="gd.html#cb889-18" tabindex="-1"></a>contour_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df) <span class="sc">+</span> </span>
+<span id="cb889-19"><a href="gd.html#cb889-19" tabindex="-1"></a>                <span class="fu">geom_contour</span>(<span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y,<span class="at">z=</span>z)) <span class="sc">+</span> </span>
+<span id="cb889-20"><a href="gd.html#cb889-20" tabindex="-1"></a>                <span class="fu">geom_point</span>(<span class="at">data=</span>resdf,<span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y))</span>
+<span id="cb889-21"><a href="gd.html#cb889-21" tabindex="-1"></a></span>
+<span id="cb889-22"><a href="gd.html#cb889-22" tabindex="-1"></a>contour_plot</span></code></pre></div>
 <p><img src="images/unnamed-chunk-309-3.png" width="50%" /></p>
 </div>
 <div>
 <p><strong>Python</strong></p>
-<div class="sourceCode" id="cb893"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb893-1"><a href="gd.html#cb893-1" aria-hidden="true" tabindex="-1"></a>Df <span class="op">=</span> <span class="kw">lambda</span> x: np.array([<span class="dv">6</span><span class="op">*</span>x[<span class="dv">0</span>],<span class="dv">4</span><span class="op">*</span>x[<span class="dv">1</span>]])</span>
-<span id="cb893-2"><a href="gd.html#cb893-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb893-3"><a href="gd.html#cb893-3" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">1000</span></span>
-<span id="cb893-4"><a href="gd.html#cb893-4" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.empty( (n,<span class="dv">2</span>) )</span>
-<span id="cb893-5"><a href="gd.html#cb893-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb893-6"><a href="gd.html#cb893-6" aria-hidden="true" tabindex="-1"></a>gamma <span class="op">=</span> <span class="fl">1.e-3</span></span>
-<span id="cb893-7"><a href="gd.html#cb893-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb893-8"><a href="gd.html#cb893-8" aria-hidden="true" tabindex="-1"></a>r[<span class="dv">0</span>] <span class="op">=</span> <span class="fl">0.1</span><span class="op">*</span>np.ones(<span class="dv">2</span>)</span>
-<span id="cb893-9"><a href="gd.html#cb893-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb893-10"><a href="gd.html#cb893-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,n):</span>
-<span id="cb893-11"><a href="gd.html#cb893-11" aria-hidden="true" tabindex="-1"></a>    r[i] <span class="op">=</span> r[i<span class="op">-</span><span class="dv">1</span>] <span class="op">-</span> gamma<span class="op">*</span>gp(r[i<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb893-12"><a href="gd.html#cb893-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb893-13"><a href="gd.html#cb893-13" aria-hidden="true" tabindex="-1"></a>plt.contour(np.array(df.x).reshape((<span class="dv">100</span>,<span class="dv">100</span>)),<span class="op">\</span></span>
-<span id="cb893-14"><a href="gd.html#cb893-14" aria-hidden="true" tabindex="-1"></a>            np.array(df.y).reshape((<span class="dv">100</span>,<span class="dv">100</span>)),<span class="op">\</span></span>
-<span id="cb893-15"><a href="gd.html#cb893-15" aria-hidden="true" tabindex="-1"></a>            np.array(df.z).reshape((<span class="dv">100</span>,<span class="dv">100</span>)))</span></code></pre></div>
-<pre><code>## &lt;matplotlib.contour.QuadContourSet object at 0x75bd1a580190&gt;</code></pre>
-<div class="sourceCode" id="cb895"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb895-1"><a href="gd.html#cb895-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(r[:,<span class="dv">0</span>],r[:,<span class="dv">1</span>])</span></code></pre></div>
-<pre><code>## &lt;matplotlib.collections.PathCollection object at 0x75bd1a54ec10&gt;</code></pre>
+<div class="sourceCode" id="cb890"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb890-1"><a href="gd.html#cb890-1" tabindex="-1"></a>Df <span class="op">=</span> <span class="kw">lambda</span> x: np.array([<span class="dv">6</span><span class="op">*</span>x[<span class="dv">0</span>],<span class="dv">4</span><span class="op">*</span>x[<span class="dv">1</span>]])</span>
+<span id="cb890-2"><a href="gd.html#cb890-2" tabindex="-1"></a></span>
+<span id="cb890-3"><a href="gd.html#cb890-3" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb890-4"><a href="gd.html#cb890-4" tabindex="-1"></a>r <span class="op">=</span> np.empty( (n,<span class="dv">2</span>) )</span>
+<span id="cb890-5"><a href="gd.html#cb890-5" tabindex="-1"></a></span>
+<span id="cb890-6"><a href="gd.html#cb890-6" tabindex="-1"></a>gamma <span class="op">=</span> <span class="fl">1.e-3</span></span>
+<span id="cb890-7"><a href="gd.html#cb890-7" tabindex="-1"></a></span>
+<span id="cb890-8"><a href="gd.html#cb890-8" tabindex="-1"></a>r[<span class="dv">0</span>] <span class="op">=</span> <span class="fl">0.1</span><span class="op">*</span>np.ones(<span class="dv">2</span>)</span>
+<span id="cb890-9"><a href="gd.html#cb890-9" tabindex="-1"></a></span>
+<span id="cb890-10"><a href="gd.html#cb890-10" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,n):</span>
+<span id="cb890-11"><a href="gd.html#cb890-11" tabindex="-1"></a>    r[i] <span class="op">=</span> r[i<span class="op">-</span><span class="dv">1</span>] <span class="op">-</span> gamma<span class="op">*</span>gp(r[i<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb890-12"><a href="gd.html#cb890-12" tabindex="-1"></a></span>
+<span id="cb890-13"><a href="gd.html#cb890-13" tabindex="-1"></a>plt.contour(np.array(df.x).reshape((<span class="dv">100</span>,<span class="dv">100</span>)),<span class="op">\</span></span>
+<span id="cb890-14"><a href="gd.html#cb890-14" tabindex="-1"></a>            np.array(df.y).reshape((<span class="dv">100</span>,<span class="dv">100</span>)),<span class="op">\</span></span>
+<span id="cb890-15"><a href="gd.html#cb890-15" tabindex="-1"></a>            np.array(df.z).reshape((<span class="dv">100</span>,<span class="dv">100</span>)))</span></code></pre></div>
+<pre><code>## &lt;matplotlib.contour.QuadContourSet object at 0x1686dc4d0&gt;</code></pre>
+<div class="sourceCode" id="cb892"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb892-1"><a href="gd.html#cb892-1" tabindex="-1"></a>plt.scatter(r[:,<span class="dv">0</span>],r[:,<span class="dv">1</span>])</span></code></pre></div>
+<pre><code>## &lt;matplotlib.collections.PathCollection object at 0x169183d10&gt;</code></pre>
 <p><img src="images/unnamed-chunk-310-1.png" width="50%" /></p>
 </div>
 </div>
@@ -670,42 +672,42 @@ function, and apply gradient descent.</p>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>
